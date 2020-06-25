@@ -1,0 +1,32 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+        "module": "ESNEXT",
+        "skipLibCheck": true,
+        "typeRoots": [
+            "./node_modules/@types"
+        ],
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "sourceMap": true,
+        "declaration": true,
+        "target": "ES2015",
+        "lib": [
+            "ES2017",
+            "DOM"
+        ],
+        "moduleResolution": "node",
+        "baseUrl": "src",
+        "resolveJsonModule": true,
+        "allowJs": true,
+        "outDir": "lib/es2015"
+    },
+    "include": [
+        "./src/**/*.ts",
+        "./test/**/*.ts",
+        "./types/**/*.d.ts"
+    ],
+    "atom": {
+        "rewriteTsconfig": false
+    }
+}

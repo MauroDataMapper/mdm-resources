@@ -1,0 +1,21 @@
+{
+    "name": "@maurodatamapper/mdm-resources",
+    "version": "4.0.0-SNAPSHOT",
+    "main": "lib/es2015/index.js",
+    "module": "lib/es2015/index.js",
+    "license": "Apache-2.0",
+    "private": true,
+    "scripts": {
+        "build": "tsc && tsc --target ES5 --outDir lib/es5"
+    },
+    "repository": {
+        "type": "git",
+        "url": "github:MauroDataMapper/mdm-resources"
+    },
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com/"
+    },
+    "devDependencies": {
+        "typescript": "^3.9.5"
+    }
+}
