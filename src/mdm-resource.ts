@@ -214,7 +214,14 @@ export class MdmResource {
     return this.request(url, 'POST', null, contentType, more);
   }
 
-  simplePost(url, content) {
-    return this.restHandler.process(url, content);
+  simplePost(url, options: any = {}) {
+    options.method = 'POST';
+    return this.restHandler.process(url, options);
   }
+
+  simpleGet(url, options: any = {}) {
+    options.method = 'GET';
+    return this.restHandler.process(url, options);
+  }
+
 }

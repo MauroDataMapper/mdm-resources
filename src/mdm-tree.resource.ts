@@ -19,6 +19,10 @@ import { MdmResource } from './mdm-resource';
 
 export class MdmTreeResource extends MdmResource {
   get(id?, action?, options?) {
-    return this.getResource('tree', id, action, options);
+    return this.getResource('tree/folders', id, action, null);
+  }
+
+  getDomainItem(id, domainType, options = {}) {
+    return this.simpleGet(`${this.apiEndpoint}/tree/folders/${domainType}/${id}`, options);
   }
 }

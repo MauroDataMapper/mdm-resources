@@ -12,5 +12,6 @@ export declare class MdmResource {
     request(url: any, HTTP: any, resource: any, contentType: any, more?: any): any;
     exportGet(dataModels: any, exporter: any, contentType: any, url: any): any;
     exportPost(dataModels: any, exporter: any, contentType: any, url: any): any;
-    simplePost(url: any, content: any): any;
+    simplePost(url: any, options?: any): any;
+    simpleGet(url: any, options?: any): any;
 }

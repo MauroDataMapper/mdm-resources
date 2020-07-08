@@ -22,7 +22,7 @@ export interface IMdmRestHandler {
 export class DefaultMdmRestHandler implements IMdmRestHandler {
     async process(url: string, options: any) {
         const response = await fetch(url, {
-            method: options.method,
+            method: options.method || 'GET',
             headers: options.headers,
             credentials: options.withCredentials ? 'include' : 'same-origin',
             body: JSON.stringify(options.data)

@@ -1,6 +1,6 @@
 {
     "name": "@maurodatamapper/mdm-resources",
-    "version": "4.0.0-SNAPSHOT",
+    "version": "4.1.0-SNAPSHOT",
     "main": "lib/es2015/index.js",
     "module": "lib/es2015/index.js",
     "license": "Apache-2.0",
@@ -16,6 +16,6 @@
         "registry": "https://npm.pkg.github.com/"
     },
     "devDependencies": {
-        "typescript": "^3.9.5"
+        "typescript": "^3.9.6"
     }
 }

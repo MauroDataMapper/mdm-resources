@@ -36,7 +36,8 @@ export class MdmPublicResource extends MdmResource {
     if (multiple === true) {
       options.filters = 'multipleDataModels=true';
     }
-    return this.getResource('public', null, 'plugins/dataModelExporters', options);
+    // return this.getResource('public', null, 'plugins/dataModelExporters', options);
+    return this.getResource('dataModels', null, 'providers/exporters', options);
   }
 
   dataModelImporterPlugins(multiple) {
@@ -44,6 +45,7 @@ export class MdmPublicResource extends MdmResource {
     if (multiple === true) {
       options.filters = 'multipleDataModels=true';
     }
-    return this.getResource('public', null, 'plugins/dataModelImporters', options);
+    // return this.getResource('public', null, 'plugins/dataModelImporters', options);
+    return this.getResource('dataModels', null, 'providers/importers', options);
   }
 }

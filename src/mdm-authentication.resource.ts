@@ -25,4 +25,8 @@ export class MdmAuthenticationResource extends MdmResource {
   post(action, options?, more?) {
     return this.postResource('authentication', null, action, options, more);
   }
+
+  isAuthenticated() {
+    return this.getResource('session', null, 'isAuthenticated', null);
+  }
 }
