@@ -226,4 +226,13 @@ export class MdmResource {
     return this.restHandler.process(url, opts);
   }
 
+  simpleDelete(url, options: any = {}) {
+    const opts = {...this.defaultRequestOptions, ...options, method: 'DELETE'};
+    return this.restHandler.process(url, opts);
+  }
+
+  simplePut(url, data = {}, options: any = {}) {
+    const opts = {...this.defaultRequestOptions, body: data, ...options, method: 'PUT'};
+    return this.restHandler.process(url, opts);
+  }
 }
