@@ -23,11 +23,13 @@ export class MdmResource {
   private restHandler: IMdmRestHandler;
   private resourcesConfig: MdmResourcesConfiguration;
   protected apiEndpoint: string|URL;
+  protected defaultRequestOptions;
 
   constructor(resourcesConfig = new MdmResourcesConfiguration(), restHandler: IMdmRestHandler = new DefaultMdmRestHandler()) {
     this.resourcesConfig = resourcesConfig;
     this.restHandler = restHandler;
     this.apiEndpoint = this.resourcesConfig.apiEndpoint;
+    this.defaultRequestOptions = this.resourcesConfig.defaultHttpRequestOptions;
   }
 
   getResource(name, id, action, options?): any {
@@ -214,14 +216,14 @@ export class MdmResource {
     return this.request(url, 'POST', null, contentType, more);
   }
 
-  simplePost(url, options: any = {}) {
-    options.method = 'POST';
-    return this.restHandler.process(url, options);
+  simplePost(url, data = {}, options: any = {}) {
+    const opts = {...this.defaultRequestOptions, body: data, ...options, method: 'POST'};
+    return this.restHandler.process(url, opts);
   }
 
   simpleGet(url, options: any = {}) {
-    options.method = 'GET';
-    return this.restHandler.process(url, options);
+    const opts = {...this.defaultRequestOptions, ...options, method: 'GET'};
+    return this.restHandler.process(url, opts);
   }
 
 }
