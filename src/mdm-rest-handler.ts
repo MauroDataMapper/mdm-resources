@@ -24,8 +24,8 @@ export class DefaultMdmRestHandler implements IMdmRestHandler {
         const response = await fetch(url, {
             method: options.method || 'GET',
             headers: options.headers,
-            credentials: options.withCredentials ? 'include' : 'same-origin',
-            body: JSON.stringify(options.data)
+            credentials: options.credentials || options.withCredentials ? 'include' : 'same-origin',
+            body: JSON.stringify(options.body)
         });
         const json = await response.json();
         return json;
