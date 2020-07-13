@@ -18,20 +18,12 @@ SPDX-License-Identifier: Apache-2.0
 import { MdmResource } from './mdm-resource';
 
 /**
- * Controller: importer
- |   GET    | /api/importer/parameters/${ns}?/${name}?/${version}?                                                  | Action: parameters
+ * Controller: edit
+ |   GET    | /api/${resourceDomainType}/${resourceId}/edits                                                        | Action: index
  */
-export class MdmImporterResource extends MdmResource {
-    // get(name) {
-    //     return this.getResource('importer', name, null);
-    // }
-
-    // post(action, options) {
-    //     return this.postResource('importer', null, action, options);
-    // }
-
-    get(namespace?, name?, version?, options = {}) {
-        const url = `${this.apiEndpoint}/importer/parameters${namespace ? `/${namespace}` : ''}${name ? `/${name}` : ''}${version ? `/${version}` : ''}`;
+export class MdmEditResource extends MdmResource {
+    status(resourceDomainType, resourceId, options = {}) {
+        const url = `${this.apiEndpoint}/${resourceDomainType}/${resourceId}/edits`;
         return this.simpleGet(url, options);
     }
 }

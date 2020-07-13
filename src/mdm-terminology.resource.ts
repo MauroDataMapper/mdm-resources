@@ -32,9 +32,17 @@ export class MdmTerminologyResource extends MdmResource {
     if (!options) {
       options = {};
     }
-    if (['metadata', 'annotations', 'classifiers', 'semanticLinks'].indexOf(action) !== -1) {
-      return this.catalogueItem.get(id, action, options.contentType);
+    // if (['metadata', 'annotations', 'classifiers', 'semanticLinks'].indexOf(action) !== -1) {
+    //   return this.catalogueItem.get(id, action, options.contentType);
+    // }
+
+    switch(action) {
+        case 'metadata': return this.catalogueItem.listMetadata('terminologies', id, options);
+        case 'annotations': return this.catalogueItem.listAnnotations('terminologies', id, options);
+        case 'classifiers': return this.catalogueItem.listClassifiers('terminologies', id, options);
+        case 'semanticLinks': return this.catalogueItem.listSemanticLinks('terminologies', id, options);
     }
+
     return this.getResource('terminologies', id, action, options);
   }
 
@@ -48,5 +56,9 @@ export class MdmTerminologyResource extends MdmResource {
 
   delete(id, action, queryString) {
     return this.deleteResource('terminologies', id, action, queryString);
+  }
+
+  folder(id, options = {}) {
+      return this.simpleGet(`${this.apiEndpoint}/terminologies/${id}/terms`, options);
   }
 }

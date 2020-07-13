@@ -32,8 +32,15 @@ export class MdmDataElementResource extends MdmResource {
     if (!options) {
       options = {};
     }
-    if (['metadata', 'annotations', 'classifiers', 'semanticLinks'].indexOf(action) !== -1) {
-      return this.catalogueItem.get(id, action, options.contentType);
+    // if (['metadata', 'annotations', 'classifiers', 'semanticLinks'].indexOf(action) !== -1) {
+    //   return this.catalogueItem.get(id, action, options.contentType);
+    // }
+
+    switch(action) {
+        case 'metadata': return this.catalogueItem.listMetadata('dataElements', id, options);
+        case 'annotations': return this.catalogueItem.listAnnotations('dataElements', id, options);
+        case 'classifiers': return this.catalogueItem.listClassifiers('dataElements', id, options);
+        case 'semanticLinks': return this.catalogueItem.listSemanticLinks('dataElements', id, options);
     }
 
     return this.getResource(`dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/`, id, action, options);

@@ -29,8 +29,15 @@ export class MdmTermResource extends MdmResource {
   }
 
   get(terminologyId, id, action, options: any = {}) {
-    if (['metadata', 'annotations', 'classifiers'].includes(action)) {
-      return this.catalogueItem.get(id, action, options.contentType);
+    // if (['metadata', 'annotations', 'classifiers'].includes(action)) {
+    //   return this.catalogueItem.get(id, action, options.contentType);
+    // }
+
+    switch(action) {
+        case 'metadata': return this.catalogueItem.listMetadata('terms', id, options);
+        case 'annotations': return this.catalogueItem.listAnnotations('terms', id, options);
+        case 'classifiers': return this.catalogueItem.listClassifiers('terms', id, options);
+        case 'semanticLinks': return this.catalogueItem.listSemanticLinks('terms', id, options);
     }
 
     return this.getResource(this.makeUrl(terminologyId), id, action, options);
