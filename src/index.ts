@@ -34,6 +34,7 @@ export * from './mdm-admin.resource';
 export * from './mdm-rest-handler';
 export * from './mdm-security.resource';
 export * from './mdm-terminology.resource';
+export * from './mdm-term-replationship-type.resource';
 export * from './mdm-namespaces.resource';
 export * from './mdm-catalogue-user.resource';
 export * from './mdm-session.resource';
