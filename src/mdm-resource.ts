@@ -25,9 +25,9 @@ export class MdmResource {
   protected apiEndpoint: string|URL;
   protected defaultRequestOptions;
 
-  constructor(resourcesConfig = new MdmResourcesConfiguration(), restHandler: IMdmRestHandler = new DefaultMdmRestHandler()) {
-    this.resourcesConfig = resourcesConfig;
-    this.restHandler = restHandler;
+  constructor(resourcesConfig?: MdmResourcesConfiguration, restHandler?: IMdmRestHandler) {
+    this.resourcesConfig = resourcesConfig || new MdmResourcesConfiguration();
+    this.restHandler = restHandler || new DefaultMdmRestHandler();
     this.apiEndpoint = this.resourcesConfig.apiEndpoint;
     this.defaultRequestOptions = this.resourcesConfig.defaultHttpRequestOptions;
   }
@@ -216,23 +216,29 @@ export class MdmResource {
     return this.request(url, 'POST', null, contentType, more);
   }
 
-  simplePost(url, data = {}, options: any = {}) {
+  simplePost(url, data, options?) {
     const opts = {...this.defaultRequestOptions, body: data, ...options, method: 'POST'};
-    return this.restHandler.process(url, opts);
+    return this.simpleRequest(url, {}, opts);
   }
 
-  simpleGet(url, options: any = {}) {
+  simpleGet(url, queryStringParams = {}, options?) {
     const opts = {...this.defaultRequestOptions, ...options, method: 'GET'};
-    return this.restHandler.process(url, opts);
+    return this.simpleRequest(url, queryStringParams, opts);
   }
 
-  simpleDelete(url, options: any = {}) {
+  simpleDelete(url, queryStringParams = {}, options?) {
     const opts = {...this.defaultRequestOptions, ...options, method: 'DELETE'};
-    return this.restHandler.process(url, opts);
+    return this.simpleRequest(url, queryStringParams, opts);
   }
 
-  simplePut(url, data = {}, options: any = {}) {
+  simplePut(url, data, options?) {
     const opts = {...this.defaultRequestOptions, body: data, ...options, method: 'PUT'};
-    return this.restHandler.process(url, opts);
+    return this.simpleRequest(url, {}, opts);
+  }
+
+  simpleRequest(url, queryStringParams = {}, options?) {
+    const queryParams = Object.keys(queryStringParams).map(key => `${key}=${queryStringParams[key]}`);
+    const queryString = queryParams?.length > 0 ? `?${queryParams.join('&')}`: '';
+    return this.restHandler.process(`${url}${queryString}`, options);
   }
 }
