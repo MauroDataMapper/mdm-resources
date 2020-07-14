@@ -4,5 +4,5 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/${resourceDomainType}/${resourceId}/edits                                                        | Action: index
  */
 export declare class MdmEditResource extends MdmResource {
-    status(resourceDomainType: any, resourceId: any, options?: {}): any;
+    status(resourceDomainType: any, resourceId: any, queryStringParams?: any): any;
 }

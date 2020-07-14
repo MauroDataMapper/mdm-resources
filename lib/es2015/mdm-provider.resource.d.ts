@@ -7,8 +7,8 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/admin/providers/importers                                                                        | Action: importerProviders
  */
 export declare class MdmProviderResource extends MdmResource {
-    exporters(options?: {}): any;
-    emailers(options?: {}): any;
-    dataLoaders(options?: {}): any;
-    importers(options?: {}): any;
+    exporters(queryStringParams?: any): any;
+    emailers(queryStringParams?: any): any;
+    dataLoaders(queryStringParams?: any): any;
+    importers(queryStringParams?: any): any;
 }

@@ -12,12 +12,12 @@ import { MdmResource } from './mdm-resource';
 
  */
 export declare class MdmAnnotationResource extends MdmResource {
-    save(catalogueItemDomainType: any, catalogueItemId: any, data: any, options?: any): any;
-    saveChildren(catalogueItemDomainType: any, catalogueItemId: any, annotationId: any, data: any, options?: any): any;
-    list(catalogueItemDomainType: any, catalogueItemId: any, options?: {}): any;
-    listChildren(catalogueItemDomainType: any, catalogueItemId: any, annotationId?: any, options?: {}): any;
-    remove(catalogueItemDomainType: any, catalogueItemId: any, annotationId: any, options?: {}): any;
-    removeChild(catalogueItemDomainType: any, catalogueItemId: any, annotationId: any, childId: any, options?: {}): any;
-    get(catalogueItemDomainType: any, catalogueItemId: any, annotationId: any, options?: {}): any;
-    getChild(catalogueItemDomainType: any, catalogueItemId: any, annotationId: any, childId: any, options?: {}): any;
+    save(catalogueItemDomainType: any, catalogueItemId: any, data: any): any;
+    saveChildren(catalogueItemDomainType: any, catalogueItemId: any, annotationId: any, data: any): any;
+    list(catalogueItemDomainType: any, catalogueItemId: any, queryStringParams?: any): any;
+    listChildren(catalogueItemDomainType: any, catalogueItemId: any, annotationId?: any, queryStringParams?: any): any;
+    remove(catalogueItemDomainType: any, catalogueItemId: any, annotationId: any, queryStringParams?: any): any;
+    removeChild(catalogueItemDomainType: any, catalogueItemId: any, annotationId: any, childId: any, queryStringParams?: any): any;
+    get(catalogueItemDomainType: any, catalogueItemId: any, annotationId: any, queryStringParams?: any): any;
+    getChild(catalogueItemDomainType: any, catalogueItemId: any, annotationId: any, childId: any, queryStringParams?: any): any;
 }

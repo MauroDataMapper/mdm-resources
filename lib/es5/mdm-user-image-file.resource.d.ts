@@ -4,5 +4,5 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/userImageFiles/${id}                                                                             | Action: show
  */
 export declare class MdmUserImageFileResource extends MdmResource {
-    get(userId: any, options?: {}): any;
+    get(userId: any, queryStringParams?: any): any;
 }

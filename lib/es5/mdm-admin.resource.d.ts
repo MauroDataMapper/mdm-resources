@@ -18,13 +18,13 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/admin/emails                                                                                     | Action: index
  */
 export declare class MdmAdminResource extends MdmResource {
-    status(options?: {}): any;
-    editProperties(data: any, options?: {}): any;
-    rebuildLuceneIndexes(data: any, options?: {}): any;
-    properties(options?: {}): any;
-    modules(options?: {}): any;
-    deletedModels(containerDomainType: any, modelDomainType: any, options?: {}): any;
-    modelSupersededModels(containerDomainType: any, modelDomainType: any, options?: {}): any;
-    documentationSupersededModels(containerDomainType: any, modelDomainType: any, options?: {}): any;
-    emails(options?: {}): any;
+    status(queryStringParams?: any): any;
+    editProperties(data: any): any;
+    rebuildLuceneIndexes(data: any): any;
+    properties(queryStringParams?: any): any;
+    modules(queryStringParams?: any): any;
+    deletedModels(containerDomainType: any, modelDomainType: any, queryStringParams?: any): any;
+    modelSupersededModels(containerDomainType: any, modelDomainType: any, queryStringParams?: any): any;
+    documentationSupersededModels(containerDomainType: any, modelDomainType: any, queryStringParams?: any): any;
+    emails(queryStringParams?: any): any;
 }

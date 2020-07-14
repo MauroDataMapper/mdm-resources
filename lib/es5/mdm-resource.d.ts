@@ -13,8 +13,9 @@ export declare class MdmResource {
     request(url: any, HTTP: any, resource: any, contentType: any, more?: any): any;
     exportGet(dataModels: any, exporter: any, contentType: any, url: any): any;
     exportPost(dataModels: any, exporter: any, contentType: any, url: any): any;
-    simplePost(url: any, data?: {}, options?: any): any;
-    simpleGet(url: any, options?: any): any;
-    simpleDelete(url: any, options?: any): any;
-    simplePut(url: any, data?: {}, options?: any): any;
+    simplePost(url: any, data: any, options?: any): any;
+    simpleGet(url: any, queryStringParams?: {}, options?: any): any;
+    simpleDelete(url: any, queryStringParams?: {}, options?: any): any;
+    simplePut(url: any, data: any, options?: any): any;
+    simpleRequest(url: any, queryStringParams?: {}, options?: any): any;
 }

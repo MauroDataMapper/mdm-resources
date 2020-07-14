@@ -22,19 +22,19 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/${catalogueItemDomainType}/${catalogueItemId}/classifiers/${id}                                  | Action: show
  */
 export declare class MdmClassifierResource extends MdmResource {
-    save(data: any, options?: any): any;
-    saveChildrenOf(classifierId: any, data: any, options?: any): any;
-    addToCatalogueItem(catalogueItemDomainType: any, catalogueItemId: any, data: any, options?: {}): any;
-    list(options?: {}): any;
-    listChildrenOf(classifierId: any, options?: {}): any;
-    listCatalogueItemsFor(classifierId: any, options?: {}): any;
-    listForCatalogueItem(catalogueItemDomainType: any, catalogueItemId: any, options?: {}): any;
-    remove(classifierId: any, options?: {}): any;
-    removeChildOf(classifierId: any, childId: any, options?: {}): any;
-    removeFromCatalogueItem(catalogueItemDomainType: any, catalogueItemId: any, classifierId: any, options?: {}): any;
-    update(classifierId: any, data: any, options?: {}): any;
-    updateChildOf(classifierId: any, childId: any, data: any, options?: {}): any;
-    get(classifierId: any, options?: {}): any;
-    getChildOf(classifierId: any, childId: any, options?: {}): any;
-    getFromCatalogueItem(catalogueItemDomainType: any, catalogueItemId: any, classifierId: any, options?: {}): any;
+    save(data: any): any;
+    saveChildrenOf(classifierId: any, data: any): any;
+    addToCatalogueItem(catalogueItemDomainType: any, catalogueItemId: any, data: any): any;
+    list(queryStringParams?: any): any;
+    listChildrenOf(classifierId: any, queryStringParams?: any): any;
+    listCatalogueItemsFor(classifierId: any, queryStringParams?: any): any;
+    listForCatalogueItem(catalogueItemDomainType: any, catalogueItemId: any, queryStringParams?: any): any;
+    remove(classifierId: any, queryStringParams?: any): any;
+    removeChildOf(classifierId: any, childId: any, queryStringParams?: any): any;
+    removeFromCatalogueItem(catalogueItemDomainType: any, catalogueItemId: any, classifierId: any, queryStringParams?: any): any;
+    update(classifierId: any, data: any): any;
+    updateChildOf(classifierId: any, childId: any, data: any): any;
+    get(classifierId: any, queryStringParams?: any): any;
+    getChildOf(classifierId: any, childId: any, queryStringParams?: any): any;
+    getFromCatalogueItem(catalogueItemDomainType: any, catalogueItemId: any, classifierId: any, queryStringParams?: any): any;
 }
