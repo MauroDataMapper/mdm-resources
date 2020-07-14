@@ -36,7 +36,7 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/folders/${id}                                                                                    | Action: show
  */
 export class MdmFolderResource extends MdmResource {
-//   get(id, action, options?) {
+//   get(id, action, queryStringParams?) {
 //     if (!options) {
 //       options = {};
 //     }
@@ -56,53 +56,85 @@ export class MdmFolderResource extends MdmResource {
 //     return this.deleteResource('folders', id, action, queryString, null);
 //   }
 
-    save(data, options?) {
+    save(data) {
         const url = `${this.apiEndpoint}/folders`;
-        return this.simplePost(url, data, options);
+        return this.simplePost(url, data);
     }
 
-    saveChildrenOf(folderId, data, options?) {
+    saveChildrenOf(folderId, data) {
         const url = `${this.apiEndpoint}/folders/${folderId}/folders`;
-        return this.simplePost(url, data, options);
+        return this.simplePost(url, data);
     }
 
-    list(options = {}) {
+    list(queryStringParams?) {
         const url = `${this.apiEndpoint}/folders`;
-        return this.simpleGet(url, options);
+        return this.simpleGet(url, queryStringParams);
     }
 
-    listChildrenOf(folderId, options = {}) {
+    listChildrenOf(folderId, queryStringParams?) {
         const url = `${this.apiEndpoint}/folders/${folderId}/folders`;
-        return this.simpleGet(url, options);
+        return this.simpleGet(url, queryStringParams);
     }
 
-    remove(folderId, options: any = {}) {
-        const url = `${this.apiEndpoint}/folders/${folderId}?permanent=${!!options.permanant}`;
-        return this.simpleDelete(url, options);
-    }
-
-    removeChildOf(folderId, childId, options: any = {}) {
-        const url = `${this.apiEndpoint}/folders/${folderId}/folders/${childId}?permanent=${!!options.permanant}`;
-        return this.simpleDelete(url, options);
-    }
-
-    update(folderId, data, options = {}) {
+    remove(folderId, queryStringParams?) {
         const url = `${this.apiEndpoint}/folders/${folderId}`;
-        return this.simplePut(url, data, options);
+        return this.simpleDelete(url, queryStringParams);
     }
 
-    updateChildOf(folderId, childId, data, options = {}) {
+    removeChildOf(folderId, childId, queryStringParams?) {
         const url = `${this.apiEndpoint}/folders/${folderId}/folders/${childId}`;
-        return this.simplePut(url, data, options);
+        return this.simpleDelete(url, queryStringParams);
     }
 
-    get(folderId, options = {}) {
+    update(folderId, data, queryStringParams?) {
         const url = `${this.apiEndpoint}/folders/${folderId}`;
-        return this.simpleGet(url, options);
+        return this.simplePut(url, data);
     }
 
-    getChildOf(folderId, childId, options = {}) {
+    updateChildOf(folderId, childId, data, queryStringParams?) {
         const url = `${this.apiEndpoint}/folders/${folderId}/folders/${childId}`;
-        return this.simpleGet(url, options);
+        return this.simplePut(url, data);
     }
+
+    get(folderId, queryStringParams?) {
+        const url = `${this.apiEndpoint}/folders/${folderId}`;
+        return this.simpleGet(url, queryStringParams);
+    }
+
+    getChildOf(folderId, childId, queryStringParams?) {
+        const url = `${this.apiEndpoint}/folders/${folderId}/folders/${childId}`;
+        return this.simpleGet(url, queryStringParams);
+    }
+
+    addCondeSets(folderId, data) {
+        const url = `${this.apiEndpoint}/folders/${folderId}/codeSets`;
+        return this.simplePost(url, data);
+    }
+
+    codeSets(folderId, queryStringParams?) {
+        const url = `${this.apiEndpoint}/folders/${folderId}/codeSets`;
+        return this.simpleGet(url, queryStringParams);
+    }
+
+    alterCodeSetFolder(codeSetId, folderId, data) {
+        const url = `${this.apiEndpoint}/folders/${folderId}/codeSets/${codeSetId}`;
+        return this.simplePut(url, data);
+    }
+
+    addTerminologies(folderId, data) {
+        const url = `${this.apiEndpoint}/folders/${folderId}/terminologies`;
+        return this.simplePost(url, data);
+    }
+
+    terminologies(folderId, queryStringParams?) {
+        const url = `${this.apiEndpoint}/folders/${folderId}/terminologies`;
+        return this.simpleGet(url, queryStringParams);
+    }
+
+    alterTerminologyFolder(terminologyId, folderId, data) {
+        const url = `${this.apiEndpoint}/folders/${folderId}/terminologies/${terminologyId}`;
+        return this.simplePut(url, data);
+    }
+
+    
 }

@@ -26,28 +26,28 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/${modelDomainType}/${modelId}/versionLinks/${id}                                                 | Action: show 
  */
 export class MdmVersionLinkResource extends MdmResource {
-    save(modelDomainType, modelId, data, options = {}) {
+    save(modelDomainType, modelId, data) {
         const url = `${this.apiEndpoint}/${modelDomainType}/${modelId}/versionLinks`;
-        return this.simplePost(url, data, options);
+        return this.simplePost(url, data);
     }
 
-    list(modelDomainType, modelId, options = {}) {
+    list(modelDomainType, modelId, queryStringParams?) {
         const url = `${this.apiEndpoint}/${modelDomainType}/${modelId}/versionLinks`;
-        return this.simpleGet(url, options);
+        return this.simpleGet(url, queryStringParams);
     }
 
-    remove(modelDomainType, modelId, versionLinkId, options = {}) {
+    remove(modelDomainType, modelId, versionLinkId, queryStringParams?) {
         const url = `${this.apiEndpoint}/${modelDomainType}/${modelId}/versionLinks/${versionLinkId}`;
-        return this.simpleDelete(url, options);
+        return this.simpleDelete(url, queryStringParams);
     }
 
-    update(modelDomainType, modelId, versionLinkId, data, options = {}) {
+    update(modelDomainType, modelId, versionLinkId, data) {
         const url = `${this.apiEndpoint}/${modelDomainType}/${modelId}/versionLinks/${versionLinkId}`;
-        return this.simplePut(url, data, options);
+        return this.simplePut(url, data);
     }
 
-    get(modelDomainType, modelId, versionLinkId, options = {}) {
+    get(modelDomainType, modelId, versionLinkId, queryStringParams?) {
         const url = `${this.apiEndpoint}/${modelDomainType}/${modelId}/versionLinks/${versionLinkId}`;
-        return this.simpleGet(url, options);
+        return this.simpleGet(url, queryStringParams);
     }
 }

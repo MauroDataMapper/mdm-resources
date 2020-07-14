@@ -22,8 +22,8 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/userImageFiles/${id}                                                                             | Action: show
  */
 export class MdmUserImageFileResource extends MdmResource {
-    get(userId, options = {}) {
+    get(userId, queryStringParams?) {
         const url = `${this.apiEndpoint}/userImageFiles/${userId}`;
-        return this.simpleGet(url, options);
+        return this.simpleGet(url, queryStringParams);
     }
 }

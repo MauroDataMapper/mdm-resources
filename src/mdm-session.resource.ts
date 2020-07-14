@@ -24,18 +24,18 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/session/isAuthenticated/${sesssionId}?                                                           | Action: isAuthenticatedSession
  */
 export class MdmSessionResource extends MdmResource {
-    keepAlive(options = {}) {
+    keepAlive(queryStringParams?) {
         const url = `${this.apiEndpoint}/session/keepAlive`;
-        return this.simpleGet(url, options);
+        return this.simpleGet(url, queryStringParams);
     }
 
-    activeSessions(options = {}) {
+    activeSessions(queryStringParams?) {
         const url = `${this.apiEndpoint}/session/activeSessions`;
-        return this.simpleGet(url, options);
+        return this.simpleGet(url, queryStringParams);
     }
 
-    isAuthenticated(sessionId?, options = {}) {
+    isAuthenticated(sessionId?, queryStringParams?) {
         const url = `${this.apiEndpoint}/session/isAuthenticated${sessionId ? `/${sessionId}` : ''}`;
-        return this.simpleGet(url, options);
+        return this.simpleGet(url, queryStringParams);
     }
 }

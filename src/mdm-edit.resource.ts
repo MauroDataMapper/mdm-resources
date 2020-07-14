@@ -22,8 +22,8 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/${resourceDomainType}/${resourceId}/edits                                                        | Action: index
  */
 export class MdmEditResource extends MdmResource {
-    status(resourceDomainType, resourceId, options = {}) {
+    status(resourceDomainType, resourceId, queryStringParams?) {
         const url = `${this.apiEndpoint}/${resourceDomainType}/${resourceId}/edits`;
-        return this.simpleGet(url, options);
+        return this.simpleGet(url, queryStringParams);
     }
 }

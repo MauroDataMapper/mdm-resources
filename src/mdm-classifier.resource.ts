@@ -59,78 +59,78 @@ export class MdmClassifierResource extends MdmResource {
     //     // return this.resourcesService.post("classifiers" , id , action,  options.resource)
     // }
 
-    save(data, options?) {
+    save(data) {
         const url = `${this.apiEndpoint}/classifiers`;
-        return this.simplePost(url, data, options);
+        return this.simplePost(url, data);
     }
 
-    saveChildrenOf(classifierId, data, options?) {
+    saveChildrenOf(classifierId, data) {
         const url = `${this.apiEndpoint}/classifiers/${classifierId}/classifiers`;
-        return this.simplePost(url, data, options);
+        return this.simplePost(url, data);
     }
 
-    addToCatalogueItem(catalogueItemDomainType, catalogueItemId, data, options = {}) {
+    addToCatalogueItem(catalogueItemDomainType, catalogueItemId, data) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/classifiers`;
-        return this.simplePost(url, data, options);
+        return this.simplePost(url, data);
     }
 
-    list(options = {}) {
+    list(queryStringParams?) {
         const url = `${this.apiEndpoint}/classifiers`;
-        return this.simpleGet(url, options);
+        return this.simpleGet(url, queryStringParams);
     }
 
-    listChildrenOf(classifierId, options = {}) {
+    listChildrenOf(classifierId, queryStringParams?) {
         const url = `${this.apiEndpoint}/classifiers/${classifierId}/classifiers`;
-        return this.simpleGet(url, options);
+        return this.simpleGet(url, queryStringParams);
     }
 
-    listCatalogueItemsFor(classifierId, options = {}) {
+    listCatalogueItemsFor(classifierId, queryStringParams?) {
         const url = `${this.apiEndpoint}/classifiers/${classifierId}/catalogueItems`;
-        return this.simpleGet(url, options);
+        return this.simpleGet(url, queryStringParams);
     }
 
-    listForCatalogueItem(catalogueItemDomainType, catalogueItemId, options = {}) {
+    listForCatalogueItem(catalogueItemDomainType, catalogueItemId, queryStringParams?) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/classifiers`;
-        return this.simpleGet(url, options);
+        return this.simpleGet(url, queryStringParams);
     }
 
-    remove(classifierId, options = {}) {
+    remove(classifierId, queryStringParams?) {
         const url = `${this.apiEndpoint}/classifiers/${classifierId}`;
-        return this.simpleDelete(url, options);
+        return this.simpleDelete(url, queryStringParams);
     }
 
-    removeChildOf(classifierId, childId, options = {}) {
+    removeChildOf(classifierId, childId, queryStringParams?) {
         const url = `${this.apiEndpoint}/classifiers/${classifierId}/classifiers/${childId}`;
-        return this.simpleDelete(url, options);
+        return this.simpleDelete(url, queryStringParams);
     }
 
-    removeFromCatalogueItem(catalogueItemDomainType, catalogueItemId, classifierId, options = {}) {
+    removeFromCatalogueItem(catalogueItemDomainType, catalogueItemId, classifierId, queryStringParams?) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/classifiers/${classifierId}`;
-        return this.simpleDelete(url, options);
+        return this.simpleDelete(url, queryStringParams);
     }
 
-    update(classifierId, data, options = {}) {
+    update(classifierId, data) {
         const url = `${this.apiEndpoint}/classifiers/${classifierId}`;
-        return this.simplePut(url, data, options);
+        return this.simplePut(url, data);
     }
 
-    updateChildOf(classifierId, childId, data, options = {}) {
+    updateChildOf(classifierId, childId, data) {
         const url = `${this.apiEndpoint}/classifiers/${classifierId}/classifiers/${childId}`;
-        return this.simplePut(url, data, options);
+        return this.simplePut(url, data);
     }
 
-    get(classifierId, options = {}) {
+    get(classifierId, queryStringParams?) {
         const url = `${this.apiEndpoint}/classifiers/${classifierId}`;
-        return this.simpleGet(url, options);
+        return this.simpleGet(url, queryStringParams);
     }
 
-    getChildOf(classifierId, childId, options = {}) {
+    getChildOf(classifierId, childId, queryStringParams?) {
         const url = `${this.apiEndpoint}/classifiers/${classifierId}/classifiers/${childId}`;
-        return this.simpleGet(url, options);
+        return this.simpleGet(url, queryStringParams);
     }
 
-    getFromCatalogueItem(catalogueItemDomainType, catalogueItemId, classifierId, options = {}) {
+    getFromCatalogueItem(catalogueItemDomainType, catalogueItemId, classifierId, queryStringParams?) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/classifiers/${classifierId}`;
-        return this.simpleGet(url, options);
+        return this.simpleGet(url, queryStringParams);
     }
 }

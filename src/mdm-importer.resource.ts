@@ -30,8 +30,8 @@ export class MdmImporterResource extends MdmResource {
     //     return this.postResource('importer', null, action, options);
     // }
 
-    get(namespace?, name?, version?, options = {}) {
+    get(namespace?, name?, version?, queryStringParams?) {
         const url = `${this.apiEndpoint}/importer/parameters${namespace ? `/${namespace}` : ''}${name ? `/${name}` : ''}${version ? `/${version}` : ''}`;
-        return this.simpleGet(url, options);
+        return this.simpleGet(url, queryStringParams);
     }
 }

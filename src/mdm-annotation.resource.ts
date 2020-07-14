@@ -30,43 +30,43 @@ import { MdmResource } from './mdm-resource';
 
  */
 export class MdmAnnotationResource extends MdmResource {
-    save(catalogueItemDomainType, catalogueItemId, data, options?) {
+    save(catalogueItemDomainType, catalogueItemId, data) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/annotations`;
-        return this.simplePost(url, data, options);
+        return this.simplePost(url, data);
     }
 
-    saveChildren(catalogueItemDomainType, catalogueItemId, annotationId, data, options?) {
+    saveChildren(catalogueItemDomainType, catalogueItemId, annotationId, data) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/annotations/${annotationId}/annotations`;
-        return this.simplePost(url, data, options);
+        return this.simplePost(url, data);
     }
 
-    list(catalogueItemDomainType, catalogueItemId, options = {}) {
+    list(catalogueItemDomainType, catalogueItemId, queryStringParams?) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/annotations`;
-        return this.simpleGet(url, options);
+        return this.simpleGet(url, queryStringParams);
     }
 
-    listChildren(catalogueItemDomainType, catalogueItemId, annotationId?, options = {}) {
+    listChildren(catalogueItemDomainType, catalogueItemId, annotationId?, queryStringParams?) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/annotations/${annotationId}/annotations`;
-        return this.simpleGet(url, options);
+        return this.simpleGet(url, queryStringParams);
     }
 
-    remove(catalogueItemDomainType, catalogueItemId, annotationId, options = {}) {
+    remove(catalogueItemDomainType, catalogueItemId, annotationId, queryStringParams?) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/annotations/${annotationId}`;
-        return this.simpleDelete(url, options);
+        return this.simpleDelete(url, queryStringParams);
     }
 
-    removeChild(catalogueItemDomainType, catalogueItemId, annotationId, childId, options = {}) {
+    removeChild(catalogueItemDomainType, catalogueItemId, annotationId, childId, queryStringParams?) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/annotations/${annotationId}/annotations/${childId}`;
-        return this.simpleDelete(url, options);
+        return this.simpleDelete(url, queryStringParams);
     }
 
-    get(catalogueItemDomainType, catalogueItemId, annotationId, options = {}) {
+    get(catalogueItemDomainType, catalogueItemId, annotationId, queryStringParams?) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/annotations/${annotationId}`;
-        return this.simpleGet(url, options);
+        return this.simpleGet(url, queryStringParams);
     }
 
-    getChild(catalogueItemDomainType, catalogueItemId, annotationId, childId, options = {}) {
+    getChild(catalogueItemDomainType, catalogueItemId, annotationId, childId, queryStringParams?) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/annotations/${annotationId}/annotations/${childId}`;
-        return this.simpleGet(url, options);
+        return this.simpleGet(url, queryStringParams);
     }
 }
