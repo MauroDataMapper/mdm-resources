@@ -16,6 +16,9 @@ import { MdmResource } from './mdm-resource';
  *
  * Controller: email
  |   GET    | /api/admin/emails                                                                                     | Action: index
+ *
+ * Controller: authenticating
+ |   POST   | /api/admin/activeSessions                                                                             | Action: activeSessionsWithCredentials
  */
 export declare class MdmAdminResource extends MdmResource {
     status(queryStringParams?: any): any;
@@ -27,4 +30,5 @@ export declare class MdmAdminResource extends MdmResource {
     modelSupersededModels(containerDomainType: any, modelDomainType: any, queryStringParams?: any): any;
     documentationSupersededModels(containerDomainType: any, modelDomainType: any, queryStringParams?: any): any;
     emails(queryStringParams?: any): any;
+    activeSessions(data: any): any;
 }

@@ -1,7 +1,26 @@
 import { MdmResource } from './mdm-resource';
+/**
+ * Controller: enumerationValue
+ |   POST   | /api/dataModels/${dataModelId}/enumerationTypes/${enumerationTypeId}/enumerationValues                                               | Action: save
+ |   GET    | /api/dataModels/${dataModelId}/enumerationTypes/${enumerationTypeId}/enumerationValues                                               | Action: index
+ |   POST   | /api/dataModels/${dataModelId}/dataTypes/${dataTypeId}/enumerationValues                                                             | Action: save
+ |   GET    | /api/dataModels/${dataModelId}/dataTypes/${dataTypeId}/enumerationValues                                                             | Action: index
+ |  DELETE  | /api/dataModels/${dataModelId}/enumerationTypes/${enumerationTypeId}/enumerationValues/${id}                                         | Action: delete
+ |   PUT    | /api/dataModels/${dataModelId}/enumerationTypes/${enumerationTypeId}/enumerationValues/${id}                                         | Action: update
+ |   GET    | /api/dataModels/${dataModelId}/enumerationTypes/${enumerationTypeId}/enumerationValues/${id}                                         | Action: show
+ |  DELETE  | /api/dataModels/${dataModelId}/dataTypes/${dataTypeId}/enumerationValues/${id}                                                       | Action: delete
+ |   PUT    | /api/dataModels/${dataModelId}/dataTypes/${dataTypeId}/enumerationValues/${id}                                                       | Action: update
+ |   GET    | /api/dataModels/${dataModelId}/dataTypes/${dataTypeId}/enumerationValues/${id}                                                       | Action: show
+ */
 export declare class MdmEnumerationValuesResource extends MdmResource {
-    delete(dataModelId: any, dataTypeId: any, id: any): any;
-    put(dataModelId: any, dataTypeId: any, id: any, action: any, options: any): any;
-    post(dataModelId: any, dataTypeId: any, options: any): any;
-    makeUrl(dataModelId: any, dataTypeId: any): string;
+    saveToEnumeratedType(dataModelId: any, enumerationTypeId: any, data: any): any;
+    listForEnumeratedType(dataModelId: any, enumerationTypeId: any, queryStringParams?: any): any;
+    saveToDataType(dataModelId: any, dataTypeId: any, data: any): any;
+    listForDataType(dataModelId: any, dataTypeId: any, queryStringParams?: any): any;
+    removeFromEnumeratedType(dataModelId: any, enumerationTypeId: any, enumerationValueId: any, queryStringParams?: any): any;
+    updateInEnumeratedType(dataModelId: any, enumerationTypeId: any, enumerationValueId: any, data: any): any;
+    getFromEnumeratedType(dataModelId: any, enumerationTypeId: any, enumerationValueId: any, queryStringParams?: any): any;
+    removeFromDataType(dataModelId: any, dataTypeId: any, enumerationValueId: any, queryStringParams?: any): any;
+    updateInDataType(dataModelId: any, dataTypeId: any, enumerationValueId: any, data: any): any;
+    getFromDataType(dataModelId: any, dataTypeId: any, enumerationValueId: any, queryStringParams?: any): any;
 }

@@ -34,6 +34,9 @@ import { MdmResource } from './mdm-resource';
  * 
  * Controller: email
  |   GET    | /api/admin/emails                                                                                     | Action: index
+ * 
+ * Controller: authenticating
+ |   POST   | /api/admin/activeSessions                                                                             | Action: activeSessionsWithCredentials
  */
 export class MdmAdminResource extends MdmResource {
     // get(name, options) {
@@ -87,5 +90,10 @@ export class MdmAdminResource extends MdmResource {
     emails(queryStringParams?) {
         const url = `${this.apiEndpoint}/admin/emails`;
         return this.simpleGet(url, queryStringParams);
+    }
+
+    activeSessions(data) {
+        const url = `${this.apiEndpoint}/admin/activeSessions`;
+        return this.simplePost(url, data);
     }
 }
