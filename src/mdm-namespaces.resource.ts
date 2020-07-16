@@ -26,8 +26,8 @@ export class MdmNamespacesResource extends MdmResource {
     //     return this.getResource('metadata/namespaces', id, action);
     //   }
 
-    get(metadataId?, queryStringParams?) {
+    get(metadataId?, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/metadata/namespaces${metadataId ? `/${metadataId}`:''}`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 }

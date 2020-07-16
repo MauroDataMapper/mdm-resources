@@ -11,12 +11,12 @@ import { MdmResource } from './mdm-resource';
  |   POST   | /api/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/${otherDataModelId}/${otherDataClassId}/${dataElementId}      | Action: copyDataElement
  */
 export declare class MdmDataElementResource extends MdmResource {
-    suggestLinks(dataModelId: any, dataClassId: any, dataElementId: any, otherDataModelId: any, queryStringParams?: any): any;
-    save(dataModelId: any, dataClassId: any, data: any): any;
-    list(dataModelId: any, dataClassId: any, queryStringParams?: any): any;
-    listWithDataType(dataModelId: any, dataTypeId: any, queryStringParams?: any): any;
-    remove(dataModelId: any, dataClassId: any, dataElementId: any, queryStringParams?: any): any;
-    update(dataModelId: any, dataClassId: any, dataElementId: any, data: any): any;
-    get(dataModelId: any, dataClassId: any, dataElementId: any, queryStringParams?: any): any;
-    copyDataElement(dataModelId: any, dataClassId: any, otherDataModelId: any, otherDataClassId: any, dataElementId: any, data: any): any;
+    suggestLinks(dataModelId: any, dataClassId: any, dataElementId: any, otherDataModelId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    save(dataModelId: any, dataClassId: any, data: any, restHandlerOptions?: any): any;
+    list(dataModelId: any, dataClassId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    listWithDataType(dataModelId: any, dataTypeId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    remove(dataModelId: any, dataClassId: any, dataElementId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    update(dataModelId: any, dataClassId: any, dataElementId: any, data: any, restHandlerOptions?: any): any;
+    get(dataModelId: any, dataClassId: any, dataElementId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    copyDataElement(dataModelId: any, dataClassId: any, otherDataModelId: any, otherDataClassId: any, dataElementId: any, data: any, restHandlerOptions?: any): any;
 }

@@ -10,11 +10,11 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/${securableResourceDomainType}/${securableResourceId}/groupRoles                                               | Action: listGroupRolesAvailableToSecurableResource
  */
 export declare class MdmGroupRoleResource extends MdmResource {
-    save(data: any): any;
-    list(queryStringParams?: any): any;
-    applicationGroupRoles(queryStringParams?: any): any;
-    remove(groupRoleId: any, queryStringParams?: any): any;
-    update(groupRoleId: any, data: any): any;
-    get(groupRoleId: any, queryStringParams?: any): any;
-    listForSecurableResource(securableResourceDomainType: any, securableResourceId: any, queryStringParams?: any): any;
+    save(data: any, restHandlerOptions?: any): any;
+    list(queryStringParams?: any, restHandlerOptions?: any): any;
+    applicationGroupRoles(queryStringParams?: any, restHandlerOptions?: any): any;
+    remove(groupRoleId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    update(groupRoleId: any, data: any, restHandlerOptions?: any): any;
+    get(groupRoleId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    listForSecurableResource(securableResourceDomainType: any, securableResourceId: any, queryStringParams?: any, restHandlerOptions?: any): any;
 }

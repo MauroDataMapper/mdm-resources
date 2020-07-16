@@ -21,16 +21,16 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/terminologies/${terminologyId}/terms/${termId}/termRelationships/${id}                                      | Action: show
  */
 export declare class MdmTermResource extends MdmResource {
-    search(terminologyId: any, queryStringParams?: any): any;
-    tree(terminologyId: any, termId?: any, queryStringParams?: any): any;
-    save(terminologyId: any, data: any): any;
-    list(terminologyId: any, queryStringParams?: any): any;
-    remove(terminologyId: any, termId: any, queryStringParams?: any): any;
-    update(terminologyId: any, termId: any, data: any): any;
-    get(terminologyId: any, termId: any, queryStringParams?: any): any;
-    addTermRelationships(terminologyId: any, termId: any, data: any): any;
-    termRelationships(terminologyId: any, termId: any, queryStringParams?: any): any;
-    removeTermRelationship(terminologyId: any, termId: any, termRelationshipId: any, queryStringParams?: any): any;
-    updateTermRelationship(terminologyId: any, termId: any, termRelationshipId: any, data: any): any;
-    getTermRelationship(terminologyId: any, termId: any, termRelationshipId: any, queryStringParams?: any): any;
+    search(terminologyId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    tree(terminologyId: any, termId?: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    save(terminologyId: any, data: any, restHandlerOptions?: any): any;
+    list(terminologyId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    remove(terminologyId: any, termId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    update(terminologyId: any, termId: any, data: any, restHandlerOptions?: any): any;
+    get(terminologyId: any, termId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    addTermRelationships(terminologyId: any, termId: any, data: any, restHandlerOptions?: any): any;
+    termRelationships(terminologyId: any, termId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    removeTermRelationship(terminologyId: any, termId: any, termRelationshipId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    updateTermRelationship(terminologyId: any, termId: any, termRelationshipId: any, data: any, restHandlerOptions?: any): any;
+    getTermRelationship(terminologyId: any, termId: any, termRelationshipId: any, queryStringParams?: any, restHandlerOptions?: any): any;
 }

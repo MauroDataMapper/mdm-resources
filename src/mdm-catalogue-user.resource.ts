@@ -61,103 +61,103 @@ export class MdmCatalogueUserResource extends MdmResource {
     //     return this.deleteResource('catalogueUsers', id, action);
     //   }
 
-    adminRegister(data) {
+    adminRegister(data, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/admin/catalogueUsers/adminRegister`;
-        return this.simplePost(url, data);
+        return this.simplePost(url, data, restHandlerOptions);
     }
 
-    pendingCount(queryStringParams?) {
+    pendingCount(queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/admin/catalogueUsers/pendingCount`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    pending(queryStringParams?) {
+    pending(queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/admin/catalogueUsers/pending`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    exists(emailAddress, queryStringParams?) {
+    exists(emailAddress, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/admin/catalogueUsers/userExists/${emailAddress}`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    reject(catalogueUserId, data) {
+    reject(catalogueUserId, data, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/admin/catalogueUsers/${catalogueUserId}/rejectRegistration`;
-        return this.simplePut(url, data);
+        return this.simplePut(url, data, restHandlerOptions);
     }
 
-    approve(catalogueUserId, data) {
+    approve(catalogueUserId, data, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/admin/catalogueUsers/${catalogueUserId}/approveRegistration`;
-        return this.simplePut(url, data);
+        return this.simplePut(url, data, restHandlerOptions);
     }
 
-    adminPasswordReset(catalogueUserId, data) {
+    adminPasswordReset(catalogueUserId, data, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/admin/catalogueUsers/${catalogueUserId}/adminPasswordReset`;
-        return this.simplePut(url, data);
+        return this.simplePut(url, data, restHandlerOptions);
     }
 
-    search(queryStringParams?) {
+    search(queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/catalogueUsers/search`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    resetPasswordLink(emailAddress, queryStringParams?) {
+    resetPasswordLink(emailAddress, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/catalogueUsers/resetPasswordLink/${emailAddress}`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    resetPassword(catalogueUserId, data) {
+    resetPassword(catalogueUserId, data, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}/resetPassword`;
-        return this.simplePut(url, data);
+        return this.simplePut(url, data, restHandlerOptions);
     }
 
-    changePassword(catalogueUserId, data) {
+    changePassword(catalogueUserId, data, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}/changePassword`;
-        return this.simplePut(url, data);
+        return this.simplePut(url, data, restHandlerOptions);
     }
 
-    updateUserPreferences(catalogueUserId, data) {
+    updateUserPreferences(catalogueUserId, data, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}/userPreferences`;
-        return this.simplePut(url, data);
+        return this.simplePut(url, data, restHandlerOptions);
     }
     
-    userPreferences(catalogueUserId, queryStringParams?) {
+    userPreferences(catalogueUserId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}/userPreferences`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    listInUserGroup(userGroupId, queryStringParams?) {
+    listInUserGroup(userGroupId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/userGroups/${userGroupId}/catalogueUsers`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    save(data) {
+    save(data, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/catalogueUsers`;
-        return this.simplePut(url, data);
+        return this.simplePut(url, data, restHandlerOptions);
     }
 
-    list(queryStringParams?) {
+    list(queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/catalogueUsers`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    remove(catalogueUserId, queryStringParams?) {
+    remove(catalogueUserId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    update(catalogueUserId, data) {
+    update(catalogueUserId, data, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}`;
-        return this.simplePut(url, data);
+        return this.simplePut(url, data, restHandlerOptions);
     }
 
-    get(catalogueUserId, queryStringParams?) {
+    get(catalogueUserId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    listInContainerUserGroup(containerDomainType, containerId, userGroupId, queryStringParams?) {
+    listInContainerUserGroup(containerDomainType, containerId, userGroupId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/${containerDomainType}/${containerId}/userGroups/${userGroupId}/catalogueUsers`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 }

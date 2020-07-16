@@ -65,43 +65,43 @@ export class MdmDataElementResource extends MdmResource {
     //     return this.deleteResource(`dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/`, id);
     //   }
 
-    suggestLinks(dataModelId, dataClassId, dataElementId, otherDataModelId, queryStringParams?) {
+    suggestLinks(dataModelId, dataClassId, dataElementId, otherDataModelId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/${dataElementId}/suggestLinks/${otherDataModelId}`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    save(dataModelId, dataClassId, data) {
+    save(dataModelId, dataClassId, data, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements`;
-        return this.simplePost(url, data);
+        return this.simplePost(url, data, restHandlerOptions);
     }
 
-    list(dataModelId, dataClassId, queryStringParams?) {
+    list(dataModelId, dataClassId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    listWithDataType(dataModelId, dataTypeId, queryStringParams?) {
+    listWithDataType(dataModelId, dataTypeId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataTypes/${dataTypeId}/dataElements`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    remove(dataModelId, dataClassId, dataElementId, queryStringParams?) {
+    remove(dataModelId, dataClassId, dataElementId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/${dataElementId}`;
-        return this.simpleDelete(url, queryStringParams);
+        return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 
-    update(dataModelId, dataClassId, dataElementId, data) {
+    update(dataModelId, dataClassId, dataElementId, data, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/${dataElementId}`;
-        return this.simplePut(url, data);
+        return this.simplePut(url, data, restHandlerOptions);
     }
 
-    get(dataModelId, dataClassId, dataElementId, queryStringParams?) {
+    get(dataModelId, dataClassId, dataElementId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/${dataElementId}`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    copyDataElement(dataModelId, dataClassId, otherDataModelId, otherDataClassId, dataElementId, data) {
+    copyDataElement(dataModelId, dataClassId, otherDataModelId, otherDataClassId, dataElementId, data, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/${otherDataModelId}/${otherDataClassId}/${dataElementId}`;
-        return this.simplePost(url, data);
+        return this.simplePost(url, data, restHandlerOptions);
     }
 }

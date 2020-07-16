@@ -25,23 +25,23 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/admin/providers/importers                                                                        | Action: importerProviders
  */
 export class MdmProviderResource extends MdmResource {
-    exporters(queryStringParams?) {
+    exporters(queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/admin/providers/exporters`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    emailers(queryStringParams?) {
+    emailers(queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/admin/providers/emailers`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    dataLoaders(queryStringParams?) {
+    dataLoaders(queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/admin/providers/dataLoaders`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    importers(queryStringParams?) {
+    importers(queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/admin/providers/importers`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 }

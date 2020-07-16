@@ -24,24 +24,24 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/${containerDomainType}/${containerId}/userGroups/${userGroupId}/catalogueUsers                                 | Action: index
  */
 export declare class MdmCatalogueUserResource extends MdmResource {
-    adminRegister(data: any): any;
-    pendingCount(queryStringParams?: any): any;
-    pending(queryStringParams?: any): any;
-    exists(emailAddress: any, queryStringParams?: any): any;
-    reject(catalogueUserId: any, data: any): any;
-    approve(catalogueUserId: any, data: any): any;
-    adminPasswordReset(catalogueUserId: any, data: any): any;
-    search(queryStringParams?: any): any;
-    resetPasswordLink(emailAddress: any, queryStringParams?: any): any;
-    resetPassword(catalogueUserId: any, data: any): any;
-    changePassword(catalogueUserId: any, data: any): any;
-    updateUserPreferences(catalogueUserId: any, data: any): any;
-    userPreferences(catalogueUserId: any, queryStringParams?: any): any;
-    listInUserGroup(userGroupId: any, queryStringParams?: any): any;
-    save(data: any): any;
-    list(queryStringParams?: any): any;
-    remove(catalogueUserId: any, queryStringParams?: any): any;
-    update(catalogueUserId: any, data: any): any;
-    get(catalogueUserId: any, queryStringParams?: any): any;
-    listInContainerUserGroup(containerDomainType: any, containerId: any, userGroupId: any, queryStringParams?: any): any;
+    adminRegister(data: any, restHandlerOptions?: any): any;
+    pendingCount(queryStringParams?: any, restHandlerOptions?: any): any;
+    pending(queryStringParams?: any, restHandlerOptions?: any): any;
+    exists(emailAddress: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    reject(catalogueUserId: any, data: any, restHandlerOptions?: any): any;
+    approve(catalogueUserId: any, data: any, restHandlerOptions?: any): any;
+    adminPasswordReset(catalogueUserId: any, data: any, restHandlerOptions?: any): any;
+    search(queryStringParams?: any, restHandlerOptions?: any): any;
+    resetPasswordLink(emailAddress: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    resetPassword(catalogueUserId: any, data: any, restHandlerOptions?: any): any;
+    changePassword(catalogueUserId: any, data: any, restHandlerOptions?: any): any;
+    updateUserPreferences(catalogueUserId: any, data: any, restHandlerOptions?: any): any;
+    userPreferences(catalogueUserId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    listInUserGroup(userGroupId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    save(data: any, restHandlerOptions?: any): any;
+    list(queryStringParams?: any, restHandlerOptions?: any): any;
+    remove(catalogueUserId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    update(catalogueUserId: any, data: any, restHandlerOptions?: any): any;
+    get(catalogueUserId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    listInContainerUserGroup(containerDomainType: any, containerId: any, userGroupId: any, queryStringParams?: any, restHandlerOptions?: any): any;
 }

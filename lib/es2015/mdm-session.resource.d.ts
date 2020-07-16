@@ -6,7 +6,7 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/session/isAuthenticated/${sesssionId}?                                                           | Action: isAuthenticatedSession
  */
 export declare class MdmSessionResource extends MdmResource {
-    keepAlive(queryStringParams?: any): any;
-    activeSessions(queryStringParams?: any): any;
-    isAuthenticated(sessionId?: any, queryStringParams?: any): any;
+    keepAlive(queryStringParams?: any, restHandlerOptions?: any): any;
+    activeSessions(queryStringParams?: any, restHandlerOptions?: any): any;
+    isAuthenticated(sessionId?: any, queryStringParams?: any, restHandlerOptions?: any): any;
 }

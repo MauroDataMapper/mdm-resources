@@ -9,10 +9,10 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/${catalogueItemDomainType}/${catalogueItemId}/metadata/${id}                                     | Action: show
  */
 export declare class MdmMetadataResource extends MdmResource {
-    namespaces(metadataId?: any, queryStringParams?: any): any;
-    save(catalogueItemDomainType: any, catalogueItemId: any, data: any): any;
-    list(catalogueItemDomainType: any, catalogueItemId: any, queryStringParams?: any): any;
-    remove(catalogueItemDomainType: any, catalogueItemId: any, metadataId: any, queryStringParams?: any): any;
-    update(catalogueItemDomainType: any, catalogueItemId: any, metadataId: any, data: any): any;
-    get(catalogueItemDomainType: any, catalogueItemId: any, metadataId: any, queryStringParams?: any): any;
+    namespaces(metadataId?: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    save(catalogueItemDomainType: any, catalogueItemId: any, data: any, restHandlerOptions?: any): any;
+    list(catalogueItemDomainType: any, catalogueItemId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    remove(catalogueItemDomainType: any, catalogueItemId: any, metadataId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    update(catalogueItemDomainType: any, catalogueItemId: any, metadataId: any, data: any, restHandlerOptions?: any): any;
+    get(catalogueItemDomainType: any, catalogueItemId: any, metadataId: any, queryStringParams?: any, restHandlerOptions?: any): any;
 }

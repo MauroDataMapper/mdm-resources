@@ -5,7 +5,7 @@ export declare class MdmAuthenticationResource extends MdmResource {
     private securityResource;
     private sesisonResource;
     constructor(resourcesConfig?: MdmResourcesConfiguration, restHandler?: IMdmRestHandler);
-    login(data: any): any;
-    logout(): any;
-    isAuthenticated(sessionId?: any): void;
+    login(data: any, restHandlerOptions?: any): any;
+    logout(queryStringParams?: any, restHandlerOptions?: any): any;
+    isAuthenticated(sessionId?: any, queryStringParams?: any, restHandlerOptions?: any): void;
 }

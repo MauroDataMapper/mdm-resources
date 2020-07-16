@@ -23,18 +23,18 @@ import { MdmResource } from './mdm-resource';
  |   POST   | /api/authentication/login                                                                                           | Action: login
  */
 export class MdmSecurityResource extends MdmResource {
-    login(data) {
+    login(data, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/authentication/login`;
-        return this.simplePost(url, data);
+        return this.simplePost(url, data, restHandlerOptions);
     }
 
-    logout(queryStringParams?) {
+    logout(queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/authentication/logout`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    permissions(securableResourceDomainType, securableResourceId, queryStringParams?) {
+    permissions(securableResourceDomainType, securableResourceId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/${securableResourceDomainType}/${securableResourceId}/permissions`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 }

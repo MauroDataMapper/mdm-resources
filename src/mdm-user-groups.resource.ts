@@ -47,118 +47,118 @@ import { MdmResource } from './mdm-resource';
  */
 export class MdmUserGroupsResource extends MdmResource {
 
-    listInApplicationGroupRole(applicationGroupRoleId, queryStringParams?) {
+    listInApplicationGroupRole(applicationGroupRoleId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/admin/applicationGroupRoles/${applicationGroupRoleId}/userGroups`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    removeFromApplicationGroupRole(applicationGroupRoleId, userGroupId, queryStringParams?) {
+    removeFromApplicationGroupRole(applicationGroupRoleId, userGroupId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/admin/applicationGroupRoles/${applicationGroupRoleId}/userGroups/${userGroupId}`;
-        return this.simpleDelete(url, queryStringParams);
+        return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 
-    updateInApplicationGroupRole(applicationGroupRoleId, userGroupId, data) {
+    updateInApplicationGroupRole(applicationGroupRoleId, userGroupId, data, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/admin/applicationGroupRoles/${applicationGroupRoleId}/userGroups/${userGroupId}`;
-        return this.simplePut(url, data);
+        return this.simplePut(url, data, restHandlerOptions);
     }
 
-    removeUserFromUserGroup(userGroupId, catalogueUserId, queryStringParams?) {
+    removeUserFromUserGroup(userGroupId, catalogueUserId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/userGroups/${userGroupId}/catalogueUsers/${catalogueUserId}`;
-        return this.simpleDelete(url, queryStringParams);
+        return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 
-    updateUserInUserGroup(userGroupId, catalogueUserId, data) {
+    updateUserInUserGroup(userGroupId, catalogueUserId, data, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/userGroups/${userGroupId}/catalogueUsers/${catalogueUserId}`;
-        return this.simplePut(url, data);
+        return this.simplePut(url, data, restHandlerOptions);
     }
 
-    save(data) {
+    save(data, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/userGroups`;
-        return this.simplePost(url, data);
+        return this.simplePost(url, data, restHandlerOptions);
     }
 
-    list(queryStringParams?) {
+    list(queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/userGroups`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    remove(userGroupId, queryStringParams?) {
+    remove(userGroupId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/userGroups/${userGroupId}`;
-        return this.simpleDelete(url, queryStringParams);
+        return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 
-    update(userGroupId, data) {
+    update(userGroupId, data, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/userGroups/${userGroupId}`;
-        return this.simplePut(url, data);
+        return this.simplePut(url, data, restHandlerOptions);
     }
 
-    get(userGroupId, queryStringParams?) {
+    get(userGroupId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/userGroups/${userGroupId}`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    listInSecurableResourceUserGroupRole(securableResourceDomainType, securableResourceId, groupRoleId, queryStringParams?) {
+    listInSecurableResourceUserGroupRole(securableResourceDomainType, securableResourceId, groupRoleId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/${securableResourceDomainType}/${securableResourceId}/groupRoles/${groupRoleId}/userGroups`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    removeUserFromContainerUserGroup(containerDomainType, containerId, userGroupId, catalogueUserId, queryStringParams?) {
+    removeUserFromContainerUserGroup(containerDomainType, containerId, userGroupId, catalogueUserId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/${containerDomainType}/${containerId}/userGroups/${userGroupId}/catalogueUsers/${catalogueUserId}`;
-        return this.simpleDelete(url, queryStringParams);
+        return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 
-    updateUserFromContainerUserGroup(containerDomainType, containerId, userGroupId, catalogueUserId, data) {
+    updateUserFromContainerUserGroup(containerDomainType, containerId, userGroupId, catalogueUserId, data, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/${containerDomainType}/${containerId}/userGroups/${userGroupId}/catalogueUsers/${catalogueUserId}`;
-        return this.simplePut(url, data);
+        return this.simplePut(url, data, restHandlerOptions);
     }
 
-    addToContainer(containerDomainType, containerId, data) {
+    addToContainer(containerDomainType, containerId, data, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/${containerDomainType}/${containerId}/userGroups`;
-        return this.simplePost(url, data);
+        return this.simplePost(url, data, restHandlerOptions);
     }
 
-    listInContainer(containerDomainType, containerId, queryStringParams?) {
+    listInContainer(containerDomainType, containerId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/${containerDomainType}/${containerId}/userGroups`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    removeFromContainer(containerDomainType, containerId, userGroupId, queryStringParams?) {
+    removeFromContainer(containerDomainType, containerId, userGroupId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/${containerDomainType}/${containerId}/userGroups/${userGroupId}`;
-        return this.simpleDelete(url, queryStringParams);
+        return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 
-    updateInContainer(containerDomainType, containerId, userGroupId, data) {
+    updateInContainer(containerDomainType, containerId, userGroupId, data, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/${containerDomainType}/${containerId}/userGroups/${userGroupId}`;
-        return this.simplePut(url, data);
+        return this.simplePut(url, data, restHandlerOptions);
     }
 
-    getFromContainer(containerDomainType, containerId, userGroupId, queryStringParams?) {
+    getFromContainer(containerDomainType, containerId, userGroupId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/${containerDomainType}/${containerId}/userGroups/${userGroupId}`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    addSecurableResourceGroupRole(userGroupId, data) {
+    addSecurableResourceGroupRole(userGroupId, data, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/userGroups/${userGroupId}/securableResourceGroupRoles`;
-        return this.simplePost(url, data);
+        return this.simplePost(url, data, restHandlerOptions);
     }
 
-    securableResourceGroupRoles(userGroupId, queryStringParams?) {
+    securableResourceGroupRoles(userGroupId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/userGroups/${userGroupId}/securableResourceGroupRoles`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    removeSecurableResourceGroupRole(userGroupId, securableResourceGroupRoleId, queryStringParams?) {
+    removeSecurableResourceGroupRole(userGroupId, securableResourceGroupRoleId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/userGroups/${userGroupId}/securableResourceGroupRoles/${securableResourceGroupRoleId}`;
-        return this.simpleDelete(url, queryStringParams);
+        return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 
-    updateSecurableResourceGroupRole(userGroupId, securableResourceGroupRoleId, data) {
+    updateSecurableResourceGroupRole(userGroupId, securableResourceGroupRoleId, data, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/userGroups/${userGroupId}/securableResourceGroupRoles/${securableResourceGroupRoleId}`;
-        return this.simplePut(url, data);
+        return this.simplePut(url, data, restHandlerOptions);
     }
 
-    getSecurableResourceGroupRole(userGroupId, securableResourceGroupRoleId, queryStringParams?) {
+    getSecurableResourceGroupRole(userGroupId, securableResourceGroupRoleId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/userGroups/${userGroupId}/securableResourceGroupRoles/${securableResourceGroupRoleId}`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 }

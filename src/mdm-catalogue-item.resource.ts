@@ -88,142 +88,142 @@ export class MdmCatalogueItemResource extends MdmResource {
 
     //Annotation
 
-    saveAnnotations(catalogueItemDomainType, catalogueItemId, data) {
+    saveAnnotations(catalogueItemDomainType, catalogueItemId, data, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/annotations`;
-        return this.simplePost(url, data);
+        return this.simplePost(url, data, restHandlerOptions);
     }
 
-    saveAnnotationChildren(catalogueItemDomainType, catalogueItemId, annotationId, data) {
+    saveAnnotationChildren(catalogueItemDomainType, catalogueItemId, annotationId, data, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/annotations/${annotationId}/annotations`;
-        return this.simplePost(url, data);
+        return this.simplePost(url, data, restHandlerOptions);
     }
 
-    listAnnotations(catalogueItemDomainType, catalogueItemId, queryStringParams?) {
+    listAnnotations(catalogueItemDomainType, catalogueItemId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/annotations`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    listAnnotationChildren(catalogueItemDomainType, catalogueItemId, annotationId?, queryStringParams?) {
+    listAnnotationChildren(catalogueItemDomainType, catalogueItemId, annotationId?, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/annotations/${annotationId}/annotations`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    removeAnnotation(catalogueItemDomainType, catalogueItemId, annotationId, queryStringParams?) {
+    removeAnnotation(catalogueItemDomainType, catalogueItemId, annotationId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/annotations/${annotationId}`;
-        return this.simpleDelete(url, queryStringParams);
+        return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 
-    removeAnnotationChild(catalogueItemDomainType, catalogueItemId, annotationId, childId, queryStringParams?) {
+    removeAnnotationChild(catalogueItemDomainType, catalogueItemId, annotationId, childId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/annotations/${annotationId}/annotations/${childId}`;
-        return this.simpleDelete(url, queryStringParams);
+        return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 
-    getAnnotation(catalogueItemDomainType, catalogueItemId, annotationId, queryStringParams?) {
+    getAnnotation(catalogueItemDomainType, catalogueItemId, annotationId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/annotations/${annotationId}`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    getAnnotationChild(catalogueItemDomainType, catalogueItemId, annotationId, childId, queryStringParams?) {
+    getAnnotationChild(catalogueItemDomainType, catalogueItemId, annotationId, childId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/annotations/${annotationId}/annotations/${childId}`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
     // Classifier
-    saveClassifiers(catalogueItemDomainType, catalogueItemId, data) {
+    saveClassifiers(catalogueItemDomainType, catalogueItemId, data, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/classifiers`;
-        return this.simplePost(url, data);
+        return this.simplePost(url, data, restHandlerOptions);
     }
 
-    listClassifiers(catalogueItemDomainType, catalogueItemId, queryStringParams?) {
+    listClassifiers(catalogueItemDomainType, catalogueItemId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/classifiers`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    removeClassifier(catalogueItemDomainType, catalogueItemId, classifierId, queryStringParams?) {
+    removeClassifier(catalogueItemDomainType, catalogueItemId, classifierId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/classifiers/${classifierId}`;
-        return this.simpleDelete(url, queryStringParams);
+        return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 
-    getClassifier(catalogueItemDomainType, catalogueItemId, classifierId, queryStringParams?) {
+    getClassifier(catalogueItemDomainType, catalogueItemId, classifierId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/classifiers/${classifierId}`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
     // Metadata
-    saveMetadata(catalogueItemDomainType, catalogueItemId, data) {
+    saveMetadata(catalogueItemDomainType, catalogueItemId, data, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/metadata`;
-        return this.simplePost(url, data);
+        return this.simplePost(url, data, restHandlerOptions);
     }
 
-    listMetadata(catalogueItemDomainType, catalogueItemId, queryStringParams?) {
+    listMetadata(catalogueItemDomainType, catalogueItemId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/metadata`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    removeMetadata(catalogueItemDomainType, catalogueItemId, metadataId, queryStringParams?) {
+    removeMetadata(catalogueItemDomainType, catalogueItemId, metadataId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/metadata/${metadataId}`;
-        return this.simpleDelete(url, queryStringParams);
+        return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 
-    updateMetadata(catalogueItemDomainType, catalogueItemId, metadataId, data) {
+    updateMetadata(catalogueItemDomainType, catalogueItemId, metadataId, data, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/metadata/${metadataId}`;
-        return this.simplePut(url, data);
+        return this.simplePut(url, data, restHandlerOptions);
     }
 
-    getMetadata(catalogueItemDomainType, catalogueItemId, metadataId, queryStringParams?) {
+    getMetadata(catalogueItemDomainType, catalogueItemId, metadataId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/metadata/${metadataId}`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
     // Reference Files
-    saveReferenceFiles(catalogueItemDomainType, catalogueItemId, data) {
+    saveReferenceFiles(catalogueItemDomainType, catalogueItemId, data, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/referenceFiles`;
-        return this.simplePost(url, data);
+        return this.simplePost(url, data, restHandlerOptions);
     }
 
-    listReferenceFiles(catalogueItemDomainType, catalogueItemId, queryStringParams?) {
+    listReferenceFiles(catalogueItemDomainType, catalogueItemId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/referenceFiles`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    removeReferenceFile(catalogueItemDomainType, catalogueItemId, referenceFileId, queryStringParams?) {
+    removeReferenceFile(catalogueItemDomainType, catalogueItemId, referenceFileId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/referenceFiles/${referenceFileId}`;
-        return this.simpleDelete(url, queryStringParams);
+        return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 
-    updateReferenceFile(catalogueItemDomainType, catalogueItemId, referenceFileId, data) {
+    updateReferenceFile(catalogueItemDomainType, catalogueItemId, referenceFileId, data, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/referenceFiles/${referenceFileId}`;
-        return this.simplePut(url, data);
+        return this.simplePut(url, data, restHandlerOptions);
     }
 
-    getReferenceFile(catalogueItemDomainType, catalogueItemId, referenceFileId, queryStringParams?) {
+    getReferenceFile(catalogueItemDomainType, catalogueItemId, referenceFileId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/referenceFiles/${referenceFileId}`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
     // Semantic Links
-    saveSemanticLinks(catalogueItemDomainType, catalogueItemId, data) {
+    saveSemanticLinks(catalogueItemDomainType, catalogueItemId, data, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/semanticLinks`;
-        return this.simplePost(url, data);
+        return this.simplePost(url, data, restHandlerOptions);
     }
 
-    listSemanticLinks(catalogueItemDomainType, catalogueItemId, queryStringParams?) {
+    listSemanticLinks(catalogueItemDomainType, catalogueItemId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/semanticLinks`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    removeSemanticLink(catalogueItemDomainType, catalogueItemId, semanticLinkId, queryStringParams?) {
+    removeSemanticLink(catalogueItemDomainType, catalogueItemId, semanticLinkId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/semanticLinks/${semanticLinkId}`;
-        return this.simpleDelete(url, queryStringParams);
+        return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 
-    updateSemanticLink(catalogueItemDomainType, catalogueItemId, semanticLinkId, data) {
+    updateSemanticLink(catalogueItemDomainType, catalogueItemId, semanticLinkId, data, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/semanticLinks/${semanticLinkId}`;
-        return this.simplePut(url, data);
+        return this.simplePut(url, data, restHandlerOptions);
     }
 
-    getSemanticLink(catalogueItemDomainType, catalogueItemId, semanticLinkId, queryStringParams?) {
+    getSemanticLink(catalogueItemDomainType, catalogueItemId, semanticLinkId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/semanticLinks/${semanticLinkId}`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 }

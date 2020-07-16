@@ -32,16 +32,16 @@ export class MdmAuthenticationResource extends MdmResource {
         this.sesisonResource = new MdmSessionResource(resourcesConfig, restHandler);
     }
 
-    login(data) {
-        return this.securityResource.login(data);
+    login(data, restHandlerOptions?) {
+        return this.securityResource.login(data, restHandlerOptions);
     }
 
-    logout() {
-        return this.securityResource.logout();
+    logout(queryStringParams?, restHandlerOptions?) {
+        return this.securityResource.logout(queryStringParams, restHandlerOptions);
     }
 
-    isAuthenticated(sessionId?) {
-        this.sesisonResource.isAuthenticated(sessionId);
+    isAuthenticated(sessionId?, queryStringParams?, restHandlerOptions?) {
+        this.sesisonResource.isAuthenticated(sessionId, queryStringParams, restHandlerOptions);
     }
 
     // get(action) {

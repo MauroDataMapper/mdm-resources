@@ -15,14 +15,14 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/${catalogueItemDomainType}/${catalogueItemId}/summaryMetadata/${summaryMetadataId}/summaryMetadataReports/${id}                 | Action: show
  */
 export declare class MdmSummaryMetadataResource extends MdmResource {
-    save(catalogueItemDomainType: any, catalogueItemId: any, data: any): any;
-    list(catalogueItemDomainType: any, catalogueItemId: any, queryStringParams?: any): any;
-    remove(catalogueItemDomainType: any, catalogueItemId: any, summaryMetadataId: any, queryStringParams?: any): any;
-    update(catalogueItemDomainType: any, catalogueItemId: any, summaryMetadataId: any, data: any): any;
-    get(catalogueItemDomainType: any, catalogueItemId: any, summaryMetadataId: any, queryStringParams?: any): any;
-    saveReport(catalogueItemDomainType: any, catalogueItemId: any, summaryMetadataId: any, data: any): any;
-    listReports(catalogueItemDomainType: any, catalogueItemId: any, summaryMetadataId: any, queryStringParams?: any): any;
-    removeReport(catalogueItemDomainType: any, catalogueItemId: any, summaryMetadataId: any, summaryMetadataReportId: any, queryStringParams?: any): any;
-    updateReport(catalogueItemDomainType: any, catalogueItemId: any, summaryMetadataId: any, summaryMetadataReportId: any, data: any): any;
-    getReport(catalogueItemDomainType: any, catalogueItemId: any, summaryMetadataId: any, summaryMetadataReportId: any, queryStringParams?: any): any;
+    save(catalogueItemDomainType: any, catalogueItemId: any, data: any, restHandlerOptions?: any): any;
+    list(catalogueItemDomainType: any, catalogueItemId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    remove(catalogueItemDomainType: any, catalogueItemId: any, summaryMetadataId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    update(catalogueItemDomainType: any, catalogueItemId: any, summaryMetadataId: any, data: any, restHandlerOptions?: any): any;
+    get(catalogueItemDomainType: any, catalogueItemId: any, summaryMetadataId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    saveReport(catalogueItemDomainType: any, catalogueItemId: any, summaryMetadataId: any, data: any, restHandlerOptions?: any): any;
+    listReports(catalogueItemDomainType: any, catalogueItemId: any, summaryMetadataId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    removeReport(catalogueItemDomainType: any, catalogueItemId: any, summaryMetadataId: any, summaryMetadataReportId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    updateReport(catalogueItemDomainType: any, catalogueItemId: any, summaryMetadataId: any, summaryMetadataReportId: any, data: any, restHandlerOptions?: any): any;
+    getReport(catalogueItemDomainType: any, catalogueItemId: any, summaryMetadataId: any, summaryMetadataReportId: any, queryStringParams?: any, restHandlerOptions?: any): any;
 }

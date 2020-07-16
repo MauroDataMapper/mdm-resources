@@ -9,10 +9,10 @@ import { MdmResource } from './mdm-resource';
  |   POST   | /api/dataModels/${dataModelId}/dataTypes/${otherDataModelId}/${dataTypeId}                                                           | Action: copyDataType
  */
 export declare class MdmDataTypeResource extends MdmResource {
-    save(dataModelId: any, data: any): any;
-    list(dataModelId: any, queryStringParams?: any): any;
-    remove(dataModelId: any, dataTypeId: any, queryStringParams?: any): any;
-    update(dataModelId: any, dataTypeId: any, data: any): any;
-    get(dataModelId: any, dataTypeId: any, queryStringParams?: any): any;
-    copyDataType(dataModelId: any, otherDataModelId: any, dataTypeId: any, data: any): any;
+    save(dataModelId: any, data: any, restHandlerOptions?: any): any;
+    list(dataModelId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    remove(dataModelId: any, dataTypeId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    update(dataModelId: any, dataTypeId: any, data: any, restHandlerOptions?: any): any;
+    get(dataModelId: any, dataTypeId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    copyDataType(dataModelId: any, otherDataModelId: any, dataTypeId: any, data: any, restHandlerOptions?: any): any;
 }

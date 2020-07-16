@@ -8,9 +8,9 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/terminologies/${terminologyId}/termRelationshipTypes/${id}
  */
 export declare class MdmTermRelationshipTypeResource extends MdmResource {
-    save(terminologyId: any, data: any): any;
-    list(terminologyId: any, queryStringParams?: any): any;
-    remove(terminologyId: any, termRelationshipTypeId: any, queryStringParams?: any): any;
-    update(terminologyId: any, termRelationshipTypeId: any, data: any): any;
-    get(terminologyId: any, termRelationshipTypeId: any, queryStringParams?: any): any;
+    save(terminologyId: any, data: any, restHandlerOptions?: any): any;
+    list(terminologyId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    remove(terminologyId: any, termRelationshipTypeId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    update(terminologyId: any, termRelationshipTypeId: any, data: any, restHandlerOptions?: any): any;
+    get(terminologyId: any, termRelationshipTypeId: any, queryStringParams?: any, restHandlerOptions?: any): any;
 }

@@ -16,6 +16,6 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 export class MdmResourcesConfiguration {
-  apiEndpoint = 'http://localhost:8080/api';
-  defaultHttpRequestOptions = {};
+    apiEndpoint? = 'http://localhost:8080/api';
+    defaultHttpRequestOptions? = {};
 }

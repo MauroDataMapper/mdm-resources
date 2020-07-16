@@ -1,4 +1,4 @@
 export declare class MdmResourcesConfiguration {
-    apiEndpoint: string;
-    defaultHttpRequestOptions: {};
+    apiEndpoint?: string;
+    defaultHttpRequestOptions?: {};
 }

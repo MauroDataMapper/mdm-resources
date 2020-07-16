@@ -20,19 +20,19 @@ import { MdmResource } from './mdm-resource';
 
  */
 export declare class MdmDataClassResource extends MdmResource {
-    addChildDataClass(dataModelId: any, dataClassId: any, data: any): any;
-    listChildDataClasses(dataModelId: any, dataClassId: any, queryStringParams?: any): any;
-    search(dataModelId: any, dataClassId: any, queryStringParams?: any): any;
-    content(dataModelId: any, dataClassId: any, queryStringParams?: any): any;
-    removeChildDataClass(dataModelId: any, dataClassId: any, childDataClassId: any, queryStringParams?: any): any;
-    updateChildDataClass(dataModelId: any, dataClassId: any, childDataClassId: any, data: any): any;
-    getChildDataClass(dataModelId: any, dataClassId: any, childDataClassId: any, queryStringParams?: any): any;
-    copyChildDataClass(dataModelId: any, dataClassId: any, otherDataModelId: any, otherDataClassId: any, data: any): any;
-    save(dataModelId: any, data: any): any;
-    list(dataModelId: any, queryStringParams?: any): any;
-    all(dataModelId: any, queryStringParams?: any): any;
-    remove(dataModelId: any, dataClassId: any, queryStringParams?: any): any;
-    update(dataModelId: any, dataClassId: any, data: any): any;
-    get(dataModelId: any, dataClassId: any, queryStringParams?: any): any;
-    copyDataClass(dataModelId: any, otherDataModelId: any, otherDataClassId: any, data: any): any;
+    addChildDataClass(dataModelId: any, dataClassId: any, data: any, restHandlerOptions?: any): any;
+    listChildDataClasses(dataModelId: any, dataClassId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    search(dataModelId: any, dataClassId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    content(dataModelId: any, dataClassId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    removeChildDataClass(dataModelId: any, dataClassId: any, childDataClassId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    updateChildDataClass(dataModelId: any, dataClassId: any, childDataClassId: any, data: any, restHandlerOptions?: any): any;
+    getChildDataClass(dataModelId: any, dataClassId: any, childDataClassId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    copyChildDataClass(dataModelId: any, dataClassId: any, otherDataModelId: any, otherDataClassId: any, data: any, restHandlerOptions?: any): any;
+    save(dataModelId: any, data: any, restHandlerOptions?: any): any;
+    list(dataModelId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    all(dataModelId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    remove(dataModelId: any, dataClassId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    update(dataModelId: any, dataClassId: any, data: any, restHandlerOptions?: any): any;
+    get(dataModelId: any, dataClassId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    copyDataClass(dataModelId: any, otherDataModelId: any, otherDataClassId: any, data: any, restHandlerOptions?: any): any;
 }

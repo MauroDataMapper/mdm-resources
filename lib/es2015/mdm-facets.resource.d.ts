@@ -4,6 +4,6 @@ export declare class MdmFacetsResource extends MdmResource {
     post(id: any, action: any, options: any): any;
     put(id: any, action: any, childId: any, options: any): any;
     delete(id: any, action: any, childId: any): any;
-    attachReferenceFile(id: any, formData: any): any;
+    attachReferenceFile(id: any, formData: any, restHandlerOptions?: any): any;
     downloadLinkReferenceFile(elementId: any, fileId: any): string;
 }

@@ -5,7 +5,7 @@ import { MdmResource } from './mdm-resource';
  |   POST   | /api/authentication/login                                                                                           | Action: login
  */
 export declare class MdmSecurityResource extends MdmResource {
-    login(data: any): any;
-    logout(queryStringParams?: any): any;
-    permissions(securableResourceDomainType: any, securableResourceId: any, queryStringParams?: any): any;
+    login(data: any, restHandlerOptions?: any): any;
+    logout(queryStringParams?: any, restHandlerOptions?: any): any;
+    permissions(securableResourceDomainType: any, securableResourceId: any, queryStringParams?: any, restHandlerOptions?: any): any;
 }

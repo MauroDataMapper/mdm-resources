@@ -31,37 +31,37 @@ export class MdmTreeItemResource extends MdmResource {
     //     return this.getResource('tree/folders', id, action, null);
     // }
 
-    // getDomainItem(id, domainType, queryStringParams?) {
+    // getDomainItem(id, domainType, queryStringParams?, restHandlerOptions?) {
     //     return this.simpleGet(`${this.apiEndpoint}/tree/folders/${domainType}/${id}`, options);
     // }
 
-    deletedModels(containerDomainType, modelDomainType, queryStringParams?) {
+    deletedModels(containerDomainType, modelDomainType, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/admin/tree/${containerDomainType}/${modelDomainType}/deleted`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    modelSupersededModels(containerDomainType, modelDomainType, queryStringParams?) {
+    modelSupersededModels(containerDomainType, modelDomainType, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/admin/tree/${containerDomainType}/${modelDomainType}/modelSuperseded`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    documentationSupersededModels(containerDomainType, modelDomainType, queryStringParams?) {
+    documentationSupersededModels(containerDomainType, modelDomainType, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/admin/tree/${containerDomainType}/${modelDomainType}/documentationSuperseded`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    search(containerDomainType, searchTerm, queryStringParams?) {
+    search(containerDomainType, searchTerm, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/tree/${containerDomainType}/search/${searchTerm}`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    list(containerDomainType, queryStringParams?) {
+    list(containerDomainType, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/tree/${containerDomainType}`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    get(containerDomainType, catalogueItemDomainType, catalogueItemId, queryStringParams?) {
+    get(containerDomainType, catalogueItemDomainType, catalogueItemId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/tree/${containerDomainType}/${catalogueItemDomainType}/${catalogueItemId}`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 }

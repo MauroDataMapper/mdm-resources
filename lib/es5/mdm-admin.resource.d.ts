@@ -21,14 +21,14 @@ import { MdmResource } from './mdm-resource';
  |   POST   | /api/admin/activeSessions                                                                             | Action: activeSessionsWithCredentials
  */
 export declare class MdmAdminResource extends MdmResource {
-    status(queryStringParams?: any): any;
-    editProperties(data: any): any;
-    rebuildLuceneIndexes(data: any): any;
-    properties(queryStringParams?: any): any;
-    modules(queryStringParams?: any): any;
-    deletedModels(containerDomainType: any, modelDomainType: any, queryStringParams?: any): any;
-    modelSupersededModels(containerDomainType: any, modelDomainType: any, queryStringParams?: any): any;
-    documentationSupersededModels(containerDomainType: any, modelDomainType: any, queryStringParams?: any): any;
-    emails(queryStringParams?: any): any;
-    activeSessions(data: any): any;
+    status(queryStringParams?: any, restHandlerOptions?: any): any;
+    editProperties(data: any, restHandlerOptions?: any): any;
+    rebuildLuceneIndexes(data: any, restHandlerOptions?: any): any;
+    properties(queryStringParams?: any, restHandlerOptions?: any): any;
+    modules(queryStringParams?: any, restHandlerOptions?: any): any;
+    deletedModels(containerDomainType: any, modelDomainType: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    modelSupersededModels(containerDomainType: any, modelDomainType: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    documentationSupersededModels(containerDomainType: any, modelDomainType: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    emails(queryStringParams?: any, restHandlerOptions?: any): any;
+    activeSessions(data: any, restHandlerOptions?: any): any;
 }

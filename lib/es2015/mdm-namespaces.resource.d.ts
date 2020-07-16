@@ -4,5 +4,5 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/metadata/namespaces/${id}?                                                                       | Action: namespaces
  */
 export declare class MdmNamespacesResource extends MdmResource {
-    get(metadataId?: any, queryStringParams?: any): any;
+    get(metadataId?: any, queryStringParams?: any, restHandlerOptions?: any): any;
 }

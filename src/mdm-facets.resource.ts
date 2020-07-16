@@ -43,7 +43,7 @@ export class MdmFacetsResource extends MdmResource {
     return this.deleteResource('facets', id, action + childId, null, null);
   }
 
-  attachReferenceFile(id, formData) {
+  attachReferenceFile(id, formData, restHandlerOptions?) {
 
     const url = this.apiEndpoint + '/facets/' + id + '/referenceFiles';
 
@@ -52,7 +52,7 @@ export class MdmFacetsResource extends MdmResource {
       method: 'POST',
       withCredentials: true,
       data: formData
-    });
+    }, restHandlerOptions);
   }
 
   downloadLinkReferenceFile(elementId, fileId) {

@@ -87,109 +87,109 @@ export class MdmCodeSetResource extends MdmResource {
     //     return this.putResource('codeSets', id, action, options);
     // }
 
-    importers(queryStringParams?) {
+    importers(queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/codeSets/providers/importers`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    exporters(queryStringParams?) {
+    exporters(queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/codeSets/providers/exporters`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    importModels(namespace, name, version, data) {
+    importModels(namespace, name, version, data, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/codeSets/import/${namespace}/${name}/${version}`;
-        return this.simplePost(url, data);
+        return this.simplePost(url, data, restHandlerOptions);
     }
 
-    exportModels(namespace, name, version, data) {
+    exportModels(namespace, name, version, data, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/codeSets/export/${namespace}/${name}/${version}`;
-        return this.simplePost(url, data);
+        return this.simplePost(url, data, restHandlerOptions);
     }
 
-    newModelVersion(codeSetId, data) {
+    newModelVersion(codeSetId, data, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/codeSets/${codeSetId}/newModelVersion`;
-        return this.simplePut(url, data);
+        return this.simplePut(url, data, restHandlerOptions);
     }
 
-    newDocumentationVersion(codeSetId, data) {
+    newDocumentationVersion(codeSetId, data, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/codeSets/${codeSetId}/newDocumentationVersion`;
-        return this.simplePut(url, data);
+        return this.simplePut(url, data, restHandlerOptions);
     }
 
-    finalise(codeSetId, data?) {
+    finalise(codeSetId, data?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/codeSets/${codeSetId}/finalise`;
-        return this.simplePut(url, data);
+        return this.simplePut(url, data, restHandlerOptions);
     }
 
-    addCodeSetsToFolder(folderId, data) {
+    addCodeSetsToFolder(folderId, data, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/folders/${folderId}/codeSets`;
-        return this.simplePost(url, data);
+        return this.simplePost(url, data, restHandlerOptions);
     }
 
-    listCodeSetsInFolder(folderId, queryStringParams?) {
+    listCodeSetsInFolder(folderId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/folders/${folderId}/codeSets`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    removeTerm(codeSetId, termId, queryStringParams?) {
+    removeTerm(codeSetId, termId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/codeSets/${codeSetId}/terms/${termId}`;
-        return this.simpleDelete(url, queryStringParams);
+        return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 
-    alterTerm(codeSetId, termId, data) {
+    alterTerm(codeSetId, termId, data, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/codeSets/${codeSetId}/terms/${termId}`;
-        return this.simplePut(url, data);
+        return this.simplePut(url, data, restHandlerOptions);
     }
 
-    alterFolder(codeSetId, folderId, data) {
+    alterFolder(codeSetId, folderId, data, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/codeSets/${codeSetId}/folder/${folderId}`;
-        return this.simplePut(url, data);
+        return this.simplePut(url, data, restHandlerOptions);
     }
 
-    diff(codeSetId, otherModelId, queryStringParams?) {
+    diff(codeSetId, otherModelId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/codeSets/${codeSetId}/diff/${otherModelId}`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    // changeFolder(codeSetId, folderId, data) {
+    // changeFolder(codeSetId, folderId, data, restHandlerOptions?) {
     //     const url = `${this.apiEndpoint}/folders/${folderId}/codeSets/${codeSetId}`;
-    //     return this.simplePut(url, data);
+    //     return this.simplePut(url, data, restHandlerOptions);
     // }
     
-    exportModel(codeSetId, exporterNamespace, exporterName, exporterVersion, queryStringParams?) {
+    exportModel(codeSetId, exporterNamespace, exporterName, exporterVersion, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/codeSets/${codeSetId}/export/${exporterNamespace}/${exporterName}/${exporterVersion}`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    list(queryStringParams?) {
+    list(queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/codeSets`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    removeAll(queryStringParams?) {
+    removeAll(queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/codeSets`;
-        return this.simpleDelete(url, queryStringParams);
+        return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 
-    remove(codeSetId, queryStringParams?) {
+    remove(codeSetId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/codeSets/${codeSetId}`;
-        return this.simpleDelete(url, queryStringParams);
+        return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 
-    update(codeSetId, data) {
+    update(codeSetId, data, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/codeSets/${codeSetId}`;
-        return this.simplePut(url, data);
+        return this.simplePut(url, data, restHandlerOptions);
     }
 
-    get(codeSetId, queryStringParams?) {
+    get(codeSetId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/codeSets/${codeSetId}`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    terms(codeSetId, queryStringParams?) {
+    terms(codeSetId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/codeSets/${codeSetId}/terms`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
     
 }

@@ -27,24 +27,24 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/codeSets/${id}                                                                                        | Action: show
  */
 export declare class MdmCodeSetResource extends MdmResource {
-    importers(queryStringParams?: any): any;
-    exporters(queryStringParams?: any): any;
-    importModels(namespace: any, name: any, version: any, data: any): any;
-    exportModels(namespace: any, name: any, version: any, data: any): any;
-    newModelVersion(codeSetId: any, data: any): any;
-    newDocumentationVersion(codeSetId: any, data: any): any;
-    finalise(codeSetId: any, data?: any): any;
-    addCodeSetsToFolder(folderId: any, data: any): any;
-    listCodeSetsInFolder(folderId: any, queryStringParams?: any): any;
-    removeTerm(codeSetId: any, termId: any, queryStringParams?: any): any;
-    alterTerm(codeSetId: any, termId: any, data: any): any;
-    alterFolder(codeSetId: any, folderId: any, data: any): any;
-    diff(codeSetId: any, otherModelId: any, queryStringParams?: any): any;
-    exportModel(codeSetId: any, exporterNamespace: any, exporterName: any, exporterVersion: any, queryStringParams?: any): any;
-    list(queryStringParams?: any): any;
-    removeAll(queryStringParams?: any): any;
-    remove(codeSetId: any, queryStringParams?: any): any;
-    update(codeSetId: any, data: any): any;
-    get(codeSetId: any, queryStringParams?: any): any;
-    terms(codeSetId: any, queryStringParams?: any): any;
+    importers(queryStringParams?: any, restHandlerOptions?: any): any;
+    exporters(queryStringParams?: any, restHandlerOptions?: any): any;
+    importModels(namespace: any, name: any, version: any, data: any, restHandlerOptions?: any): any;
+    exportModels(namespace: any, name: any, version: any, data: any, restHandlerOptions?: any): any;
+    newModelVersion(codeSetId: any, data: any, restHandlerOptions?: any): any;
+    newDocumentationVersion(codeSetId: any, data: any, restHandlerOptions?: any): any;
+    finalise(codeSetId: any, data?: any, restHandlerOptions?: any): any;
+    addCodeSetsToFolder(folderId: any, data: any, restHandlerOptions?: any): any;
+    listCodeSetsInFolder(folderId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    removeTerm(codeSetId: any, termId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    alterTerm(codeSetId: any, termId: any, data: any, restHandlerOptions?: any): any;
+    alterFolder(codeSetId: any, folderId: any, data: any, restHandlerOptions?: any): any;
+    diff(codeSetId: any, otherModelId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    exportModel(codeSetId: any, exporterNamespace: any, exporterName: any, exporterVersion: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    list(queryStringParams?: any, restHandlerOptions?: any): any;
+    removeAll(queryStringParams?: any, restHandlerOptions?: any): any;
+    remove(codeSetId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    update(codeSetId: any, data: any, restHandlerOptions?: any): any;
+    get(codeSetId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    terms(codeSetId: any, queryStringParams?: any, restHandlerOptions?: any): any;
 }

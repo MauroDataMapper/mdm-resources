@@ -12,12 +12,12 @@ import { MdmResource } from './mdm-resource';
 
  */
 export declare class MdmAnnotationResource extends MdmResource {
-    save(catalogueItemDomainType: any, catalogueItemId: any, data: any): any;
-    saveChildren(catalogueItemDomainType: any, catalogueItemId: any, annotationId: any, data: any): any;
-    list(catalogueItemDomainType: any, catalogueItemId: any, queryStringParams?: any): any;
-    listChildren(catalogueItemDomainType: any, catalogueItemId: any, annotationId?: any, queryStringParams?: any): any;
-    remove(catalogueItemDomainType: any, catalogueItemId: any, annotationId: any, queryStringParams?: any): any;
-    removeChild(catalogueItemDomainType: any, catalogueItemId: any, annotationId: any, childId: any, queryStringParams?: any): any;
-    get(catalogueItemDomainType: any, catalogueItemId: any, annotationId: any, queryStringParams?: any): any;
-    getChild(catalogueItemDomainType: any, catalogueItemId: any, annotationId: any, childId: any, queryStringParams?: any): any;
+    save(catalogueItemDomainType: any, catalogueItemId: any, data: any, restHandlerOptions?: any): any;
+    saveChildren(catalogueItemDomainType: any, catalogueItemId: any, annotationId: any, data: any, restHandlerOptions?: any): any;
+    list(catalogueItemDomainType: any, catalogueItemId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    listChildren(catalogueItemDomainType: any, catalogueItemId: any, annotationId?: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    remove(catalogueItemDomainType: any, catalogueItemId: any, annotationId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    removeChild(catalogueItemDomainType: any, catalogueItemId: any, annotationId: any, childId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    get(catalogueItemDomainType: any, catalogueItemId: any, annotationId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    getChild(catalogueItemDomainType: any, catalogueItemId: any, annotationId: any, childId: any, queryStringParams?: any, restHandlerOptions?: any): any;
 }

@@ -26,28 +26,28 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/terminologies/${terminologyId}/termRelationshipTypes/${id}
  */
 export class MdmTermRelationshipTypeResource extends MdmResource {
-    save(terminologyId, data) {
+    save(terminologyId, data, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/termRelationshipTypes`;
-        return this.simplePost(url, data);
+        return this.simplePost(url, data, restHandlerOptions);
     }
 
-    list(terminologyId, queryStringParams?) {
+    list(terminologyId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/termRelationshipTypes`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    remove(terminologyId, termRelationshipTypeId, queryStringParams?) {
+    remove(terminologyId, termRelationshipTypeId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/termRelationshipTypes/${termRelationshipTypeId}`;
-        return this.simpleDelete(url, queryStringParams);
+        return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 
-    update(terminologyId, termRelationshipTypeId, data) {
+    update(terminologyId, termRelationshipTypeId, data, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/termRelationshipTypes/${termRelationshipTypeId}`;
-        return this.simplePut(url, data);
+        return this.simplePut(url, data, restHandlerOptions);
     }
 
-    get(terminologyId, termRelationshipTypeId, queryStringParams?) {
+    get(terminologyId, termRelationshipTypeId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/termRelationshipTypes/${termRelationshipTypeId}`;
-        return this.simpleGet(url, queryStringParams);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 }
