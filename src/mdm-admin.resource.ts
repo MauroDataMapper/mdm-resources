@@ -94,6 +94,6 @@ export class MdmAdminResource extends MdmResource {
 
     activeSessions(data, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/admin/activeSessions`;
-        return this.simplePost(url, data, restHandlerOptions);
+        return this.simpleGet(url, data, restHandlerOptions);
     }
 }

@@ -38,4 +38,10 @@ export class MdmSessionResource extends MdmResource {
         const url = `${this.apiEndpoint}/session/isAuthenticated${sessionId ? `/${sessionId}` : ''}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
+
+    isApplicationAdministration(queryStringParams?, restHandlerOptions?)
+    {
+        const url = `${this.apiEndpoint}/session/isApplicationAdministration`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
 }
