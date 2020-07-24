@@ -133,7 +133,7 @@ export class MdmCatalogueUserResource extends MdmResource {
 
     save(data, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/catalogueUsers`;
-        return this.simplePut(url, data, restHandlerOptions);
+        return this.simplePost(url, data, restHandlerOptions);
     }
 
     list(queryStringParams?, restHandlerOptions?) {
