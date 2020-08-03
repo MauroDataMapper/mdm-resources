@@ -18,13 +18,16 @@ SPDX-License-Identifier: Apache-2.0
 import { MdmResource } from './mdm-resource';
 
 export class MdmDataFlowResource extends MdmResource {
-  getAllFlows(id?, options?) {
-    return this.getResource('dataModels/', id, 'dataFlows', options);
+  getAllFlows(id?, options?): any {
+    console.warn('Not implemented');
+    return null;
   }
   getFlow(dataModelId?, dataFlowId?, options?) {
-    return this.getResource(`dataModels/${dataModelId}/dataFlows`, dataFlowId, 'dataClassFlows', options);
+    console.warn('Not implemented');
+    return null;
   }
   getFlowComponents(dataModelId?, dataFlowId?, dataClassId?, options?) {
-    return this.getResource(`dataModels/${dataModelId}/dataFlows/${dataFlowId}/dataClassFlows/${dataClassId}/dataFlowComponents`, null, '', {all: true});
+    console.warn('Not implemented');
+    return null;
   }
 }
