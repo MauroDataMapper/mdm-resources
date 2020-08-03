@@ -32,189 +32,189 @@ export class MdmResource {
     this.defaultRequestOptions = this.resourcesConfig.defaultHttpRequestOptions;
   }
 
-  getResource(name, id, action, options?): any {
-    if (!options) {
-      options = {};
-    }
-    if (name && name[name.length - 1] === '/') {
-      name = name.substr(0, name.length - 1);
-    }
+//   getResource(name, id, action, options?): any {
+//     if (!options) {
+//       options = {};
+//     }
+//     if (name && name[name.length - 1] === '/') {
+//       name = name.substr(0, name.length - 1);
+//     }
 
-    if (
-      options.filters &&
-      options.filters[options.filters.length - 1] === '&'
-    ) {
-      options.filters = options.filters.substr(0, options.filters.length - 1);
-    }
-    if (
-      options.filters &&
-      options.filters[options.filters.length - 1] === '&'
-    ) {
-      options.filters = options.filters.substr(1, options.filters.length);
-    }
+//     if (
+//       options.filters &&
+//       options.filters[options.filters.length - 1] === '&'
+//     ) {
+//       options.filters = options.filters.substr(0, options.filters.length - 1);
+//     }
+//     if (
+//       options.filters &&
+//       options.filters[options.filters.length - 1] === '&'
+//     ) {
+//       options.filters = options.filters.substr(1, options.filters.length);
+//     }
 
-    id = !id ? '' : id + '/';
-    action = !action ? '' : action;
-    let pagination = !options.pageSize ? '' : 'offset=' + options.pageIndex + '&max=' + options.pageSize;
-    const sort = !options.sortBy ? '' : '&sort=' + options.sortBy + '&order=' + (!options.sortType ? 'asc' : options.sortType);
-    const filters = !options.filters ? '' : '&' + options.filters;
-    const all = !options.all ? '' : '&all=true';
-    let qStr = '';
+//     id = !id ? '' : id + '/';
+//     action = !action ? '' : action;
+//     let pagination = !options.pageSize ? '' : 'offset=' + options.pageIndex + '&max=' + options.pageSize;
+//     const sort = !options.sortBy ? '' : '&sort=' + options.sortBy + '&order=' + (!options.sortType ? 'asc' : options.sortType);
+//     const filters = !options.filters ? '' : '&' + options.filters;
+//     const all = !options.all ? '' : '&all=true';
+//     let qStr = '';
 
-    if (options.queryStringParams) {
-      for (const n in options.queryStringParams) {
-        if (options.queryStringParams.hasOwnProperty(n)) {
-          if (!MdmValidator.isEmpty(options.queryStringParams[n])) {
-            qStr += '&' + n + '=' + options.queryStringParams[n];
-          }
-        }
-      }
-    }
+//     if (options.queryStringParams) {
+//       for (const n in options.queryStringParams) {
+//         if (options.queryStringParams.hasOwnProperty(n)) {
+//           if (!MdmValidator.isEmpty(options.queryStringParams[n])) {
+//             qStr += '&' + n + '=' + options.queryStringParams[n];
+//           }
+//         }
+//       }
+//     }
 
-    if (pagination || sort || filters || all || qStr) {
-      pagination = '?' + pagination;
-    }
+//     if (pagination || sort || filters || all || qStr) {
+//       pagination = '?' + pagination;
+//     }
 
-    return this.request(name + '/' + id + action + pagination + sort + filters + all + qStr, 'GET', options.resource, options.contentType);
-  }
+//     return this.request(name + '/' + id + action + pagination + sort + filters + all + qStr, 'GET', options.resource, options.contentType);
+//   }
 
-  postResource(name, id, action, options, more?): any {
-    if (!options) {
-      options = {};
-    }
-    if (name && name[name.length - 1] === '/') {
-      name = name.substr(0, name.length - 1);
-    }
-    id = !id ? '' : id + '/';
-    action = !action ? '' : action;
-    let pagination = !options.pageSize ? '' : 'offset=' + options.pageIndex + '&max=' + options.pageSize;
-    const sort = !options.sortBy ? '' : '&sort=' + options.sortBy + '&order=' + (!options.sortType ? 'asc' : options.sortType);
-    const filters = !options.filters ? '' : '&' + options.filters;
-    let qStr = '';
+//   postResource(name, id, action, options, more?): any {
+//     if (!options) {
+//       options = {};
+//     }
+//     if (name && name[name.length - 1] === '/') {
+//       name = name.substr(0, name.length - 1);
+//     }
+//     id = !id ? '' : id + '/';
+//     action = !action ? '' : action;
+//     let pagination = !options.pageSize ? '' : 'offset=' + options.pageIndex + '&max=' + options.pageSize;
+//     const sort = !options.sortBy ? '' : '&sort=' + options.sortBy + '&order=' + (!options.sortType ? 'asc' : options.sortType);
+//     const filters = !options.filters ? '' : '&' + options.filters;
+//     let qStr = '';
 
-    if (options.queryStringParams) {
-      for (const n in options.queryStringParams) {
-        if (options.queryStringParams.hasOwnProperty(n)) {
-          if (!MdmValidator.isEmpty(options.queryStringParams[n])) {
-            qStr += '&' + n + '=' + options.queryStringParams[n];
-          }
-        }
-      }
-    }
-    if (pagination || sort || filters || qStr) {
-      pagination = '?' + pagination;
-    }
-    return this.request(
-      name + '/' + id + action + pagination + sort + filters + qStr,
-      'POST',
-      options.resource,
-      options.contentType,
-      more
-    );
-  }
+//     if (options.queryStringParams) {
+//       for (const n in options.queryStringParams) {
+//         if (options.queryStringParams.hasOwnProperty(n)) {
+//           if (!MdmValidator.isEmpty(options.queryStringParams[n])) {
+//             qStr += '&' + n + '=' + options.queryStringParams[n];
+//           }
+//         }
+//       }
+//     }
+//     if (pagination || sort || filters || qStr) {
+//       pagination = '?' + pagination;
+//     }
+//     return this.request(
+//       name + '/' + id + action + pagination + sort + filters + qStr,
+//       'POST',
+//       options.resource,
+//       options.contentType,
+//       more
+//     );
+//   }
 
-  putResource(name, id, action, options) {
-    if (!options) {
-      options = {};
-    }
-    if (name && name[name.length - 1] === '/') {
-      name = name.substr(0, name.length - 1);
-    }
-    id = !id ? '' : id + '/';
-    action = !action ? '' : action;
-    let pagination = !options.pageSize
-      ? ''
-      : 'offset=' + options.pageIndex + '&max=' + options.pageSize;
-    const sort = !options.sortBy
-      ? ''
-      : '&sort=' +
-      options.sortBy +
-      '&order=' +
-      (!options.sortType ? 'asc' : options.sortType);
-    const filters = !options.filters ? '' : '&' + options.filters;
-    let qStr = '';
+//   putResource(name, id, action, options) {
+//     if (!options) {
+//       options = {};
+//     }
+//     if (name && name[name.length - 1] === '/') {
+//       name = name.substr(0, name.length - 1);
+//     }
+//     id = !id ? '' : id + '/';
+//     action = !action ? '' : action;
+//     let pagination = !options.pageSize
+//       ? ''
+//       : 'offset=' + options.pageIndex + '&max=' + options.pageSize;
+//     const sort = !options.sortBy
+//       ? ''
+//       : '&sort=' +
+//       options.sortBy +
+//       '&order=' +
+//       (!options.sortType ? 'asc' : options.sortType);
+//     const filters = !options.filters ? '' : '&' + options.filters;
+//     let qStr = '';
 
-    if (options.queryStringParams) {
-      for (const n in options.queryStringParams) {
-        if (options.queryStringParams.hasOwnProperty(n)) {
-          if (!MdmValidator.isEmpty(options.queryStringParams[n])) {
-            qStr += '&' + n + '=' + options.queryStringParams[n];
-          }
-        }
-      }
-    }
+//     if (options.queryStringParams) {
+//       for (const n in options.queryStringParams) {
+//         if (options.queryStringParams.hasOwnProperty(n)) {
+//           if (!MdmValidator.isEmpty(options.queryStringParams[n])) {
+//             qStr += '&' + n + '=' + options.queryStringParams[n];
+//           }
+//         }
+//       }
+//     }
 
-    if (pagination || sort || filters || qStr) {
-      pagination = '?' + pagination;
-    }
-    return this.request(
-      name + '/' + id + action + pagination + sort + filters + qStr,
-      'PUT',
-      options.resource,
-      options.contentType
-    );
-  }
+//     if (pagination || sort || filters || qStr) {
+//       pagination = '?' + pagination;
+//     }
+//     return this.request(
+//       name + '/' + id + action + pagination + sort + filters + qStr,
+//       'PUT',
+//       options.resource,
+//       options.contentType
+//     );
+//   }
 
-  deleteResource(name, id, action?, queryString?, resource?) {
-    if (name && name[name.length - 1] === '/') {
-      name = name.substr(0, name.length - 1);
-    }
-    id = !id ? '' : id + '/';
-    action = !action ? '' : action;
-    queryString = !queryString ? '' : '?' + queryString;
+//   deleteResource(name, id, action?, queryString?, resource?) {
+//     if (name && name[name.length - 1] === '/') {
+//       name = name.substr(0, name.length - 1);
+//     }
+//     id = !id ? '' : id + '/';
+//     action = !action ? '' : action;
+//     queryString = !queryString ? '' : '?' + queryString;
 
-    return this.request(
-      name + '/' + id + action + queryString,
-      'DELETE',
-      resource,
-      null
-    );
-  }
+//     return this.request(
+//       name + '/' + id + action + queryString,
+//       'DELETE',
+//       resource,
+//       null
+//     );
+//   }
 
-  request(url, HTTP, resource, contentType, more?): any {
-    if (url && url[0] === '/') {
-      url = url.substr(1);
-    }
+//   request(url, HTTP, resource, contentType, more?): any {
+//     if (url && url[0] === '/') {
+//       url = url.substr(1);
+//     }
 
-    const options: any = {
-      url: this.apiEndpoint + '/' + url,
-      method: HTTP,
-      withCredentials: true,
-      headers: {
-        'Content-Type': contentType
-          ? contentType
-          : 'application/json; charset=utf-8'
-      }
-    };
-    if (resource) {
-      options.data = resource;
-    }
-    if (more && more.login === true) {
-      options.login = true;
-    }
-    if (more && more.ignoreAuthModule === true) {
-      options.ignoreAuthModule = true;
-    }
-    if (more && more.responseType) {
-      options.responseType = more.responseType;
-    }
+//     const options: any = {
+//       url: this.apiEndpoint + '/' + url,
+//       method: HTTP,
+//       withCredentials: true,
+//       headers: {
+//         'Content-Type': contentType
+//           ? contentType
+//           : 'application/json; charset=utf-8'
+//       }
+//     };
+//     if (resource) {
+//       options.data = resource;
+//     }
+//     if (more && more.login === true) {
+//       options.login = true;
+//     }
+//     if (more && more.ignoreAuthModule === true) {
+//       options.ignoreAuthModule = true;
+//     }
+//     if (more && more.responseType) {
+//       options.responseType = more.responseType;
+//     }
 
-    return this.restHandler.process(options.url, options);
-  }
+//     return this.restHandler.process(options.url, options);
+//   }
 
-  exportGet(dataModels, exporter, contentType, url): any {
-    const more: any = {
-      responseType: 'arraybuffer'
-    };
-    return this.request(url, 'GET', null, contentType, more);
-  }
+//   exportGet(dataModels, exporter, contentType, url): any {
+//     const more: any = {
+//       responseType: 'arraybuffer'
+//     };
+//     return this.request(url, 'GET', null, contentType, more);
+//   }
 
-  exportPost(dataModels, exporter, contentType, url): any {
-    const more: any = {
-      responseType: 'arraybuffer'
-    };
-    return this.request(url, 'POST', null, contentType, more);
-  }
+//   exportPost(dataModels, exporter, contentType, url): any {
+//     const more: any = {
+//       responseType: 'arraybuffer'
+//     };
+//     return this.request(url, 'POST', null, contentType, more);
+//   }
 
   simplePost(url, data, options?) {
     const opts = {...this.defaultRequestOptions, body: data, ...options, method: 'POST'};

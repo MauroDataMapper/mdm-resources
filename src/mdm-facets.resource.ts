@@ -18,30 +18,30 @@ SPDX-License-Identifier: Apache-2.0
 import { MdmResource } from './mdm-resource';
 
 export class MdmFacetsResource extends MdmResource {
-  get(id, action, options) {
-    return this.getResource('facets', id, action, options);
-  }
+//   get(id, action, options) {
+//     return this.getResource('facets', id, action, options);
+//   }
 
-  post(id, action, options) {
-    return this.postResource('facets', id, action, options);
-  }
+//   post(id, action, options) {
+//     return this.postResource('facets', id, action, options);
+//   }
 
-  put(id, action, childId, options) {
-    if (!options) {
-      options = {};
-    }
-    id = !id ? '' : id;
-    action = !action ? '' : action + '/';
-    childId = !childId ? '' : childId;
-    return this.putResource('facets', id, action + childId, options);
-  }
+//   put(id, action, childId, options) {
+//     if (!options) {
+//       options = {};
+//     }
+//     id = !id ? '' : id;
+//     action = !action ? '' : action + '/';
+//     childId = !childId ? '' : childId;
+//     return this.putResource('facets', id, action + childId, options);
+//   }
 
-  delete(id, action, childId) {
-    id = !id ? '' : id;
-    action = !action ? '' : action + '/';
-    childId = !childId ? '' : childId;
-    return this.deleteResource('facets', id, action + childId, null, null);
-  }
+//   delete(id, action, childId) {
+//     id = !id ? '' : id;
+//     action = !action ? '' : action + '/';
+//     childId = !childId ? '' : childId;
+//     return this.deleteResource('facets', id, action + childId, null, null);
+//   }
 
   attachReferenceFile(id, formData, restHandlerOptions?) {
 
