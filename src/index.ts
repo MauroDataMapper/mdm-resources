@@ -15,7 +15,6 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-export * from './mdm-public.resource';
 export * from './mdm-enumeration-values.resource';
 export * from './mdm-data-class.resource';
 export * from './mdm-term.resource';
@@ -43,7 +42,6 @@ export * from './mdm-catalogue-user.resource';
 export * from './mdm-session.resource';
 export * from './mdm-importer.resource';
 export * from './mdm-data-flow.resource';
-export * from './mdm-user-group.resource';
 export * from './mdm-folder.resource';
 export * from './mdm-tree-item.resource';
 export * from './mdm-summary-metadata.resource';
@@ -51,7 +49,5 @@ export * from './mdm-metadata.resource';
 export * from './mdm-authentication.resource';
 export * from './mdm-data-type.resource';
 export * from './mdm-user-image-file.resource';
-export * from './mdm-hierarchy.resource';
-export * from './mdm-tree.resource';
 export * from './mdm-edit.resource';
 export * from './mdm-resource';
