@@ -13,7 +13,7 @@ import { MdmResource } from './mdm-resource';
 export declare class MdmSecurableResource extends MdmResource {
     removeUserGroupFromSecurableResourceGroupRole(securableResourceDomainType: any, securableResourceId: any, groupRoleId: any, userGroupId: any, queryStringParams?: any, restHandlerOptions?: any): any;
     addUserGroupToSecurableResourceGroupRole(securableResourceDomainType: any, securableResourceId: any, groupRoleId: any, userGroupId: any, data: any, restHandlerOptions?: any): any;
-    addsScurableResourceGroupRole(securableResourceDomainType: any, securableResourceId: any, data: any, restHandlerOptions?: any): any;
+    addSecurableResourceGroupRole(securableResourceDomainType: any, securableResourceId: any, data: any, restHandlerOptions?: any): any;
     listSecurableResourceGroupRoles(securableResourceDomainType: any, securableResourceId: any, queryStringParams?: any, restHandlerOptions?: any): any;
     removeSecurableResourceGroupRole(securableResourceDomainType: any, securableResourceId: any, securableResourceGroupRoleId: any, queryStringParams?: any, restHandlerOptions?: any): any;
     updateSecurableResourceGroupRole(securableResourceDomainType: any, securableResourceId: any, securableResourceGroupRoleId: any, data: any, restHandlerOptions?: any): any;

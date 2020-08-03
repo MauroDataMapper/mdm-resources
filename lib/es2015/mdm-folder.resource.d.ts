@@ -18,7 +18,6 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/folders/${id}                                                                                    | Action: show
  */
 export declare class MdmFolderResource extends MdmResource {
-    post(id: any, action: any, options: any): any;
     save(data: any, restHandlerOptions?: any): any;
     saveChildrenOf(folderId: any, data: any, restHandlerOptions?: any): any;
     list(queryStringParams?: any, restHandlerOptions?: any): any;
