@@ -30,7 +30,7 @@ export class MdmSessionResource extends MdmResource {
     }
 
     activeSessions(queryStringParams?, restHandlerOptions?) {
-        const url = `${this.apiEndpoint}/session/activeSessions`;
+        const url = `${this.apiEndpoint}/admin/activeSessions`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
