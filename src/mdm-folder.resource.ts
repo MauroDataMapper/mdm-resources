@@ -136,5 +136,21 @@ export class MdmFolderResource extends MdmResource {
         return this.simplePut(url, data, restHandlerOptions);
     }
 
+    removeReadByAuthenticated(folderId, queryStringParams?, restHandlerOptions?) {
+        const url = `${this.apiEndpoint}/folders/${folderId}/readByAuthenticated`;
+        return this.simpleDelete(url, queryStringParams, restHandlerOptions);
+    }
+    updateReadByAuthenticated(folderId, data?, restHandlerOptions?) {
+        const url = `${this.apiEndpoint}/folders/${folderId}/readByAuthenticated`;
+        return this.simplePut(url, data, restHandlerOptions);
+    }
+    removeReadByEveryone(folderId, queryStringParams?, restHandlerOptions?) {
+        const url = `${this.apiEndpoint}/folders/${folderId}/readByEveryone`;
+        return this.simpleDelete(url, queryStringParams, restHandlerOptions);
+    }
+    updateReadByEveryone(folderId, data?, restHandlerOptions?) {
+        const url = `${this.apiEndpoint}/folders/${folderId}/readByEveryone`;
+        return this.simplePut(url, data, restHandlerOptions);
+    }
     
 }

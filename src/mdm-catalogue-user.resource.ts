@@ -98,7 +98,7 @@ export class MdmCatalogueUserResource extends MdmResource {
 
     search(queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/catalogueUsers/search`;
-        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+        return this.simplePost(url, queryStringParams, restHandlerOptions);
     }
 
     resetPasswordLink(emailAddress, queryStringParams?, restHandlerOptions?) {

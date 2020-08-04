@@ -133,4 +133,21 @@ export class MdmClassifierResource extends MdmResource {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/classifiers/${classifierId}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
+
+    removeReadByAuthenticated(classifierId, queryStringParams?, restHandlerOptions?) {
+        const url = `${this.apiEndpoint}/classifiers/${classifierId}/readByAuthenticated`;
+        return this.simpleDelete(url, queryStringParams, restHandlerOptions);
+    }
+    updateReadByAuthenticated(classifierId, data?, restHandlerOptions?) {
+        const url = `${this.apiEndpoint}/classifiers/${classifierId}/readByAuthenticated`;
+        return this.simplePut(url, data, restHandlerOptions);
+    }
+    removeReadByEveryone(classifierId, queryStringParams?, restHandlerOptions?) {
+        const url = `${this.apiEndpoint}/classifiers/${classifierId}/readByEveryone`;
+        return this.simpleDelete(url, queryStringParams, restHandlerOptions);
+    }
+    updateReadByEveryone(classifierId, data?, restHandlerOptions?) {
+        const url = `${this.apiEndpoint}/classifiers/${classifierId}/readByEveryone`;
+        return this.simplePut(url, data, restHandlerOptions);
+    }
 }

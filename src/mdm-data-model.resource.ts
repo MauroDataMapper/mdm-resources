@@ -214,7 +214,7 @@ export class MdmDataModelResource extends MdmResource {
 
     search(dataModelId, queryStringParams?, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/search`;
-        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+        return this.simplePost(url, queryStringParams, restHandlerOptions);
     }
 
     hierarchy(dataModelId, queryStringParams?, restHandlerOptions?) {

@@ -181,4 +181,21 @@ export class MdmTerminologyResource extends MdmResource {
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
+    removeReadByAuthenticated(terminologyId, queryStringParams?, restHandlerOptions?) {
+        const url = `${this.apiEndpoint}/terminologies/${terminologyId}/readByAuthenticated`;
+        return this.simpleDelete(url, queryStringParams, restHandlerOptions);
+    }
+    updateReadByAuthenticated(terminologyId, data?, restHandlerOptions?) {
+        const url = `${this.apiEndpoint}/terminologies/${terminologyId}/readByAuthenticated`;
+        return this.simplePut(url, data, restHandlerOptions);
+    }
+    removeReadByEveryone(terminologyId, queryStringParams?, restHandlerOptions?) {
+        const url = `${this.apiEndpoint}/terminologies/${terminologyId}/readByEveryone`;
+        return this.simpleDelete(url, queryStringParams, restHandlerOptions);
+    }
+    updateReadByEveryone(terminologyId, data?, restHandlerOptions?) {
+        const url = `${this.apiEndpoint}/terminologies/${terminologyId}/readByEveryone`;
+        return this.simplePut(url, data, restHandlerOptions);
+    }
+
 }
