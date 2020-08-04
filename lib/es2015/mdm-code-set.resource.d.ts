@@ -47,4 +47,8 @@ export declare class MdmCodeSetResource extends MdmResource {
     update(codeSetId: any, data: any, restHandlerOptions?: any): any;
     get(codeSetId: any, queryStringParams?: any, restHandlerOptions?: any): any;
     terms(codeSetId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    removeReadByAuthenticated(codeSetId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    updateReadByAuthenticated(codeSetId: any, data?: any, restHandlerOptions?: any): any;
+    removeReadByEveryone(codeSetId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    updateReadByEveryone(codeSetId: any, data?: any, restHandlerOptions?: any): any;
 }

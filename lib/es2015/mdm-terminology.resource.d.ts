@@ -50,4 +50,8 @@ export declare class MdmTerminologyResource extends MdmResource {
     get(terminologyId: any, queryStringParams?: any, restHandlerOptions?: any): any;
     termRelationships(terminologyId: any, termRelationshipTypeId: any, queryStringParams?: any, restHandlerOptions?: any): any;
     getTermRelationship(terminologyId: any, termRelationshipTypeId: any, termRelationshipId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    removeReadByAuthenticated(terminologyId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    updateReadByAuthenticated(terminologyId: any, data?: any, restHandlerOptions?: any): any;
+    removeReadByEveryone(terminologyId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    updateReadByEveryone(terminologyId: any, data?: any, restHandlerOptions?: any): any;
 }

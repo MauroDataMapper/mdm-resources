@@ -34,4 +34,8 @@ export declare class MdmFolderResource extends MdmResource {
     addTerminologies(folderId: any, data: any, restHandlerOptions?: any): any;
     terminologies(folderId: any, queryStringParams?: any, restHandlerOptions?: any): any;
     alterTerminologyFolder(terminologyId: any, folderId: any, data: any, restHandlerOptions?: any): any;
+    removeReadByAuthenticated(folderId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    updateReadByAuthenticated(folderId: any, data?: any, restHandlerOptions?: any): any;
+    removeReadByEveryone(folderId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    updateReadByEveryone(folderId: any, data?: any, restHandlerOptions?: any): any;
 }

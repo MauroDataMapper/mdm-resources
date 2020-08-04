@@ -37,4 +37,8 @@ export declare class MdmClassifierResource extends MdmResource {
     get(classifierId: any, queryStringParams?: any, restHandlerOptions?: any): any;
     getChildOf(classifierId: any, childId: any, queryStringParams?: any, restHandlerOptions?: any): any;
     getFromCatalogueItem(catalogueItemDomainType: any, catalogueItemId: any, classifierId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    removeReadByAuthenticated(classifierId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    updateReadByAuthenticated(classifierId: any, data?: any, restHandlerOptions?: any): any;
+    removeReadByEveryone(classifierId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    updateReadByEveryone(classifierId: any, data?: any, restHandlerOptions?: any): any;
 }
