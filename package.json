@@ -1,6 +1,6 @@
 {
     "name": "@maurodatamapper/mdm-resources",
-    "version": "4.1.7-SNAPSHOT",
+    "version": "4.1.8-SNAPSHOT",
     "main": "lib/es2015/index.js",
     "module": "lib/es2015/index.js",
     "license": "Apache-2.0",
@@ -24,7 +24,7 @@
     "standard-version": {
         "scripts": {
             "prechangelog": "rm CHANGELOG.md"
-          },
+        },
         "skip": {
             "bump": true,
             "changelog": false,
