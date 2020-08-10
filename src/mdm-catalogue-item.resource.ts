@@ -47,6 +47,10 @@ import { MdmResource } from './mdm-resource';
  |  DELETE  | /api/${catalogueItemDomainType}/${catalogueItemId}/referenceFiles/${id}                               | Action: delete
  |   PUT    | /api/${catalogueItemDomainType}/${catalogueItemId}/referenceFiles/${id}                               | Action: update
  |   GET    | /api/${catalogueItemDomainType}/${catalogueItemId}/referenceFiles/${id}                               | Action: show
+ *
+ * Controller: search
+ |   GET    | /api/catalogueItems/search                                                                            | Action: search
+ |   POST   | /api/catalogueItems/search                                                                            | Action: search
  * 
  * Controller: semanticLink
  |   POST   | /api/${catalogueItemDomainType}/${catalogueItemId}/semanticLinks                                      | Action: save
@@ -54,37 +58,20 @@ import { MdmResource } from './mdm-resource';
  |  DELETE  | /api/${catalogueItemDomainType}/${catalogueItemId}/semanticLinks/${id}                                | Action: delete
  |   PUT    | /api/${catalogueItemDomainType}/${catalogueItemId}/semanticLinks/${id}                                | Action: update
  |   GET    | /api/${catalogueItemDomainType}/${catalogueItemId}/semanticLinks/${id}                                | Action: show
+
  */
 export class MdmCatalogueItemResource extends MdmResource {
-    // tree(id, includeSupersededModels) {
-    //     id = id ? '?id=' + id : '';
-    //     includeSupersededModels = includeSupersededModels ? '?includeSupersededModels=true' : '';
-    // }
+    //Search
 
-    // get(id, action, options) {
-    //     return this.getResource('catalogueItems', id, action, options);
-    // }
+    search(data, restHandlerOptions?) {
+        const url = `${this.apiEndpoint}/catalogueItems/search`;
+        return this.simplePost(url, data, restHandlerOptions);
+    }
 
-    // post(id, action, options) {
-    //     return this.postResource('catalogueItems', id, action, options);
-    // }
-
-    // put(id, action, childId, options) {
-    //     if (!options) {
-    //         options = {};
-    //     }
-    //     id = !id ? '' : id;
-    //     action = !action ? '' : action + '/';
-    //     childId = !childId ? '' : childId;
-    //     return this.putResource('catalogueItems', id, action + childId, options);
-    // }
-
-    // remove(id, action, childId) {
-    //     id = !id ? '' : id;
-    //     action = !action ? '' : action + '/';
-    //     childId = !childId ? '' : childId;
-    //     return this.removeResource('catalogueItems', id, action + childId, null, null);
-    // }
+    searchByGet(queryStringParams?, restHandlerOptions?) {
+        const url = `${this.apiEndpoint}/catalogueItems/search`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
 
     //Annotation
 
