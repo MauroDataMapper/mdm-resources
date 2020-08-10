@@ -21,6 +21,8 @@ import { MdmResource } from './mdm-resource';
  * Controller: folder
  |   POST   | /api/folders/${folderId}/folders                                                                      | Action: save
  |   GET    | /api/folders/${folderId}/folders                                                                      | Action: index
+ |   GET    | /api/folders/${folderId}/search                                                                       | Action: search
+ |   POST   | /api/folders/${folderId}/search                                                                       | Action: search
  |  DELETE  | /api/folders/${folderId}/readByAuthenticated                                                          | Action: readByAuthenticated
  |   PUT    | /api/folders/${folderId}/readByAuthenticated                                                          | Action: readByAuthenticated
  |  DELETE  | /api/folders/${folderId}/readByEveryone                                                               | Action: readByEveryone
@@ -28,7 +30,6 @@ import { MdmResource } from './mdm-resource';
  |  DELETE  | /api/folders/${folderId}/folders/${id}                                                                | Action: delete
  |   PUT    | /api/folders/${folderId}/folders/${id}                                                                | Action: update
  |   GET    | /api/folders/${folderId}/folders/${id}                                                                | Action: show
- 
  |   POST   | /api/folders                                                                                          | Action: save
  |   GET    | /api/folders                                                                                          | Action: index
  |  DELETE  | /api/folders/${id}                                                                                    | Action: delete
@@ -36,25 +37,16 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/folders/${id}                                                                                    | Action: show
  */
 export class MdmFolderResource extends MdmResource {
-//   get(id, action, queryStringParams?, restHandlerOptions?) {
-//     if (!options) {
-//       options = {};
-//     }
 
-//     return this.getResource('folders', id, action, options);
-//   }
+    search(folderId, data, restHandlerOptions?) {
+        const url = `${this.apiEndpoint}/folders/${folderId}/search`;
+        return this.simplePost(url, data, restHandlerOptions);
+    }
 
-//   post(id, action, options) {
-//     return this.postResource('folders', id, action, options);
-//   }
-
-//   put(id, action, options) {
-//     return this.putResource('folders', id, action, options);
-//   }
-
-//   delete(id, action, queryString) {
-//     return this.deleteResource('folders', id, action, queryString, null);
-//   }
+    searchByGet(folderId, queryStringParams?, restHandlerOptions?) {
+        const url = `${this.apiEndpoint}/folders/${folderId}/search`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
 
     save(data, restHandlerOptions?) {
         const url = `${this.apiEndpoint}/folders`;
