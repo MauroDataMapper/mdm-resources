@@ -30,14 +30,21 @@ import { MdmResource } from './mdm-resource';
  |   PUT    | /api/${catalogueItemDomainType}/${catalogueItemId}/referenceFiles/${id}                               | Action: update
  |   GET    | /api/${catalogueItemDomainType}/${catalogueItemId}/referenceFiles/${id}                               | Action: show
  *
+ * Controller: search
+ |   GET    | /api/catalogueItems/search                                                                            | Action: search
+ |   POST   | /api/catalogueItems/search                                                                            | Action: search
+ *
  * Controller: semanticLink
  |   POST   | /api/${catalogueItemDomainType}/${catalogueItemId}/semanticLinks                                      | Action: save
  |   GET    | /api/${catalogueItemDomainType}/${catalogueItemId}/semanticLinks                                      | Action: index
  |  DELETE  | /api/${catalogueItemDomainType}/${catalogueItemId}/semanticLinks/${id}                                | Action: delete
  |   PUT    | /api/${catalogueItemDomainType}/${catalogueItemId}/semanticLinks/${id}                                | Action: update
  |   GET    | /api/${catalogueItemDomainType}/${catalogueItemId}/semanticLinks/${id}                                | Action: show
+
  */
 export declare class MdmCatalogueItemResource extends MdmResource {
+    search(data: any, restHandlerOptions?: any): any;
+    searchByGet(queryStringParams?: any, restHandlerOptions?: any): any;
     saveAnnotations(catalogueItemDomainType: any, catalogueItemId: any, data: any, restHandlerOptions?: any): any;
     saveAnnotationChildren(catalogueItemDomainType: any, catalogueItemId: any, annotationId: any, data: any, restHandlerOptions?: any): any;
     listAnnotations(catalogueItemDomainType: any, catalogueItemId: any, queryStringParams?: any, restHandlerOptions?: any): any;
