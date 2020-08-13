@@ -16,6 +16,7 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 import { MdmResource } from './mdm-resource';
+import { IMdmQueryStringParams, IMdmRestHandlerOptions } from 'mdm-rest-handler';
 
 /**
  * Controller: session
@@ -24,22 +25,22 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/session/isAuthenticated/${sesssionId}?                                                           | Action: isAuthenticatedSession
  */
 export class MdmSessionResource extends MdmResource {
-    keepAlive(queryStringParams?, restHandlerOptions?) {
+    keepAlive(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/session/keepAlive`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    activeSessions(queryStringParams?, restHandlerOptions?) {
+    activeSessions(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/admin/activeSessions`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    isAuthenticated(sessionId?, queryStringParams?, restHandlerOptions?) {
+    isAuthenticated(sessionId?, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/session/isAuthenticated${sessionId ? `/${sessionId}` : ''}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    isApplicationAdministration(queryStringParams?, restHandlerOptions?)
+    isApplicationAdministration(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions)
     {
         const url = `${this.apiEndpoint}/session/isApplicationAdministration`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);

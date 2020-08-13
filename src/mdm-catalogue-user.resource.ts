@@ -16,6 +16,7 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 import { MdmResource } from './mdm-resource';
+import { IMdmRestHandlerOptions, IMdmQueryStringParams } from 'mdm-rest-handler';
 
 /**
  * Controller: catalogueUser
@@ -42,121 +43,103 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/${containerDomainType}/${containerId}/userGroups/${userGroupId}/catalogueUsers                                 | Action: index
  */
 export class MdmCatalogueUserResource extends MdmResource {
-    //   get(id, action, options = {}) {
-    //     if (!options) {
-    //       options = {};
-    //     }
-    //     return this.getResource('catalogueUsers', id, action, options);
-    //   }
 
-    //   post(id, action, options) {
-    //     return this.postResource('catalogueUsers', id, action, options);
-    //   }
-
-    //   put(id, action, options) {
-    //     return this.putResource('catalogueUsers', id, action, options);
-    //   }
-
-    //   delete(id, action) {
-    //     return this.deleteResource('catalogueUsers', id, action);
-    //   }
-
-    adminRegister(data, restHandlerOptions?) {
+    adminRegister(data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/admin/catalogueUsers/adminRegister`;
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    pendingCount(queryStringParams?, restHandlerOptions?) {
+    pendingCount(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/admin/catalogueUsers/pendingCount`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    pending(queryStringParams?, restHandlerOptions?) {
+    pending(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/admin/catalogueUsers/pending`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    exists(emailAddress, queryStringParams?, restHandlerOptions?) {
+    exists(emailAddress, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/admin/catalogueUsers/userExists/${emailAddress}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    reject(catalogueUserId, data, restHandlerOptions?) {
+    reject(catalogueUserId, data, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/admin/catalogueUsers/${catalogueUserId}/rejectRegistration`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    approve(catalogueUserId, data, restHandlerOptions?) {
+    approve(catalogueUserId, data, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/admin/catalogueUsers/${catalogueUserId}/approveRegistration`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    adminPasswordReset(catalogueUserId, data, restHandlerOptions?) {
+    adminPasswordReset(catalogueUserId, data, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/admin/catalogueUsers/${catalogueUserId}/adminPasswordReset`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    search(queryStringParams?, restHandlerOptions?) {
+    search(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/catalogueUsers/search`;
         return this.simplePost(url, queryStringParams, restHandlerOptions);
     }
 
-    resetPasswordLink(emailAddress, queryStringParams?, restHandlerOptions?) {
+    resetPasswordLink(emailAddress, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/catalogueUsers/resetPasswordLink/${emailAddress}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    resetPassword(catalogueUserId, data, restHandlerOptions?) {
+    resetPassword(catalogueUserId, data, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}/resetPassword`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    changePassword(catalogueUserId, data, restHandlerOptions?) {
+    changePassword(catalogueUserId, data, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}/changePassword`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    updateUserPreferences(catalogueUserId, data, restHandlerOptions?) {
+    updateUserPreferences(catalogueUserId, data, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}/userPreferences`;
         return this.simplePut(url, data, restHandlerOptions);
     }
     
-    userPreferences(catalogueUserId, queryStringParams?, restHandlerOptions?) {
+    userPreferences(catalogueUserId, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}/userPreferences`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    listInUserGroup(userGroupId, queryStringParams?, restHandlerOptions?) {
+    listInUserGroup(userGroupId, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/userGroups/${userGroupId}/catalogueUsers`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    save(data, restHandlerOptions?) {
+    save(data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/catalogueUsers`;
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    list(queryStringParams?, restHandlerOptions?) {
+    list(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/catalogueUsers`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    remove(catalogueUserId, queryStringParams?, restHandlerOptions?) {
+    remove(catalogueUserId, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    update(catalogueUserId, data, restHandlerOptions?) {
+    update(catalogueUserId, data, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    get(catalogueUserId, queryStringParams?, restHandlerOptions?) {
+    get(catalogueUserId, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    listInContainerUserGroup(containerDomainType, containerId, userGroupId, queryStringParams?, restHandlerOptions?) {
+    listInContainerUserGroup(containerDomainType, containerId, userGroupId, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/${containerDomainType}/${containerId}/userGroups/${userGroupId}/catalogueUsers`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }

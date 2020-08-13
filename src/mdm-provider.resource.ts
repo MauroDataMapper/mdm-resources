@@ -16,6 +16,7 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 import { MdmResource } from './mdm-resource';
+import { IMdmQueryStringParams, IMdmRestHandlerOptions } from 'mdm-rest-handler';
 
 /**
  * Controller: mauroDataMapperServiceProvider
@@ -25,22 +26,22 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/admin/providers/importers                                                                        | Action: importerProviders
  */
 export class MdmProviderResource extends MdmResource {
-    exporters(queryStringParams?, restHandlerOptions?) {
+    exporters(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/admin/providers/exporters`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    emailers(queryStringParams?, restHandlerOptions?) {
+    emailers(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/admin/providers/emailers`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    dataLoaders(queryStringParams?, restHandlerOptions?) {
+    dataLoaders(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/admin/providers/dataLoaders`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    importers(queryStringParams?, restHandlerOptions?) {
+    importers(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/admin/providers/importers`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }

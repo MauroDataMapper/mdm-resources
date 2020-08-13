@@ -16,6 +16,7 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 import { MdmResource } from './mdm-resource';
+import { IMdmRestHandlerOptions, IMdmQueryStringParams } from 'mdm-rest-handler';
 
 /**
  * Controller: authenticating
@@ -23,17 +24,17 @@ import { MdmResource } from './mdm-resource';
  |   POST   | /api/authentication/login                                                                                           | Action: login
  */
 export class MdmSecurityResource extends MdmResource {
-    login(data, restHandlerOptions?) {
+    login(data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/authentication/login`;
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    logout(queryStringParams?, restHandlerOptions?) {
+    logout(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/authentication/logout`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    permissions(securableResourceDomainType, securableResourceId, queryStringParams?, restHandlerOptions?) {
+    permissions(securableResourceDomainType, securableResourceId, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/${securableResourceDomainType}/${securableResourceId}/permissions`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }

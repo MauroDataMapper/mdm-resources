@@ -16,6 +16,7 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 import { MdmResource } from './mdm-resource';
+import { IMdmQueryStringParams, IMdmRestHandlerOptions } from 'mdm-rest-handler';
 
 /**
  * Controller: treeItem
@@ -27,40 +28,33 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/tree/${containerDomainType}/${catalogueItemDomainType}/${catalogueItemId}                        | Action: show
  */
 export class MdmTreeItemResource extends MdmResource {
-    // get(id?, action?, options?) {
-    //     return this.getResource('tree/folders', id, action, null);
-    // }
 
-    // getDomainItem(id, domainType, queryStringParams?, restHandlerOptions?) {
-    //     return this.simpleGet(`${this.apiEndpoint}/tree/folders/${domainType}/${id}`, options);
-    // }
-
-    deletedModels(containerDomainType, modelDomainType, queryStringParams?, restHandlerOptions?) {
+    deletedModels(containerDomainType, modelDomainType, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/admin/tree/${containerDomainType}/${modelDomainType}/deleted`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    modelSupersededModels(containerDomainType, modelDomainType, queryStringParams?, restHandlerOptions?) {
+    modelSupersededModels(containerDomainType, modelDomainType, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/admin/tree/${containerDomainType}/${modelDomainType}/modelSuperseded`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    documentationSupersededModels(containerDomainType, modelDomainType, queryStringParams?, restHandlerOptions?) {
+    documentationSupersededModels(containerDomainType, modelDomainType, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/admin/tree/${containerDomainType}/${modelDomainType}/documentationSuperseded`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    search(containerDomainType, searchTerm, queryStringParams?, restHandlerOptions?) {
+    search(containerDomainType, searchTerm, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/tree/${containerDomainType}/search/${searchTerm}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    list(containerDomainType, queryStringParams?, restHandlerOptions?) {
+    list(containerDomainType, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/tree/${containerDomainType}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    get(containerDomainType, catalogueItemDomainType, catalogueItemId, queryStringParams?, restHandlerOptions?) {
+    get(containerDomainType, catalogueItemDomainType, catalogueItemId, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/tree/${containerDomainType}/${catalogueItemDomainType}/${catalogueItemId}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }

@@ -16,6 +16,7 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 import { MdmResource } from './mdm-resource';
+import { IMdmQueryStringParams, IMdmRestHandlerOptions } from 'mdm-rest-handler';
 
 /**
  * Controller: admin
@@ -39,60 +40,52 @@ import { MdmResource } from './mdm-resource';
  |   POST   | /api/admin/activeSessions                                                                             | Action: activeSessionsWithCredentials
  */
 export class MdmAdminResource extends MdmResource {
-    // get(name, options) {
-    //     return this.getResource('admin', name, null, options);
-    // }
-
-    // post(action, options) {
-    //     return this.postResource('admin', null, action, options);
-    // }
-
-    status(queryStringParams?, restHandlerOptions?) {
+    status(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/admin/status`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    editProperties(data, restHandlerOptions?) {
+    editProperties(data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/admin/editProperties`;
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    rebuildLuceneIndexes(data, restHandlerOptions?) {
+    rebuildLuceneIndexes(data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/admin/rebuildLuceneIndexes`;
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    properties(queryStringParams?, restHandlerOptions?) {
+    properties(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/admin/properties`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    modules(queryStringParams?, restHandlerOptions?) {
+    modules(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/admin/modules`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    deletedModels(containerDomainType, modelDomainType, queryStringParams?, restHandlerOptions?) {
+    deletedModels(containerDomainType, modelDomainType, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/admin/tree/${containerDomainType}/${modelDomainType}/deleted`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    modelSupersededModels(containerDomainType, modelDomainType, queryStringParams?, restHandlerOptions?) {
+    modelSupersededModels(containerDomainType, modelDomainType, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/admin/tree/${containerDomainType}/${modelDomainType}/modelSuperseded`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    documentationSupersededModels(containerDomainType, modelDomainType, queryStringParams?, restHandlerOptions?) {
+    documentationSupersededModels(containerDomainType, modelDomainType, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/admin/tree/${containerDomainType}/${modelDomainType}/documentationSuperseded`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    emails(queryStringParams?, restHandlerOptions?) {
+    emails(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/admin/emails`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    activeSessions(data, restHandlerOptions?) {
+    activeSessions(data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/admin/activeSessions`;
         return this.simpleGet(url, data, restHandlerOptions);
     }

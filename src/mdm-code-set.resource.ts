@@ -16,9 +16,7 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 import { MdmResource } from './mdm-resource';
-import { MdmCatalogueItemResource } from './mdm-catalogue-item.resource';
-import { MdmResourcesConfiguration } from './mdm-resources-configuration';
-import { IMdmRestHandler } from './mdm-rest-handler';
+import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handler';
 
 /**
  * Controller: codeSet
@@ -49,162 +47,125 @@ import { IMdmRestHandler } from './mdm-rest-handler';
  */
 
 export class MdmCodeSetResource extends MdmResource {
-    // private catalogueItem: MdmCatalogueItemResource;
 
-    // constructor(resourcesConfig?: MdmResourcesConfiguration, restHandler?: IMdmRestHandler) {
-    //     super(resourcesConfig, restHandler);
-    //     this.catalogueItem = new MdmCatalogueItemResource(resourcesConfig, restHandler);
-    // }
-
-    // get(id, action, options) {
-    //     if (!options) {
-    //         options = {};
-    //     }
-
-    //     // if (['metadata', 'annotations', 'classifiers', 'semanticLinks'].indexOf(action) !== -1) {
-    //     //   return this.catalogueItem.get(id, action, options.contentType);
-    //     // }
-
-    //     switch (action) {
-    //         case 'metadata': return this.catalogueItem.listMetadata('codeSets', id, options);
-    //         case 'annotations': return this.catalogueItem.listAnnotations('codeSets', id, options);
-    //         case 'classifiers': return this.catalogueItem.listClassifiers('codeSets', id, options);
-    //         case 'semanticLinks': return this.catalogueItem.listSemanticLinks('codeSets', id, options);
-    //     }
-
-    //     return this.getResource('codeSets', id, action, options);
-    // }
-
-    // post(id, action, options) {
-    //     return this.postResource('codeSets', id, action, options);
-    // }
-
-    // delete(id, action, queryString, resource) {
-    //     return this.deleteResource('codeSets', id, action, queryString, resource);
-    // }
-
-    // put(id, action, options) {
-    //     return this.putResource('codeSets', id, action, options);
-    // }
-
-    importers(queryStringParams?, restHandlerOptions?) {
+    importers(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/codeSets/providers/importers`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    exporters(queryStringParams?, restHandlerOptions?) {
+    exporters(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/codeSets/providers/exporters`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    importModels(namespace, name, version, data, restHandlerOptions?) {
+    importModels(namespace, name, version, data, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/codeSets/import/${namespace}/${name}/${version}`;
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    exportModels(namespace, name, version, data, restHandlerOptions?) {
+    exportModels(namespace, name, version, data, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/codeSets/export/${namespace}/${name}/${version}`;
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    newModelVersion(codeSetId, data, restHandlerOptions?) {
+    newModelVersion(codeSetId, data, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/codeSets/${codeSetId}/newModelVersion`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    newDocumentationVersion(codeSetId, data, restHandlerOptions?) {
+    newDocumentationVersion(codeSetId, data, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/codeSets/${codeSetId}/newDocumentationVersion`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    finalise(codeSetId, data?, restHandlerOptions?) {
+    finalise(codeSetId, data?, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/codeSets/${codeSetId}/finalise`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    addCodeSetsToFolder(folderId, data, restHandlerOptions?) {
+    addCodeSetsToFolder(folderId, data, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/folders/${folderId}/codeSets`;
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    listCodeSetsInFolder(folderId, queryStringParams?, restHandlerOptions?) {
+    listCodeSetsInFolder(folderId, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/folders/${folderId}/codeSets`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    removeTerm(codeSetId, termId, queryStringParams?, restHandlerOptions?) {
+    removeTerm(codeSetId, termId, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/codeSets/${codeSetId}/terms/${termId}`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 
-    alterTerm(codeSetId, termId, data, restHandlerOptions?) {
+    alterTerm(codeSetId, termId, data, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/codeSets/${codeSetId}/terms/${termId}`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    alterFolder(codeSetId, folderId, data, restHandlerOptions?) {
+    alterFolder(codeSetId, folderId, data, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/codeSets/${codeSetId}/folder/${folderId}`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    diff(codeSetId, otherModelId, queryStringParams?, restHandlerOptions?) {
+    diff(codeSetId, otherModelId, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/codeSets/${codeSetId}/diff/${otherModelId}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    // changeFolder(codeSetId, folderId, data, restHandlerOptions?) {
+    // changeFolder(codeSetId, folderId, data, restHandlerOptions?: IMdmRestHandlerOptions) {
     //     const url = `${this.apiEndpoint}/folders/${folderId}/codeSets/${codeSetId}`;
     //     return this.simplePut(url, data, restHandlerOptions);
     // }
     
-    exportModel(codeSetId, exporterNamespace, exporterName, exporterVersion, queryStringParams?, restHandlerOptions?) {
+    exportModel(codeSetId, exporterNamespace, exporterName, exporterVersion, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/codeSets/${codeSetId}/export/${exporterNamespace}/${exporterName}/${exporterVersion}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    list(queryStringParams?, restHandlerOptions?) {
+    list(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/codeSets`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    removeAll(queryStringParams?, restHandlerOptions?) {
+    removeAll(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/codeSets`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 
-    remove(codeSetId, queryStringParams?, restHandlerOptions?) {
+    remove(codeSetId, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/codeSets/${codeSetId}`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 
-    update(codeSetId, data, restHandlerOptions?) {
+    update(codeSetId, data, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/codeSets/${codeSetId}`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    get(codeSetId, queryStringParams?, restHandlerOptions?) {
+    get(codeSetId, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/codeSets/${codeSetId}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    terms(codeSetId, queryStringParams?, restHandlerOptions?) {
+    terms(codeSetId, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/codeSets/${codeSetId}/terms`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    removeReadByAuthenticated(codeSetId, queryStringParams?, restHandlerOptions?) {
+    removeReadByAuthenticated(codeSetId, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/codeSets/${codeSetId}/readByAuthenticated`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
-    updateReadByAuthenticated(codeSetId, data?, restHandlerOptions?) {
+    updateReadByAuthenticated(codeSetId, data?, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/codeSets/${codeSetId}/readByAuthenticated`;
         return this.simplePut(url, data, restHandlerOptions);
     }
-    removeReadByEveryone(codeSetId, queryStringParams?, restHandlerOptions?) {
+    removeReadByEveryone(codeSetId, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/codeSets/${codeSetId}/readByEveryone`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
-    updateReadByEveryone(codeSetId, data?, restHandlerOptions?) {
+    updateReadByEveryone(codeSetId, data?, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/codeSets/${codeSetId}/readByEveryone`;
         return this.simplePut(url, data, restHandlerOptions);
     }

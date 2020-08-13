@@ -18,7 +18,7 @@ SPDX-License-Identifier: Apache-2.0
 import { MdmResource } from './mdm-resource';
 import { MdmResourcesConfiguration } from './mdm-resources-configuration';
 import { MdmDataClassComponentResource } from './mdm-data-class-component.resource';
-import { IMdmRestHandler, DefaultMdmRestHandler } from './mdm-rest-handler';
+import { IMdmRestHandler, DefaultMdmRestHandler, IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handler';
 import { MdmDataElementComponentResource } from './mdm-data-element-component.resource';
 
 /**
@@ -46,62 +46,62 @@ export class MdmDataFlowResource extends MdmResource {
         this.dataElementComponents = new MdmDataElementComponentResource(resourcesConfig, restHandler);
     }
 
-    importers(queryStringParams?, restHandlerOptions?) {
+    importers(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/dataFlows/providers/importers`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    exporters(queryStringParams?, restHandlerOptions?) {
+    exporters(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/dataFlows/providers/exporters`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    importDataFlows(importerNamespace, importerName, importerVersion, data, restHandlerOptions?) {
+    importDataFlows(importerNamespace, importerName, importerVersion, data, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/dataFlows/import/${importerNamespace}/${importerName}/${importerVersion}`;
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    exportDataFlows(exporterNamespace, exporterName, exporterVersion, data, restHandlerOptions?) {
+    exportDataFlows(exporterNamespace, exporterName, exporterVersion, data, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/dataFlows/export/${exporterNamespace}/${exporterName}/${exporterVersion}`;
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    updateDiagramLayout(dataModelId, dataFlowId, data, restHandlerOptions?) {
+    updateDiagramLayout(dataModelId, dataFlowId, data, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataFlows/${dataFlowId}/diagramLayout`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    importDataFlow(dataModelId, dataFlowId, importerNamespace, importerName, importerVersion, data, restHandlerOptions?) {
+    importDataFlow(dataModelId, dataFlowId, importerNamespace, importerName, importerVersion, data, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataFlows/${dataFlowId}/import/${importerNamespace}/${importerName}/${importerVersion}`;
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    exportDataFlow(dataModelId, dataFlowId, importerNamespace, importerName, importerVersion, queryStringParams?, restHandlerOptions?) {
+    exportDataFlow(dataModelId, dataFlowId, importerNamespace, importerName, importerVersion, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataFlows/${dataFlowId}/import/${importerNamespace}/${importerName}/${importerVersion}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    save(dataModelId, data, restHandlerOptions?) {
+    save(dataModelId, data, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataFlows`;
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    list(dataModelId, queryStringParams?, restHandlerOptions?) {
+    list(dataModelId, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataFlows`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    remove(dataModelId, dataFlowId, queryStringParams?, restHandlerOptions?) {
+    remove(dataModelId, dataFlowId, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataFlows/${dataFlowId}`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 
-    update(dataModelId, dataFlowId, data, restHandlerOptions?) {
+    update(dataModelId, dataFlowId, data, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataFlows/${dataFlowId}`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    get(dataModelId, dataFlowId, queryStringParams?, restHandlerOptions?) {
+    get(dataModelId, dataFlowId, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataFlows/${dataFlowId}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }

@@ -16,13 +16,14 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 import { MdmResource } from './mdm-resource';
+import { IMdmQueryStringParams, IMdmRestHandlerOptions } from 'mdm-rest-handler';
 
 /**
  * Controller: userImageFile
  |   GET    | /api/userImageFiles/${id}                                                                             | Action: show
  */
 export class MdmUserImageFileResource extends MdmResource {
-    get(userId, queryStringParams?, restHandlerOptions?) {
+    get(userId, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/userImageFiles/${userId}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }

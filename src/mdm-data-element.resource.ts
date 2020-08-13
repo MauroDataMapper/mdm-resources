@@ -16,9 +16,7 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 import { MdmResource } from './mdm-resource';
-import { MdmCatalogueItemResource } from './mdm-catalogue-item.resource';
-import { MdmResourcesConfiguration } from './mdm-resources-configuration';
-import { IMdmRestHandler } from './mdm-rest-handler';
+import { IMdmQueryStringParams, IMdmRestHandlerOptions } from 'mdm-rest-handler';
 
 /**
  * Controller: dataElement
@@ -32,75 +30,43 @@ import { IMdmRestHandler } from './mdm-rest-handler';
  |   POST   | /api/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/${otherDataModelId}/${otherDataClassId}/${dataElementId}      | Action: copyDataElement
  */
 export class MdmDataElementResource extends MdmResource {
-    //   private catalogueItem: MdmCatalogueItemResource;
 
-    //   constructor(resourcesConfig?: MdmResourcesConfiguration, restHandler?: IMdmRestHandler) {
-    //     super(resourcesConfig, restHandler);
-    //     this.catalogueItem = new MdmCatalogueItemResource(resourcesConfig, restHandler);
-    //   }
-
-    //   get(dataModelId, dataClassId, id, action, options) {
-    //     if (!options) {
-    //       options = {};
-    //     }
-    //     // if (['metadata', 'annotations', 'classifiers', 'semanticLinks'].indexOf(action) !== -1) {
-    //     //   return this.catalogueItem.get(id, action, options.contentType);
-    //     // }
-
-    //     switch(action) {
-    //         case 'metadata': return this.catalogueItem.listMetadata('dataElements', id, options);
-    //         case 'annotations': return this.catalogueItem.listAnnotations('dataElements', id, options);
-    //         case 'classifiers': return this.catalogueItem.listClassifiers('dataElements', id, options);
-    //         case 'semanticLinks': return this.catalogueItem.listSemanticLinks('dataElements', id, options);
-    //     }
-
-    //     return this.getResource(`dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/`, id, action, options);
-    //   }
-
-    //   put(dataModelId, dataClassId, id, action, options) {
-    //     return this.putResource(`dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/`, id, action, options);
-    //   }
-
-    //   delete(dataModelId, dataClassId, id) {
-    //     return this.deleteResource(`dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/`, id);
-    //   }
-
-    suggestLinks(dataModelId, dataClassId, dataElementId, otherDataModelId, queryStringParams?, restHandlerOptions?) {
+    suggestLinks(dataModelId, dataClassId, dataElementId, otherDataModelId, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/${dataElementId}/suggestLinks/${otherDataModelId}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    save(dataModelId, dataClassId, data, restHandlerOptions?) {
+    save(dataModelId, dataClassId, data, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements`;
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    list(dataModelId, dataClassId, queryStringParams?, restHandlerOptions?) {
+    list(dataModelId, dataClassId, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    listWithDataType(dataModelId, dataTypeId, queryStringParams?, restHandlerOptions?) {
+    listWithDataType(dataModelId, dataTypeId, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataTypes/${dataTypeId}/dataElements`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    remove(dataModelId, dataClassId, dataElementId, queryStringParams?, restHandlerOptions?) {
+    remove(dataModelId, dataClassId, dataElementId, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/${dataElementId}`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 
-    update(dataModelId, dataClassId, dataElementId, data, restHandlerOptions?) {
+    update(dataModelId, dataClassId, dataElementId, data, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/${dataElementId}`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    get(dataModelId, dataClassId, dataElementId, queryStringParams?, restHandlerOptions?) {
+    get(dataModelId, dataClassId, dataElementId, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/${dataElementId}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    copyDataElement(dataModelId, dataClassId, otherDataModelId, otherDataClassId, dataElementId, data, restHandlerOptions?) {
+    copyDataElement(dataModelId, dataClassId, otherDataModelId, otherDataClassId, dataElementId, data, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/${otherDataModelId}/${otherDataClassId}/${dataElementId}`;
         return this.simplePost(url, data, restHandlerOptions);
     }

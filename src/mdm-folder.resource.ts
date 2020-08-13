@@ -16,6 +16,7 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 import { MdmResource } from './mdm-resource';
+import { IMdmRestHandlerOptions, IMdmQueryStringParams } from 'mdm-rest-handler';
 
 /**
  * Controller: folder
@@ -38,109 +39,109 @@ import { MdmResource } from './mdm-resource';
  */
 export class MdmFolderResource extends MdmResource {
 
-    search(folderId, data, restHandlerOptions?) {
+    search(folderId, data, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/folders/${folderId}/search`;
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    searchByGet(folderId, queryStringParams?, restHandlerOptions?) {
+    searchByGet(folderId, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/folders/${folderId}/search`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    save(data, restHandlerOptions?) {
+    save(data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/folders`;
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    saveChildrenOf(folderId, data, restHandlerOptions?) {
+    saveChildrenOf(folderId, data, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/folders/${folderId}/folders`;
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    list(queryStringParams?, restHandlerOptions?) {
+    list(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/folders`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    listChildrenOf(folderId, queryStringParams?, restHandlerOptions?) {
+    listChildrenOf(folderId, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/folders/${folderId}/folders`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    remove(folderId, queryStringParams?, restHandlerOptions?) {
+    remove(folderId, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/folders/${folderId}`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 
-    removeChildOf(folderId, childId, queryStringParams?, restHandlerOptions?) {
+    removeChildOf(folderId, childId, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/folders/${folderId}/folders/${childId}`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 
-    update(folderId, data, queryStringParams?, restHandlerOptions?) {
+    update(folderId, data, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/folders/${folderId}`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    updateChildOf(folderId, childId, data, queryStringParams?, restHandlerOptions?) {
+    updateChildOf(folderId, childId, data, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/folders/${folderId}/folders/${childId}`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    get(folderId, queryStringParams?, restHandlerOptions?) {
+    get(folderId, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/folders/${folderId}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    getChildOf(folderId, childId, queryStringParams?, restHandlerOptions?) {
+    getChildOf(folderId, childId, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/folders/${folderId}/folders/${childId}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    addCondeSets(folderId, data, restHandlerOptions?) {
+    addCondeSets(folderId, data, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/folders/${folderId}/codeSets`;
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    codeSets(folderId, queryStringParams?, restHandlerOptions?) {
+    codeSets(folderId, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/folders/${folderId}/codeSets`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    alterCodeSetFolder(codeSetId, folderId, data, restHandlerOptions?) {
+    alterCodeSetFolder(codeSetId, folderId, data, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/folders/${folderId}/codeSets/${codeSetId}`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    addTerminologies(folderId, data, restHandlerOptions?) {
+    addTerminologies(folderId, data, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/folders/${folderId}/terminologies`;
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    terminologies(folderId, queryStringParams?, restHandlerOptions?) {
+    terminologies(folderId, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/folders/${folderId}/terminologies`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    alterTerminologyFolder(terminologyId, folderId, data, restHandlerOptions?) {
+    alterTerminologyFolder(terminologyId, folderId, data, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/folders/${folderId}/terminologies/${terminologyId}`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    removeReadByAuthenticated(folderId, queryStringParams?, restHandlerOptions?) {
+    removeReadByAuthenticated(folderId, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/folders/${folderId}/readByAuthenticated`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
-    updateReadByAuthenticated(folderId, data?, restHandlerOptions?) {
+    updateReadByAuthenticated(folderId, data?, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/folders/${folderId}/readByAuthenticated`;
         return this.simplePut(url, data, restHandlerOptions);
     }
-    removeReadByEveryone(folderId, queryStringParams?, restHandlerOptions?) {
+    removeReadByEveryone(folderId, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/folders/${folderId}/readByEveryone`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
-    updateReadByEveryone(folderId, data?, restHandlerOptions?) {
+    updateReadByEveryone(folderId, data?, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/folders/${folderId}/readByEveryone`;
         return this.simplePut(url, data, restHandlerOptions);
     }

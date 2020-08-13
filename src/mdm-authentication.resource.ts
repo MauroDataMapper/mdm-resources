@@ -17,7 +17,7 @@ SPDX-License-Identifier: Apache-2.0
 */
 import { MdmResource } from './mdm-resource';
 import { MdmResourcesConfiguration } from './mdm-resources-configuration';
-import { IMdmRestHandler, DefaultMdmRestHandler } from './mdm-rest-handler';
+import { IMdmRestHandler, DefaultMdmRestHandler, IMdmRestHandlerOptions, IMdmQueryStringParams } from './mdm-rest-handler';
 import { MdmSecurityResource } from './mdm-security.resource';
 import { MdmSessionResource } from './mdm-session.resource';
 
@@ -32,23 +32,15 @@ export class MdmAuthenticationResource extends MdmResource {
         this.sesisonResource = new MdmSessionResource(resourcesConfig, restHandler);
     }
 
-    login(data, restHandlerOptions?) {
+    login(data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
         return this.securityResource.login(data, restHandlerOptions);
     }
 
-    logout(queryStringParams?, restHandlerOptions?) {
+    logout(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         return this.securityResource.logout(queryStringParams, restHandlerOptions);
     }
 
-    isAuthenticated(sessionId?, queryStringParams?, restHandlerOptions?) {
+    isAuthenticated(sessionId?, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         this.sesisonResource.isAuthenticated(sessionId, queryStringParams, restHandlerOptions);
     }
-
-    // get(action) {
-    //     return this.getResource('authentication', null, action, null);
-    // }
-
-    // post(action, options?, more?) {
-    //     return this.postResource('authentication', null, action, options, more);
-    // }
 }
