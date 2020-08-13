@@ -1,4 +1,5 @@
 import { MdmResource } from './mdm-resource';
+import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handler';
 /**
  * Controller: dataElement
  |   GET    | /api/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/${dataElementId}/suggestLinks/${otherDataModelId}             | Action: suggestLinks
@@ -11,12 +12,12 @@ import { MdmResource } from './mdm-resource';
  |   POST   | /api/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/${otherDataModelId}/${otherDataClassId}/${dataElementId}      | Action: copyDataElement
  */
 export declare class MdmDataElementResource extends MdmResource {
-    suggestLinks(dataModelId: any, dataClassId: any, dataElementId: any, otherDataModelId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    save(dataModelId: any, dataClassId: any, data: any, restHandlerOptions?: any): any;
-    list(dataModelId: any, dataClassId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    listWithDataType(dataModelId: any, dataTypeId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    remove(dataModelId: any, dataClassId: any, dataElementId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    update(dataModelId: any, dataClassId: any, dataElementId: any, data: any, restHandlerOptions?: any): any;
-    get(dataModelId: any, dataClassId: any, dataElementId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    copyDataElement(dataModelId: any, dataClassId: any, otherDataModelId: any, otherDataClassId: any, dataElementId: any, data: any, restHandlerOptions?: any): any;
+    suggestLinks(dataModelId: any, dataClassId: any, dataElementId: any, otherDataModelId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    save(dataModelId: any, dataClassId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    list(dataModelId: any, dataClassId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    listWithDataType(dataModelId: any, dataTypeId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    remove(dataModelId: any, dataClassId: any, dataElementId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    update(dataModelId: any, dataClassId: any, dataElementId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    get(dataModelId: any, dataClassId: any, dataElementId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    copyDataElement(dataModelId: any, dataClassId: any, otherDataModelId: any, otherDataClassId: any, dataElementId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
 }

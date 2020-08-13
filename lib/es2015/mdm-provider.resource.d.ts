@@ -1,4 +1,5 @@
 import { MdmResource } from './mdm-resource';
+import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handler';
 /**
  * Controller: mauroDataMapperServiceProvider
  |   GET    | /api/admin/providers/exporters                                                                        | Action: exporterProviders
@@ -7,8 +8,8 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/admin/providers/importers                                                                        | Action: importerProviders
  */
 export declare class MdmProviderResource extends MdmResource {
-    exporters(queryStringParams?: any, restHandlerOptions?: any): any;
-    emailers(queryStringParams?: any, restHandlerOptions?: any): any;
-    dataLoaders(queryStringParams?: any, restHandlerOptions?: any): any;
-    importers(queryStringParams?: any, restHandlerOptions?: any): any;
+    exporters(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    emailers(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    dataLoaders(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    importers(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
 }

@@ -1,4 +1,5 @@
 import { MdmResource } from './mdm-resource';
+import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handler';
 /**
  * Controller: userGroup
  |   GET    | /api/admin/applicationGroupRoles/${applicationGroupRoleId}/userGroups                                               | Action: index
@@ -28,27 +29,27 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/userGroups/${userGroupId}/securableResourceGroupRoles/${id}                                                    | Action: show
  */
 export declare class MdmUserGroupsResource extends MdmResource {
-    listInApplicationGroupRole(applicationGroupRoleId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    removeFromApplicationGroupRole(applicationGroupRoleId: any, userGroupId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    updateInApplicationGroupRole(applicationGroupRoleId: any, userGroupId: any, data: any, restHandlerOptions?: any): any;
-    removeUserFromUserGroup(userGroupId: any, catalogueUserId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    updateUserInUserGroup(userGroupId: any, catalogueUserId: any, data: any, restHandlerOptions?: any): any;
-    save(data: any, restHandlerOptions?: any): any;
-    list(queryStringParams?: any, restHandlerOptions?: any): any;
-    remove(userGroupId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    update(userGroupId: any, data: any, restHandlerOptions?: any): any;
-    get(userGroupId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    listInSecurableResourceUserGroupRole(securableResourceDomainType: any, securableResourceId: any, groupRoleId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    removeUserFromContainerUserGroup(containerDomainType: any, containerId: any, userGroupId: any, catalogueUserId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    updateUserFromContainerUserGroup(containerDomainType: any, containerId: any, userGroupId: any, catalogueUserId: any, data: any, restHandlerOptions?: any): any;
-    addToContainer(containerDomainType: any, containerId: any, data: any, restHandlerOptions?: any): any;
-    listInContainer(containerDomainType: any, containerId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    removeFromContainer(containerDomainType: any, containerId: any, userGroupId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    updateInContainer(containerDomainType: any, containerId: any, userGroupId: any, data: any, restHandlerOptions?: any): any;
-    getFromContainer(containerDomainType: any, containerId: any, userGroupId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    addSecurableResourceGroupRole(userGroupId: any, data: any, restHandlerOptions?: any): any;
-    securableResourceGroupRoles(userGroupId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    removeSecurableResourceGroupRole(userGroupId: any, securableResourceGroupRoleId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    updateSecurableResourceGroupRole(userGroupId: any, securableResourceGroupRoleId: any, data: any, restHandlerOptions?: any): any;
-    getSecurableResourceGroupRole(userGroupId: any, securableResourceGroupRoleId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    listInApplicationGroupRole(applicationGroupRoleId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    removeFromApplicationGroupRole(applicationGroupRoleId: any, userGroupId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    updateInApplicationGroupRole(applicationGroupRoleId: any, userGroupId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    removeUserFromUserGroup(userGroupId: any, catalogueUserId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    updateUserInUserGroup(userGroupId: any, catalogueUserId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    save(data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    list(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    remove(userGroupId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    update(userGroupId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    get(userGroupId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    listInSecurableResourceUserGroupRole(securableResourceDomainType: any, securableResourceId: any, groupRoleId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    removeUserFromContainerUserGroup(containerDomainType: any, containerId: any, userGroupId: any, catalogueUserId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    updateUserFromContainerUserGroup(containerDomainType: any, containerId: any, userGroupId: any, catalogueUserId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    addToContainer(containerDomainType: any, containerId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    listInContainer(containerDomainType: any, containerId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    removeFromContainer(containerDomainType: any, containerId: any, userGroupId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    updateInContainer(containerDomainType: any, containerId: any, userGroupId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    getFromContainer(containerDomainType: any, containerId: any, userGroupId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    addSecurableResourceGroupRole(userGroupId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    securableResourceGroupRoles(userGroupId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    removeSecurableResourceGroupRole(userGroupId: any, securableResourceGroupRoleId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    updateSecurableResourceGroupRole(userGroupId: any, securableResourceGroupRoleId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    getSecurableResourceGroupRole(userGroupId: any, securableResourceGroupRoleId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
 }

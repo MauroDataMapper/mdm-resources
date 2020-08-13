@@ -1,4 +1,5 @@
 import { MdmResource } from './mdm-resource';
+import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handler';
 /**
  * Controller: dataModel
  |   GET    | /api/dataModels/providers/defaultDataTypeProviders                                                                                   | Action: defaultDataTypeProviders
@@ -33,33 +34,33 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/dataModels/${id}                                                                                                                | Action: show
  */
 export declare class MdmDataModelResource extends MdmResource {
-    defaultDataTypes(queryStringParams?: any, restHandlerOptions?: any): any;
-    importers(queryStringParams?: any, restHandlerOptions?: any): any;
-    exporters(queryStringParams?: any, restHandlerOptions?: any): any;
-    types(queryStringParams?: any, restHandlerOptions?: any): any;
-    importModels(importerNamespace: any, importerName: any, importerVersion: any, data: any, restHandlerOptions?: any): any;
-    exportModels(exporterNamespace: any, exporterName: any, exporterVersion: any, data: any, restHandlerOptions?: any): any;
-    removeAllUnusedDataClasses(dataModelId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    removeAllUnusedDataTypes(dataModelId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    listInFolder(folderId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    removeReadByAuthenticated(dataModelId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    updateReadByAuthenticated(dataModelId: any, data: any, restHandlerOptions?: any): any;
-    removeReadByEveryone(dataModelId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    updateReadByEveryone(dataModelId: any, data: any, restHandlerOptions?: any): any;
-    search(dataModelId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    hierarchy(dataModelId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    newModelVersion(dataModelId: any, data: any, restHandlerOptions?: any): any;
-    newDocumentationVersion(dataModelId: any, data: any, restHandlerOptions?: any): any;
-    finalise(dataModelId: any, data: any, restHandlerOptions?: any): any;
-    addToFolder(folderId: any, data: any, restHandlerOptions?: any): any;
-    updateDataModelInFolder(folderId: any, dataModelId: any, data: any, restHandlerOptions?: any): any;
-    updateFolderWithDataModel(dataModelId: any, folderId: any, data: any, restHandlerOptions?: any): any;
-    suggestLinks(dataModelId: any, otherModelId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    diff(dataModelId: any, otherModelId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    exportModel(dataModelId: any, exporterNamespace: any, exporterName: any, exporterVersion: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    list(queryStringParams?: any, restHandlerOptions?: any): any;
-    removeAll(queryStringParams?: any, restHandlerOptions?: any): any;
-    remove(dataModelId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    update(dataModelId: any, data: any, restHandlerOptions?: any): any;
-    get(dataModelId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    defaultDataTypes(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    importers(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    exporters(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    types(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    importModels(importerNamespace: any, importerName: any, importerVersion: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    exportModels(exporterNamespace: any, exporterName: any, exporterVersion: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    removeAllUnusedDataClasses(dataModelId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    removeAllUnusedDataTypes(dataModelId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    listInFolder(folderId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    removeReadByAuthenticated(dataModelId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    updateReadByAuthenticated(dataModelId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    removeReadByEveryone(dataModelId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    updateReadByEveryone(dataModelId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    search(dataModelId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    hierarchy(dataModelId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    newModelVersion(dataModelId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    newDocumentationVersion(dataModelId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    finalise(dataModelId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    addToFolder(folderId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    updateDataModelInFolder(folderId: any, dataModelId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    updateFolderWithDataModel(dataModelId: any, folderId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    suggestLinks(dataModelId: any, otherModelId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    diff(dataModelId: any, otherModelId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    exportModel(dataModelId: any, exporterNamespace: any, exporterName: any, exporterVersion: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    list(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    removeAll(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    remove(dataModelId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    update(dataModelId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    get(dataModelId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
 }

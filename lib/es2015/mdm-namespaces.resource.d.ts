@@ -1,8 +1,9 @@
 import { MdmResource } from './mdm-resource';
+import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handler';
 /**
  * Controller: metadata
  |   GET    | /api/metadata/namespaces/${id}?                                                                       | Action: namespaces
  */
 export declare class MdmNamespacesResource extends MdmResource {
-    get(metadataId?: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    get(metadataId?: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
 }

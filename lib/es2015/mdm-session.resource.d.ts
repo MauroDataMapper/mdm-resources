@@ -1,4 +1,5 @@
 import { MdmResource } from './mdm-resource';
+import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handler';
 /**
  * Controller: session
  |   GET    | /api/session/keepAlive                                                                                | Action: keepAlive
@@ -6,8 +7,8 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/session/isAuthenticated/${sesssionId}?                                                           | Action: isAuthenticatedSession
  */
 export declare class MdmSessionResource extends MdmResource {
-    keepAlive(queryStringParams?: any, restHandlerOptions?: any): any;
-    activeSessions(queryStringParams?: any, restHandlerOptions?: any): any;
-    isAuthenticated(sessionId?: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    isApplicationAdministration(queryStringParams?: any, restHandlerOptions?: any): any;
+    keepAlive(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    activeSessions(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    isAuthenticated(sessionId?: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    isApplicationAdministration(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
 }

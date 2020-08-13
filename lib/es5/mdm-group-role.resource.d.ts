@@ -1,4 +1,5 @@
 import { MdmResource } from './mdm-resource';
+import { IMdmRestHandlerOptions, IMdmQueryStringParams } from './mdm-rest-handler';
 /**
  * Controller: groupRole
  |   POST   | /api/admin/groupRoles                                                                                               | Action: save
@@ -10,11 +11,11 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/${securableResourceDomainType}/${securableResourceId}/groupRoles                                               | Action: listGroupRolesAvailableToSecurableResource
  */
 export declare class MdmGroupRoleResource extends MdmResource {
-    save(data: any, restHandlerOptions?: any): any;
-    list(queryStringParams?: any, restHandlerOptions?: any): any;
-    applicationGroupRoles(queryStringParams?: any, restHandlerOptions?: any): any;
-    remove(groupRoleId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    update(groupRoleId: any, data: any, restHandlerOptions?: any): any;
-    get(groupRoleId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    listForSecurableResource(securableResourceDomainType: any, securableResourceId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    save(data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    list(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    applicationGroupRoles(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    remove(groupRoleId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    update(groupRoleId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    get(groupRoleId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    listForSecurableResource(securableResourceDomainType: any, securableResourceId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
 }

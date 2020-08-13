@@ -1,4 +1,5 @@
 import { MdmResource } from './mdm-resource';
+import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handler';
 /**
  * Controller: codeSet
  |   GET    | /api/codeSets/providers/importers                                                                          | Action: importerProviders                       |
@@ -27,28 +28,28 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/codeSets/${id}                                                                                        | Action: show
  */
 export declare class MdmCodeSetResource extends MdmResource {
-    importers(queryStringParams?: any, restHandlerOptions?: any): any;
-    exporters(queryStringParams?: any, restHandlerOptions?: any): any;
-    importModels(namespace: any, name: any, version: any, data: any, restHandlerOptions?: any): any;
-    exportModels(namespace: any, name: any, version: any, data: any, restHandlerOptions?: any): any;
-    newModelVersion(codeSetId: any, data: any, restHandlerOptions?: any): any;
-    newDocumentationVersion(codeSetId: any, data: any, restHandlerOptions?: any): any;
-    finalise(codeSetId: any, data?: any, restHandlerOptions?: any): any;
-    addCodeSetsToFolder(folderId: any, data: any, restHandlerOptions?: any): any;
-    listCodeSetsInFolder(folderId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    removeTerm(codeSetId: any, termId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    alterTerm(codeSetId: any, termId: any, data: any, restHandlerOptions?: any): any;
-    alterFolder(codeSetId: any, folderId: any, data: any, restHandlerOptions?: any): any;
-    diff(codeSetId: any, otherModelId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    exportModel(codeSetId: any, exporterNamespace: any, exporterName: any, exporterVersion: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    list(queryStringParams?: any, restHandlerOptions?: any): any;
-    removeAll(queryStringParams?: any, restHandlerOptions?: any): any;
-    remove(codeSetId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    update(codeSetId: any, data: any, restHandlerOptions?: any): any;
-    get(codeSetId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    terms(codeSetId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    removeReadByAuthenticated(codeSetId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    updateReadByAuthenticated(codeSetId: any, data?: any, restHandlerOptions?: any): any;
-    removeReadByEveryone(codeSetId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    updateReadByEveryone(codeSetId: any, data?: any, restHandlerOptions?: any): any;
+    importers(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    exporters(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    importModels(namespace: any, name: any, version: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    exportModels(namespace: any, name: any, version: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    newModelVersion(codeSetId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    newDocumentationVersion(codeSetId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    finalise(codeSetId: any, data?: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    addCodeSetsToFolder(folderId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    listCodeSetsInFolder(folderId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    removeTerm(codeSetId: any, termId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    alterTerm(codeSetId: any, termId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    alterFolder(codeSetId: any, folderId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    diff(codeSetId: any, otherModelId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    exportModel(codeSetId: any, exporterNamespace: any, exporterName: any, exporterVersion: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    list(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    removeAll(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    remove(codeSetId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    update(codeSetId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    get(codeSetId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    terms(codeSetId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    removeReadByAuthenticated(codeSetId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    updateReadByAuthenticated(codeSetId: any, data?: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    removeReadByEveryone(codeSetId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    updateReadByEveryone(codeSetId: any, data?: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
 }

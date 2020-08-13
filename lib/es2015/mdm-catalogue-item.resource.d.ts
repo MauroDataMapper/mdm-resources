@@ -1,4 +1,5 @@
 import { MdmResource } from './mdm-resource';
+import { IMdmRestHandlerOptions, IMdmQueryStringParams } from './mdm-rest-handler';
 /**
  * Controller: annotation
  |   POST   | /api/${catalogueItemDomainType}/${catalogueItemId}/annotations/${annotationId}/annotations            | Action: save
@@ -43,33 +44,33 @@ import { MdmResource } from './mdm-resource';
 
  */
 export declare class MdmCatalogueItemResource extends MdmResource {
-    search(data: any, restHandlerOptions?: any): any;
-    searchByGet(queryStringParams?: any, restHandlerOptions?: any): any;
-    saveAnnotations(catalogueItemDomainType: any, catalogueItemId: any, data: any, restHandlerOptions?: any): any;
-    saveAnnotationChildren(catalogueItemDomainType: any, catalogueItemId: any, annotationId: any, data: any, restHandlerOptions?: any): any;
-    listAnnotations(catalogueItemDomainType: any, catalogueItemId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    listAnnotationChildren(catalogueItemDomainType: any, catalogueItemId: any, annotationId?: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    removeAnnotation(catalogueItemDomainType: any, catalogueItemId: any, annotationId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    removeAnnotationChild(catalogueItemDomainType: any, catalogueItemId: any, annotationId: any, childId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    getAnnotation(catalogueItemDomainType: any, catalogueItemId: any, annotationId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    getAnnotationChild(catalogueItemDomainType: any, catalogueItemId: any, annotationId: any, childId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    saveClassifiers(catalogueItemDomainType: any, catalogueItemId: any, data: any, restHandlerOptions?: any): any;
-    listClassifiers(catalogueItemDomainType: any, catalogueItemId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    removeClassifier(catalogueItemDomainType: any, catalogueItemId: any, classifierId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    getClassifier(catalogueItemDomainType: any, catalogueItemId: any, classifierId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    saveMetadata(catalogueItemDomainType: any, catalogueItemId: any, data: any, restHandlerOptions?: any): any;
-    listMetadata(catalogueItemDomainType: any, catalogueItemId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    removeMetadata(catalogueItemDomainType: any, catalogueItemId: any, metadataId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    updateMetadata(catalogueItemDomainType: any, catalogueItemId: any, metadataId: any, data: any, restHandlerOptions?: any): any;
-    getMetadata(catalogueItemDomainType: any, catalogueItemId: any, metadataId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    saveReferenceFiles(catalogueItemDomainType: any, catalogueItemId: any, data: any, restHandlerOptions?: any): any;
-    listReferenceFiles(catalogueItemDomainType: any, catalogueItemId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    removeReferenceFile(catalogueItemDomainType: any, catalogueItemId: any, referenceFileId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    updateReferenceFile(catalogueItemDomainType: any, catalogueItemId: any, referenceFileId: any, data: any, restHandlerOptions?: any): any;
-    getReferenceFile(catalogueItemDomainType: any, catalogueItemId: any, referenceFileId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    saveSemanticLinks(catalogueItemDomainType: any, catalogueItemId: any, data: any, restHandlerOptions?: any): any;
-    listSemanticLinks(catalogueItemDomainType: any, catalogueItemId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    removeSemanticLink(catalogueItemDomainType: any, catalogueItemId: any, semanticLinkId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    updateSemanticLink(catalogueItemDomainType: any, catalogueItemId: any, semanticLinkId: any, data: any, restHandlerOptions?: any): any;
-    getSemanticLink(catalogueItemDomainType: any, catalogueItemId: any, semanticLinkId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    search(data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    searchByGet(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    saveAnnotations(catalogueItemDomainType: any, catalogueItemId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    saveAnnotationChildren(catalogueItemDomainType: any, catalogueItemId: any, annotationId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    listAnnotations(catalogueItemDomainType: any, catalogueItemId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    listAnnotationChildren(catalogueItemDomainType: any, catalogueItemId: any, annotationId?: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    removeAnnotation(catalogueItemDomainType: any, catalogueItemId: any, annotationId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    removeAnnotationChild(catalogueItemDomainType: any, catalogueItemId: any, annotationId: any, childId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    getAnnotation(catalogueItemDomainType: any, catalogueItemId: any, annotationId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    getAnnotationChild(catalogueItemDomainType: any, catalogueItemId: any, annotationId: any, childId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    saveClassifiers(catalogueItemDomainType: any, catalogueItemId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    listClassifiers(catalogueItemDomainType: any, catalogueItemId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    removeClassifier(catalogueItemDomainType: any, catalogueItemId: any, classifierId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    getClassifier(catalogueItemDomainType: any, catalogueItemId: any, classifierId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    saveMetadata(catalogueItemDomainType: any, catalogueItemId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    listMetadata(catalogueItemDomainType: any, catalogueItemId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    removeMetadata(catalogueItemDomainType: any, catalogueItemId: any, metadataId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    updateMetadata(catalogueItemDomainType: any, catalogueItemId: any, metadataId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    getMetadata(catalogueItemDomainType: any, catalogueItemId: any, metadataId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    saveReferenceFiles(catalogueItemDomainType: any, catalogueItemId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    listReferenceFiles(catalogueItemDomainType: any, catalogueItemId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    removeReferenceFile(catalogueItemDomainType: any, catalogueItemId: any, referenceFileId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    updateReferenceFile(catalogueItemDomainType: any, catalogueItemId: any, referenceFileId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    getReferenceFile(catalogueItemDomainType: any, catalogueItemId: any, referenceFileId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    saveSemanticLinks(catalogueItemDomainType: any, catalogueItemId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    listSemanticLinks(catalogueItemDomainType: any, catalogueItemId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    removeSemanticLink(catalogueItemDomainType: any, catalogueItemId: any, semanticLinkId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    updateSemanticLink(catalogueItemDomainType: any, catalogueItemId: any, semanticLinkId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    getSemanticLink(catalogueItemDomainType: any, catalogueItemId: any, semanticLinkId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
 }

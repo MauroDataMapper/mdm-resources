@@ -1,4 +1,5 @@
 import { MdmResource } from './mdm-resource';
+import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handler';
 /**
  * Controller: metadata
  |   GET    | /api/metadata/namespaces/${id}?                                                                       | Action: namespaces
@@ -9,10 +10,10 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/${catalogueItemDomainType}/${catalogueItemId}/metadata/${id}                                     | Action: show
  */
 export declare class MdmMetadataResource extends MdmResource {
-    namespaces(metadataId?: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    save(catalogueItemDomainType: any, catalogueItemId: any, data: any, restHandlerOptions?: any): any;
-    list(catalogueItemDomainType: any, catalogueItemId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    remove(catalogueItemDomainType: any, catalogueItemId: any, metadataId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    update(catalogueItemDomainType: any, catalogueItemId: any, metadataId: any, data: any, restHandlerOptions?: any): any;
-    get(catalogueItemDomainType: any, catalogueItemId: any, metadataId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    namespaces(metadataId?: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    save(catalogueItemDomainType: any, catalogueItemId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    list(catalogueItemDomainType: any, catalogueItemId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    remove(catalogueItemDomainType: any, catalogueItemId: any, metadataId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    update(catalogueItemDomainType: any, catalogueItemId: any, metadataId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    get(catalogueItemDomainType: any, catalogueItemId: any, metadataId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
 }

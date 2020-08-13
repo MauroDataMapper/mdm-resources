@@ -1,8 +1,9 @@
 import { MdmResource } from './mdm-resource';
+import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handler';
 /**
  * Controller: userImageFile
  |   GET    | /api/userImageFiles/${id}                                                                             | Action: show
  */
 export declare class MdmUserImageFileResource extends MdmResource {
-    get(userId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    get(userId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
 }

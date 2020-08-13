@@ -1,4 +1,5 @@
 import { MdmResource } from './mdm-resource';
+import { IMdmRestHandlerOptions, IMdmQueryStringParams } from './mdm-rest-handler';
 /**
  * Controller: dataClass
  |   POST   | /api/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataClasses                                                                | Action: save
@@ -20,19 +21,19 @@ import { MdmResource } from './mdm-resource';
 
  */
 export declare class MdmDataClassResource extends MdmResource {
-    addChildDataClass(dataModelId: any, dataClassId: any, data: any, restHandlerOptions?: any): any;
-    listChildDataClasses(dataModelId: any, dataClassId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    search(dataModelId: any, dataClassId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    content(dataModelId: any, dataClassId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    removeChildDataClass(dataModelId: any, dataClassId: any, childDataClassId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    updateChildDataClass(dataModelId: any, dataClassId: any, childDataClassId: any, data: any, restHandlerOptions?: any): any;
-    getChildDataClass(dataModelId: any, dataClassId: any, childDataClassId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    copyChildDataClass(dataModelId: any, dataClassId: any, otherDataModelId: any, otherDataClassId: any, data: any, restHandlerOptions?: any): any;
-    save(dataModelId: any, data: any, restHandlerOptions?: any): any;
-    list(dataModelId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    all(dataModelId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    remove(dataModelId: any, dataClassId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    update(dataModelId: any, dataClassId: any, data: any, restHandlerOptions?: any): any;
-    get(dataModelId: any, dataClassId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    copyDataClass(dataModelId: any, otherDataModelId: any, otherDataClassId: any, data: any, restHandlerOptions?: any): any;
+    addChildDataClass(dataModelId: any, dataClassId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    listChildDataClasses(dataModelId: any, dataClassId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    search(dataModelId: any, dataClassId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    content(dataModelId: any, dataClassId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    removeChildDataClass(dataModelId: any, dataClassId: any, childDataClassId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    updateChildDataClass(dataModelId: any, dataClassId: any, childDataClassId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    getChildDataClass(dataModelId: any, dataClassId: any, childDataClassId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    copyChildDataClass(dataModelId: any, dataClassId: any, otherDataModelId: any, otherDataClassId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    save(dataModelId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    list(dataModelId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    all(dataModelId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    remove(dataModelId: any, dataClassId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    update(dataModelId: any, dataClassId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    get(dataModelId: any, dataClassId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    copyDataClass(dataModelId: any, otherDataModelId: any, otherDataClassId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
 }

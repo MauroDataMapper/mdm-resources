@@ -1,4 +1,5 @@
 import { MdmResource } from './mdm-resource';
+import { IMdmRestHandlerOptions, IMdmQueryStringParams } from './mdm-rest-handler';
 /**
  * Controller: dataElementComponent
  |   POST   | /api/dataModels/${dataModelId}/dataFlows/${dataFlowId}/dataClassComponents/${dataClassComponentId}/dataElementComponents                                                         | Action: save
@@ -10,11 +11,11 @@ import { MdmResource } from './mdm-resource';
  |   PUT    | /api/dataModels/${dataModelId}/dataFlows/${dataFlowId}/dataClassComponents/${dataClassComponentId}/dataElementComponents/${dataElementComponentId}/${type}/${dataElementId}      | Action: alterDataElements
  */
 export declare class MdmDataElementComponentResource extends MdmResource {
-    save(dataModelId: any, dataFlowId: any, dataClassComponentId: any, data: any, restHandlerOptions?: any): any;
-    list(dataModelId: any, dataFlowId: any, dataClassComponentId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    remove(dataModelId: any, dataFlowId: any, dataClassComponentId: any, dataElementComponentId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    update(dataModelId: any, dataFlowId: any, dataClassComponentId: any, dataElementComponentId: any, data: any, restHandlerOptions?: any): any;
-    get(dataModelId: any, dataFlowId: any, dataClassComponentId: any, dataElementComponentId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    removeDataElement(dataModelId: any, dataFlowId: any, dataClassComponentId: any, dataElementComponentId: any, type: any, dataElementId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    updateDataElement(dataModelId: any, dataFlowId: any, dataClassComponentId: any, dataElementComponentId: any, type: any, dataElementId: any, data: any, restHandlerOptions?: any): any;
+    save(dataModelId: any, dataFlowId: any, dataClassComponentId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    list(dataModelId: any, dataFlowId: any, dataClassComponentId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    remove(dataModelId: any, dataFlowId: any, dataClassComponentId: any, dataElementComponentId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    update(dataModelId: any, dataFlowId: any, dataClassComponentId: any, dataElementComponentId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    get(dataModelId: any, dataFlowId: any, dataClassComponentId: any, dataElementComponentId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    removeDataElement(dataModelId: any, dataFlowId: any, dataClassComponentId: any, dataElementComponentId: any, type: any, dataElementId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    updateDataElement(dataModelId: any, dataFlowId: any, dataClassComponentId: any, dataElementComponentId: any, type: any, dataElementId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
 }

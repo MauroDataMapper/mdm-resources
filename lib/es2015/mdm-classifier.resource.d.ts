@@ -1,4 +1,5 @@
 import { MdmResource } from './mdm-resource';
+import { IMdmRestHandlerOptions, IMdmQueryStringParams } from './mdm-rest-handler';
 /**
  * Controller: classifier
  |   POST   | /api/classifiers/${classifierId}/classifiers                                                          | Action: save
@@ -22,23 +23,23 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/${catalogueItemDomainType}/${catalogueItemId}/classifiers/${id}                                  | Action: show
  */
 export declare class MdmClassifierResource extends MdmResource {
-    save(data: any, restHandlerOptions?: any): any;
-    saveChildrenOf(classifierId: any, data: any, restHandlerOptions?: any): any;
-    addToCatalogueItem(catalogueItemDomainType: any, catalogueItemId: any, data: any, restHandlerOptions?: any): any;
-    list(queryStringParams?: any, restHandlerOptions?: any): any;
-    listChildrenOf(classifierId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    listCatalogueItemsFor(classifierId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    listForCatalogueItem(catalogueItemDomainType: any, catalogueItemId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    remove(classifierId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    removeChildOf(classifierId: any, childId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    removeFromCatalogueItem(catalogueItemDomainType: any, catalogueItemId: any, classifierId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    update(classifierId: any, data: any, restHandlerOptions?: any): any;
-    updateChildOf(classifierId: any, childId: any, data: any, restHandlerOptions?: any): any;
-    get(classifierId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    getChildOf(classifierId: any, childId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    getFromCatalogueItem(catalogueItemDomainType: any, catalogueItemId: any, classifierId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    removeReadByAuthenticated(classifierId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    updateReadByAuthenticated(classifierId: any, data?: any, restHandlerOptions?: any): any;
-    removeReadByEveryone(classifierId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    updateReadByEveryone(classifierId: any, data?: any, restHandlerOptions?: any): any;
+    save(data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    saveChildrenOf(classifierId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    addToCatalogueItem(catalogueItemDomainType: any, catalogueItemId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    list(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    listChildrenOf(classifierId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    listCatalogueItemsFor(classifierId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    listForCatalogueItem(catalogueItemDomainType: any, catalogueItemId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    remove(classifierId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    removeChildOf(classifierId: any, childId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    removeFromCatalogueItem(catalogueItemDomainType: any, catalogueItemId: any, classifierId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    update(classifierId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    updateChildOf(classifierId: any, childId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    get(classifierId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    getChildOf(classifierId: any, childId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    getFromCatalogueItem(catalogueItemDomainType: any, catalogueItemId: any, classifierId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    removeReadByAuthenticated(classifierId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    updateReadByAuthenticated(classifierId: any, data?: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    removeReadByEveryone(classifierId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    updateReadByEveryone(classifierId: any, data?: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
 }

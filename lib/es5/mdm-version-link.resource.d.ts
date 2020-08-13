@@ -1,4 +1,5 @@
 import { MdmResource } from './mdm-resource';
+import { IMdmRestHandlerOptions, IMdmQueryStringParams } from './mdm-rest-handler';
 /**
  * Controller: versionLink
  |   POST   | /api/${modelDomainType}/${modelId}/versionLinks                                                       | Action: save
@@ -8,9 +9,9 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/${modelDomainType}/${modelId}/versionLinks/${id}                                                 | Action: show
  */
 export declare class MdmVersionLinkResource extends MdmResource {
-    save(modelDomainType: any, modelId: any, data: any, restHandlerOptions?: any): any;
-    list(modelDomainType: any, modelId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    remove(modelDomainType: any, modelId: any, versionLinkId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    update(modelDomainType: any, modelId: any, versionLinkId: any, data: any, restHandlerOptions?: any): any;
-    get(modelDomainType: any, modelId: any, versionLinkId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    save(modelDomainType: any, modelId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    list(modelDomainType: any, modelId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    remove(modelDomainType: any, modelId: any, versionLinkId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    update(modelDomainType: any, modelId: any, versionLinkId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    get(modelDomainType: any, modelId: any, versionLinkId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
 }

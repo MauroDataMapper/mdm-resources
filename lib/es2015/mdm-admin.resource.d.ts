@@ -1,4 +1,5 @@
 import { MdmResource } from './mdm-resource';
+import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handler';
 /**
  * Controller: admin
  |   GET    | /api/admin/status                                                                                     | Action: status
@@ -21,14 +22,14 @@ import { MdmResource } from './mdm-resource';
  |   POST   | /api/admin/activeSessions                                                                             | Action: activeSessionsWithCredentials
  */
 export declare class MdmAdminResource extends MdmResource {
-    status(queryStringParams?: any, restHandlerOptions?: any): any;
-    editProperties(data: any, restHandlerOptions?: any): any;
-    rebuildLuceneIndexes(data: any, restHandlerOptions?: any): any;
-    properties(queryStringParams?: any, restHandlerOptions?: any): any;
-    modules(queryStringParams?: any, restHandlerOptions?: any): any;
-    deletedModels(containerDomainType: any, modelDomainType: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    modelSupersededModels(containerDomainType: any, modelDomainType: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    documentationSupersededModels(containerDomainType: any, modelDomainType: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    emails(queryStringParams?: any, restHandlerOptions?: any): any;
-    activeSessions(data: any, restHandlerOptions?: any): any;
+    status(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    editProperties(data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    rebuildLuceneIndexes(data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    properties(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    modules(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    deletedModels(containerDomainType: any, modelDomainType: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    modelSupersededModels(containerDomainType: any, modelDomainType: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    documentationSupersededModels(containerDomainType: any, modelDomainType: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    emails(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    activeSessions(data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
 }

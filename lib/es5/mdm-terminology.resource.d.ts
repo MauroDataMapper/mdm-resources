@@ -1,6 +1,6 @@
 import { MdmResource } from './mdm-resource';
 import { MdmResourcesConfiguration } from './mdm-resources-configuration';
-import { IMdmRestHandler } from './mdm-rest-handler';
+import { IMdmRestHandler, IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handler';
 import { MdmTermResource } from './mdm-term.resource';
 /**
  * Controller: terminology
@@ -32,26 +32,26 @@ export declare class MdmTerminologyResource extends MdmResource {
     private catalogueItem;
     terms: MdmTermResource;
     constructor(resourcesConfig?: MdmResourcesConfiguration, restHandler?: IMdmRestHandler);
-    importers(queryStringParams?: any, restHandlerOptions?: any): any;
-    exporters(queryStringParams?: any, restHandlerOptions?: any): any;
-    importModels(namespace: any, name: any, version: any, data: any, restHandlerOptions?: any): any;
-    exportModels(namespace: any, name: any, version: any, data: any, restHandlerOptions?: any): any;
-    newModelVersion(terminologyId: any, data: any, restHandlerOptions?: any): any;
-    newDocumentationVersion(terminologyId: any, data: any, restHandlerOptions?: any): any;
-    finalise(terminologyId: any, data: any, restHandlerOptions?: any): any;
-    tree(terminologyId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    alterFolder(terminologyId: any, folderId: any, data: any, restHandlerOptions?: any): any;
-    diff(terminologyId: any, otherModelId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    exportModel(terminologyId: any, exporterNamespace: any, exporterName: any, exporterVersion: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    list(queryStringParams?: any, restHandlerOptions?: any): any;
-    removeAll(queryStringParams?: any, restHandlerOptions?: any): any;
-    remove(terminologyId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    update(terminologyId: any, data: any, restHandlerOptions?: any): any;
-    get(terminologyId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    termRelationships(terminologyId: any, termRelationshipTypeId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    getTermRelationship(terminologyId: any, termRelationshipTypeId: any, termRelationshipId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    removeReadByAuthenticated(terminologyId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    updateReadByAuthenticated(terminologyId: any, data?: any, restHandlerOptions?: any): any;
-    removeReadByEveryone(terminologyId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    updateReadByEveryone(terminologyId: any, data?: any, restHandlerOptions?: any): any;
+    importers(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    exporters(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    importModels(namespace: any, name: any, version: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    exportModels(namespace: any, name: any, version: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    newModelVersion(terminologyId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    newDocumentationVersion(terminologyId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    finalise(terminologyId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    tree(terminologyId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    alterFolder(terminologyId: any, folderId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    diff(terminologyId: any, otherModelId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    exportModel(terminologyId: any, exporterNamespace: any, exporterName: any, exporterVersion: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    list(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    removeAll(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    remove(terminologyId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    update(terminologyId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    get(terminologyId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    termRelationships(terminologyId: any, termRelationshipTypeId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    getTermRelationship(terminologyId: any, termRelationshipTypeId: any, termRelationshipId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    removeReadByAuthenticated(terminologyId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    updateReadByAuthenticated(terminologyId: any, data?: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    removeReadByEveryone(terminologyId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    updateReadByEveryone(terminologyId: any, data?: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
 }

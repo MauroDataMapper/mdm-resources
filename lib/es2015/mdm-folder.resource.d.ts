@@ -1,4 +1,5 @@
 import { MdmResource } from './mdm-resource';
+import { IMdmRestHandlerOptions, IMdmQueryStringParams } from './mdm-rest-handler';
 /**
  * Controller: folder
  |   POST   | /api/folders/${folderId}/folders                                                                      | Action: save
@@ -19,26 +20,26 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/folders/${id}                                                                                    | Action: show
  */
 export declare class MdmFolderResource extends MdmResource {
-    search(folderId: any, data: any, restHandlerOptions?: any): any;
-    searchByGet(folderId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    save(data: any, restHandlerOptions?: any): any;
-    saveChildrenOf(folderId: any, data: any, restHandlerOptions?: any): any;
-    list(queryStringParams?: any, restHandlerOptions?: any): any;
-    listChildrenOf(folderId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    remove(folderId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    removeChildOf(folderId: any, childId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    update(folderId: any, data: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    updateChildOf(folderId: any, childId: any, data: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    get(folderId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    getChildOf(folderId: any, childId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    addCondeSets(folderId: any, data: any, restHandlerOptions?: any): any;
-    codeSets(folderId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    alterCodeSetFolder(codeSetId: any, folderId: any, data: any, restHandlerOptions?: any): any;
-    addTerminologies(folderId: any, data: any, restHandlerOptions?: any): any;
-    terminologies(folderId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    alterTerminologyFolder(terminologyId: any, folderId: any, data: any, restHandlerOptions?: any): any;
-    removeReadByAuthenticated(folderId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    updateReadByAuthenticated(folderId: any, data?: any, restHandlerOptions?: any): any;
-    removeReadByEveryone(folderId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    updateReadByEveryone(folderId: any, data?: any, restHandlerOptions?: any): any;
+    search(folderId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    searchByGet(folderId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    save(data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    saveChildrenOf(folderId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    list(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    listChildrenOf(folderId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    remove(folderId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    removeChildOf(folderId: any, childId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    update(folderId: any, data: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    updateChildOf(folderId: any, childId: any, data: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    get(folderId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    getChildOf(folderId: any, childId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    addCondeSets(folderId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    codeSets(folderId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    alterCodeSetFolder(codeSetId: any, folderId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    addTerminologies(folderId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    terminologies(folderId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    alterTerminologyFolder(terminologyId: any, folderId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    removeReadByAuthenticated(folderId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    updateReadByAuthenticated(folderId: any, data?: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    removeReadByEveryone(folderId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    updateReadByEveryone(folderId: any, data?: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
 }

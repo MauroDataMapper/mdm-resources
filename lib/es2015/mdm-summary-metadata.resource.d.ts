@@ -1,4 +1,5 @@
 import { MdmResource } from './mdm-resource';
+import { IMdmRestHandlerOptions, IMdmQueryStringParams } from './mdm-rest-handler';
 /**
  * Controller: summaryMetadata
  |   POST   | /api/${catalogueItemDomainType}/${catalogueItemId}/summaryMetadata                                                                   | Action: save
@@ -15,14 +16,14 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/${catalogueItemDomainType}/${catalogueItemId}/summaryMetadata/${summaryMetadataId}/summaryMetadataReports/${id}                 | Action: show
  */
 export declare class MdmSummaryMetadataResource extends MdmResource {
-    save(catalogueItemDomainType: any, catalogueItemId: any, data: any, restHandlerOptions?: any): any;
-    list(catalogueItemDomainType: any, catalogueItemId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    remove(catalogueItemDomainType: any, catalogueItemId: any, summaryMetadataId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    update(catalogueItemDomainType: any, catalogueItemId: any, summaryMetadataId: any, data: any, restHandlerOptions?: any): any;
-    get(catalogueItemDomainType: any, catalogueItemId: any, summaryMetadataId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    saveReport(catalogueItemDomainType: any, catalogueItemId: any, summaryMetadataId: any, data: any, restHandlerOptions?: any): any;
-    listReports(catalogueItemDomainType: any, catalogueItemId: any, summaryMetadataId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    removeReport(catalogueItemDomainType: any, catalogueItemId: any, summaryMetadataId: any, summaryMetadataReportId: any, queryStringParams?: any, restHandlerOptions?: any): any;
-    updateReport(catalogueItemDomainType: any, catalogueItemId: any, summaryMetadataId: any, summaryMetadataReportId: any, data: any, restHandlerOptions?: any): any;
-    getReport(catalogueItemDomainType: any, catalogueItemId: any, summaryMetadataId: any, summaryMetadataReportId: any, queryStringParams?: any, restHandlerOptions?: any): any;
+    save(catalogueItemDomainType: any, catalogueItemId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    list(catalogueItemDomainType: any, catalogueItemId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    remove(catalogueItemDomainType: any, catalogueItemId: any, summaryMetadataId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    update(catalogueItemDomainType: any, catalogueItemId: any, summaryMetadataId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    get(catalogueItemDomainType: any, catalogueItemId: any, summaryMetadataId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    saveReport(catalogueItemDomainType: any, catalogueItemId: any, summaryMetadataId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    listReports(catalogueItemDomainType: any, catalogueItemId: any, summaryMetadataId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    removeReport(catalogueItemDomainType: any, catalogueItemId: any, summaryMetadataId: any, summaryMetadataReportId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    updateReport(catalogueItemDomainType: any, catalogueItemId: any, summaryMetadataId: any, summaryMetadataReportId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    getReport(catalogueItemDomainType: any, catalogueItemId: any, summaryMetadataId: any, summaryMetadataReportId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
 }
