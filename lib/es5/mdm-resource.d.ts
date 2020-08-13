@@ -1,5 +1,5 @@
-import { IMdmRestHandler, IMdmRestHandlerOptions, IMdmQueryStringParams } from './mdm-rest-handler';
 import { MdmResourcesConfiguration } from './mdm-resources-configuration';
+import { IMdmQueryStringParams, IMdmRestHandler, IMdmRestHandlerOptions } from './mdm-rest-handler';
 export declare class MdmResource {
     private restHandler;
     private resourcesConfig;
@@ -11,4 +11,17 @@ export declare class MdmResource {
     simpleDelete(url: string, queryStringParams?: IMdmQueryStringParams, options?: IMdmRestHandlerOptions): any;
     simplePut(url: string, data: any, options?: IMdmRestHandlerOptions): any;
     simpleRequest(url: string, queryStringParams?: IMdmQueryStringParams, options?: IMdmRestHandlerOptions): any;
+}
+export declare enum ContainerDomainType {
+    CLASSIFIERS = "classifiers",
+    FOLDERS = "folders"
+}
+export declare enum ModelDomainType {
+    FOLDERS = "folders",
+    DATA_MODELS = "classifiers",
+    DATA_CLASSES = "dataClasses",
+    DATA_TYPES = "dataTypes",
+    TERMINOLOGIES = "terminologies",
+    TERMS = "terms",
+    ALL = "all"
 }

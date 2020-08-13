@@ -10,10 +10,10 @@ import { IMdmRestHandlerOptions, IMdmQueryStringParams } from './mdm-rest-handle
  |   POST   | /api/dataModels/${dataModelId}/dataTypes/${otherDataModelId}/${dataTypeId}                                                           | Action: copyDataType
  */
 export declare class MdmDataTypeResource extends MdmResource {
-    save(dataModelId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    list(dataModelId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    remove(dataModelId: any, dataTypeId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    update(dataModelId: any, dataTypeId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    get(dataModelId: any, dataTypeId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    copyDataType(dataModelId: any, otherDataModelId: any, dataTypeId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    save(dataModelId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    list(dataModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    remove(dataModelId: string, dataTypeId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    update(dataModelId: string, dataTypeId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    get(dataModelId: string, dataTypeId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    copyDataType(dataModelId: string, otherDataModelId: string, dataTypeId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
 }

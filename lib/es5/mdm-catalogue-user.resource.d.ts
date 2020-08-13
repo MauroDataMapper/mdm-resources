@@ -1,5 +1,5 @@
-import { MdmResource } from './mdm-resource';
-import { IMdmRestHandlerOptions, IMdmQueryStringParams } from './mdm-rest-handler';
+import { ContainerDomainType, MdmResource } from './mdm-resource';
+import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handler';
 /**
  * Controller: catalogueUser
  |   POST   | /api/admin/catalogueUsers/adminRegister                                                                             | Action: adminRegister
@@ -29,20 +29,20 @@ export declare class MdmCatalogueUserResource extends MdmResource {
     pendingCount(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
     pending(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
     exists(emailAddress: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    reject(catalogueUserId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    approve(catalogueUserId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    adminPasswordReset(catalogueUserId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    reject(catalogueUserId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    approve(catalogueUserId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    adminPasswordReset(catalogueUserId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
     search(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
     resetPasswordLink(emailAddress: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    resetPassword(catalogueUserId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    changePassword(catalogueUserId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    updateUserPreferences(catalogueUserId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    userPreferences(catalogueUserId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    listInUserGroup(userGroupId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    resetPassword(catalogueUserId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    changePassword(catalogueUserId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    updateUserPreferences(catalogueUserId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    userPreferences(catalogueUserId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    listInUserGroup(userGroupId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
     save(data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
     list(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    remove(catalogueUserId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    update(catalogueUserId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    get(catalogueUserId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    listInContainerUserGroup(containerDomainType: any, containerId: any, userGroupId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    remove(catalogueUserId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    update(catalogueUserId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    get(catalogueUserId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    listInContainerUserGroup(containerDomainType: string | ContainerDomainType, containerId: string, userGroupId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
 }

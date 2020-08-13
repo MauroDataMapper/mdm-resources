@@ -8,5 +8,5 @@ import { IMdmRestHandlerOptions, IMdmQueryStringParams } from './mdm-rest-handle
 export declare class MdmSecurityResource extends MdmResource {
     login(data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
     logout(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    permissions(securableResourceDomainType: any, securableResourceId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    permissions(securableResourceDomainType: any, securableResourceId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
 }

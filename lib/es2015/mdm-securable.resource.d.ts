@@ -12,12 +12,12 @@ import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handle
  |   GET    | /api/${securableResourceDomainType}/${securableResourceId}/groupRoles/${groupRoleId}                                | Action: index
  */
 export declare class MdmSecurableResource extends MdmResource {
-    removeUserGroupFromSecurableResourceGroupRole(securableResourceDomainType: any, securableResourceId: any, groupRoleId: any, userGroupId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    addUserGroupToSecurableResourceGroupRole(securableResourceDomainType: any, securableResourceId: any, groupRoleId: any, userGroupId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    addSecurableResourceGroupRole(securableResourceDomainType: any, securableResourceId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    listSecurableResourceGroupRoles(securableResourceDomainType: any, securableResourceId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    removeSecurableResourceGroupRole(securableResourceDomainType: any, securableResourceId: any, securableResourceGroupRoleId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    updateSecurableResourceGroupRole(securableResourceDomainType: any, securableResourceId: any, securableResourceGroupRoleId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    getSecurableResourceGroupRole(securableResourceDomainType: any, securableResourceId: any, securableResourceGroupRoleId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    getGroupRoles(securableResourceDomainType: any, securableResourceId: any, groupRoleId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    removeUserGroupFromSecurableResourceGroupRole(securableResourceDomainType: any, securableResourceId: string, groupRoleId: string, userGroupId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    addUserGroupToSecurableResourceGroupRole(securableResourceDomainType: any, securableResourceId: string, groupRoleId: string, userGroupId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    addSecurableResourceGroupRole(securableResourceDomainType: any, securableResourceId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    listSecurableResourceGroupRoles(securableResourceDomainType: any, securableResourceId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    removeSecurableResourceGroupRole(securableResourceDomainType: any, securableResourceId: string, securableResourceGroupRoleId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    updateSecurableResourceGroupRole(securableResourceDomainType: any, securableResourceId: string, securableResourceGroupRoleId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    getSecurableResourceGroupRole(securableResourceDomainType: any, securableResourceId: string, securableResourceGroupRoleId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    getGroupRoles(securableResourceDomainType: any, securableResourceId: string, groupRoleId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
 }

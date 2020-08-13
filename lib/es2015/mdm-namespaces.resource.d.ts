@@ -5,5 +5,5 @@ import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handle
  |   GET    | /api/metadata/namespaces/${id}?                                                                       | Action: namespaces
  */
 export declare class MdmNamespacesResource extends MdmResource {
-    get(metadataId?: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    get(metadataId?: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
 }

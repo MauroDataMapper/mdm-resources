@@ -11,11 +11,11 @@ import { IMdmRestHandlerOptions, IMdmQueryStringParams } from './mdm-rest-handle
  |   PUT    | /api/dataModels/${dataModelId}/dataFlows/${dataFlowId}/dataClassComponents/${dataClassComponentId}/${type}/${dataClassId}                                                        | Action: alterDataClasses
  */
 export declare class MdmDataClassComponentResource extends MdmResource {
-    save(dataModelId: any, dataFlowId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    list(dataModelId: any, dataFlowId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    remove(dataModelId: any, dataFlowId: any, dataClassComponentId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    update(dataModelId: any, dataFlowId: any, dataClassComponentId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    get(dataModelId: any, dataFlowId: any, dataClassComponentId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    removeDataClass(dataModelId: any, dataFlowId: any, dataClassComponentId: any, type: any, dataClassId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    updateDataClass(dataModelId: any, dataFlowId: any, dataClassComponentId: any, type: any, dataClassId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    save(dataModelId: string, dataFlowId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    list(dataModelId: string, dataFlowId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    remove(dataModelId: string, dataFlowId: string, dataClassComponentId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    update(dataModelId: string, dataFlowId: string, dataClassComponentId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    get(dataModelId: string, dataFlowId: string, dataClassComponentId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    removeDataClass(dataModelId: string, dataFlowId: string, dataClassComponentId: string, type: any, dataClassId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    updateDataClass(dataModelId: string, dataFlowId: string, dataClassComponentId: string, type: any, dataClassId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
 }

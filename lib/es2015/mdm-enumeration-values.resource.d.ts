@@ -14,14 +14,14 @@ import { IMdmRestHandlerOptions, IMdmQueryStringParams } from './mdm-rest-handle
  |   GET    | /api/dataModels/${dataModelId}/dataTypes/${dataTypeId}/enumerationValues/${id}                                                       | Action: show
  */
 export declare class MdmEnumerationValuesResource extends MdmResource {
-    saveToEnumeratedType(dataModelId: any, enumerationTypeId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    listForEnumeratedType(dataModelId: any, enumerationTypeId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    saveToDataType(dataModelId: any, dataTypeId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    listForDataType(dataModelId: any, dataTypeId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    removeFromEnumeratedType(dataModelId: any, enumerationTypeId: any, enumerationValueId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    updateInEnumeratedType(dataModelId: any, enumerationTypeId: any, enumerationValueId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    getFromEnumeratedType(dataModelId: any, enumerationTypeId: any, enumerationValueId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    removeFromDataType(dataModelId: any, dataTypeId: any, enumerationValueId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    updateInDataType(dataModelId: any, dataTypeId: any, enumerationValueId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    getFromDataType(dataModelId: any, dataTypeId: any, enumerationValueId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    saveToEnumeratedType(dataModelId: string, enumerationTypeId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    listForEnumeratedType(dataModelId: string, enumerationTypeId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    saveToDataType(dataModelId: string, dataTypeId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    listForDataType(dataModelId: string, dataTypeId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    removeFromEnumeratedType(dataModelId: string, enumerationTypeId: string, enumerationValueId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    updateInEnumeratedType(dataModelId: string, enumerationTypeId: string, enumerationValueId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    getFromEnumeratedType(dataModelId: string, enumerationTypeId: string, enumerationValueId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    removeFromDataType(dataModelId: string, dataTypeId: string, enumerationValueId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    updateInDataType(dataModelId: string, dataTypeId: string, enumerationValueId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    getFromDataType(dataModelId: string, dataTypeId: string, enumerationValueId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
 }

@@ -9,9 +9,9 @@ import { IMdmRestHandlerOptions, IMdmQueryStringParams } from './mdm-rest-handle
  |   GET    | /api/terminologies/${terminologyId}/termRelationshipTypes/${id}
  */
 export declare class MdmTermRelationshipTypeResource extends MdmResource {
-    save(terminologyId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    list(terminologyId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    remove(terminologyId: any, termRelationshipTypeId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    update(terminologyId: any, termRelationshipTypeId: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    get(terminologyId: any, termRelationshipTypeId: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    save(terminologyId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    list(terminologyId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    remove(terminologyId: string, termRelationshipTypeId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    update(terminologyId: string, termRelationshipTypeId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    get(terminologyId: string, termRelationshipTypeId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
 }
