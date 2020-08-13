@@ -34,7 +34,7 @@ export class MdmSecurityResource extends MdmResource {
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    permissions(securableResourceDomainType, securableResourceId, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    permissions(securableResourceDomainType, securableResourceId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/${securableResourceDomainType}/${securableResourceId}/permissions`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }

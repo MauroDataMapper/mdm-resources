@@ -15,9 +15,8 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { IMdmRestHandler, DefaultMdmRestHandler, IMdmRestHandlerOptions, IMdmQueryStringParams } from './mdm-rest-handler';
 import { MdmResourcesConfiguration } from './mdm-resources-configuration';
-import { MdmValidator } from './mdm-validator';
+import { DefaultMdmRestHandler, IMdmQueryStringParams, IMdmRestHandler, IMdmRestHandlerOptions } from './mdm-rest-handler';
 
 export class MdmResource {
   private restHandler: IMdmRestHandler;
@@ -58,3 +57,18 @@ export class MdmResource {
     return this.restHandler.process(`${url}${queryString}`, options);
   }
 }
+
+export enum ContainerDomainType {
+    CLASSIFIERS = 'classifiers',
+    FOLDERS = 'folders'
+}
+
+export enum ModelDomainType {
+    FOLDERS = 'folders',
+    DATA_MODELS = 'classifiers',
+    DATA_CLASSES = 'dataClasses',
+    DATA_TYPES = 'dataTypes',
+    TERMINOLOGIES = 'terminologies',
+    TERMS = 'terms',
+    ALL = 'all'
+} 

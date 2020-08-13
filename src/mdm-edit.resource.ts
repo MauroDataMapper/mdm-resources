@@ -23,7 +23,7 @@ import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handle
  |   GET    | /api/${resourceDomainType}/${resourceId}/edits                                                        | Action: index
  */
 export class MdmEditResource extends MdmResource {
-    status(resourceDomainType, resourceId, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    status(resourceDomainType, resourceId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/${resourceDomainType}/${resourceId}/edits`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }

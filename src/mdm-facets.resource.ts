@@ -31,7 +31,7 @@ export class MdmFacetsResource extends MdmResource {
     }, restHandlerOptions);
   }
 
-  downloadLinkReferenceFile(elementId, fileId) {
+  downloadLinkReferenceFile(elementId: string, fileId) {
     return this.apiEndpoint + '/facets/' + elementId + '/referenceFiles/' + fileId;
   }
 

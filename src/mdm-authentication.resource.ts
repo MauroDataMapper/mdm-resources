@@ -40,7 +40,7 @@ export class MdmAuthenticationResource extends MdmResource {
         return this.securityResource.logout(queryStringParams, restHandlerOptions);
     }
 
-    isAuthenticated(sessionId?, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    isAuthenticated(sessionId?: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         this.sesisonResource.isAuthenticated(sessionId, queryStringParams, restHandlerOptions);
     }
 }
