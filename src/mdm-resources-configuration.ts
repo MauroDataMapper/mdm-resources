@@ -15,7 +15,7 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { IMdmDefaultHttpRequestOptions } from "mdm-rest-handler";
+import { IMdmDefaultHttpRequestOptions } from './mdm-rest-handler';
 
 export class MdmResourcesConfiguration {
     apiEndpoint?: string = 'http://localhost:8080/api';
