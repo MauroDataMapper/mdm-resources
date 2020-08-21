@@ -20,10 +20,34 @@ import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handle
 
 /**
  * Controller: userImageFile
- |   GET    | /api/userImageFiles/${id}                                                                             | Action: show
+ |  DELETE  | /api/catalogueUsers/${catalogueUserId}/image                                                                                                                                     | Action: delete
+ |   PUT    | /api/catalogueUsers/${catalogueUserId}/image                                                                                                                                     | Action: update
+ |   GET    | /api/catalogueUsers/${catalogueUserId}/image                                                                                                                                     | Action: show
+ |   POST   | /api/catalogueUsers/${catalogueUserId}/image                                                                                                                                     | Action: save
+ |   GET    | /api/userImageFiles/${id}     
  */
 export class MdmUserImageFileResource extends MdmResource {
-    get(userId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    remove(catalogueUserId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}/image`;
+        return this.simpleDelete(url, queryStringParams, restHandlerOptions);
+    }
+
+    update(catalogueUserId: string, data?: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}/image`;
+        return this.simplePut(url, data, restHandlerOptions);
+    }
+
+    get(catalogueUserId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}/image`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
+
+    save(catalogueUserId: string, data?: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}/image`;
+        return this.simplePost(url, data, restHandlerOptions);
+    }
+
+    getUserImageFile(userId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/userImageFiles/${userId}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
