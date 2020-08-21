@@ -8,7 +8,8 @@
     "scripts": {
         "build": "tsc && tsc --target ES5 --outDir lib/es5",
         "start": "tsc --watch",
-        "changelog": "conventional-changelog -i CHANGELOG.md -s"
+        "changelog": "conventional-changelog -i CHANGELOG.md -s",
+        "test": "jest"
     },
     "repository": {
         "type": "git",
@@ -18,7 +19,11 @@
         "registry": "https://npm.pkg.github.com/"
     },
     "devDependencies": {
-        "typescript": "^3.9.6",
-        "conventional-changelog-cli": "^2.0.34"
+        "@types/jest": "^26.0.10",
+        "@types/node": "^14.6.0",
+        "conventional-changelog-cli": "^2.1.0",
+        "jest": "^26.4.1",
+        "ts-jest": "^26.2.0",
+        "typescript": "^3.9.6"
     }
 }
