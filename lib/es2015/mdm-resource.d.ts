@@ -18,7 +18,7 @@ export declare enum ContainerDomainType {
 }
 export declare enum ModelDomainType {
     FOLDERS = "folders",
-    DATA_MODELS = "classifiers",
+    DATA_MODELS = "dataModels",
     DATA_CLASSES = "dataClasses",
     DATA_TYPES = "dataTypes",
     TERMINOLOGIES = "terminologies",

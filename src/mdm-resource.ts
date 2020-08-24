@@ -53,7 +53,7 @@ export class MdmResource {
 
   simpleRequest(url: string, queryStringParams: IMdmQueryStringParams = {}, options?: IMdmRestHandlerOptions) {
     const queryParams: string[] = Object.keys(queryStringParams).map(key => `${key}=${queryStringParams[key]}`);
-    const queryString: string = queryParams?.length > 0 ? `?${queryParams.join('&')}`: '';
+    const queryString: string = (queryParams?.length > 0) ? `?${queryParams.join('&')}`: '';
     return this.restHandler.process(`${url}${queryString}`, options);
   }
 }
@@ -65,7 +65,7 @@ export enum ContainerDomainType {
 
 export enum ModelDomainType {
     FOLDERS = 'folders',
-    DATA_MODELS = 'classifiers',
+    DATA_MODELS = 'dataModels',
     DATA_CLASSES = 'dataClasses',
     DATA_TYPES = 'dataTypes',
     TERMINOLOGIES = 'terminologies',
