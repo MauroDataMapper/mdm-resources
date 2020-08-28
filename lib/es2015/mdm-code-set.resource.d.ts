@@ -25,7 +25,10 @@ import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handle
  |  DELETE  | /api/codeSets                                                                                              | Action: deleteAll                               |
  |  DELETE  | /api/codeSets/${id}                                                                                        | Action: delete                                  |
  |   PUT    | /api/codeSets/${id}                                                                                        | Action: update                                  |
- |   GET    | /api/codeSets/${id}                                                                                        | Action: show
+ |   GET    | /api/codeSets/${id}                                                                                        | Action: show                                    |
+ |   PUT    | /api/dataModels/${codeSetId}/newBranchModelVersion                                                         | Action: newBranchModelVersion                   |
+ |   PUT    | /api/dataModels/${codeSetId}/newForkModel                                                                  | Action: newForkModel                            |
+
  */
 export declare class MdmCodeSetResource extends MdmResource {
     importers(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
@@ -35,6 +38,8 @@ export declare class MdmCodeSetResource extends MdmResource {
     newModelVersion(codeSetId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
     newDocumentationVersion(codeSetId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
     finalise(codeSetId: string, data?: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    newBranchModelVersion(codeSetId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    newForkModel(codeSetId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
     addCodeSetsToFolder(folderId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
     listCodeSetsInFolder(folderId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
     removeTerm(codeSetId: string, termId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;

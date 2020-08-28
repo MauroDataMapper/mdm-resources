@@ -32,6 +32,9 @@ import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handle
  |  DELETE  | /api/dataModels/${id}                                                                                                                | Action: delete
  |   PUT    | /api/dataModels/${id}                                                                                                                | Action: update
  |   GET    | /api/dataModels/${id}                                                                                                                | Action: show
+ |   PUT    | /api/dataModels/${dataModelId}/newBranchModelVersion                                                                                 | Action: newBranchModelVersion
+ |   PUT    | /api/dataModels/${dataModelId}/newForkModel                                                                                          | Action: newForkModel
+
  */
 export declare class MdmDataModelResource extends MdmResource {
     defaultDataTypes(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
@@ -52,6 +55,8 @@ export declare class MdmDataModelResource extends MdmResource {
     newModelVersion(dataModelId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
     newDocumentationVersion(dataModelId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
     finalise(dataModelId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    newBranchModelVersion(dataModelId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    newForkModel(dataModelId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
     addToFolder(folderId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
     updateDataModelInFolder(folderId: string, dataModelId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
     updateFolderWithDataModel(dataModelId: string, folderId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;

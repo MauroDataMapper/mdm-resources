@@ -45,7 +45,9 @@ import { MdmTermResource } from './mdm-term.resource';
  |  DELETE  | /api/terminologies                                                                                         | Action: deleteAll                               |
  |  DELETE  | /api/terminologies/${id}                                                                                   | Action: delete                                  |
  |   PUT    | /api/terminologies/${id}                                                                                   | Action: update                                  |
- |   GET    | /api/terminologies/${id}                                                                                   | Action: show  
+ |   GET    | /api/terminologies/${id}                                                                                   | Action: show                                    |
+ |   PUT    | /api/dataModels/${terminologyId}/newBranchModelVersion                                                     | Action: newBranchModelVersion                   |
+ |   PUT    | /api/dataModels/${terminologyId}/newForkModel                                                              | Action: newForkModel                            |
  */
 export class MdmTerminologyResource extends MdmResource {
     private catalogueItem: MdmCatalogueItemResource;
@@ -89,6 +91,16 @@ export class MdmTerminologyResource extends MdmResource {
 
     finalise(terminologyId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/finalise`;
+        return this.simplePut(url, data, restHandlerOptions);
+    }
+
+    newBranchModelVersion(terminologyId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/terminologies/${terminologyId}/newBranchModelVersion`;
+        return this.simplePut(url, data, restHandlerOptions);
+    }
+
+    newForkModel(terminologyId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/terminologies/${terminologyId}/newForkModel`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 

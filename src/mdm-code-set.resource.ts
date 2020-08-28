@@ -43,7 +43,10 @@ import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handle
  |  DELETE  | /api/codeSets                                                                                              | Action: deleteAll                               |
  |  DELETE  | /api/codeSets/${id}                                                                                        | Action: delete                                  |
  |   PUT    | /api/codeSets/${id}                                                                                        | Action: update                                  |
- |   GET    | /api/codeSets/${id}                                                                                        | Action: show   
+ |   GET    | /api/codeSets/${id}                                                                                        | Action: show                                    |
+ |   PUT    | /api/dataModels/${codeSetId}/newBranchModelVersion                                                         | Action: newBranchModelVersion                   |
+ |   PUT    | /api/dataModels/${codeSetId}/newForkModel                                                                  | Action: newForkModel                            |
+
  */
 
 export class MdmCodeSetResource extends MdmResource {
@@ -80,6 +83,16 @@ export class MdmCodeSetResource extends MdmResource {
 
     finalise(codeSetId: string, data?, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/codeSets/${codeSetId}/finalise`;
+        return this.simplePut(url, data, restHandlerOptions);
+    }
+
+    newBranchModelVersion(codeSetId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/codeSets/${codeSetId}/newBranchModelVersion`;
+        return this.simplePut(url, data, restHandlerOptions);
+    }
+
+    newForkModel(codeSetId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/codeSets/${codeSetId}/newForkModel`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 

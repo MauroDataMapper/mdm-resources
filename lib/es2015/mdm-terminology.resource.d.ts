@@ -26,7 +26,9 @@ import { MdmTermResource } from './mdm-term.resource';
  |  DELETE  | /api/terminologies                                                                                         | Action: deleteAll                               |
  |  DELETE  | /api/terminologies/${id}                                                                                   | Action: delete                                  |
  |   PUT    | /api/terminologies/${id}                                                                                   | Action: update                                  |
- |   GET    | /api/terminologies/${id}                                                                                   | Action: show
+ |   GET    | /api/terminologies/${id}                                                                                   | Action: show                                    |
+ |   PUT    | /api/dataModels/${terminologyId}/newBranchModelVersion                                                     | Action: newBranchModelVersion                   |
+ |   PUT    | /api/dataModels/${terminologyId}/newForkModel                                                              | Action: newForkModel                            |
  */
 export declare class MdmTerminologyResource extends MdmResource {
     private catalogueItem;
@@ -39,6 +41,8 @@ export declare class MdmTerminologyResource extends MdmResource {
     newModelVersion(terminologyId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
     newDocumentationVersion(terminologyId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
     finalise(terminologyId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    newBranchModelVersion(terminologyId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    newForkModel(terminologyId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
     tree(terminologyId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
     alterFolder(terminologyId: string, folderId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
     diff(terminologyId: string, otherModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;

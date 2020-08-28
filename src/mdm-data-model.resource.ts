@@ -50,6 +50,9 @@ import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handle
  |  DELETE  | /api/dataModels/${id}                                                                                                                | Action: delete
  |   PUT    | /api/dataModels/${id}                                                                                                                | Action: update
  |   GET    | /api/dataModels/${id}                                                                                                                | Action: show
+ |   PUT    | /api/dataModels/${dataModelId}/newBranchModelVersion                                                                                 | Action: newBranchModelVersion
+ |   PUT    | /api/dataModels/${dataModelId}/newForkModel                                                                                          | Action: newForkModel
+
  */
 export class MdmDataModelResource extends MdmResource {
 
@@ -140,6 +143,16 @@ export class MdmDataModelResource extends MdmResource {
 
     finalise(dataModelId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/finalise`;
+        return this.simplePut(url, data, restHandlerOptions);
+    }
+
+    newBranchModelVersion(dataModelId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/newBranchModelVersion`;
+        return this.simplePut(url, data, restHandlerOptions);
+    }
+
+    newForkModel(dataModelId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/newForkModel`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
