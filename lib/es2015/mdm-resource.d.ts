@@ -1,16 +1,27 @@
-import { IMdmRestHandler } from './mdm-rest-handler';
 import { MdmResourcesConfiguration } from './mdm-resources-configuration';
+import { IMdmQueryStringParams, IMdmRestHandler, IMdmRestHandlerOptions } from './mdm-rest-handler';
 export declare class MdmResource {
     private restHandler;
     private resourcesConfig;
-    protected apiEndpoint: string | URL;
+    protected apiEndpoint: string;
+    protected defaultRequestOptions: IMdmRestHandlerOptions;
     constructor(resourcesConfig?: MdmResourcesConfiguration, restHandler?: IMdmRestHandler);
-    getResource(name: any, id: any, action: any, options?: any): any;
-    postResource(name: any, id: any, action: any, options: any, more?: any): any;
-    putResource(name: any, id: any, action: any, options: any): any;
-    deleteResource(name: any, id: any, action?: any, queryString?: any, resource?: any): any;
-    request(url: any, HTTP: any, resource: any, contentType: any, more?: any): any;
-    exportGet(dataModels: any, exporter: any, contentType: any, url: any): any;
-    exportPost(dataModels: any, exporter: any, contentType: any, url: any): any;
-    simplePost(url: any, content: any): any;
+    simplePost(url: string, data: any, options?: IMdmRestHandlerOptions): any;
+    simpleGet(url: string, queryStringParams?: IMdmQueryStringParams, options?: IMdmRestHandlerOptions): any;
+    simpleDelete(url: string, queryStringParams?: IMdmQueryStringParams, options?: IMdmRestHandlerOptions): any;
+    simplePut(url: string, data: any, options?: IMdmRestHandlerOptions): any;
+    simpleRequest(url: string, queryStringParams?: IMdmQueryStringParams, options?: IMdmRestHandlerOptions): any;
+}
+export declare enum ContainerDomainType {
+    CLASSIFIERS = "classifiers",
+    FOLDERS = "folders"
+}
+export declare enum ModelDomainType {
+    FOLDERS = "folders",
+    DATA_MODELS = "dataModels",
+    DATA_CLASSES = "dataClasses",
+    DATA_TYPES = "dataTypes",
+    TERMINOLOGIES = "terminologies",
+    TERMS = "terms",
+    ALL = "all"
 }

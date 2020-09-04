@@ -15,17 +15,30 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
+
+export interface IMdmQueryStringParams {
+    [key: string]: any;
+}
+
+export interface IMdmRestHandlerOptions {
+    [key: string]: any;
+}
+
+export interface IMdmDefaultHttpRequestOptions {
+    [key: string]: any;
+}
+
 export interface IMdmRestHandler {
-    process(url:string, options: any);
+    process(url: string, options: IMdmRestHandlerOptions);
 }
 
 export class DefaultMdmRestHandler implements IMdmRestHandler {
-    async process(url: string, options: any) {
+    async process(url: string, options: IMdmRestHandlerOptions) {
         const response = await fetch(url, {
-            method: options.method,
+            method: options.method || 'GET',
             headers: options.headers,
-            credentials: options.withCredentials ? 'include' : 'same-origin',
-            body: JSON.stringify(options.data)
+            credentials: options.credentials || options.withCredentials ? 'include' : 'same-origin',
+            body: JSON.stringify(options.body)
         });
         const json = await response.json();
         return json;

@@ -16,92 +16,198 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 import { MdmResource } from './mdm-resource';
-import { MdmCatalogueItemResource } from './mdm-catalogue-item.resource';
-import { MdmResourcesConfiguration } from './mdm-resources-configuration';
-import { IMdmRestHandler } from './mdm-rest-handler';
+import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handler';
 
+/**
+ * Controller: dataModel
+ |   GET    | /api/dataModels/providers/defaultDataTypeProviders                                                                                   | Action: defaultDataTypeProviders
+ |   GET    | /api/dataModels/providers/importers                                                                                                  | Action: importerProviders
+ |   GET    | /api/dataModels/providers/exporters                                                                                                  | Action: exporterProviders
+ |   GET    | /api/dataModels/types                                                                                                                | Action: types
+ |   POST   | /api/dataModels/import/${importerNamespace}/${importerName}/${importerVersion}                                                       | Action: importModels
+ |   POST   | /api/dataModels/export/${exporterNamespace}/${exporterName}/${exporterVersion}                                                       | Action: exportModels
+ |  DELETE  | /api/dataModels/${dataModelId}/dataClasses/clean                                                                                     | Action: deleteAllUnusedDataClasses
+ |  DELETE  | /api/dataModels/${dataModelId}/dataTypes/clean                                                                                       | Action: deleteAllUnusedDataTypes
+ |   GET    | /api/folders/${folderId}/dataModels                                                                                                  | Action: index
+ |  DELETE  | /api/dataModels/${dataModelId}/readByAuthenticated                                                                                   | Action: readByAuthenticated
+ |   PUT    | /api/dataModels/${dataModelId}/readByAuthenticated                                                                                   | Action: readByAuthenticated
+ |  DELETE  | /api/dataModels/${dataModelId}/readByEveryone                                                                                        | Action: readByEveryone
+ |   PUT    | /api/dataModels/${dataModelId}/readByEveryone                                                                                        | Action: readByEveryone
+ |   GET    | /api/dataModels/${dataModelId}/search                                                                                                | Action: search
+ |   POST   | /api/dataModels/${dataModelId}/search                                                                                                | Action: search
+ |   GET    | /api/dataModels/${dataModelId}/hierarchy                                                                                             | Action: hierarchy
+ |   PUT    | /api/dataModels/${dataModelId}/newModelVersion                                                                                       | Action: newModelVersion
+ |   PUT    | /api/dataModels/${dataModelId}/newDocumentationVersion                                                                               | Action: newDocumentationVersion
+ |   PUT    | /api/dataModels/${dataModelId}/finalise                                                                                              | Action: finalise
+ |   POST   | /api/folders/${folderId}/dataModels                                                                                                  | Action: save
+ |   PUT    | /api/folders/${folderId}/dataModels/${dataModelId}                                                                                   | Action: changeFolder
+ |   PUT    | /api/dataModels/${dataModelId}/folder/${folderId}                                                                                    | Action: changeFolder
+ |   GET    | /api/dataModels/${dataModelId}/suggestLinks/${otherModelId}                                                                          | Action: suggestLinks
+ |   GET    | /api/dataModels/${dataModelId}/diff/${otherModelId}                                                                                  | Action: diff
+ |   GET    | /api/dataModels/${dataModelId}/export/${exporterNamespace}/${exporterName}/${exporterVersion}                                        | Action: exportModel
+ |   GET    | /api/dataModels                                                                                                                      | Action: index
+ |  DELETE  | /api/dataModels                                                                                                                      | Action: deleteAll
+ |  DELETE  | /api/dataModels/${id}                                                                                                                | Action: delete
+ |   PUT    | /api/dataModels/${id}                                                                                                                | Action: update
+ |   GET    | /api/dataModels/${id}                                                                                                                | Action: show
+ |   PUT    | /api/dataModels/${dataModelId}/newBranchModelVersion                                                                                 | Action: newBranchModelVersion
+ |   PUT    | /api/dataModels/${dataModelId}/newForkModel                                                                                          | Action: newForkModel
+
+ */
 export class MdmDataModelResource extends MdmResource {
-  private catalogueItem: MdmCatalogueItemResource;
 
-  constructor(resourcesConfig?: MdmResourcesConfiguration, restHandler?: IMdmRestHandler) {
-    super(resourcesConfig, restHandler);
-    this.catalogueItem = new MdmCatalogueItemResource(resourcesConfig, restHandler);
-  }
-
-  get(id, action?, options?) {
-    if (!options) {
-      options = {};
+    defaultDataTypes(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/providers/defaultDataTypeProviders`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    if (['metadata', 'annotations', 'classifiers', 'semanticLinks'].indexOf(action) !== -1) {
-      return this.catalogueItem.get(id, action, options.contentType);
+    importers(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/providers/importers`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
-    return this.getResource('dataModels', id, action, options);
-  }
 
-  post(id, action, options) {
-    return this.postResource('dataModels', id, action, options);
-  }
-
-  put(id, action, options) {
-    return this.putResource('dataModels', id, action, options);
-  }
-
-  delete(id, action, queryString, resource) {
-    return this.deleteResource('dataModels', id, action, queryString, resource);
-  }
-
-  export(dataModels, exporter, contentType) {
-    if (dataModels && dataModels.length === 1) {
-
-      const URL = `/dataModels/${dataModels[0].id}/export/${exporter.namespace}/${exporter.name}/${exporter.version}`;
-      return this.exportGet(dataModels, exporter, contentType, URL);
-      //
-      //  var deferred;
-      // // deferred = $q.defer();
-      //  var url = this.backendURL + url ;
-      //  this.restHandler.restHandler({
-      //      url: url,
-      //      method:"GET",
-      //      withCredentials: true,
-      //      responseType : 'arraybuffer'
-      //  }).then(function(response){
-      //      var file = new Blob([ response ], {type : contentType});
-      //      deferred.resolve(file);
-      //  },function(response){
-      //      deferred.reject(response);
-      //  });
-      //  return deferred.promise;
+    exporters(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/providers/exporters`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
-    const url = `/dataModels/export/${exporter.namespace}/${exporter.name}/${exporter.version}`;
 
-    return this.exportPost(dataModels, exporter, contentType, url);
-    //  var deferred;
-    // // deferred = $q.defer();
-    //  url = this.backendURL + url;
-    //
-    //  restHandler({
-    //      url: url,
-    //      method: "POST",
-    //      withCredentials: true,
-    //      responseType: 'arraybuffer',
-    //      data: dataModels.map(function(dataModel){return dataModel.id;})
-    //  }).then(function (response) {
-    //      var file = new Blob([response], {type: contentType});
-    //      deferred.resolve(file);
-    //  }, function (response) {
-    //      deferred.reject(response);
-    //  });
-    //
-    //  return deferred.promise;
-  }
+    types(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/types`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
 
-  import(importPath, formData) {
-    const url = `${this.apiEndpoint}/dataModels/import/${importPath}`;
-    return this.simplePost(url, {
-      method: 'POST',
-      withCredentials: true,
-      data: formData
-    });
-  }
+    importModels(importerNamespace, importerName, importerVersion, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/import/${importerNamespace}/${importerName}/${importerVersion}`;
+        return this.simplePost(url, data, restHandlerOptions);
+    }
+
+    exportModels(exporterNamespace, exporterName, exporterVersion, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/export/${exporterNamespace}/${exporterName}/${exporterVersion}`;
+        return this.simplePost(url, data, restHandlerOptions);
+    }
+
+    removeAllUnusedDataClasses(dataModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/clean`;
+        return this.simpleDelete(url, queryStringParams, restHandlerOptions);
+    }
+
+    removeAllUnusedDataTypes(dataModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataTypes/clean`;
+        return this.simpleDelete(url, queryStringParams, restHandlerOptions);
+    }
+
+    listInFolder(folderId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/folders/${folderId}/dataModels`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
+
+    removeReadByAuthenticated(dataModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/readByAuthenticated`;
+        return this.simpleDelete(url, queryStringParams, restHandlerOptions);
+    }
+
+    updateReadByAuthenticated(dataModelId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/readByAuthenticated`;
+        return this.simplePut(url, data, restHandlerOptions);
+    }
+
+    removeReadByEveryone(dataModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/readByEveryone`;
+        return this.simpleDelete(url, queryStringParams, restHandlerOptions);
+    }
+
+    updateReadByEveryone(dataModelId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/readByEveryone`;
+        return this.simplePut(url, data, restHandlerOptions);
+    }
+
+    search(dataModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/search`;
+        return this.simplePost(url, queryStringParams, restHandlerOptions);
+    }
+
+    hierarchy(dataModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/hierarchy`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
+
+    newModelVersion(dataModelId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/newModelVersion`;
+        return this.simplePut(url, data, restHandlerOptions);
+    }
+
+    newDocumentationVersion(dataModelId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/newDocumentationVersion`;
+        return this.simplePut(url, data, restHandlerOptions);
+    }
+
+    finalise(dataModelId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/finalise`;
+        return this.simplePut(url, data, restHandlerOptions);
+    }
+
+    newBranchModelVersion(dataModelId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/newBranchModelVersion`;
+        return this.simplePut(url, data, restHandlerOptions);
+    }
+
+    newForkModel(dataModelId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/newForkModel`;
+        return this.simplePut(url, data, restHandlerOptions);
+    }
+
+    addToFolder(folderId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/folders/${folderId}/dataModels`;
+        return this.simplePost(url, data, restHandlerOptions);
+    }
+
+    updateDataModelInFolder(folderId: string, dataModelId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/folders/${folderId}/dataModels/${dataModelId}`;
+        return this.simplePut(url, data, restHandlerOptions);
+    }
+
+    updateFolderWithDataModel(dataModelId: string, folderId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/folder/${folderId}`;
+        return this.simplePut(url, data, restHandlerOptions);
+    }
+
+    suggestLinks(dataModelId: string, otherModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/suggestLinks/${otherModelId}`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
+
+    diff(dataModelId: string, otherModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/diff/${otherModelId}`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
+
+    exportModel(dataModelId: string, exporterNamespace, exporterName, exporterVersion, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/export/${exporterNamespace}/${exporterName}/${exporterVersion}`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
+
+    list(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
+
+    removeAll(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels`;
+        return this.simpleDelete(url, queryStringParams, restHandlerOptions);
+    }
+
+    remove(dataModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/${dataModelId}`;
+        return this.simpleDelete(url, queryStringParams, restHandlerOptions);
+    }
+
+    update(dataModelId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/${dataModelId}`;
+        return this.simplePut(url, data, restHandlerOptions);
+    }
+
+    get(dataModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/${dataModelId}`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
 }

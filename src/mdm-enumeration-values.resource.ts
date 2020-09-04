@@ -16,21 +16,70 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 import { MdmResource } from './mdm-resource';
+import { IMdmRestHandlerOptions, IMdmQueryStringParams } from './mdm-rest-handler';
 
+/**
+ * Controller: enumerationValue
+ |   POST   | /api/dataModels/${dataModelId}/enumerationTypes/${enumerationTypeId}/enumerationValues                                               | Action: save
+ |   GET    | /api/dataModels/${dataModelId}/enumerationTypes/${enumerationTypeId}/enumerationValues                                               | Action: index
+ |   POST   | /api/dataModels/${dataModelId}/dataTypes/${dataTypeId}/enumerationValues                                                             | Action: save
+ |   GET    | /api/dataModels/${dataModelId}/dataTypes/${dataTypeId}/enumerationValues                                                             | Action: index
+ |  DELETE  | /api/dataModels/${dataModelId}/enumerationTypes/${enumerationTypeId}/enumerationValues/${id}                                         | Action: delete
+ |   PUT    | /api/dataModels/${dataModelId}/enumerationTypes/${enumerationTypeId}/enumerationValues/${id}                                         | Action: update
+ |   GET    | /api/dataModels/${dataModelId}/enumerationTypes/${enumerationTypeId}/enumerationValues/${id}                                         | Action: show
+ |  DELETE  | /api/dataModels/${dataModelId}/dataTypes/${dataTypeId}/enumerationValues/${id}                                                       | Action: delete
+ |   PUT    | /api/dataModels/${dataModelId}/dataTypes/${dataTypeId}/enumerationValues/${id}                                                       | Action: update
+ |   GET    | /api/dataModels/${dataModelId}/dataTypes/${dataTypeId}/enumerationValues/${id}                                                       | Action: show
+ */
 export class MdmEnumerationValuesResource extends MdmResource {
-  delete(dataModelId, dataTypeId, id) {
-    return this.deleteResource(this.makeUrl(dataModelId, dataTypeId), id);
-  }
 
-  put(dataModelId, dataTypeId, id, action, options) {
-    return this.putResource(this.makeUrl(dataModelId, dataTypeId), id, action, options);
-  }
+    saveToEnumeratedType(dataModelId: string, enumerationTypeId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/enumerationTypes/${enumerationTypeId}/enumerationValues`;
+        return this.simplePost(url, data, restHandlerOptions);
+    }
 
-  post(dataModelId, dataTypeId, options) {
-    return this.postResource(this.makeUrl(dataModelId, dataTypeId), null, null, options);
-  }
+    listForEnumeratedType(dataModelId: string, enumerationTypeId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/enumerationTypes/${enumerationTypeId}/enumerationValues`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
 
-  makeUrl(dataModelId, dataTypeId) {
-    return `dataModels/${dataModelId}/enumerationTypes/${dataTypeId}/enumerationValues/`;
-  }
+    saveToDataType(dataModelId: string, dataTypeId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataTypes/${dataTypeId}/enumerationValues`;
+        return this.simplePost(url, data, restHandlerOptions);
+    }
+
+    listForDataType(dataModelId: string, dataTypeId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataTypes/${dataTypeId}/enumerationValues`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
+
+    removeFromEnumeratedType(dataModelId: string, enumerationTypeId: string, enumerationValueId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/enumerationTypes/${enumerationTypeId}/enumerationValues/${enumerationValueId}`;
+        return this.simpleDelete(url, queryStringParams, restHandlerOptions);
+    }
+
+    updateInEnumeratedType(dataModelId: string, enumerationTypeId: string, enumerationValueId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/enumerationTypes/${enumerationTypeId}/enumerationValues/${enumerationValueId}`;
+        return this.simplePut(url, data, restHandlerOptions);
+    }
+
+    getFromEnumeratedType(dataModelId: string, enumerationTypeId: string, enumerationValueId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/enumerationTypes/${enumerationTypeId}/enumerationValues/${enumerationValueId}`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
+
+    removeFromDataType(dataModelId: string, dataTypeId: string, enumerationValueId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataTypes/${dataTypeId}/enumerationValues/${enumerationValueId}`;
+        return this.simpleDelete(url, queryStringParams, restHandlerOptions);
+    }
+
+    updateInDataType(dataModelId: string, dataTypeId: string, enumerationValueId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataTypes/${dataTypeId}/enumerationValues/${enumerationValueId}`;
+        return this.simplePut(url, data, restHandlerOptions);
+    }
+
+    getFromDataType(dataModelId: string, dataTypeId: string, enumerationValueId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataTypes/${dataTypeId}/enumerationValues/${enumerationValueId}`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
 }

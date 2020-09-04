@@ -16,46 +16,22 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 import { MdmResource } from './mdm-resource';
+import { IMdmRestHandlerOptions } from './mdm-rest-handler';
 
 export class MdmFacetsResource extends MdmResource {
-  get(id, action, options) {
-    return this.getResource('facets', id, action, options);
-  }
 
-  post(id, action, options) {
-    return this.postResource('facets', id, action, options);
-  }
-
-  put(id, action, childId, options) {
-    if (!options) {
-      options = {};
-    }
-    id = !id ? '' : id;
-    action = !action ? '' : action + '/';
-    childId = !childId ? '' : childId;
-    return this.putResource('facets', id, action + childId, options);
-  }
-
-  delete(id, action, childId) {
-    id = !id ? '' : id;
-    action = !action ? '' : action + '/';
-    childId = !childId ? '' : childId;
-    return this.deleteResource('facets', id, action + childId, null, null);
-  }
-
-  attachReferenceFile(id, formData) {
+  attachReferenceFile(id, formData, restHandlerOptions?: IMdmRestHandlerOptions) {
 
     const url = this.apiEndpoint + '/facets/' + id + '/referenceFiles';
-
 
     return this.simplePost(url, {
       method: 'POST',
       withCredentials: true,
       data: formData
-    });
+    }, restHandlerOptions);
   }
 
-  downloadLinkReferenceFile(elementId, fileId) {
+  downloadLinkReferenceFile(elementId: string, fileId) {
     return this.apiEndpoint + '/facets/' + elementId + '/referenceFiles/' + fileId;
   }
 

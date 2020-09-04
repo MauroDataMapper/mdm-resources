@@ -1,6 +1,6 @@
 export declare class MdmValidator {
     static index(obj: any, i: any): any;
-    static getProperty(obj: any, str: any): any;
+    static getProperty(obj: any, str: string): any;
     static capitalize(str: string): string;
     static validateEmail(email: any): boolean;
     static isDate(date: any): boolean;

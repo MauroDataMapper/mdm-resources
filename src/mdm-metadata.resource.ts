@@ -15,16 +15,46 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { MdmResource } from './mdm-resource';
-import { MdmNamespacesResource } from './mdm-namespaces.resource';
-import { MdmResourcesConfiguration } from './mdm-resources-configuration';
-import { IMdmRestHandler } from './mdm-rest-handler';
+import { MdmResource, ModelDomainType } from './mdm-resource';
+import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handler';
 
+/**
+ * Controller: metadata
+ |   GET    | /api/metadata/namespaces/${id}?                                                                       | Action: namespaces
+ |   POST   | /api/${catalogueItemDomainType}/${catalogueItemId}/metadata                                           | Action: save
+ |   GET    | /api/${catalogueItemDomainType}/${catalogueItemId}/metadata                                           | Action: index
+ |  DELETE  | /api/${catalogueItemDomainType}/${catalogueItemId}/metadata/${id}                                     | Action: delete
+ |   PUT    | /api/${catalogueItemDomainType}/${catalogueItemId}/metadata/${id}                                     | Action: update
+ |   GET    | /api/${catalogueItemDomainType}/${catalogueItemId}/metadata/${id}                                     | Action: show
+ */
 export class MdmMetadataResource extends MdmResource {
-  namespaces: MdmNamespacesResource;
+    namespaces(metadataId?: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/metadata/namespaces${metadataId ? `/${metadataId}`:''}`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
 
-  constructor(resourcesConfig?: MdmResourcesConfiguration, restHandler?: IMdmRestHandler) {
-    super(resourcesConfig, restHandler);
-    this.namespaces = new MdmNamespacesResource(resourcesConfig, restHandler);
-  }
+    save(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/metadata`;
+        return this.simplePost(url, data, restHandlerOptions);
+    }
+
+    list(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/metadata`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
+
+    remove(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, metadataId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/metadata/${metadataId}`;
+        return this.simpleDelete(url, queryStringParams, restHandlerOptions);
+    }
+
+    update(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, metadataId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/metadata/${metadataId}`;
+        return this.simplePut(url, data, restHandlerOptions);
+    }
+
+    get(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, metadataId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/metadata/${metadataId}`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
 }

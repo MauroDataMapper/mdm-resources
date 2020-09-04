@@ -16,39 +16,88 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 import { MdmResource } from './mdm-resource';
-import { MdmCatalogueItemResource } from './mdm-catalogue-item.resource';
-import { MdmResourcesConfiguration } from './mdm-resources-configuration';
-import { IMdmRestHandler } from './mdm-rest-handler';
+import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handler';
 
+/**
+ * Controller: term
+ |   GET    | /api/terminologies/${terminologyId}/terms/search                                                           | Action: search                                  |
+ |   POST   | /api/terminologies/${terminologyId}/terms/search                                                           | Action: search                                  |
+ |   GET    | /api/terminologies/${terminologyId}/terms/tree/${termId}?                                                  | Action: tree                                    |
+ |   POST   | /api/terminologies/${terminologyId}/terms                                                                  | Action: save                                    |
+ |   GET    | /api/terminologies/${terminologyId}/terms                                                                  | Action: index                                   |
+ |   GET    | /api/codeSets/${codeSetId}/terms                                                                           | Action: index                                   |
+ |  DELETE  | /api/terminologies/${terminologyId}/terms/${id}                                                            | Action: delete                                  |
+ |   PUT    | /api/terminologies/${terminologyId}/terms/${id}                                                            | Action: update                                  |
+ |   GET    | /api/terminologies/${terminologyId}/terms/${id}                                                            | Action: show 
+ * 
+ * Controller: termRelationship
+ |   GET    | /api/terminologies/${terminologyId}/termRelationshipTypes/${termRelationshipTypeId}/termRelationships            | Action: index                                   |
+ |   POST   | /api/terminologies/${terminologyId}/terms/${termId}/termRelationships                                            | Action: save                                    |
+ |   GET    | /api/terminologies/${terminologyId}/terms/${termId}/termRelationships                                            | Action: index                                   |
+ |   GET    | /api/terminologies/${terminologyId}/termRelationshipTypes/${termRelationshipTypeId}/termRelationships/${id}      | Action: show                                    |
+ |  DELETE  | /api/terminologies/${terminologyId}/terms/${termId}/termRelationships/${id}                                      | Action: delete                                  |
+ |   PUT    | /api/terminologies/${terminologyId}/terms/${termId}/termRelationships/${id}                                      | Action: update                                  |
+ |   GET    | /api/terminologies/${terminologyId}/terms/${termId}/termRelationships/${id}                                      | Action: show
+ */
 export class MdmTermResource extends MdmResource {
-  private catalogueItem: MdmCatalogueItemResource;
 
-  constructor(resourcesConfig?: MdmResourcesConfiguration, restHandler?: IMdmRestHandler) {
-    super(resourcesConfig, restHandler);
-    this.catalogueItem = new MdmCatalogueItemResource(resourcesConfig, restHandler);
-  }
-
-  get(terminologyId, id, action, options: any = {}) {
-    if (['metadata', 'annotations', 'classifiers'].includes(action)) {
-      return this.catalogueItem.get(id, action, options.contentType);
+    search(terminologyId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms/search`;
+        return this.simplePost(url, queryStringParams, restHandlerOptions);
     }
 
-    return this.getResource(this.makeUrl(terminologyId), id, action, options);
-  }
+    tree(terminologyId: string, termId?: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms/tree${termId ? `/${termId}` : ''}`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
 
-  put(terminologyId, id, action, options) {
-    return this.putResource(this.makeUrl(terminologyId), id, action, options);
-  }
+    save(terminologyId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms`;
+        return this.simplePost(url, data, restHandlerOptions);
+    }
 
-  post(terminologyId, id, action, options) {
-    return this.postResource(this.makeUrl(terminologyId), id, action, options);
-  }
+    list(terminologyId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
 
-  delete(terminologyId, id) {
-    return this.deleteResource(this.makeUrl(terminologyId), id);
-  }
+    remove(terminologyId: string, termId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms/${termId}`;
+        return this.simpleDelete(url, queryStringParams, restHandlerOptions);
+    }
 
-  makeUrl(terminologyId: string) {
-    return `terminologies/${terminologyId}/terms/`;
-  }
+    update(terminologyId: string, termId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms/${termId}`;
+        return this.simplePut(url, data, restHandlerOptions);
+    }
+
+    get(terminologyId: string, termId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms/${termId}`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
+
+    addTermRelationships(terminologyId: string, termId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms/${termId}/termRelationships`;
+        return this.simplePost(url, data, restHandlerOptions);
+    }
+
+    termRelationships(terminologyId: string, termId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms/${termId}/termRelationships`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
+
+    removeTermRelationship(terminologyId: string, termId: string, termRelationshipId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms/${termId}/termRelationships/${termRelationshipId}`;
+        return this.simpleDelete(url, queryStringParams, restHandlerOptions);
+    }
+
+    updateTermRelationship(terminologyId: string, termId: string, termRelationshipId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms/${termId}/termRelationships/${termRelationshipId}`;
+        return this.simplePut(url, data, restHandlerOptions);
+    }
+
+    getTermRelationship(terminologyId: string, termId: string, termRelationshipId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms/${termId}/termRelationships/${termRelationshipId}`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
 }

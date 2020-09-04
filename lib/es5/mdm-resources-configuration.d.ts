@@ -1,3 +1,5 @@
+import { IMdmDefaultHttpRequestOptions } from './mdm-rest-handler';
 export declare class MdmResourcesConfiguration {
-    apiEndpoint: string;
+    apiEndpoint?: string;
+    defaultHttpRequestOptions?: IMdmDefaultHttpRequestOptions;
 }
