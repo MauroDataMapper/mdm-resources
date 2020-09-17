@@ -34,6 +34,8 @@ import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handle
  |   GET    | /api/dataModels/${id}                                                                                                                | Action: show
  |   PUT    | /api/dataModels/${dataModelId}/newBranchModelVersion                                                                                 | Action: newBranchModelVersion
  |   PUT    | /api/dataModels/${dataModelId}/newForkModel                                                                                          | Action: newForkModel
+ |   GET    | /api/dataModels/${dataModelId}/latestVersion                                                                                         | Action: latestVersion
+
 
  */
 export declare class MdmDataModelResource extends MdmResource {
@@ -68,4 +70,5 @@ export declare class MdmDataModelResource extends MdmResource {
     remove(dataModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
     update(dataModelId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
     get(dataModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    latestVersion(dataModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
 }
