@@ -26,8 +26,9 @@ import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handle
  |  DELETE  | /api/codeSets/${id}                                                                                        | Action: delete                                  |
  |   PUT    | /api/codeSets/${id}                                                                                        | Action: update                                  |
  |   GET    | /api/codeSets/${id}                                                                                        | Action: show                                    |
- |   PUT    | /api/dataModels/${codeSetId}/newBranchModelVersion                                                         | Action: newBranchModelVersion                   |
- |   PUT    | /api/dataModels/${codeSetId}/newForkModel                                                                  | Action: newForkModel                            |
+ |   PUT    | /api/codeSets/${codeSetId}/newBranchModelVersion                                                           | Action: newBranchModelVersion                   |
+ |   PUT    | /api/codeSets/${codeSetId}/newForkModel                                                                    | Action: newForkModel                            |
+ |   GET    | /api/codeSets/${codeSetId}/latestVersion                                                                   | Action: latestVersion                           |
 
  */
 export declare class MdmCodeSetResource extends MdmResource {
@@ -57,4 +58,5 @@ export declare class MdmCodeSetResource extends MdmResource {
     updateReadByAuthenticated(codeSetId: string, data?: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
     removeReadByEveryone(codeSetId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
     updateReadByEveryone(codeSetId: string, data?: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    latestVersion(codeSetId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
 }

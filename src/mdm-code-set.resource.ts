@@ -44,8 +44,9 @@ import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handle
  |  DELETE  | /api/codeSets/${id}                                                                                        | Action: delete                                  |
  |   PUT    | /api/codeSets/${id}                                                                                        | Action: update                                  |
  |   GET    | /api/codeSets/${id}                                                                                        | Action: show                                    |
- |   PUT    | /api/dataModels/${codeSetId}/newBranchModelVersion                                                         | Action: newBranchModelVersion                   |
- |   PUT    | /api/dataModels/${codeSetId}/newForkModel                                                                  | Action: newForkModel                            |
+ |   PUT    | /api/codeSets/${codeSetId}/newBranchModelVersion                                                           | Action: newBranchModelVersion                   |
+ |   PUT    | /api/codeSets/${codeSetId}/newForkModel                                                                    | Action: newForkModel                            |
+ |   GET    | /api/codeSets/${codeSetId}/latestVersion                                                                   | Action: latestVersion                           |
 
  */
 
@@ -181,6 +182,11 @@ export class MdmCodeSetResource extends MdmResource {
     updateReadByEveryone(codeSetId: string, data?, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/codeSets/${codeSetId}/readByEveryone`;
         return this.simplePut(url, data, restHandlerOptions);
+    }
+
+    latestVersion(codeSetId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/codeSets/${codeSetId}/latestVersion`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
     
 }

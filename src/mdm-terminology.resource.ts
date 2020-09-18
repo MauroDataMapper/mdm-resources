@@ -46,8 +46,9 @@ import { MdmTermResource } from './mdm-term.resource';
  |  DELETE  | /api/terminologies/${id}                                                                                   | Action: delete                                  |
  |   PUT    | /api/terminologies/${id}                                                                                   | Action: update                                  |
  |   GET    | /api/terminologies/${id}                                                                                   | Action: show                                    |
- |   PUT    | /api/dataModels/${terminologyId}/newBranchModelVersion                                                     | Action: newBranchModelVersion                   |
- |   PUT    | /api/dataModels/${terminologyId}/newForkModel                                                              | Action: newForkModel                            |
+ |   PUT    | /api/terminologies/${terminologyId}/newBranchModelVersion                                                  | Action: newBranchModelVersion                   |
+ |   PUT    | /api/terminologies/${terminologyId}/newForkModel                                                           | Action: newForkModel                            |
+ |   GET    | /api/terminologies/${terminologies}/latestVersion                                                          | Action: latestVersion                           |
  */
 export class MdmTerminologyResource extends MdmResource {
     private catalogueItem: MdmCatalogueItemResource;
@@ -176,4 +177,8 @@ export class MdmTerminologyResource extends MdmResource {
         return this.simplePut(url, data, restHandlerOptions);
     }
 
+    latestVersion(terminologyId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/terminologies/${terminologyId}/latestVersion`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
 }

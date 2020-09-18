@@ -27,8 +27,9 @@ import { MdmTermResource } from './mdm-term.resource';
  |  DELETE  | /api/terminologies/${id}                                                                                   | Action: delete                                  |
  |   PUT    | /api/terminologies/${id}                                                                                   | Action: update                                  |
  |   GET    | /api/terminologies/${id}                                                                                   | Action: show                                    |
- |   PUT    | /api/dataModels/${terminologyId}/newBranchModelVersion                                                     | Action: newBranchModelVersion                   |
- |   PUT    | /api/dataModels/${terminologyId}/newForkModel                                                              | Action: newForkModel                            |
+ |   PUT    | /api/terminologies/${terminologyId}/newBranchModelVersion                                                  | Action: newBranchModelVersion                   |
+ |   PUT    | /api/terminologies/${terminologyId}/newForkModel                                                           | Action: newForkModel                            |
+ |   GET    | /api/terminologies/${terminologies}/latestVersion                                                          | Action: latestVersion                           |
  */
 export declare class MdmTerminologyResource extends MdmResource {
     private catalogueItem;
@@ -58,4 +59,5 @@ export declare class MdmTerminologyResource extends MdmResource {
     updateReadByAuthenticated(terminologyId: string, data?: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
     removeReadByEveryone(terminologyId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
     updateReadByEveryone(terminologyId: string, data?: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    latestVersion(terminologyId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
 }
