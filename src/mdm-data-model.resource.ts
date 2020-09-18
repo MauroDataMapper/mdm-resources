@@ -52,8 +52,8 @@ import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handle
  |   GET    | /api/dataModels/${id}                                                                                                                | Action: show
  |   PUT    | /api/dataModels/${dataModelId}/newBranchModelVersion                                                                                 | Action: newBranchModelVersion
  |   PUT    | /api/dataModels/${dataModelId}/newForkModel                                                                                          | Action: newForkModel
- |   GET    | /api/dataModels/${dataModelId}/latestVersion                                                                                         | Action: latestVersion
-
+ |   GET    | /api/dataModels/${dataModelId}/latestModelVersion                                                                                    | Action: latestModelVersion
+ |   GET    | /api/dataModels/${dataModelId}/latestFinalisedModel                                                                                  | Action: latestFinalisedModel
 
  */
 export class MdmDataModelResource extends MdmResource {
@@ -213,8 +213,13 @@ export class MdmDataModelResource extends MdmResource {
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
     
-    latestVersion(dataModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
-        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/latestVersion`;
+    latestModelVersion(dataModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/latestModelVersion`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
+    
+    latestFinalisedModel(dataModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/latestFinalisedModel`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 }

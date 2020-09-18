@@ -29,7 +29,9 @@ import { MdmTermResource } from './mdm-term.resource';
  |   GET    | /api/terminologies/${id}                                                                                   | Action: show                                    |
  |   PUT    | /api/terminologies/${terminologyId}/newBranchModelVersion                                                  | Action: newBranchModelVersion                   |
  |   PUT    | /api/terminologies/${terminologyId}/newForkModel                                                           | Action: newForkModel                            |
- |   GET    | /api/terminologies/${terminologies}/latestVersion                                                          | Action: latestVersion                           |
+ |   GET    | /api/terminologies/${terminologies}/latestModelVersion                                                     | Action: latestModelVersion                      |
+ |   GET    | /api/terminologies/${terminologies}/latestFinalisedModel                                                   | Action: latestFinalisedModel                    |
+
  */
 export declare class MdmTerminologyResource extends MdmResource {
     private catalogueItem;
@@ -59,5 +61,6 @@ export declare class MdmTerminologyResource extends MdmResource {
     updateReadByAuthenticated(terminologyId: string, data?: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
     removeReadByEveryone(terminologyId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
     updateReadByEveryone(terminologyId: string, data?: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    latestVersion(terminologyId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    latestModelVersion(terminologyId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    latestFinalisedModel(terminologyId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
 }
