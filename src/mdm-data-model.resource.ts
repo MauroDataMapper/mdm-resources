@@ -208,8 +208,20 @@ export class MdmDataModelResource extends MdmResource {
         return this.simplePut(url, data, restHandlerOptions);
     }
 
+    /// <summary>
+    /// Get data model by Id or a path
+    /// </summary>
+    /// <param name="dataModelId">Date Model Id or a path in the format typePrefix:label|typePrefix:label</param>
+    /// <param name="queryStringParams">Query String Params</param>
+    /// <param name="restHandlerOptions">restHandler Options</param>
     get(dataModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
-        const url = `${this.apiEndpoint}/dataModels/${dataModelId}`;
+        let url = "";
+        if (this.isGuid(dataModelId)) {
+            url = `${this.apiEndpoint}/dataModels/${dataModelId}`;
+        }
+        else {
+            url = `${this.apiEndpoint}/dataModels/path/${dataModelId}`;
+        }
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
     

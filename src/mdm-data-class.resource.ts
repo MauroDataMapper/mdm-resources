@@ -70,8 +70,23 @@ export class MdmDataClassResource extends MdmResource {
         return this.simplePut(url, data, restHandlerOptions);
     }
 
+    /// <summary>
+    /// Get child data class by Id or a path
+    /// </summary>
+    /// <param name="dataModelId">Data Model Id</param>
+    /// <param name="dataClassId">Parent Data Class Id</param>
+    /// <param name="childDataClassId">Data Class Id or a path in the format typePrefix:label|typePrefix:label</param>
+    /// <param name="queryStringParams">Query String Params</param>
+    /// <param name="restHandlerOptions">restHandler Options</param>
     getChildDataClass(dataModelId: string, dataClassId: string, childDataClassId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
-        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataClasses/${childDataClassId}`;
+        let url = "";
+        if (this.isGuid(childDataClassId)) {
+            url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataClasses/${childDataClassId}`;
+        }
+        else {
+            url = `${this.apiEndpoint}/dataModels/path/${childDataClassId}`;
+        }
+
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 

@@ -47,9 +47,21 @@ export class MdmDataTypeResource extends MdmResource {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataTypes/${dataTypeId}`;
         return this.simplePut(url, data, restHandlerOptions);
     }
-
+    /// <summary>
+    /// Get data type by Id or a path
+    /// </summary>
+    /// <param name="dataModelId">Date Model Id</param>
+    /// <param name="dataTypeId">Date Type Id or a path in the format typePrefix:label|typePrefix:label</param>
+    /// <param name="queryStringParams">Query String Params</param>
+    /// <param name="restHandlerOptions">restHandler Options</param>
     get(dataModelId: string, dataTypeId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
-        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataTypes/${dataTypeId}`;
+        let url = '';
+        if (this.isGuid(dataModelId)) {
+            url = url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataTypes/${dataTypeId}`;
+        }
+        else {
+            url = url = `${this.apiEndpoint}/dataModels/path/${dataTypeId}`;
+        }
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 

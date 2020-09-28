@@ -71,8 +71,22 @@ export class MdmTermResource extends MdmResource {
         return this.simplePut(url, data, restHandlerOptions);
     }
 
+    /// <summary>
+    /// Get termi by Terminology Id, term Id or a path
+    /// </summary>
+    /// <param name="terminologyId">Terminology Id</param>
+    /// <param name="termId">Terminology Id or a path in the format typePrefix:label|typePrefix:label</param>
+    /// <param name="queryStringParams">Query String Params</param>
+    /// <param name="restHandlerOptions">restHandler Options</param>
     get(terminologyId: string, termId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
-        const url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms/${termId}`;
+        let url = "";
+        if (this.isGuid(terminologyId)) {
+            url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms/${termId}`;
+        }
+        else {
+            url = `${this.apiEndpoint}/terminologies/path/${terminologyId}/terms/${termId}`;
+        }
+ 
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 

@@ -61,8 +61,23 @@ export class MdmDataElementResource extends MdmResource {
         return this.simplePut(url, data, restHandlerOptions);
     }
 
+    /// <summary>
+    /// Get Data Element by Data Model Id, Data Class Id and Data Element Id or a path
+    /// </summary>
+    /// <param name="dataModelId">Data Model Id</param>
+    /// <param name="dataClassId">Data Class Id</param>
+    /// <param name="dataElementId">Data Element Id or a path in the format typePrefix:label|typePrefix:label</param>
+    /// <param name="queryStringParams">Query String Params</param>
+    /// <param name="restHandlerOptions">restHandler Options</param>
     get(dataModelId: string, dataClassId: string, dataElementId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
-        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/${dataElementId}`;
+        let url = '';
+        if (this.isGuid(dataModelId)) {
+            url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/${dataElementId}`;
+        }
+        else {
+            url = `${this.apiEndpoint}/dataModels/path/${dataElementId}`;
+        }
+
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 

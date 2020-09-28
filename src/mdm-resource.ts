@@ -56,6 +56,14 @@ export class MdmResource {
     const queryString: string = (queryParams?.length > 0) ? `?${queryParams.join('&')}`: '';
     return this.restHandler.process(`${url}${queryString}`, options);
   }
+
+  isGuid = (stringToTest) => {
+      if (stringToTest[0] === "{") {
+          stringToTest = stringToTest.substring(1, stringToTest.length - 1);
+      }
+      var regexGuid = /^(\{){0,1}[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}(\}){0,1}$/gi;
+      return regexGuid.test(stringToTest);
+  }
 }
 
 export enum ContainerDomainType {
