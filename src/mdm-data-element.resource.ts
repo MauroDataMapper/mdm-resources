@@ -71,11 +71,11 @@ export class MdmDataElementResource extends MdmResource {
     /// <param name="restHandlerOptions">restHandler Options</param>
     get(dataModelId: string, dataClassId: string, dataElementId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         let url = '';
-        if (this.isGuid(dataModelId)) {
+        if (this.isGuid(dataElementId)) {
             url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/${dataElementId}`;
         }
         else {
-            url = `${this.apiEndpoint}/dataModels/path/${dataElementId}`;
+            url = `${this.apiEndpoint}/dataClasses/path/${dataElementId}`;
         }
 
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
