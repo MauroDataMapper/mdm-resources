@@ -84,7 +84,7 @@ export class MdmTermResource extends MdmResource {
             url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms/${termId}`;
         }
         else {
-            url = `${this.apiEndpoint}/terminologies/path/${terminologyId}/terms/${termId}`;
+            url = `${this.apiEndpoint}/terminologies/path/${termId}`;
         }
  
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
