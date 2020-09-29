@@ -72,7 +72,7 @@ export class MdmTermResource extends MdmResource {
     }
 
     /// <summary>
-    /// Get termi by Terminology Id, term Id or a path
+    /// Get term by Terminology Id, term Id or a path
     /// </summary>
     /// <param name="terminologyId">Terminology Id</param>
     /// <param name="termId">Terminology Id or a path in the format typePrefix:label|typePrefix:label</param>

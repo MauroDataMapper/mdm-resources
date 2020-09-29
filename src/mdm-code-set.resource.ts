@@ -158,8 +158,20 @@ export class MdmCodeSetResource extends MdmResource {
         return this.simplePut(url, data, restHandlerOptions);
     }
 
+    /// <summary>
+    /// Get Code Set by Id or path
+    /// </summary>
+    /// <param name="codeSetId">code Set Id or a path in the format typePrefix:label|typePrefix:label</param>
+    /// <param name="queryStringParams">Query String Params</param>
+    /// <param name="restHandlerOptions">restHandler Options</param>
     get(codeSetId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
-        const url = `${this.apiEndpoint}/codeSets/${codeSetId}`;
+        let url = "";
+        if (this.isGuid(codeSetId)) {
+            url = `${this.apiEndpoint}/codeSets/${codeSetId}`;
+        }
+        else {
+            url = `${this.apiEndpoint}/codeSets/path/${codeSetId}`;
+        }
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
