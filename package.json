@@ -1,6 +1,6 @@
 {
     "name": "@maurodatamapper/mdm-resources",
-    "version": "4.1.18-SNAPSHOT",
+    "version": "4.1.19-SNAPSHOT",
     "main": "lib/es2015/index.js",
     "module": "lib/es2015/index.js",
     "license": "Apache-2.0",
