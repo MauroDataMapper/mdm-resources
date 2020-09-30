@@ -11,6 +11,7 @@ export declare class MdmResource {
     simpleDelete(url: string, queryStringParams?: IMdmQueryStringParams, options?: IMdmRestHandlerOptions): any;
     simplePut(url: string, data: any, options?: IMdmRestHandlerOptions): any;
     simpleRequest(url: string, queryStringParams?: IMdmQueryStringParams, options?: IMdmRestHandlerOptions): any;
+    isGuid: (stringToTest: any) => boolean;
 }
 export declare enum ContainerDomainType {
     CLASSIFIERS = "classifiers",

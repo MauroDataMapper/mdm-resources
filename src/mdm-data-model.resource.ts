@@ -54,7 +54,7 @@ import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handle
  |   PUT    | /api/dataModels/${dataModelId}/newForkModel                                                                                          | Action: newForkModel
  |   GET    | /api/dataModels/${dataModelId}/latestModelVersion                                                                                    | Action: latestModelVersion
  |   GET    | /api/dataModels/${dataModelId}/latestFinalisedModel                                                                                  | Action: latestFinalisedModel
-
+ |   GET    | /api/dataModels/${dataModelId}/modelVersionTree                                                                                      | Action: modelVersionTree
  */
 export class MdmDataModelResource extends MdmResource {
 
@@ -235,8 +235,8 @@ export class MdmDataModelResource extends MdmResource {
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    modelVersionTree(modelType:string, modelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
-        const url = `${this.apiEndpoint}/dataModels/${modelType}/${modelId}/modelVersionTree`;
+    modelVersionTree(modelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/${modelId}/modelVersionTree`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 }

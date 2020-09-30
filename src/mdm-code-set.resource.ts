@@ -46,9 +46,9 @@ import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handle
  |   GET    | /api/codeSets/${id}                                                                                        | Action: show                                    |
  |   PUT    | /api/codeSets/${codeSetId}/newBranchModelVersion                                                           | Action: newBranchModelVersion                   |
  |   PUT    | /api/codeSets/${codeSetId}/newForkModel                                                                    | Action: newForkModel                            |
- |   GET    | /api/codeSets/${codeSetId}/latestModelVersion                                                              | Action: latestModelVersion                           |
- |   GET    | /api/codeSets/${codeSetId}/latestFinalisedModel                                                            | Action: latestFinalisedModel                           |
-
+ |   GET    | /api/codeSets/${codeSetId}/latestModelVersion                                                              | Action: latestModelVersion                      |
+ |   GET    | /api/codeSets/${codeSetId}/latestFinalisedModel                                                            | Action: latestFinalisedModel                    |
+ |   GET    | /api/dataModels/${dataModelId}/modelVersionTree                                                            | Action: modelVersionTree                        |
  */
 
 export class MdmCodeSetResource extends MdmResource {
@@ -206,5 +206,9 @@ export class MdmCodeSetResource extends MdmResource {
         const url = `${this.apiEndpoint}/codeSets/${codeSetId}/latestFinalisedModel`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
-    
+
+    modelVersionTree(codeSetId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/codeSets/${codeSetId}/modelVersionTree`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
 }

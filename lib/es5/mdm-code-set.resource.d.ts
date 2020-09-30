@@ -28,9 +28,9 @@ import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handle
  |   GET    | /api/codeSets/${id}                                                                                        | Action: show                                    |
  |   PUT    | /api/codeSets/${codeSetId}/newBranchModelVersion                                                           | Action: newBranchModelVersion                   |
  |   PUT    | /api/codeSets/${codeSetId}/newForkModel                                                                    | Action: newForkModel                            |
- |   GET    | /api/codeSets/${codeSetId}/latestModelVersion                                                              | Action: latestModelVersion                           |
- |   GET    | /api/codeSets/${codeSetId}/latestFinalisedModel                                                            | Action: latestFinalisedModel                           |
-
+ |   GET    | /api/codeSets/${codeSetId}/latestModelVersion                                                              | Action: latestModelVersion                      |
+ |   GET    | /api/codeSets/${codeSetId}/latestFinalisedModel                                                            | Action: latestFinalisedModel                    |
+ |   GET    | /api/dataModels/${dataModelId}/modelVersionTree                                                            | Action: modelVersionTree                        |
  */
 export declare class MdmCodeSetResource extends MdmResource {
     importers(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
@@ -61,4 +61,5 @@ export declare class MdmCodeSetResource extends MdmResource {
     updateReadByEveryone(codeSetId: string, data?: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
     latestModelVersion(codeSetId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
     latestFinalisedModel(codeSetId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    modelVersionTree(codeSetId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
 }

@@ -50,7 +50,7 @@ import { MdmTermResource } from './mdm-term.resource';
  |   PUT    | /api/terminologies/${terminologyId}/newForkModel                                                           | Action: newForkModel                            |
  |   GET    | /api/terminologies/${terminologies}/latestModelVersion                                                     | Action: latestModelVersion                      |
  |   GET    | /api/terminologies/${terminologies}/latestFinalisedModel                                                   | Action: latestFinalisedModel                    |
-
+ |   GET    | /api/dataModels/${dataModelId}/modelVersionTree                                                            | Action: modelVersionTree                        |
  */
 export class MdmTerminologyResource extends MdmResource {
     private catalogueItem: MdmCatalogueItemResource;
@@ -199,6 +199,11 @@ export class MdmTerminologyResource extends MdmResource {
     
     latestFinalisedModel(terminologyId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/latestFinalisedModel`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
+
+    modelVersionTree(terminologyId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/terminologies/${terminologyId}/modelVersionTree`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 }
