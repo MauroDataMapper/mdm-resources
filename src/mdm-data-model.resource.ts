@@ -234,4 +234,9 @@ export class MdmDataModelResource extends MdmResource {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/latestFinalisedModel`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
+
+    modelVersionTree(modelType:string, modelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/${modelType}/${modelId}/modelVersionTree`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
 }
