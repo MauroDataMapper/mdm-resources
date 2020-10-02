@@ -75,7 +75,7 @@ export class MdmDataElementResource extends MdmResource {
             url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/${dataElementId}`;
         }
         else {
-            url = `${this.apiEndpoint}/dataClasses/path/${dataElementId}`;
+            url = `${this.apiEndpoint}/dataModels/path/${dataElementId}`;
         }
 
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
