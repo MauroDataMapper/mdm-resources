@@ -96,14 +96,7 @@ export class MdmFolderResource extends MdmResource {
     /// <param name="queryStringParams">Query String Params</param>
     /// <param name="restHandlerOptions">restHandler Options</param>
     get(folderId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
-        let url = "";
-        if (this.isGuid(folderId)) {
-            url = `${this.apiEndpoint}/folders/${folderId}`;
-        }
-        else {
-            url = `${this.apiEndpoint}/folders/path/${folderId}`;
-        }
-        
+        const url = `${this.apiEndpoint}/folders/${folderId}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
