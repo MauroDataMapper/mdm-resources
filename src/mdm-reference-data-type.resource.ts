@@ -38,18 +38,18 @@ export class MdmReferenceDataTypeResource extends MdmResource {
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    save(referenceDataModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    save(referenceDataModelId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/referenceDataTypes`;
-        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+        return this.simplePost(url, data, restHandlerOptions);
     }
 
-    update(referenceDataModelId: string, referenceDataTypeId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    update(referenceDataModelId: string, referenceDataTypeId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/referenceDataTypes/${referenceDataTypeId}`;
-        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+        return this.simplePut(url, data, restHandlerOptions);
     }
     
     remove(referenceDataModelId: string, referenceDataTypeId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/referenceDataTypes/${referenceDataTypeId}`;
-        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+        return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 }
