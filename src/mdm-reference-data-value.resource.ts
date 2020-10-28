@@ -54,7 +54,7 @@ export class MdmReferenceDataValueResource extends MdmResource {
     }
 
     search(referenceDataModelId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
-        const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/referenceDataValues/search`;
+        const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/referenceDataValues/search?asRows=true`;
         return this.simplePost(url, data, restHandlerOptions);
     }
 }
