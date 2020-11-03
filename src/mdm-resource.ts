@@ -77,6 +77,7 @@ export enum ModelDomainType {
     DATA_CLASSES = 'dataClasses',
     DATA_TYPES = 'dataTypes',
     TERMINOLOGIES = 'terminologies',
+    REFERENCEDATAMODELS = 'referenceDataModels',
     TERMS = 'terms',
     ALL = 'all'
 } 
