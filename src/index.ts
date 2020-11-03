@@ -53,3 +53,4 @@ export * from './mdm-user-image-file.resource';
 export * from './mdm-data-element-component.resource';
 export * from './mdm-edit.resource';
 export * from './mdm-resource';
+export * from './mdm-versioning.resource'
