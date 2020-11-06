@@ -112,7 +112,7 @@ export class MdmTerminologyResource extends MdmResource {
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    alterFolder(terminologyId: string, folderId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+    moveTerminologyToFolder(terminologyId: string, folderId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/folder/${folderId}`;
         return this.simplePut(url, data, restHandlerOptions);
     }

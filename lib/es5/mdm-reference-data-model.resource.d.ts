@@ -18,6 +18,7 @@ import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handle
  |  DELETE  | /api/referenceDataModels/${id}                                                                                                                | Action: delete
  |   PUT    | /api/referenceDataModels/${id}                                                                                                                | Action: update
  |   GET    | /api/referenceDataModels/${id}                                                                                                                | Action: show
+ |   PUT    | /api/referenceDataModels/${referenceDataModelId}/folder/${folderId}                                                                           | Action: changeFolder
 
  */
 export declare class MdmReferenceDataModelResource extends MdmResource {
@@ -36,4 +37,5 @@ export declare class MdmReferenceDataModelResource extends MdmResource {
     remove(referenceDataModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
     update(referenceDataModelId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
     get(referenceDataModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    moveReferenceDataModelToFolder(referenceDataModelId: string, folderId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
 }

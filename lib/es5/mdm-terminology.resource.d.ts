@@ -47,7 +47,7 @@ export declare class MdmTerminologyResource extends MdmResource {
     newBranchModelVersion(terminologyId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
     newForkModel(terminologyId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
     tree(terminologyId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    alterFolder(terminologyId: string, folderId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    moveTerminologyToFolder(terminologyId: string, folderId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
     diff(terminologyId: string, otherModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
     exportModel(terminologyId: string, exporterNamespace: any, exporterName: any, exporterVersion: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
     list(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;

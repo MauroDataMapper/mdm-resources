@@ -118,7 +118,7 @@ export class MdmCodeSetResource extends MdmResource {
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    alterFolder(codeSetId: string, folderId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+    moveCodeSetToFolder(codeSetId: string, folderId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/codeSets/${codeSetId}/folder/${folderId}`;
         return this.simplePut(url, data, restHandlerOptions);
     }

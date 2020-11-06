@@ -168,7 +168,7 @@ export class MdmDataModelResource extends MdmResource {
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    updateFolderWithDataModel(dataModelId: string, folderId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+    moveDataModelToFolder(dataModelId: string, folderId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/folder/${folderId}`;
         return this.simplePut(url, data, restHandlerOptions);
     }

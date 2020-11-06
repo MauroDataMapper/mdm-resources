@@ -36,6 +36,7 @@ import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handle
  |  DELETE  | /api/referenceDataModels/${id}                                                                                                                | Action: delete
  |   PUT    | /api/referenceDataModels/${id}                                                                                                                | Action: update
  |   GET    | /api/referenceDataModels/${id}                                                                                                                | Action: show
+ |   PUT    | /api/referenceDataModels/${referenceDataModelId}/folder/${folderId}                                                                           | Action: changeFolder
 
  */
 export class MdmReferenceDataModelResource extends MdmResource {
@@ -113,6 +114,11 @@ export class MdmReferenceDataModelResource extends MdmResource {
     get(referenceDataModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
+
+    moveReferenceDataModelToFolder(referenceDataModelId: string, folderId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/folder/${folderId}`;
+        return this.simplePut(url, data, restHandlerOptions);
     }
     
 }
