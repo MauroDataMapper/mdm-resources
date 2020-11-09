@@ -2,23 +2,23 @@ import { MdmResource } from './mdm-resource';
 import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handler';
 /**
  * Controller: referenceDataModel
- |   GET    | /api/referenceDataModels/providers/defaultDataTypeProviders                                                                                   | Action: defaultDataTypeProviders
- |   GET    | /api/referenceDataModels/providers/importers                                                                                                  | Action: importerProviders
- |   GET    | /api/referenceDataModels/providers/exporters                                                                                                  | Action: exporterProviders
- |   POST   | /api/referenceDataModels/import/${importerNamespace}/${importerName}/${importerVersion}                                                       | Action: importModels
- |   POST   | /api/referenceDataModels/export/${exporterNamespace}/${exporterName}/${exporterVersion}                                                       | Action: exportModels
- |  DELETE  | /api/referenceDataModels/${referenceDataModelId}/readByAuthenticated                                                                          | Action: readByAuthenticated
- |   PUT    | /api/referenceDataModels/${referenceDataModelId}/readByAuthenticated                                                                          | Action: readByAuthenticated
- |  DELETE  | /api/referenceDataModels/${referenceDataModelId}/readByEveryone                                                                               | Action: readByEveryone
- |   PUT    | /api/referenceDataModels/${referenceDataModelId}/readByEveryone                                                                               | Action: readByEveryone
- |   GET    | /api/referenceDataModels/${referenceDataModelId}/search                                                                                       | Action: search
- |   POST   | /api/referenceDataModels/${referenceDataModelId}/search                                                                                       | Action: search
- |   GET    | /api/referenceDataModels/${referenceDataModelId}/export/${exporterNamespace}/${exporterName}/${exporterVersion}                               | Action: exportModel
- |   GET    | /api/referenceDataModels                                                                                                                      | Action: index
- |  DELETE  | /api/referenceDataModels/${id}                                                                                                                | Action: delete
- |   PUT    | /api/referenceDataModels/${id}                                                                                                                | Action: update
- |   GET    | /api/referenceDataModels/${id}                                                                                                                | Action: show
- |   PUT    | /api/referenceDataModels/${referenceDataModelId}/folder/${folderId}                                                                           | Action: changeFolder
+ |   GET    | /api/referenceData/providers/defaultDataTypeProviders                                                                                   | Action: defaultDataTypeProviders
+ |   GET    | /api/referenceData/providers/importers                                                                                                  | Action: importerProviders
+ |   GET    | /api/referenceData/providers/exporters                                                                                                  | Action: exporterProviders
+ |   POST   | /api/referenceData/import/${importerNamespace}/${importerName}/${importerVersion}                                                       | Action: importModels
+ |   POST   | /api/referenceData/export/${exporterNamespace}/${exporterName}/${exporterVersion}                                                       | Action: exportModels
+ |  DELETE  | /api/referenceData/${referenceDataModelId}/readByAuthenticated                                                                          | Action: readByAuthenticated
+ |   PUT    | /api/referenceData/${referenceDataModelId}/readByAuthenticated                                                                          | Action: readByAuthenticated
+ |  DELETE  | /api/referenceData/${referenceDataModelId}/readByEveryone                                                                               | Action: readByEveryone
+ |   PUT    | /api/referenceData/${referenceDataModelId}/readByEveryone                                                                               | Action: readByEveryone
+ |   GET    | /api/referenceData/${referenceDataModelId}/search                                                                                       | Action: search
+ |   POST   | /api/referenceData/${referenceDataModelId}/search                                                                                       | Action: search
+ |   GET    | /api/referenceData/${referenceDataModelId}/export/${exporterNamespace}/${exporterName}/${exporterVersion}                               | Action: exportModel
+ |   GET    | /api/referenceData                                                                                                                      | Action: index
+ |  DELETE  | /api/referenceData/${id}                                                                                                                | Action: delete
+ |   PUT    | /api/referenceData/${id}                                                                                                                | Action: update
+ |   GET    | /api/referenceData/${id}                                                                                                                | Action: show
+ |   PUT    | /api/referenceData/${referenceDataModelId}/folder/${folderId}                                                                           | Action: changeFolder
 
  */
 export declare class MdmReferenceDataModelResource extends MdmResource {

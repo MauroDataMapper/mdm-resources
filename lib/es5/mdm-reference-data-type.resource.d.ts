@@ -2,11 +2,11 @@ import { MdmResource } from './mdm-resource';
 import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handler';
 /**
  * Controller: referenceDataModel
- |   GET    | /api/referenceDataModels/${referenceDataModelId}/referenceDataTypes                                                                        | Action: index
- |   GET    | /api/referenceDataModels/${referenceDataModelId}/referenceDataTypes/${referenceDataTypeId}                                                 | Action: get
- |   POST   | /api/referenceDataModels/${referenceDataModelId}/referenceDataTypes                                                                        | Action: save
- |   PUT    | /api/referenceDataModels/${referenceDataModelId}/referenceDataTypes/${referenceDataTypeId}                                                 | Action: update
- |   DELETE | /api/referenceDataModels/${referenceDataModelId}/referenceDataTypes/${referenceDataTypeId}                                                 | Action: delete
+ |   GET    | /api/referenceData/${referenceDataModelId}/referenceDataTypes                                                                        | Action: index
+ |   GET    | /api/referenceData/${referenceDataModelId}/referenceDataTypes/${referenceDataTypeId}                                                 | Action: get
+ |   POST   | /api/referenceData/${referenceDataModelId}/referenceDataTypes                                                                        | Action: save
+ |   PUT    | /api/referenceData/${referenceDataModelId}/referenceDataTypes/${referenceDataTypeId}                                                 | Action: update
+ |   DELETE | /api/referenceData/${referenceDataModelId}/referenceDataTypes/${referenceDataTypeId}                                                 | Action: delete
  */
 export declare class MdmReferenceDataTypeResource extends MdmResource {
     list(referenceDataModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
