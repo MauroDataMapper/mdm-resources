@@ -2,11 +2,11 @@ import { MdmResource } from './mdm-resource';
 import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handler';
 /**
  * Controller: referenceDataModel
- |   GET    | /api/referenceData/${referenceDataModelId}/referenceDataValues                                                                        | Action: index
- |   GET    | /api/referenceData/${referenceDataModelId}/referenceDataValues/${referenceDataValueId}                                                | Action: get
- |   POST   | /api/referenceData/${referenceDataModelId}/referenceDataValues                                                                        | Action: save
- |   PUT    | /api/referenceData/${referenceDataModelId}/referenceDataValues/${referenceDataValueId}                                                | Action: update
- |   DELETE | /api/referenceData/${referenceDataModelId}/referenceDataValues/${referenceDataValueId}                                                | Action: delete
+ |   GET    | /api/referenceDataModels/${referenceDataModelId}/referenceDataValues                                                                        | Action: index
+ |   GET    | /api/referenceDataModels/${referenceDataModelId}/referenceDataValues/${referenceDataValueId}                                                | Action: get
+ |   POST   | /api/referenceDataModels/${referenceDataModelId}/referenceDataValues                                                                        | Action: save
+ |   PUT    | /api/referenceDataModels/${referenceDataModelId}/referenceDataValues/${referenceDataValueId}                                                | Action: update
+ |   DELETE | /api/referenceDataModels/${referenceDataModelId}/referenceDataValues/${referenceDataValueId}                                                | Action: delete
  */
 export declare class MdmReferenceDataValueResource extends MdmResource {
     list(referenceDataModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;

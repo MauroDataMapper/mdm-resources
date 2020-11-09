@@ -20,36 +20,36 @@ import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handle
 
 /**
  * Controller: referenceDataModel
- |   GET    | /api/referenceData/${referenceDataModelId}/referenceDataTypes                                                                        | Action: index
- |   GET    | /api/referenceData/${referenceDataModelId}/referenceDataTypes/${referenceDataTypeId}                                                 | Action: get
- |   POST   | /api/referenceData/${referenceDataModelId}/referenceDataTypes                                                                        | Action: save
- |   PUT    | /api/referenceData/${referenceDataModelId}/referenceDataTypes/${referenceDataTypeId}                                                 | Action: update
- |   DELETE | /api/referenceData/${referenceDataModelId}/referenceDataTypes/${referenceDataTypeId}                                                 | Action: delete
+ |   GET    | /api/referenceDataModels/${referenceDataModelId}/referenceDataTypes                                                                        | Action: index
+ |   GET    | /api/referenceDataModels/${referenceDataModelId}/referenceDataTypes/${referenceDataTypeId}                                                 | Action: get
+ |   POST   | /api/referenceDataModels/${referenceDataModelId}/referenceDataTypes                                                                        | Action: save
+ |   PUT    | /api/referenceDataModels/${referenceDataModelId}/referenceDataTypes/${referenceDataTypeId}                                                 | Action: update
+ |   DELETE | /api/referenceDataModels/${referenceDataModelId}/referenceDataTypes/${referenceDataTypeId}                                                 | Action: delete
  */
 export class MdmReferenceDataTypeResource extends MdmResource {
 
     list(referenceDataModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
-        const url = `${this.apiEndpoint}/referenceData/${referenceDataModelId}/referenceDataTypes`;
+        const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/referenceDataTypes`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
     get(referenceDataModelId: string, referenceDataTypeId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
-        const url = `${this.apiEndpoint}/referenceData/${referenceDataModelId}/referenceDataTypes/${referenceDataTypeId}`;
+        const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/referenceDataTypes/${referenceDataTypeId}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
     save(referenceDataModelId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
-        const url = `${this.apiEndpoint}/referenceData/${referenceDataModelId}/referenceDataTypes`;
+        const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/referenceDataTypes`;
         return this.simplePost(url, data, restHandlerOptions);
     }
 
     update(referenceDataModelId: string, referenceDataTypeId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
-        const url = `${this.apiEndpoint}/referenceData/${referenceDataModelId}/referenceDataTypes/${referenceDataTypeId}`;
+        const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/referenceDataTypes/${referenceDataTypeId}`;
         return this.simplePut(url, data, restHandlerOptions);
     }
     
     remove(referenceDataModelId: string, referenceDataTypeId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
-        const url = `${this.apiEndpoint}/referenceData/${referenceDataModelId}/referenceDataTypes/${referenceDataTypeId}`;
+        const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/referenceDataTypes/${referenceDataTypeId}`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 }

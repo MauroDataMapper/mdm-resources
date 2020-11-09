@@ -20,36 +20,36 @@ import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handle
 
 /**
  * Controller: referenceDataModel
- |   GET    | /api/referenceData/${referenceDataModelId}/referenceDataElements                                                                        | Action: index
- |   GET    | /api/referenceData/${referenceDataModelId}/referenceDataElements/${referenceDataElementId}                                                 | Action: get
- |   POST   | /api/referenceData/${referenceDataModelId}/referenceDataElements                                                                        | Action: save
- |   PUT    | /api/referenceData/${referenceDataModelId}/referenceDataElements/${referenceDataElementId}                                                 | Action: update
- |   DELETE | /api/referenceData/${referenceDataModelId}/referenceDataElements/${referenceDataElementId}                                                 | Action: delete
+ |   GET    | /api/referenceDataModels/${referenceDataModelId}/referenceDataElements                                                                        | Action: index
+ |   GET    | /api/referenceDataModels/${referenceDataModelId}/referenceDataElements/${referenceDataElementId}                                                 | Action: get
+ |   POST   | /api/referenceDataModels/${referenceDataModelId}/referenceDataElements                                                                        | Action: save
+ |   PUT    | /api/referenceDataModels/${referenceDataModelId}/referenceDataElements/${referenceDataElementId}                                                 | Action: update
+ |   DELETE | /api/referenceDataModels/${referenceDataModelId}/referenceDataElements/${referenceDataElementId}                                                 | Action: delete
  */
 export class MdmReferenceDataElementResource extends MdmResource {
 
     list(referenceDataModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
-        const url = `${this.apiEndpoint}/referenceData/${referenceDataModelId}/referenceDataElements`;
+        const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/referenceDataElements`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
     get(referenceDataModelId: string, referenceDataElementId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
-        const url = `${this.apiEndpoint}/referenceData/${referenceDataModelId}/referenceDataElements/${referenceDataElementId}`;
+        const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/referenceDataElements/${referenceDataElementId}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
     save(referenceDataModelId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
-        const url = `${this.apiEndpoint}/referenceData/${referenceDataModelId}/referenceDataElements`;
+        const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/referenceDataElements`;
         return this.simplePost(url, data, restHandlerOptions);
     }
 
     update(referenceDataModelId: string, referenceDataElementId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
-        const url = `${this.apiEndpoint}/referenceData/${referenceDataModelId}/referenceDataElements/${referenceDataElementId}`;
+        const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/referenceDataElements/${referenceDataElementId}`;
         return this.simplePut(url, data, restHandlerOptions);
     }
     
     remove(referenceDataModelId: string, referenceDataElementId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
-        const url = `${this.apiEndpoint}/referenceData/${referenceDataModelId}/referenceDataElements/${referenceDataElementId}`;
+        const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/referenceDataElements/${referenceDataElementId}`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 }
