@@ -23,6 +23,13 @@ import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handle
  |   PUT    | /api/catalogueUsers/${id}                                                                                           | Action: update
  |   GET    | /api/catalogueUsers/${id}                                                                                           | Action: show
  |   GET    | /api/${containerDomainType}/${containerId}/userGroups/${userGroupId}/catalogueUsers                                 | Action: index
+ |   GET    | /api/catalogueUsers/${catalogueUserId}/apiKeys                                                                      | Action: List all API Keys
+ |   POST   | /api/catalogueUsers/${catalogueUserId}/apiKeys                                                                      | Action: Add an API Key
+ |   DELETE | /api/catalogueUsers/${catalogueUserId}/apiKeys/${apiKey}                                                            | Action: Delete an API Key
+ |   PUT    | /api/catalogueUsers/${catalogueUserId}/apiKeys/${apiKey}/enable                                                     | Action: Enable an API Key
+ |   PUT    | /api/catalogueUsers/${catalogueUserId}/apiKeys/${apiKey}/disable                                                    | Action: Disable an API Key
+ |   PUT    | /api/catalogueUsers/${catalogueUserId}/apiKeys/${apiKey}/refresh/${noOfDays}                                        | Action: Refresh an API Key
+ |   PUT    | /api/catalogueUsers/${catalogueUserId}/apiKeys/${apiKey}/refresh/${expiresInDays}                                  | Action: Change expiry day
  */
 export declare class MdmCatalogueUserResource extends MdmResource {
     adminRegister(data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
@@ -45,4 +52,10 @@ export declare class MdmCatalogueUserResource extends MdmResource {
     update(catalogueUserId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
     get(catalogueUserId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
     listInContainerUserGroup(containerDomainType: string | ContainerDomainType, containerId: string, userGroupId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    listApiKeys(catalogueUserId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    saveApiKey(catalogueUserId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    removeApiKey(catalogueUserId: string, apiKey: string, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    enableApiKey(catalogueUserId: string, apiKey: string, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    disableApiKey(catalogueUserId: string, apiKey: string, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    refreshApiKey(catalogueUserId: string, apiKey: string, noOfDays: number, restHandlerOptions?: IMdmRestHandlerOptions): any;
 }
