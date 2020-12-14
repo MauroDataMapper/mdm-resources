@@ -27,4 +27,11 @@ export class MdmProfileResource extends MdmResource {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/profiles`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
+    profile(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, profileNamespace: string, profileName: string, profileVersion?: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        let url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/profile/${profileNamespace}/${profileName}`;
+        if(profileVersion) {
+            url += `/${profileVersion}`
+        }
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
 }
