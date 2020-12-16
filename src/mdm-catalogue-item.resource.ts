@@ -214,4 +214,45 @@ export class MdmCatalogueItemResource extends MdmResource {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/semanticLinks/${semanticLinkId}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
+
+    listRules(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/rules`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
+
+    saveRule(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/rules`;
+        return this.simplePost(url, data, restHandlerOptions);
+    }
+
+    updateRule(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, ruleId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/rules/${ruleId}`;
+        return this.simplePut(url, data, restHandlerOptions);
+    }
+
+    listRuleRepresentations(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, ruleId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/rules/${ruleId}/representations`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
+
+    saveRulesRepresentation(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, data: any,ruleId: string,restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/rules/${ruleId}/representations`;
+        return this.simplePost(url, data, restHandlerOptions);
+    }
+
+    updateRulesRepresentation(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, data: any,ruleId: string, representationId:string, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/rules/${ruleId}/representations/${representationId}`;
+        return this.simplePut(url, data, restHandlerOptions);
+    }
+
+    removeRule(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, ruleId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/rules/${ruleId}`;
+        return this.simpleDelete(url, queryStringParams, restHandlerOptions);
+    }
+
+    removeRulesRepresentation(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, ruleId: string, representationId:string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/rules/${ruleId}/representations/${representationId}`;
+        return this.simpleDelete(url, queryStringParams, restHandlerOptions);
+    }
+
 }
