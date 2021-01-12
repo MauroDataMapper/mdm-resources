@@ -42,4 +42,12 @@ export class MdmProfileResource extends MdmResource {
         }
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
+
+    saveProfile(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, profileNamespace: string, profileName: string, data: string, profileVersion?: string,  restHandlerOptions?: IMdmRestHandlerOptions) {
+        let url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/profile/${profileNamespace}/${profileName}`;
+        if(profileVersion) {
+            url += `/${profileVersion}`
+        }
+        return this.simplePost(url, data, restHandlerOptions);
+    }
 }
