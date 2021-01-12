@@ -15,39 +15,89 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import {MdmResource, ModelDomainType} from './mdm-resource';
-import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handler';
+import { MdmResource, ModelDomainType } from "./mdm-resource";
+import {
+    IMdmQueryStringParams,
+    IMdmRestHandlerOptions,
+} from "./mdm-rest-handler";
 
 /**
  * Controller: mauroDataMapperServiceProvider
  |   GET    | /api/${catalogueItemDomainType}/${catalogueItemId}/profiles                                           | Action: profiles
  */
 export class MdmProfileResource extends MdmResource {
-    usedProfiles(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    usedProfiles(
+        catalogueItemDomainType: string | ModelDomainType,
+        catalogueItemId: string,
+        queryStringParams?: IMdmQueryStringParams,
+        restHandlerOptions?: IMdmRestHandlerOptions
+    ) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/profiles/used`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
-    unusedProfiles(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    unusedProfiles(
+        catalogueItemDomainType: string | ModelDomainType,
+        catalogueItemId: string,
+        queryStringParams?: IMdmQueryStringParams,
+        restHandlerOptions?: IMdmRestHandlerOptions
+    ) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/profiles/unused`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
-    otherMetadata(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    otherMetadata(
+        catalogueItemDomainType: string | ModelDomainType,
+        catalogueItemId: string,
+        queryStringParams?: IMdmQueryStringParams,
+        restHandlerOptions?: IMdmRestHandlerOptions
+    ) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/profiles/otherMetadata`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
-    profile(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, profileNamespace: string, profileName: string, profileVersion?: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    profile(
+        catalogueItemDomainType: string | ModelDomainType,
+        catalogueItemId: string,
+        profileNamespace: string,
+        profileName: string,
+        profileVersion?: string,
+        queryStringParams?: IMdmQueryStringParams,
+        restHandlerOptions?: IMdmRestHandlerOptions
+    ) {
         let url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/profile/${profileNamespace}/${profileName}`;
-        if(profileVersion) {
-            url += `/${profileVersion}`
+        if (profileVersion) {
+            url += `/${profileVersion}`;
         }
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    saveProfile(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, profileNamespace: string, profileName: string, data: string, profileVersion?: string,  restHandlerOptions?: IMdmRestHandlerOptions) {
+    saveProfile(
+        catalogueItemDomainType: string | ModelDomainType,
+        catalogueItemId: string,
+        profileNamespace: string,
+        profileName: string,
+        data: string,
+        profileVersion?: string,
+        restHandlerOptions?: IMdmRestHandlerOptions
+    ) {
         let url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/profile/${profileNamespace}/${profileName}`;
-        if(profileVersion) {
-            url += `/${profileVersion}`
+        if (profileVersion) {
+            url += `/${profileVersion}`;
         }
         return this.simplePost(url, data, restHandlerOptions);
+    }
+    deleteProfile(
+        catalogueItemDomainType: string | ModelDomainType,
+        catalogueItemId: string,
+        profileNamespace: string,
+        profileName: string,
+        profileVersion?: string,
+        queryStringParams?: IMdmQueryStringParams,
+        restHandlerOptions?: IMdmRestHandlerOptions
+    ) {
+        let url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/profile/${profileNamespace}/${profileName}`;
+        if (profileVersion) {
+            url += `/${profileVersion}`;
+        }
+
+        return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 }
