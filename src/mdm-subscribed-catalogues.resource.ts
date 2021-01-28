@@ -30,26 +30,26 @@ import { IMdmQueryStringParams, IMdmRestHandlerOptions } from "./mdm-rest-handle
 export class MdmSubscribedCataloguesResource extends MdmResource {
     get(id: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/subscribedCatalogues/${id}`;
-        this.simpleGet(url, queryStringParams, restHandlerOptions);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
     list(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/subscribedCatalogues`;
-        this.simpleGet(url, queryStringParams, restHandlerOptions);
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
     save(data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/subscribedCatalogues`;
-        this.simplePost(url, data, restHandlerOptions);
+        return this.simplePost(url, data, restHandlerOptions);
     }
 
     update(id: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/subscribedCatalogues/${id}`;
-        this.simplePut(url, data, restHandlerOptions);
+        return this.simplePut(url, data, restHandlerOptions);
     }
 
     remove(id: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/subscribedCatalogues/${id}`;
-        this.simpleDelete(url, queryStringParams, restHandlerOptions);
+        return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 }
