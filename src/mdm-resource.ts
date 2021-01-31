@@ -15,206 +15,69 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { IMdmRestHandler, DefaultMdmRestHandler } from './mdm-rest-handler';
 import { MdmResourcesConfiguration } from './mdm-resources-configuration';
-import { MdmValidator } from './mdm-validator';
+import { DefaultMdmRestHandler, IMdmQueryStringParams, IMdmRestHandler, IMdmRestHandlerOptions } from './mdm-rest-handler';
 
 export class MdmResource {
   private restHandler: IMdmRestHandler;
   private resourcesConfig: MdmResourcesConfiguration;
-  protected apiEndpoint: string|URL;
+  protected apiEndpoint: string;
+  protected defaultRequestOptions: IMdmRestHandlerOptions;
 
-  constructor(resourcesConfig = new MdmResourcesConfiguration(), restHandler: IMdmRestHandler = new DefaultMdmRestHandler()) {
-    this.resourcesConfig = resourcesConfig;
-    this.restHandler = restHandler;
+  constructor(resourcesConfig?: MdmResourcesConfiguration, restHandler?: IMdmRestHandler) {
+    this.resourcesConfig = resourcesConfig || new MdmResourcesConfiguration();
+    this.restHandler = restHandler || new DefaultMdmRestHandler();
     this.apiEndpoint = this.resourcesConfig.apiEndpoint;
+    this.defaultRequestOptions = this.resourcesConfig.defaultHttpRequestOptions;
   }
 
-  getResource(name, id, action, options?): any {
-    if (!options) {
-      options = {};
-    }
-    if (name && name[name.length - 1] === '/') {
-      name = name.substr(0, name.length - 1);
-    }
+  simplePost(url: string, data: any, options?: IMdmRestHandlerOptions) {
+    const opts: IMdmRestHandlerOptions = {...this.defaultRequestOptions, body: data, ...options, method: 'POST'};
+    return this.simpleRequest(url, {}, opts);
+  }
 
-    if (
-      options.filters &&
-      options.filters[options.filters.length - 1] === '&'
-    ) {
-      options.filters = options.filters.substr(0, options.filters.length - 1);
-    }
-    if (
-      options.filters &&
-      options.filters[options.filters.length - 1] === '&'
-    ) {
-      options.filters = options.filters.substr(1, options.filters.length);
-    }
+  simpleGet(url: string, queryStringParams: IMdmQueryStringParams = {}, options?: IMdmRestHandlerOptions) {
+    const opts: IMdmRestHandlerOptions = {...this.defaultRequestOptions, ...options, method: 'GET'};
+    return this.simpleRequest(url, queryStringParams, opts);
+  }
 
-    id = !id ? '' : id + '/';
-    action = !action ? '' : action;
-    let pagination = !options.pageSize ? '' : 'offset=' + options.pageIndex + '&max=' + options.pageSize;
-    const sort = !options.sortBy ? '' : '&sort=' + options.sortBy + '&order=' + (!options.sortType ? 'asc' : options.sortType);
-    const filters = !options.filters ? '' : '&' + options.filters;
-    const all = !options.all ? '' : '&all=true';
-    let qStr = '';
+  simpleDelete(url: string, queryStringParams: IMdmQueryStringParams = {}, options?: IMdmRestHandlerOptions) {
+    const opts: IMdmRestHandlerOptions = {...this.defaultRequestOptions, ...options, method: 'DELETE'};
+    return this.simpleRequest(url, queryStringParams, opts);
+  }
 
-    if (options.queryStringParams) {
-      for (const n in options.queryStringParams) {
-        if (options.queryStringParams.hasOwnProperty(n)) {
-          if (!MdmValidator.isEmpty(options.queryStringParams[n])) {
-            qStr += '&' + n + '=' + options.queryStringParams[n];
-          }
-        }
+  simplePut(url: string, data: any, options?: IMdmRestHandlerOptions) {
+    const opts: IMdmRestHandlerOptions = {...this.defaultRequestOptions, body: data, ...options, method: 'PUT'};
+    return this.simpleRequest(url, {}, opts);
+  }
+
+  simpleRequest(url: string, queryStringParams: IMdmQueryStringParams = {}, options?: IMdmRestHandlerOptions) {
+    const queryParams: string[] = Object.keys(queryStringParams).map(key => `${key}=${queryStringParams[key]}`);
+    const queryString: string = (queryParams?.length > 0) ? `?${queryParams.join('&')}`: '';
+    return this.restHandler.process(`${url}${queryString}`, options);
+  }
+
+  isGuid = (stringToTest) => {
+      if (stringToTest[0] === "{") {
+          stringToTest = stringToTest.substring(1, stringToTest.length - 1);
       }
-    }
-
-    if (pagination || sort || filters || all || qStr) {
-      pagination = '?' + pagination;
-    }
-
-    return this.request(name + '/' + id + action + pagination + sort + filters + all + qStr, 'GET', options.resource, options.contentType);
-  }
-
-  postResource(name, id, action, options, more?): any {
-    if (!options) {
-      options = {};
-    }
-    if (name && name[name.length - 1] === '/') {
-      name = name.substr(0, name.length - 1);
-    }
-    id = !id ? '' : id + '/';
-    action = !action ? '' : action;
-    let pagination = !options.pageSize ? '' : 'offset=' + options.pageIndex + '&max=' + options.pageSize;
-    const sort = !options.sortBy ? '' : '&sort=' + options.sortBy + '&order=' + (!options.sortType ? 'asc' : options.sortType);
-    const filters = !options.filters ? '' : '&' + options.filters;
-    let qStr = '';
-
-    if (options.queryStringParams) {
-      for (const n in options.queryStringParams) {
-        if (options.queryStringParams.hasOwnProperty(n)) {
-          if (!MdmValidator.isEmpty(options.queryStringParams[n])) {
-            qStr += '&' + n + '=' + options.queryStringParams[n];
-          }
-        }
-      }
-    }
-    if (pagination || sort || filters || qStr) {
-      pagination = '?' + pagination;
-    }
-    return this.request(
-      name + '/' + id + action + pagination + sort + filters + qStr,
-      'POST',
-      options.resource,
-      options.contentType,
-      more
-    );
-  }
-
-  putResource(name, id, action, options) {
-    if (!options) {
-      options = {};
-    }
-    if (name && name[name.length - 1] === '/') {
-      name = name.substr(0, name.length - 1);
-    }
-    id = !id ? '' : id + '/';
-    action = !action ? '' : action;
-    let pagination = !options.pageSize
-      ? ''
-      : 'offset=' + options.pageIndex + '&max=' + options.pageSize;
-    const sort = !options.sortBy
-      ? ''
-      : '&sort=' +
-      options.sortBy +
-      '&order=' +
-      (!options.sortType ? 'asc' : options.sortType);
-    const filters = !options.filters ? '' : '&' + options.filters;
-    let qStr = '';
-
-    if (options.queryStringParams) {
-      for (const n in options.queryStringParams) {
-        if (options.queryStringParams.hasOwnProperty(n)) {
-          if (!MdmValidator.isEmpty(options.queryStringParams[n])) {
-            qStr += '&' + n + '=' + options.queryStringParams[n];
-          }
-        }
-      }
-    }
-
-    if (pagination || sort || filters || qStr) {
-      pagination = '?' + pagination;
-    }
-    return this.request(
-      name + '/' + id + action + pagination + sort + filters + qStr,
-      'PUT',
-      options.resource,
-      options.contentType
-    );
-  }
-
-  deleteResource(name, id, action?, queryString?, resource?) {
-    if (name && name[name.length - 1] === '/') {
-      name = name.substr(0, name.length - 1);
-    }
-    id = !id ? '' : id + '/';
-    action = !action ? '' : action;
-    queryString = !queryString ? '' : '?' + queryString;
-
-    return this.request(
-      name + '/' + id + action + queryString,
-      'DELETE',
-      resource,
-      null
-    );
-  }
-
-  request(url, HTTP, resource, contentType, more?): any {
-    if (url && url[0] === '/') {
-      url = url.substr(1);
-    }
-
-    const options: any = {
-      url: this.apiEndpoint + '/' + url,
-      method: HTTP,
-      withCredentials: true,
-      headers: {
-        'Content-Type': contentType
-          ? contentType
-          : 'application/json; charset=utf-8'
-      }
-    };
-    if (resource) {
-      options.data = resource;
-    }
-    if (more && more.login === true) {
-      options.login = true;
-    }
-    if (more && more.ignoreAuthModule === true) {
-      options.ignoreAuthModule = true;
-    }
-    if (more && more.responseType) {
-      options.responseType = more.responseType;
-    }
-
-    return this.restHandler.process(options.url, options);
-  }
-
-  exportGet(dataModels, exporter, contentType, url): any {
-    const more: any = {
-      responseType: 'arraybuffer'
-    };
-    return this.request(url, 'GET', null, contentType, more);
-  }
-
-  exportPost(dataModels, exporter, contentType, url): any {
-    const more: any = {
-      responseType: 'arraybuffer'
-    };
-    return this.request(url, 'POST', null, contentType, more);
-  }
-
-  simplePost(url, content) {
-    return this.restHandler.process(url, content);
+      var regexGuid = /^(\{){0,1}[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}(\}){0,1}$/gi;
+      return regexGuid.test(stringToTest);
   }
 }
+
+export enum ContainerDomainType {
+    CLASSIFIERS = 'classifiers',
+    FOLDERS = 'folders'
+}
+
+export enum ModelDomainType {
+    FOLDERS = 'folders',
+    DATA_MODELS = 'dataModels',
+    DATA_CLASSES = 'dataClasses',
+    DATA_TYPES = 'dataTypes',
+    TERMINOLOGIES = 'terminologies',
+    REFERENCEDATAMODELS = 'referenceDataModels',
+    TERMS = 'terms',
+    ALL = 'all'
+} 

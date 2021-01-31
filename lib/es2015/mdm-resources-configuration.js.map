@@ -1,1 +1,1 @@
-{"version":3,"file":"mdm-resources-configuration.js","sourceRoot":"","sources":["../../src/mdm-resources-configuration.ts"],"names":[],"mappings":"AAAA;;;;;;;;;;;;;;;;EAgBE;AACF,MAAM,OAAO,yBAAyB;IAAtC;QACE,gBAAW,GAAG,2BAA2B,CAAC;IAC5C,CAAC;CAAA"}
+{"version":3,"file":"mdm-resources-configuration.js","sourceRoot":"","sources":["../../src/mdm-resources-configuration.ts"],"names":[],"mappings":"AAmBA,MAAM,OAAO,yBAAyB;IAAtC;QACI,gBAAW,GAAY,2BAA2B,CAAC;QACnD,8BAAyB,GAAmC,EAAE,CAAC;IACnE,CAAC;CAAA"}

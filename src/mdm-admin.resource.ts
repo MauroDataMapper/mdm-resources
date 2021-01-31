@@ -15,14 +15,78 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { MdmResource } from './mdm-resource';
+import { ContainerDomainType, MdmResource, ModelDomainType } from './mdm-resource';
+import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handler';
 
+/**
+ * Controller: admin
+ |   GET    | /api/admin/status                                                                                     | Action: status
+ |   POST   | /api/admin/editProperties                                                                             | Action: editApiProperties
+ |   POST   | /api/admin/rebuildLuceneIndexes                                                                       | Action: rebuildLuceneIndexes
+ |   GET    | /api/admin/properties                                                                                 | Action: apiProperties
+ * 
+ * Controller: mauroDataMapperProvider
+ |   GET    | /api/admin/modules                                                                                    | Action: modules
+ * 
+ * Controller: treeItem
+ |   GET    | /api/admin/tree/${containerDomainType}/${modelDomainType}/deleted                                     | Action: deletedModels
+ |   GET    | /api/admin/tree/${containerDomainType}/${modelDomainType}/modelSuperseded                             | Action: modelSupersededModels
+ |   GET    | /api/admin/tree/${containerDomainType}/${modelDomainType}/documentationSuperseded                     | Action: documentationSupersededModels
+ * 
+ * Controller: email
+ |   GET    | /api/admin/emails                                                                                     | Action: index
+ * 
+ * Controller: authenticating
+ |   POST   | /api/admin/activeSessions                                                                             | Action: activeSessionsWithCredentials
+ */
 export class MdmAdminResource extends MdmResource {
-  get(name, options) {
-    return this.getResource('admin', name, null, options);
-  }
+    status(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/admin/status`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
 
-  post(action, options) {
-    return this.postResource('admin', null, action, options);
-  }
+    editProperties(data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/admin/editProperties`;
+        return this.simplePost(url, data, restHandlerOptions);
+    }
+
+    rebuildLuceneIndexes(data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/admin/rebuildLuceneIndexes`;
+        return this.simplePost(url, data, restHandlerOptions);
+    }
+
+    properties(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/admin/properties`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
+
+    modules(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/admin/modules`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
+
+    deletedModels(containerDomainType: string | ContainerDomainType, modelDomainType: string | ModelDomainType, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/admin/tree/${containerDomainType}/${modelDomainType}/deleted`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
+
+    modelSupersededModels(containerDomainType: string | ContainerDomainType, modelDomainType: string | ModelDomainType, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/admin/tree/${containerDomainType}/${modelDomainType}/modelSuperseded`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
+
+    documentationSupersededModels(containerDomainType: string | ContainerDomainType, modelDomainType: string | ModelDomainType, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/admin/tree/${containerDomainType}/${modelDomainType}/documentationSuperseded`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
+
+    emails(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/admin/emails`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
+
+    activeSessions(data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/admin/activeSessions`;
+        return this.simpleGet(url, data, restHandlerOptions);
+    }
 }

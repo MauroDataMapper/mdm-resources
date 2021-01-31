@@ -15,25 +15,169 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { MdmResource } from './mdm-resource';
+import { ContainerDomainType, MdmResource } from './mdm-resource';
+import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handler';
 
+/**
+ * Controller: catalogueUser
+ |   POST   | /api/admin/catalogueUsers/adminRegister                                                                             | Action: adminRegister
+ |   GET    | /api/admin/catalogueUsers/pendingCount                                                                              | Action: pendingCount
+ |   GET    | /api/admin/catalogueUsers/pending                                                                                   | Action: pending
+ |   GET    | /api/admin/catalogueUsers/userExists/${emailAddress}                                                                | Action: userExists
+ |   PUT    | /api/admin/catalogueUsers/${catalogueUserId}/rejectRegistration                                                     | Action: rejectRegistration
+ |   PUT    | /api/admin/catalogueUsers/${catalogueUserId}/approveRegistration                                                    | Action: approveRegistration
+ |   PUT    | /api/admin/catalogueUsers/${catalogueUserId}/adminPasswordReset                                                     | Action: adminPasswordReset
+ |   GET    | /api/catalogueUsers/search                                                                                          | Action: search
+ |   POST   | /api/catalogueUsers/search                                                                                          | Action: search
+ |   GET    | /api/catalogueUsers/resetPasswordLink/${emailAddress}                                                               | Action: sendPasswordResetLink
+ |   PUT    | /api/catalogueUsers/${catalogueUserId}/resetPassword                                                                | Action: resetPassword
+ |   PUT    | /api/catalogueUsers/${catalogueUserId}/changePassword                                                               | Action: changePassword
+ |   PUT    | /api/catalogueUsers/${catalogueUserId}/userPreferences                                                              | Action: updateUserPreferences
+ |   GET    | /api/catalogueUsers/${catalogueUserId}/userPreferences                                                              | Action: userPreferences
+ |   GET    | /api/userGroups/${userGroupId}/catalogueUsers                                                                       | Action: index
+ |   POST   | /api/catalogueUsers                                                                                                 | Action: save
+ |   GET    | /api/catalogueUsers                                                                                                 | Action: index
+ |  DELETE  | /api/catalogueUsers/${id}                                                                                           | Action: delete
+ |   PUT    | /api/catalogueUsers/${id}                                                                                           | Action: update
+ |   GET    | /api/catalogueUsers/${id}                                                                                           | Action: show
+ |   GET    | /api/${containerDomainType}/${containerId}/userGroups/${userGroupId}/catalogueUsers                                 | Action: index
+ |   GET    | /api/catalogueUsers/${catalogueUserId}/apiKeys                                                                      | Action: List all API Keys
+ |   POST   | /api/catalogueUsers/${catalogueUserId}/apiKeys                                                                      | Action: Add an API Key
+ |   DELETE | /api/catalogueUsers/${catalogueUserId}/apiKeys/${apiKey}                                                            | Action: Delete an API Key
+ |   PUT    | /api/catalogueUsers/${catalogueUserId}/apiKeys/${apiKey}/enable                                                     | Action: Enable an API Key
+ |   PUT    | /api/catalogueUsers/${catalogueUserId}/apiKeys/${apiKey}/disable                                                    | Action: Disable an API Key
+ |   PUT    | /api/catalogueUsers/${catalogueUserId}/apiKeys/${apiKey}/refresh/${noOfDays}                                        | Action: Refresh an API Key
+ |   PUT    | /api/catalogueUsers/${catalogueUserId}/apiKeys/${apiKey}/refresh/${expiresInDays}                                  | Action: Change expiry day
+ */
 export class MdmCatalogueUserResource extends MdmResource {
-  get(id, action, options = {}) {
-    if (!options) {
-      options = {};
+
+    adminRegister(data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/admin/catalogueUsers/adminRegister`;
+        return this.simplePost(url, data, restHandlerOptions);
     }
-    return this.getResource('catalogueUsers', id, action, options);
-  }
 
-  post(id, action, options) {
-    return this.postResource('catalogueUsers', id, action, options);
-  }
+    pendingCount(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/admin/catalogueUsers/pendingCount`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
 
-  put(id, action, options) {
-    return this.putResource('catalogueUsers', id, action, options);
-  }
+    pending(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/admin/catalogueUsers/pending`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
 
-  delete(id, action) {
-    return this.deleteResource('catalogueUsers', id, action);
-  }
+    exists(emailAddress, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/admin/catalogueUsers/userExists/${emailAddress}`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
+
+    reject(catalogueUserId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/admin/catalogueUsers/${catalogueUserId}/rejectRegistration`;
+        return this.simplePut(url, data, restHandlerOptions);
+    }
+
+    approve(catalogueUserId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/admin/catalogueUsers/${catalogueUserId}/approveRegistration`;
+        return this.simplePut(url, data, restHandlerOptions);
+    }
+
+    adminPasswordReset(catalogueUserId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/admin/catalogueUsers/${catalogueUserId}/adminPasswordReset`;
+        return this.simplePut(url, data, restHandlerOptions);
+    }
+
+    search(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/catalogueUsers/search`;
+        return this.simplePost(url, queryStringParams, restHandlerOptions);
+    }
+
+    resetPasswordLink(emailAddress, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/catalogueUsers/resetPasswordLink/${emailAddress}`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
+
+    resetPassword(catalogueUserId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}/resetPassword`;
+        return this.simplePut(url, data, restHandlerOptions);
+    }
+
+    changePassword(catalogueUserId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}/changePassword`;
+        return this.simplePut(url, data, restHandlerOptions);
+    }
+
+    updateUserPreferences(catalogueUserId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}/userPreferences`;
+        return this.simplePut(url, data, restHandlerOptions);
+    }
+    
+    userPreferences(catalogueUserId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}/userPreferences`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
+
+    listInUserGroup(userGroupId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/userGroups/${userGroupId}/catalogueUsers`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
+
+    save(data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/catalogueUsers`;
+        return this.simplePost(url, data, restHandlerOptions);
+    }
+
+    list(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/catalogueUsers`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
+
+    remove(catalogueUserId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
+
+    update(catalogueUserId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}`;
+        return this.simplePut(url, data, restHandlerOptions);
+    }
+
+    get(catalogueUserId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
+
+    listInContainerUserGroup(containerDomainType: string | ContainerDomainType, containerId: string, userGroupId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/${containerDomainType}/${containerId}/userGroups/${userGroupId}/catalogueUsers`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
+
+    listApiKeys(catalogueUserId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}/apiKeys`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
+
+    saveApiKey(catalogueUserId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}/apiKeys`;
+        return this.simplePost(url, data, restHandlerOptions);
+    }
+
+    removeApiKey(catalogueUserId: string, apiKey: string, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}/apiKeys/${apiKey}`;
+        return this.simpleDelete(url, restHandlerOptions);
+    }
+    
+    enableApiKey(catalogueUserId: string, apiKey: string, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}/apiKeys/${apiKey}/enable`;
+        return this.simplePut(url, restHandlerOptions);
+    }
+
+    disableApiKey(catalogueUserId: string, apiKey: string, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}/apiKeys/${apiKey}/disable`;
+        return this.simplePut(url, restHandlerOptions);
+    }
+
+    refreshApiKey(catalogueUserId: string, apiKey: string, noOfDays: number, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}/apiKeys/${apiKey}/refresh/${noOfDays}`;
+        return this.simplePut(url, restHandlerOptions);
+    }
 }

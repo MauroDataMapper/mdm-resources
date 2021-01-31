@@ -16,34 +16,73 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 import { MdmResource } from './mdm-resource';
-import { MdmCatalogueItemResource } from './mdm-catalogue-item.resource';
-import { MdmResourcesConfiguration } from './mdm-resources-configuration';
-import { IMdmRestHandler } from './mdm-rest-handler';
+import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handler';
 
+/**
+ * Controller: dataElement
+ |   GET    | /api/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/${dataElementId}/suggestLinks/${otherDataModelId}             | Action: suggestLinks
+ |   POST   | /api/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements                                                               | Action: save
+ |   GET    | /api/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements                                                               | Action: index
+ |   GET    | /api/dataModels/${dataModelId}/dataTypes/${dataTypeId}/dataElements                                                                  | Action: index
+ |  DELETE  | /api/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/${id}                                                         | Action: delete
+ |   PUT    | /api/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/${id}                                                         | Action: update
+ |   GET    | /api/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/${id}                                                         | Action: show
+ |   POST   | /api/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/${otherDataModelId}/${otherDataClassId}/${dataElementId}      | Action: copyDataElement
+ */
 export class MdmDataElementResource extends MdmResource {
-  private catalogueItem: MdmCatalogueItemResource;
 
-  constructor(resourcesConfig?: MdmResourcesConfiguration, restHandler?: IMdmRestHandler) {
-    super(resourcesConfig, restHandler);
-    this.catalogueItem = new MdmCatalogueItemResource(resourcesConfig, restHandler);
-  }
-
-  get(dataModelId, dataClassId, id, action, options) {
-    if (!options) {
-      options = {};
-    }
-    if (['metadata', 'annotations', 'classifiers', 'semanticLinks'].indexOf(action) !== -1) {
-      return this.catalogueItem.get(id, action, options.contentType);
+    suggestLinks(dataModelId: string, dataClassId: string, dataElementId: string, otherDataModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/${dataElementId}/suggestLinks/${otherDataModelId}`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    return this.getResource(`dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/`, id, action, options);
-  }
+    save(dataModelId: string, dataClassId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements`;
+        return this.simplePost(url, data, restHandlerOptions);
+    }
 
-  put(dataModelId, dataClassId, id, action, options) {
-    return this.putResource(`dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/`, id, action, options);
-  }
+    list(dataModelId: string, dataClassId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
 
-  delete(dataModelId, dataClassId, id) {
-    return this.deleteResource(`dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/`, id);
-  }
+    listWithDataType(dataModelId: string, dataTypeId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataTypes/${dataTypeId}/dataElements`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
+
+    remove(dataModelId: string, dataClassId: string, dataElementId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/${dataElementId}`;
+        return this.simpleDelete(url, queryStringParams, restHandlerOptions);
+    }
+
+    update(dataModelId: string, dataClassId: string, dataElementId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/${dataElementId}`;
+        return this.simplePut(url, data, restHandlerOptions);
+    }
+
+    /// <summary>
+    /// Get Data Element by Data Model Id, Data Class Id and Data Element Id or a path
+    /// </summary>
+    /// <param name="dataModelId">Data Model Id</param>
+    /// <param name="dataClassId">Data Class Id</param>
+    /// <param name="dataElementId">Data Element Id or a path in the format typePrefix:label|typePrefix:label</param>
+    /// <param name="queryStringParams">Query String Params</param>
+    /// <param name="restHandlerOptions">restHandler Options</param>
+    get(dataModelId: string, dataClassId: string, dataElementId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        let url = '';
+        if (this.isGuid(dataElementId)) {
+            url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/${dataElementId}`;
+        }
+        else {
+            url = `${this.apiEndpoint}/dataModels/path/${dataElementId}`;
+        }
+
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
+
+    copyDataElement(dataModelId: string, dataClassId: string, otherDataModelId: string, otherDataClassId: string, dataElementId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/${otherDataModelId}/${otherDataClassId}/${dataElementId}`;
+        return this.simplePost(url, data, restHandlerOptions);
+    }
 }

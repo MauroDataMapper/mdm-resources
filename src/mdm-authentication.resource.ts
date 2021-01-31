@@ -16,13 +16,31 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 import { MdmResource } from './mdm-resource';
+import { MdmResourcesConfiguration } from './mdm-resources-configuration';
+import { IMdmRestHandler, DefaultMdmRestHandler, IMdmRestHandlerOptions, IMdmQueryStringParams } from './mdm-rest-handler';
+import { MdmSecurityResource } from './mdm-security.resource';
+import { MdmSessionResource } from './mdm-session.resource';
 
 export class MdmAuthenticationResource extends MdmResource {
-  get(action) {
-    return this.getResource('authentication', null, action, null);
-  }
 
-  post(action, options?, more?) {
-    return this.postResource('authentication', null, action, options, more);
-  }
+    private securityResource: MdmSecurityResource;
+    private sesisonResource: MdmSessionResource;
+
+    constructor(resourcesConfig = new MdmResourcesConfiguration(), restHandler: IMdmRestHandler = new DefaultMdmRestHandler()) {
+        super(resourcesConfig, restHandler);
+        this.securityResource = new MdmSecurityResource(resourcesConfig, restHandler);
+        this.sesisonResource = new MdmSessionResource(resourcesConfig, restHandler);
+    }
+
+    login(data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        return this.securityResource.login(data, restHandlerOptions);
+    }
+
+    logout(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        return this.securityResource.logout(queryStringParams, restHandlerOptions);
+    }
+
+    isAuthenticated(sessionId?: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        this.sesisonResource.isAuthenticated(sessionId, queryStringParams, restHandlerOptions);
+    }
 }

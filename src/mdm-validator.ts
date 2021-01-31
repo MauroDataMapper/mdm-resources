@@ -21,7 +21,7 @@ export class MdmValidator {
     return obj[i];
   }
 
-  static getProperty(obj, str) {
+  static getProperty(obj, str: string) {
     return str.split('.').reduce(this.index, obj);
   }
 
