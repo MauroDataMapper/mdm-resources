@@ -27,6 +27,7 @@ import { IMdmQueryStringParams, IMdmRestHandlerOptions } from "./mdm-rest-handle
  |   PUT    | /api/subscribedCatalogues/${id}                                                                                               | Action: update
  |  DELETE  | /api/subscribedCatalogues/${id}                                                                                               | Action: delete
  |   GET    | /api/subscribedCatalogues/${id}/availableModels                                                                               | Action: index
+ |   POST   | /api/subscribedCatalogues/${id}/federate                                                                                      | Action: federate
  |   GET    | /api/subscribedCatalogues/${id}/subscribedModels                                                                              | Action: index
  |   GET    | /api/subscribedCatalogues/${catalogId}/subscribedModels/${id}                                                                 | Action: show
  |   POST   | /api/subscribedCatalogues/${catalogId}/subscribedModels                                                                       | Action: save
@@ -113,6 +114,17 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
     listSubscribedModels(id: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/subscribedCatalogues/${id}/subscribedModels`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
+
+    /**
+     * Federate subscribed catalogues to refresh each feed.
+     * @param id The UUID of the Subscribed Catalogue to federate. If not provided, all subscribed catalogues will be federated.
+     * @param restHandlerOptions Optional REST handler parameters.
+     * @returns An HTTP response object containing a count and array of items.
+     */
+    federate(id?: string, restHandlerOptions?: IMdmRestHandlerOptions) {    
+        const url = id ? `${this.apiEndpoint}/subscribedCatalogues/${id}/federate` : `${this.apiEndpoint}/subscribedCatalogues/federate`;
+        return this.simplePost(url, null, restHandlerOptions);
     }
 
     /**
