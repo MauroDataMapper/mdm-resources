@@ -59,7 +59,7 @@ export declare class MdmDataModelResource extends MdmResource {
     finalise(dataModelId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
     newBranchModelVersion(dataModelId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
     newForkModel(dataModelId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    addToFolder(folderId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    addToFolder(folderId: string, data: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
     updateDataModelInFolder(folderId: string, dataModelId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
     moveDataModelToFolder(dataModelId: string, folderId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
     suggestLinks(dataModelId: string, otherModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
