@@ -8,7 +8,7 @@ import { IMdmQueryStringParams, IMdmRestHandlerOptions } from "./mdm-rest-handle
  |   PUT    | /api/subscribedCatalogues/${id}                                                                                               | Action: update
  |  DELETE  | /api/subscribedCatalogues/${id}                                                                                               | Action: delete
  |   GET    | /api/subscribedCatalogues/${id}/availableModels                                                                               | Action: index
- |   POST   | /api/subscribedCatalogues/${id}/federate                                                                                      | Action: federate
+ |   POST   | /api/subscribedModels/${id}/federate                                                                                          | Action: federate
  |   GET    | /api/subscribedCatalogues/${id}/subscribedModels                                                                              | Action: index
  |   GET    | /api/subscribedCatalogues/${catalogId}/subscribedModels/${id}                                                                 | Action: show
  |   POST   | /api/subscribedCatalogues/${catalogId}/subscribedModels                                                                       | Action: save
@@ -70,12 +70,12 @@ export declare class MdmSubscribedCataloguesResource extends MdmResource {
      */
     listSubscribedModels(id: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
     /**
-     * Federate subscribed catalogues to refresh each feed.
-     * @param id The UUID of the Subscribed Catalogue to federate. If not provided, all subscribed catalogues will be federated.
+     * Federate a subscribed model to refresh.
+     * @param id The UUID of the Subscribed Model to federate.
      * @param restHandlerOptions Optional REST handler parameters.
-     * @returns An HTTP response object containing a count and array of items.
+     * @returns An HTTP response object containing the data.
      */
-    federate(id?: string, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    federate(id: string, restHandlerOptions?: IMdmRestHandlerOptions): any;
     /**
      * Gets a Subscribed Catalogue by ID.
      * @param catalogueId The UUID of the Subscribed Catalogue to search in.
