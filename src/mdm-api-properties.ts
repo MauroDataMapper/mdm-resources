@@ -16,8 +16,8 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { MdmResource } from "./mdm-resource"
-import { IMdmQueryStringParams, IMdmRestHandlerOptions } from "./mdm-rest-handler";
+import { MdmResource } from "mdm-resource"
+import { IMdmQueryStringParams, IMdmRestHandlerOptions } from "mdm-rest-handler";
 
 export class MdmApiPropertyResources extends MdmResource {
 
@@ -63,7 +63,7 @@ export class MdmApiPropertyResources extends MdmResource {
      */
     save(data: any, restHandlerOptions?: IMdmRestHandlerOptions): any {
         const url = `${this.apiEndpoint}/admin/properties`;
-        return this.simplePost(url, data, restHandlerOptions);
+        return this.simplePut(url, data, restHandlerOptions);
     }
 
     /**

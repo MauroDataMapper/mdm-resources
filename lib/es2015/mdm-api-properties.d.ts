@@ -1,5 +1,5 @@
-import { MdmResource } from "./mdm-resource";
-import { IMdmQueryStringParams, IMdmRestHandlerOptions } from "./mdm-rest-handler";
+import { MdmResource } from "mdm-resource";
+import { IMdmQueryStringParams, IMdmRestHandlerOptions } from "mdm-rest-handler";
 export declare class MdmApiPropertyResources extends MdmResource {
     /**
      * Gets a list of all API properties.
