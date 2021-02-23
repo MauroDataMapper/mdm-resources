@@ -63,7 +63,7 @@ export class MdmApiPropertyResources extends MdmResource {
      */
     save(data: any, restHandlerOptions?: IMdmRestHandlerOptions): any {
         const url = `${this.apiEndpoint}/admin/properties`;
-        return this.simplePut(url, data, restHandlerOptions);
+        return this.simplePost(url, data, restHandlerOptions);
     }
 
     /**
