@@ -43,3 +43,4 @@ export * from './mdm-resource';
 export * from './mdm-versioning.resource';
 export * from './mdm-profile.resource';
 export * from './mdm-subscribed-catalogues.resource';
+export * from './mdm-api-properties';
