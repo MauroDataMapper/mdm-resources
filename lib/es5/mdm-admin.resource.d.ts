@@ -3,7 +3,9 @@ import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handle
 /**
  * Controller: admin
  |   GET    | /api/admin/status                                                                                     | Action: status
+ |   POST   | /api/admin/editProperties                                                                             | Action: editApiProperties
  |   POST   | /api/admin/rebuildLuceneIndexes                                                                       | Action: rebuildLuceneIndexes
+ |   GET    | /api/admin/properties                                                                                 | Action: apiProperties
  *
  * Controller: mauroDataMapperProvider
  |   GET    | /api/admin/modules                                                                                    | Action: modules
@@ -21,7 +23,9 @@ import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handle
  */
 export declare class MdmAdminResource extends MdmResource {
     status(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    editProperties(data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
     rebuildLuceneIndexes(data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    properties(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
     modules(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
     deletedModels(containerDomainType: string | ContainerDomainType, modelDomainType: string | ModelDomainType, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
     modelSupersededModels(containerDomainType: string | ContainerDomainType, modelDomainType: string | ModelDomainType, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
