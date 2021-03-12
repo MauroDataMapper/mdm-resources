@@ -12,6 +12,7 @@ export declare class MdmResource {
     simplePut(url: string, data: any, options?: IMdmRestHandlerOptions): any;
     simpleRequest(url: string, queryStringParams?: IMdmQueryStringParams, options?: IMdmRestHandlerOptions): any;
     isGuid: (stringToTest: any) => boolean;
+    protected generateQueryString(queryStringParams?: IMdmQueryStringParams): string;
 }
 export declare enum ContainerDomainType {
     CLASSIFIERS = "classifiers",

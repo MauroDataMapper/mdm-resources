@@ -158,8 +158,9 @@ export class MdmDataModelResource extends MdmResource {
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    addToFolder(folderId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
-        const url = `${this.apiEndpoint}/folders/${folderId}/dataModels`;
+    addToFolder(folderId: string, data: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const queryString = this.generateQueryString(queryStringParams);
+        const url = `${this.apiEndpoint}/folders/${folderId}/dataModels${queryString}`;
         return this.simplePost(url, data, restHandlerOptions);
     }
 
