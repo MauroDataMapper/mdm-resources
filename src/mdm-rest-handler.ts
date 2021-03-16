@@ -16,23 +16,96 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
+/**
+ * Type to define the parameters to pass to a `GET` resource request as part of the URL query string.
+ * 
+ * This type uses an index signature to provide any property and value to this object, for example:
+ * 
+ * ```ts
+ * const parameters: IMdmQueryStringParams = {
+ *  id: 123,
+ *  sort: 'name',
+ *  sortOrder: 'asc'
+ * };
+ * ```
+ */
 export interface IMdmQueryStringParams {
     [key: string]: any;
 }
 
+/**
+ * Type to define the options to pass to an [[IMdmRestHandler]] to process
+ * a resource.
+ * 
+ * This type uses an index signature to provide any property and value to this object, for example:
+ * 
+ * ```ts
+ * const options: IMdmRestHandlerOptions = {
+ *  method: 'POST',
+ *  body: {
+ *      id: 42,
+ *      name: 'Test'
+ *  }
+ * };
+ * ```
+ * 
+ * @see [[IMdmRestHandler]]
+ */
 export interface IMdmRestHandlerOptions {
     [key: string]: any;
 }
 
+/**
+ * Type to define the options to pass to every [[IMdmRestHandler]] to process
+ * a resource. These are the default options for every request, such as particular
+ * HTTP headers to use.
+ * 
+ * This type uses an index signature to provide any property and value to this object, for example:
+ * 
+ * ```ts
+ * const options: IMdmDefaultHttpRequestOptions = {
+ *  headers: {
+ *      'content-type': 'application/json'
+*   }
+ * };
+ * ```
+ * 
+ * @see [[MdmResourcesConfiguration]]
+ */
 export interface IMdmDefaultHttpRequestOptions {
     [key: string]: any;
 }
 
+/**
+ * Interface to define a REST handler for all `MdmResource` objects to handle HTTP requests/responses.
+ * 
+ * @see [[DefaultMdmRestHandler]]
+ */
 export interface IMdmRestHandler {
+    /**
+     * Processes a REST resource request and returns the response and data.
+     * @param url The URL to the resource to request.
+     * @param options The options as part of the request to further control the request.
+     * @returns The response from the REST resource request.
+     */
     process(url: string, options: IMdmRestHandlerOptions);
 }
 
-export class DefaultMdmRestHandler implements IMdmRestHandler {
+/**
+ * Default implementation of the [[IMdmRestHandler]] interface, using the `fetch` API to
+ * complete HTTP requests.
+ * 
+ * By using the `fetch` API, all `process()` return values will become promises
+ * to handle the asynchronous responses and finally return the `json` body content of each response. 
+ * 
+ * @example
+ * 
+ * ```ts
+ * const handler = new DefaultMdmRestHandler();
+ * handler.process(url, options).then(json => { ... });
+ * ```
+ */
+export class DefaultMdmRestHandler implements IMdmRestHandler {    
     async process(url: string, options: IMdmRestHandlerOptions) {
         const response = await fetch(url, {
             method: options.method || 'GET',

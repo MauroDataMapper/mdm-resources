@@ -16,11 +16,11 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 import { MdmResourcesConfiguration } from './mdm-resources-configuration';
-import { DefaultMdmRestHandler, IMdmQueryStringParams, IMdmRestHandler, IMdmRestHandlerOptions } from './mdm-rest-handler';
+import { DefaultMdmRestHandler, IMdmDefaultHttpRequestOptions, IMdmQueryStringParams, IMdmRestHandler, IMdmRestHandlerOptions } from './mdm-rest-handler';
 
 export class MdmResource {
   protected apiEndpoint: string;
-  protected defaultRequestOptions: IMdmRestHandlerOptions;
+  protected defaultRequestOptions: IMdmDefaultHttpRequestOptions;
   private restHandler: IMdmRestHandler;
   private resourcesConfig: MdmResourcesConfiguration;
 

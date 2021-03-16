@@ -17,7 +17,17 @@ SPDX-License-Identifier: Apache-2.0
 */
 import { IMdmDefaultHttpRequestOptions } from './mdm-rest-handler';
 
+/**
+ * Type to store common configuration options for the `mdm-resources` library.
+ */
 export class MdmResourcesConfiguration {
+    /**
+     * Defines the base API endpoint to direct all REST resource requests to.
+     */
     apiEndpoint?: string = 'http://localhost:8080/api';
+
+    /**
+     * Defines the default HTTP request options to apply to every request.
+     */
     defaultHttpRequestOptions?: IMdmDefaultHttpRequestOptions = {};
 }
