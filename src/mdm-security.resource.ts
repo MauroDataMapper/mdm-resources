@@ -41,7 +41,7 @@ export enum SecurableDomainType {
  */
 export class MdmSecurityResource extends MdmResource {
     /**
-     * Login using a username and password to generate a new authenticated session.
+     * `HTTP POST` - Login using a username and password to generate a new authenticated session.
      * @param data The username/password to use.
      * @param restHandlerOptions Optional REST handler options, if required.
      * @returns The result of the `POST` request.
@@ -68,7 +68,7 @@ export class MdmSecurityResource extends MdmResource {
     }
 
     /**
-     * Logout of an authenticated session.
+     * `HTTP GET` - Logout of an authenticated session.
      * @param queryStringParams Optional query string parameters, if required.
      * @param restHandlerOptions Optional REST handler options, if required.
      * @returns The result of the `GET` request.
@@ -81,7 +81,7 @@ export class MdmSecurityResource extends MdmResource {
     }
 
     /**
-     * Inspect the permissions for a particular Mauro resource.
+     * `HTTP GET` - Inspect the permissions for a particular Mauro resource.
      * @param securableResourceDomainType The domain type to get permissions for.
      * @param securableResourceId The UUID of the resource to inspect.
      * @param queryStringParams Optional query string parameters, if required.

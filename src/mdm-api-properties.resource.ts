@@ -19,14 +19,36 @@ SPDX-License-Identifier: Apache-2.0
 import { MdmResource } from './mdm-resource';
 import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handler';
 
+/**
+ * MDM resource for managing system properties in the Mauro instance.
+ */
 export class MdmApiPropertyResources extends MdmResource {
 
     /**
-     * Gets a list of all API properties.
-     *
-     * @param queryStringParams Optional query string parameters for the GET request.
-     * @param restHandlerOptions Optional REST handler parameters.
-     * @returns An HTTP response object containing a count and array of items.
+     * `HTTP GET` - Gets a list of all API properties.
+     * @param queryStringParams Optional query string parameters, if required.
+     * @param restHandlerOptions Optional REST handler options, if required.
+     * @returns The result of the `GET` request.
+     * 
+     * On success, the response will be a `200 OK` and contain a response body similar to below:
+     * 
+     * ```ts
+     * {
+     *  count: 1,
+     *  items: [
+     *      {
+     *          id: 'c7de1358-a4ce-4d72-abca-04013f7f4acc',
+     *          key: 'test.property',
+     *          value: 'test',
+     *          category: 'Test',
+     *          publiclyVisible: false,
+     *          lastUpdatedBy: 'user@test.com',
+     *          createdBy: 'admin@test.com',
+     *          lastUpdated: '2021-03-10T15:17:05.459Z'
+     *      }
+     *  ]
+     * }
+     * ```
      */
     list(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any {
         const url = `${this.apiEndpoint}/admin/properties`;
@@ -34,11 +56,30 @@ export class MdmApiPropertyResources extends MdmResource {
     }
 
     /**
-     * Gets a list of all publicly accessible API properties. Administrator permissions are not required for this API.
-     *
-     * @param queryStringParams Optional query string parameters for the GET request.
-     * @param restHandlerOptions Optional REST handler parameters.
-     * @returns An HTTP response object containing a count and array of items.
+     * `HTTP GET` - Gets a list of all publicly accessible API properties. Administrator permissions are not required for this API.
+     * @param queryStringParams Optional query string parameters, if required.
+     * @param restHandlerOptions Optional REST handler options, if required.
+     * @returns The result of the `GET` request.
+     * 
+     * On success, the response will be a `200 OK` and contain a response body similar to below:
+     * 
+     * ```ts
+     * {
+     *  count: 1,
+     *  items: [
+     *      {
+     *          id: 'c7de1358-a4ce-4d72-abca-04013f7f4acc',
+     *          key: 'test.property',
+     *          value: 'test',
+     *          category: 'Test',
+     *          publiclyVisible: true,
+     *          lastUpdatedBy: 'user@test.com',
+     *          createdBy: 'admin@test.com',
+     *          lastUpdated: '2021-03-10T15:17:05.459Z'
+     *      }
+     *  ]
+     * }
+     * ```
      */
     listPublic(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any {
         const url = `${this.apiEndpoint}/properties`;
@@ -46,12 +87,26 @@ export class MdmApiPropertyResources extends MdmResource {
     }
 
     /**
-     * Gets an API property by ID.
-     *
+     * `HTTP GET` - Gets an API property by ID.
      * @param id The UUID of the property to get.
-     * @param queryStringParams Optional query string parameters for the GET request.
-     * @param restHandlerOptions Optional REST handler parameters.
-     * @returns An HTTP response object containing the data.
+     * @param queryStringParams Optional query string parameters, if required.
+     * @param restHandlerOptions Optional REST handler options, if required.
+     * @returns The result of the `GET` request.
+     * 
+     * On success, the response will be a `200 OK` and contain a response body similar to below:
+     * 
+     * ```ts
+     *  {
+     *      id: 'c7de1358-a4ce-4d72-abca-04013f7f4acc',
+     *      key: 'test.property',
+     *      value: 'test',
+     *      category: 'Test',
+     *      publiclyVisible: true,
+     *      lastUpdatedBy: 'user@test.com',
+     *      createdBy: 'admin@test.com',
+     *      lastUpdated: '2021-03-10T15:17:05.459Z'
+     *  }
+     * ```
      */
     get(id: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any {
         const url = `${this.apiEndpoint}/admin/properties/${id}`;
@@ -59,11 +114,13 @@ export class MdmApiPropertyResources extends MdmResource {
     }
 
     /**
-     * Creates a new API property.
-     *
+     * `HTTP POST` - Creates a new API property.
      * @param data The data to use for creation.
      * @param restHandlerOptions Optional REST handler parameters.
-     * @returns An HTTP response object.
+     * @returns The result of the `POST` request.
+     * 
+     * On success, the response will be a `200 OK` and the response body will be the same as that returned
+     * from the `get()` function.
      */
     save(data: any, restHandlerOptions?: IMdmRestHandlerOptions): any {
         const url = `${this.apiEndpoint}/admin/properties`;
@@ -71,12 +128,14 @@ export class MdmApiPropertyResources extends MdmResource {
     }
 
     /**
-     * Updates an existing API property.
-     *
+     * `HTTP PUT` - Updates an existing API property.
      * @param id The UUID of the property to update.
      * @param data The data to use for the update.
-     * @param restHandlerOptions Optional REST handler parameters.
-     * @returns An HTTP response object.
+     * @param restHandlerOptions Optional REST handler options, if required.
+     * @returns The result of the `PUT` request.
+     * 
+     * On success, the response will be a `200 OK` and the response body will be the same as that returned
+     * from the `get()` function.
      */
     update(id: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any {
         const url = `${this.apiEndpoint}/admin/properties/${id}`;
@@ -84,12 +143,13 @@ export class MdmApiPropertyResources extends MdmResource {
     }
 
     /**
-     * Removes an existing API property.
-     *
+     * `HTTP DELETE` - Removes an existing API property.
      * @param id The UUID of the property to remove.
-     * @param queryStringParams Optional query string parameters for the request.
-     * @param restHandlerOptions Optional REST handler parameters.
-     * @returns An HTTP response object.
+     * @param queryStringParams Optional query string parameters, if required.
+     * @param restHandlerOptions Optional REST handler options, if required.
+     * @returns The result of the `DELETE` request.
+     * 
+     * On success, the response will be a `204 No Content` and the response body will be empty.
      */
     remove(id: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any {
         const url = `${this.apiEndpoint}/admin/properties/${id}`;
