@@ -52,8 +52,7 @@ export class MdmResource {
   }
 
   simpleRequest(url: string, queryStringParams: IMdmQueryStringParams = {}, options?: IMdmRestHandlerOptions) {
-    const queryParams: string[] = Object.keys(queryStringParams).map(key => `${key}=${queryStringParams[key]}`);
-    const queryString: string = (queryParams?.length > 0) ? `?${queryParams.join('&')}`: '';
+    const queryString = this.generateQueryString(queryStringParams);
     return this.restHandler.process(`${url}${queryString}`, options);
   }
 
@@ -63,6 +62,11 @@ export class MdmResource {
       }
       var regexGuid = /^(\{){0,1}[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}(\}){0,1}$/gi;
       return regexGuid.test(stringToTest);
+  }
+
+  protected generateQueryString(queryStringParams: IMdmQueryStringParams = {}): string {
+    const queryParams: string[] = Object.keys(queryStringParams).map(key => `${key}=${queryStringParams[key]}`);
+    return (queryParams?.length > 0) ? `?${queryParams.join('&')}`: '';
   }
 }
 
