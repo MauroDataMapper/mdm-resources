@@ -4,18 +4,15 @@
     "main": "lib/es2015/index.js",
     "module": "lib/es2015/index.js",
     "license": "Apache-2.0",
-    "private": true,
     "scripts": {
         "build": "tsc && tsc --target ES5 --outDir lib/es5",
         "start": "tsc --watch",
         "changelog": "conventional-changelog -i CHANGELOG.md -s",
         "test": "jest"
     },
-    "repository": {
-        "type": "git",
-        "url": "github:MauroDataMapper/mdm-resources"
-    },
+    "repository":  "git://github.com/MauroDataMapper/mdm-resources.git",
     "publishConfig": {
+        "cache": "~/.npm",
         "registry": "https://npm.pkg.github.com/"
     },
     "devDependencies": {
