@@ -33,5 +33,5 @@ $ git push --all && git push --tags
 
 # Publish the package (you will need to login and authenticate against github)
 $ git checkout main
-$ npm publish
+$ npm publish --tag latest
 ```
