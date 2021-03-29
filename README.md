@@ -15,18 +15,23 @@
 # Start release
 $ git flow release start <Next release>
 
+# Update version in package.json
 # Install npm modules
 $ npm install
 
 # Build
-$ npm build
+$ npm run build
 
-# Commit
+# Commit lib folder
 
 # Finish the release
 $ git flow release finish <Next release>
 
-# Update version on develop branch
+# Update version on develop branch to next minor snapshot and commit
 # Push 
 $ git push --all && git push --tags
+
+# Publish the package (you will need to login and authenticate against github)
+$ git checkout main
+$ npm publish
 ```
