@@ -100,4 +100,23 @@ export class MdmProfileResource extends MdmResource {
 
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
+
+    validateProfile(
+        profileNamespace: string,
+        profileName: string,
+        catalogueItemDomainType: string | ModelDomainType,
+        id: string,
+        data: string,
+    )
+    {
+        let url = `${this.apiEndpoint}/profiles/${profileNamespace}/${profileName}/${catalogueItemDomainType}/${id}/validate`;
+        return this.simplePost(url,data) 
+    }
+
+    providerDynamic()
+        {
+            let url = `${this.apiEndpoint}/profiles/providers/dynamic`;
+            return this.simpleGet(url);            
+        }
+    
 }
