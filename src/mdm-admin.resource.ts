@@ -21,9 +21,7 @@ import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handle
 /**
  * Controller: admin
  |   GET    | /api/admin/status                                                                                     | Action: status
- |   POST   | /api/admin/editProperties                                                                             | Action: editApiProperties
  |   POST   | /api/admin/rebuildLuceneIndexes                                                                       | Action: rebuildLuceneIndexes
- |   GET    | /api/admin/properties                                                                                 | Action: apiProperties
  * 
  * Controller: mauroDataMapperProvider
  |   GET    | /api/admin/modules                                                                                    | Action: modules
@@ -45,19 +43,9 @@ export class MdmAdminResource extends MdmResource {
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    editProperties(data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
-        const url = `${this.apiEndpoint}/admin/editProperties`;
-        return this.simplePost(url, data, restHandlerOptions);
-    }
-
     rebuildLuceneIndexes(data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/admin/rebuildLuceneIndexes`;
         return this.simplePost(url, data, restHandlerOptions);
-    }
-
-    properties(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
-        const url = `${this.apiEndpoint}/admin/properties`;
-        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
     modules(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
