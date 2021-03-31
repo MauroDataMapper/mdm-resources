@@ -33,5 +33,7 @@ $ git push --all && git push --tags
 
 # Publish the package (you will need to login and authenticate against github)
 $ git checkout main
-$ npm publish
+# Use your github username, github api token and github email address
+$ npm login --scope=maurodatamapper --registry=https://npm.pkg.github.com   
+$ npm publish --tag latest
 ```
