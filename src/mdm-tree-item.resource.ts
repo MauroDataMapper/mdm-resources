@@ -19,11 +19,11 @@ import {
     ContainerDomainType,
     MdmResource,
     ModelDomainType,
-} from "./mdm-resource";
+} from './mdm-resource';
 import {
     IMdmQueryStringParams,
     IMdmRestHandlerOptions,
-} from "./mdm-rest-handler";
+} from './mdm-rest-handler';
 
 /**
  * Controller: treeItem
