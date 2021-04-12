@@ -1,5 +1,5 @@
-import { ContainerDomainType, MdmResource, ModelDomainType } from './mdm-resource';
-import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handler';
+import { ContainerDomainType, MdmResource, ModelDomainType } from "./mdm-resource";
+import { IMdmQueryStringParams, IMdmRestHandlerOptions } from "./mdm-rest-handler";
 /**
  * Controller: treeItem
  |   GET    | /api/admin/tree/${containerDomainType}/${modelDomainType}/deleted                                     | Action: deletedModels
@@ -16,4 +16,5 @@ export declare class MdmTreeItemResource extends MdmResource {
     search(containerDomainType: string | ContainerDomainType, searchTerm: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
     list(containerDomainType: string | ContainerDomainType, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
     get(containerDomainType: string | ContainerDomainType, catalogueItemDomainType: any, catalogueItemId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    getExpandedTree(containerDomainType: string | ContainerDomainType, catalogueItemId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
 }
