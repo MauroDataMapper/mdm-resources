@@ -1,5 +1,5 @@
-import { MdmResource } from "./mdm-resource";
-import { IMdmQueryStringParams, IMdmRestHandlerOptions } from "./mdm-rest-handler";
+import { MdmResource } from './mdm-resource';
+import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handler';
 /**
  * Controller: subscribedCatalogues
  |   GET    | /api/subscribedCatalogues/${id}                                                                                               | Action: show
@@ -17,6 +17,7 @@ import { IMdmQueryStringParams, IMdmRestHandlerOptions } from "./mdm-rest-handle
 export declare class MdmSubscribedCataloguesResource extends MdmResource {
     /**
      * Gets a Subscribed Catalogue by ID.
+     *
      * @param id The UUID of the Subscribed Catalogue to get.
      * @param queryStringParams Optional query string parameters for the GET request.
      * @param restHandlerOptions Optional REST handler parameters.
@@ -25,6 +26,7 @@ export declare class MdmSubscribedCataloguesResource extends MdmResource {
     get(id: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
     /**
      * Gets a list of all Subscribed Catalogues.
+     *
      * @param queryStringParams Optional query string parameters for the GET request.
      * @param restHandlerOptions Optional REST handler parameters.
      * @returns An HTTP response object containing a count and array of items.
@@ -32,6 +34,7 @@ export declare class MdmSubscribedCataloguesResource extends MdmResource {
     list(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
     /**
      * Creates a new Subscribed Catalogue.
+     *
      * @param data The data to use for creation.
      * @param restHandlerOptions Optional REST handler parameters.
      * @returns An HTTP response object.
@@ -39,6 +42,7 @@ export declare class MdmSubscribedCataloguesResource extends MdmResource {
     save(data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
     /**
      * Updates an existing Subscribed Catalogue.
+     *
      * @param id The UUID of the Subscribed Catalogue to update.
      * @param data The data to use for the update.
      * @param restHandlerOptions Optional REST handler parameters.
@@ -47,6 +51,7 @@ export declare class MdmSubscribedCataloguesResource extends MdmResource {
     update(id: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
     /**
      * Removes an existing Subscribed Catalogue.
+     *
      * @param id The UUID of the Subscribed Catalogue to remove.
      * @param queryStringParams Optional query string parameters for the GET request.
      * @param restHandlerOptions Optional REST handler parameters.
@@ -55,6 +60,7 @@ export declare class MdmSubscribedCataloguesResource extends MdmResource {
     remove(id: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
     /**
      * Gets a list of all available federated models from a Subscribed Catalogue.
+     *
      * @param id The UUID of the Subscribed Catalogue to search in.
      * @param queryStringParams Optional query string parameters for the GET request.
      * @param restHandlerOptions Optional REST handler parameters.
@@ -63,6 +69,7 @@ export declare class MdmSubscribedCataloguesResource extends MdmResource {
     listAvailableModels(id: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
     /**
      * Gets a list of all federated models that this catalogue has subscribed to from a Subscribed Catalogue.
+     *
      * @param id The UUID of the Subscribed Catalogue to search in.
      * @param queryStringParams Optional query string parameters for the GET request.
      * @param restHandlerOptions Optional REST handler parameters.
@@ -71,6 +78,7 @@ export declare class MdmSubscribedCataloguesResource extends MdmResource {
     listSubscribedModels(id: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
     /**
      * Federate a subscribed model to refresh.
+     *
      * @param id The UUID of the Subscribed Model to federate.
      * @param restHandlerOptions Optional REST handler parameters.
      * @returns An HTTP response object containing the data.
@@ -78,6 +86,7 @@ export declare class MdmSubscribedCataloguesResource extends MdmResource {
     federate(id: string, restHandlerOptions?: IMdmRestHandlerOptions): any;
     /**
      * Gets a Subscribed Catalogue by ID.
+     *
      * @param catalogueId The UUID of the Subscribed Catalogue to search in.
      * @param id The UUID of the subscription to get.
      * @param queryStringParams Optional query string parameters for the GET request.
@@ -87,6 +96,7 @@ export declare class MdmSubscribedCataloguesResource extends MdmResource {
     getSubscribedModel(catalogueId: string, id: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
     /**
      * Creates a new subscription to a model in a Subscribed Catalogue.
+     *
      * @param catalogueId The UUID of the Subscribed Catalogue to save to.
      * @param data The data to use for creation.
      * @param restHandlerOptions Optional REST handler parameters.
@@ -95,6 +105,7 @@ export declare class MdmSubscribedCataloguesResource extends MdmResource {
     saveSubscribedModel(catalogueId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
     /**
      * Removes an existing subscription to a model in a Subscribed Catalogue.
+     *
      * @param catalogueId The UUID of the Subscribed Catalogue to remove from.
      * @param id The UUID of the subscribed model to remove.
      * @param queryStringParams Optional query string parameters for the GET request.

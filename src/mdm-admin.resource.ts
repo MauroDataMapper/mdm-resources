@@ -22,18 +22,18 @@ import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handle
  * Controller: admin
  |   GET    | /api/admin/status                                                                                     | Action: status
  |   POST   | /api/admin/rebuildLuceneIndexes                                                                       | Action: rebuildLuceneIndexes
- * 
+ *
  * Controller: mauroDataMapperProvider
  |   GET    | /api/admin/modules                                                                                    | Action: modules
- * 
+ *
  * Controller: treeItem
  |   GET    | /api/admin/tree/${containerDomainType}/${modelDomainType}/deleted                                     | Action: deletedModels
  |   GET    | /api/admin/tree/${containerDomainType}/${modelDomainType}/modelSuperseded                             | Action: modelSupersededModels
  |   GET    | /api/admin/tree/${containerDomainType}/${modelDomainType}/documentationSuperseded                     | Action: documentationSupersededModels
- * 
+ *
  * Controller: email
  |   GET    | /api/admin/emails                                                                                     | Action: index
- * 
+ *
  * Controller: authenticating
  |   POST   | /api/admin/activeSessions                                                                             | Action: activeSessionsWithCredentials
  */

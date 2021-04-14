@@ -37,7 +37,7 @@ import { MdmDataElementComponentResource } from './mdm-data-element-component.re
  |   GET    | /api/dataModels/${dataModelId}/dataFlows/${id}                                                                                                                                   | Action: show
  */
 export class MdmDataFlowResource extends MdmResource {
-    dataClassComponents: MdmDataClassComponentResource; 
+    dataClassComponents: MdmDataClassComponentResource;
     dataElementComponents: MdmDataElementComponentResource;
 
     constructor(resourcesConfig = new MdmResourcesConfiguration(), restHandler: IMdmRestHandler = new DefaultMdmRestHandler()) {

@@ -1,5 +1,5 @@
-import { MdmResource, ModelDomainType } from "./mdm-resource";
-import { IMdmQueryStringParams, IMdmRestHandlerOptions } from "./mdm-rest-handler";
+import { MdmResource, ModelDomainType } from './mdm-resource';
+import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handler';
 /**
  * Controller: mauroDataMapperServiceProvider
  |   GET    | /api/${catalogueItemDomainType}/${catalogueItemId}/profiles                                           | Action: profiles

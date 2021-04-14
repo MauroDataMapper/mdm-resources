@@ -24,7 +24,7 @@ import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handle
  |   PUT    | /api/catalogueUsers/${catalogueUserId}/image                                                                                                                                     | Action: update
  |   GET    | /api/catalogueUsers/${catalogueUserId}/image                                                                                                                                     | Action: show
  |   POST   | /api/catalogueUsers/${catalogueUserId}/image                                                                                                                                     | Action: save
- |   GET    | /api/userImageFiles/${id}     
+ |   GET    | /api/userImageFiles/${id}
  */
 export class MdmUserImageFileResource extends MdmResource {
     remove(catalogueUserId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {

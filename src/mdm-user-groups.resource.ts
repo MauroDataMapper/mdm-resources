@@ -38,7 +38,7 @@ import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handle
  |  DELETE  | /api/${containerDomainType}/${containerId}/userGroups/${id}                                                         | Action: delete
  |   PUT    | /api/${containerDomainType}/${containerId}/userGroups/${id}                                                         | Action: update
  |   GET    | /api/${containerDomainType}/${containerId}/userGroups/${id}                                                         | Action: show
- * 
+ *
  * Controller: securableResourceGroupRole
  |   POST   | /api/userGroups/${userGroupId}/securableResourceGroupRoles                                                          | Action: save
  |   GET    | /api/userGroups/${userGroupId}/securableResourceGroupRoles                                                          | Action: index

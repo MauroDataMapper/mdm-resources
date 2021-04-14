@@ -1,5 +1,5 @@
-import { ContainerDomainType, MdmResource, ModelDomainType } from "./mdm-resource";
-import { IMdmQueryStringParams, IMdmRestHandlerOptions } from "./mdm-rest-handler";
+import { ContainerDomainType, MdmResource, ModelDomainType } from './mdm-resource';
+import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handler';
 /**
  * Controller: treeItem
  |   GET    | /api/admin/tree/${containerDomainType}/${modelDomainType}/deleted                                     | Action: deletedModels

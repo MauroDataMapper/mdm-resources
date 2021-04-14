@@ -132,7 +132,7 @@ export class MdmCodeSetResource extends MdmResource {
     //     const url = `${this.apiEndpoint}/folders/${folderId}/codeSets/${codeSetId}`;
     //     return this.simplePut(url, data, restHandlerOptions);
     // }
-    
+
     exportModel(codeSetId: string, exporterNamespace, exporterName, exporterVersion, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/codeSets/${codeSetId}/export/${exporterNamespace}/${exporterName}/${exporterVersion}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
@@ -165,7 +165,7 @@ export class MdmCodeSetResource extends MdmResource {
     /// <param name="queryStringParams">Query String Params</param>
     /// <param name="restHandlerOptions">restHandler Options</param>
     get(codeSetId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
-        let url = "";
+        let url = '';
         if (this.isGuid(codeSetId)) {
             url = `${this.apiEndpoint}/codeSets/${codeSetId}`;
         }
@@ -201,7 +201,7 @@ export class MdmCodeSetResource extends MdmResource {
         const url = `${this.apiEndpoint}/codeSets/${codeSetId}/latestModelVersion`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
-    
+
     latestFinalisedModel(codeSetId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/codeSets/${codeSetId}/latestFinalisedModel`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);

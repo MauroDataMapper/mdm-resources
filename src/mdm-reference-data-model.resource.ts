@@ -54,7 +54,7 @@ export class MdmReferenceDataModelResource extends MdmResource {
     exporters(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/referenceDataModels/providers/exporters`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
-    }    
+    }
 
     importModels(importerNamespace, importerName, importerVersion, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/referenceDataModels/import/${importerNamespace}/${importerName}/${importerVersion}`;
@@ -120,5 +120,5 @@ export class MdmReferenceDataModelResource extends MdmResource {
         const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/folder/${folderId}`;
         return this.simplePut(url, data, restHandlerOptions);
     }
-    
+
 }

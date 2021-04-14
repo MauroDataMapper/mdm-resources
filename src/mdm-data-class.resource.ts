@@ -79,7 +79,7 @@ export class MdmDataClassResource extends MdmResource {
     /// <param name="queryStringParams">Query String Params</param>
     /// <param name="restHandlerOptions">restHandler Options</param>
     getChildDataClass(dataModelId: string, dataClassId: string, childDataClassId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
-        let url = "";
+        let url = '';
         if (this.isGuid(childDataClassId)) {
             url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataClasses/${childDataClassId}`;
         }

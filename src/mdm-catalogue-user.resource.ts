@@ -110,7 +110,7 @@ export class MdmCatalogueUserResource extends MdmResource {
         const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}/userPreferences`;
         return this.simplePut(url, data, restHandlerOptions);
     }
-    
+
     userPreferences(catalogueUserId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}/userPreferences`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
@@ -165,7 +165,7 @@ export class MdmCatalogueUserResource extends MdmResource {
         const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}/apiKeys/${apiKey}`;
         return this.simpleDelete(url, restHandlerOptions);
     }
-    
+
     enableApiKey(catalogueUserId: string, apiKey: string, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}/apiKeys/${apiKey}/enable`;
         return this.simplePut(url, restHandlerOptions);

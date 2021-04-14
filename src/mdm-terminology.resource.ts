@@ -53,8 +53,8 @@ import { MdmTermResource } from './mdm-term.resource';
  |   GET    | /api/terminologies/${terminologyId}/modelVersionTree                                                       | Action: modelVersionTree                        |
  */
 export class MdmTerminologyResource extends MdmResource {
-    private catalogueItem: MdmCatalogueItemResource;
     public terms: MdmTermResource;
+    private catalogueItem: MdmCatalogueItemResource;
 
     constructor(resourcesConfig?: MdmResourcesConfiguration, restHandler?: IMdmRestHandler) {
         super(resourcesConfig, restHandler);
@@ -154,7 +154,7 @@ export class MdmTerminologyResource extends MdmResource {
     /// <param name="queryStringParams">Query String Params</param>
     /// <param name="restHandlerOptions">restHandler Options</param>
     get(terminologyId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
-        let url = "";
+        let url = '';
         if (this.isGuid(terminologyId)) {
             url = `${this.apiEndpoint}/terminologies/${terminologyId}`;
         }
@@ -196,7 +196,7 @@ export class MdmTerminologyResource extends MdmResource {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/latestModelVersion`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
-    
+
     latestFinalisedModel(terminologyId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/latestFinalisedModel`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
