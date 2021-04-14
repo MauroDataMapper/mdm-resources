@@ -11,7 +11,7 @@
         "changelog": "conventional-changelog -i CHANGELOG.md -s",
         "test": "jest",
         "eslint": "tsc --noEmit && eslint . --ext ts --quiet --fix",
-        "eslint-report": "eslint . --ext ts --fix -f html -o eslint_report.html"
+        "eslint-report": "eslint . --ext ts --fix -f json -o eslint_report.json"
     },
     "repository": {
         "type": "git",
