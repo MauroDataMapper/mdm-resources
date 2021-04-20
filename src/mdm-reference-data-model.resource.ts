@@ -121,4 +121,9 @@ export class MdmReferenceDataModelResource extends MdmResource {
         return this.simplePut(url, data, restHandlerOptions);
     }
 
+    undoSoftDelete(referenceDataModelId: string, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/admin/referenceDataModels/${referenceDataModelId}/undoSoftDelete`;
+        return this.simplePut(url, {}, restHandlerOptions);
+    }
+
 }

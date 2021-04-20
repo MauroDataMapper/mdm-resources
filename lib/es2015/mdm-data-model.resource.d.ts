@@ -73,4 +73,5 @@ export declare class MdmDataModelResource extends MdmResource {
     latestModelVersion(dataModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
     latestFinalisedModel(dataModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
     modelVersionTree(dataModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    undoSoftDelete(dataModelId: string, restHandlerOptions?: IMdmRestHandlerOptions): any;
 }

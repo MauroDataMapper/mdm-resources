@@ -206,4 +206,9 @@ export class MdmTerminologyResource extends MdmResource {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/modelVersionTree`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
+
+    undoSoftDelete(terminologyId: string, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/admin/terminologies/${terminologyId}/undoSoftDelete`;
+        return this.simplePut(url, {}, restHandlerOptions);
+    }
 }

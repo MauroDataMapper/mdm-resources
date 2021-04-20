@@ -64,4 +64,5 @@ export declare class MdmTerminologyResource extends MdmResource {
     latestModelVersion(terminologyId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
     latestFinalisedModel(terminologyId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
     modelVersionTree(terminologyId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    undoSoftDelete(terminologyId: string, restHandlerOptions?: IMdmRestHandlerOptions): any;
 }

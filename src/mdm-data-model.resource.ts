@@ -240,4 +240,9 @@ export class MdmDataModelResource extends MdmResource {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/modelVersionTree`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
+
+    undoSoftDelete(dataModelId: string, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/admin/dataModels/${dataModelId}/undoSoftDelete`;
+        return this.simplePut(url, {}, restHandlerOptions);
+    }
 }

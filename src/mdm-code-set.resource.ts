@@ -211,4 +211,9 @@ export class MdmCodeSetResource extends MdmResource {
         const url = `${this.apiEndpoint}/codeSets/${codeSetId}/modelVersionTree`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
+
+    undoSoftDelete(codeSetId: string, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/admin/codeSets/${codeSetId}/undoSoftDelete`;
+        return this.simplePut(url, {}, restHandlerOptions);
+    }
 }

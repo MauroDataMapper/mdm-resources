@@ -62,4 +62,5 @@ export declare class MdmCodeSetResource extends MdmResource {
     latestModelVersion(codeSetId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
     latestFinalisedModel(codeSetId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
     modelVersionTree(codeSetId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    undoSoftDelete(codeSetId: string, restHandlerOptions?: IMdmRestHandlerOptions): any;
 }

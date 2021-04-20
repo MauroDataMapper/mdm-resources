@@ -38,4 +38,5 @@ export declare class MdmReferenceDataModelResource extends MdmResource {
     update(referenceDataModelId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
     get(referenceDataModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
     moveReferenceDataModelToFolder(referenceDataModelId: string, folderId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    undoSoftDelete(referenceDataModelId: string, restHandlerOptions?: IMdmRestHandlerOptions): any;
 }
