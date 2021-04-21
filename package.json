@@ -12,7 +12,8 @@
         "test": "jest",
         "eslint": "tsc --noEmit && eslint . --ext ts --quiet --fix",
         "eslint-report": "eslint . --ext ts --fix -f json -o eslint_report.json",
-        "docs": "typedoc --out docs --includeVersion src/index.ts"
+        "docs": "typedoc --out docs --includeVersion src/index.ts",
+        "docs-watch": "typedoc --out docs --includeVersion src/index.ts --watch"
     },
     "repository": {
         "type": "git",

@@ -21,6 +21,9 @@ import { IMdmRestHandler, DefaultMdmRestHandler, IMdmRestHandlerOptions, IMdmQue
 import { MdmSecurityResource } from './mdm-security.resource';
 import { MdmSessionResource } from './mdm-session.resource';
 
+/**
+ * @deprecated Use [[MdmSecurityResource]] and [[MdmSessionResource]] instead.
+ */
 export class MdmAuthenticationResource extends MdmResource {
 
     private securityResource: MdmSecurityResource;
@@ -32,14 +35,23 @@ export class MdmAuthenticationResource extends MdmResource {
         this.sesisonResource = new MdmSessionResource(resourcesConfig, restHandler);
     }
 
+    /**
+     * @deprecated Use [[MdmSecurityResource.login]] instead.
+     */
     login(data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
         return this.securityResource.login(data, restHandlerOptions);
     }
 
+    /**
+     * @deprecated Use [[MdmSecurityResource.logout]] instead.
+     */
     logout(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         return this.securityResource.logout(queryStringParams, restHandlerOptions);
     }
 
+    /**
+     * @deprecated Use [[MdmSessionResource.isAuthenticated]] instead.
+     */
     isAuthenticated(sessionId?: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         this.sesisonResource.isAuthenticated(sessionId, queryStringParams, restHandlerOptions);
     }
