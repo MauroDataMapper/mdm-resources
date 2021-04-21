@@ -19,6 +19,14 @@ import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handle
  |   PUT    | /api/referenceDataModels/${id}                                                                                                                | Action: update
  |   GET    | /api/referenceDataModels/${id}                                                                                                                | Action: show
  |   PUT    | /api/referenceDataModels/${referenceDataModelId}/folder/${folderId}                                                                           | Action: changeFolder
+ |   PUT    | /api/referenceDataModels/${referenceDataModelId}/newModelVersion                                                                              | Action: newModelVersion
+ |   PUT    | /api/referenceDataModels/${referenceDataModelId}/newDocumentationVersion                                                                      | Action: newDocumentationVersion
+ |   PUT    | /api/referenceDataModels/${referenceDataModelId}/finalise                                                                                     | Action: finalise
+ |   PUT    | /api/referenceDataModels/${referenceDataModelId}/newBranchModelVersion                                                                        | Action: newBranchModelVersion
+ |   PUT    | /api/referenceDataModels/${referenceDataModelId}/newForkModel                                                                                 | Action: newForkModel
+ |   GET    | /api/referenceDataModels/${referenceDataModelId}/latestModelVersion                                                                           | Action: latestModelVersion
+ |   GET    | /api/referenceDataModels/${referenceDataModelId}/latestFinalisedModel                                                                         | Action: latestFinalisedModel
+ |   GET    | /api/referenceDataModels/${referenceDataModelId}/modelVersionTree                                                                             | Action: modelVersionTree
 
  */
 export declare class MdmReferenceDataModelResource extends MdmResource {
@@ -39,4 +47,10 @@ export declare class MdmReferenceDataModelResource extends MdmResource {
     get(referenceDataModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
     moveReferenceDataModelToFolder(referenceDataModelId: string, folderId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
     undoSoftDelete(referenceDataModelId: string, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    finalise(referenceDataModelId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    newBranchModelVersion(referenceDataModelId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    newForkModel(referenceDataModelId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    latestModelVersion(referenceDataModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    latestFinalisedModel(referenceDataModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    modelVersionTree(referenceDataModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
 }
