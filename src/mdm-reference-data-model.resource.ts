@@ -37,6 +37,14 @@ import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handle
  |   PUT    | /api/referenceDataModels/${id}                                                                                                                | Action: update
  |   GET    | /api/referenceDataModels/${id}                                                                                                                | Action: show
  |   PUT    | /api/referenceDataModels/${referenceDataModelId}/folder/${folderId}                                                                           | Action: changeFolder
+ |   PUT    | /api/referenceDataModels/${referenceDataModelId}/newModelVersion                                                                              | Action: newModelVersion
+ |   PUT    | /api/referenceDataModels/${referenceDataModelId}/newDocumentationVersion                                                                      | Action: newDocumentationVersion
+ |   PUT    | /api/referenceDataModels/${referenceDataModelId}/finalise                                                                                     | Action: finalise
+ |   PUT    | /api/referenceDataModels/${referenceDataModelId}/newBranchModelVersion                                                                        | Action: newBranchModelVersion
+ |   PUT    | /api/referenceDataModels/${referenceDataModelId}/newForkModel                                                                                 | Action: newForkModel
+ |   GET    | /api/referenceDataModels/${referenceDataModelId}/latestModelVersion                                                                           | Action: latestModelVersion
+ |   GET    | /api/referenceDataModels/${referenceDataModelId}/latestFinalisedModel                                                                         | Action: latestFinalisedModel
+ |   GET    | /api/referenceDataModels/${referenceDataModelId}/modelVersionTree                                                                             | Action: modelVersionTree
 
  */
 export class MdmReferenceDataModelResource extends MdmResource {
@@ -124,6 +132,36 @@ export class MdmReferenceDataModelResource extends MdmResource {
     undoSoftDelete(referenceDataModelId: string, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/admin/referenceDataModels/${referenceDataModelId}/undoSoftDelete`;
         return this.simplePut(url, {}, restHandlerOptions);
+    }
+
+    finalise(referenceDataModelId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/finalise`;
+        return this.simplePut(url, data, restHandlerOptions);
+    }
+
+    newBranchModelVersion(referenceDataModelId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/newBranchModelVersion`;
+        return this.simplePut(url, data, restHandlerOptions);
+    }
+
+    newForkModel(referenceDataModelId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/newForkModel`;
+        return this.simplePut(url, data, restHandlerOptions);
+    }
+
+    latestModelVersion(referenceDataModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/latestModelVersion`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
+
+    latestFinalisedModel(referenceDataModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/latestFinalisedModel`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
+
+    modelVersionTree(referenceDataModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/modelVersionTree`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
 }
