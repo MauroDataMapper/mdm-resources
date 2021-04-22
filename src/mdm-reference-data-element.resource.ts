@@ -15,8 +15,9 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
+import { QueryParameters } from 'mdm-common.model';
 import { MdmResource } from './mdm-resource';
-import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handler';
+import { IMdmRestHandlerOptions } from './mdm-rest-handler';
 
 /**
  * Controller: referenceDataModel
@@ -28,12 +29,12 @@ import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handle
  */
 export class MdmReferenceDataElementResource extends MdmResource {
 
-    list(referenceDataModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    list(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/referenceDataElements`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    get(referenceDataModelId: string, referenceDataElementId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    get(referenceDataModelId: string, referenceDataElementId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/referenceDataElements/${referenceDataElementId}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
@@ -48,7 +49,7 @@ export class MdmReferenceDataElementResource extends MdmResource {
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    remove(referenceDataModelId: string, referenceDataElementId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    remove(referenceDataModelId: string, referenceDataElementId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/referenceDataElements/${referenceDataElementId}`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }

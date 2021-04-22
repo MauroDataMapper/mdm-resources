@@ -15,8 +15,9 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
+import { QueryParameters } from 'mdm-common.model';
 import { MdmResource } from './mdm-resource';
-import { IMdmRestHandlerOptions, IMdmQueryStringParams } from './mdm-rest-handler';
+import { IMdmRestHandlerOptions } from './mdm-rest-handler';
 
 /**
  * Controller: dataType
@@ -33,12 +34,12 @@ export class MdmDataTypeResource extends MdmResource {
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    list(dataModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    list(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataTypes`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    remove(dataModelId: string, dataTypeId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    remove(dataModelId: string, dataTypeId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataTypes/${dataTypeId}`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
@@ -54,7 +55,7 @@ export class MdmDataTypeResource extends MdmResource {
     /// <param name="dataTypeId">Date Type Id or a path in the format typePrefix:label|typePrefix:label</param>
     /// <param name="queryStringParams">Query String Params</param>
     /// <param name="restHandlerOptions">restHandler Options</param>
-    get(dataModelId: string, dataTypeId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    get(dataModelId: string, dataTypeId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         let url = '';
         if (this.isGuid(dataModelId)) {
             url = url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataTypes/${dataTypeId}`;

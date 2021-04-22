@@ -15,8 +15,9 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
+import { QueryParameters } from 'mdm-common.model';
 import { MdmResource, ModelDomainType } from './mdm-resource';
-import { IMdmRestHandlerOptions, IMdmQueryStringParams } from './mdm-rest-handler';
+import { IMdmRestHandlerOptions } from './mdm-rest-handler';
 
 /**
  * Controller: summaryMetadata
@@ -39,12 +40,12 @@ export class MdmSummaryMetadataResource extends MdmResource {
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    list(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    list(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/summaryMetadata`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    remove(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, summaryMetadataId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    remove(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, summaryMetadataId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/summaryMetadata/${summaryMetadataId}`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
@@ -54,7 +55,7 @@ export class MdmSummaryMetadataResource extends MdmResource {
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    get(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, summaryMetadataId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    get(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, summaryMetadataId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/summaryMetadata/${summaryMetadataId}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
@@ -64,12 +65,12 @@ export class MdmSummaryMetadataResource extends MdmResource {
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    listReports(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, summaryMetadataId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    listReports(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, summaryMetadataId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/summaryMetadata/${summaryMetadataId}/summaryMetadataReports`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    removeReport(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, summaryMetadataId: string, summaryMetadataReportId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    removeReport(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, summaryMetadataId: string, summaryMetadataReportId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/summaryMetadata/${summaryMetadataId}/summaryMetadataReports/${summaryMetadataReportId}`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
@@ -79,7 +80,7 @@ export class MdmSummaryMetadataResource extends MdmResource {
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    getReport(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, summaryMetadataId: string, summaryMetadataReportId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    getReport(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, summaryMetadataId: string, summaryMetadataReportId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/summaryMetadata/${summaryMetadataId}/summaryMetadataReports/${summaryMetadataReportId}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }

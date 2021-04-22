@@ -16,8 +16,9 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
+import { QueryParameters } from 'mdm-common.model';
 import { MdmResource } from './mdm-resource';
-import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handler';
+import { IMdmRestHandlerOptions } from './mdm-rest-handler';
 
 /**
  * MDM resource for managing system properties in the Mauro instance.
@@ -50,7 +51,7 @@ export class MdmApiPropertyResources extends MdmResource {
      * }
      * ```
      */
-    list(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any {
+    list(queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions): any {
         const url = `${this.apiEndpoint}/admin/properties`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
@@ -81,7 +82,7 @@ export class MdmApiPropertyResources extends MdmResource {
      * }
      * ```
      */
-    listPublic(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any {
+    listPublic(queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions): any {
         const url = `${this.apiEndpoint}/properties`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
@@ -108,7 +109,7 @@ export class MdmApiPropertyResources extends MdmResource {
      *  }
      * ```
      */
-    get(id: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any {
+    get(id: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions): any {
         const url = `${this.apiEndpoint}/admin/properties/${id}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
@@ -151,7 +152,7 @@ export class MdmApiPropertyResources extends MdmResource {
      * 
      * On success, the response will be a `204 No Content` and the response body will be empty.
      */
-    remove(id: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any {
+    remove(id: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions): any {
         const url = `${this.apiEndpoint}/admin/properties/${id}`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }

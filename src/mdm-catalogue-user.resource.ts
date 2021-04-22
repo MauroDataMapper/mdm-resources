@@ -15,8 +15,9 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
+import { QueryParameters } from 'mdm-common.model';
 import { ContainerDomainType, MdmResource } from './mdm-resource';
-import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handler';
+import { IMdmRestHandlerOptions } from './mdm-rest-handler';
 
 /**
  * Controller: catalogueUser
@@ -56,17 +57,17 @@ export class MdmCatalogueUserResource extends MdmResource {
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    pendingCount(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    pendingCount(queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/admin/catalogueUsers/pendingCount`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    pending(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    pending(queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/admin/catalogueUsers/pending`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    exists(emailAddress, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    exists(emailAddress, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/admin/catalogueUsers/userExists/${emailAddress}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
@@ -86,12 +87,12 @@ export class MdmCatalogueUserResource extends MdmResource {
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    search(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    search(queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/catalogueUsers/search`;
         return this.simplePost(url, queryStringParams, restHandlerOptions);
     }
 
-    resetPasswordLink(emailAddress, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    resetPasswordLink(emailAddress, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/catalogueUsers/resetPasswordLink/${emailAddress}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
@@ -111,12 +112,12 @@ export class MdmCatalogueUserResource extends MdmResource {
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    userPreferences(catalogueUserId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    userPreferences(catalogueUserId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}/userPreferences`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    listInUserGroup(userGroupId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    listInUserGroup(userGroupId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/userGroups/${userGroupId}/catalogueUsers`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
@@ -126,12 +127,12 @@ export class MdmCatalogueUserResource extends MdmResource {
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    list(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    list(queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/catalogueUsers`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    remove(catalogueUserId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    remove(catalogueUserId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
@@ -141,17 +142,17 @@ export class MdmCatalogueUserResource extends MdmResource {
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    get(catalogueUserId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    get(catalogueUserId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    listInContainerUserGroup(containerDomainType: string | ContainerDomainType, containerId: string, userGroupId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    listInContainerUserGroup(containerDomainType: string | ContainerDomainType, containerId: string, userGroupId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/${containerDomainType}/${containerId}/userGroups/${userGroupId}/catalogueUsers`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    listApiKeys(catalogueUserId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    listApiKeys(catalogueUserId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}/apiKeys`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }

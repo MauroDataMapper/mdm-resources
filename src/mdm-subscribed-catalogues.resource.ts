@@ -16,8 +16,9 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
+import { QueryParameters } from 'mdm-common.model';
 import { MdmResource } from './mdm-resource';
-import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handler';
+import { IMdmRestHandlerOptions } from './mdm-rest-handler';
 
 /**
  * MDM resource for managing subscribed catalogues and federated models.
@@ -44,7 +45,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
      * }
      * ```
      */
-    get(id: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    get(id: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/subscribedCatalogues/${id}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
@@ -74,7 +75,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
      * }
      * ```
      */
-    list(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    list(queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/subscribedCatalogues`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
@@ -118,7 +119,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
      * 
      * On success, the response will be a `204 No Content` and the response body will be empty.
      */
-    remove(id: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    remove(id: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/subscribedCatalogues/${id}`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
@@ -133,7 +134,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
      * 
      * On success, the response will be a `200 OK`.
      */
-    listAvailableModels(id: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    listAvailableModels(id: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/subscribedCatalogues/${id}/availableModels`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
@@ -148,7 +149,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
      * 
      * On success, the response will be a `200 OK`.
      */
-    listSubscribedModels(id: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    listSubscribedModels(id: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/subscribedCatalogues/${id}/subscribedModels`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
@@ -178,7 +179,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
      * 
      * On success, the response will be a `200 OK`.
      */
-    getSubscribedModel(catalogueId: string, id: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    getSubscribedModel(catalogueId: string, id: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/subscribedCatalogues/${catalogueId}/subscribedModels/${id}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
@@ -209,7 +210,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
      * 
      * On success, the response will be a `204 No Content` and the response body will be empty.
      */
-    removeSubscribedModel(catalogueId: string, id: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    removeSubscribedModel(catalogueId: string, id: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/subscribedCatalogues/${catalogueId}/subscribedModels/${id}`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }

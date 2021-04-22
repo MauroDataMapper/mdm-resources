@@ -15,10 +15,10 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { Uuid } from 'mdm-common.model';
+import { QueryParameters, Uuid } from 'mdm-common.model';
 import { LoginPayload, SecurableDomainType } from 'mdm-security.model';
 import { MdmResource } from './mdm-resource';
-import { IMdmRestHandlerOptions, IMdmQueryStringParams } from './mdm-rest-handler';
+import { IMdmRestHandlerOptions } from './mdm-rest-handler';
 
 /**
  * MDM resource for managing security and authentication.
@@ -47,7 +47,7 @@ export class MdmSecurityResource extends MdmResource {
    * 
    * `204 No Content` - successfully logged out, will contain no body.
    */
-  logout(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+  logout(queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
     const url = `${this.apiEndpoint}/authentication/logout`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
@@ -65,7 +65,7 @@ export class MdmSecurityResource extends MdmResource {
   permissions(
     domainType: SecurableDomainType,
     securableResourceId: Uuid,
-    queryStringParams?: IMdmQueryStringParams,
+    queryStringParams?: QueryParameters,
     restHandlerOptions?: IMdmRestHandlerOptions) {
     const url = `${this.apiEndpoint}/${domainType}/${securableResourceId}/permissions`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
