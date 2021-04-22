@@ -21,6 +21,22 @@ SPDX-License-Identifier: Apache-2.0
  */
 export type Uuid = string;
 
+export enum ContainerDomainType {
+  CLASSIFIERS = 'classifiers',
+  FOLDERS = 'folders'
+}
+
+export enum ModelDomainType {
+  FOLDERS = 'folders',
+  DATA_MODELS = 'dataModels',
+  DATA_CLASSES = 'dataClasses',
+  DATA_TYPES = 'dataTypes',
+  TERMINOLOGIES = 'terminologies',
+  REFERENCEDATAMODELS = 'referenceDataModels',
+  TERMS = 'terms',
+  ALL = 'all'
+}
+
 /**
  * Represents a response from an [[MdmResource]] API endpoint.
  * @typeparam T The type of object the body of the response represents.
@@ -71,7 +87,7 @@ export type MdmIndexResponse<T> = MdmResponse<MdmIndexBody<T>>;
  * };
  * ```
  */
- export interface QueryParameters {
+export interface QueryParameters {
   [key: string]: any;
 }
 
@@ -113,6 +129,16 @@ export interface SortParameters {
  * 
  * @see [[IMdmRestHandler]]
  */
- export interface RequestOptions {
+export interface RequestOptions {
+  [key: string]: any;
+}
+
+/**
+ * Represents a generic payload for a `POST` or `PUT` request.
+ * 
+ * Use this only when the contents of the payload are not known in advance, otherwise choose to use
+ * a more descriptive payload type.
+ */
+export interface Payload {
   [key: string]: any;
 }

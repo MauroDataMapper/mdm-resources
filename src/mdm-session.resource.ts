@@ -35,6 +35,8 @@ export class MdmSessionResource extends MdmResource {
    * @returns The result of the `GET` request.
    * 
    * `200 OK` - will return a [[SessionListResponse]] containing the [[SessionList]].
+   * 
+   * `403 Forbidden` - user is not an administrator.
    */
   activeSessions(query?: SessionListQueryParameters, options?: RequestOptions) {
     const url = `${this.apiEndpoint}/admin/activeSessions`;

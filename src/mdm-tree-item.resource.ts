@@ -15,12 +15,9 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { RequestOptions, QueryParameters } from 'mdm-common.model';
-import {
-    ContainerDomainType,
-    MdmResource,
-    ModelDomainType,
-} from './mdm-resource';
+import { RequestOptions, QueryParameters, ContainerDomainType, ModelDomainType } from 'mdm-common.model';
+import { TreeItemQueryParameters } from 'mdm-tree-item.model';
+import { MdmResource } from './mdm-resource';
 
 /**
  * Controller: treeItem
@@ -32,73 +29,123 @@ import {
  |   GET    | /api/tree/${containerDomainType}/${catalogueItemDomainType}/${catalogueItemId}                        | Action: show
  */
 export class MdmTreeItemResource extends MdmResource {
-    deletedModels(
-        containerDomainType: string | ContainerDomainType,
-        modelDomainType: string | ModelDomainType,
-        queryStringParams?: QueryParameters,
-        restHandlerOptions?: RequestOptions
-    ) {
-        const url = `${this.apiEndpoint}/admin/tree/${containerDomainType}/${modelDomainType}/deleted`;
-        return this.simpleGet(url, queryStringParams, restHandlerOptions);
-    }
+  /**
+   * `HTTP GET` - Request a tree structure of models that are marked as deleted. **Note:** this endpoint is only accessible to an administrator.
+   * 
+   * @param containerDomainType State the container domain type to inspect.
+   * @param modelDomainType State the model domain type to inspect.
+   * @param query Optional query string parameters, if required.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `GET` request.
+   * 
+   * `200 OK` - will return a [[MdmTreeItemListResponse]] containing a list of [[MdmTreeItem]] nodes.
+   * 
+   * `403 Forbidden` - user is not an administrator.
+   * 
+   * @description Only models marked as deleted can be returned. Any models permanantly deleted cannot be retrieved.
+   */
+  deletedModels(
+    containerDomainType: string | ContainerDomainType,
+    modelDomainType: string | ModelDomainType,
+    query?: QueryParameters,
+    options?: RequestOptions
+  ) {
+    const url = `${this.apiEndpoint}/admin/tree/${containerDomainType}/${modelDomainType}/deleted`;
+    return this.simpleGet(url, query, options);
+  }
 
-    modelSupersededModels(
-        containerDomainType: string | ContainerDomainType,
-        modelDomainType: string | ModelDomainType,
-        queryStringParams?: QueryParameters,
-        restHandlerOptions?: RequestOptions
-    ) {
-        const url = `${this.apiEndpoint}/admin/tree/${containerDomainType}/${modelDomainType}/modelSuperseded`;
-        return this.simpleGet(url, queryStringParams, restHandlerOptions);
-    }
+  /**
+   * `HTTP GET` - Request a tree structure of models with a model version that has been superseded. **Note:** this endpoint is only accessible to an administrator.
+   * 
+   * @param containerDomainType State the container domain type to inspect.
+   * @param modelDomainType State the model domain type to inspect.
+   * @param query Optional query string parameters, if required.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `GET` request.
+   * 
+   * `200 OK` - will return a [[MdmTreeItemListResponse]] containing a list of [[MdmTreeItem]] nodes.
+   * 
+   * `403 Forbidden` - user is not an administrator.
+   */
+  modelSupersededModels(
+    containerDomainType: string | ContainerDomainType,
+    modelDomainType: string | ModelDomainType,
+    query?: QueryParameters,
+    options?: RequestOptions
+  ) {
+    const url = `${this.apiEndpoint}/admin/tree/${containerDomainType}/${modelDomainType}/modelSuperseded`;
+    return this.simpleGet(url, query, options);
+  }
 
-    documentationSupersededModels(
-        containerDomainType: string | ContainerDomainType,
-        modelDomainType: string | ModelDomainType,
-        queryStringParams?: QueryParameters,
-        restHandlerOptions?: RequestOptions
-    ) {
-        const url = `${this.apiEndpoint}/admin/tree/${containerDomainType}/${modelDomainType}/documentationSuperseded`;
-        return this.simpleGet(url, queryStringParams, restHandlerOptions);
-    }
+  /**
+   * `HTTP GET` - Request a tree structure of models with a documentation version that has been superseded. **Note:** this endpoint is only accessible to an administrator.
+   * 
+   * @param containerDomainType State the container domain type to inspect.
+   * @param modelDomainType State the model domain type to inspect.
+   * @param query Optional query string parameters, if required.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `GET` request.
+   * 
+   * `200 OK` - will return a [[MdmTreeItemListResponse]] containing a list of [[MdmTreeItem]] nodes.
+   * 
+   * `403 Forbidden` - user is not an administrator.
+   */
+  documentationSupersededModels(
+    containerDomainType: string | ContainerDomainType,
+    modelDomainType: string | ModelDomainType,
+    query?: QueryParameters,
+    options?: RequestOptions
+  ) {
+    const url = `${this.apiEndpoint}/admin/tree/${containerDomainType}/${modelDomainType}/documentationSuperseded`;
+    return this.simpleGet(url, query, options);
+  }
 
-    search(
-        containerDomainType: string | ContainerDomainType,
-        searchTerm: string,
-        queryStringParams?: QueryParameters,
-        restHandlerOptions?: RequestOptions
-    ) {
-        const url = `${this.apiEndpoint}/tree/${containerDomainType}/search/${searchTerm}`;
-        return this.simpleGet(url, queryStringParams, restHandlerOptions);
-    }
+  search(
+    containerDomainType: string | ContainerDomainType,
+    searchTerm: string,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestOptions
+  ) {
+    const url = `${this.apiEndpoint}/tree/${containerDomainType}/search/${searchTerm}`;
+    return this.simpleGet(url, queryStringParams, restHandlerOptions);
+  }
 
-    list(
-        containerDomainType: string | ContainerDomainType,
-        queryStringParams?: QueryParameters,
-        restHandlerOptions?: RequestOptions
-    ) {
-        const url = `${this.apiEndpoint}/tree/${containerDomainType}`;
-        return this.simpleGet(url, queryStringParams, restHandlerOptions);
-    }
+  /**
+   * `HTTP GET` - Request a tree structure of model entities within the Mauro instance.
+   * @param containerDomainType State the container domain type to inspect.
+   * @param query Optional query string parameters to filter the returned list, if required.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `GET` request.
+   * 
+   * `200 OK` - will return a [[MdmTreeItemListResponse]] containing a list of [[MdmTreeItem]] nodes.
+   */
+  list(
+    containerDomainType: string | ContainerDomainType,
+    query?: TreeItemQueryParameters,
+    options?: RequestOptions
+  ) {
+    const url = `${this.apiEndpoint}/tree/${containerDomainType}`;
+    return this.simpleGet(url, query, options);
+  }
 
-    get(
-        containerDomainType: string | ContainerDomainType,
-        catalogueItemDomainType,
-        catalogueItemId: string,
-        queryStringParams?: QueryParameters,
-        restHandlerOptions?: RequestOptions
-    ) {
-        const url = `${this.apiEndpoint}/tree/${containerDomainType}/${catalogueItemDomainType}/${catalogueItemId}`;
-        return this.simpleGet(url, queryStringParams, restHandlerOptions);
-    }
+  get(
+    containerDomainType: string | ContainerDomainType,
+    catalogueItemDomainType,
+    catalogueItemId: string,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestOptions
+  ) {
+    const url = `${this.apiEndpoint}/tree/${containerDomainType}/${catalogueItemDomainType}/${catalogueItemId}`;
+    return this.simpleGet(url, queryStringParams, restHandlerOptions);
+  }
 
-    getExpandedTree(
-        containerDomainType: string | ContainerDomainType,
-        catalogueItemId: string,
-        queryStringParams?: QueryParameters,
-        restHandlerOptions?: RequestOptions
-    ) {
-        const url = `${this.apiEndpoint}/tree/${containerDomainType}/${catalogueItemId}`;
-        return this.simpleGet(url, queryStringParams, restHandlerOptions);
-    }
+  getExpandedTree(
+    containerDomainType: string | ContainerDomainType,
+    catalogueItemId: string,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestOptions
+  ) {
+    const url = `${this.apiEndpoint}/tree/${containerDomainType}/${catalogueItemId}`;
+    return this.simpleGet(url, queryStringParams, restHandlerOptions);
+  }
 }

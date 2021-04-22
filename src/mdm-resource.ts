@@ -138,19 +138,3 @@ export class MdmResource {
     return (queryParams?.length > 0) ? `?${queryParams.join('&')}` : '';
   }
 }
-
-export enum ContainerDomainType {
-  CLASSIFIERS = 'classifiers',
-  FOLDERS = 'folders'
-}
-
-export enum ModelDomainType {
-  FOLDERS = 'folders',
-  DATA_MODELS = 'dataModels',
-  DATA_CLASSES = 'dataClasses',
-  DATA_TYPES = 'dataTypes',
-  TERMINOLOGIES = 'terminologies',
-  REFERENCEDATAMODELS = 'referenceDataModels',
-  TERMS = 'terms',
-  ALL = 'all'
-}
