@@ -54,8 +54,8 @@ export class MdmVersioningResource extends MdmResource {
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    mergeInto(sourceModelId: string, targetModelId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
-        const url = `${this.apiEndpoint}/dataModels/${sourceModelId}/mergeInto/${targetModelId}`;
+    mergeInto(modelDomainType: string | ModelDomainType, sourceModelId: string, targetModelId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/${modelDomainType}/${sourceModelId}/mergeInto/${targetModelId}`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 }
