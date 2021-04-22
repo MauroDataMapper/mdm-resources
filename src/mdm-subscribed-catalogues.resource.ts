@@ -16,9 +16,8 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { QueryParameters } from 'mdm-common.model';
+import { RequestOptions, QueryParameters } from 'mdm-common.model';
 import { MdmResource } from './mdm-resource';
-import { IMdmRestHandlerOptions } from './mdm-rest-handler';
 
 /**
  * MDM resource for managing subscribed catalogues and federated models.
@@ -45,7 +44,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
      * }
      * ```
      */
-    get(id: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
+    get(id: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/subscribedCatalogues/${id}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
@@ -75,7 +74,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
      * }
      * ```
      */
-    list(queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
+    list(queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/subscribedCatalogues`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
@@ -89,7 +88,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
      * 
      * On success, the response will be a `200 OK`.
      */
-    save(data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+    save(data: any, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/subscribedCatalogues`;
         return this.simplePost(url, data, restHandlerOptions);
     }
@@ -104,7 +103,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
      * 
      * On success, the response will be a `200 OK`.
      */
-    update(id: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+    update(id: string, data: any, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/subscribedCatalogues/${id}`;
         return this.simplePut(url, data, restHandlerOptions);
     }
@@ -119,7 +118,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
      * 
      * On success, the response will be a `204 No Content` and the response body will be empty.
      */
-    remove(id: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
+    remove(id: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/subscribedCatalogues/${id}`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
@@ -134,7 +133,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
      * 
      * On success, the response will be a `200 OK`.
      */
-    listAvailableModels(id: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
+    listAvailableModels(id: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/subscribedCatalogues/${id}/availableModels`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
@@ -149,7 +148,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
      * 
      * On success, the response will be a `200 OK`.
      */
-    listSubscribedModels(id: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
+    listSubscribedModels(id: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/subscribedCatalogues/${id}/subscribedModels`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
@@ -163,7 +162,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
      * 
      * On success, the response will be a `200 OK`.
      */
-    federate(id: string, restHandlerOptions?: IMdmRestHandlerOptions) {
+    federate(id: string, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/subscribedModels/${id}/federate`;
         return this.simplePost(url, null, restHandlerOptions);
     }
@@ -179,7 +178,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
      * 
      * On success, the response will be a `200 OK`.
      */
-    getSubscribedModel(catalogueId: string, id: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
+    getSubscribedModel(catalogueId: string, id: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/subscribedCatalogues/${catalogueId}/subscribedModels/${id}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
@@ -194,7 +193,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
      * 
      * On success, the response will be a `200 OK`.
      */
-    saveSubscribedModel(catalogueId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+    saveSubscribedModel(catalogueId: string, data: any, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/subscribedCatalogues/${catalogueId}/subscribedModels`;
         return this.simplePost(url, data, restHandlerOptions);
     }
@@ -210,7 +209,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
      * 
      * On success, the response will be a `204 No Content` and the response body will be empty.
      */
-    removeSubscribedModel(catalogueId: string, id: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
+    removeSubscribedModel(catalogueId: string, id: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/subscribedCatalogues/${catalogueId}/subscribedModels/${id}`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }

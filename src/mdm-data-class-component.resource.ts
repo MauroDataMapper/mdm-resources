@@ -15,9 +15,8 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { QueryParameters } from 'mdm-common.model';
+import { RequestOptions, QueryParameters } from 'mdm-common.model';
 import { MdmResource } from './mdm-resource';
-import { IMdmRestHandlerOptions } from './mdm-rest-handler';
 
 /**
  * Controller: dataClassComponent
@@ -31,37 +30,37 @@ import { IMdmRestHandlerOptions } from './mdm-rest-handler';
  */
 export class MdmDataClassComponentResource extends MdmResource {
 
-    save(dataModelId: string, dataFlowId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+    save(dataModelId: string, dataFlowId: string, data: any, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataFlows/${dataFlowId}/dataClassComponents`;
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    list(dataModelId: string, dataFlowId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
+    list(dataModelId: string, dataFlowId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataFlows/${dataFlowId}/dataClassComponents`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    remove(dataModelId: string, dataFlowId: string, dataClassComponentId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
+    remove(dataModelId: string, dataFlowId: string, dataClassComponentId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataFlows/${dataFlowId}/dataClassComponents/${dataClassComponentId}`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 
-    update(dataModelId: string, dataFlowId: string, dataClassComponentId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+    update(dataModelId: string, dataFlowId: string, dataClassComponentId: string, data: any, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataFlows/${dataFlowId}/dataClassComponents/${dataClassComponentId}`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    get(dataModelId: string, dataFlowId: string, dataClassComponentId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
+    get(dataModelId: string, dataFlowId: string, dataClassComponentId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataFlows/${dataFlowId}/dataClassComponents/${dataClassComponentId}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    removeDataClass(dataModelId: string, dataFlowId: string, dataClassComponentId: string, type, dataClassId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
+    removeDataClass(dataModelId: string, dataFlowId: string, dataClassComponentId: string, type, dataClassId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataFlows/${dataFlowId}/dataClassComponents/${dataClassComponentId}/${type}/${dataClassId}`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 
-    updateDataClass(dataModelId: string, dataFlowId: string, dataClassComponentId: string, type, dataClassId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+    updateDataClass(dataModelId: string, dataFlowId: string, dataClassComponentId: string, type, dataClassId: string, data: any, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataFlows/${dataFlowId}/dataClassComponents/${dataClassComponentId}/${type}/${dataClassId}`;
         return this.simplePut(url, data, restHandlerOptions);
     }

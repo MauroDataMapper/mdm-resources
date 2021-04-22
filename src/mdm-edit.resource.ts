@@ -15,16 +15,15 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { QueryParameters } from 'mdm-common.model';
+import { RequestOptions, QueryParameters } from 'mdm-common.model';
 import { MdmResource } from './mdm-resource';
-import { IMdmRestHandlerOptions } from './mdm-rest-handler';
 
 /**
  * Controller: edit
  |   GET    | /api/${resourceDomainType}/${resourceId}/edits                                                        | Action: index
  */
 export class MdmEditResource extends MdmResource {
-    status(resourceDomainType, resourceId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
+    status(resourceDomainType, resourceId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/${resourceDomainType}/${resourceId}/edits`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }

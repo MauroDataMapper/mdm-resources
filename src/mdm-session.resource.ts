@@ -15,15 +15,14 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { QueryParameters, Uuid } from 'mdm-common.model';
+import { RequestOptions, QueryParameters, Uuid } from 'mdm-common.model';
 import { MdmResource } from './mdm-resource';
-import { IMdmRestHandlerOptions } from './mdm-rest-handler';
 
 /**
  * MDM resource for managing sessions in Mauro.
  */
 export class MdmSessionResource extends MdmResource {
-  keepAlive(queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
+  keepAlive(queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
     const url = `${this.apiEndpoint}/session/keepAlive`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
@@ -36,7 +35,7 @@ export class MdmSessionResource extends MdmResource {
    * 
    * `200 OK` - will return a [[SessionListResponse]] containing the [[SessionList]].
    */
-  activeSessions(queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
+  activeSessions(queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
     const url = `${this.apiEndpoint}/admin/activeSessions`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
@@ -52,7 +51,7 @@ export class MdmSessionResource extends MdmResource {
    * 
    * @see [[MdmSecurityResource.login]]
    */
-  isAuthenticated(sessionId?: Uuid, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
+  isAuthenticated(sessionId?: Uuid, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
     const url = `${this.apiEndpoint}/session/isAuthenticated${sessionId ? `/${sessionId}` : ''}`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
@@ -65,7 +64,7 @@ export class MdmSessionResource extends MdmResource {
    * 
    * `200 OK` - will return a [[AdminSessionResponse]] containing the [[AdminSessionResult]].
    */
-  isApplicationAdministration(queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
+  isApplicationAdministration(queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
     const url = `${this.apiEndpoint}/session/isApplicationAdministration`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }

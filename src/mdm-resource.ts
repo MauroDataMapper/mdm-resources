@@ -15,9 +15,9 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { QueryParameters } from 'mdm-common.model';
+import { RequestOptions, QueryParameters } from 'mdm-common.model';
 import { MdmResourcesConfiguration } from './mdm-resources-configuration';
-import { DefaultMdmRestHandler, IMdmDefaultHttpRequestOptions, IMdmRestHandler, IMdmRestHandlerOptions } from './mdm-rest-handler';
+import { DefaultMdmRestHandler, IMdmRestHandler } from './mdm-rest-handler';
 
 /**
  * Superclass for all Mauro resource classes.
@@ -33,7 +33,7 @@ export class MdmResource {
   /**
    * Stores the default options to apply to every REST request.
    */
-  protected defaultRequestOptions: IMdmDefaultHttpRequestOptions;
+  protected defaultRequestOptions: RequestOptions;
   private restHandler: IMdmRestHandler;
   private resourcesConfig: MdmResourcesConfiguration;
 
@@ -56,33 +56,33 @@ export class MdmResource {
    * @param options Optional REST handler options, if required.
    * @returns The result of the `POST` request.
    */
-  simplePost(url: string, data: any, options?: IMdmRestHandlerOptions) {
-    const opts: IMdmRestHandlerOptions = { ...this.defaultRequestOptions, body: data, ...options, method: 'POST' };
+  simplePost(url: string, data: any, options?: RequestOptions) {
+    const opts: RequestOptions = { ...this.defaultRequestOptions, body: data, ...options, method: 'POST' };
     return this.simpleRequest(url, {}, opts);
   }
 
   /**
    * Send a HTTP `GET` request to the given resource.
    * @param url The full URL to the REST resource.
-   * @param queryStringParams Optional query string parameters, if required.
+   * @param query Optional query string parameters, if required.
    * @param options Optional REST handler options, if required.
    * @returns The result of the `GET` request.
    */
-  simpleGet(url: string, queryStringParams: QueryParameters = {}, options?: IMdmRestHandlerOptions) {
-    const opts: IMdmRestHandlerOptions = { ...this.defaultRequestOptions, ...options, method: 'GET' };
-    return this.simpleRequest(url, queryStringParams, opts);
+  simpleGet(url: string, query: QueryParameters = {}, options?: RequestOptions) {
+    const opts: RequestOptions = { ...this.defaultRequestOptions, ...options, method: 'GET' };
+    return this.simpleRequest(url, query, opts);
   }
 
   /**
    * Send a HTTP `DELETE` request to the given resource.
    * @param url The full URL to the REST resource.
-   * @param queryStringParams Optional query string parameters, if required.
+   * @param query Optional query string parameters, if required.
    * @param options Optional REST handler options, if required.
    * @returns The result of the `DELETE` request.
    */
-  simpleDelete(url: string, queryStringParams: QueryParameters = {}, options?: IMdmRestHandlerOptions) {
-    const opts: IMdmRestHandlerOptions = { ...this.defaultRequestOptions, ...options, method: 'DELETE' };
-    return this.simpleRequest(url, queryStringParams, opts);
+  simpleDelete(url: string, query: QueryParameters = {}, options?: RequestOptions) {
+    const opts: RequestOptions = { ...this.defaultRequestOptions, ...options, method: 'DELETE' };
+    return this.simpleRequest(url, query, opts);
   }
 
   /**
@@ -92,15 +92,15 @@ export class MdmResource {
    * @param options Optional REST handler options, if required.
    * @returns The result of the `PUT` request.
    */
-  simplePut(url: string, data: any, options?: IMdmRestHandlerOptions) {
-    const opts: IMdmRestHandlerOptions = { ...this.defaultRequestOptions, body: data, ...options, method: 'PUT' };
+  simplePut(url: string, data: any, options?: RequestOptions) {
+    const opts: RequestOptions = { ...this.defaultRequestOptions, body: data, ...options, method: 'PUT' };
     return this.simpleRequest(url, {}, opts);
   }
 
   /**
    * Send a generic HTTP request to the given resource.
    * @param url The full URL to the REST resource.
-   * @param queryStringParams Optional query string parameters, if required.
+   * @param query Optional query string parameters, if required.
    * @param options Optional REST handler options, if required.
    * @returns The result of the request.
    * 
@@ -110,8 +110,8 @@ export class MdmResource {
    * simpleRequest('http://localhost/api/test', { }, { method: 'GET' });
    * ```
    */
-  simpleRequest(url: string, queryStringParams: QueryParameters = {}, options?: IMdmRestHandlerOptions) {
-    const queryString = this.generateQueryString(queryStringParams);
+  simpleRequest(url: string, query: QueryParameters = {}, options?: RequestOptions) {
+    const queryString = this.generateQueryString(query);
     return this.restHandler.process(`${url}${queryString}`, options);
   }
 
@@ -130,11 +130,11 @@ export class MdmResource {
 
   /**
    * Generate a query string for a URL based on object property values provided.
-   * @param queryStringParams A query string parameters object to convert to a string.
+   * @param query A query string parameters object to convert to a string.
    * @returns A URL encoded string containing each parameter and value, or an empty string if no properties were provided.
    */
-  protected generateQueryString(queryStringParams: QueryParameters = {}): string {
-    const queryParams: string[] = Object.keys(queryStringParams).map(key => `${key}=${queryStringParams[key]}`);
+  protected generateQueryString(query: QueryParameters = {}): string {
+    const queryParams: string[] = Object.keys(query).map(key => `${key}=${query[key]}`);
     return (queryParams?.length > 0) ? `?${queryParams.join('&')}` : '';
   }
 }

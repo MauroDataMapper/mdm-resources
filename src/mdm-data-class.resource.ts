@@ -15,9 +15,8 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { QueryParameters } from 'mdm-common.model';
+import { RequestOptions, QueryParameters } from 'mdm-common.model';
 import { MdmResource } from './mdm-resource';
-import { IMdmRestHandlerOptions } from './mdm-rest-handler';
 
 /**
  * Controller: dataClass
@@ -41,32 +40,32 @@ import { IMdmRestHandlerOptions } from './mdm-rest-handler';
  */
 export class MdmDataClassResource extends MdmResource {
 
-    addChildDataClass(dataModelId: string, dataClassId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+    addChildDataClass(dataModelId: string, dataClassId: string, data: any, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataClasses`;
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    listChildDataClasses(dataModelId: string, dataClassId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
+    listChildDataClasses(dataModelId: string, dataClassId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataClasses`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    search(dataModelId: string, dataClassId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
+    search(dataModelId: string, dataClassId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/search`;
         return this.simplePost(url, queryStringParams, restHandlerOptions);
     }
 
-    content(dataModelId: string, dataClassId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
+    content(dataModelId: string, dataClassId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/content`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    removeChildDataClass(dataModelId: string, dataClassId: string, childDataClassId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
+    removeChildDataClass(dataModelId: string, dataClassId: string, childDataClassId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataClasses/${childDataClassId}`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 
-    updateChildDataClass(dataModelId: string, dataClassId: string, childDataClassId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+    updateChildDataClass(dataModelId: string, dataClassId: string, childDataClassId: string, data: any, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataClasses/${childDataClassId}`;
         return this.simplePut(url, data, restHandlerOptions);
     }
@@ -79,7 +78,7 @@ export class MdmDataClassResource extends MdmResource {
     /// <param name="childDataClassId">Data Class Id or a path in the format typePrefix:label|typePrefix:label</param>
     /// <param name="queryStringParams">Query String Params</param>
     /// <param name="restHandlerOptions">restHandler Options</param>
-    getChildDataClass(dataModelId: string, dataClassId: string, childDataClassId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
+    getChildDataClass(dataModelId: string, dataClassId: string, childDataClassId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
         let url = '';
         if (this.isGuid(childDataClassId)) {
             url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataClasses/${childDataClassId}`;
@@ -91,42 +90,42 @@ export class MdmDataClassResource extends MdmResource {
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    copyChildDataClass(dataModelId: string, dataClassId: string, otherDataModelId: string, otherDataClassId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+    copyChildDataClass(dataModelId: string, dataClassId: string, otherDataModelId: string, otherDataClassId: string, data: any, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataClasses/${otherDataModelId}/${otherDataClassId}`;
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    save(dataModelId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+    save(dataModelId: string, data: any, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses`;
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    list(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
+    list(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    all(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
+    all(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/allDataClasses`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    remove(dataModelId: string, dataClassId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
+    remove(dataModelId: string, dataClassId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 
-    update(dataModelId: string, dataClassId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+    update(dataModelId: string, dataClassId: string, data: any, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    get(dataModelId: string, dataClassId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
+    get(dataModelId: string, dataClassId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    copyDataClass(dataModelId: string, otherDataModelId: string, otherDataClassId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+    copyDataClass(dataModelId: string, otherDataModelId: string, otherDataClassId: string, data: any, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${otherDataModelId}/${otherDataClassId}`;
         return this.simplePost(url, data, restHandlerOptions);
     }

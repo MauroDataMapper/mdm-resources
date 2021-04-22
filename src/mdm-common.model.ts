@@ -79,3 +79,25 @@ export interface SortOptions {
   sort: string;
   order?: 'asc' | 'desc'
 }
+
+/**
+ * Type to define the options to pass to an [[IMdmRestHandler]] to process
+ * a resource.
+ * 
+ * This type uses an index signature to provide any property and value to this object, for example:
+ * 
+ * ```ts
+ * const options: RequestOptions = {
+ *  method: 'POST',
+ *  body: {
+ *      id: 42,
+ *      name: 'Test'
+ *  }
+ * };
+ * ```
+ * 
+ * @see [[IMdmRestHandler]]
+ */
+ export interface RequestOptions {
+  [key: string]: any;
+}
