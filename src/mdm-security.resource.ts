@@ -15,112 +15,59 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
+import { Uuid } from 'mdm-common.model';
+import { LoginPayload, SecurableDomainType } from 'mdm-security.model';
 import { MdmResource } from './mdm-resource';
 import { IMdmRestHandlerOptions, IMdmQueryStringParams } from './mdm-rest-handler';
-
-/**
- * Parameters for login to authenticate a user.
- * 
- * @see [[MdmSecurityResource]]
- */
-export interface MdmSecurityLoginParameters {
-    username: string;
-    password: string;
-}
-
-export enum SecurableDomainType {
-    Classifiers = 'classifiers',
-    CodeSets = 'codeSets',
-    DataModels = 'dataModels',
-    Folders = 'folders',
-    ReferenceDataModels = 'referenceDataModels'
-}
 
 /**
  * MDM resource for managing security and authentication.
  */
 export class MdmSecurityResource extends MdmResource {
-    /**
-     * `HTTP POST` - Login using a username and password to generate a new authenticated session.
-     * @param data The username/password to use.
-     * @param restHandlerOptions Optional REST handler options, if required.
-     * @returns The result of the `POST` request.
-     * 
-     * On success, the response will be a `200 OK` and the response body will look similar to this:
-     * 
-     * ```ts
-     * {
-     *  body: {
-     *      id: 'beb9b1e2-d716-4a38-96ba-a5eabf24399a',
-     *      emailAddress: 'test@test.com',
-     *      firstName: 'first',
-     *      lastName: 'last',
-     *      disabled: false,
-     *      pending: false,
-     *      createdBy: 'admin'
-     *  }
-     * }
-     * ```
-     */
-    login(data: MdmSecurityLoginParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
-        const url = `${this.apiEndpoint}/authentication/login`;
-        return this.simplePost(url, data, restHandlerOptions);
-    }
+  /**
+   * `HTTP POST` - Login using a username and password to generate a new authenticated session.
+   * @param data The username/password to use.
+   * @param restHandlerOptions Optional REST handler options, if required.
+   * @returns The result of the `POST` request.
+   * 
+   * `200 OK` - will return a [[LoginResponse]] containing the [[LoginResult]].
+   * 
+   * @see [[MdmSessionResource.isAuthenticated]]
+   */
+  login(data: LoginPayload, restHandlerOptions?: IMdmRestHandlerOptions) {
+    const url = `${this.apiEndpoint}/authentication/login`;
+    return this.simplePost(url, data, restHandlerOptions);
+  }
 
-    /**
-     * `HTTP GET` - Logout of an authenticated session.
-     * @param queryStringParams Optional query string parameters, if required.
-     * @param restHandlerOptions Optional REST handler options, if required.
-     * @returns The result of the `GET` request.
-     * 
-     * On success, the response will be a `204 No Content` and contain no body.
-     */
-    logout(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
-        const url = `${this.apiEndpoint}/authentication/logout`;
-        return this.simpleGet(url, queryStringParams, restHandlerOptions);
-    }
+  /**
+   * `HTTP GET` - Logout of an authenticated session.
+   * @param queryStringParams Optional query string parameters, if required.
+   * @param restHandlerOptions Optional REST handler options, if required.
+   * @returns The result of the `GET` request.
+   * 
+   * `204 No Content` - successfully logged out, will contain no body.
+   */
+  logout(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    const url = `${this.apiEndpoint}/authentication/logout`;
+    return this.simpleGet(url, queryStringParams, restHandlerOptions);
+  }
 
-    /**
-     * `HTTP GET` - Inspect the permissions for a particular Mauro resource.
-     * @param securableResourceDomainType The domain type to get permissions for.
-     * @param securableResourceId The UUID of the resource to inspect.
-     * @param queryStringParams Optional query string parameters, if required.
-     * @param restHandlerOptions Optional REST handler options, if required.
-     * @returns The result of the `GET` request.
-     * 
-     * On success, the response will be a `200 OK` and contain a response body similar to below:
-     * 
-     * ```ts
-     * {
-     *  readableByEveryone: false,
-     *  readableByAuthenticated: false,
-     *  readableByGroups: [
-     *     {
-     *         id: '51ff3b39-6643-45d6-a5dd-826f11812b12',
-     *         name: 'editors'
-     *     },
-     *     {
-     *         id: 'b150b351-873f-4f16-b9d0-5c0984774385',
-     *         name: 'readers'
-     *     }
-     *  ],
-     *  writeableByGroups: [
-     *     {
-     *         id: '51ff3b39-6643-45d6-a5dd-826f11812b12',
-     *         name: 'editors'
-     *     }
-     *  ],
-     *  readableByUsers: [],
-     *  writeableByUsers: []
-     *  }
-     * ```
-     */
-    permissions(
-        securableResourceDomainType: SecurableDomainType,
-        securableResourceId: string,
-        queryStringParams?: IMdmQueryStringParams,
-        restHandlerOptions?: IMdmRestHandlerOptions) {
-        const url = `${this.apiEndpoint}/${securableResourceDomainType}/${securableResourceId}/permissions`;
-        return this.simpleGet(url, queryStringParams, restHandlerOptions);
-    }
+  /**
+   * `HTTP GET` - Inspect the permissions for a particular Mauro resource.
+   * @param securableResourceDomainType The domain type to get permissions for.
+   * @param securableResourceId The UUID of the resource to inspect.
+   * @param queryStringParams Optional query string parameters, if required.
+   * @param restHandlerOptions Optional REST handler options, if required.
+   * @returns The result of the `GET` request.
+   * 
+   * `200 OK` - will return a [[PermissionsResponse]] containing the [[Permissions]] of this Mauro resource.
+   */
+  permissions(
+    domainType: SecurableDomainType,
+    securableResourceId: Uuid,
+    queryStringParams?: IMdmQueryStringParams,
+    restHandlerOptions?: IMdmRestHandlerOptions) {
+    const url = `${this.apiEndpoint}/${domainType}/${securableResourceId}/permissions`;
+    return this.simpleGet(url, queryStringParams, restHandlerOptions);
+  }
 }
