@@ -57,3 +57,25 @@ export interface MdmIndexBody<T> {
  * @see [[MdmIndexBody]]
  */
 export type MdmIndexResponse<T> = MdmResponse<MdmIndexBody<T>>;
+
+/**
+ * Type to define the query string parameters to pass to a `GET` resource request.
+ * 
+ * This type uses an index signature to provide any property and value to this object, for example:
+ * 
+ * ```ts
+ * const parameters: QueryParameters = {
+ *  id: 123,
+ *  sort: 'name',
+ *  enabled: true
+ * };
+ * ```
+ */
+ export interface QueryParameters {
+  [key: string]: any;
+}
+
+export interface SortOptions {
+  sort: string;
+  order?: 'asc' | 'desc'
+}

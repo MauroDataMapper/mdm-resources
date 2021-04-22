@@ -15,8 +15,9 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
+import { QueryParameters } from 'mdm-common.model';
 import { MdmResourcesConfiguration } from './mdm-resources-configuration';
-import { DefaultMdmRestHandler, IMdmDefaultHttpRequestOptions, IMdmQueryStringParams, IMdmRestHandler, IMdmRestHandlerOptions } from './mdm-rest-handler';
+import { DefaultMdmRestHandler, IMdmDefaultHttpRequestOptions, IMdmRestHandler, IMdmRestHandlerOptions } from './mdm-rest-handler';
 
 /**
  * Superclass for all Mauro resource classes.
@@ -67,7 +68,7 @@ export class MdmResource {
    * @param options Optional REST handler options, if required.
    * @returns The result of the `GET` request.
    */
-  simpleGet(url: string, queryStringParams: IMdmQueryStringParams = {}, options?: IMdmRestHandlerOptions) {
+  simpleGet(url: string, queryStringParams: QueryParameters = {}, options?: IMdmRestHandlerOptions) {
     const opts: IMdmRestHandlerOptions = { ...this.defaultRequestOptions, ...options, method: 'GET' };
     return this.simpleRequest(url, queryStringParams, opts);
   }
@@ -79,7 +80,7 @@ export class MdmResource {
    * @param options Optional REST handler options, if required.
    * @returns The result of the `DELETE` request.
    */
-  simpleDelete(url: string, queryStringParams: IMdmQueryStringParams = {}, options?: IMdmRestHandlerOptions) {
+  simpleDelete(url: string, queryStringParams: QueryParameters = {}, options?: IMdmRestHandlerOptions) {
     const opts: IMdmRestHandlerOptions = { ...this.defaultRequestOptions, ...options, method: 'DELETE' };
     return this.simpleRequest(url, queryStringParams, opts);
   }
@@ -109,7 +110,7 @@ export class MdmResource {
    * simpleRequest('http://localhost/api/test', { }, { method: 'GET' });
    * ```
    */
-  simpleRequest(url: string, queryStringParams: IMdmQueryStringParams = {}, options?: IMdmRestHandlerOptions) {
+  simpleRequest(url: string, queryStringParams: QueryParameters = {}, options?: IMdmRestHandlerOptions) {
     const queryString = this.generateQueryString(queryStringParams);
     return this.restHandler.process(`${url}${queryString}`, options);
   }
@@ -132,7 +133,7 @@ export class MdmResource {
    * @param queryStringParams A query string parameters object to convert to a string.
    * @returns A URL encoded string containing each parameter and value, or an empty string if no properties were provided.
    */
-  protected generateQueryString(queryStringParams: IMdmQueryStringParams = {}): string {
+  protected generateQueryString(queryStringParams: QueryParameters = {}): string {
     const queryParams: string[] = Object.keys(queryStringParams).map(key => `${key}=${queryStringParams[key]}`);
     return (queryParams?.length > 0) ? `?${queryParams.join('&')}` : '';
   }

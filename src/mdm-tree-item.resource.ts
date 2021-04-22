@@ -15,13 +15,13 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
+import { QueryParameters } from 'mdm-common.model';
 import {
     ContainerDomainType,
     MdmResource,
     ModelDomainType,
 } from './mdm-resource';
 import {
-    IMdmQueryStringParams,
     IMdmRestHandlerOptions,
 } from './mdm-rest-handler';
 
@@ -38,7 +38,7 @@ export class MdmTreeItemResource extends MdmResource {
     deletedModels(
         containerDomainType: string | ContainerDomainType,
         modelDomainType: string | ModelDomainType,
-        queryStringParams?: IMdmQueryStringParams,
+        queryStringParams?: QueryParameters,
         restHandlerOptions?: IMdmRestHandlerOptions
     ) {
         const url = `${this.apiEndpoint}/admin/tree/${containerDomainType}/${modelDomainType}/deleted`;
@@ -48,7 +48,7 @@ export class MdmTreeItemResource extends MdmResource {
     modelSupersededModels(
         containerDomainType: string | ContainerDomainType,
         modelDomainType: string | ModelDomainType,
-        queryStringParams?: IMdmQueryStringParams,
+        queryStringParams?: QueryParameters,
         restHandlerOptions?: IMdmRestHandlerOptions
     ) {
         const url = `${this.apiEndpoint}/admin/tree/${containerDomainType}/${modelDomainType}/modelSuperseded`;
@@ -58,7 +58,7 @@ export class MdmTreeItemResource extends MdmResource {
     documentationSupersededModels(
         containerDomainType: string | ContainerDomainType,
         modelDomainType: string | ModelDomainType,
-        queryStringParams?: IMdmQueryStringParams,
+        queryStringParams?: QueryParameters,
         restHandlerOptions?: IMdmRestHandlerOptions
     ) {
         const url = `${this.apiEndpoint}/admin/tree/${containerDomainType}/${modelDomainType}/documentationSuperseded`;
@@ -68,7 +68,7 @@ export class MdmTreeItemResource extends MdmResource {
     search(
         containerDomainType: string | ContainerDomainType,
         searchTerm: string,
-        queryStringParams?: IMdmQueryStringParams,
+        queryStringParams?: QueryParameters,
         restHandlerOptions?: IMdmRestHandlerOptions
     ) {
         const url = `${this.apiEndpoint}/tree/${containerDomainType}/search/${searchTerm}`;
@@ -77,7 +77,7 @@ export class MdmTreeItemResource extends MdmResource {
 
     list(
         containerDomainType: string | ContainerDomainType,
-        queryStringParams?: IMdmQueryStringParams,
+        queryStringParams?: QueryParameters,
         restHandlerOptions?: IMdmRestHandlerOptions
     ) {
         const url = `${this.apiEndpoint}/tree/${containerDomainType}`;
@@ -88,7 +88,7 @@ export class MdmTreeItemResource extends MdmResource {
         containerDomainType: string | ContainerDomainType,
         catalogueItemDomainType,
         catalogueItemId: string,
-        queryStringParams?: IMdmQueryStringParams,
+        queryStringParams?: QueryParameters,
         restHandlerOptions?: IMdmRestHandlerOptions
     ) {
         const url = `${this.apiEndpoint}/tree/${containerDomainType}/${catalogueItemDomainType}/${catalogueItemId}`;
@@ -98,7 +98,7 @@ export class MdmTreeItemResource extends MdmResource {
     getExpandedTree(
         containerDomainType: string | ContainerDomainType,
         catalogueItemId: string,
-        queryStringParams?: IMdmQueryStringParams,
+        queryStringParams?: QueryParameters,
         restHandlerOptions?: IMdmRestHandlerOptions
     ) {
         const url = `${this.apiEndpoint}/tree/${containerDomainType}/${catalogueItemId}`;

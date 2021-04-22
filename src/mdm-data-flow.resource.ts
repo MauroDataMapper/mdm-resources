@@ -18,8 +18,9 @@ SPDX-License-Identifier: Apache-2.0
 import { MdmResource } from './mdm-resource';
 import { MdmResourcesConfiguration } from './mdm-resources-configuration';
 import { MdmDataClassComponentResource } from './mdm-data-class-component.resource';
-import { IMdmRestHandler, DefaultMdmRestHandler, IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handler';
+import { IMdmRestHandler, DefaultMdmRestHandler, IMdmRestHandlerOptions } from './mdm-rest-handler';
 import { MdmDataElementComponentResource } from './mdm-data-element-component.resource';
+import { QueryParameters } from 'mdm-common.model';
 
 /**
  * Controller: dataFlow
@@ -46,12 +47,12 @@ export class MdmDataFlowResource extends MdmResource {
         this.dataElementComponents = new MdmDataElementComponentResource(resourcesConfig, restHandler);
     }
 
-    importers(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    importers(queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/dataFlows/providers/importers`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    exporters(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    exporters(queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/dataFlows/providers/exporters`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
@@ -76,7 +77,7 @@ export class MdmDataFlowResource extends MdmResource {
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    exportDataFlow(dataModelId: string, dataFlowId: string, importerNamespace, importerName, importerVersion, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    exportDataFlow(dataModelId: string, dataFlowId: string, importerNamespace, importerName, importerVersion, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataFlows/${dataFlowId}/import/${importerNamespace}/${importerName}/${importerVersion}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
@@ -86,12 +87,12 @@ export class MdmDataFlowResource extends MdmResource {
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    list(dataModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    list(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataFlows`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    remove(dataModelId: string, dataFlowId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    remove(dataModelId: string, dataFlowId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataFlows/${dataFlowId}`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
@@ -101,7 +102,7 @@ export class MdmDataFlowResource extends MdmResource {
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    get(dataModelId: string, dataFlowId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    get(dataModelId: string, dataFlowId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataFlows/${dataFlowId}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }

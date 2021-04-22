@@ -15,8 +15,9 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
+import { QueryParameters } from 'mdm-common.model';
 import { MdmResource } from './mdm-resource';
-import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handler';
+import { IMdmRestHandlerOptions } from './mdm-rest-handler';
 
 /**
  * Controller: term
@@ -41,12 +42,12 @@ import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handle
  */
 export class MdmTermResource extends MdmResource {
 
-    search(terminologyId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    search(terminologyId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms/search`;
         return this.simplePost(url, queryStringParams, restHandlerOptions);
     }
 
-    tree(terminologyId: string, termId?: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    tree(terminologyId: string, termId?: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms/tree${termId ? `/${termId}` : ''}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
@@ -56,12 +57,12 @@ export class MdmTermResource extends MdmResource {
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    list(terminologyId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    list(terminologyId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    remove(terminologyId: string, termId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    remove(terminologyId: string, termId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms/${termId}`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
@@ -78,7 +79,7 @@ export class MdmTermResource extends MdmResource {
     /// <param name="termId">Terminology Id or a path in the format typePrefix:label|typePrefix:label</param>
     /// <param name="queryStringParams">Query String Params</param>
     /// <param name="restHandlerOptions">restHandler Options</param>
-    get(terminologyId: string, termId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    get(terminologyId: string, termId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         let url = '';
         if (this.isGuid(terminologyId)) {
             url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms/${termId}`;
@@ -95,12 +96,12 @@ export class MdmTermResource extends MdmResource {
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    termRelationships(terminologyId: string, termId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    termRelationships(terminologyId: string, termId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms/${termId}/termRelationships`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    removeTermRelationship(terminologyId: string, termId: string, termRelationshipId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    removeTermRelationship(terminologyId: string, termId: string, termRelationshipId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms/${termId}/termRelationships/${termRelationshipId}`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
@@ -110,7 +111,7 @@ export class MdmTermResource extends MdmResource {
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    getTermRelationship(terminologyId: string, termId: string, termRelationshipId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    getTermRelationship(terminologyId: string, termId: string, termRelationshipId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms/${termId}/termRelationships/${termRelationshipId}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }

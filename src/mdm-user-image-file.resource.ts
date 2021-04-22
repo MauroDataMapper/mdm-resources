@@ -15,8 +15,9 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
+import { QueryParameters } from 'mdm-common.model';
 import { MdmResource } from './mdm-resource';
-import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handler';
+import { IMdmRestHandlerOptions } from './mdm-rest-handler';
 
 /**
  * Controller: userImageFile
@@ -27,7 +28,7 @@ import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handle
  |   GET    | /api/userImageFiles/${id}
  */
 export class MdmUserImageFileResource extends MdmResource {
-    remove(catalogueUserId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    remove(catalogueUserId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}/image`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
@@ -37,7 +38,7 @@ export class MdmUserImageFileResource extends MdmResource {
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    get(catalogueUserId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    get(catalogueUserId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}/image`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
@@ -47,7 +48,7 @@ export class MdmUserImageFileResource extends MdmResource {
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    getUserImageFile(userId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    getUserImageFile(userId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/userImageFiles/${userId}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }

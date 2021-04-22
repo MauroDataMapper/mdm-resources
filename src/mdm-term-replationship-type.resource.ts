@@ -15,8 +15,9 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
+import { QueryParameters } from 'mdm-common.model';
 import { MdmResource } from './mdm-resource';
-import { IMdmRestHandlerOptions, IMdmQueryStringParams } from './mdm-rest-handler';
+import { IMdmRestHandlerOptions } from './mdm-rest-handler';
 
 /**
  * Controller: termRelationshipType
@@ -32,12 +33,12 @@ export class MdmTermRelationshipTypeResource extends MdmResource {
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    list(terminologyId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    list(terminologyId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/termRelationshipTypes`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    remove(terminologyId: string, termRelationshipTypeId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    remove(terminologyId: string, termRelationshipTypeId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/termRelationshipTypes/${termRelationshipTypeId}`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
@@ -47,7 +48,7 @@ export class MdmTermRelationshipTypeResource extends MdmResource {
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    get(terminologyId: string, termRelationshipTypeId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    get(terminologyId: string, termRelationshipTypeId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/termRelationshipTypes/${termRelationshipTypeId}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }

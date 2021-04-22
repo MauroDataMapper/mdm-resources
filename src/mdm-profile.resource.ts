@@ -15,9 +15,9 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
+import { QueryParameters } from 'mdm-common.model';
 import { MdmResource, ModelDomainType } from './mdm-resource';
 import {
-    IMdmQueryStringParams,
     IMdmRestHandlerOptions,
 } from './mdm-rest-handler';
 
@@ -29,7 +29,7 @@ export class MdmProfileResource extends MdmResource {
     usedProfiles(
         catalogueItemDomainType: string | ModelDomainType,
         catalogueItemId: string,
-        queryStringParams?: IMdmQueryStringParams,
+        queryStringParams?: QueryParameters,
         restHandlerOptions?: IMdmRestHandlerOptions
     ) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/profiles/used`;
@@ -38,7 +38,7 @@ export class MdmProfileResource extends MdmResource {
     unusedProfiles(
         catalogueItemDomainType: string | ModelDomainType,
         catalogueItemId: string,
-        queryStringParams?: IMdmQueryStringParams,
+        queryStringParams?: QueryParameters,
         restHandlerOptions?: IMdmRestHandlerOptions
     ) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/profiles/unused`;
@@ -47,7 +47,7 @@ export class MdmProfileResource extends MdmResource {
     otherMetadata(
         catalogueItemDomainType: string | ModelDomainType,
         catalogueItemId: string,
-        queryStringParams?: IMdmQueryStringParams,
+        queryStringParams?: QueryParameters,
         restHandlerOptions?: IMdmRestHandlerOptions
     ) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/profiles/otherMetadata`;
@@ -59,7 +59,7 @@ export class MdmProfileResource extends MdmResource {
         profileNamespace: string,
         profileName: string,
         profileVersion?: string,
-        queryStringParams?: IMdmQueryStringParams,
+        queryStringParams?: QueryParameters,
         restHandlerOptions?: IMdmRestHandlerOptions
     ) {
         let url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/profile/${profileNamespace}/${profileName}`;
@@ -90,7 +90,7 @@ export class MdmProfileResource extends MdmResource {
         profileNamespace: string,
         profileName: string,
         profileVersion?: string,
-        queryStringParams?: IMdmQueryStringParams,
+        queryStringParams?: QueryParameters,
         restHandlerOptions?: IMdmRestHandlerOptions
     ) {
         let url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/profile/${profileNamespace}/${profileName}`;

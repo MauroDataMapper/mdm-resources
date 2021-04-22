@@ -17,23 +17,6 @@ SPDX-License-Identifier: Apache-2.0
 */
 
 /**
- * Type to define the parameters to pass to a `GET` resource request as part of the URL query string.
- * 
- * This type uses an index signature to provide any property and value to this object, for example:
- * 
- * ```ts
- * const parameters: IMdmQueryStringParams = {
- *  id: 123,
- *  sort: 'name',
- *  sortOrder: 'asc'
- * };
- * ```
- */
-export interface IMdmQueryStringParams {
-    [key: string]: any;
-}
-
-/**
  * Type to define the options to pass to an [[IMdmRestHandler]] to process
  * a resource.
  * 
