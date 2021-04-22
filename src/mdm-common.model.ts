@@ -75,8 +75,23 @@ export type MdmIndexResponse<T> = MdmResponse<MdmIndexBody<T>>;
   [key: string]: any;
 }
 
-export interface SortOptions {
+/**
+ * Type to define sorting parameters for a query request.
+ */
+export interface SortParameters {
+  /**
+   * The field/property name to sort by.
+   */
   sort: string;
+
+  /**
+   * State what sort order to use. If supplied, must be either:
+   * 
+   * * `'asc'` for ascending order, or
+   * * `'desc'` for descending order.
+   * 
+   * If not supplied, the default will value used will depend on the resource requested.
+   */
   order?: 'asc' | 'desc'
 }
 
