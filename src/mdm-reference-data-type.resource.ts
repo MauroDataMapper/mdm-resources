@@ -47,7 +47,7 @@ export class MdmReferenceDataTypeResource extends MdmResource {
         const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/referenceDataTypes/${referenceDataTypeId}`;
         return this.simplePut(url, data, restHandlerOptions);
     }
-    
+
     remove(referenceDataModelId: string, referenceDataTypeId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/referenceDataTypes/${referenceDataTypeId}`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);

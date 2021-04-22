@@ -22,7 +22,7 @@ export class MdmFacetsResource extends MdmResource {
 
   attachReferenceFile(id, formData, restHandlerOptions?: IMdmRestHandlerOptions) {
 
-    const url = this.apiEndpoint + '/facets/' + id + '/referenceFiles';
+    const url = `${this.apiEndpoint}'/facets/${id}/referenceFiles`;
 
     return this.simplePost(url, {
       method: 'POST',
@@ -32,7 +32,7 @@ export class MdmFacetsResource extends MdmResource {
   }
 
   downloadLinkReferenceFile(elementId: string, fileId) {
-    return this.apiEndpoint + '/facets/' + elementId + '/referenceFiles/' + fileId;
+    return `${this.apiEndpoint}/facets/${elementId}/referenceFiles/${fileId}`;
   }
 
 }

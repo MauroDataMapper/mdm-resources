@@ -216,7 +216,7 @@ export class MdmDataModelResource extends MdmResource {
     /// <param name="queryStringParams">Query String Params</param>
     /// <param name="restHandlerOptions">restHandler Options</param>
     get(dataModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
-        let url = "";
+        let url = '';
         if (this.isGuid(dataModelId)) {
             url = `${this.apiEndpoint}/dataModels/${dataModelId}`;
         }
@@ -225,12 +225,12 @@ export class MdmDataModelResource extends MdmResource {
         }
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
-    
+
     latestModelVersion(dataModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/latestModelVersion`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
-    
+
     latestFinalisedModel(dataModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/latestFinalisedModel`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
@@ -239,5 +239,10 @@ export class MdmDataModelResource extends MdmResource {
     modelVersionTree(dataModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/modelVersionTree`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
+
+    undoSoftDelete(dataModelId: string, restHandlerOptions?: IMdmRestHandlerOptions) {
+        const url = `${this.apiEndpoint}/admin/dataModels/${dataModelId}/undoSoftDelete`;
+        return this.simplePut(url, {}, restHandlerOptions);
     }
 }

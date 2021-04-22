@@ -28,20 +28,20 @@ import { IMdmRestHandlerOptions, IMdmQueryStringParams } from './mdm-rest-handle
  |   GET    | /api/${catalogueItemDomainType}/${catalogueItemId}/annotations                                        | Action: index
  |  DELETE  | /api/${catalogueItemDomainType}/${catalogueItemId}/annotations/${id}                                  | Action: remove
  |   GET    | /api/${catalogueItemDomainType}/${catalogueItemId}/annotations/${id}                                  | Action: show
- * 
+ *
  * Controller: classifier
  |   POST   | /api/${catalogueItemDomainType}/${catalogueItemId}/classifiers                                        | Action: save
  |   GET    | /api/${catalogueItemDomainType}/${catalogueItemId}/classifiers                                        | Action: index
  |  DELETE  | /api/${catalogueItemDomainType}/${catalogueItemId}/classifiers/${id}                                  | Action: remove
  |   GET    | /api/${catalogueItemDomainType}/${catalogueItemId}/classifiers/${id}                                  | Action: show
- * 
+ *
  * Controller: metadata
  |   POST   | /api/${catalogueItemDomainType}/${catalogueItemId}/metadata                                           | Action: save
  |   GET    | /api/${catalogueItemDomainType}/${catalogueItemId}/metadata                                           | Action: index
  |  DELETE  | /api/${catalogueItemDomainType}/${catalogueItemId}/metadata/${id}                                     | Action: remove
  |   PUT    | /api/${catalogueItemDomainType}/${catalogueItemId}/metadata/${id}                                     | Action: update
  |   GET    | /api/${catalogueItemDomainType}/${catalogueItemId}/metadata/${id}                                     | Action: show
- * 
+ *
  * Controller: referenceFiles
  |   POST   | /api/${catalogueItemDomainType}/${catalogueItemId}/referenceFiles                                     | Action: save
  |   GET    | /api/${catalogueItemDomainType}/${catalogueItemId}/referenceFiles                                     | Action: index
@@ -52,7 +52,7 @@ import { IMdmRestHandlerOptions, IMdmQueryStringParams } from './mdm-rest-handle
  * Controller: search
  |   GET    | /api/catalogueItems/search                                                                            | Action: search
  |   POST   | /api/catalogueItems/search                                                                            | Action: search
- * 
+ *
  * Controller: semanticLink
  |   POST   | /api/${catalogueItemDomainType}/${catalogueItemId}/semanticLinks                                      | Action: save
  |   GET    | /api/${catalogueItemDomainType}/${catalogueItemId}/semanticLinks                                      | Action: index
@@ -62,7 +62,7 @@ import { IMdmRestHandlerOptions, IMdmQueryStringParams } from './mdm-rest-handle
 
  */
 export class MdmCatalogueItemResource extends MdmResource {
-    //Search
+    // Search
 
     search(data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/catalogueItems/search`;
@@ -74,7 +74,7 @@ export class MdmCatalogueItemResource extends MdmResource {
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    //Annotation
+    // Annotation
 
     saveAnnotations(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/annotations`;

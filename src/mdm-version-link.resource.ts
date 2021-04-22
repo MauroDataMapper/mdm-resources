@@ -24,7 +24,7 @@ import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handle
  |   GET    | /api/${modelDomainType}/${modelId}/versionLinks                                                       | Action: index
  |  DELETE  | /api/${modelDomainType}/${modelId}/versionLinks/${id}                                                 | Action: delete
  |   PUT    | /api/${modelDomainType}/${modelId}/versionLinks/${id}                                                 | Action: update
- |   GET    | /api/${modelDomainType}/${modelId}/versionLinks/${id}                                                 | Action: show 
+ |   GET    | /api/${modelDomainType}/${modelId}/versionLinks/${id}                                                 | Action: show
  */
 export class MdmVersionLinkResource extends MdmResource {
     save(modelDomainType: string | ModelDomainType, modelId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {

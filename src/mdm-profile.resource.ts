@@ -15,11 +15,11 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { MdmResource, ModelDomainType } from "./mdm-resource";
+import { MdmResource, ModelDomainType } from './mdm-resource';
 import {
     IMdmQueryStringParams,
     IMdmRestHandlerOptions,
-} from "./mdm-rest-handler";
+} from './mdm-rest-handler';
 
 /**
  * Controller: mauroDataMapperServiceProvider
@@ -100,4 +100,23 @@ export class MdmProfileResource extends MdmResource {
 
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
+
+    validateProfile(
+        profileNamespace: string,
+        profileName: string,
+        catalogueItemDomainType: string | ModelDomainType,
+        id: string,
+        data: string,
+    )
+    {
+        const url = `${this.apiEndpoint}/profiles/${profileNamespace}/${profileName}/${catalogueItemDomainType}/${id}/validate`;
+        return this.simplePost(url,data);
+    }
+
+    providerDynamic()
+        {
+            const url = `${this.apiEndpoint}/profiles/providers/dynamic`;
+            return this.simpleGet(url);
+        }
+
 }

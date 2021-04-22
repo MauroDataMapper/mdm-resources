@@ -28,8 +28,8 @@ import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handle
  |   GET    | /api/codeSets/${codeSetId}/terms                                                                           | Action: index                                   |
  |  DELETE  | /api/terminologies/${terminologyId}/terms/${id}                                                            | Action: delete                                  |
  |   PUT    | /api/terminologies/${terminologyId}/terms/${id}                                                            | Action: update                                  |
- |   GET    | /api/terminologies/${terminologyId}/terms/${id}                                                            | Action: show 
- * 
+ |   GET    | /api/terminologies/${terminologyId}/terms/${id}                                                            | Action: show
+ *
  * Controller: termRelationship
  |   GET    | /api/terminologies/${terminologyId}/termRelationshipTypes/${termRelationshipTypeId}/termRelationships            | Action: index                                   |
  |   POST   | /api/terminologies/${terminologyId}/terms/${termId}/termRelationships                                            | Action: save                                    |
@@ -79,14 +79,14 @@ export class MdmTermResource extends MdmResource {
     /// <param name="queryStringParams">Query String Params</param>
     /// <param name="restHandlerOptions">restHandler Options</param>
     get(terminologyId: string, termId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
-        let url = "";
+        let url = '';
         if (this.isGuid(terminologyId)) {
             url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms/${termId}`;
         }
         else {
             url = `${this.apiEndpoint}/terminologies/path/${termId}`;
         }
- 
+
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 

@@ -16,13 +16,14 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { MdmResource } from "./mdm-resource"
-import { IMdmQueryStringParams, IMdmRestHandlerOptions } from "./mdm-rest-handler";
+import { MdmResource } from './mdm-resource';
+import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handler';
 
 export class MdmApiPropertyResources extends MdmResource {
 
     /**
      * Gets a list of all API properties.
+     *
      * @param queryStringParams Optional query string parameters for the GET request.
      * @param restHandlerOptions Optional REST handler parameters.
      * @returns An HTTP response object containing a count and array of items.
@@ -34,6 +35,7 @@ export class MdmApiPropertyResources extends MdmResource {
 
     /**
      * Gets a list of all publicly accessible API properties. Administrator permissions are not required for this API.
+     *
      * @param queryStringParams Optional query string parameters for the GET request.
      * @param restHandlerOptions Optional REST handler parameters.
      * @returns An HTTP response object containing a count and array of items.
@@ -45,6 +47,7 @@ export class MdmApiPropertyResources extends MdmResource {
 
     /**
      * Gets an API property by ID.
+     *
      * @param id The UUID of the property to get.
      * @param queryStringParams Optional query string parameters for the GET request.
      * @param restHandlerOptions Optional REST handler parameters.
@@ -57,6 +60,7 @@ export class MdmApiPropertyResources extends MdmResource {
 
     /**
      * Creates a new API property.
+     *
      * @param data The data to use for creation.
      * @param restHandlerOptions Optional REST handler parameters.
      * @returns An HTTP response object.
@@ -68,6 +72,7 @@ export class MdmApiPropertyResources extends MdmResource {
 
     /**
      * Updates an existing API property.
+     *
      * @param id The UUID of the property to update.
      * @param data The data to use for the update.
      * @param restHandlerOptions Optional REST handler parameters.
@@ -80,6 +85,7 @@ export class MdmApiPropertyResources extends MdmResource {
 
     /**
      * Removes an existing API property.
+     *
      * @param id The UUID of the property to remove.
      * @param queryStringParams Optional query string parameters for the request.
      * @param restHandlerOptions Optional REST handler parameters.
@@ -88,5 +94,5 @@ export class MdmApiPropertyResources extends MdmResource {
     remove(id: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any {
         const url = `${this.apiEndpoint}/admin/properties/${id}`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
-    }    
+    }
 }

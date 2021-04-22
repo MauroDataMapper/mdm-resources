@@ -145,5 +145,5 @@ export class MdmFolderResource extends MdmResource {
         const url = `${this.apiEndpoint}/folders/${folderId}/readByEveryone`;
         return this.simplePut(url, data, restHandlerOptions);
     }
-    
+
 }

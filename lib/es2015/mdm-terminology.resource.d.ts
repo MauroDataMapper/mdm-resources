@@ -34,8 +34,8 @@ import { MdmTermResource } from './mdm-term.resource';
  |   GET    | /api/terminologies/${terminologyId}/modelVersionTree                                                       | Action: modelVersionTree                        |
  */
 export declare class MdmTerminologyResource extends MdmResource {
-    private catalogueItem;
     terms: MdmTermResource;
+    private catalogueItem;
     constructor(resourcesConfig?: MdmResourcesConfiguration, restHandler?: IMdmRestHandler);
     importers(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
     exporters(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
@@ -64,4 +64,5 @@ export declare class MdmTerminologyResource extends MdmResource {
     latestModelVersion(terminologyId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
     latestFinalisedModel(terminologyId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
     modelVersionTree(terminologyId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    undoSoftDelete(terminologyId: string, restHandlerOptions?: IMdmRestHandlerOptions): any;
 }

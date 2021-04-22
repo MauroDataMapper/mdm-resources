@@ -1,10 +1,10 @@
 import { MdmResourcesConfiguration } from './mdm-resources-configuration';
 import { IMdmQueryStringParams, IMdmRestHandler, IMdmRestHandlerOptions } from './mdm-rest-handler';
 export declare class MdmResource {
-    private restHandler;
-    private resourcesConfig;
     protected apiEndpoint: string;
     protected defaultRequestOptions: IMdmRestHandlerOptions;
+    private restHandler;
+    private resourcesConfig;
     constructor(resourcesConfig?: MdmResourcesConfiguration, restHandler?: IMdmRestHandler);
     simplePost(url: string, data: any, options?: IMdmRestHandlerOptions): any;
     simpleGet(url: string, queryStringParams?: IMdmQueryStringParams, options?: IMdmRestHandlerOptions): any;
