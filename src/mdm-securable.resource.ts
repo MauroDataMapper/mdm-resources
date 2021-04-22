@@ -15,9 +15,8 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { QueryParameters } from 'mdm-common.model';
+import { RequestOptions, QueryParameters } from 'mdm-common.model';
 import { MdmResource } from './mdm-resource';
-import { IMdmRestHandlerOptions } from './mdm-rest-handler';
 
 /**
  * Controller: securableResourceGroupRole
@@ -31,42 +30,42 @@ import { IMdmRestHandlerOptions } from './mdm-rest-handler';
  |   GET    | /api/${securableResourceDomainType}/${securableResourceId}/groupRoles/${groupRoleId}                                | Action: index
  */
 export class MdmSecurableResource extends MdmResource {
-    removeUserGroupFromSecurableResourceGroupRole(securableResourceDomainType, securableResourceId: string, groupRoleId: string, userGroupId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
+    removeUserGroupFromSecurableResourceGroupRole(securableResourceDomainType, securableResourceId: string, groupRoleId: string, userGroupId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/${securableResourceDomainType}/${securableResourceId}/groupRoles/${groupRoleId}/userGroups/${userGroupId}`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 
-    addUserGroupToSecurableResourceGroupRole(securableResourceDomainType, securableResourceId: string, groupRoleId: string, userGroupId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+    addUserGroupToSecurableResourceGroupRole(securableResourceDomainType, securableResourceId: string, groupRoleId: string, userGroupId: string, data: any, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/${securableResourceDomainType}/${securableResourceId}/groupRoles/${groupRoleId}/userGroups/${userGroupId}`;
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    addSecurableResourceGroupRole(securableResourceDomainType, securableResourceId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+    addSecurableResourceGroupRole(securableResourceDomainType, securableResourceId: string, data: any, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/${securableResourceDomainType}/${securableResourceId}/securableResourceGroupRoles`;
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    listSecurableResourceGroupRoles(securableResourceDomainType, securableResourceId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
+    listSecurableResourceGroupRoles(securableResourceDomainType, securableResourceId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/${securableResourceDomainType}/${securableResourceId}/securableResourceGroupRoles`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    removeSecurableResourceGroupRole(securableResourceDomainType, securableResourceId: string, securableResourceGroupRoleId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
+    removeSecurableResourceGroupRole(securableResourceDomainType, securableResourceId: string, securableResourceGroupRoleId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/${securableResourceDomainType}/${securableResourceId}/securableResourceGroupRoles/${securableResourceGroupRoleId}`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 
-    updateSecurableResourceGroupRole(securableResourceDomainType, securableResourceId: string, securableResourceGroupRoleId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+    updateSecurableResourceGroupRole(securableResourceDomainType, securableResourceId: string, securableResourceGroupRoleId: string, data: any, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/${securableResourceDomainType}/${securableResourceId}/securableResourceGroupRoles/${securableResourceGroupRoleId}`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    getSecurableResourceGroupRole(securableResourceDomainType, securableResourceId: string, securableResourceGroupRoleId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
+    getSecurableResourceGroupRole(securableResourceDomainType, securableResourceId: string, securableResourceGroupRoleId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/${securableResourceDomainType}/${securableResourceId}/securableResourceGroupRoles/${securableResourceGroupRoleId}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    getGroupRoles(securableResourceDomainType, securableResourceId: string, groupRoleId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
+    getGroupRoles(securableResourceDomainType, securableResourceId: string, groupRoleId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/${securableResourceDomainType}/${securableResourceId}/groupRoles/${groupRoleId}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }

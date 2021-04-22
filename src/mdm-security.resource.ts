@@ -15,10 +15,9 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { QueryParameters, Uuid } from 'mdm-common.model';
+import { RequestOptions, QueryParameters, Uuid } from 'mdm-common.model';
 import { LoginPayload, SecurableDomainType } from 'mdm-security.model';
 import { MdmResource } from './mdm-resource';
-import { IMdmRestHandlerOptions } from './mdm-rest-handler';
 
 /**
  * MDM resource for managing security and authentication.
@@ -34,7 +33,7 @@ export class MdmSecurityResource extends MdmResource {
    * 
    * @see [[MdmSessionResource.isAuthenticated]]
    */
-  login(data: LoginPayload, restHandlerOptions?: IMdmRestHandlerOptions) {
+  login(data: LoginPayload, restHandlerOptions?: RequestOptions) {
     const url = `${this.apiEndpoint}/authentication/login`;
     return this.simplePost(url, data, restHandlerOptions);
   }
@@ -47,7 +46,7 @@ export class MdmSecurityResource extends MdmResource {
    * 
    * `204 No Content` - successfully logged out, will contain no body.
    */
-  logout(queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
+  logout(queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
     const url = `${this.apiEndpoint}/authentication/logout`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
@@ -66,7 +65,7 @@ export class MdmSecurityResource extends MdmResource {
     domainType: SecurableDomainType,
     securableResourceId: Uuid,
     queryStringParams?: QueryParameters,
-    restHandlerOptions?: IMdmRestHandlerOptions) {
+    restHandlerOptions?: RequestOptions) {
     const url = `${this.apiEndpoint}/${domainType}/${securableResourceId}/permissions`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }

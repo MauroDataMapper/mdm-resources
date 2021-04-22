@@ -15,9 +15,8 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { QueryParameters } from 'mdm-common.model';
+import { RequestOptions, QueryParameters } from 'mdm-common.model';
 import { MdmResource } from './mdm-resource';
-import { IMdmRestHandlerOptions } from './mdm-rest-handler';
 
 /**
  * Controller: referenceDataModel
@@ -29,27 +28,27 @@ import { IMdmRestHandlerOptions } from './mdm-rest-handler';
  */
 export class MdmReferenceDataTypeResource extends MdmResource {
 
-    list(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
+    list(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/referenceDataTypes`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    get(referenceDataModelId: string, referenceDataTypeId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
+    get(referenceDataModelId: string, referenceDataTypeId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/referenceDataTypes/${referenceDataTypeId}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    save(referenceDataModelId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+    save(referenceDataModelId: string, data: any, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/referenceDataTypes`;
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    update(referenceDataModelId: string, referenceDataTypeId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+    update(referenceDataModelId: string, referenceDataTypeId: string, data: any, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/referenceDataTypes/${referenceDataTypeId}`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    remove(referenceDataModelId: string, referenceDataTypeId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
+    remove(referenceDataModelId: string, referenceDataTypeId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/referenceDataTypes/${referenceDataTypeId}`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }

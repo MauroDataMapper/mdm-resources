@@ -15,9 +15,8 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { QueryParameters } from 'mdm-common.model';
+import { RequestOptions, QueryParameters } from 'mdm-common.model';
 import { MdmResource, ModelDomainType } from './mdm-resource';
-import { IMdmRestHandlerOptions } from './mdm-rest-handler';
 
 /**
  * Controller: classifier
@@ -43,94 +42,94 @@ import { IMdmRestHandlerOptions } from './mdm-rest-handler';
  */
 export class MdmClassifierResource extends MdmResource {
 
-    save(data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+    save(data: any, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/classifiers`;
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    saveChildrenOf(classifierId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+    saveChildrenOf(classifierId: string, data: any, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/classifiers/${classifierId}/classifiers`;
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    addToCatalogueItem(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+    addToCatalogueItem(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, data: any, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/classifiers`;
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    list(queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
+    list(queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/classifiers`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    listChildrenOf(classifierId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
+    listChildrenOf(classifierId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/classifiers/${classifierId}/classifiers`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    listCatalogueItemsFor(classifierId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
+    listCatalogueItemsFor(classifierId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/classifiers/${classifierId}/catalogueItems`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    listForCatalogueItem(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
+    listForCatalogueItem(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/classifiers`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    remove(classifierId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
+    remove(classifierId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/classifiers/${classifierId}`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 
-    removeChildOf(classifierId: string, childId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
+    removeChildOf(classifierId: string, childId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/classifiers/${classifierId}/classifiers/${childId}`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 
-    removeFromCatalogueItem(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, classifierId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
+    removeFromCatalogueItem(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, classifierId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/classifiers/${classifierId}`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 
-    update(classifierId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+    update(classifierId: string, data: any, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/classifiers/${classifierId}`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    updateChildOf(classifierId: string, childId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+    updateChildOf(classifierId: string, childId: string, data: any, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/classifiers/${classifierId}/classifiers/${childId}`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    get(classifierId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
+    get(classifierId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/classifiers/${classifierId}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    getChildOf(classifierId: string, childId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
+    getChildOf(classifierId: string, childId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/classifiers/${classifierId}/classifiers/${childId}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    getFromCatalogueItem(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, classifierId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
+    getFromCatalogueItem(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, classifierId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/classifiers/${classifierId}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    removeReadByAuthenticated(classifierId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
+    removeReadByAuthenticated(classifierId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/classifiers/${classifierId}/readByAuthenticated`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
-    updateReadByAuthenticated(classifierId: string, data?, restHandlerOptions?: IMdmRestHandlerOptions) {
+    updateReadByAuthenticated(classifierId: string, data?, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/classifiers/${classifierId}/readByAuthenticated`;
         return this.simplePut(url, data, restHandlerOptions);
     }
-    removeReadByEveryone(classifierId: string, queryStringParams?: QueryParameters, restHandlerOptions?: IMdmRestHandlerOptions) {
+    removeReadByEveryone(classifierId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/classifiers/${classifierId}/readByEveryone`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
-    updateReadByEveryone(classifierId: string, data?, restHandlerOptions?: IMdmRestHandlerOptions) {
+    updateReadByEveryone(classifierId: string, data?, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/classifiers/${classifierId}/readByEveryone`;
         return this.simplePut(url, data, restHandlerOptions);
     }
