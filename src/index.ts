@@ -26,6 +26,7 @@ export * from './mdm-securable.resource';
 export * from './mdm-facets.resource';
 export * from './mdm-user-groups.resource';
 export * from './mdm-group-role.resource';
+export * from './mdm-provider.model';
 export * from './mdm-provider.resource';
 export * from './mdm-data-element.resource';
 export * from './mdm-catalogue-item.resource';
