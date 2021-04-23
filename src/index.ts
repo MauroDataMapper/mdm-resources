@@ -58,6 +58,7 @@ export * from './mdm-tree-item.resource';
 export * from './mdm-summary-metadata.resource';
 export * from './mdm-metadata.resource';
 export * from './mdm-authentication.resource';
+export * from './mdm-data-type.model';
 export * from './mdm-data-type.resource';
 export * from './mdm-user-image-file.resource';
 export * from './mdm-data-element-component.resource';

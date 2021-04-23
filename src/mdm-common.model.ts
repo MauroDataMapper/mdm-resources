@@ -37,6 +37,19 @@ export enum ModelDomainType {
   ALL = 'all'
 }
 
+export enum ItemDomainType {
+  Folder = 'Folder',
+  DataModel = 'DataModel',
+  DataClass = 'DataClass',
+  DataElement = 'DataElement',
+  Terminology = 'Terminology',
+  Term = 'Term',
+  CodeSet = 'CodeSet',
+  Classification = 'Classification',
+  ReferenceDataModel = 'ReferenceDataModel',
+  EnumerationType = 'EnumerationType'
+}
+
 /**
  * Represents a response from an [[MdmResource]] API endpoint.
  * @typeparam T The type of object the body of the response represents.
@@ -98,7 +111,7 @@ export interface SortParameters {
   /**
    * The field/property name to sort by.
    */
-  sort: string;
+  sort?: string;
 
   /**
    * State what sort order to use. If supplied, must be either:
@@ -110,6 +123,32 @@ export interface SortParameters {
    */
   order?: 'asc' | 'desc'
 }
+
+/**
+ * Type to define pagination parameters for a query request.
+ */
+export interface PageParameters {
+  /**
+   * Define the maximum number of results to return in a query.
+   */
+  max?: number;
+
+  /**
+   * Define the offset to start at when returning query results.
+   */
+  offset?: number;
+}
+
+/**
+ * Type alias for common filtering/querying parameters to send as part of a `HTTP GET` query string.
+ * 
+ * This type is a combination of:
+ * 
+ * * Sorting
+ * * Pagination
+ * * Any other query string parameters, such as filters
+ */
+export type FilterQueryParameters = SortParameters & PageParameters & QueryParameters;
 
 /**
  * Type to define the options to pass to an [[IMdmRestHandler]] to process

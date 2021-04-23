@@ -16,20 +16,7 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { MdmResponse, QueryParameters, Uuid } from "mdm-common.model";
-
-export enum TreeItemDomainType {
-  Folder = 'Folder',
-  DataModel = 'DataModel',
-  DataClass = 'DataClass',
-  DataElement = 'DataElement',
-  Terminology = 'Terminology',
-  Term = 'Term',
-  CodeSet = 'CodeSet',
-  Classification = 'Classification',
-  ReferenceDataModel = 'ReferenceDataModel',
-  EnumerationType = 'EnumerationType'
-}
+import { ItemDomainType, MdmResponse, QueryParameters, Uuid } from "mdm-common.model";
 
 export interface MdmTreeItem {
   id: Uuid;
@@ -42,7 +29,7 @@ export interface MdmTreeItem {
   isGhost?: boolean;
   modified?: boolean;
   finalised?: boolean;
-  domainType: TreeItemDomainType;
+  domainType: ItemDomainType;
   type?: string;
   terminology?: any;
   term?: any;    
