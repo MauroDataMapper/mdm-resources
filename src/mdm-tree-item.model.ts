@@ -22,7 +22,7 @@ export enum TreeItemDomainType {
   Folder = 'Folder',
   DataModel = 'DataModel',
   DataClass = 'DataClass',
-  DataElement = 'DataClass',
+  DataElement = 'DataElement',
   Terminology = 'Terminology',
   Term = 'Term',
   CodeSet = 'CodeSet',
@@ -62,14 +62,100 @@ export interface MdmTreeItem {
   modelId?: string;
   parentId?: string;
   model?: any;
+  [key: string]: any;
 }
 
-export interface TreeItemParameters {
+export interface TreeItemListParameters {
   includeDocumentSuperseded?: boolean;
   includeModelSupersedd?: boolean;
   includeDeleted?: boolean;
 }
 
-export type TreeItemQueryParameters = TreeItemParameters & QueryParameters;
+export interface TreeItemExpandedParameters {
+  /**
+   * State whether an expanded tree is required for the purposes of carry out merge differences.
+   */
+  forDiff: boolean;
+}
+
+export type TreeItemListQueryParameters = TreeItemListParameters & QueryParameters;
+export type TreeItemExpandedQueryParameters = TreeItemExpandedParameters & QueryParameters;
 
 export type MdmTreeItemListResponse = MdmResponse<MdmTreeItem[]>
+export type MdmTreeItemResponse = MdmResponse<MdmTreeItem>;
+
+export enum SearchDomainType {  
+  DataModel = 'DataModel',
+  DataClass = 'DataClass',
+  DataElement = 'DataElement',
+  DataType = 'DataType',
+  EnumerationType = 'EnumerationType'
+}
+
+/**
+ * Set of parameters to supply for searching the model tree.
+ * 
+ * @see {@link MdmTreeItemResource.search}
+ */
+export interface TreeItemSearchParameters {
+  /**
+   * The term, or terms, to search for. For an exact match, enclose the test in double quotes.
+   */
+  searchTerm: string;
+
+  /**
+   * Define how many search results to return in one request.
+   */
+  limit?: number;
+
+  /**
+   * Define the offset to the search results. Use in combination with {@link TreeItemSearchParameters.limit} to handle paging of results.
+   */
+  offset?: number;
+
+  /**
+   * List the domain types to search for. If not provided, then all domain types will be searched.
+   */
+  domainTypes?: SearchDomainType[];
+
+  /**
+   * Define if the search term should only be checked in the label of entities. If not defined or set to `false`, other text fields will be
+   * included in the search.
+   */
+  labelOnly?: boolean;
+  dataModelTypes?: string[];
+  classifiers?: string[];
+  classifierFilter?: any;
+
+  /**
+   * Provide a date to filter by last updated fields. Date must be provided as a string in the format `yyyy-MM-dd`.
+   */
+  lastUpdatedAfter?: string;
+
+  /**
+   * Provide a date to filter by last updated fields. Date must be provided as a string in the format `yyyy-MM-dd`.
+   */
+  lastUpdatedBefore?: string;
+
+  /**
+   * Provide a date to filter by created fields. Date must be provided as a string in the format `yyyy-MM-dd`.
+   */
+  createdAfter?: any;
+
+  /**
+   * Provide a date to filter by created fields. Date must be provided as a string in the format `yyyy-MM-dd`.
+   */
+  createdBefore?: any;
+
+  /**
+   * Define how many search results to return in one request.
+   */
+  pageSize?: number;
+
+  /**
+   * Define the offset to the search results. Use in combination with {@link TreeItemSearchParameters.pageSize} to handle paging of results.
+   */
+  pageIndex?: number;
+}
+
+export type TreeItemSearchQueryParameters = TreeItemSearchParameters & QueryParameters;
