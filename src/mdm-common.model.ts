@@ -201,3 +201,10 @@ export interface Historical {
    */
   lastUpdated?: string;
 }
+
+export interface Breadcrumb {
+  id: Uuid;
+  label: string;
+  domainType: ItemDomainType;
+  finalised?: boolean;
+}

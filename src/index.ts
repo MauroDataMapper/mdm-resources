@@ -17,6 +17,7 @@ SPDX-License-Identifier: Apache-2.0
 */
 export * from './mdm-common.model';
 export * from './mdm-enumeration-values.resource';
+export * from './mdm-data-class.model';
 export * from './mdm-data-class.resource';
 export * from './mdm-term.resource';
 export * from './mdm-classifier.resource';

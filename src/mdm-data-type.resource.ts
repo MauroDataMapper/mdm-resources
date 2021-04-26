@@ -81,6 +81,7 @@ export class MdmDataTypeResource extends MdmResource {
   /**
    * `HTTP PUT` - Updates an existing data type under a chosen data model.
    * @param dataModelId The unique identifier of the data model the data type exists under.
+   * @param dataTypeId The unique identifier of the data type to update.
    * @param data The payload of the request containing all the details for the data type to update.
    * @param options Optional REST handler parameters, if required.
    * @returns The result of the `PUT` request.

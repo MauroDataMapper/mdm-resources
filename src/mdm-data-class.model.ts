@@ -16,38 +16,24 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { Breadcrumb, Historical, ItemDomainType, MdmIndexResponse, MdmResponse, Securable, Uuid } from "mdm-common.model";
+import { Breadcrumb, Historical, ItemDomainType, MdmIndexResponse, MdmResponse, PageParameters, QueryParameters, Securable, SortParameters, Uuid } from "mdm-common.model";
 
-export interface EnumerationValue {
-  index: number;
-  id?: Uuid;
-  key: string;
-  value: string;
-  category?: any;
-}
+export type DataClassIndexParameters = SortParameters & PageParameters & QueryParameters;
 
-export interface ReferenceClass {
-  id: Uuid;
-  domainType: ItemDomainType;
-  label: string;
-  model?: Uuid;
-  breadcrumbs?: Breadcrumb[];
-  parentDataClass?: Uuid;
-}
-
-export interface DataType {
+export interface DataClass {
   id?: Uuid;
   domainType: ItemDomainType;
   label: string;
   description?: string;
   model?: Uuid;
+  parentDataClass?: Uuid;
   breadcrumbs?: Breadcrumb[];
-  enumerationValues?: EnumerationValue[];  
-  referenceClass?: ReferenceClass;
+  minMultiplicity?: number;
+  maxMultipicity?: number;
   [key: string]: any;
 }
 
-export type DataTypeDetail = DataType & Securable & Historical;
+export type DataClassDetail  = DataClass & Securable & Historical;
 
-export type DataTypeIndexResponse = MdmIndexResponse<DataType>;
-export type DataTypeDetailResponse = MdmResponse<DataTypeDetail>;
+export type DataClassIndexResponse = MdmIndexResponse<DataClass>;
+export type DataClassDetailResponse = MdmResponse<DataClassDetail>;

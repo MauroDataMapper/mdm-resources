@@ -15,7 +15,9 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { RequestOptions, QueryParameters } from 'mdm-common.model';
+import { RequestOptions, QueryParameters, Uuid } from 'mdm-common.model';
+import { DataClass, DataClassIndexParameters } from 'mdm-data-class.model';
+import { TreeItemSearchQueryParameters } from 'mdm-tree-item.model';
 import { MdmResource } from './mdm-resource';
 
 /**
@@ -38,95 +40,229 @@ import { MdmResource } from './mdm-resource';
  |   POST   | /api/dataModels/${dataModelId}/dataClasses/${otherDataModelId}/${otherDataClassId}                                                   | Action: copyDataClass
 
  */
+
+/**
+ * MDM resource for managing data classes attached to data models.
+ */
 export class MdmDataClassResource extends MdmResource {
 
-    addChildDataClass(dataModelId: string, dataClassId: string, data: any, restHandlerOptions?: RequestOptions) {
-        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataClasses`;
-        return this.simplePost(url, data, restHandlerOptions);
+  /**
+   * `HTTP POST` - Creates a new data class under a chosen parent data class.
+   * @param dataModelId The unique identifier of the data model to add to.
+   * @param dataClassId The unique identifier of the parent data class to add to.
+   * @param data The payload of the request containing all the details for the data class to create.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `POST` request.
+   * 
+   * `200 OK` - will return a {@link DataClassDetailResponse} containing a {@link DataClassDetail} object.
+   */
+  addChildDataClass(dataModelId: Uuid, dataClassId: Uuid, data: DataClass, options?: RequestOptions) {
+    const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataClasses`;
+    return this.simplePost(url, data, options);
+  }
+
+  /**
+   * `HTTP GET` - Request the list of data classes contained under a parent data class.
+   * @param dataModelId The identifier of the data model to inspect.
+   * @param dataClassId The identifier of the parent data class to inspect.
+   * @param query Optional query string parameters to filter the returned list, if required.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `GET` request.
+   * 
+   * `200 OK` - will return a {@link DataClassIndexResponse} containing a list of {@link DataClass} items.
+   * 
+   * @see {@link MdmDataClassResource.getChildDataClass}
+   */
+  listChildDataClasses(dataModelId: Uuid, dataClassId: Uuid, query?: DataClassIndexParameters, options?: RequestOptions) {
+    const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataClasses`;
+    return this.simpleGet(url, query, options);
+  }
+
+  /**
+   * `HTTP GET` - Request a full text search against the a parent data class within a data model.
+   * @param dataModelId The identifier of the data model to search in.
+   * @param dataClassId The identifier of the parent data class to search in.
+   * @param query Additional search parameters to filter the search results.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `GET` request.
+   * 
+   * `200 OK` - will return a {@link MdmTreeItemListResponse} containing a list of {@link MdmTreeItem} nodes.
+   * 
+   * @see {@link TreeItemSearchParameters}
+   */
+  search(dataModelId: Uuid, dataClassId: Uuid, query?: TreeItemSearchQueryParameters, options?: RequestOptions) {
+    const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/search`;
+    return this.simplePost(url, query, options);
+  }
+
+  content(dataModelId: string, dataClassId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+    const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/content`;
+    return this.simpleGet(url, queryStringParams, restHandlerOptions);
+  }
+
+  /**
+   * `HTTP DELETE` - Removes an existing data class from a parent data class.
+   * @param dataModelId The unique identifier of the data model.
+   * @param dataClassId The unique indentifier of the parent data class.
+   * @param childDataClassId The unique identifier of the child data class to remove.
+   * @param query Optional query string parameters, if required.
+   * @param options Optional REST handler options, if required.
+   * @returns The result of the `DELETE` request.
+   * 
+   * On success, the response will be a `204 No Content` and the response body will be empty.
+   */
+  removeChildDataClass(dataModelId: Uuid, dataClassId: Uuid, childDataClassId: Uuid, query?: QueryParameters, options?: RequestOptions) {
+    const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataClasses/${childDataClassId}`;
+    return this.simpleDelete(url, query, options);
+  }
+
+  /**
+   * `HTTP PUT` - Updates an existing data class under a chosen parent data class.
+   * @param dataModelId The unique identifier of the data model the data class exists under.
+   * @param dataClassId The unique identifier of the parent data class.
+   * @param childDataClassId The unique identifier of the child data class to update.
+   * @param data The payload of the request containing all the details for the data class to update.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `PUT` request.
+   * 
+   * `200 OK` - will return a {@link DataClassDetailResponse} containing a {@link DataClassDetail} object.
+   */
+  updateChildDataClass(dataModelId: Uuid, dataClassId: Uuid, childDataClassId: Uuid, data: DataClass, options?: RequestOptions) {
+    const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataClasses/${childDataClassId}`;
+    return this.simplePut(url, data, options);
+  }
+
+  /**
+   * `HTTP GET` - Request a data class from a parent data class.
+   * @param dataModelId Unique identifier of the data model the type is under.
+   * @param dataClassId The identifier of the parent data class to inspect.
+   * @param childDataClassId Either a unique indentifier of the data class to get, or a path in the format `typePrefix:label|typePrefix:label`.
+   * @param query Optional query parameters, if required.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `GET` request.
+   * 
+   * `200 OK` - will return a {@link DataClassDetailResponse} containing a {@link DataClassDetail} object.
+   */
+  getChildDataClass(dataModelId: Uuid, dataClassId: Uuid, childDataClassId: Uuid, query?: QueryParameters, options?: RequestOptions) {
+    let url = '';
+    if (this.isGuid(childDataClassId)) {
+      url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataClasses/${childDataClassId}`;
+    }
+    else {
+      url = `${this.apiEndpoint}/dataModels/path/${childDataClassId}`;
     }
 
-    listChildDataClasses(dataModelId: string, dataClassId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
-        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataClasses`;
-        return this.simpleGet(url, queryStringParams, restHandlerOptions);
-    }
+    return this.simpleGet(url, query, options);
+  }
 
-    search(dataModelId: string, dataClassId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
-        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/search`;
-        return this.simplePost(url, queryStringParams, restHandlerOptions);
-    }
+  /**
+   * `HTTP POST` - Copies an existing child data class from one data model to another target data model.
+   * @param dataModelId The unique identifier of the source data model.
+   * @param dataClassId The unique identifier of the parent data class.
+   * @param otherDataModelId The unique indentifier of the target data model to copy to.
+   * @param otherDataClassId The unique identifier of the data class to copy.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `POST` request.
+   * 
+   * `200 OK` - will return a {@link DataClassDetailResponse} containing the new copy of a {@link DataClassDetail} object.
+   */
+  copyChildDataClass(dataModelId: Uuid, dataClassId: Uuid, otherDataModelId: Uuid, otherDataClassId: Uuid, options?: RequestOptions) {
+    const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataClasses/${otherDataModelId}/${otherDataClassId}`;
+    return this.simplePost(url, { }, options);
+  }
 
-    content(dataModelId: string, dataClassId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
-        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/content`;
-        return this.simpleGet(url, queryStringParams, restHandlerOptions);
-    }
+  /**
+   * `HTTP POST` - Creates a new data class under a chosen data model.
+   * @param dataModelId The unique identifier of the data model to add to.
+   * @param data The payload of the request containing all the details for the data class to create.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `POST` request.
+   * 
+   * `200 OK` - will return a {@link DataClassDetailResponse} containing a {@link DataClassDetail} object.
+   */
+  save(dataModelId: string, data: DataClass, options?: RequestOptions) {
+    const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses`;
+    return this.simplePost(url, data, options);
+  }
 
-    removeChildDataClass(dataModelId: string, dataClassId: string, childDataClassId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
-        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataClasses/${childDataClassId}`;
-        return this.simpleDelete(url, queryStringParams, restHandlerOptions);
-    }
+  /**
+   * `HTTP GET` - Request the list of data classes contained within a particular data model.
+   * @param dataModelId The identifier of the data model to inspect.
+   * @param query Optional query string parameters to filter the returned list, if required.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `GET` request.
+   * 
+   * `200 OK` - will return a {@link DataClassIndexResponse} containing a list of {@link DataClass} items.
+   * 
+   * @see {@link MdmDataClassResource.get}
+   */
+  list(dataModelId: Uuid, query?: QueryParameters, options?: RequestOptions) {
+    const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses`;
+    return this.simpleGet(url, query, options);
+  }
 
-    updateChildDataClass(dataModelId: string, dataClassId: string, childDataClassId: string, data: any, restHandlerOptions?: RequestOptions) {
-        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataClasses/${childDataClassId}`;
-        return this.simplePut(url, data, restHandlerOptions);
-    }
+  all(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+    const url = `${this.apiEndpoint}/dataModels/${dataModelId}/allDataClasses`;
+    return this.simpleGet(url, queryStringParams, restHandlerOptions);
+  }
 
-    /// <summary>
-    /// Get child data class by Id or a path
-    /// </summary>
-    /// <param name="dataModelId">Data Model Id</param>
-    /// <param name="dataClassId">Parent Data Class Id</param>
-    /// <param name="childDataClassId">Data Class Id or a path in the format typePrefix:label|typePrefix:label</param>
-    /// <param name="queryStringParams">Query String Params</param>
-    /// <param name="restHandlerOptions">restHandler Options</param>
-    getChildDataClass(dataModelId: string, dataClassId: string, childDataClassId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
-        let url = '';
-        if (this.isGuid(childDataClassId)) {
-            url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataClasses/${childDataClassId}`;
-        }
-        else {
-            url = `${this.apiEndpoint}/dataModels/path/${childDataClassId}`;
-        }
+  /**
+   * `HTTP DELETE` - Removes an existing data class.
+   * @param dataModelId The unique identifier of the data model.
+   * @param dataClasseId The unique indentifier of the data class to remove.
+   * @param query Optional query string parameters, if required.
+   * @param options Optional REST handler options, if required.
+   * @returns The result of the `DELETE` request.
+   * 
+   * On success, the response will be a `204 No Content` and the response body will be empty.
+   */
+  remove(dataModelId: Uuid, dataClassId: Uuid, query?: QueryParameters, options?: RequestOptions) {
+    const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}`;
+    return this.simpleDelete(url, query, options);
+  }
 
-        return this.simpleGet(url, queryStringParams, restHandlerOptions);
-    }
+  /**
+   * `HTTP PUT` - Updates an existing data class under a chosen data model.
+   * @param dataModelId The unique identifier of the data model the data class exists under.
+   * @param dataClassId The unique identifier of the data class to update.
+   * @param data The payload of the request containing all the details for the data class to update.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `PUT` request.
+   * 
+   * `200 OK` - will return a {@link DataClassDetailResponse} containing a {@link DataClassDetail} object.
+   */
+  update(dataModelId: Uuid, dataClassId: Uuid, data: DataClass, options?: RequestOptions) {
+    const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}`;
+    return this.simplePut(url, data, options);
+  }
 
-    copyChildDataClass(dataModelId: string, dataClassId: string, otherDataModelId: string, otherDataClassId: string, data: any, restHandlerOptions?: RequestOptions) {
-        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataClasses/${otherDataModelId}/${otherDataClassId}`;
-        return this.simplePost(url, data, restHandlerOptions);
-    }
+  /**
+   * `HTTP GET` - Request a data class from a data model.
+   * @param dataModelId Unique identifier of the data model the type is under.
+   * @param dataClassId Either a unique indentifier of the data class to get.
+   * @param query Optional query parameters, if required.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `GET` request.
+   * 
+   * `200 OK` - will return a {@link DataClassDetailResponse} containing a {@link DataClassDetail} object.
+   */
+  get(dataModelId: Uuid, dataClassId: Uuid, query?: QueryParameters, options?: RequestOptions) {
+    const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}`;
+    return this.simpleGet(url, query, options);
+  }
 
-    save(dataModelId: string, data: any, restHandlerOptions?: RequestOptions) {
-        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses`;
-        return this.simplePost(url, data, restHandlerOptions);
-    }
-
-    list(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
-        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses`;
-        return this.simpleGet(url, queryStringParams, restHandlerOptions);
-    }
-
-    all(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
-        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/allDataClasses`;
-        return this.simpleGet(url, queryStringParams, restHandlerOptions);
-    }
-
-    remove(dataModelId: string, dataClassId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
-        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}`;
-        return this.simpleDelete(url, queryStringParams, restHandlerOptions);
-    }
-
-    update(dataModelId: string, dataClassId: string, data: any, restHandlerOptions?: RequestOptions) {
-        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}`;
-        return this.simplePut(url, data, restHandlerOptions);
-    }
-
-    get(dataModelId: string, dataClassId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
-        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}`;
-        return this.simpleGet(url, queryStringParams, restHandlerOptions);
-    }
-
-    copyDataClass(dataModelId: string, otherDataModelId: string, otherDataClassId: string, data: any, restHandlerOptions?: RequestOptions) {
-        const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${otherDataModelId}/${otherDataClassId}`;
-        return this.simplePost(url, data, restHandlerOptions);
-    }
+  /**
+   * `HTTP POST` - Copies an existing data class from one data model to another target data model.
+   * @param dataModelId The unique identifier of the source data model.
+   * @param otherDataModelId The unique indentifier of the target data model to copy to.
+   * @param otherDataClassId The unique identifier of the data class to copy.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `POST` request.
+   * 
+   * `200 OK` - will return a {@link DataClassDetailResponse} containing the new copy of a {@link DataClassDetail} object.
+   */
+  copyDataClass(dataModelId: string, otherDataModelId: string, otherDataClassId: string, restHandlerOptions?: RequestOptions) {
+    const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${otherDataModelId}/${otherDataClassId}`;
+    return this.simplePost(url, { }, restHandlerOptions);
+  }
 }
