@@ -181,3 +181,23 @@ export interface RequestOptions {
 export interface Payload {
   [key: string]: any;
 }
+
+/**
+ * Represents a Mauro entity that is securable and has a set of actions defined by the permissions of a user/session.
+ */
+export interface Securable {
+  /**
+   * A list of available actions that can be performed on this entity.
+   */
+  availableActions: string[];
+}
+
+/**
+ * Represents a Mauro entity that is changed over time.
+ */
+export interface Historical {
+  /**
+   * The date and time this entity was last updated.
+   */
+  lastUpdated?: string;
+}
