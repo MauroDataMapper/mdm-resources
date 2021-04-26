@@ -21,6 +21,11 @@ SPDX-License-Identifier: Apache-2.0
  */
 export type Uuid = string;
 
+/**
+ * Type alias for a type defining a version number in Mauro.
+ */
+export type Version = string;
+
 export enum ContainerDomainType {
   CLASSIFIERS = 'classifiers',
   FOLDERS = 'folders'
@@ -202,9 +207,30 @@ export interface Historical {
   lastUpdated?: string;
 }
 
+/**
+ * Represents a Mauro entity that can be branched for version control.
+ */
+export interface Branchable {
+  /**
+   * The name of the branch this entity applies to.
+   */
+  branchName?: string;
+}
+
 export interface Breadcrumb {
   id: Uuid;
   label: string;
   domainType: ItemDomainType;
   finalised?: boolean;
+}
+
+export interface Authority {
+  id: Uuid;
+  label: string;
+  url?: string;
+}
+
+export interface Classifier extends Historical {
+  id: Uuid;
+  label: string;
 }

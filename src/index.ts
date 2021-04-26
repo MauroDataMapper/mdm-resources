@@ -33,6 +33,7 @@ export * from './mdm-data-element.model';
 export * from './mdm-data-element.resource';
 export * from './mdm-catalogue-item.resource';
 export * from './mdm-code-set.resource';
+export * from './mdm-data-model.model';
 export * from './mdm-data-model.resource';
 export * from './mdm-reference-data-model.resource';
 export * from './mdm-reference-data-element.resource';
