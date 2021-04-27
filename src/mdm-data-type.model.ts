@@ -19,7 +19,7 @@ SPDX-License-Identifier: Apache-2.0
 import { Breadcrumb, Historical, ItemDomainType, MdmIndexResponse, MdmResponse, Securable, Uuid, Version } from './mdm-common.model';
 
 export interface EnumerationValue {
-  index: number;
+  index?: number;
   id?: Uuid;
   key: string;
   value: string;
@@ -28,8 +28,8 @@ export interface EnumerationValue {
 
 export interface ReferenceClass {
   id: Uuid;
-  domainType: ItemDomainType;
-  label: string;
+  domainType?: ItemDomainType;
+  label?: string;
   model?: Uuid;
   breadcrumbs?: Breadcrumb[];
   parentDataClass?: Uuid;

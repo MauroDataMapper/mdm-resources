@@ -193,6 +193,10 @@ export interface Authority {
     label: string;
     url?: string;
 }
+export interface ClassifierReference {
+    id: Uuid;
+    [key: string]: any;
+}
 export interface Classifier extends Historical {
     id: Uuid;
     label: string;
