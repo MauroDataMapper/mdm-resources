@@ -15,7 +15,7 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { MdmRequestOptions } from 'mdm-common.model';
+import { MdmRequestOptions } from './mdm-common.model';
 
 /**
  * Type to store common configuration options for the `mdm-resources` library.

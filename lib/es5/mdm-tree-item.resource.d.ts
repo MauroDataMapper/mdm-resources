@@ -83,7 +83,7 @@ export declare class MdmTreeItemResource extends MdmResource {
      *
      * @see {@link TreeItemSearchParameters}
      */
-    search(containerDomainType: string | ContainerDomainType, searchTerm: string, query?: TreeItemSearchQueryParameters, options?: MdmRequestOptions): any;
+    search(containerDomainType: ContainerDomainType, searchTerm: string, query?: TreeItemSearchQueryParameters, options?: MdmRequestOptions): any;
     /**
      * `HTTP GET` - Request the top level tree structure of model entities within the Mauro instance.
      *

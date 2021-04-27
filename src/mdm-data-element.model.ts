@@ -17,7 +17,7 @@ SPDX-License-Identifier: Apache-2.0
 */
 
 import { Breadcrumb, Historical, ItemDomainType, MdmIndexResponse, MdmResponse, PageParameters, QueryParameters, Securable, SortParameters, Uuid } from './mdm-common.model';
-import { DataType } from './mdm-data-type.model';
+import { DataTypeReference } from './mdm-data-type.model';
 
 export type DataElementIndexParameters = SortParameters & PageParameters & QueryParameters;
 
@@ -28,7 +28,7 @@ export interface DataElement {
   description?: string;
   model?: Uuid;
   dataClass?: Uuid;
-  dataType?: DataType;
+  dataType?: DataTypeReference;
   breadcrumbs?: Breadcrumb[];
   minMultiplicity?: number;
   maxMultipicity?: number;

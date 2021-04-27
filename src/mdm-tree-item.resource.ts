@@ -130,7 +130,7 @@ export class MdmTreeItemResource extends MdmResource {
    * @see {@link TreeItemSearchParameters}
    */
   search(
-    containerDomainType: string | ContainerDomainType,
+    containerDomainType: ContainerDomainType,
     searchTerm: string,
     query?: TreeItemSearchQueryParameters,
     options?: MdmRequestOptions

@@ -26,6 +26,10 @@ export interface DataTypeProvider {
     version: Version;
     dataTypes: DataTypeDescriptor[];
 }
+export interface DataTypeReference {
+    id: Uuid;
+    [key: string]: any;
+}
 export interface DataType {
     id?: Uuid;
     domainType: ItemDomainType;

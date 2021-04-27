@@ -1,4 +1,4 @@
-import { MdmRequestOptions } from 'mdm-common.model';
+import { MdmRequestOptions } from './mdm-common.model';
 /**
  * Type to store common configuration options for the `mdm-resources` library.
  */

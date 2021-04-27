@@ -49,6 +49,11 @@ export interface DataTypeProvider {
   dataTypes: DataTypeDescriptor[];
 }
 
+export interface DataTypeReference {
+  id: Uuid;
+  [key: string]: any;
+}
+
 export interface DataType {
   id?: Uuid;
   domainType: ItemDomainType;
