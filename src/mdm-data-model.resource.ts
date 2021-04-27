@@ -16,7 +16,7 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 import { RequestOptions, QueryParameters, Uuid } from 'mdm-common.model';
-import { DataModelCreatePayload, DataModelCreateQueryParameters, DataModelIndexParameters } from 'mdm-data-model.model';
+import { DataModelCreatePayload, DataModelCreateQueryParameters, DataModelFinalisePayload, DataModelIndexParameters, DataModelRemoveQueryParameters, DataModelUpdatePayload } from 'mdm-data-model.model';
 import { MdmResource } from './mdm-resource';
 
 /**
@@ -69,9 +69,17 @@ import { MdmResource } from './mdm-resource';
  */
 export class MdmDataModelResource extends MdmResource {
 
-  defaultDataTypes(queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+  /**
+   * `HTTP GET` - Request the available default type providers for creating data models.   
+   * @param query Optional query parameters, if required.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `GET` request.
+   * 
+   * `200 OK` - will return a {@link DataModelDefaultDataTypesResponse} containing an array of {@link DataTypeProvider} objects.
+   */
+  defaultDataTypes(query?: QueryParameters, options?: RequestOptions) {
     const url = `${this.apiEndpoint}/dataModels/providers/defaultDataTypeProviders`;
-    return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    return this.simpleGet(url, query, options);
   }
 
   importers(queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
@@ -84,9 +92,17 @@ export class MdmDataModelResource extends MdmResource {
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
 
-  types(queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+  /**
+   * `HTTP GET` - Request the available types for creating data models.   
+   * @param query Optional query parameters, if required.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `GET` request.
+   * 
+   * `200 OK` - will return a {@link DataModelTypesResponse} containing an array of strings.
+   */
+  types(query?: QueryParameters, options?: RequestOptions) {
     const url = `${this.apiEndpoint}/dataModels/types`;
-    return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    return this.simpleGet(url, query, options);
   }
 
   importModels(importerNamespace, importerName, importerVersion, data: any, restHandlerOptions?: RequestOptions) {
@@ -154,9 +170,18 @@ export class MdmDataModelResource extends MdmResource {
     return this.simplePut(url, data, restHandlerOptions);
   }
 
-  finalise(dataModelId: string, data: any, restHandlerOptions?: RequestOptions) {
+  /**
+   * `HTTP PUT` - Finalise a draft version of a data model to make it final and read-only.
+   * @param dataModelId The unique identifier of the data model to finalise.
+   * @param data The payload to pass to the request when finalising the data model.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `POST` request.
+   * 
+   * `200 OK` - will return a {@link DataModelDetailResponse} containing a {@link DataModelDetail} object.
+   */
+  finalise(dataModelId: Uuid, data: DataModelFinalisePayload, options?: RequestOptions) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/finalise`;
-    return this.simplePut(url, data, restHandlerOptions);
+    return this.simplePut(url, data, options);
   }
 
   newBranchModelVersion(dataModelId: string, data: any, restHandlerOptions?: RequestOptions) {
@@ -230,14 +255,41 @@ export class MdmDataModelResource extends MdmResource {
     return this.simpleDelete(url, queryStringParams, restHandlerOptions);
   }
 
-  remove(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+  /**
+   * `HTTP DELETE` - Removes an existing data model, either temporarily or permanently.
+   * @param dataModelId The unique identifier of the data model to remove.   
+   * @param query Query parameters to state if the operation should be temporary, or a "soft delete", or permanent.
+   * @param options Optional REST handler options, if required.
+   * @returns The result of the `DELETE` request.
+   * 
+   * On success, the response will be a `204 No Content` and the response body will be empty.
+   * 
+   * @description It is required to pass a {@link DataModelRemoveParameters.permanent} flag to explicitly state whether
+   * the operation is permanent or not. Setting this to `false` allows the data model to remain in Mauro but hidden; the
+   * operation may also be reversed by an administrator using the {@link MdmDataModelResource.undoSoftDelete} endpoint.
+   * 
+   * If {@link DataModelRemoveParameters.permanent} is set to `true`, then the data model will be permanently deleted with
+   * no method of retrieving it.
+   * 
+   * @see {@link MdmDataModelResource.undoSoftDelete}
+   */
+  remove(dataModelId: Uuid, query: DataModelRemoveQueryParameters, options?: RequestOptions) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}`;
-    return this.simpleDelete(url, queryStringParams, restHandlerOptions);
+    return this.simpleDelete(url, query, options);
   }
 
-  update(dataModelId: string, data: any, restHandlerOptions?: RequestOptions) {
+  /**
+   * `HTTP PUT` - Updates an existing data model.
+   * @param dataModelId The unique identifier of the data model to update.
+   * @param data The payload of the request containing all the details for the data model to update.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `POST` request.
+   * 
+   * `200 OK` - will return a {@link DataModelDetailResponse} containing a {@link DataModelDetail} object.
+   */
+  update(dataModelId: Uuid, data: DataModelUpdatePayload, options?: RequestOptions) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}`;
-    return this.simplePut(url, data, restHandlerOptions);
+    return this.simplePut(url, data, options);
   }
 
   /**
@@ -275,8 +327,25 @@ export class MdmDataModelResource extends MdmResource {
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
 
-  undoSoftDelete(dataModelId: string, restHandlerOptions?: RequestOptions) {
+  /**
+   * `HTTP PUT` - Restores a temporarily deleted data model.
+   * @param dataModelId The unique identifier of the data model to restore.
+   * @param options Optional REST handler options, if required.
+   * @returns The result of the `PUT` request.
+   * 
+   * `200 OK` - will return a {@link DataModelDetailResponse} containing a {@link DataModelDetail} object.
+   * 
+   * `403 Forbidden` - user is not an administrator.
+   * 
+   * @description **Note:** this endpoint may only be accessed by an administrator.
+   * 
+   * This operation has no affect on _permanently_ deleted data models, only those temporarily marked as "deleted". Any
+   * permanently deleted data models are unretrievable.
+   * 
+   * @see {@link MdmDataModelResource.remove}
+   */
+  undoSoftDelete(dataModelId: Uuid, options?: RequestOptions) {
     const url = `${this.apiEndpoint}/admin/dataModels/${dataModelId}/undoSoftDelete`;
-    return this.simplePut(url, {}, restHandlerOptions);
+    return this.simplePut(url, {}, options);
   }
 }

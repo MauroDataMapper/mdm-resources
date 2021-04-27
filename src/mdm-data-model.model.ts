@@ -16,7 +16,8 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { Authority, Branchable, Classifier, Historical, ItemDomainType, MdmIndexResponse, MdmResponse, PageParameters, QueryParameters, Securable, SortParameters, Uuid, Version } from "mdm-common.model";
+import { Authority, Branchable, Classifier, Historical, ItemDomainType, MdmIndexResponse, MdmResponse, PageParameters, Payload, QueryParameters, Securable, SortParameters, Uuid, Version } from "mdm-common.model";
+import { DataTypeProvider } from "mdm-data-type.model";
 
 export type DataModelType = 'Data Standard' | 'Data Asset';
 
@@ -73,3 +74,47 @@ export interface DataModelCreateParameters {
 }
 
 export type DataModelCreateQueryParameters = DataModelCreateParameters & QueryParameters;
+
+export interface DataModelUpdatePayload {
+  id: Uuid;
+  domainType: ItemDomainType;
+  label?: string;  
+  author?: string;
+  organisation?: string;
+  description?: string;
+  type?: DataModelType;
+  aliases?: string[];
+  classifiers?: Classifier[];
+  [key: string]: any;
+}
+
+export interface DataModelRemoveParameters {
+  permanent: boolean;
+}
+
+export type DataModelRemoveQueryParameters = DataModelRemoveParameters & QueryParameters;
+
+/**
+ * Payload for the {@link MdmDataModelResource.finalise} request.
+ */
+export interface DataModelFinalisePayload extends Payload {
+  /**
+   * Define how to advance the version of the finalised data model.
+   */
+  versionChangeType: 'Major' | 'Minor' | 'Patch' | 'Custom';
+
+  /**
+   * If {@link versionChangeType} is `Custom`, sets the custom version number to use for the finalised data model.
+   * 
+   * Has no affect for any other {@link versionChangeType}.
+   */
+  version?: Version;
+
+  /**
+   * Set an optional tag name to the finalised version.
+   */
+  versionTag?: string;
+}
+
+export type DataModelTypesResponse = MdmResponse<string[]>
+export type DataModelDefaultDataTypesResponse = MdmResponse<DataTypeProvider[]>;

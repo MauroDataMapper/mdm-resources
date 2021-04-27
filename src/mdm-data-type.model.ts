@@ -16,7 +16,7 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { Breadcrumb, Historical, ItemDomainType, MdmIndexResponse, MdmResponse, Securable, Uuid } from "mdm-common.model";
+import { Breadcrumb, Historical, ItemDomainType, MdmIndexResponse, MdmResponse, Securable, Uuid, Version } from "mdm-common.model";
 
 export interface EnumerationValue {
   index: number;
@@ -33,6 +33,20 @@ export interface ReferenceClass {
   model?: Uuid;
   breadcrumbs?: Breadcrumb[];
   parentDataClass?: Uuid;
+}
+
+export interface DataTypeDescriptor {
+  domainType: ItemDomainType;
+  label: string;
+  description?: string;
+  [key: string]: any;
+}
+
+export interface DataTypeProvider {
+  name: string;
+  displayName: string;
+  version: Version;
+  dataTypes: DataTypeDescriptor[];
 }
 
 export interface DataType {
