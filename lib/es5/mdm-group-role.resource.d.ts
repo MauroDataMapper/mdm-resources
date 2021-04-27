@@ -1,5 +1,5 @@
+import { RequestOptions, QueryParameters } from 'mdm-common.model';
 import { MdmResource } from './mdm-resource';
-import { IMdmRestHandlerOptions, IMdmQueryStringParams } from './mdm-rest-handler';
 /**
  * Controller: groupRole
  |   POST   | /api/admin/groupRoles                                                                                               | Action: save
@@ -11,11 +11,11 @@ import { IMdmRestHandlerOptions, IMdmQueryStringParams } from './mdm-rest-handle
  |   GET    | /api/${securableResourceDomainType}/${securableResourceId}/groupRoles                                               | Action: listGroupRolesAvailableToSecurableResource
  */
 export declare class MdmGroupRoleResource extends MdmResource {
-    save(data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    list(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    applicationGroupRoles(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    remove(groupRoleId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    update(groupRoleId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    get(groupRoleId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    listForSecurableResource(securableResourceDomainType: any, securableResourceId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    save(data: any, restHandlerOptions?: RequestOptions): any;
+    list(queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
+    applicationGroupRoles(queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
+    remove(groupRoleId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
+    update(groupRoleId: string, data: any, restHandlerOptions?: RequestOptions): any;
+    get(groupRoleId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
+    listForSecurableResource(securableResourceDomainType: any, securableResourceId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
 }

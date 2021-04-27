@@ -1,5 +1,5 @@
-import { MdmResource, ModelDomainType } from './mdm-resource';
-import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handler';
+import { RequestOptions, QueryParameters, ModelDomainType } from 'mdm-common.model';
+import { MdmResource } from './mdm-resource';
 /**
  * Controller: versionLink
  |   POST   | /api/${modelDomainType}/${modelId}/versionLinks                                                       | Action: save
@@ -9,9 +9,9 @@ import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handle
  |   GET    | /api/${modelDomainType}/${modelId}/versionLinks/${id}                                                 | Action: show
  */
 export declare class MdmVersionLinkResource extends MdmResource {
-    save(modelDomainType: string | ModelDomainType, modelId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    list(modelDomainType: string | ModelDomainType, modelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    remove(modelDomainType: string | ModelDomainType, modelId: string, versionLinkId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    update(modelDomainType: string | ModelDomainType, modelId: string, versionLinkId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    get(modelDomainType: string | ModelDomainType, modelId: string, versionLinkId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    save(modelDomainType: string | ModelDomainType, modelId: string, data: any, restHandlerOptions?: RequestOptions): any;
+    list(modelDomainType: string | ModelDomainType, modelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
+    remove(modelDomainType: string | ModelDomainType, modelId: string, versionLinkId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
+    update(modelDomainType: string | ModelDomainType, modelId: string, versionLinkId: string, data: any, restHandlerOptions?: RequestOptions): any;
+    get(modelDomainType: string | ModelDomainType, modelId: string, versionLinkId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
 }
