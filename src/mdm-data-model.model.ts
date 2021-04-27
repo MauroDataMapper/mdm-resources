@@ -17,7 +17,7 @@ SPDX-License-Identifier: Apache-2.0
 */
 
 import { Authority, Branchable, Classifier, Historical, ItemDomainType, MdmIndexResponse, MdmResponse, PageParameters, Payload, QueryParameters, Securable, SortParameters, Uuid, Version } from './mdm-common.model';
-import { DataTypeProvider } from 'mdm-data-type.model';
+import { DataTypeProvider } from './mdm-data-type.model';
 
 export type DataModelType = 'Data Standard' | 'Data Asset';
 
