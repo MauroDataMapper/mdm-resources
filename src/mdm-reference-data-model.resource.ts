@@ -15,7 +15,7 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { RequestOptions, QueryParameters } from 'mdm-common.model';
+import { QueryParameters, RequestOptions } from 'mdm-common.model';
 import { MdmResource } from './mdm-resource';
 
 /**
@@ -134,32 +134,32 @@ export class MdmReferenceDataModelResource extends MdmResource {
         return this.simplePut(url, {}, restHandlerOptions);
     }
 
-    finalise(referenceDataModelId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+    finalise(referenceDataModelId: string, data: any, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/finalise`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    newBranchModelVersion(referenceDataModelId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+    newBranchModelVersion(referenceDataModelId: string, data: any, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/newBranchModelVersion`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    newForkModel(referenceDataModelId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+    newForkModel(referenceDataModelId: string, data: any, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/newForkModel`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    latestModelVersion(referenceDataModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    latestModelVersion(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/latestModelVersion`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    latestFinalisedModel(referenceDataModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    latestFinalisedModel(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/latestFinalisedModel`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    modelVersionTree(referenceDataModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    modelVersionTree(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
         const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/modelVersionTree`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
