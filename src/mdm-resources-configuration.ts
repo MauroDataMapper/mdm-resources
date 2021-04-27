@@ -15,7 +15,7 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { RequestOptions } from 'https';
+import { MdmRequestOptions } from 'mdm-common.model';
 
 /**
  * Type to store common configuration options for the `mdm-resources` library.
@@ -29,5 +29,5 @@ export class MdmResourcesConfiguration {
     /**
      * Defines the default HTTP request options to apply to every request.
      */
-    defaultHttpRequestOptions?: RequestOptions = {};
+    defaultHttpRequestOptions?: MdmRequestOptions = {};
 }

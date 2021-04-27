@@ -1,5 +1,4 @@
-/// <reference types="node" />
-import { RequestOptions } from 'https';
+import { MdmRequestOptions } from 'mdm-common.model';
 /**
  * Type to store common configuration options for the `mdm-resources` library.
  */
@@ -11,5 +10,5 @@ export declare class MdmResourcesConfiguration {
     /**
      * Defines the default HTTP request options to apply to every request.
      */
-    defaultHttpRequestOptions?: RequestOptions;
+    defaultHttpRequestOptions?: MdmRequestOptions;
 }
