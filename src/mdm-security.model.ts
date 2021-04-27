@@ -16,11 +16,11 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { MdmResponse, Uuid } from "mdm-common.model";
+import { MdmResponse, Uuid } from './mdm-common.model';
 
 /**
  * Payload for login endpoint to authenticate a user.
- * 
+ *
  * @see [[MdmSecurityResource.login]]
  */
 export interface LoginPayload {

@@ -15,8 +15,8 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { RequestOptions, QueryParameters, ContainerDomainType, ModelDomainType, Uuid } from 'mdm-common.model';
-import { TreeItemExpandedQueryParameters, TreeItemListQueryParameters, TreeItemSearchQueryParameters } from 'mdm-tree-item.model';
+import { RequestOptions, QueryParameters, ContainerDomainType, ModelDomainType, Uuid } from './mdm-common.model';
+import { TreeItemExpandedQueryParameters, TreeItemListQueryParameters, TreeItemSearchQueryParameters } from './mdm-tree-item.model';
 import { MdmResource } from './mdm-resource';
 
 /**
@@ -31,33 +31,33 @@ import { MdmResource } from './mdm-resource';
 
 /**
  * MDM resource for tree item management.
- * 
+ *
  * Mauro represents all models and entities under a related tree, for instance:
- * 
+ *
  * * Folders contain models
  * * Models contain data classes
  * * Terminologies contain terms
  * * And so on.
- * 
+ *
  * Use this resource to fetch child items for the following container types:
- * 
+ *
  * * {@link ContainerDomainType.FOLDERS} for the main model tree.
  * * {@link ContainerDomainType.CLASSIFIERS} for all models listed under classifications.
  */
 export class MdmTreeItemResource extends MdmResource {
   /**
    * `HTTP GET` - Request a tree structure of models that are marked as deleted. **Note:** this endpoint is only accessible to an administrator.
-   * 
+   *
    * @param containerDomainType State the container domain type to inspect.
    * @param modelDomainType State the model domain type to inspect.
    * @param query Optional query string parameters, if required.
    * @param options Optional REST handler parameters, if required.
    * @returns The result of the `GET` request.
-   * 
+   *
    * `200 OK` - will return a [[MdmTreeItemListResponse]] containing a list of [[MdmTreeItem]] nodes.
-   * 
+   *
    * `403 Forbidden` - user is not an administrator.
-   * 
+   *
    * @description Only models marked as deleted can be returned. Any models _permanantly_ deleted cannot be retrieved.
    */
   deletedModels(
@@ -72,15 +72,15 @@ export class MdmTreeItemResource extends MdmResource {
 
   /**
    * `HTTP GET` - Request a tree structure of models with a model version that has been superseded. **Note:** this endpoint is only accessible to an administrator.
-   * 
+   *
    * @param containerDomainType State the container domain type to inspect.
    * @param modelDomainType State the model domain type to inspect.
    * @param query Optional query string parameters, if required.
    * @param options Optional REST handler parameters, if required.
    * @returns The result of the `GET` request.
-   * 
+   *
    * `200 OK` - will return a [[MdmTreeItemListResponse]] containing a list of [[MdmTreeItem]] nodes.
-   * 
+   *
    * `403 Forbidden` - user is not an administrator.
    */
   modelSupersededModels(
@@ -95,15 +95,15 @@ export class MdmTreeItemResource extends MdmResource {
 
   /**
    * `HTTP GET` - Request a tree structure of models with a documentation version that has been superseded. **Note:** this endpoint is only accessible to an administrator.
-   * 
+   *
    * @param containerDomainType State the container domain type to inspect.
    * @param modelDomainType State the model domain type to inspect.
    * @param query Optional query string parameters, if required.
    * @param options Optional REST handler parameters, if required.
    * @returns The result of the `GET` request.
-   * 
+   *
    * `200 OK` - will return a [[MdmTreeItemListResponse]] containing a list of [[MdmTreeItem]] nodes.
-   * 
+   *
    * `403 Forbidden` - user is not an administrator.
    */
   documentationSupersededModels(
@@ -118,14 +118,15 @@ export class MdmTreeItemResource extends MdmResource {
 
   /**
    * `HTTP GET` - Request a full text search against the Mauro model tree.
+   *
    * @param containerDomainType State the container domain type to search.
    * @param searchTerm Provide the term(s) to search for.
    * @param query Additional search parameters to filter the search results.
    * @param options Optional REST handler parameters, if required.
    * @returns The result of the `GET` request.
-   * 
+   *
    * `200 OK` - will return a [[MdmTreeItemListResponse]] containing a list of [[MdmTreeItem]] nodes.
-   * 
+   *
    * @see {@link TreeItemSearchParameters}
    */
   search(
@@ -140,13 +141,14 @@ export class MdmTreeItemResource extends MdmResource {
 
   /**
    * `HTTP GET` - Request the top level tree structure of model entities within the Mauro instance.
+   *
    * @param containerDomainType State the container domain type to inspect.
    * @param query Optional query string parameters to filter the returned list, if required.
    * @param options Optional REST handler parameters, if required.
    * @returns The result of the `GET` request.
-   * 
+   *
    * `200 OK` - will return a [[MdmTreeItemListResponse]] containing a list of [[MdmTreeItem]] nodes.
-   * 
+   *
    * @see {@link MdmTreeItemResource.get}
    */
   list(
@@ -160,15 +162,16 @@ export class MdmTreeItemResource extends MdmResource {
 
   /**
    * `HTTP GET` - Request children model entities within the Mauro instance for a given parent entity.
+   *
    * @param containerDomainType State the container domain type to inspect.
    * @param modelDomainType State the model domain type to inspect.
    * @param id The unique identifier of the parent entity to fetch children for.
    * @param query Optional query string parameters to filter the returned list, if required.
    * @param options Optional REST handler parameters, if required.
    * @returns The result of the `GET` request.
-   * 
+   *
    * `200 OK` - will return a [[MdmTreeItemListResponse]] containing a list of [[MdmTreeItem]] nodes.
-   * 
+   *
    * @see {@link MdmTreeItemResource.list}
    */
   get(
@@ -183,15 +186,16 @@ export class MdmTreeItemResource extends MdmResource {
 
   /**
    * `HTTP GET` - Request the complete expanded tree of an entity in one operation.
+   *
    * @param containerDomainType State the container domain type to inspect.
    * @param id The unique identifier of the parent entity to fetch children for.
    * @param query Optional query string parameters to filter the returned list, if required.
    * @param options Optional REST handler parameters, if required.
    * @returns The result of the `GET` request.
-   * 
+   *
    * `200 OK` - will return a [[MdmTreeItemResponse]] containing a [[MdmTreeItem]] node. If the tree item contains any children,
    * these will be returned also under {@link MdmTreeItem.children}.
-   * 
+   *
    * @see {@link MdmTreeItemResource.list}
    */
   getExpandedTree(

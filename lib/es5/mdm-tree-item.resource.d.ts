@@ -1,5 +1,5 @@
-import { RequestOptions, QueryParameters, ContainerDomainType, ModelDomainType, Uuid } from 'mdm-common.model';
-import { TreeItemExpandedQueryParameters, TreeItemListQueryParameters, TreeItemSearchQueryParameters } from 'mdm-tree-item.model';
+import { RequestOptions, QueryParameters, ContainerDomainType, ModelDomainType, Uuid } from './mdm-common.model';
+import { TreeItemExpandedQueryParameters, TreeItemListQueryParameters, TreeItemSearchQueryParameters } from './mdm-tree-item.model';
 import { MdmResource } from './mdm-resource';
 /**
  * Controller: treeItem
@@ -72,6 +72,7 @@ export declare class MdmTreeItemResource extends MdmResource {
     documentationSupersededModels(containerDomainType: string | ContainerDomainType, modelDomainType: string | ModelDomainType, query?: QueryParameters, options?: RequestOptions): any;
     /**
      * `HTTP GET` - Request a full text search against the Mauro model tree.
+     *
      * @param containerDomainType State the container domain type to search.
      * @param searchTerm Provide the term(s) to search for.
      * @param query Additional search parameters to filter the search results.
@@ -85,6 +86,7 @@ export declare class MdmTreeItemResource extends MdmResource {
     search(containerDomainType: string | ContainerDomainType, searchTerm: string, query?: TreeItemSearchQueryParameters, options?: RequestOptions): any;
     /**
      * `HTTP GET` - Request the top level tree structure of model entities within the Mauro instance.
+     *
      * @param containerDomainType State the container domain type to inspect.
      * @param query Optional query string parameters to filter the returned list, if required.
      * @param options Optional REST handler parameters, if required.
@@ -97,6 +99,7 @@ export declare class MdmTreeItemResource extends MdmResource {
     list(containerDomainType: string | ContainerDomainType, query?: TreeItemListQueryParameters, options?: RequestOptions): any;
     /**
      * `HTTP GET` - Request children model entities within the Mauro instance for a given parent entity.
+     *
      * @param containerDomainType State the container domain type to inspect.
      * @param modelDomainType State the model domain type to inspect.
      * @param id The unique identifier of the parent entity to fetch children for.
@@ -111,6 +114,7 @@ export declare class MdmTreeItemResource extends MdmResource {
     get(containerDomainType: string | ContainerDomainType, modelDomainType: string | ModelDomainType, id: Uuid, query?: QueryParameters, options?: RequestOptions): any;
     /**
      * `HTTP GET` - Request the complete expanded tree of an entity in one operation.
+     *
      * @param containerDomainType State the container domain type to inspect.
      * @param id The unique identifier of the parent entity to fetch children for.
      * @param query Optional query string parameters to filter the returned list, if required.

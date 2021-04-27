@@ -1,5 +1,5 @@
-import { RequestOptions, QueryParameters, Uuid } from 'mdm-common.model';
-import { DataElement, DataElementIndexParameters } from 'mdm-data-element.model';
+import { RequestOptions, QueryParameters, Uuid } from './mdm-common.model';
+import { DataElement, DataElementIndexParameters } from './mdm-data-element.model';
 import { MdmResource } from './mdm-resource';
 /**
  * Controller: dataElement
@@ -19,6 +19,7 @@ export declare class MdmDataElementResource extends MdmResource {
     suggestLinks(dataModelId: Uuid, dataClassId: Uuid, dataElementId: Uuid, otherDataModelId: Uuid, query?: QueryParameters, options?: RequestOptions): any;
     /**
      * `HTTP POST` - Creates a new data element under a chosen data class.
+     *
      * @param dataModelId The unique identifier of the data model to add to.
      * @param dataClassId The unique identifier of the data class to add to.
      * @param data The payload of the request containing all the details for the data element to create.
@@ -30,6 +31,7 @@ export declare class MdmDataElementResource extends MdmResource {
     save(dataModelId: Uuid, dataClassId: Uuid, data: DataElement, options?: RequestOptions): any;
     /**
      * `HTTP GET` - Request the list of data elements contained within a particular data class.
+     *
      * @param dataModelId The identifier of the data model to inspect.
      * @param dataClassId The identifier of the data class to inspect.
      * @param query Optional query string parameters to filter the returned list, if required.
@@ -44,6 +46,7 @@ export declare class MdmDataElementResource extends MdmResource {
     listWithDataType(dataModelId: Uuid, dataTypeId: Uuid, query?: QueryParameters, options?: RequestOptions): any;
     /**
      * `HTTP DELETE` - Removes an existing data element.
+     *
      * @param dataModelId The unique identifier of the data model.
      * @param dataClassId The unique indentifier of the data class.
      * @param dataElementId The unique identifier of the data element to remove.
@@ -56,6 +59,7 @@ export declare class MdmDataElementResource extends MdmResource {
     remove(dataModelId: Uuid, dataClassId: Uuid, dataElementId: Uuid, query?: QueryParameters, options?: RequestOptions): any;
     /**
      * `HTTP PUT` - Updates an existing data element under a chosen data class.
+     *
      * @param dataModelId The unique identifier of the data model the data element exists under.
      * @param dataClassId The unique identifier of the data class the data element exists under.
      * @param dataElementId The unique identifier of the data element to update.
@@ -68,6 +72,7 @@ export declare class MdmDataElementResource extends MdmResource {
     update(dataModelId: Uuid, dataClassId: Uuid, dataElementId: Uuid, data: DataElement, options?: RequestOptions): any;
     /**
      * `HTTP GET` - Request a data element from a data class.
+     *
      * @param dataModelId Unique identifier of the data model the data element is under.
      * @param dataClassId Unique indentifier of the data class the data element is under.
      * @param dataElementId Either a unique indentifier of the data element to get, or a path in the format `typePrefix:label|typePrefix:label`.
@@ -80,6 +85,7 @@ export declare class MdmDataElementResource extends MdmResource {
     get(dataModelId: Uuid, dataClassId: Uuid, dataElementId: Uuid | string, query?: QueryParameters, options?: RequestOptions): any;
     /**
      * `HTTP POST` - Copies an existing data element from one data class to another target data class.
+     *
      * @param dataModelId The unique identifier of the source data model.
      * @param dataClassId The unique identifier of the source data class.
      * @param otherDataModelId The unique indentifier of the target data model to copy to.

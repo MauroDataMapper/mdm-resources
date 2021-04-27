@@ -1,5 +1,5 @@
-import { RequestOptions } from 'mdm-common.model';
-import { ProviderQueryParameters } from 'mdm-provider.model';
+import { RequestOptions } from './mdm-common.model';
+import { ProviderQueryParameters } from './mdm-provider.model';
 import { MdmResource } from './mdm-resource';
 /**
  * Controller: mauroDataMapperServiceProvider
@@ -16,6 +16,7 @@ import { MdmResource } from './mdm-resource';
 export declare class MdmProviderResource extends MdmResource {
     /**
      * `HTTP GET` - Request a list of all exporters in the current Mauro instance.
+     *
      * @param query Query parameters to control the request, if required.
      * @param options Optional REST handler options, if required.
      * @returns The result of the `GET` request.
@@ -27,6 +28,7 @@ export declare class MdmProviderResource extends MdmResource {
     exporters(query?: ProviderQueryParameters, options?: RequestOptions): any;
     /**
      * `HTTP GET` - Request a list of all emailers in the current Mauro instance.
+     *
      * @param query Query parameters to control the request, if required.
      * @param options Optional REST handler options, if required.
      * @returns The result of the `GET` request.
@@ -38,6 +40,7 @@ export declare class MdmProviderResource extends MdmResource {
     emailers(query?: ProviderQueryParameters, options?: RequestOptions): any;
     /**
      * `HTTP GET` - Request a list of all data loaders in the current Mauro instance.
+     *
      * @param query Query parameters to control the request, if required.
      * @param options Optional REST handler options, if required.
      * @returns The result of the `GET` request.
@@ -49,6 +52,7 @@ export declare class MdmProviderResource extends MdmResource {
     dataLoaders(query?: ProviderQueryParameters, options?: RequestOptions): any;
     /**
      * `HTTP GET` - Request a list of all importers in the current Mauro instance.
+     *
      * @param query Query parameters to control the request, if required.
      * @param options Optional REST handler options, if required.
      * @returns The result of the `GET` request.

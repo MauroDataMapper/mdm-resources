@@ -1,4 +1,4 @@
-import { RequestOptions, QueryParameters, ContainerDomainType } from 'mdm-common.model';
+import { RequestOptions, QueryParameters, ContainerDomainType } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 /**
  * Controller: userGroup

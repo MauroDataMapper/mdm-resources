@@ -1,5 +1,5 @@
-import { RequestOptions, QueryParameters, Uuid } from 'mdm-common.model';
-import { DataModelCreatePayload, DataModelCreateQueryParameters, DataModelFinalisePayload, DataModelIndexParameters, DataModelRemoveQueryParameters, DataModelUpdatePayload } from 'mdm-data-model.model';
+import { RequestOptions, QueryParameters, Uuid } from './mdm-common.model';
+import { DataModelCreatePayload, DataModelCreateQueryParameters, DataModelFinalisePayload, DataModelIndexParameters, DataModelRemoveQueryParameters, DataModelUpdatePayload } from './mdm-data-model.model';
 import { MdmResource } from './mdm-resource';
 /**
  * Controller: dataModel
@@ -51,6 +51,7 @@ import { MdmResource } from './mdm-resource';
 export declare class MdmDataModelResource extends MdmResource {
     /**
      * `HTTP GET` - Request the available default type providers for creating data models.
+     *
      * @param query Optional query parameters, if required.
      * @param options Optional REST handler parameters, if required.
      * @returns The result of the `GET` request.
@@ -62,6 +63,7 @@ export declare class MdmDataModelResource extends MdmResource {
     exporters(queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
     /**
      * `HTTP GET` - Request the available types for creating data models.
+     *
      * @param query Optional query parameters, if required.
      * @param options Optional REST handler parameters, if required.
      * @returns The result of the `GET` request.
@@ -84,6 +86,7 @@ export declare class MdmDataModelResource extends MdmResource {
     newDocumentationVersion(dataModelId: string, data: any, restHandlerOptions?: RequestOptions): any;
     /**
      * `HTTP PUT` - Finalise a draft version of a data model to make it final and read-only.
+     *
      * @param dataModelId The unique identifier of the data model to finalise.
      * @param data The payload to pass to the request when finalising the data model.
      * @param options Optional REST handler parameters, if required.
@@ -96,6 +99,7 @@ export declare class MdmDataModelResource extends MdmResource {
     newForkModel(dataModelId: string, data: any, restHandlerOptions?: RequestOptions): any;
     /**
      * `HTTP POST` - Creates a new data model under a chosen folder.
+     *
      * @param folderId The unique identifier of the folder to create the data model under.
      * @param data The payload of the request containing all the details for the data model to create.
      * @param query Optional query parameters to control the creation of the data model, if required.
@@ -112,6 +116,7 @@ export declare class MdmDataModelResource extends MdmResource {
     exportModel(dataModelId: string, exporterNamespace: any, exporterName: any, exporterVersion: any, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
     /**
      * `HTTP GET` - Request the list of data models.
+     *
      * @param query Optional query string parameters to filter the returned list, if required.
      * @param options Optional REST handler parameters, if required.
      * @returns The result of the `GET` request.
@@ -124,6 +129,7 @@ export declare class MdmDataModelResource extends MdmResource {
     removeAll(queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
     /**
      * `HTTP DELETE` - Removes an existing data model, either temporarily or permanently.
+     *
      * @param dataModelId The unique identifier of the data model to remove.
      * @param query Query parameters to state if the operation should be temporary, or a "soft delete", or permanent.
      * @param options Optional REST handler options, if required.
@@ -143,6 +149,7 @@ export declare class MdmDataModelResource extends MdmResource {
     remove(dataModelId: Uuid, query: DataModelRemoveQueryParameters, options?: RequestOptions): any;
     /**
      * `HTTP PUT` - Updates an existing data model.
+     *
      * @param dataModelId The unique identifier of the data model to update.
      * @param data The payload of the request containing all the details for the data model to update.
      * @param options Optional REST handler parameters, if required.
@@ -153,6 +160,7 @@ export declare class MdmDataModelResource extends MdmResource {
     update(dataModelId: Uuid, data: DataModelUpdatePayload, options?: RequestOptions): any;
     /**
      * `HTTP GET` - Request a data model.
+     *
      * @param dataModelId Either a unique identifier of the data model, or a path in the format `typePrefix:label|typePrefix:label`.
      * @param query Optional query parameters, if required.
      * @param options Optional REST handler parameters, if required.
@@ -166,6 +174,7 @@ export declare class MdmDataModelResource extends MdmResource {
     modelVersionTree(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
     /**
      * `HTTP PUT` - Restores a temporarily deleted data model.
+     *
      * @param dataModelId The unique identifier of the data model to restore.
      * @param options Optional REST handler options, if required.
      * @returns The result of the `PUT` request.

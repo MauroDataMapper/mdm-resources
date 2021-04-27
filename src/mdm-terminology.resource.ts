@@ -20,7 +20,7 @@ import { MdmCatalogueItemResource } from './mdm-catalogue-item.resource';
 import { MdmResourcesConfiguration } from './mdm-resources-configuration';
 import { IMdmRestHandler } from './mdm-rest-handler';
 import { MdmTermResource } from './mdm-term.resource';
-import { RequestOptions, QueryParameters } from 'mdm-common.model';
+import { RequestOptions, QueryParameters } from './mdm-common.model';
 
 /**
  * Controller: terminology

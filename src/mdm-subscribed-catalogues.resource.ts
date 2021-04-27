@@ -16,7 +16,7 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { RequestOptions, QueryParameters } from 'mdm-common.model';
+import { RequestOptions, QueryParameters } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 
 /**
@@ -30,9 +30,9 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
      * @param queryStringParams Optional query string parameters for the GET request.
      * @param restHandlerOptions Optional REST handler parameters.
      * @returns The result of the `GET` request.
-     * 
+     *
      * On success, the response will be a `200 OK` and contain a response body similar to below:
-     * 
+     *
      * ```ts
      * {
      *     id: 'c7de1358-a4ce-4d72-abca-04013f7f4acc',
@@ -55,9 +55,9 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
      * @param queryStringParams Optional query string parameters for the GET request.
      * @param restHandlerOptions Optional REST handler parameters.
      * @returns The result of the `GET` request.
-     * 
+     *
      * On success, the response will be a `200 OK` and contain a response body similar to below:
-     * 
+     *
      * ```ts
      * {
      *  count: 1,
@@ -85,7 +85,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
      * @param data The data to use for creation.
      * @param restHandlerOptions Optional REST handler parameters.
      * @returns The result of the `POST` request.
-     * 
+     *
      * On success, the response will be a `200 OK`.
      */
     save(data: any, restHandlerOptions?: RequestOptions) {
@@ -100,7 +100,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
      * @param data The data to use for the update.
      * @param restHandlerOptions Optional REST handler parameters.
      * @returns The result of the `PUT` request.
-     * 
+     *
      * On success, the response will be a `200 OK`.
      */
     update(id: string, data: any, restHandlerOptions?: RequestOptions) {
@@ -115,7 +115,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
      * @param queryStringParams Optional query string parameters for the GET request.
      * @param restHandlerOptions Optional REST handler parameters.
      * @returns The result of the `DELETE` request.
-     * 
+     *
      * On success, the response will be a `204 No Content` and the response body will be empty.
      */
     remove(id: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
@@ -130,7 +130,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
      * @param queryStringParams Optional query string parameters for the GET request.
      * @param restHandlerOptions Optional REST handler parameters.
      * @returns The result of the `GET` request.
-     * 
+     *
      * On success, the response will be a `200 OK`.
      */
     listAvailableModels(id: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
@@ -145,7 +145,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
      * @param queryStringParams Optional query string parameters for the GET request.
      * @param restHandlerOptions Optional REST handler parameters.
      * @returns The result of the `GET` request.
-     * 
+     *
      * On success, the response will be a `200 OK`.
      */
     listSubscribedModels(id: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
@@ -159,7 +159,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
      * @param id The UUID of the Subscribed Model to federate.
      * @param restHandlerOptions Optional REST handler parameters.
      * @returns The result of the `POST` request.
-     * 
+     *
      * On success, the response will be a `200 OK`.
      */
     federate(id: string, restHandlerOptions?: RequestOptions) {
@@ -175,7 +175,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
      * @param queryStringParams Optional query string parameters for the GET request.
      * @param restHandlerOptions Optional REST handler parameters.
      * @returns The result of the `GET` request.
-     * 
+     *
      * On success, the response will be a `200 OK`.
      */
     getSubscribedModel(catalogueId: string, id: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
@@ -190,7 +190,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
      * @param data The data to use for creation.
      * @param restHandlerOptions Optional REST handler parameters.
      * @returns The result of the `POST` request.
-     * 
+     *
      * On success, the response will be a `200 OK`.
      */
     saveSubscribedModel(catalogueId: string, data: any, restHandlerOptions?: RequestOptions) {
@@ -206,7 +206,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
      * @param queryStringParams Optional query string parameters for the GET request.
      * @param restHandlerOptions Optional REST handler parameters.
      * @returns The result of the `DELETE` request.
-     * 
+     *
      * On success, the response will be a `204 No Content` and the response body will be empty.
      */
     removeSubscribedModel(catalogueId: string, id: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {

@@ -1,4 +1,4 @@
-import { RequestOptions, QueryParameters, ModelDomainType } from 'mdm-common.model';
+import { RequestOptions, QueryParameters, ModelDomainType } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 /**
  * Controller: classifier

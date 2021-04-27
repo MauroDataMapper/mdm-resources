@@ -57,6 +57,7 @@ export enum ItemDomainType {
 
 /**
  * Represents a response from an [[MdmResource]] API endpoint.
+ *
  * @typeparam T The type of object the body of the response represents.
  */
 export interface MdmResponse<T> {
@@ -68,8 +69,9 @@ export interface MdmResponse<T> {
 
 /**
  * Represents the body of a [[MdmResource]] response for an index/list request.
+ *
  * @typeparam T The type of object each item in the list represents.
- * 
+ *
  * @see [[MdmIndexResponse]]
  */
 export interface MdmIndexBody<T> {
@@ -86,17 +88,18 @@ export interface MdmIndexBody<T> {
 
 /**
  * Type alias for an [[MdmResource]] API endpoint response for an index/list request.
+ *
  * @typeparam T The type of object each item in the list represents.
- * 
+ *
  * @see [[MdmIndexBody]]
  */
 export type MdmIndexResponse<T> = MdmResponse<MdmIndexBody<T>>;
 
 /**
  * Type to define the query string parameters to pass to a `GET` resource request.
- * 
+ *
  * This type uses an index signature to provide any property and value to this object, for example:
- * 
+ *
  * ```ts
  * const parameters: QueryParameters = {
  *  id: 123,
@@ -120,13 +123,13 @@ export interface SortParameters {
 
   /**
    * State what sort order to use. If supplied, must be either:
-   * 
+   *
    * * `'asc'` for ascending order, or
    * * `'desc'` for descending order.
-   * 
+   *
    * If not supplied, the default will value used will depend on the resource requested.
    */
-  order?: 'asc' | 'desc'
+  order?: 'asc' | 'desc';
 }
 
 /**
@@ -146,9 +149,9 @@ export interface PageParameters {
 
 /**
  * Type alias for common filtering/querying parameters to send as part of a `HTTP GET` query string.
- * 
+ *
  * This type is a combination of:
- * 
+ *
  * * Sorting
  * * Pagination
  * * Any other query string parameters, such as filters
@@ -158,9 +161,9 @@ export type FilterQueryParameters = SortParameters & PageParameters & QueryParam
 /**
  * Type to define the options to pass to an [[IMdmRestHandler]] to process
  * a resource.
- * 
+ *
  * This type uses an index signature to provide any property and value to this object, for example:
- * 
+ *
  * ```ts
  * const options: RequestOptions = {
  *  method: 'POST',
@@ -170,7 +173,7 @@ export type FilterQueryParameters = SortParameters & PageParameters & QueryParam
  *  }
  * };
  * ```
- * 
+ *
  * @see [[IMdmRestHandler]]
  */
 export interface RequestOptions {
@@ -179,7 +182,7 @@ export interface RequestOptions {
 
 /**
  * Represents a generic payload for a `POST` or `PUT` request.
- * 
+ *
  * Use this only when the contents of the payload are not known in advance, otherwise choose to use
  * a more descriptive payload type.
  */

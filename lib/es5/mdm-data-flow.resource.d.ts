@@ -3,7 +3,7 @@ import { MdmResourcesConfiguration } from './mdm-resources-configuration';
 import { MdmDataClassComponentResource } from './mdm-data-class-component.resource';
 import { IMdmRestHandler } from './mdm-rest-handler';
 import { MdmDataElementComponentResource } from './mdm-data-element-component.resource';
-import { RequestOptions, QueryParameters } from 'mdm-common.model';
+import { RequestOptions, QueryParameters } from './mdm-common.model';
 /**
  * Controller: dataFlow
  |   GET    | /api/dataFlows/providers/importers                                                                                                                                               | Action: importerProviders

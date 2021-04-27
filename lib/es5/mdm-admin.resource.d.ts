@@ -1,4 +1,4 @@
-import { RequestOptions, QueryParameters, Payload, ContainerDomainType, ModelDomainType } from 'mdm-common.model';
+import { RequestOptions, QueryParameters, Payload, ContainerDomainType, ModelDomainType } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 /**
  * Controller: admin
@@ -27,6 +27,7 @@ import { MdmResource } from './mdm-resource';
 export declare class MdmAdminResource extends MdmResource {
     /**
      * `HTTP GET` - Gets the current status of this Mauro instance.
+     *
      * @param query Optional query string parameters, if required.
      * @param options Optional REST handler options, if required.
      * @returns The result of the `GET` request.
@@ -73,6 +74,7 @@ export declare class MdmAdminResource extends MdmResource {
     status(query?: QueryParameters, options?: RequestOptions): any;
     /**
      * `HTTP POST` - Request that Mauro Lucene search indexes are rebuilt.
+     *
      * @param payload Payload for the request. Currently this is not required as there are no parameters available, provided for future use.
      * @param options Optional REST handler options, if required.
      * @returns The result of the `POST` request.
@@ -84,6 +86,7 @@ export declare class MdmAdminResource extends MdmResource {
     rebuildLuceneIndexes(payload?: Payload, options?: RequestOptions): any;
     /**
      * `HTTP GET` - Request a list of all loaded modules in the current Mauro instance.
+     *
      * @param query Optional query string parameters, if required.
      * @param options Optional REST handler options, if required.
      * @returns The result of the `GET` request.

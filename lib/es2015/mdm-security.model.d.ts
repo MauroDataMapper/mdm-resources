@@ -1,4 +1,4 @@
-import { MdmResponse, Uuid } from "mdm-common.model";
+import { MdmResponse, Uuid } from './mdm-common.model';
 /**
  * Payload for login endpoint to authenticate a user.
  *

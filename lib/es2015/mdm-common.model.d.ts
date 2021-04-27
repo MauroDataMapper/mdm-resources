@@ -34,6 +34,7 @@ export declare enum ItemDomainType {
 }
 /**
  * Represents a response from an [[MdmResource]] API endpoint.
+ *
  * @typeparam T The type of object the body of the response represents.
  */
 export interface MdmResponse<T> {
@@ -44,6 +45,7 @@ export interface MdmResponse<T> {
 }
 /**
  * Represents the body of a [[MdmResource]] response for an index/list request.
+ *
  * @typeparam T The type of object each item in the list represents.
  *
  * @see [[MdmIndexResponse]]
@@ -60,6 +62,7 @@ export interface MdmIndexBody<T> {
 }
 /**
  * Type alias for an [[MdmResource]] API endpoint response for an index/list request.
+ *
  * @typeparam T The type of object each item in the list represents.
  *
  * @see [[MdmIndexBody]]

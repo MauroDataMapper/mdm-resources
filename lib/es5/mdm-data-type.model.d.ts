@@ -1,4 +1,4 @@
-import { Breadcrumb, Historical, ItemDomainType, MdmIndexResponse, MdmResponse, Securable, Uuid, Version } from "mdm-common.model";
+import { Breadcrumb, Historical, ItemDomainType, MdmIndexResponse, MdmResponse, Securable, Uuid, Version } from './mdm-common.model';
 export interface EnumerationValue {
     index: number;
     id?: Uuid;

@@ -1,4 +1,4 @@
-import { MdmResponse, QueryParameters, SortParameters } from "mdm-common.model";
+import { MdmResponse, QueryParameters, SortParameters } from './mdm-common.model';
 export declare type ProviderQueryParameters = SortParameters & QueryParameters;
 export interface Provider {
     name: string;

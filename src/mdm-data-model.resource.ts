@@ -15,8 +15,8 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { RequestOptions, QueryParameters, Uuid } from 'mdm-common.model';
-import { DataModelCreatePayload, DataModelCreateQueryParameters, DataModelFinalisePayload, DataModelIndexParameters, DataModelRemoveQueryParameters, DataModelUpdatePayload } from 'mdm-data-model.model';
+import { RequestOptions, QueryParameters, Uuid } from './mdm-common.model';
+import { DataModelCreatePayload, DataModelCreateQueryParameters, DataModelFinalisePayload, DataModelIndexParameters, DataModelRemoveQueryParameters, DataModelUpdatePayload } from './mdm-data-model.model';
 import { MdmResource } from './mdm-resource';
 
 /**
@@ -60,9 +60,9 @@ import { MdmResource } from './mdm-resource';
 
 /**
  * MDM resource for managing data models.
- * 
+ *
  * Create new data models by placing them under folders using the {@link MdmDataModelResource.addToFolder} endpoint.
- * 
+ *
  * @see {@link MdmDataClassResource}
  * @see {@link MdmDataElementResource}
  * @see {@link MdmDataTypeResource}
@@ -70,11 +70,12 @@ import { MdmResource } from './mdm-resource';
 export class MdmDataModelResource extends MdmResource {
 
   /**
-   * `HTTP GET` - Request the available default type providers for creating data models.   
+   * `HTTP GET` - Request the available default type providers for creating data models.
+   *
    * @param query Optional query parameters, if required.
    * @param options Optional REST handler parameters, if required.
    * @returns The result of the `GET` request.
-   * 
+   *
    * `200 OK` - will return a {@link DataModelDefaultDataTypesResponse} containing an array of {@link DataTypeProvider} objects.
    */
   defaultDataTypes(query?: QueryParameters, options?: RequestOptions) {
@@ -93,11 +94,12 @@ export class MdmDataModelResource extends MdmResource {
   }
 
   /**
-   * `HTTP GET` - Request the available types for creating data models.   
+   * `HTTP GET` - Request the available types for creating data models.
+   *
    * @param query Optional query parameters, if required.
    * @param options Optional REST handler parameters, if required.
    * @returns The result of the `GET` request.
-   * 
+   *
    * `200 OK` - will return a {@link DataModelTypesResponse} containing an array of strings.
    */
   types(query?: QueryParameters, options?: RequestOptions) {
@@ -172,11 +174,12 @@ export class MdmDataModelResource extends MdmResource {
 
   /**
    * `HTTP PUT` - Finalise a draft version of a data model to make it final and read-only.
+   *
    * @param dataModelId The unique identifier of the data model to finalise.
    * @param data The payload to pass to the request when finalising the data model.
    * @param options Optional REST handler parameters, if required.
    * @returns The result of the `POST` request.
-   * 
+   *
    * `200 OK` - will return a {@link DataModelDetailResponse} containing a {@link DataModelDetail} object.
    */
   finalise(dataModelId: Uuid, data: DataModelFinalisePayload, options?: RequestOptions) {
@@ -196,12 +199,13 @@ export class MdmDataModelResource extends MdmResource {
 
   /**
    * `HTTP POST` - Creates a new data model under a chosen folder.
+   *
    * @param folderId The unique identifier of the folder to create the data model under.
    * @param data The payload of the request containing all the details for the data model to create.
    * @param query Optional query parameters to control the creation of the data model, if required.
    * @param options Optional REST handler parameters, if required.
    * @returns The result of the `POST` request.
-   * 
+   *
    * `200 OK` - will return a {@link DataModelDetailResponse} containing a {@link DataModelDetail} object.
    */
   addToFolder(folderId: Uuid, data: DataModelCreatePayload, query?: DataModelCreateQueryParameters, options?: RequestOptions) {
@@ -237,12 +241,13 @@ export class MdmDataModelResource extends MdmResource {
 
   /**
    * `HTTP GET` - Request the list of data models.
+   *
    * @param query Optional query string parameters to filter the returned list, if required.
    * @param options Optional REST handler parameters, if required.
    * @returns The result of the `GET` request.
-   * 
+   *
    * `200 OK` - will return a {@link DataModelIndexResponse} containing a list of {@link DataModel} items.
-   * 
+   *
    * @see {@link MdmDataModelResource.get}
    */
   list(query?: DataModelIndexParameters, options?: RequestOptions) {
@@ -257,20 +262,21 @@ export class MdmDataModelResource extends MdmResource {
 
   /**
    * `HTTP DELETE` - Removes an existing data model, either temporarily or permanently.
-   * @param dataModelId The unique identifier of the data model to remove.   
+   *
+   * @param dataModelId The unique identifier of the data model to remove.
    * @param query Query parameters to state if the operation should be temporary, or a "soft delete", or permanent.
    * @param options Optional REST handler options, if required.
    * @returns The result of the `DELETE` request.
-   * 
+   *
    * On success, the response will be a `204 No Content` and the response body will be empty.
-   * 
+   *
    * @description It is required to pass a {@link DataModelRemoveParameters.permanent} flag to explicitly state whether
    * the operation is permanent or not. Setting this to `false` allows the data model to remain in Mauro but hidden; the
    * operation may also be reversed by an administrator using the {@link MdmDataModelResource.undoSoftDelete} endpoint.
-   * 
+   *
    * If {@link DataModelRemoveParameters.permanent} is set to `true`, then the data model will be permanently deleted with
    * no method of retrieving it.
-   * 
+   *
    * @see {@link MdmDataModelResource.undoSoftDelete}
    */
   remove(dataModelId: Uuid, query: DataModelRemoveQueryParameters, options?: RequestOptions) {
@@ -280,11 +286,12 @@ export class MdmDataModelResource extends MdmResource {
 
   /**
    * `HTTP PUT` - Updates an existing data model.
+   *
    * @param dataModelId The unique identifier of the data model to update.
    * @param data The payload of the request containing all the details for the data model to update.
    * @param options Optional REST handler parameters, if required.
    * @returns The result of the `POST` request.
-   * 
+   *
    * `200 OK` - will return a {@link DataModelDetailResponse} containing a {@link DataModelDetail} object.
    */
   update(dataModelId: Uuid, data: DataModelUpdatePayload, options?: RequestOptions) {
@@ -294,11 +301,12 @@ export class MdmDataModelResource extends MdmResource {
 
   /**
    * `HTTP GET` - Request a data model.
+   *
    * @param dataModelId Either a unique identifier of the data model, or a path in the format `typePrefix:label|typePrefix:label`.
    * @param query Optional query parameters, if required.
    * @param options Optional REST handler parameters, if required.
    * @returns The result of the `GET` request.
-   * 
+   *
    * `200 OK` - will return a {@link DataModelDetailResponse} containing a {@link DataModelDetail} object.
    */
   get(dataModelId: Uuid, query?: QueryParameters, options?: RequestOptions) {
@@ -329,19 +337,20 @@ export class MdmDataModelResource extends MdmResource {
 
   /**
    * `HTTP PUT` - Restores a temporarily deleted data model.
+   *
    * @param dataModelId The unique identifier of the data model to restore.
    * @param options Optional REST handler options, if required.
    * @returns The result of the `PUT` request.
-   * 
+   *
    * `200 OK` - will return a {@link DataModelDetailResponse} containing a {@link DataModelDetail} object.
-   * 
+   *
    * `403 Forbidden` - user is not an administrator.
-   * 
+   *
    * @description **Note:** this endpoint may only be accessed by an administrator.
-   * 
+   *
    * This operation has no affect on _permanently_ deleted data models, only those temporarily marked as "deleted". Any
    * permanently deleted data models are unretrievable.
-   * 
+   *
    * @see {@link MdmDataModelResource.remove}
    */
   undoSoftDelete(dataModelId: Uuid, options?: RequestOptions) {

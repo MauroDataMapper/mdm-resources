@@ -16,7 +16,7 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { ItemDomainType, MdmResponse, QueryParameters, Uuid } from "mdm-common.model";
+import { ItemDomainType, MdmResponse, QueryParameters, Uuid } from './mdm-common.model';
 
 export interface MdmTreeItem {
   id: Uuid;
@@ -32,7 +32,7 @@ export interface MdmTreeItem {
   domainType: ItemDomainType;
   type?: string;
   terminology?: any;
-  term?: any;    
+  term?: any;
   open?: boolean;
   folder?: string;
   disableChecked?: boolean;
@@ -68,10 +68,10 @@ export interface TreeItemExpandedParameters {
 export type TreeItemListQueryParameters = TreeItemListParameters & QueryParameters;
 export type TreeItemExpandedQueryParameters = TreeItemExpandedParameters & QueryParameters;
 
-export type MdmTreeItemListResponse = MdmResponse<MdmTreeItem[]>
+export type MdmTreeItemListResponse = MdmResponse<MdmTreeItem[]>;
 export type MdmTreeItemResponse = MdmResponse<MdmTreeItem>;
 
-export enum SearchDomainType {  
+export enum SearchDomainType {
   DataModel = 'DataModel',
   DataClass = 'DataClass',
   DataElement = 'DataElement',
@@ -81,7 +81,7 @@ export enum SearchDomainType {
 
 /**
  * Set of parameters to supply for searching the model tree.
- * 
+ *
  * @see {@link MdmTreeItemResource.search}
  */
 export interface TreeItemSearchParameters {

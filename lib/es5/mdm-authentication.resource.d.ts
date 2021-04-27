@@ -1,4 +1,4 @@
-import { RequestOptions, QueryParameters } from 'mdm-common.model';
+import { RequestOptions, QueryParameters } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 import { MdmResourcesConfiguration } from './mdm-resources-configuration';
 import { IMdmRestHandler } from './mdm-rest-handler';

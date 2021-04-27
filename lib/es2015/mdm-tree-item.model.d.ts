@@ -1,4 +1,4 @@
-import { ItemDomainType, MdmResponse, QueryParameters, Uuid } from "mdm-common.model";
+import { ItemDomainType, MdmResponse, QueryParameters, Uuid } from './mdm-common.model';
 export interface MdmTreeItem {
     id: Uuid;
     label?: string;

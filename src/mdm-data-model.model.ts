@@ -16,8 +16,8 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { Authority, Branchable, Classifier, Historical, ItemDomainType, MdmIndexResponse, MdmResponse, PageParameters, Payload, QueryParameters, Securable, SortParameters, Uuid, Version } from "mdm-common.model";
-import { DataTypeProvider } from "mdm-data-type.model";
+import { Authority, Branchable, Classifier, Historical, ItemDomainType, MdmIndexResponse, MdmResponse, PageParameters, Payload, QueryParameters, Securable, SortParameters, Uuid, Version } from './mdm-common.model';
+import { DataTypeProvider } from 'mdm-data-type.model';
 
 export type DataModelType = 'Data Standard' | 'Data Asset';
 
@@ -27,16 +27,16 @@ export interface DataModel {
   id?: Uuid;
   domainType: ItemDomainType;
   type?: DataModelType;
-  authority?: Authority;  
-  label: string;  
+  authority?: Authority;
+  label: string;
   description?: string;
   author?: string;
-  organisation?: string;  
+  organisation?: string;
   aliases?: string[];
   semanticLinks?: any[];
   editable?: boolean;
-  classifiers?: Classifier[];  
-  finalised: boolean;      
+  classifiers?: Classifier[];
+  finalised: boolean;
   deleted?: boolean;
   modelVersion: Version;
   modelVersionTag?: string;
@@ -60,7 +60,7 @@ export type DataModelDetailResponse = MdmResponse<DataModelDetail>;
 
 export interface DataModelCreatePayload {
   folder: Uuid;
-  label: string;  
+  label: string;
   author: string;
   organisation: string;
   description?: string;
@@ -78,7 +78,7 @@ export type DataModelCreateQueryParameters = DataModelCreateParameters & QueryPa
 export interface DataModelUpdatePayload {
   id: Uuid;
   domainType: ItemDomainType;
-  label?: string;  
+  label?: string;
   author?: string;
   organisation?: string;
   description?: string;
@@ -105,7 +105,7 @@ export interface DataModelFinalisePayload extends Payload {
 
   /**
    * If {@link versionChangeType} is `Custom`, sets the custom version number to use for the finalised data model.
-   * 
+   *
    * Has no affect for any other {@link versionChangeType}.
    */
   version?: Version;
@@ -116,5 +116,5 @@ export interface DataModelFinalisePayload extends Payload {
   versionTag?: string;
 }
 
-export type DataModelTypesResponse = MdmResponse<string[]>
+export type DataModelTypesResponse = MdmResponse<string[]>;
 export type DataModelDefaultDataTypesResponse = MdmResponse<DataTypeProvider[]>;

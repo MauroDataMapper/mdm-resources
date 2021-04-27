@@ -1,4 +1,4 @@
-import { RequestOptions, QueryParameters } from 'mdm-common.model';
+import { RequestOptions, QueryParameters } from './mdm-common.model';
 import { MdmResourcesConfiguration } from './mdm-resources-configuration';
 import { IMdmRestHandler } from './mdm-rest-handler';
 /**
@@ -19,12 +19,14 @@ export declare class MdmResource {
     private resourcesConfig;
     /**
      * Constructs a new `MdmResource`.
+     *
      * @param resourcesConfig Optionally provide configuration options to this resource class. If not provided, suitable defaults will be used.
      * @param restHandler Optionally provide a specific [[IMdmRestHandler]]. If not provided, the [[DefaultMdmRestHandler]] implementation will be used.
      */
     constructor(resourcesConfig?: MdmResourcesConfiguration, restHandler?: IMdmRestHandler);
     /**
      * Send a HTTP `POST` request to the given resource.
+     *
      * @param url The full URL to the REST resource.
      * @param data The data to include in the `POST` request body.
      * @param options Optional REST handler options, if required.
@@ -33,6 +35,7 @@ export declare class MdmResource {
     simplePost(url: string, data: any, options?: RequestOptions): any;
     /**
      * Send a HTTP `GET` request to the given resource.
+     *
      * @param url The full URL to the REST resource.
      * @param query Optional query string parameters, if required.
      * @param options Optional REST handler options, if required.
@@ -41,6 +44,7 @@ export declare class MdmResource {
     simpleGet(url: string, query?: QueryParameters, options?: RequestOptions): any;
     /**
      * Send a HTTP `DELETE` request to the given resource.
+     *
      * @param url The full URL to the REST resource.
      * @param query Optional query string parameters, if required.
      * @param options Optional REST handler options, if required.
@@ -49,6 +53,7 @@ export declare class MdmResource {
     simpleDelete(url: string, query?: QueryParameters, options?: RequestOptions): any;
     /**
      * Send a HTTP `PUT` request to the given resource.
+     *
      * @param url The full URL to the REST resource.
      * @param data The data to include in the `PUT` request body.
      * @param options Optional REST handler options, if required.
@@ -57,6 +62,7 @@ export declare class MdmResource {
     simplePut(url: string, data: any, options?: RequestOptions): any;
     /**
      * Send a generic HTTP request to the given resource.
+     *
      * @param url The full URL to the REST resource.
      * @param query Optional query string parameters, if required.
      * @param options Optional REST handler options, if required.
@@ -71,12 +77,14 @@ export declare class MdmResource {
     simpleRequest(url: string, query?: QueryParameters, options?: RequestOptions): any;
     /**
      * Test if a string represents a UUID.
+     *
      * @param value The string to test.
      * @returns True if `value` represents a UUID.
      */
     protected isGuid(value: any): boolean;
     /**
      * Generate a query string for a URL based on object property values provided.
+     *
      * @param query A query string parameters object to convert to a string.
      * @returns A URL encoded string containing each parameter and value, or an empty string if no properties were provided.
      */

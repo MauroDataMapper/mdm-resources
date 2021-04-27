@@ -15,7 +15,7 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { RequestOptions, QueryParameters, ContainerDomainType } from 'mdm-common.model';
+import { RequestOptions, QueryParameters, ContainerDomainType } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 
 /**
