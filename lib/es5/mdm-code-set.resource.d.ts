@@ -1,4 +1,4 @@
-import { RequestOptions, QueryParameters } from './mdm-common.model';
+import { MdmRequestOptions, QueryParameters } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 /**
  * Controller: codeSet
@@ -33,34 +33,34 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/codeSets/${codeSetId}/modelVersionTree                                                                | Action: modelVersionTree                        |
  */
 export declare class MdmCodeSetResource extends MdmResource {
-    importers(queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    exporters(queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    importModels(namespace: any, name: any, version: any, data: any, restHandlerOptions?: RequestOptions): any;
-    exportModels(namespace: any, name: any, version: any, data: any, restHandlerOptions?: RequestOptions): any;
-    newModelVersion(codeSetId: string, data: any, restHandlerOptions?: RequestOptions): any;
-    newDocumentationVersion(codeSetId: string, data: any, restHandlerOptions?: RequestOptions): any;
-    finalise(codeSetId: string, data?: any, restHandlerOptions?: RequestOptions): any;
-    newBranchModelVersion(codeSetId: string, data: any, restHandlerOptions?: RequestOptions): any;
-    newForkModel(codeSetId: string, data: any, restHandlerOptions?: RequestOptions): any;
-    addCodeSetsToFolder(folderId: string, data: any, restHandlerOptions?: RequestOptions): any;
-    listCodeSetsInFolder(folderId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    removeTerm(codeSetId: string, termId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    alterTerm(codeSetId: string, termId: string, data: any, restHandlerOptions?: RequestOptions): any;
-    moveCodeSetToFolder(codeSetId: string, folderId: string, data: any, restHandlerOptions?: RequestOptions): any;
-    diff(codeSetId: string, otherModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    exportModel(codeSetId: string, exporterNamespace: any, exporterName: any, exporterVersion: any, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    list(queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    removeAll(queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    remove(codeSetId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    update(codeSetId: string, data: any, restHandlerOptions?: RequestOptions): any;
-    get(codeSetId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    terms(codeSetId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    removeReadByAuthenticated(codeSetId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    updateReadByAuthenticated(codeSetId: string, data?: any, restHandlerOptions?: RequestOptions): any;
-    removeReadByEveryone(codeSetId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    updateReadByEveryone(codeSetId: string, data?: any, restHandlerOptions?: RequestOptions): any;
-    latestModelVersion(codeSetId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    latestFinalisedModel(codeSetId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    modelVersionTree(codeSetId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    undoSoftDelete(codeSetId: string, restHandlerOptions?: RequestOptions): any;
+    importers(queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    exporters(queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    importModels(namespace: any, name: any, version: any, data: any, restHandlerOptions?: MdmRequestOptions): any;
+    exportModels(namespace: any, name: any, version: any, data: any, restHandlerOptions?: MdmRequestOptions): any;
+    newModelVersion(codeSetId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
+    newDocumentationVersion(codeSetId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
+    finalise(codeSetId: string, data?: any, restHandlerOptions?: MdmRequestOptions): any;
+    newBranchModelVersion(codeSetId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
+    newForkModel(codeSetId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
+    addCodeSetsToFolder(folderId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
+    listCodeSetsInFolder(folderId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    removeTerm(codeSetId: string, termId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    alterTerm(codeSetId: string, termId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
+    moveCodeSetToFolder(codeSetId: string, folderId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
+    diff(codeSetId: string, otherModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    exportModel(codeSetId: string, exporterNamespace: any, exporterName: any, exporterVersion: any, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    list(queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    removeAll(queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    remove(codeSetId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    update(codeSetId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
+    get(codeSetId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    terms(codeSetId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    removeReadByAuthenticated(codeSetId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    updateReadByAuthenticated(codeSetId: string, data?: any, restHandlerOptions?: MdmRequestOptions): any;
+    removeReadByEveryone(codeSetId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    updateReadByEveryone(codeSetId: string, data?: any, restHandlerOptions?: MdmRequestOptions): any;
+    latestModelVersion(codeSetId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    latestFinalisedModel(codeSetId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    modelVersionTree(codeSetId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    undoSoftDelete(codeSetId: string, restHandlerOptions?: MdmRequestOptions): any;
 }

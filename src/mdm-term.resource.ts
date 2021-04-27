@@ -15,7 +15,7 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { RequestOptions, QueryParameters } from './mdm-common.model';
+import { MdmRequestOptions, QueryParameters } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 
 /**
@@ -41,32 +41,32 @@ import { MdmResource } from './mdm-resource';
  */
 export class MdmTermResource extends MdmResource {
 
-    search(terminologyId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+    search(terminologyId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms/search`;
         return this.simplePost(url, queryStringParams, restHandlerOptions);
     }
 
-    tree(terminologyId: string, termId?: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+    tree(terminologyId: string, termId?: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms/tree${termId ? `/${termId}` : ''}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    save(terminologyId: string, data: any, restHandlerOptions?: RequestOptions) {
+    save(terminologyId: string, data: any, restHandlerOptions?: MdmRequestOptions) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms`;
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    list(terminologyId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+    list(terminologyId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    remove(terminologyId: string, termId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+    remove(terminologyId: string, termId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms/${termId}`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 
-    update(terminologyId: string, termId: string, data: any, restHandlerOptions?: RequestOptions) {
+    update(terminologyId: string, termId: string, data: any, restHandlerOptions?: MdmRequestOptions) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms/${termId}`;
         return this.simplePut(url, data, restHandlerOptions);
     }
@@ -78,7 +78,7 @@ export class MdmTermResource extends MdmResource {
     /// <param name="termId">Terminology Id or a path in the format typePrefix:label|typePrefix:label</param>
     /// <param name="queryStringParams">Query String Params</param>
     /// <param name="restHandlerOptions">restHandler Options</param>
-    get(terminologyId: string, termId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+    get(terminologyId: string, termId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
         let url = '';
         if (this.isGuid(terminologyId)) {
             url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms/${termId}`;
@@ -90,27 +90,27 @@ export class MdmTermResource extends MdmResource {
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    addTermRelationships(terminologyId: string, termId: string, data: any, restHandlerOptions?: RequestOptions) {
+    addTermRelationships(terminologyId: string, termId: string, data: any, restHandlerOptions?: MdmRequestOptions) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms/${termId}/termRelationships`;
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    termRelationships(terminologyId: string, termId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+    termRelationships(terminologyId: string, termId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms/${termId}/termRelationships`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    removeTermRelationship(terminologyId: string, termId: string, termRelationshipId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+    removeTermRelationship(terminologyId: string, termId: string, termRelationshipId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms/${termId}/termRelationships/${termRelationshipId}`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 
-    updateTermRelationship(terminologyId: string, termId: string, termRelationshipId: string, data: any, restHandlerOptions?: RequestOptions) {
+    updateTermRelationship(terminologyId: string, termId: string, termRelationshipId: string, data: any, restHandlerOptions?: MdmRequestOptions) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms/${termId}/termRelationships/${termRelationshipId}`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    getTermRelationship(terminologyId: string, termId: string, termRelationshipId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+    getTermRelationship(terminologyId: string, termId: string, termRelationshipId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms/${termId}/termRelationships/${termRelationshipId}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }

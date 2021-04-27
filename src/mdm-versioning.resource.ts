@@ -15,7 +15,7 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { RequestOptions, QueryParameters, ModelDomainType } from './mdm-common.model';
+import { MdmRequestOptions, QueryParameters, ModelDomainType } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 
 /**
@@ -29,32 +29,32 @@ import { MdmResource } from './mdm-resource';
 
 export class MdmVersioningResource extends MdmResource {
 
-    commonAncestor(modelDomainType: string | ModelDomainType, modelId: string, otherModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+    commonAncestor(modelDomainType: string | ModelDomainType, modelId: string, otherModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
         const url = `${this.apiEndpoint}/${modelDomainType}/${modelId}/commonAncestor/${otherModelId}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    latestVersion(modelDomainType: string | ModelDomainType, modelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+    latestVersion(modelDomainType: string | ModelDomainType, modelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
         const url = `${this.apiEndpoint}/${modelDomainType}/${modelId}/latestVersion`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    mergeDiff(modelDomainType: string | ModelDomainType, modelId: string, otherModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+    mergeDiff(modelDomainType: string | ModelDomainType, modelId: string, otherModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
         const url = `${this.apiEndpoint}/${modelDomainType}/${modelId}/mergeDiff/${otherModelId}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    currentMainBranch(modelDomainType: string | ModelDomainType, modelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+    currentMainBranch(modelDomainType: string | ModelDomainType, modelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
         const url = `${this.apiEndpoint}/${modelDomainType}/${modelId}/currentMainBranch`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    availableBranches(modelDomainType: string | ModelDomainType, modelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+    availableBranches(modelDomainType: string | ModelDomainType, modelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
         const url = `${this.apiEndpoint}/${modelDomainType}/${modelId}/availableBranches`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    mergeInto(modelDomainType: string | ModelDomainType, sourceModelId: string, targetModelId: string, data: any, restHandlerOptions?: RequestOptions) {
+    mergeInto(modelDomainType: string | ModelDomainType, sourceModelId: string, targetModelId: string, data: any, restHandlerOptions?: MdmRequestOptions) {
         const url = `${this.apiEndpoint}/${modelDomainType}/${sourceModelId}/mergeInto/${targetModelId}`;
         return this.simplePut(url, data, restHandlerOptions);
     }

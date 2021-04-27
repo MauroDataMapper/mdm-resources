@@ -1,4 +1,4 @@
-import { QueryParameters, RequestOptions } from './mdm-common.model';
+import { QueryParameters, MdmRequestOptions } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 /**
  * Controller: referenceDataModel
@@ -30,27 +30,27 @@ import { MdmResource } from './mdm-resource';
  *
  */
 export declare class MdmReferenceDataModelResource extends MdmResource {
-    defaultDataTypes(queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    importers(queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    exporters(queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    importModels(importerNamespace: any, importerName: any, importerVersion: any, data: any, restHandlerOptions?: RequestOptions): any;
-    exportModels(exporterNamespace: any, exporterName: any, exporterVersion: any, data: any, restHandlerOptions?: RequestOptions): any;
-    removeReadByAuthenticated(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    updateReadByAuthenticated(referenceDataModelId: string, data: any, restHandlerOptions?: RequestOptions): any;
-    removeReadByEveryone(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    updateReadByEveryone(referenceDataModelId: string, data: any, restHandlerOptions?: RequestOptions): any;
-    search(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    exportModel(referenceDataModelId: string, exporterNamespace: any, exporterName: any, exporterVersion: any, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    list(queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    remove(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    update(referenceDataModelId: string, data: any, restHandlerOptions?: RequestOptions): any;
-    get(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    moveReferenceDataModelToFolder(referenceDataModelId: string, folderId: string, data: any, restHandlerOptions?: RequestOptions): any;
-    undoSoftDelete(referenceDataModelId: string, restHandlerOptions?: RequestOptions): any;
-    finalise(referenceDataModelId: string, data: any, restHandlerOptions?: RequestOptions): any;
-    newBranchModelVersion(referenceDataModelId: string, data: any, restHandlerOptions?: RequestOptions): any;
-    newForkModel(referenceDataModelId: string, data: any, restHandlerOptions?: RequestOptions): any;
-    latestModelVersion(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    latestFinalisedModel(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    modelVersionTree(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
+    defaultDataTypes(queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    importers(queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    exporters(queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    importModels(importerNamespace: any, importerName: any, importerVersion: any, data: any, restHandlerOptions?: MdmRequestOptions): any;
+    exportModels(exporterNamespace: any, exporterName: any, exporterVersion: any, data: any, restHandlerOptions?: MdmRequestOptions): any;
+    removeReadByAuthenticated(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    updateReadByAuthenticated(referenceDataModelId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
+    removeReadByEveryone(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    updateReadByEveryone(referenceDataModelId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
+    search(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    exportModel(referenceDataModelId: string, exporterNamespace: any, exporterName: any, exporterVersion: any, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    list(queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    remove(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    update(referenceDataModelId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
+    get(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    moveReferenceDataModelToFolder(referenceDataModelId: string, folderId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
+    undoSoftDelete(referenceDataModelId: string, restHandlerOptions?: MdmRequestOptions): any;
+    finalise(referenceDataModelId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
+    newBranchModelVersion(referenceDataModelId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
+    newForkModel(referenceDataModelId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
+    latestModelVersion(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    latestFinalisedModel(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    modelVersionTree(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
 }

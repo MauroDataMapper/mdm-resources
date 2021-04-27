@@ -1,4 +1,4 @@
-import { RequestOptions, QueryParameters } from './mdm-common.model';
+import { MdmRequestOptions, QueryParameters } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 import { MdmResourcesConfiguration } from './mdm-resources-configuration';
 import { IMdmRestHandler } from './mdm-rest-handler';
@@ -12,13 +12,13 @@ export declare class MdmAuthenticationResource extends MdmResource {
     /**
      * @deprecated Use [[MdmSecurityResource.login]] instead.
      */
-    login(data: any, restHandlerOptions?: RequestOptions): any;
+    login(data: any, restHandlerOptions?: MdmRequestOptions): any;
     /**
      * @deprecated Use [[MdmSecurityResource.logout]] instead.
      */
-    logout(queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
+    logout(queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
     /**
      * @deprecated Use [[MdmSessionResource.isAuthenticated]] instead.
      */
-    isAuthenticated(sessionId?: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): void;
+    isAuthenticated(sessionId?: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): void;
 }

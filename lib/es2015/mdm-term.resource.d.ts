@@ -1,4 +1,4 @@
-import { RequestOptions, QueryParameters } from './mdm-common.model';
+import { MdmRequestOptions, QueryParameters } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 /**
  * Controller: term
@@ -22,16 +22,16 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/terminologies/${terminologyId}/terms/${termId}/termRelationships/${id}                                      | Action: show
  */
 export declare class MdmTermResource extends MdmResource {
-    search(terminologyId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    tree(terminologyId: string, termId?: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    save(terminologyId: string, data: any, restHandlerOptions?: RequestOptions): any;
-    list(terminologyId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    remove(terminologyId: string, termId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    update(terminologyId: string, termId: string, data: any, restHandlerOptions?: RequestOptions): any;
-    get(terminologyId: string, termId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    addTermRelationships(terminologyId: string, termId: string, data: any, restHandlerOptions?: RequestOptions): any;
-    termRelationships(terminologyId: string, termId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    removeTermRelationship(terminologyId: string, termId: string, termRelationshipId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    updateTermRelationship(terminologyId: string, termId: string, termRelationshipId: string, data: any, restHandlerOptions?: RequestOptions): any;
-    getTermRelationship(terminologyId: string, termId: string, termRelationshipId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
+    search(terminologyId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    tree(terminologyId: string, termId?: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    save(terminologyId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
+    list(terminologyId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    remove(terminologyId: string, termId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    update(terminologyId: string, termId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
+    get(terminologyId: string, termId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    addTermRelationships(terminologyId: string, termId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
+    termRelationships(terminologyId: string, termId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    removeTermRelationship(terminologyId: string, termId: string, termRelationshipId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    updateTermRelationship(terminologyId: string, termId: string, termRelationshipId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
+    getTermRelationship(terminologyId: string, termId: string, termRelationshipId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
 }

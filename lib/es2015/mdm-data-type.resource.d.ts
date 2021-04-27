@@ -1,4 +1,4 @@
-import { RequestOptions, QueryParameters, Uuid, FilterQueryParameters } from './mdm-common.model';
+import { MdmRequestOptions, QueryParameters, Uuid, FilterQueryParameters } from './mdm-common.model';
 import { DataType } from './mdm-data-type.model';
 import { MdmResource } from './mdm-resource';
 /**
@@ -24,7 +24,7 @@ export declare class MdmDataTypeResource extends MdmResource {
      *
      * `200 OK` - will return a {@link DataTypeDetailResponse} containing a {@link DataTypeDetail} object.
      */
-    save(dataModelId: Uuid, data: DataType, options?: RequestOptions): any;
+    save(dataModelId: Uuid, data: DataType, options?: MdmRequestOptions): any;
     /**
      * `HTTP GET` - Request the list of data types contained within a particular data model.
      *
@@ -37,7 +37,7 @@ export declare class MdmDataTypeResource extends MdmResource {
      *
      * @see {@link MdmDataTypeResource.get}
      */
-    list(dataModelId: Uuid, query?: FilterQueryParameters, options?: RequestOptions): any;
+    list(dataModelId: Uuid, query?: FilterQueryParameters, options?: MdmRequestOptions): any;
     /**
      * `HTTP DELETE` - Removes an existing data type.
      *
@@ -49,7 +49,7 @@ export declare class MdmDataTypeResource extends MdmResource {
      *
      * On success, the response will be a `204 No Content` and the response body will be empty.
      */
-    remove(dataModelId: Uuid, dataTypeId: Uuid, query?: QueryParameters, options?: RequestOptions): any;
+    remove(dataModelId: Uuid, dataTypeId: Uuid, query?: QueryParameters, options?: MdmRequestOptions): any;
     /**
      * `HTTP PUT` - Updates an existing data type under a chosen data model.
      *
@@ -61,7 +61,7 @@ export declare class MdmDataTypeResource extends MdmResource {
      *
      * `200 OK` - will return a {@link DataTypeDetailResponse} containing a {@link DataTypeDetail} object.
      */
-    update(dataModelId: Uuid, dataTypeId: Uuid, data: DataType, options?: RequestOptions): any;
+    update(dataModelId: Uuid, dataTypeId: Uuid, data: DataType, options?: MdmRequestOptions): any;
     /**
      * `HTTP GET` - Request a data type from a data model.
      *
@@ -73,7 +73,7 @@ export declare class MdmDataTypeResource extends MdmResource {
      *
      * `200 OK` - will return a {@link DataTypeDetailResponse} containing a {@link DataTypeDetail} object.
      */
-    get(dataModelId: Uuid, dataTypeId: Uuid | string, query?: QueryParameters, options?: RequestOptions): any;
+    get(dataModelId: Uuid, dataTypeId: Uuid | string, query?: QueryParameters, options?: MdmRequestOptions): any;
     /**
      * `HTTP POST` - Copies an existing data type from one data model to another target data model.
      *
@@ -85,5 +85,5 @@ export declare class MdmDataTypeResource extends MdmResource {
      *
      * `200 OK` - will return a {@link DataTypeDetailResponse} containing the new copy of a {@link DataTypeDetail} object.
      */
-    copyDataType(dataModelId: Uuid, otherDataModelId: Uuid, dataTypeId: Uuid, options?: RequestOptions): any;
+    copyDataType(dataModelId: Uuid, otherDataModelId: Uuid, dataTypeId: Uuid, options?: MdmRequestOptions): any;
 }

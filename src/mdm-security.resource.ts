@@ -15,7 +15,7 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { RequestOptions, QueryParameters, Uuid } from './mdm-common.model';
+import { MdmRequestOptions, QueryParameters, Uuid } from './mdm-common.model';
 import { LoginPayload, SecurableDomainType } from './mdm-security.model';
 import { MdmResource } from './mdm-resource';
 
@@ -34,7 +34,7 @@ export class MdmSecurityResource extends MdmResource {
    *
    * @see [[MdmSessionResource.isAuthenticated]]
    */
-  login(data: LoginPayload, options?: RequestOptions) {
+  login(data: LoginPayload, options?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/authentication/login`;
     return this.simplePost(url, data, options);
   }
@@ -48,7 +48,7 @@ export class MdmSecurityResource extends MdmResource {
    *
    * `204 No Content` - successfully logged out, will contain no body.
    */
-  logout(query?: QueryParameters, options?: RequestOptions) {
+  logout(query?: QueryParameters, options?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/authentication/logout`;
     return this.simpleGet(url, query, options);
   }
@@ -68,7 +68,7 @@ export class MdmSecurityResource extends MdmResource {
     domainType: SecurableDomainType,
     securableResourceId: Uuid,
     query?: QueryParameters,
-    options?: RequestOptions) {
+    options?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/${domainType}/${securableResourceId}/permissions`;
     return this.simpleGet(url, query, options);
   }

@@ -1,4 +1,4 @@
-import { RequestOptions, QueryParameters } from './mdm-common.model';
+import { MdmRequestOptions, QueryParameters } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 /**
  * MDM resource for managing subscribed catalogues and federated models.
@@ -25,7 +25,7 @@ export declare class MdmSubscribedCataloguesResource extends MdmResource {
      * }
      * ```
      */
-    get(id: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
+    get(id: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
     /**
      * `HTTP GET` - Gets a list of all Subscribed Catalogues.
      *
@@ -51,7 +51,7 @@ export declare class MdmSubscribedCataloguesResource extends MdmResource {
      * }
      * ```
      */
-    list(queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
+    list(queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
     /**
      * `HTTP POST` - Creates a new Subscribed Catalogue.
      *
@@ -61,7 +61,7 @@ export declare class MdmSubscribedCataloguesResource extends MdmResource {
      *
      * On success, the response will be a `200 OK`.
      */
-    save(data: any, restHandlerOptions?: RequestOptions): any;
+    save(data: any, restHandlerOptions?: MdmRequestOptions): any;
     /**
      * `HTTP PUT` - Updates an existing Subscribed Catalogue.
      *
@@ -72,7 +72,7 @@ export declare class MdmSubscribedCataloguesResource extends MdmResource {
      *
      * On success, the response will be a `200 OK`.
      */
-    update(id: string, data: any, restHandlerOptions?: RequestOptions): any;
+    update(id: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
     /**
      * `HTTP DELETE` - Removes an existing Subscribed Catalogue.
      *
@@ -83,7 +83,7 @@ export declare class MdmSubscribedCataloguesResource extends MdmResource {
      *
      * On success, the response will be a `204 No Content` and the response body will be empty.
      */
-    remove(id: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
+    remove(id: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
     /**
      * `HTTP GET` - Gets a list of all available federated models from a Subscribed Catalogue.
      *
@@ -94,7 +94,7 @@ export declare class MdmSubscribedCataloguesResource extends MdmResource {
      *
      * On success, the response will be a `200 OK`.
      */
-    listAvailableModels(id: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
+    listAvailableModels(id: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
     /**
      * `HTTP GET` - Gets a list of all federated models that this catalogue has subscribed to from a Subscribed Catalogue.
      *
@@ -105,7 +105,7 @@ export declare class MdmSubscribedCataloguesResource extends MdmResource {
      *
      * On success, the response will be a `200 OK`.
      */
-    listSubscribedModels(id: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
+    listSubscribedModels(id: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
     /**
      * `HTTP POST` - Federate a subscribed model to refresh.
      *
@@ -115,7 +115,7 @@ export declare class MdmSubscribedCataloguesResource extends MdmResource {
      *
      * On success, the response will be a `200 OK`.
      */
-    federate(id: string, restHandlerOptions?: RequestOptions): any;
+    federate(id: string, restHandlerOptions?: MdmRequestOptions): any;
     /**
      * `HTTP GET` - Gets a Subscribed Catalogue by ID.
      *
@@ -127,7 +127,7 @@ export declare class MdmSubscribedCataloguesResource extends MdmResource {
      *
      * On success, the response will be a `200 OK`.
      */
-    getSubscribedModel(catalogueId: string, id: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
+    getSubscribedModel(catalogueId: string, id: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
     /**
      * `HTTP POST` - Creates a new subscription to a model in a Subscribed Catalogue.
      *
@@ -138,7 +138,7 @@ export declare class MdmSubscribedCataloguesResource extends MdmResource {
      *
      * On success, the response will be a `200 OK`.
      */
-    saveSubscribedModel(catalogueId: string, data: any, restHandlerOptions?: RequestOptions): any;
+    saveSubscribedModel(catalogueId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
     /**
      * `HTTP DELETE` - Removes an existing subscription to a model in a Subscribed Catalogue.
      *
@@ -150,5 +150,5 @@ export declare class MdmSubscribedCataloguesResource extends MdmResource {
      *
      * On success, the response will be a `204 No Content` and the response body will be empty.
      */
-    removeSubscribedModel(catalogueId: string, id: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
+    removeSubscribedModel(catalogueId: string, id: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
 }

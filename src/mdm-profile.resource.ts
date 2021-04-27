@@ -15,7 +15,7 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { RequestOptions, QueryParameters, ModelDomainType } from './mdm-common.model';
+import { MdmRequestOptions, QueryParameters, ModelDomainType } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 
 /**
@@ -27,7 +27,7 @@ export class MdmProfileResource extends MdmResource {
         catalogueItemDomainType: string | ModelDomainType,
         catalogueItemId: string,
         queryStringParams?: QueryParameters,
-        restHandlerOptions?: RequestOptions
+        restHandlerOptions?: MdmRequestOptions
     ) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/profiles/used`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
@@ -36,7 +36,7 @@ export class MdmProfileResource extends MdmResource {
         catalogueItemDomainType: string | ModelDomainType,
         catalogueItemId: string,
         queryStringParams?: QueryParameters,
-        restHandlerOptions?: RequestOptions
+        restHandlerOptions?: MdmRequestOptions
     ) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/profiles/unused`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
@@ -45,7 +45,7 @@ export class MdmProfileResource extends MdmResource {
         catalogueItemDomainType: string | ModelDomainType,
         catalogueItemId: string,
         queryStringParams?: QueryParameters,
-        restHandlerOptions?: RequestOptions
+        restHandlerOptions?: MdmRequestOptions
     ) {
         const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/profiles/otherMetadata`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
@@ -57,7 +57,7 @@ export class MdmProfileResource extends MdmResource {
         profileName: string,
         profileVersion?: string,
         queryStringParams?: QueryParameters,
-        restHandlerOptions?: RequestOptions
+        restHandlerOptions?: MdmRequestOptions
     ) {
         let url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/profile/${profileNamespace}/${profileName}`;
         if (profileVersion) {
@@ -73,7 +73,7 @@ export class MdmProfileResource extends MdmResource {
         profileName: string,
         data: string,
         profileVersion?: string,
-        restHandlerOptions?: RequestOptions
+        restHandlerOptions?: MdmRequestOptions
     ) {
         let url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/profile/${profileNamespace}/${profileName}`;
         if (profileVersion) {
@@ -88,7 +88,7 @@ export class MdmProfileResource extends MdmResource {
         profileName: string,
         profileVersion?: string,
         queryStringParams?: QueryParameters,
-        restHandlerOptions?: RequestOptions
+        restHandlerOptions?: MdmRequestOptions
     ) {
         let url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/profile/${profileNamespace}/${profileName}`;
         if (profileVersion) {

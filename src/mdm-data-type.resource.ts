@@ -15,7 +15,7 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { RequestOptions, QueryParameters, Uuid, FilterQueryParameters } from './mdm-common.model';
+import { MdmRequestOptions, QueryParameters, Uuid, FilterQueryParameters } from './mdm-common.model';
 import { DataType } from './mdm-data-type.model';
 import { MdmResource } from './mdm-resource';
 
@@ -43,7 +43,7 @@ export class MdmDataTypeResource extends MdmResource {
    *
    * `200 OK` - will return a {@link DataTypeDetailResponse} containing a {@link DataTypeDetail} object.
    */
-  save(dataModelId: Uuid, data: DataType, options?: RequestOptions) {
+  save(dataModelId: Uuid, data: DataType, options?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataTypes`;
     return this.simplePost(url, data, options);
   }
@@ -60,7 +60,7 @@ export class MdmDataTypeResource extends MdmResource {
    *
    * @see {@link MdmDataTypeResource.get}
    */
-  list(dataModelId: Uuid, query?: FilterQueryParameters, options?: RequestOptions) {
+  list(dataModelId: Uuid, query?: FilterQueryParameters, options?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataTypes`;
     return this.simpleGet(url, query, options);
   }
@@ -76,7 +76,7 @@ export class MdmDataTypeResource extends MdmResource {
    *
    * On success, the response will be a `204 No Content` and the response body will be empty.
    */
-  remove(dataModelId: Uuid, dataTypeId: Uuid, query?: QueryParameters, options?: RequestOptions) {
+  remove(dataModelId: Uuid, dataTypeId: Uuid, query?: QueryParameters, options?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataTypes/${dataTypeId}`;
     return this.simpleDelete(url, query, options);
   }
@@ -92,7 +92,7 @@ export class MdmDataTypeResource extends MdmResource {
    *
    * `200 OK` - will return a {@link DataTypeDetailResponse} containing a {@link DataTypeDetail} object.
    */
-  update(dataModelId: Uuid, dataTypeId: Uuid, data: DataType, options?: RequestOptions) {
+  update(dataModelId: Uuid, dataTypeId: Uuid, data: DataType, options?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataTypes/${dataTypeId}`;
     return this.simplePut(url, data, options);
   }
@@ -108,7 +108,7 @@ export class MdmDataTypeResource extends MdmResource {
    *
    * `200 OK` - will return a {@link DataTypeDetailResponse} containing a {@link DataTypeDetail} object.
    */
-  get(dataModelId: Uuid, dataTypeId: Uuid | string, query?: QueryParameters, options?: RequestOptions) {
+  get(dataModelId: Uuid, dataTypeId: Uuid | string, query?: QueryParameters, options?: MdmRequestOptions) {
     let url = '';
     if (this.isGuid(dataModelId)) {
       url = url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataTypes/${dataTypeId}`;
@@ -130,7 +130,7 @@ export class MdmDataTypeResource extends MdmResource {
    *
    * `200 OK` - will return a {@link DataTypeDetailResponse} containing the new copy of a {@link DataTypeDetail} object.
    */
-  copyDataType(dataModelId: Uuid, otherDataModelId: Uuid, dataTypeId: Uuid, options?: RequestOptions) {
+  copyDataType(dataModelId: Uuid, otherDataModelId: Uuid, dataTypeId: Uuid, options?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataTypes/${otherDataModelId}/${dataTypeId}`;
     return this.simplePost(url, { }, options);
   }

@@ -1,4 +1,4 @@
-import { RequestOptions, QueryParameters, Uuid } from './mdm-common.model';
+import { MdmRequestOptions, QueryParameters, Uuid } from './mdm-common.model';
 import { LoginPayload, SecurableDomainType } from './mdm-security.model';
 import { MdmResource } from './mdm-resource';
 /**
@@ -16,7 +16,7 @@ export declare class MdmSecurityResource extends MdmResource {
      *
      * @see [[MdmSessionResource.isAuthenticated]]
      */
-    login(data: LoginPayload, options?: RequestOptions): any;
+    login(data: LoginPayload, options?: MdmRequestOptions): any;
     /**
      * `HTTP GET` - Logout of an authenticated session.
      *
@@ -26,7 +26,7 @@ export declare class MdmSecurityResource extends MdmResource {
      *
      * `204 No Content` - successfully logged out, will contain no body.
      */
-    logout(query?: QueryParameters, options?: RequestOptions): any;
+    logout(query?: QueryParameters, options?: MdmRequestOptions): any;
     /**
      * `HTTP GET` - Inspect the permissions for a particular Mauro resource.
      *
@@ -38,5 +38,5 @@ export declare class MdmSecurityResource extends MdmResource {
      *
      * `200 OK` - will return a [[PermissionsResponse]] containing the [[Permissions]] of this Mauro resource.
      */
-    permissions(domainType: SecurableDomainType, securableResourceId: Uuid, query?: QueryParameters, options?: RequestOptions): any;
+    permissions(domainType: SecurableDomainType, securableResourceId: Uuid, query?: QueryParameters, options?: MdmRequestOptions): any;
 }

@@ -1,4 +1,4 @@
-import { RequestOptions, QueryParameters, Uuid } from './mdm-common.model';
+import { MdmRequestOptions, QueryParameters, Uuid } from './mdm-common.model';
 import { DataClass, DataClassIndexParameters } from './mdm-data-class.model';
 import { TreeItemSearchQueryParameters } from './mdm-tree-item.model';
 import { MdmResource } from './mdm-resource';
@@ -37,7 +37,7 @@ export declare class MdmDataClassResource extends MdmResource {
      *
      * `200 OK` - will return a {@link DataClassDetailResponse} containing a {@link DataClassDetail} object.
      */
-    addChildDataClass(dataModelId: Uuid, dataClassId: Uuid, data: DataClass, options?: RequestOptions): any;
+    addChildDataClass(dataModelId: Uuid, dataClassId: Uuid, data: DataClass, options?: MdmRequestOptions): any;
     /**
      * `HTTP GET` - Request the list of data classes contained under a parent data class.
      *
@@ -51,7 +51,7 @@ export declare class MdmDataClassResource extends MdmResource {
      *
      * @see {@link MdmDataClassResource.getChildDataClass}
      */
-    listChildDataClasses(dataModelId: Uuid, dataClassId: Uuid, query?: DataClassIndexParameters, options?: RequestOptions): any;
+    listChildDataClasses(dataModelId: Uuid, dataClassId: Uuid, query?: DataClassIndexParameters, options?: MdmRequestOptions): any;
     /**
      * `HTTP GET` - Request a full text search against the a parent data class within a data model.
      *
@@ -65,8 +65,8 @@ export declare class MdmDataClassResource extends MdmResource {
      *
      * @see {@link TreeItemSearchParameters}
      */
-    search(dataModelId: Uuid, dataClassId: Uuid, query?: TreeItemSearchQueryParameters, options?: RequestOptions): any;
-    content(dataModelId: string, dataClassId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
+    search(dataModelId: Uuid, dataClassId: Uuid, query?: TreeItemSearchQueryParameters, options?: MdmRequestOptions): any;
+    content(dataModelId: string, dataClassId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
     /**
      * `HTTP DELETE` - Removes an existing data class from a parent data class.
      *
@@ -79,7 +79,7 @@ export declare class MdmDataClassResource extends MdmResource {
      *
      * On success, the response will be a `204 No Content` and the response body will be empty.
      */
-    removeChildDataClass(dataModelId: Uuid, dataClassId: Uuid, childDataClassId: Uuid, query?: QueryParameters, options?: RequestOptions): any;
+    removeChildDataClass(dataModelId: Uuid, dataClassId: Uuid, childDataClassId: Uuid, query?: QueryParameters, options?: MdmRequestOptions): any;
     /**
      * `HTTP PUT` - Updates an existing data class under a chosen parent data class.
      *
@@ -92,7 +92,7 @@ export declare class MdmDataClassResource extends MdmResource {
      *
      * `200 OK` - will return a {@link DataClassDetailResponse} containing a {@link DataClassDetail} object.
      */
-    updateChildDataClass(dataModelId: Uuid, dataClassId: Uuid, childDataClassId: Uuid, data: DataClass, options?: RequestOptions): any;
+    updateChildDataClass(dataModelId: Uuid, dataClassId: Uuid, childDataClassId: Uuid, data: DataClass, options?: MdmRequestOptions): any;
     /**
      * `HTTP GET` - Request a data class from a parent data class.
      *
@@ -105,7 +105,7 @@ export declare class MdmDataClassResource extends MdmResource {
      *
      * `200 OK` - will return a {@link DataClassDetailResponse} containing a {@link DataClassDetail} object.
      */
-    getChildDataClass(dataModelId: Uuid, dataClassId: Uuid, childDataClassId: Uuid, query?: QueryParameters, options?: RequestOptions): any;
+    getChildDataClass(dataModelId: Uuid, dataClassId: Uuid, childDataClassId: Uuid, query?: QueryParameters, options?: MdmRequestOptions): any;
     /**
      * `HTTP POST` - Copies an existing child data class from one data model to another target data model.
      *
@@ -118,7 +118,7 @@ export declare class MdmDataClassResource extends MdmResource {
      *
      * `200 OK` - will return a {@link DataClassDetailResponse} containing the new copy of a {@link DataClassDetail} object.
      */
-    copyChildDataClass(dataModelId: Uuid, dataClassId: Uuid, otherDataModelId: Uuid, otherDataClassId: Uuid, options?: RequestOptions): any;
+    copyChildDataClass(dataModelId: Uuid, dataClassId: Uuid, otherDataModelId: Uuid, otherDataClassId: Uuid, options?: MdmRequestOptions): any;
     /**
      * `HTTP POST` - Creates a new data class under a chosen data model.
      *
@@ -129,7 +129,7 @@ export declare class MdmDataClassResource extends MdmResource {
      *
      * `200 OK` - will return a {@link DataClassDetailResponse} containing a {@link DataClassDetail} object.
      */
-    save(dataModelId: string, data: DataClass, options?: RequestOptions): any;
+    save(dataModelId: string, data: DataClass, options?: MdmRequestOptions): any;
     /**
      * `HTTP GET` - Request the list of data classes contained within a particular data model.
      *
@@ -142,8 +142,8 @@ export declare class MdmDataClassResource extends MdmResource {
      *
      * @see {@link MdmDataClassResource.get}
      */
-    list(dataModelId: Uuid, query?: QueryParameters, options?: RequestOptions): any;
-    all(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
+    list(dataModelId: Uuid, query?: QueryParameters, options?: MdmRequestOptions): any;
+    all(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
     /**
      * `HTTP DELETE` - Removes an existing data class.
      *
@@ -155,7 +155,7 @@ export declare class MdmDataClassResource extends MdmResource {
      *
      * On success, the response will be a `204 No Content` and the response body will be empty.
      */
-    remove(dataModelId: Uuid, dataClassId: Uuid, query?: QueryParameters, options?: RequestOptions): any;
+    remove(dataModelId: Uuid, dataClassId: Uuid, query?: QueryParameters, options?: MdmRequestOptions): any;
     /**
      * `HTTP PUT` - Updates an existing data class under a chosen data model.
      *
@@ -167,7 +167,7 @@ export declare class MdmDataClassResource extends MdmResource {
      *
      * `200 OK` - will return a {@link DataClassDetailResponse} containing a {@link DataClassDetail} object.
      */
-    update(dataModelId: Uuid, dataClassId: Uuid, data: DataClass, options?: RequestOptions): any;
+    update(dataModelId: Uuid, dataClassId: Uuid, data: DataClass, options?: MdmRequestOptions): any;
     /**
      * `HTTP GET` - Request a data class from a data model.
      *
@@ -179,7 +179,7 @@ export declare class MdmDataClassResource extends MdmResource {
      *
      * `200 OK` - will return a {@link DataClassDetailResponse} containing a {@link DataClassDetail} object.
      */
-    get(dataModelId: Uuid, dataClassId: Uuid, query?: QueryParameters, options?: RequestOptions): any;
+    get(dataModelId: Uuid, dataClassId: Uuid, query?: QueryParameters, options?: MdmRequestOptions): any;
     /**
      * `HTTP POST` - Copies an existing data class from one data model to another target data model.
      *
@@ -191,5 +191,5 @@ export declare class MdmDataClassResource extends MdmResource {
      *
      * `200 OK` - will return a {@link DataClassDetailResponse} containing the new copy of a {@link DataClassDetail} object.
      */
-    copyDataClass(dataModelId: string, otherDataModelId: string, otherDataClassId: string, restHandlerOptions?: RequestOptions): any;
+    copyDataClass(dataModelId: string, otherDataModelId: string, otherDataClassId: string, restHandlerOptions?: MdmRequestOptions): any;
 }

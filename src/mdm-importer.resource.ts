@@ -15,7 +15,7 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { RequestOptions, QueryParameters } from './mdm-common.model';
+import { MdmRequestOptions, QueryParameters } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 
 /**
@@ -24,7 +24,7 @@ import { MdmResource } from './mdm-resource';
  */
 export class MdmImporterResource extends MdmResource {
 
-    get(namespace?, name?, version?, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+    get(namespace?, name?, version?, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
         const url = `${this.apiEndpoint}/importer/parameters${namespace ? `/${namespace}` : ''}${name ? `/${name}` : ''}${version ? `/${version}` : ''}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }

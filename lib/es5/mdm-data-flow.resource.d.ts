@@ -3,7 +3,7 @@ import { MdmResourcesConfiguration } from './mdm-resources-configuration';
 import { MdmDataClassComponentResource } from './mdm-data-class-component.resource';
 import { IMdmRestHandler } from './mdm-rest-handler';
 import { MdmDataElementComponentResource } from './mdm-data-element-component.resource';
-import { RequestOptions, QueryParameters } from './mdm-common.model';
+import { MdmRequestOptions, QueryParameters } from './mdm-common.model';
 /**
  * Controller: dataFlow
  |   GET    | /api/dataFlows/providers/importers                                                                                                                                               | Action: importerProviders
@@ -23,16 +23,16 @@ export declare class MdmDataFlowResource extends MdmResource {
     dataClassComponents: MdmDataClassComponentResource;
     dataElementComponents: MdmDataElementComponentResource;
     constructor(resourcesConfig?: MdmResourcesConfiguration, restHandler?: IMdmRestHandler);
-    importers(queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    exporters(queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    importDataFlows(importerNamespace: any, importerName: any, importerVersion: any, data: any, restHandlerOptions?: RequestOptions): any;
-    exportDataFlows(exporterNamespace: any, exporterName: any, exporterVersion: any, data: any, restHandlerOptions?: RequestOptions): any;
-    updateDiagramLayout(dataModelId: string, dataFlowId: string, data: any, restHandlerOptions?: RequestOptions): any;
-    importDataFlow(dataModelId: string, dataFlowId: string, importerNamespace: any, importerName: any, importerVersion: any, data: any, restHandlerOptions?: RequestOptions): any;
-    exportDataFlow(dataModelId: string, dataFlowId: string, importerNamespace: any, importerName: any, importerVersion: any, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    save(dataModelId: string, data: any, restHandlerOptions?: RequestOptions): any;
-    list(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    remove(dataModelId: string, dataFlowId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    update(dataModelId: string, dataFlowId: string, data: any, restHandlerOptions?: RequestOptions): any;
-    get(dataModelId: string, dataFlowId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
+    importers(queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    exporters(queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    importDataFlows(importerNamespace: any, importerName: any, importerVersion: any, data: any, restHandlerOptions?: MdmRequestOptions): any;
+    exportDataFlows(exporterNamespace: any, exporterName: any, exporterVersion: any, data: any, restHandlerOptions?: MdmRequestOptions): any;
+    updateDiagramLayout(dataModelId: string, dataFlowId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
+    importDataFlow(dataModelId: string, dataFlowId: string, importerNamespace: any, importerName: any, importerVersion: any, data: any, restHandlerOptions?: MdmRequestOptions): any;
+    exportDataFlow(dataModelId: string, dataFlowId: string, importerNamespace: any, importerName: any, importerVersion: any, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    save(dataModelId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
+    list(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    remove(dataModelId: string, dataFlowId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    update(dataModelId: string, dataFlowId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
+    get(dataModelId: string, dataFlowId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
 }

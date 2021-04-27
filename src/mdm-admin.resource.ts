@@ -15,7 +15,7 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { RequestOptions, QueryParameters, Payload, ContainerDomainType, ModelDomainType } from './mdm-common.model';
+import { MdmRequestOptions, QueryParameters, Payload, ContainerDomainType, ModelDomainType } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 
 /**
@@ -90,7 +90,7 @@ export class MdmAdminResource extends MdmResource {
    *}
    * ```
    */
-  status(query?: QueryParameters, options?: RequestOptions) {
+  status(query?: QueryParameters, options?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/admin/status`;
     return this.simpleGet(url, query, options);
   }
@@ -106,7 +106,7 @@ export class MdmAdminResource extends MdmResource {
    *
    * `403 Forbidden` - user is not an administrator.
    */
-  rebuildLuceneIndexes(payload?: Payload, options?: RequestOptions) {
+  rebuildLuceneIndexes(payload?: Payload, options?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/admin/rebuildLuceneIndexes`;
     return this.simplePost(url, payload, options);
   }
@@ -122,7 +122,7 @@ export class MdmAdminResource extends MdmResource {
    *
    * `403 Forbidden` - user is not an administrator.
    */
-  modules(query?: QueryParameters, options?: RequestOptions) {
+  modules(query?: QueryParameters, options?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/admin/modules`;
     return this.simpleGet(url, query, options);
   }
@@ -130,7 +130,7 @@ export class MdmAdminResource extends MdmResource {
   /**
    * @@deprecated Use [[MdmTreeItemResource.deletedModels]] instead.
    */
-  deletedModels(containerDomainType: string | ContainerDomainType, modelDomainType: string | ModelDomainType, query?: QueryParameters, options?: RequestOptions) {
+  deletedModels(containerDomainType: string | ContainerDomainType, modelDomainType: string | ModelDomainType, query?: QueryParameters, options?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/admin/tree/${containerDomainType}/${modelDomainType}/deleted`;
     return this.simpleGet(url, query, options);
   }
@@ -138,7 +138,7 @@ export class MdmAdminResource extends MdmResource {
   /**
    * @@deprecated Use [[MdmTreeItemResource.modelSupersededModels]] instead.
    */
-  modelSupersededModels(containerDomainType: string | ContainerDomainType, modelDomainType: string | ModelDomainType, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+  modelSupersededModels(containerDomainType: string | ContainerDomainType, modelDomainType: string | ModelDomainType, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/admin/tree/${containerDomainType}/${modelDomainType}/modelSuperseded`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
@@ -146,12 +146,12 @@ export class MdmAdminResource extends MdmResource {
   /**
    * @@deprecated Use [[MdmTreeItemResource.documentationSupersededModels]] instead.
    */
-  documentationSupersededModels(containerDomainType: string | ContainerDomainType, modelDomainType: string | ModelDomainType, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+  documentationSupersededModels(containerDomainType: string | ContainerDomainType, modelDomainType: string | ModelDomainType, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/admin/tree/${containerDomainType}/${modelDomainType}/documentationSuperseded`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
 
-  emails(queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+  emails(queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/admin/emails`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
@@ -159,7 +159,7 @@ export class MdmAdminResource extends MdmResource {
   /**
    * @deprecated Use [[MdmSessionResource.activeSessions]] instead.
    */
-  activeSessions(data: any, restHandlerOptions?: RequestOptions) {
+  activeSessions(data: any, restHandlerOptions?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/admin/activeSessions`;
     return this.simpleGet(url, data, restHandlerOptions);
   }

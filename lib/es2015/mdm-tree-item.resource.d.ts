@@ -1,4 +1,4 @@
-import { RequestOptions, QueryParameters, ContainerDomainType, ModelDomainType, Uuid } from './mdm-common.model';
+import { MdmRequestOptions, QueryParameters, ContainerDomainType, ModelDomainType, Uuid } from './mdm-common.model';
 import { TreeItemExpandedQueryParameters, TreeItemListQueryParameters, TreeItemSearchQueryParameters } from './mdm-tree-item.model';
 import { MdmResource } from './mdm-resource';
 /**
@@ -41,7 +41,7 @@ export declare class MdmTreeItemResource extends MdmResource {
      *
      * @description Only models marked as deleted can be returned. Any models _permanantly_ deleted cannot be retrieved.
      */
-    deletedModels(containerDomainType: string | ContainerDomainType, modelDomainType: string | ModelDomainType, query?: QueryParameters, options?: RequestOptions): any;
+    deletedModels(containerDomainType: string | ContainerDomainType, modelDomainType: string | ModelDomainType, query?: QueryParameters, options?: MdmRequestOptions): any;
     /**
      * `HTTP GET` - Request a tree structure of models with a model version that has been superseded. **Note:** this endpoint is only accessible to an administrator.
      *
@@ -55,7 +55,7 @@ export declare class MdmTreeItemResource extends MdmResource {
      *
      * `403 Forbidden` - user is not an administrator.
      */
-    modelSupersededModels(containerDomainType: string | ContainerDomainType, modelDomainType: string | ModelDomainType, query?: QueryParameters, options?: RequestOptions): any;
+    modelSupersededModels(containerDomainType: string | ContainerDomainType, modelDomainType: string | ModelDomainType, query?: QueryParameters, options?: MdmRequestOptions): any;
     /**
      * `HTTP GET` - Request a tree structure of models with a documentation version that has been superseded. **Note:** this endpoint is only accessible to an administrator.
      *
@@ -69,7 +69,7 @@ export declare class MdmTreeItemResource extends MdmResource {
      *
      * `403 Forbidden` - user is not an administrator.
      */
-    documentationSupersededModels(containerDomainType: string | ContainerDomainType, modelDomainType: string | ModelDomainType, query?: QueryParameters, options?: RequestOptions): any;
+    documentationSupersededModels(containerDomainType: string | ContainerDomainType, modelDomainType: string | ModelDomainType, query?: QueryParameters, options?: MdmRequestOptions): any;
     /**
      * `HTTP GET` - Request a full text search against the Mauro model tree.
      *
@@ -83,7 +83,7 @@ export declare class MdmTreeItemResource extends MdmResource {
      *
      * @see {@link TreeItemSearchParameters}
      */
-    search(containerDomainType: string | ContainerDomainType, searchTerm: string, query?: TreeItemSearchQueryParameters, options?: RequestOptions): any;
+    search(containerDomainType: string | ContainerDomainType, searchTerm: string, query?: TreeItemSearchQueryParameters, options?: MdmRequestOptions): any;
     /**
      * `HTTP GET` - Request the top level tree structure of model entities within the Mauro instance.
      *
@@ -96,7 +96,7 @@ export declare class MdmTreeItemResource extends MdmResource {
      *
      * @see {@link MdmTreeItemResource.get}
      */
-    list(containerDomainType: string | ContainerDomainType, query?: TreeItemListQueryParameters, options?: RequestOptions): any;
+    list(containerDomainType: string | ContainerDomainType, query?: TreeItemListQueryParameters, options?: MdmRequestOptions): any;
     /**
      * `HTTP GET` - Request children model entities within the Mauro instance for a given parent entity.
      *
@@ -111,7 +111,7 @@ export declare class MdmTreeItemResource extends MdmResource {
      *
      * @see {@link MdmTreeItemResource.list}
      */
-    get(containerDomainType: string | ContainerDomainType, modelDomainType: string | ModelDomainType, id: Uuid, query?: QueryParameters, options?: RequestOptions): any;
+    get(containerDomainType: string | ContainerDomainType, modelDomainType: string | ModelDomainType, id: Uuid, query?: QueryParameters, options?: MdmRequestOptions): any;
     /**
      * `HTTP GET` - Request the complete expanded tree of an entity in one operation.
      *
@@ -126,5 +126,5 @@ export declare class MdmTreeItemResource extends MdmResource {
      *
      * @see {@link MdmTreeItemResource.list}
      */
-    getExpandedTree(containerDomainType: string | ContainerDomainType, id: Uuid, query?: TreeItemExpandedQueryParameters, options?: RequestOptions): any;
+    getExpandedTree(containerDomainType: string | ContainerDomainType, id: Uuid, query?: TreeItemExpandedQueryParameters, options?: MdmRequestOptions): any;
 }

@@ -15,7 +15,7 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { RequestOptions, QueryParameters } from './mdm-common.model';
+import { MdmRequestOptions, QueryParameters } from './mdm-common.model';
 import { MdmResourcesConfiguration } from './mdm-resources-configuration';
 import { DefaultMdmRestHandler, IMdmRestHandler } from './mdm-rest-handler';
 
@@ -33,7 +33,7 @@ export class MdmResource {
   /**
    * Stores the default options to apply to every REST request.
    */
-  protected defaultRequestOptions: RequestOptions;
+  protected defaultRequestOptions: MdmRequestOptions;
   private restHandler: IMdmRestHandler;
   private resourcesConfig: MdmResourcesConfiguration;
 
@@ -58,8 +58,8 @@ export class MdmResource {
    * @param options Optional REST handler options, if required.
    * @returns The result of the `POST` request.
    */
-  simplePost(url: string, data: any, options?: RequestOptions) {
-    const opts: RequestOptions = { ...this.defaultRequestOptions, body: data, ...options, method: 'POST' };
+  simplePost(url: string, data: any, options?: MdmRequestOptions) {
+    const opts: MdmRequestOptions = { ...this.defaultRequestOptions, body: data, ...options, method: 'POST' };
     return this.simpleRequest(url, {}, opts);
   }
 
@@ -71,8 +71,8 @@ export class MdmResource {
    * @param options Optional REST handler options, if required.
    * @returns The result of the `GET` request.
    */
-  simpleGet(url: string, query: QueryParameters = {}, options?: RequestOptions) {
-    const opts: RequestOptions = { ...this.defaultRequestOptions, ...options, method: 'GET' };
+  simpleGet(url: string, query: QueryParameters = {}, options?: MdmRequestOptions) {
+    const opts: MdmRequestOptions = { ...this.defaultRequestOptions, ...options, method: 'GET' };
     return this.simpleRequest(url, query, opts);
   }
 
@@ -84,8 +84,8 @@ export class MdmResource {
    * @param options Optional REST handler options, if required.
    * @returns The result of the `DELETE` request.
    */
-  simpleDelete(url: string, query: QueryParameters = {}, options?: RequestOptions) {
-    const opts: RequestOptions = { ...this.defaultRequestOptions, ...options, method: 'DELETE' };
+  simpleDelete(url: string, query: QueryParameters = {}, options?: MdmRequestOptions) {
+    const opts: MdmRequestOptions = { ...this.defaultRequestOptions, ...options, method: 'DELETE' };
     return this.simpleRequest(url, query, opts);
   }
 
@@ -97,8 +97,8 @@ export class MdmResource {
    * @param options Optional REST handler options, if required.
    * @returns The result of the `PUT` request.
    */
-  simplePut(url: string, data: any, options?: RequestOptions) {
-    const opts: RequestOptions = { ...this.defaultRequestOptions, body: data, ...options, method: 'PUT' };
+  simplePut(url: string, data: any, options?: MdmRequestOptions) {
+    const opts: MdmRequestOptions = { ...this.defaultRequestOptions, body: data, ...options, method: 'PUT' };
     return this.simpleRequest(url, {}, opts);
   }
 
@@ -116,7 +116,7 @@ export class MdmResource {
    * simpleRequest('http://localhost/api/test', { }, { method: 'GET' });
    * ```
    */
-  simpleRequest(url: string, query: QueryParameters = {}, options?: RequestOptions) {
+  simpleRequest(url: string, query: QueryParameters = {}, options?: MdmRequestOptions) {
     const queryString = this.generateQueryString(query);
     return this.restHandler.process(`${url}${queryString}`, options);
   }

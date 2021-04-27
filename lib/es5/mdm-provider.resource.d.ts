@@ -1,4 +1,4 @@
-import { RequestOptions } from './mdm-common.model';
+import { MdmRequestOptions } from './mdm-common.model';
 import { ProviderQueryParameters } from './mdm-provider.model';
 import { MdmResource } from './mdm-resource';
 /**
@@ -25,7 +25,7 @@ export declare class MdmProviderResource extends MdmResource {
      *
      * `403 Forbidden` - user is not an administrator.
      */
-    exporters(query?: ProviderQueryParameters, options?: RequestOptions): any;
+    exporters(query?: ProviderQueryParameters, options?: MdmRequestOptions): any;
     /**
      * `HTTP GET` - Request a list of all emailers in the current Mauro instance.
      *
@@ -37,7 +37,7 @@ export declare class MdmProviderResource extends MdmResource {
      *
      * `403 Forbidden` - user is not an administrator.
      */
-    emailers(query?: ProviderQueryParameters, options?: RequestOptions): any;
+    emailers(query?: ProviderQueryParameters, options?: MdmRequestOptions): any;
     /**
      * `HTTP GET` - Request a list of all data loaders in the current Mauro instance.
      *
@@ -49,7 +49,7 @@ export declare class MdmProviderResource extends MdmResource {
      *
      * `403 Forbidden` - user is not an administrator.
      */
-    dataLoaders(query?: ProviderQueryParameters, options?: RequestOptions): any;
+    dataLoaders(query?: ProviderQueryParameters, options?: MdmRequestOptions): any;
     /**
      * `HTTP GET` - Request a list of all importers in the current Mauro instance.
      *
@@ -61,5 +61,5 @@ export declare class MdmProviderResource extends MdmResource {
      *
      * `403 Forbidden` - user is not an administrator.
      */
-    importers(query?: ProviderQueryParameters, options?: RequestOptions): any;
+    importers(query?: ProviderQueryParameters, options?: MdmRequestOptions): any;
 }

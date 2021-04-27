@@ -15,7 +15,7 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { RequestOptions, QueryParameters, Uuid } from './mdm-common.model';
+import { MdmRequestOptions, QueryParameters, Uuid } from './mdm-common.model';
 import { DataElement, DataElementIndexParameters } from './mdm-data-element.model';
 import { MdmResource } from './mdm-resource';
 
@@ -36,7 +36,7 @@ import { MdmResource } from './mdm-resource';
  */
 export class MdmDataElementResource extends MdmResource {
 
-  suggestLinks(dataModelId: Uuid, dataClassId: Uuid, dataElementId: Uuid, otherDataModelId: Uuid, query?: QueryParameters, options?: RequestOptions) {
+  suggestLinks(dataModelId: Uuid, dataClassId: Uuid, dataElementId: Uuid, otherDataModelId: Uuid, query?: QueryParameters, options?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/${dataElementId}/suggestLinks/${otherDataModelId}`;
     return this.simpleGet(url, query, options);
   }
@@ -52,7 +52,7 @@ export class MdmDataElementResource extends MdmResource {
    *
    * `200 OK` - will return a {@link DataElementDetailResponse} containing a {@link DataElementDetail} object.
    */
-  save(dataModelId: Uuid, dataClassId: Uuid, data: DataElement, options?: RequestOptions) {
+  save(dataModelId: Uuid, dataClassId: Uuid, data: DataElement, options?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements`;
     return this.simplePost(url, data, options);
   }
@@ -70,12 +70,12 @@ export class MdmDataElementResource extends MdmResource {
    *
    * @see {@link MdmDataElementResource.get}
    */
-  list(dataModelId: Uuid, dataClassId: Uuid, query?: DataElementIndexParameters, options?: RequestOptions) {
+  list(dataModelId: Uuid, dataClassId: Uuid, query?: DataElementIndexParameters, options?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements`;
     return this.simpleGet(url, query, options);
   }
 
-  listWithDataType(dataModelId: Uuid, dataTypeId: Uuid, query?: QueryParameters, options?: RequestOptions) {
+  listWithDataType(dataModelId: Uuid, dataTypeId: Uuid, query?: QueryParameters, options?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataTypes/${dataTypeId}/dataElements`;
     return this.simpleGet(url, query, options);
   }
@@ -92,7 +92,7 @@ export class MdmDataElementResource extends MdmResource {
    *
    * On success, the response will be a `204 No Content` and the response body will be empty.
    */
-  remove(dataModelId: Uuid, dataClassId: Uuid, dataElementId: Uuid, query?: QueryParameters, options?: RequestOptions) {
+  remove(dataModelId: Uuid, dataClassId: Uuid, dataElementId: Uuid, query?: QueryParameters, options?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/${dataElementId}`;
     return this.simpleDelete(url, query, options);
   }
@@ -109,7 +109,7 @@ export class MdmDataElementResource extends MdmResource {
    *
    * `200 OK` - will return a {@link DataElementDetailResponse} containing a {@link DataElementDetail} object.
    */
-  update(dataModelId: Uuid, dataClassId: Uuid, dataElementId: Uuid, data: DataElement, options?: RequestOptions) {
+  update(dataModelId: Uuid, dataClassId: Uuid, dataElementId: Uuid, data: DataElement, options?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/${dataElementId}`;
     return this.simplePut(url, data, options);
   }
@@ -126,7 +126,7 @@ export class MdmDataElementResource extends MdmResource {
    *
    * `200 OK` - will return a {@link DataElementDetailResponse} containing a {@link DataElementDetail} object.
    */
-  get(dataModelId: Uuid, dataClassId: Uuid, dataElementId: Uuid | string, query?: QueryParameters, options?: RequestOptions) {
+  get(dataModelId: Uuid, dataClassId: Uuid, dataElementId: Uuid | string, query?: QueryParameters, options?: MdmRequestOptions) {
     let url = '';
     if (this.isGuid(dataElementId)) {
       url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/${dataElementId}`;
@@ -151,7 +151,7 @@ export class MdmDataElementResource extends MdmResource {
    *
    * `200 OK` - will return a {@link DataElementDetailResponse} containing the new copy of a {@link DataElementDetail} object.
    */
-  copyDataElement(dataModelId: Uuid, dataClassId: Uuid, otherDataModelId: Uuid, otherDataClassId: Uuid, dataElementId: Uuid, options?: RequestOptions) {
+  copyDataElement(dataModelId: Uuid, dataClassId: Uuid, otherDataModelId: Uuid, otherDataClassId: Uuid, dataElementId: Uuid, options?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/${otherDataModelId}/${otherDataClassId}/${dataElementId}`;
     return this.simplePost(url, { }, options);
   }

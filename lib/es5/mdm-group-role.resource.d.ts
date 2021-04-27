@@ -1,4 +1,4 @@
-import { RequestOptions, QueryParameters } from './mdm-common.model';
+import { MdmRequestOptions, QueryParameters } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 /**
  * Controller: groupRole
@@ -11,11 +11,11 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/${securableResourceDomainType}/${securableResourceId}/groupRoles                                               | Action: listGroupRolesAvailableToSecurableResource
  */
 export declare class MdmGroupRoleResource extends MdmResource {
-    save(data: any, restHandlerOptions?: RequestOptions): any;
-    list(queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    applicationGroupRoles(queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    remove(groupRoleId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    update(groupRoleId: string, data: any, restHandlerOptions?: RequestOptions): any;
-    get(groupRoleId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    listForSecurableResource(securableResourceDomainType: any, securableResourceId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
+    save(data: any, restHandlerOptions?: MdmRequestOptions): any;
+    list(queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    applicationGroupRoles(queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    remove(groupRoleId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    update(groupRoleId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
+    get(groupRoleId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    listForSecurableResource(securableResourceDomainType: any, securableResourceId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
 }

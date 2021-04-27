@@ -176,7 +176,7 @@ export type FilterQueryParameters = SortParameters & PageParameters & QueryParam
  *
  * @see [[IMdmRestHandler]]
  */
-export interface RequestOptions {
+export interface MdmRequestOptions {
   [key: string]: any;
 }
 

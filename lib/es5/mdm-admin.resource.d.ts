@@ -1,4 +1,4 @@
-import { RequestOptions, QueryParameters, Payload, ContainerDomainType, ModelDomainType } from './mdm-common.model';
+import { MdmRequestOptions, QueryParameters, Payload, ContainerDomainType, ModelDomainType } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 /**
  * Controller: admin
@@ -71,7 +71,7 @@ export declare class MdmAdminResource extends MdmResource {
      *}
      * ```
      */
-    status(query?: QueryParameters, options?: RequestOptions): any;
+    status(query?: QueryParameters, options?: MdmRequestOptions): any;
     /**
      * `HTTP POST` - Request that Mauro Lucene search indexes are rebuilt.
      *
@@ -83,7 +83,7 @@ export declare class MdmAdminResource extends MdmResource {
      *
      * `403 Forbidden` - user is not an administrator.
      */
-    rebuildLuceneIndexes(payload?: Payload, options?: RequestOptions): any;
+    rebuildLuceneIndexes(payload?: Payload, options?: MdmRequestOptions): any;
     /**
      * `HTTP GET` - Request a list of all loaded modules in the current Mauro instance.
      *
@@ -95,22 +95,22 @@ export declare class MdmAdminResource extends MdmResource {
      *
      * `403 Forbidden` - user is not an administrator.
      */
-    modules(query?: QueryParameters, options?: RequestOptions): any;
+    modules(query?: QueryParameters, options?: MdmRequestOptions): any;
     /**
      * @@deprecated Use [[MdmTreeItemResource.deletedModels]] instead.
      */
-    deletedModels(containerDomainType: string | ContainerDomainType, modelDomainType: string | ModelDomainType, query?: QueryParameters, options?: RequestOptions): any;
+    deletedModels(containerDomainType: string | ContainerDomainType, modelDomainType: string | ModelDomainType, query?: QueryParameters, options?: MdmRequestOptions): any;
     /**
      * @@deprecated Use [[MdmTreeItemResource.modelSupersededModels]] instead.
      */
-    modelSupersededModels(containerDomainType: string | ContainerDomainType, modelDomainType: string | ModelDomainType, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
+    modelSupersededModels(containerDomainType: string | ContainerDomainType, modelDomainType: string | ModelDomainType, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
     /**
      * @@deprecated Use [[MdmTreeItemResource.documentationSupersededModels]] instead.
      */
-    documentationSupersededModels(containerDomainType: string | ContainerDomainType, modelDomainType: string | ModelDomainType, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    emails(queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
+    documentationSupersededModels(containerDomainType: string | ContainerDomainType, modelDomainType: string | ModelDomainType, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    emails(queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
     /**
      * @deprecated Use [[MdmSessionResource.activeSessions]] instead.
      */
-    activeSessions(data: any, restHandlerOptions?: RequestOptions): any;
+    activeSessions(data: any, restHandlerOptions?: MdmRequestOptions): any;
 }

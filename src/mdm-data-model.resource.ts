@@ -15,7 +15,7 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { RequestOptions, QueryParameters, Uuid } from './mdm-common.model';
+import { MdmRequestOptions, QueryParameters, Uuid } from './mdm-common.model';
 import { DataModelCreatePayload, DataModelCreateQueryParameters, DataModelFinalisePayload, DataModelIndexParameters, DataModelRemoveQueryParameters, DataModelUpdatePayload } from './mdm-data-model.model';
 import { MdmResource } from './mdm-resource';
 
@@ -78,17 +78,17 @@ export class MdmDataModelResource extends MdmResource {
    *
    * `200 OK` - will return a {@link DataModelDefaultDataTypesResponse} containing an array of {@link DataTypeProvider} objects.
    */
-  defaultDataTypes(query?: QueryParameters, options?: RequestOptions) {
+  defaultDataTypes(query?: QueryParameters, options?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/dataModels/providers/defaultDataTypeProviders`;
     return this.simpleGet(url, query, options);
   }
 
-  importers(queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+  importers(queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/dataModels/providers/importers`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
 
-  exporters(queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+  exporters(queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/dataModels/providers/exporters`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
@@ -102,72 +102,72 @@ export class MdmDataModelResource extends MdmResource {
    *
    * `200 OK` - will return a {@link DataModelTypesResponse} containing an array of strings.
    */
-  types(query?: QueryParameters, options?: RequestOptions) {
+  types(query?: QueryParameters, options?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/dataModels/types`;
     return this.simpleGet(url, query, options);
   }
 
-  importModels(importerNamespace, importerName, importerVersion, data: any, restHandlerOptions?: RequestOptions) {
+  importModels(importerNamespace, importerName, importerVersion, data: any, restHandlerOptions?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/dataModels/import/${importerNamespace}/${importerName}/${importerVersion}`;
     return this.simplePost(url, data, restHandlerOptions);
   }
 
-  exportModels(exporterNamespace, exporterName, exporterVersion, data: any, restHandlerOptions?: RequestOptions) {
+  exportModels(exporterNamespace, exporterName, exporterVersion, data: any, restHandlerOptions?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/dataModels/export/${exporterNamespace}/${exporterName}/${exporterVersion}`;
     return this.simplePost(url, data, restHandlerOptions);
   }
 
-  removeAllUnusedDataClasses(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+  removeAllUnusedDataClasses(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/clean`;
     return this.simpleDelete(url, queryStringParams, restHandlerOptions);
   }
 
-  removeAllUnusedDataTypes(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+  removeAllUnusedDataTypes(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataTypes/clean`;
     return this.simpleDelete(url, queryStringParams, restHandlerOptions);
   }
 
-  listInFolder(folderId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+  listInFolder(folderId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/folders/${folderId}/dataModels`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
 
-  removeReadByAuthenticated(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+  removeReadByAuthenticated(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/readByAuthenticated`;
     return this.simpleDelete(url, queryStringParams, restHandlerOptions);
   }
 
-  updateReadByAuthenticated(dataModelId: string, data: any, restHandlerOptions?: RequestOptions) {
+  updateReadByAuthenticated(dataModelId: string, data: any, restHandlerOptions?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/readByAuthenticated`;
     return this.simplePut(url, data, restHandlerOptions);
   }
 
-  removeReadByEveryone(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+  removeReadByEveryone(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/readByEveryone`;
     return this.simpleDelete(url, queryStringParams, restHandlerOptions);
   }
 
-  updateReadByEveryone(dataModelId: string, data: any, restHandlerOptions?: RequestOptions) {
+  updateReadByEveryone(dataModelId: string, data: any, restHandlerOptions?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/readByEveryone`;
     return this.simplePut(url, data, restHandlerOptions);
   }
 
-  search(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+  search(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/search`;
     return this.simplePost(url, queryStringParams, restHandlerOptions);
   }
 
-  hierarchy(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+  hierarchy(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/hierarchy`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
 
-  newModelVersion(dataModelId: string, data: any, restHandlerOptions?: RequestOptions) {
+  newModelVersion(dataModelId: string, data: any, restHandlerOptions?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/newModelVersion`;
     return this.simplePut(url, data, restHandlerOptions);
   }
 
-  newDocumentationVersion(dataModelId: string, data: any, restHandlerOptions?: RequestOptions) {
+  newDocumentationVersion(dataModelId: string, data: any, restHandlerOptions?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/newDocumentationVersion`;
     return this.simplePut(url, data, restHandlerOptions);
   }
@@ -182,17 +182,17 @@ export class MdmDataModelResource extends MdmResource {
    *
    * `200 OK` - will return a {@link DataModelDetailResponse} containing a {@link DataModelDetail} object.
    */
-  finalise(dataModelId: Uuid, data: DataModelFinalisePayload, options?: RequestOptions) {
+  finalise(dataModelId: Uuid, data: DataModelFinalisePayload, options?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/finalise`;
     return this.simplePut(url, data, options);
   }
 
-  newBranchModelVersion(dataModelId: string, data: any, restHandlerOptions?: RequestOptions) {
+  newBranchModelVersion(dataModelId: string, data: any, restHandlerOptions?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/newBranchModelVersion`;
     return this.simplePut(url, data, restHandlerOptions);
   }
 
-  newForkModel(dataModelId: string, data: any, restHandlerOptions?: RequestOptions) {
+  newForkModel(dataModelId: string, data: any, restHandlerOptions?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/newForkModel`;
     return this.simplePut(url, data, restHandlerOptions);
   }
@@ -208,33 +208,33 @@ export class MdmDataModelResource extends MdmResource {
    *
    * `200 OK` - will return a {@link DataModelDetailResponse} containing a {@link DataModelDetail} object.
    */
-  addToFolder(folderId: Uuid, data: DataModelCreatePayload, query?: DataModelCreateQueryParameters, options?: RequestOptions) {
+  addToFolder(folderId: Uuid, data: DataModelCreatePayload, query?: DataModelCreateQueryParameters, options?: MdmRequestOptions) {
     const queryString = this.generateQueryString(query);
     const url = `${this.apiEndpoint}/folders/${folderId}/dataModels${queryString}`;
     return this.simplePost(url, data, options);
   }
 
-  updateDataModelInFolder(folderId: string, dataModelId: string, data: any, restHandlerOptions?: RequestOptions) {
+  updateDataModelInFolder(folderId: string, dataModelId: string, data: any, restHandlerOptions?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/folders/${folderId}/dataModels/${dataModelId}`;
     return this.simplePut(url, data, restHandlerOptions);
   }
 
-  moveDataModelToFolder(dataModelId: string, folderId: string, data: any, restHandlerOptions?: RequestOptions) {
+  moveDataModelToFolder(dataModelId: string, folderId: string, data: any, restHandlerOptions?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/folder/${folderId}`;
     return this.simplePut(url, data, restHandlerOptions);
   }
 
-  suggestLinks(dataModelId: string, otherModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+  suggestLinks(dataModelId: string, otherModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/suggestLinks/${otherModelId}`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
 
-  diff(dataModelId: string, otherModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+  diff(dataModelId: string, otherModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/diff/${otherModelId}`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
 
-  exportModel(dataModelId: string, exporterNamespace, exporterName, exporterVersion, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+  exportModel(dataModelId: string, exporterNamespace, exporterName, exporterVersion, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/export/${exporterNamespace}/${exporterName}/${exporterVersion}`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
@@ -250,12 +250,12 @@ export class MdmDataModelResource extends MdmResource {
    *
    * @see {@link MdmDataModelResource.get}
    */
-  list(query?: DataModelIndexParameters, options?: RequestOptions) {
+  list(query?: DataModelIndexParameters, options?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/dataModels`;
     return this.simpleGet(url, query, options);
   }
 
-  removeAll(queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+  removeAll(queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/dataModels`;
     return this.simpleDelete(url, queryStringParams, restHandlerOptions);
   }
@@ -279,7 +279,7 @@ export class MdmDataModelResource extends MdmResource {
    *
    * @see {@link MdmDataModelResource.undoSoftDelete}
    */
-  remove(dataModelId: Uuid, query: DataModelRemoveQueryParameters, options?: RequestOptions) {
+  remove(dataModelId: Uuid, query: DataModelRemoveQueryParameters, options?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}`;
     return this.simpleDelete(url, query, options);
   }
@@ -294,7 +294,7 @@ export class MdmDataModelResource extends MdmResource {
    *
    * `200 OK` - will return a {@link DataModelDetailResponse} containing a {@link DataModelDetail} object.
    */
-  update(dataModelId: Uuid, data: DataModelUpdatePayload, options?: RequestOptions) {
+  update(dataModelId: Uuid, data: DataModelUpdatePayload, options?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}`;
     return this.simplePut(url, data, options);
   }
@@ -309,7 +309,7 @@ export class MdmDataModelResource extends MdmResource {
    *
    * `200 OK` - will return a {@link DataModelDetailResponse} containing a {@link DataModelDetail} object.
    */
-  get(dataModelId: Uuid, query?: QueryParameters, options?: RequestOptions) {
+  get(dataModelId: Uuid, query?: QueryParameters, options?: MdmRequestOptions) {
     let url = '';
     if (this.isGuid(dataModelId)) {
       url = `${this.apiEndpoint}/dataModels/${dataModelId}`;
@@ -320,17 +320,17 @@ export class MdmDataModelResource extends MdmResource {
     return this.simpleGet(url, query, options);
   }
 
-  latestModelVersion(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+  latestModelVersion(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/latestModelVersion`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
 
-  latestFinalisedModel(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+  latestFinalisedModel(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/latestFinalisedModel`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
 
-  modelVersionTree(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+  modelVersionTree(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/modelVersionTree`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
@@ -353,7 +353,7 @@ export class MdmDataModelResource extends MdmResource {
    *
    * @see {@link MdmDataModelResource.remove}
    */
-  undoSoftDelete(dataModelId: Uuid, options?: RequestOptions) {
+  undoSoftDelete(dataModelId: Uuid, options?: MdmRequestOptions) {
     const url = `${this.apiEndpoint}/admin/dataModels/${dataModelId}/undoSoftDelete`;
     return this.simplePut(url, {}, options);
   }

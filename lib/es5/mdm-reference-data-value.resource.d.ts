@@ -1,4 +1,4 @@
-import { RequestOptions, QueryParameters } from './mdm-common.model';
+import { MdmRequestOptions, QueryParameters } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 /**
  * Controller: referenceDataModel
@@ -9,10 +9,10 @@ import { MdmResource } from './mdm-resource';
  |   DELETE | /api/referenceDataModels/${referenceDataModelId}/referenceDataValues/${referenceDataValueId}                                                | Action: delete
  */
 export declare class MdmReferenceDataValueResource extends MdmResource {
-    list(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    get(referenceDataModelId: string, referenceDataValueId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    save(referenceDataModelId: string, data: any, restHandlerOptions?: RequestOptions): any;
-    update(referenceDataModelId: string, referenceDataValueId: string, data: any, restHandlerOptions?: RequestOptions): any;
-    remove(referenceDataModelId: string, referenceDataValueId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions): any;
-    search(referenceDataModelId: string, data: any, restHandlerOptions?: RequestOptions): any;
+    list(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    get(referenceDataModelId: string, referenceDataValueId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    save(referenceDataModelId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
+    update(referenceDataModelId: string, referenceDataValueId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
+    remove(referenceDataModelId: string, referenceDataValueId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    search(referenceDataModelId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
 }

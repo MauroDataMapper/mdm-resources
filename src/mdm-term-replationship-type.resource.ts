@@ -15,7 +15,7 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { RequestOptions, QueryParameters } from './mdm-common.model';
+import { MdmRequestOptions, QueryParameters } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 
 /**
@@ -27,27 +27,27 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/terminologies/${terminologyId}/termRelationshipTypes/${id}
  */
 export class MdmTermRelationshipTypeResource extends MdmResource {
-    save(terminologyId: string, data: any, restHandlerOptions?: RequestOptions) {
+    save(terminologyId: string, data: any, restHandlerOptions?: MdmRequestOptions) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/termRelationshipTypes`;
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    list(terminologyId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+    list(terminologyId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/termRelationshipTypes`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    remove(terminologyId: string, termRelationshipTypeId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+    remove(terminologyId: string, termRelationshipTypeId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/termRelationshipTypes/${termRelationshipTypeId}`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 
-    update(terminologyId: string, termRelationshipTypeId: string, data: any, restHandlerOptions?: RequestOptions) {
+    update(terminologyId: string, termRelationshipTypeId: string, data: any, restHandlerOptions?: MdmRequestOptions) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/termRelationshipTypes/${termRelationshipTypeId}`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    get(terminologyId: string, termRelationshipTypeId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+    get(terminologyId: string, termRelationshipTypeId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/termRelationshipTypes/${termRelationshipTypeId}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }

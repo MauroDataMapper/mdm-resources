@@ -15,7 +15,7 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { QueryParameters, RequestOptions } from './mdm-common.model';
+import { QueryParameters, MdmRequestOptions } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 
 /**
@@ -49,117 +49,117 @@ import { MdmResource } from './mdm-resource';
  */
 export class MdmReferenceDataModelResource extends MdmResource {
 
-    defaultDataTypes(queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+    defaultDataTypes(queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
         const url = `${this.apiEndpoint}/referenceDataModels/providers/defaultDataTypeProviders`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    importers(queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+    importers(queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
         const url = `${this.apiEndpoint}/referenceDataModels/providers/importers`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    exporters(queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+    exporters(queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
         const url = `${this.apiEndpoint}/referenceDataModels/providers/exporters`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    importModels(importerNamespace, importerName, importerVersion, data: any, restHandlerOptions?: RequestOptions) {
+    importModels(importerNamespace, importerName, importerVersion, data: any, restHandlerOptions?: MdmRequestOptions) {
         const url = `${this.apiEndpoint}/referenceDataModels/import/${importerNamespace}/${importerName}/${importerVersion}`;
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    exportModels(exporterNamespace, exporterName, exporterVersion, data: any, restHandlerOptions?: RequestOptions) {
+    exportModels(exporterNamespace, exporterName, exporterVersion, data: any, restHandlerOptions?: MdmRequestOptions) {
         const url = `${this.apiEndpoint}/referenceDataModels/export/${exporterNamespace}/${exporterName}/${exporterVersion}`;
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    removeReadByAuthenticated(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+    removeReadByAuthenticated(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
         const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/readByAuthenticated`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 
-    updateReadByAuthenticated(referenceDataModelId: string, data: any, restHandlerOptions?: RequestOptions) {
+    updateReadByAuthenticated(referenceDataModelId: string, data: any, restHandlerOptions?: MdmRequestOptions) {
         const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/readByAuthenticated`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    removeReadByEveryone(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+    removeReadByEveryone(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
         const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/readByEveryone`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 
-    updateReadByEveryone(referenceDataModelId: string, data: any, restHandlerOptions?: RequestOptions) {
+    updateReadByEveryone(referenceDataModelId: string, data: any, restHandlerOptions?: MdmRequestOptions) {
         const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/readByEveryone`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    search(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+    search(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
         const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/search`;
         return this.simplePost(url, queryStringParams, restHandlerOptions);
     }
 
-    exportModel(referenceDataModelId: string, exporterNamespace, exporterName, exporterVersion, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+    exportModel(referenceDataModelId: string, exporterNamespace, exporterName, exporterVersion, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
         const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/export/${exporterNamespace}/${exporterName}/${exporterVersion}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    list(queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+    list(queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
         const url = `${this.apiEndpoint}/referenceDataModels`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    remove(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+    remove(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
         const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 
-    update(referenceDataModelId: string, data: any, restHandlerOptions?: RequestOptions) {
+    update(referenceDataModelId: string, data: any, restHandlerOptions?: MdmRequestOptions) {
         const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    get(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+    get(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
         const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    moveReferenceDataModelToFolder(referenceDataModelId: string, folderId: string, data: any, restHandlerOptions?: RequestOptions) {
+    moveReferenceDataModelToFolder(referenceDataModelId: string, folderId: string, data: any, restHandlerOptions?: MdmRequestOptions) {
         const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/folder/${folderId}`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    undoSoftDelete(referenceDataModelId: string, restHandlerOptions?: RequestOptions) {
+    undoSoftDelete(referenceDataModelId: string, restHandlerOptions?: MdmRequestOptions) {
         const url = `${this.apiEndpoint}/admin/referenceDataModels/${referenceDataModelId}/undoSoftDelete`;
         return this.simplePut(url, {}, restHandlerOptions);
     }
 
-    finalise(referenceDataModelId: string, data: any, restHandlerOptions?: RequestOptions) {
+    finalise(referenceDataModelId: string, data: any, restHandlerOptions?: MdmRequestOptions) {
         const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/finalise`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    newBranchModelVersion(referenceDataModelId: string, data: any, restHandlerOptions?: RequestOptions) {
+    newBranchModelVersion(referenceDataModelId: string, data: any, restHandlerOptions?: MdmRequestOptions) {
         const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/newBranchModelVersion`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    newForkModel(referenceDataModelId: string, data: any, restHandlerOptions?: RequestOptions) {
+    newForkModel(referenceDataModelId: string, data: any, restHandlerOptions?: MdmRequestOptions) {
         const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/newForkModel`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    latestModelVersion(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+    latestModelVersion(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
         const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/latestModelVersion`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    latestFinalisedModel(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+    latestFinalisedModel(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
         const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/latestFinalisedModel`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    modelVersionTree(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestOptions) {
+    modelVersionTree(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
         const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/modelVersionTree`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
