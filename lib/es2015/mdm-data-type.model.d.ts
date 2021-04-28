@@ -1,4 +1,4 @@
-import { Breadcrumb, Historical, CatalogueItemDomainType, MdmIndexResponse, MdmResponse, Securable, Uuid, Version } from './mdm-common.model';
+import { Breadcrumb, Historical, CatalogueItemDomainType, MdmIndexResponse, MdmResponse, Securable, Uuid, Version, CatalogueItemReference } from './mdm-common.model';
 export interface EnumerationValue {
     index?: number;
     id?: Uuid;
@@ -39,6 +39,7 @@ export interface DataType {
     breadcrumbs?: Breadcrumb[];
     enumerationValues?: EnumerationValue[];
     referenceClass?: ReferenceClass;
+    classifiers?: CatalogueItemReference[];
     [key: string]: any;
 }
 export declare type DataTypeDetail = DataType & Securable & Historical;
