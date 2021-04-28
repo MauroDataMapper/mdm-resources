@@ -1,4 +1,4 @@
-import { MdmRequestOptions, QueryParameters } from './mdm-common.model';
+import { RequestSettings, QueryParameters } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 /**
  * Controller: groupRole
@@ -11,11 +11,11 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/${securableResourceDomainType}/${securableResourceId}/groupRoles                                               | Action: listGroupRolesAvailableToSecurableResource
  */
 export declare class MdmGroupRoleResource extends MdmResource {
-    save(data: any, restHandlerOptions?: MdmRequestOptions): any;
-    list(queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    applicationGroupRoles(queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    remove(groupRoleId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    update(groupRoleId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
-    get(groupRoleId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    listForSecurableResource(securableResourceDomainType: any, securableResourceId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    save(data: any, restHandlerOptions?: RequestSettings): any;
+    list(queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    applicationGroupRoles(queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    remove(groupRoleId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    update(groupRoleId: string, data: any, restHandlerOptions?: RequestSettings): any;
+    get(groupRoleId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    listForSecurableResource(securableResourceDomainType: any, securableResourceId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
 }

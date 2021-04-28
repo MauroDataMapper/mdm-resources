@@ -1,4 +1,4 @@
-import { MdmRequestOptions, QueryParameters, ModelDomainType } from './mdm-common.model';
+import { RequestSettings, QueryParameters, ModelDomainType } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 /**
  * Controller: classifier
@@ -23,23 +23,23 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/${catalogueItemDomainType}/${catalogueItemId}/classifiers/${id}                                  | Action: show
  */
 export declare class MdmClassifierResource extends MdmResource {
-    save(data: any, restHandlerOptions?: MdmRequestOptions): any;
-    saveChildrenOf(classifierId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
-    addToCatalogueItem(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
-    list(queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    listChildrenOf(classifierId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    listCatalogueItemsFor(classifierId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    listForCatalogueItem(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    remove(classifierId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    removeChildOf(classifierId: string, childId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    removeFromCatalogueItem(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, classifierId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    update(classifierId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
-    updateChildOf(classifierId: string, childId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
-    get(classifierId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    getChildOf(classifierId: string, childId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    getFromCatalogueItem(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, classifierId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    removeReadByAuthenticated(classifierId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    updateReadByAuthenticated(classifierId: string, data?: any, restHandlerOptions?: MdmRequestOptions): any;
-    removeReadByEveryone(classifierId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    updateReadByEveryone(classifierId: string, data?: any, restHandlerOptions?: MdmRequestOptions): any;
+    save(data: any, restHandlerOptions?: RequestSettings): any;
+    saveChildrenOf(classifierId: string, data: any, restHandlerOptions?: RequestSettings): any;
+    addToCatalogueItem(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, data: any, restHandlerOptions?: RequestSettings): any;
+    list(queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    listChildrenOf(classifierId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    listCatalogueItemsFor(classifierId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    listForCatalogueItem(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    remove(classifierId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    removeChildOf(classifierId: string, childId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    removeFromCatalogueItem(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, classifierId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    update(classifierId: string, data: any, restHandlerOptions?: RequestSettings): any;
+    updateChildOf(classifierId: string, childId: string, data: any, restHandlerOptions?: RequestSettings): any;
+    get(classifierId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    getChildOf(classifierId: string, childId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    getFromCatalogueItem(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, classifierId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    removeReadByAuthenticated(classifierId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    updateReadByAuthenticated(classifierId: string, data?: any, restHandlerOptions?: RequestSettings): any;
+    removeReadByEveryone(classifierId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    updateReadByEveryone(classifierId: string, data?: any, restHandlerOptions?: RequestSettings): any;
 }

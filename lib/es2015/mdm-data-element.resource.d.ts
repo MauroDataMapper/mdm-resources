@@ -1,4 +1,4 @@
-import { MdmRequestOptions, QueryParameters, Uuid } from './mdm-common.model';
+import { RequestSettings, QueryParameters, Uuid } from './mdm-common.model';
 import { DataElement, DataElementIndexParameters } from './mdm-data-element.model';
 import { MdmResource } from './mdm-resource';
 /**
@@ -16,7 +16,7 @@ import { MdmResource } from './mdm-resource';
  * MDM resource for managing data elements attached to data classes.
  */
 export declare class MdmDataElementResource extends MdmResource {
-    suggestLinks(dataModelId: Uuid, dataClassId: Uuid, dataElementId: Uuid, otherDataModelId: Uuid, query?: QueryParameters, options?: MdmRequestOptions): any;
+    suggestLinks(dataModelId: Uuid, dataClassId: Uuid, dataElementId: Uuid, otherDataModelId: Uuid, query?: QueryParameters, options?: RequestSettings): any;
     /**
      * `HTTP POST` - Creates a new data element under a chosen data class.
      *
@@ -28,7 +28,7 @@ export declare class MdmDataElementResource extends MdmResource {
      *
      * `200 OK` - will return a {@link DataElementDetailResponse} containing a {@link DataElementDetail} object.
      */
-    save(dataModelId: Uuid, dataClassId: Uuid, data: DataElement, options?: MdmRequestOptions): any;
+    save(dataModelId: Uuid, dataClassId: Uuid, data: DataElement, options?: RequestSettings): any;
     /**
      * `HTTP GET` - Request the list of data elements contained within a particular data class.
      *
@@ -42,8 +42,8 @@ export declare class MdmDataElementResource extends MdmResource {
      *
      * @see {@link MdmDataElementResource.get}
      */
-    list(dataModelId: Uuid, dataClassId: Uuid, query?: DataElementIndexParameters, options?: MdmRequestOptions): any;
-    listWithDataType(dataModelId: Uuid, dataTypeId: Uuid, query?: QueryParameters, options?: MdmRequestOptions): any;
+    list(dataModelId: Uuid, dataClassId: Uuid, query?: DataElementIndexParameters, options?: RequestSettings): any;
+    listWithDataType(dataModelId: Uuid, dataTypeId: Uuid, query?: QueryParameters, options?: RequestSettings): any;
     /**
      * `HTTP DELETE` - Removes an existing data element.
      *
@@ -56,7 +56,7 @@ export declare class MdmDataElementResource extends MdmResource {
      *
      * On success, the response will be a `204 No Content` and the response body will be empty.
      */
-    remove(dataModelId: Uuid, dataClassId: Uuid, dataElementId: Uuid, query?: QueryParameters, options?: MdmRequestOptions): any;
+    remove(dataModelId: Uuid, dataClassId: Uuid, dataElementId: Uuid, query?: QueryParameters, options?: RequestSettings): any;
     /**
      * `HTTP PUT` - Updates an existing data element under a chosen data class.
      *
@@ -69,7 +69,7 @@ export declare class MdmDataElementResource extends MdmResource {
      *
      * `200 OK` - will return a {@link DataElementDetailResponse} containing a {@link DataElementDetail} object.
      */
-    update(dataModelId: Uuid, dataClassId: Uuid, dataElementId: Uuid, data: DataElement, options?: MdmRequestOptions): any;
+    update(dataModelId: Uuid, dataClassId: Uuid, dataElementId: Uuid, data: DataElement, options?: RequestSettings): any;
     /**
      * `HTTP GET` - Request a data element from a data class.
      *
@@ -82,7 +82,7 @@ export declare class MdmDataElementResource extends MdmResource {
      *
      * `200 OK` - will return a {@link DataElementDetailResponse} containing a {@link DataElementDetail} object.
      */
-    get(dataModelId: Uuid, dataClassId: Uuid, dataElementId: Uuid | string, query?: QueryParameters, options?: MdmRequestOptions): any;
+    get(dataModelId: Uuid, dataClassId: Uuid, dataElementId: Uuid | string, query?: QueryParameters, options?: RequestSettings): any;
     /**
      * `HTTP POST` - Copies an existing data element from one data class to another target data class.
      *
@@ -96,5 +96,5 @@ export declare class MdmDataElementResource extends MdmResource {
      *
      * `200 OK` - will return a {@link DataElementDetailResponse} containing the new copy of a {@link DataElementDetail} object.
      */
-    copyDataElement(dataModelId: Uuid, dataClassId: Uuid, otherDataModelId: Uuid, otherDataClassId: Uuid, dataElementId: Uuid, options?: MdmRequestOptions): any;
+    copyDataElement(dataModelId: Uuid, dataClassId: Uuid, otherDataModelId: Uuid, otherDataClassId: Uuid, dataElementId: Uuid, options?: RequestSettings): any;
 }

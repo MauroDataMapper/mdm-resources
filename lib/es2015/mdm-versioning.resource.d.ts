@@ -1,4 +1,4 @@
-import { MdmRequestOptions, QueryParameters, ModelDomainType } from './mdm-common.model';
+import { RequestSettings, QueryParameters, ModelDomainType } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 /**
  * Controller: versionLink
@@ -9,10 +9,10 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/${modelDomainType}/${modelId}/availableBranches                                                      | Action: list
  **/
 export declare class MdmVersioningResource extends MdmResource {
-    commonAncestor(modelDomainType: string | ModelDomainType, modelId: string, otherModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    latestVersion(modelDomainType: string | ModelDomainType, modelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    mergeDiff(modelDomainType: string | ModelDomainType, modelId: string, otherModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    currentMainBranch(modelDomainType: string | ModelDomainType, modelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    availableBranches(modelDomainType: string | ModelDomainType, modelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    mergeInto(sourceModelId: string, targetModelId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
+    commonAncestor(modelDomainType: string | ModelDomainType, modelId: string, otherModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    latestVersion(modelDomainType: string | ModelDomainType, modelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    mergeDiff(modelDomainType: string | ModelDomainType, modelId: string, otherModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    currentMainBranch(modelDomainType: string | ModelDomainType, modelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    availableBranches(modelDomainType: string | ModelDomainType, modelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    mergeInto(sourceModelId: string, targetModelId: string, data: any, restHandlerOptions?: RequestSettings): any;
 }

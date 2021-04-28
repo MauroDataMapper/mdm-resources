@@ -1,10 +1,10 @@
-import { MdmRequestOptions } from './mdm-common.model';
+import { RequestSettings } from './mdm-common.model';
 /**
  * Interface to define a REST handler for all `MdmResource` objects to handle HTTP requests/responses.
  *
  * @see [[DefaultMdmRestHandler]]
  */
-export interface IMdmRestHandler {
+export interface MdmRestHandler {
     /**
      * Processes a REST resource request and returns the response and data.
      *
@@ -12,7 +12,7 @@ export interface IMdmRestHandler {
      * @param options The options as part of the request to further control the request.
      * @returns The response from the REST resource request.
      */
-    process(url: string, options: MdmRequestOptions): any;
+    process(url: string, options: RequestSettings): any;
 }
 /**
  * Default implementation of the [[IMdmRestHandler]] interface, using the `fetch` API to
@@ -28,6 +28,6 @@ export interface IMdmRestHandler {
  * handler.process(url, options).then(json => { ... });
  * ```
  */
-export declare class DefaultMdmRestHandler implements IMdmRestHandler {
-    process(url: string, options: MdmRequestOptions): Promise<any>;
+export declare class DefaultMdmRestHandler implements MdmRestHandler {
+    process(url: string, options: RequestSettings): Promise<any>;
 }

@@ -1,4 +1,4 @@
-import { ItemDomainType, MdmResponse, QueryParameters, Uuid } from './mdm-common.model';
+import { CatalogueItemDomainType, MdmResponse, QueryParameters, Uuid } from './mdm-common.model';
 export interface MdmTreeItem {
     id: Uuid;
     label?: string;
@@ -10,7 +10,7 @@ export interface MdmTreeItem {
     isGhost?: boolean;
     modified?: boolean;
     finalised?: boolean;
-    domainType: ItemDomainType;
+    domainType: CatalogueItemDomainType;
     type?: string;
     terminology?: any;
     term?: any;

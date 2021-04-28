@@ -1,4 +1,4 @@
-import { MdmRequestOptions, QueryParameters, ContainerDomainType } from './mdm-common.model';
+import { RequestSettings, QueryParameters, ContainerDomainType } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 /**
  * Controller: userGroup
@@ -29,27 +29,27 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/userGroups/${userGroupId}/securableResourceGroupRoles/${id}                                                    | Action: show
  */
 export declare class MdmUserGroupsResource extends MdmResource {
-    listInApplicationGroupRole(applicationGroupRoleId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    removeFromApplicationGroupRole(applicationGroupRoleId: string, userGroupId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    updateInApplicationGroupRole(applicationGroupRoleId: string, userGroupId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
-    removeUserFromUserGroup(userGroupId: string, catalogueUserId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    updateUserInUserGroup(userGroupId: string, catalogueUserId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
-    save(data: any, restHandlerOptions?: MdmRequestOptions): any;
-    list(queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    remove(userGroupId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    update(userGroupId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
-    get(userGroupId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    listInSecurableResourceUserGroupRole(securableResourceDomainType: any, securableResourceId: string, groupRoleId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    removeUserFromContainerUserGroup(containerDomainType: string | ContainerDomainType, containerId: string, userGroupId: string, catalogueUserId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    updateUserFromContainerUserGroup(containerDomainType: string | ContainerDomainType, containerId: string, userGroupId: string, catalogueUserId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
-    addToContainer(containerDomainType: string | ContainerDomainType, containerId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
-    listInContainer(containerDomainType: string | ContainerDomainType, containerId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    removeFromContainer(containerDomainType: string | ContainerDomainType, containerId: string, userGroupId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    updateInContainer(containerDomainType: string | ContainerDomainType, containerId: string, userGroupId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
-    getFromContainer(containerDomainType: string | ContainerDomainType, containerId: string, userGroupId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    addSecurableResourceGroupRole(userGroupId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
-    securableResourceGroupRoles(userGroupId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    removeSecurableResourceGroupRole(userGroupId: string, securableResourceGroupRoleId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    updateSecurableResourceGroupRole(userGroupId: string, securableResourceGroupRoleId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
-    getSecurableResourceGroupRole(userGroupId: string, securableResourceGroupRoleId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    listInApplicationGroupRole(applicationGroupRoleId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    removeFromApplicationGroupRole(applicationGroupRoleId: string, userGroupId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    updateInApplicationGroupRole(applicationGroupRoleId: string, userGroupId: string, data: any, restHandlerOptions?: RequestSettings): any;
+    removeUserFromUserGroup(userGroupId: string, catalogueUserId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    updateUserInUserGroup(userGroupId: string, catalogueUserId: string, data: any, restHandlerOptions?: RequestSettings): any;
+    save(data: any, restHandlerOptions?: RequestSettings): any;
+    list(queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    remove(userGroupId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    update(userGroupId: string, data: any, restHandlerOptions?: RequestSettings): any;
+    get(userGroupId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    listInSecurableResourceUserGroupRole(securableResourceDomainType: any, securableResourceId: string, groupRoleId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    removeUserFromContainerUserGroup(containerDomainType: string | ContainerDomainType, containerId: string, userGroupId: string, catalogueUserId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    updateUserFromContainerUserGroup(containerDomainType: string | ContainerDomainType, containerId: string, userGroupId: string, catalogueUserId: string, data: any, restHandlerOptions?: RequestSettings): any;
+    addToContainer(containerDomainType: string | ContainerDomainType, containerId: string, data: any, restHandlerOptions?: RequestSettings): any;
+    listInContainer(containerDomainType: string | ContainerDomainType, containerId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    removeFromContainer(containerDomainType: string | ContainerDomainType, containerId: string, userGroupId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    updateInContainer(containerDomainType: string | ContainerDomainType, containerId: string, userGroupId: string, data: any, restHandlerOptions?: RequestSettings): any;
+    getFromContainer(containerDomainType: string | ContainerDomainType, containerId: string, userGroupId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    addSecurableResourceGroupRole(userGroupId: string, data: any, restHandlerOptions?: RequestSettings): any;
+    securableResourceGroupRoles(userGroupId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    removeSecurableResourceGroupRole(userGroupId: string, securableResourceGroupRoleId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    updateSecurableResourceGroupRole(userGroupId: string, securableResourceGroupRoleId: string, data: any, restHandlerOptions?: RequestSettings): any;
+    getSecurableResourceGroupRole(userGroupId: string, securableResourceGroupRoleId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
 }

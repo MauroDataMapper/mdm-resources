@@ -1,10 +1,10 @@
-import { Authority, Branchable, Classifier, ClassifierReference, Historical, ItemDomainType, MdmIndexResponse, MdmResponse, PageParameters, Payload, QueryParameters, Securable, SortParameters, Uuid, Version } from './mdm-common.model';
+import { Authority, Branchable, Classifier, CatalogueItemReference, Historical, CatalogueItemDomainType, MdmIndexResponse, MdmResponse, PageParameters, Payload, QueryParameters, Securable, SortParameters, Uuid, Version } from './mdm-common.model';
 import { DataTypeProvider } from './mdm-data-type.model';
 export declare type DataModelType = 'Data Standard' | 'Data Asset';
 export declare type DataModelIndexParameters = SortParameters & PageParameters & QueryParameters;
 export interface DataModel {
     id?: Uuid;
-    domainType: ItemDomainType;
+    domainType: CatalogueItemDomainType;
     type?: DataModelType;
     authority?: Authority;
     label: string;
@@ -39,7 +39,7 @@ export interface DataModelCreatePayload {
     organisation: string;
     description?: string;
     type: DataModelType;
-    classifiers?: ClassifierReference[];
+    classifiers?: CatalogueItemReference[];
     [key: string]: any;
 }
 export interface DataModelCreateParameters {
@@ -48,7 +48,7 @@ export interface DataModelCreateParameters {
 export declare type DataModelCreateQueryParameters = DataModelCreateParameters & QueryParameters;
 export interface DataModelUpdatePayload {
     id: Uuid;
-    domainType: ItemDomainType;
+    domainType: CatalogueItemDomainType;
     label?: string;
     author?: string;
     organisation?: string;

@@ -15,9 +15,9 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { MdmRequestOptions, QueryParameters } from './mdm-common.model';
+import { RequestSettings, QueryParameters } from './mdm-common.model';
 import { MdmResourcesConfiguration } from './mdm-resources-configuration';
-import { DefaultMdmRestHandler, IMdmRestHandler } from './mdm-rest-handler';
+import { DefaultMdmRestHandler, MdmRestHandler } from './mdm-rest-handler';
 
 /**
  * Superclass for all Mauro resource classes.
@@ -33,8 +33,8 @@ export class MdmResource {
   /**
    * Stores the default options to apply to every REST request.
    */
-  protected defaultRequestOptions: MdmRequestOptions;
-  private restHandler: IMdmRestHandler;
+  protected defaultRequestOptions: RequestSettings;
+  private restHandler: MdmRestHandler;
   private resourcesConfig: MdmResourcesConfiguration;
 
   /**
@@ -43,7 +43,7 @@ export class MdmResource {
    * @param resourcesConfig Optionally provide configuration options to this resource class. If not provided, suitable defaults will be used.
    * @param restHandler Optionally provide a specific [[IMdmRestHandler]]. If not provided, the [[DefaultMdmRestHandler]] implementation will be used.
    */
-  constructor(resourcesConfig?: MdmResourcesConfiguration, restHandler?: IMdmRestHandler) {
+  constructor(resourcesConfig?: MdmResourcesConfiguration, restHandler?: MdmRestHandler) {
     this.resourcesConfig = resourcesConfig || new MdmResourcesConfiguration();
     this.restHandler = restHandler || new DefaultMdmRestHandler();
     this.apiEndpoint = this.resourcesConfig.apiEndpoint;
@@ -58,8 +58,8 @@ export class MdmResource {
    * @param options Optional REST handler options, if required.
    * @returns The result of the `POST` request.
    */
-  simplePost(url: string, data: any, options?: MdmRequestOptions) {
-    const opts: MdmRequestOptions = { ...this.defaultRequestOptions, body: data, ...options, method: 'POST' };
+  simplePost(url: string, data: any, options?: RequestSettings) {
+    const opts: RequestSettings = { ...this.defaultRequestOptions, body: data, ...options, method: 'POST' };
     return this.simpleRequest(url, {}, opts);
   }
 
@@ -71,8 +71,8 @@ export class MdmResource {
    * @param options Optional REST handler options, if required.
    * @returns The result of the `GET` request.
    */
-  simpleGet(url: string, query: QueryParameters = {}, options?: MdmRequestOptions) {
-    const opts: MdmRequestOptions = { ...this.defaultRequestOptions, ...options, method: 'GET' };
+  simpleGet(url: string, query: QueryParameters = {}, options?: RequestSettings) {
+    const opts: RequestSettings = { ...this.defaultRequestOptions, ...options, method: 'GET' };
     return this.simpleRequest(url, query, opts);
   }
 
@@ -84,8 +84,8 @@ export class MdmResource {
    * @param options Optional REST handler options, if required.
    * @returns The result of the `DELETE` request.
    */
-  simpleDelete(url: string, query: QueryParameters = {}, options?: MdmRequestOptions) {
-    const opts: MdmRequestOptions = { ...this.defaultRequestOptions, ...options, method: 'DELETE' };
+  simpleDelete(url: string, query: QueryParameters = {}, options?: RequestSettings) {
+    const opts: RequestSettings = { ...this.defaultRequestOptions, ...options, method: 'DELETE' };
     return this.simpleRequest(url, query, opts);
   }
 
@@ -97,8 +97,8 @@ export class MdmResource {
    * @param options Optional REST handler options, if required.
    * @returns The result of the `PUT` request.
    */
-  simplePut(url: string, data: any, options?: MdmRequestOptions) {
-    const opts: MdmRequestOptions = { ...this.defaultRequestOptions, body: data, ...options, method: 'PUT' };
+  simplePut(url: string, data: any, options?: RequestSettings) {
+    const opts: RequestSettings = { ...this.defaultRequestOptions, body: data, ...options, method: 'PUT' };
     return this.simpleRequest(url, {}, opts);
   }
 
@@ -116,7 +116,7 @@ export class MdmResource {
    * simpleRequest('http://localhost/api/test', { }, { method: 'GET' });
    * ```
    */
-  simpleRequest(url: string, query: QueryParameters = {}, options?: MdmRequestOptions) {
+  simpleRequest(url: string, query: QueryParameters = {}, options?: RequestSettings) {
     const queryString = this.generateQueryString(query);
     return this.restHandler.process(`${url}${queryString}`, options);
   }

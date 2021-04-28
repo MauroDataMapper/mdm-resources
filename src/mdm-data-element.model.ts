@@ -16,14 +16,14 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { Breadcrumb, Historical, ItemDomainType, MdmIndexResponse, MdmResponse, PageParameters, QueryParameters, Securable, SortParameters, Uuid } from './mdm-common.model';
+import { Breadcrumb, Historical, CatalogueItemDomainType, MdmIndexResponse, MdmResponse, PageParameters, QueryParameters, Securable, SortParameters, Uuid } from './mdm-common.model';
 import { DataTypeReference } from './mdm-data-type.model';
 
 export type DataElementIndexParameters = SortParameters & PageParameters & QueryParameters;
 
 export interface DataElement {
   id?: Uuid;
-  domainType: ItemDomainType;
+  domainType: CatalogueItemDomainType;
   label: string;
   description?: string;
   model?: Uuid;

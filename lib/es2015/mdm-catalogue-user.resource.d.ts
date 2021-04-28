@@ -1,4 +1,4 @@
-import { MdmRequestOptions, QueryParameters, ContainerDomainType } from './mdm-common.model';
+import { RequestSettings, QueryParameters, ContainerDomainType } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 /**
  * Controller: catalogueUser
@@ -32,30 +32,30 @@ import { MdmResource } from './mdm-resource';
  |   PUT    | /api/catalogueUsers/${catalogueUserId}/apiKeys/${apiKey}/refresh/${expiresInDays}                                  | Action: Change expiry day
  */
 export declare class MdmCatalogueUserResource extends MdmResource {
-    adminRegister(data: any, restHandlerOptions?: MdmRequestOptions): any;
-    pendingCount(queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    pending(queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    exists(emailAddress: any, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    reject(catalogueUserId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
-    approve(catalogueUserId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
-    adminPasswordReset(catalogueUserId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
-    search(queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    resetPasswordLink(emailAddress: any, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    resetPassword(catalogueUserId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
-    changePassword(catalogueUserId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
-    updateUserPreferences(catalogueUserId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
-    userPreferences(catalogueUserId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    listInUserGroup(userGroupId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    save(data: any, restHandlerOptions?: MdmRequestOptions): any;
-    list(queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    remove(catalogueUserId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    update(catalogueUserId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
-    get(catalogueUserId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    listInContainerUserGroup(containerDomainType: string | ContainerDomainType, containerId: string, userGroupId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    listApiKeys(catalogueUserId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    saveApiKey(catalogueUserId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
-    removeApiKey(catalogueUserId: string, apiKey: string, restHandlerOptions?: MdmRequestOptions): any;
-    enableApiKey(catalogueUserId: string, apiKey: string, restHandlerOptions?: MdmRequestOptions): any;
-    disableApiKey(catalogueUserId: string, apiKey: string, restHandlerOptions?: MdmRequestOptions): any;
-    refreshApiKey(catalogueUserId: string, apiKey: string, noOfDays: number, restHandlerOptions?: MdmRequestOptions): any;
+    adminRegister(data: any, restHandlerOptions?: RequestSettings): any;
+    pendingCount(queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    pending(queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    exists(emailAddress: any, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    reject(catalogueUserId: string, data: any, restHandlerOptions?: RequestSettings): any;
+    approve(catalogueUserId: string, data: any, restHandlerOptions?: RequestSettings): any;
+    adminPasswordReset(catalogueUserId: string, data: any, restHandlerOptions?: RequestSettings): any;
+    search(queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    resetPasswordLink(emailAddress: any, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    resetPassword(catalogueUserId: string, data: any, restHandlerOptions?: RequestSettings): any;
+    changePassword(catalogueUserId: string, data: any, restHandlerOptions?: RequestSettings): any;
+    updateUserPreferences(catalogueUserId: string, data: any, restHandlerOptions?: RequestSettings): any;
+    userPreferences(catalogueUserId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    listInUserGroup(userGroupId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    save(data: any, restHandlerOptions?: RequestSettings): any;
+    list(queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    remove(catalogueUserId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    update(catalogueUserId: string, data: any, restHandlerOptions?: RequestSettings): any;
+    get(catalogueUserId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    listInContainerUserGroup(containerDomainType: string | ContainerDomainType, containerId: string, userGroupId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    listApiKeys(catalogueUserId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    saveApiKey(catalogueUserId: string, data: any, restHandlerOptions?: RequestSettings): any;
+    removeApiKey(catalogueUserId: string, apiKey: string, restHandlerOptions?: RequestSettings): any;
+    enableApiKey(catalogueUserId: string, apiKey: string, restHandlerOptions?: RequestSettings): any;
+    disableApiKey(catalogueUserId: string, apiKey: string, restHandlerOptions?: RequestSettings): any;
+    refreshApiKey(catalogueUserId: string, apiKey: string, noOfDays: number, restHandlerOptions?: RequestSettings): any;
 }

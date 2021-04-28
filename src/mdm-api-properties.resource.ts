@@ -16,7 +16,7 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { MdmRequestOptions, QueryParameters } from './mdm-common.model';
+import { RequestSettings, QueryParameters } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 
 /**
@@ -51,7 +51,7 @@ export class MdmApiPropertyResources extends MdmResource {
      * }
      * ```
      */
-    list(queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any {
+    list(queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any {
         const url = `${this.apiEndpoint}/admin/properties`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
@@ -83,7 +83,7 @@ export class MdmApiPropertyResources extends MdmResource {
      * }
      * ```
      */
-    listPublic(queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any {
+    listPublic(queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any {
         const url = `${this.apiEndpoint}/properties`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
@@ -111,7 +111,7 @@ export class MdmApiPropertyResources extends MdmResource {
      *  }
      * ```
      */
-    get(id: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any {
+    get(id: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any {
         const url = `${this.apiEndpoint}/admin/properties/${id}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
@@ -126,7 +126,7 @@ export class MdmApiPropertyResources extends MdmResource {
      * On success, the response will be a `200 OK` and the response body will be the same as that returned
      * from the `get()` function.
      */
-    save(data: any, restHandlerOptions?: MdmRequestOptions): any {
+    save(data: any, restHandlerOptions?: RequestSettings): any {
         const url = `${this.apiEndpoint}/admin/properties`;
         return this.simplePost(url, data, restHandlerOptions);
     }
@@ -142,7 +142,7 @@ export class MdmApiPropertyResources extends MdmResource {
      * On success, the response will be a `200 OK` and the response body will be the same as that returned
      * from the `get()` function.
      */
-    update(id: string, data: any, restHandlerOptions?: MdmRequestOptions): any {
+    update(id: string, data: any, restHandlerOptions?: RequestSettings): any {
         const url = `${this.apiEndpoint}/admin/properties/${id}`;
         return this.simplePut(url, data, restHandlerOptions);
     }
@@ -157,7 +157,7 @@ export class MdmApiPropertyResources extends MdmResource {
      *
      * On success, the response will be a `204 No Content` and the response body will be empty.
      */
-    remove(id: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any {
+    remove(id: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any {
         const url = `${this.apiEndpoint}/admin/properties/${id}`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }

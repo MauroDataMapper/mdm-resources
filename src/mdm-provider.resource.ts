@@ -15,7 +15,7 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { MdmRequestOptions } from './mdm-common.model';
+import { RequestSettings } from './mdm-common.model';
 import { ProviderQueryParameters } from './mdm-provider.model';
 import { MdmResource } from './mdm-resource';
 
@@ -44,7 +44,7 @@ export class MdmProviderResource extends MdmResource {
    *
    * `403 Forbidden` - user is not an administrator.
    */
-  exporters(query?: ProviderQueryParameters, options?: MdmRequestOptions) {
+  exporters(query?: ProviderQueryParameters, options?: RequestSettings) {
     const url = `${this.apiEndpoint}/admin/providers/exporters`;
     return this.simpleGet(url, query, options);
   }
@@ -60,7 +60,7 @@ export class MdmProviderResource extends MdmResource {
    *
    * `403 Forbidden` - user is not an administrator.
    */
-  emailers(query?: ProviderQueryParameters, options?: MdmRequestOptions) {
+  emailers(query?: ProviderQueryParameters, options?: RequestSettings) {
     const url = `${this.apiEndpoint}/admin/providers/emailers`;
     return this.simpleGet(url, query, options);
   }
@@ -76,7 +76,7 @@ export class MdmProviderResource extends MdmResource {
    *
    * `403 Forbidden` - user is not an administrator.
    */
-  dataLoaders(query?: ProviderQueryParameters, options?: MdmRequestOptions) {
+  dataLoaders(query?: ProviderQueryParameters, options?: RequestSettings) {
     const url = `${this.apiEndpoint}/admin/providers/dataLoaders`;
     return this.simpleGet(url, query, options);
   }
@@ -92,7 +92,7 @@ export class MdmProviderResource extends MdmResource {
    *
    * `403 Forbidden` - user is not an administrator.
    */
-  importers(query?: ProviderQueryParameters, options?: MdmRequestOptions) {
+  importers(query?: ProviderQueryParameters, options?: RequestSettings) {
     const url = `${this.apiEndpoint}/admin/providers/importers`;
     return this.simpleGet(url, query, options);
   }

@@ -1,8 +1,8 @@
-import { Breadcrumb, Historical, ItemDomainType, MdmIndexResponse, MdmResponse, PageParameters, QueryParameters, Securable, SortParameters, Uuid } from './mdm-common.model';
+import { Breadcrumb, Historical, CatalogueItemDomainType, MdmIndexResponse, MdmResponse, PageParameters, QueryParameters, Securable, SortParameters, Uuid } from './mdm-common.model';
 export declare type DataClassIndexParameters = SortParameters & PageParameters & QueryParameters;
 export interface DataClass {
     id?: Uuid;
-    domainType: ItemDomainType;
+    domainType: CatalogueItemDomainType;
     label: string;
     description?: string;
     model?: Uuid;

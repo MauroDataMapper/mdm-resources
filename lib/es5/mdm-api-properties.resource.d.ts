@@ -1,4 +1,4 @@
-import { MdmRequestOptions, QueryParameters } from './mdm-common.model';
+import { RequestSettings, QueryParameters } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 /**
  * MDM resource for managing system properties in the Mauro instance.
@@ -31,7 +31,7 @@ export declare class MdmApiPropertyResources extends MdmResource {
      * }
      * ```
      */
-    list(queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    list(queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
     /**
      * `HTTP GET` - Gets a list of all publicly accessible API properties. Administrator permissions are not required for this API.
      *
@@ -59,7 +59,7 @@ export declare class MdmApiPropertyResources extends MdmResource {
      * }
      * ```
      */
-    listPublic(queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    listPublic(queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
     /**
      * `HTTP GET` - Gets an API property by ID.
      *
@@ -83,7 +83,7 @@ export declare class MdmApiPropertyResources extends MdmResource {
      *  }
      * ```
      */
-    get(id: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    get(id: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
     /**
      * `HTTP POST` - Creates a new API property.
      *
@@ -94,7 +94,7 @@ export declare class MdmApiPropertyResources extends MdmResource {
      * On success, the response will be a `200 OK` and the response body will be the same as that returned
      * from the `get()` function.
      */
-    save(data: any, restHandlerOptions?: MdmRequestOptions): any;
+    save(data: any, restHandlerOptions?: RequestSettings): any;
     /**
      * `HTTP PUT` - Updates an existing API property.
      *
@@ -106,7 +106,7 @@ export declare class MdmApiPropertyResources extends MdmResource {
      * On success, the response will be a `200 OK` and the response body will be the same as that returned
      * from the `get()` function.
      */
-    update(id: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
+    update(id: string, data: any, restHandlerOptions?: RequestSettings): any;
     /**
      * `HTTP DELETE` - Removes an existing API property.
      *
@@ -117,5 +117,5 @@ export declare class MdmApiPropertyResources extends MdmResource {
      *
      * On success, the response will be a `204 No Content` and the response body will be empty.
      */
-    remove(id: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    remove(id: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
 }

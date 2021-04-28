@@ -20,7 +20,7 @@ export declare enum ModelDomainType {
     TERMS = "terms",
     ALL = "all"
 }
-export declare enum ItemDomainType {
+export declare enum CatalogueItemDomainType {
     Folder = "Folder",
     DataModel = "DataModel",
     DataClass = "DataClass",
@@ -30,7 +30,8 @@ export declare enum ItemDomainType {
     CodeSet = "CodeSet",
     Classification = "Classification",
     ReferenceDataModel = "ReferenceDataModel",
-    EnumerationType = "EnumerationType"
+    EnumerationType = "EnumerationType",
+    PrimitiveType = "PrimitiveType"
 }
 /**
  * Represents a response from an [[MdmResource]] API endpoint.
@@ -143,7 +144,7 @@ export declare type FilterQueryParameters = SortParameters & PageParameters & Qu
  *
  * @see [[IMdmRestHandler]]
  */
-export interface MdmRequestOptions {
+export interface RequestSettings {
     [key: string]: any;
 }
 /**
@@ -185,7 +186,7 @@ export interface Branchable {
 export interface Breadcrumb {
     id: Uuid;
     label: string;
-    domainType: ItemDomainType;
+    domainType: CatalogueItemDomainType;
     finalised?: boolean;
 }
 export interface Authority {
@@ -193,8 +194,17 @@ export interface Authority {
     label: string;
     url?: string;
 }
-export interface ClassifierReference {
+/**
+ * Represents a reference to another catalogue item.
+ */
+export interface CatalogueItemReference {
+    /**
+     * The unique identifier of the other catalogue item.
+     */
     id: Uuid;
+    /**
+     * Any additional properties that may optionally be needed for this object.
+     */
     [key: string]: any;
 }
 export interface Classifier extends Historical {

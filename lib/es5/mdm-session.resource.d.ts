@@ -1,11 +1,11 @@
-import { MdmRequestOptions, QueryParameters, Uuid } from './mdm-common.model';
+import { RequestSettings, QueryParameters, Uuid } from './mdm-common.model';
 import { SessionListQueryParameters } from './mdm-session.model';
 import { MdmResource } from './mdm-resource';
 /**
  * MDM resource for managing sessions in Mauro.
  */
 export declare class MdmSessionResource extends MdmResource {
-    keepAlive(query?: QueryParameters, options?: MdmRequestOptions): any;
+    keepAlive(query?: QueryParameters, options?: RequestSettings): any;
     /**
      * `HTTP GET` - Gets a list of all active sessions runnin in Mauro. **Note:** only authenticated administrators may use this endpoint.
      *
@@ -17,7 +17,7 @@ export declare class MdmSessionResource extends MdmResource {
      *
      * `403 Forbidden` - user is not an administrator.
      */
-    activeSessions(query?: SessionListQueryParameters, options?: MdmRequestOptions): any;
+    activeSessions(query?: SessionListQueryParameters, options?: RequestSettings): any;
     /**
      * `HTTP GET` - Confirm if a session has been authenticated.
      *
@@ -30,7 +30,7 @@ export declare class MdmSessionResource extends MdmResource {
      *
      * @see [[MdmSecurityResource.login]]
      */
-    isAuthenticated(sessionId?: Uuid, query?: QueryParameters, options?: MdmRequestOptions): any;
+    isAuthenticated(sessionId?: Uuid, query?: QueryParameters, options?: RequestSettings): any;
     /**
      * `HTTP GET` - Confirm if the current authenticated session has administrative priviledges.
      *
@@ -40,5 +40,5 @@ export declare class MdmSessionResource extends MdmResource {
      *
      * `200 OK` - will return a [[AdminSessionResponse]] containing the [[AdminSessionResult]].
      */
-    isApplicationAdministration(query?: QueryParameters, options?: MdmRequestOptions): any;
+    isApplicationAdministration(query?: QueryParameters, options?: RequestSettings): any;
 }

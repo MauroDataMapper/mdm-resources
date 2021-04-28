@@ -1,4 +1,4 @@
-import { MdmRequestOptions, QueryParameters } from './mdm-common.model';
+import { RequestSettings, QueryParameters } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 /**
  * Controller: referenceDataModel
@@ -9,10 +9,10 @@ import { MdmResource } from './mdm-resource';
  |   DELETE | /api/referenceDataModels/${referenceDataModelId}/referenceDataValues/${referenceDataValueId}                                                | Action: delete
  */
 export declare class MdmReferenceDataValueResource extends MdmResource {
-    list(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    get(referenceDataModelId: string, referenceDataValueId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    save(referenceDataModelId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
-    update(referenceDataModelId: string, referenceDataValueId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
-    remove(referenceDataModelId: string, referenceDataValueId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    search(referenceDataModelId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
+    list(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    get(referenceDataModelId: string, referenceDataValueId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    save(referenceDataModelId: string, data: any, restHandlerOptions?: RequestSettings): any;
+    update(referenceDataModelId: string, referenceDataValueId: string, data: any, restHandlerOptions?: RequestSettings): any;
+    remove(referenceDataModelId: string, referenceDataValueId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    search(referenceDataModelId: string, data: any, restHandlerOptions?: RequestSettings): any;
 }

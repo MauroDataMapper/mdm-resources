@@ -1,4 +1,4 @@
-import { Breadcrumb, Historical, ItemDomainType, MdmIndexResponse, MdmResponse, Securable, Uuid, Version } from './mdm-common.model';
+import { Breadcrumb, Historical, CatalogueItemDomainType, MdmIndexResponse, MdmResponse, Securable, Uuid, Version } from './mdm-common.model';
 export interface EnumerationValue {
     index?: number;
     id?: Uuid;
@@ -8,14 +8,14 @@ export interface EnumerationValue {
 }
 export interface ReferenceClass {
     id: Uuid;
-    domainType?: ItemDomainType;
+    domainType?: CatalogueItemDomainType;
     label?: string;
     model?: Uuid;
     breadcrumbs?: Breadcrumb[];
     parentDataClass?: Uuid;
 }
 export interface DataTypeDescriptor {
-    domainType: ItemDomainType;
+    domainType: CatalogueItemDomainType;
     label: string;
     description?: string;
     [key: string]: any;
@@ -32,7 +32,7 @@ export interface DataTypeReference {
 }
 export interface DataType {
     id?: Uuid;
-    domainType: ItemDomainType;
+    domainType: CatalogueItemDomainType;
     label: string;
     description?: string;
     model?: Uuid;

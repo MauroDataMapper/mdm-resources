@@ -15,7 +15,7 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { MdmRequestOptions, QueryParameters } from './mdm-common.model';
+import { RequestSettings, QueryParameters } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 
 /**
@@ -27,27 +27,27 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/userImageFiles/${id}
  */
 export class MdmUserImageFileResource extends MdmResource {
-    remove(catalogueUserId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
+    remove(catalogueUserId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}/image`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 
-    update(catalogueUserId: string, data?: any, restHandlerOptions?: MdmRequestOptions) {
+    update(catalogueUserId: string, data?: any, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}/image`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    get(catalogueUserId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
+    get(catalogueUserId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}/image`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    save(catalogueUserId: string, data?: any, restHandlerOptions?: MdmRequestOptions) {
+    save(catalogueUserId: string, data?: any, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}/image`;
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    getUserImageFile(userId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
+    getUserImageFile(userId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/userImageFiles/${userId}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }

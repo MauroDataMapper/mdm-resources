@@ -1,4 +1,4 @@
-import { MdmRequestOptions, QueryParameters } from './mdm-common.model';
+import { RequestSettings, QueryParameters } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 /**
  * Controller: userImageFile
@@ -9,9 +9,9 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/userImageFiles/${id}
  */
 export declare class MdmUserImageFileResource extends MdmResource {
-    remove(catalogueUserId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    update(catalogueUserId: string, data?: any, restHandlerOptions?: MdmRequestOptions): any;
-    get(catalogueUserId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    save(catalogueUserId: string, data?: any, restHandlerOptions?: MdmRequestOptions): any;
-    getUserImageFile(userId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    remove(catalogueUserId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    update(catalogueUserId: string, data?: any, restHandlerOptions?: RequestSettings): any;
+    get(catalogueUserId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    save(catalogueUserId: string, data?: any, restHandlerOptions?: RequestSettings): any;
+    getUserImageFile(userId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
 }

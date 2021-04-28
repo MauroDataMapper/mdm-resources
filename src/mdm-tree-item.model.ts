@@ -16,7 +16,7 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { ItemDomainType, MdmResponse, QueryParameters, Uuid } from './mdm-common.model';
+import { CatalogueItemDomainType, MdmResponse, QueryParameters, Uuid } from './mdm-common.model';
 
 export interface MdmTreeItem {
   id: Uuid;
@@ -29,7 +29,7 @@ export interface MdmTreeItem {
   isGhost?: boolean;
   modified?: boolean;
   finalised?: boolean;
-  domainType: ItemDomainType;
+  domainType: CatalogueItemDomainType;
   type?: string;
   terminology?: any;
   term?: any;

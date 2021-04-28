@@ -15,7 +15,7 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { MdmRequestOptions, QueryParameters, Uuid } from './mdm-common.model';
+import { RequestSettings, QueryParameters, Uuid } from './mdm-common.model';
 import { SessionListQueryParameters } from './mdm-session.model';
 import { MdmResource } from './mdm-resource';
 
@@ -23,7 +23,7 @@ import { MdmResource } from './mdm-resource';
  * MDM resource for managing sessions in Mauro.
  */
 export class MdmSessionResource extends MdmResource {
-  keepAlive(query?: QueryParameters, options?: MdmRequestOptions) {
+  keepAlive(query?: QueryParameters, options?: RequestSettings) {
     const url = `${this.apiEndpoint}/session/keepAlive`;
     return this.simpleGet(url, query, options);
   }
@@ -39,7 +39,7 @@ export class MdmSessionResource extends MdmResource {
    *
    * `403 Forbidden` - user is not an administrator.
    */
-  activeSessions(query?: SessionListQueryParameters, options?: MdmRequestOptions) {
+  activeSessions(query?: SessionListQueryParameters, options?: RequestSettings) {
     const url = `${this.apiEndpoint}/admin/activeSessions`;
     return this.simpleGet(url, query, options);
   }
@@ -56,7 +56,7 @@ export class MdmSessionResource extends MdmResource {
    *
    * @see [[MdmSecurityResource.login]]
    */
-  isAuthenticated(sessionId?: Uuid, query?: QueryParameters, options?: MdmRequestOptions) {
+  isAuthenticated(sessionId?: Uuid, query?: QueryParameters, options?: RequestSettings) {
     const url = `${this.apiEndpoint}/session/isAuthenticated${sessionId ? `/${sessionId}` : ''}`;
     return this.simpleGet(url, query, options);
   }
@@ -70,7 +70,7 @@ export class MdmSessionResource extends MdmResource {
    *
    * `200 OK` - will return a [[AdminSessionResponse]] containing the [[AdminSessionResult]].
    */
-  isApplicationAdministration(query?: QueryParameters, options?: MdmRequestOptions) {
+  isApplicationAdministration(query?: QueryParameters, options?: RequestSettings) {
     const url = `${this.apiEndpoint}/session/isApplicationAdministration`;
     return this.simpleGet(url, query, options);
   }

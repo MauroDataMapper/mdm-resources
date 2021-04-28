@@ -16,7 +16,7 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { MdmRequestOptions, QueryParameters } from './mdm-common.model';
+import { RequestSettings, QueryParameters } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 
 /**
@@ -44,7 +44,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
      * }
      * ```
      */
-    get(id: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
+    get(id: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/subscribedCatalogues/${id}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
@@ -74,7 +74,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
      * }
      * ```
      */
-    list(queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
+    list(queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/subscribedCatalogues`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
@@ -88,7 +88,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
      *
      * On success, the response will be a `200 OK`.
      */
-    save(data: any, restHandlerOptions?: MdmRequestOptions) {
+    save(data: any, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/subscribedCatalogues`;
         return this.simplePost(url, data, restHandlerOptions);
     }
@@ -103,7 +103,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
      *
      * On success, the response will be a `200 OK`.
      */
-    update(id: string, data: any, restHandlerOptions?: MdmRequestOptions) {
+    update(id: string, data: any, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/subscribedCatalogues/${id}`;
         return this.simplePut(url, data, restHandlerOptions);
     }
@@ -118,7 +118,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
      *
      * On success, the response will be a `204 No Content` and the response body will be empty.
      */
-    remove(id: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
+    remove(id: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/subscribedCatalogues/${id}`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
@@ -133,7 +133,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
      *
      * On success, the response will be a `200 OK`.
      */
-    listAvailableModels(id: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
+    listAvailableModels(id: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/subscribedCatalogues/${id}/availableModels`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
@@ -148,7 +148,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
      *
      * On success, the response will be a `200 OK`.
      */
-    listSubscribedModels(id: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
+    listSubscribedModels(id: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/subscribedCatalogues/${id}/subscribedModels`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
@@ -162,7 +162,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
      *
      * On success, the response will be a `200 OK`.
      */
-    federate(id: string, restHandlerOptions?: MdmRequestOptions) {
+    federate(id: string, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/subscribedModels/${id}/federate`;
         return this.simplePost(url, null, restHandlerOptions);
     }
@@ -178,7 +178,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
      *
      * On success, the response will be a `200 OK`.
      */
-    getSubscribedModel(catalogueId: string, id: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
+    getSubscribedModel(catalogueId: string, id: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/subscribedCatalogues/${catalogueId}/subscribedModels/${id}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
@@ -193,7 +193,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
      *
      * On success, the response will be a `200 OK`.
      */
-    saveSubscribedModel(catalogueId: string, data: any, restHandlerOptions?: MdmRequestOptions) {
+    saveSubscribedModel(catalogueId: string, data: any, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/subscribedCatalogues/${catalogueId}/subscribedModels`;
         return this.simplePost(url, data, restHandlerOptions);
     }
@@ -209,7 +209,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
      *
      * On success, the response will be a `204 No Content` and the response body will be empty.
      */
-    removeSubscribedModel(catalogueId: string, id: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
+    removeSubscribedModel(catalogueId: string, id: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/subscribedCatalogues/${catalogueId}/subscribedModels/${id}`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }

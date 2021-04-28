@@ -1,4 +1,4 @@
-import { MdmRequestOptions, QueryParameters, Uuid } from './mdm-common.model';
+import { RequestSettings, QueryParameters, Uuid } from './mdm-common.model';
 import { DataModelCreatePayload, DataModelCreateQueryParameters, DataModelFinalisePayload, DataModelIndexParameters, DataModelRemoveQueryParameters, DataModelUpdatePayload } from './mdm-data-model.model';
 import { MdmResource } from './mdm-resource';
 /**
@@ -58,9 +58,9 @@ export declare class MdmDataModelResource extends MdmResource {
      *
      * `200 OK` - will return a {@link DataModelDefaultDataTypesResponse} containing an array of {@link DataTypeProvider} objects.
      */
-    defaultDataTypes(query?: QueryParameters, options?: MdmRequestOptions): any;
-    importers(queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    exporters(queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    defaultDataTypes(query?: QueryParameters, options?: RequestSettings): any;
+    importers(queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    exporters(queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
     /**
      * `HTTP GET` - Request the available types for creating data models.
      *
@@ -70,20 +70,20 @@ export declare class MdmDataModelResource extends MdmResource {
      *
      * `200 OK` - will return a {@link DataModelTypesResponse} containing an array of strings.
      */
-    types(query?: QueryParameters, options?: MdmRequestOptions): any;
-    importModels(importerNamespace: any, importerName: any, importerVersion: any, data: any, restHandlerOptions?: MdmRequestOptions): any;
-    exportModels(exporterNamespace: any, exporterName: any, exporterVersion: any, data: any, restHandlerOptions?: MdmRequestOptions): any;
-    removeAllUnusedDataClasses(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    removeAllUnusedDataTypes(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    listInFolder(folderId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    removeReadByAuthenticated(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    updateReadByAuthenticated(dataModelId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
-    removeReadByEveryone(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    updateReadByEveryone(dataModelId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
-    search(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    hierarchy(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    newModelVersion(dataModelId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
-    newDocumentationVersion(dataModelId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
+    types(query?: QueryParameters, options?: RequestSettings): any;
+    importModels(importerNamespace: any, importerName: any, importerVersion: any, data: any, restHandlerOptions?: RequestSettings): any;
+    exportModels(exporterNamespace: any, exporterName: any, exporterVersion: any, data: any, restHandlerOptions?: RequestSettings): any;
+    removeAllUnusedDataClasses(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    removeAllUnusedDataTypes(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    listInFolder(folderId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    removeReadByAuthenticated(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    updateReadByAuthenticated(dataModelId: string, data: any, restHandlerOptions?: RequestSettings): any;
+    removeReadByEveryone(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    updateReadByEveryone(dataModelId: string, data: any, restHandlerOptions?: RequestSettings): any;
+    search(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    hierarchy(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    newModelVersion(dataModelId: string, data: any, restHandlerOptions?: RequestSettings): any;
+    newDocumentationVersion(dataModelId: string, data: any, restHandlerOptions?: RequestSettings): any;
     /**
      * `HTTP PUT` - Finalise a draft version of a data model to make it final and read-only.
      *
@@ -94,9 +94,9 @@ export declare class MdmDataModelResource extends MdmResource {
      *
      * `200 OK` - will return a {@link DataModelDetailResponse} containing a {@link DataModelDetail} object.
      */
-    finalise(dataModelId: Uuid, data: DataModelFinalisePayload, options?: MdmRequestOptions): any;
-    newBranchModelVersion(dataModelId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
-    newForkModel(dataModelId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
+    finalise(dataModelId: Uuid, data: DataModelFinalisePayload, options?: RequestSettings): any;
+    newBranchModelVersion(dataModelId: string, data: any, restHandlerOptions?: RequestSettings): any;
+    newForkModel(dataModelId: string, data: any, restHandlerOptions?: RequestSettings): any;
     /**
      * `HTTP POST` - Creates a new data model under a chosen folder.
      *
@@ -108,12 +108,12 @@ export declare class MdmDataModelResource extends MdmResource {
      *
      * `200 OK` - will return a {@link DataModelDetailResponse} containing a {@link DataModelDetail} object.
      */
-    addToFolder(folderId: Uuid, data: DataModelCreatePayload, query?: DataModelCreateQueryParameters, options?: MdmRequestOptions): any;
-    updateDataModelInFolder(folderId: string, dataModelId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
-    moveDataModelToFolder(dataModelId: string, folderId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
-    suggestLinks(dataModelId: string, otherModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    diff(dataModelId: string, otherModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    exportModel(dataModelId: string, exporterNamespace: any, exporterName: any, exporterVersion: any, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    addToFolder(folderId: Uuid, data: DataModelCreatePayload, query?: DataModelCreateQueryParameters, options?: RequestSettings): any;
+    updateDataModelInFolder(folderId: string, dataModelId: string, data: any, restHandlerOptions?: RequestSettings): any;
+    moveDataModelToFolder(dataModelId: string, folderId: string, data: any, restHandlerOptions?: RequestSettings): any;
+    suggestLinks(dataModelId: string, otherModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    diff(dataModelId: string, otherModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    exportModel(dataModelId: string, exporterNamespace: any, exporterName: any, exporterVersion: any, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
     /**
      * `HTTP GET` - Request the list of data models.
      *
@@ -125,8 +125,8 @@ export declare class MdmDataModelResource extends MdmResource {
      *
      * @see {@link MdmDataModelResource.get}
      */
-    list(query?: DataModelIndexParameters, options?: MdmRequestOptions): any;
-    removeAll(queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    list(query?: DataModelIndexParameters, options?: RequestSettings): any;
+    removeAll(queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
     /**
      * `HTTP DELETE` - Removes an existing data model, either temporarily or permanently.
      *
@@ -146,7 +146,7 @@ export declare class MdmDataModelResource extends MdmResource {
      *
      * @see {@link MdmDataModelResource.undoSoftDelete}
      */
-    remove(dataModelId: Uuid, query: DataModelRemoveQueryParameters, options?: MdmRequestOptions): any;
+    remove(dataModelId: Uuid, query: DataModelRemoveQueryParameters, options?: RequestSettings): any;
     /**
      * `HTTP PUT` - Updates an existing data model.
      *
@@ -157,7 +157,7 @@ export declare class MdmDataModelResource extends MdmResource {
      *
      * `200 OK` - will return a {@link DataModelDetailResponse} containing a {@link DataModelDetail} object.
      */
-    update(dataModelId: Uuid, data: DataModelUpdatePayload, options?: MdmRequestOptions): any;
+    update(dataModelId: Uuid, data: DataModelUpdatePayload, options?: RequestSettings): any;
     /**
      * `HTTP GET` - Request a data model.
      *
@@ -168,10 +168,10 @@ export declare class MdmDataModelResource extends MdmResource {
      *
      * `200 OK` - will return a {@link DataModelDetailResponse} containing a {@link DataModelDetail} object.
      */
-    get(dataModelId: Uuid, query?: QueryParameters, options?: MdmRequestOptions): any;
-    latestModelVersion(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    latestFinalisedModel(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    modelVersionTree(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    get(dataModelId: Uuid, query?: QueryParameters, options?: RequestSettings): any;
+    latestModelVersion(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    latestFinalisedModel(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    modelVersionTree(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
     /**
      * `HTTP PUT` - Restores a temporarily deleted data model.
      *
@@ -190,5 +190,5 @@ export declare class MdmDataModelResource extends MdmResource {
      *
      * @see {@link MdmDataModelResource.remove}
      */
-    undoSoftDelete(dataModelId: Uuid, options?: MdmRequestOptions): any;
+    undoSoftDelete(dataModelId: Uuid, options?: RequestSettings): any;
 }

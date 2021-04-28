@@ -16,14 +16,14 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { MdmRequestOptions } from './mdm-common.model';
+import { RequestSettings } from './mdm-common.model';
 
 /**
  * Interface to define a REST handler for all `MdmResource` objects to handle HTTP requests/responses.
  *
  * @see [[DefaultMdmRestHandler]]
  */
-export interface IMdmRestHandler {
+export interface MdmRestHandler {
   /**
    * Processes a REST resource request and returns the response and data.
    *
@@ -31,7 +31,7 @@ export interface IMdmRestHandler {
    * @param options The options as part of the request to further control the request.
    * @returns The response from the REST resource request.
    */
-  process(url: string, options: MdmRequestOptions);
+  process(url: string, options: RequestSettings);
 }
 
 /**
@@ -48,8 +48,8 @@ export interface IMdmRestHandler {
  * handler.process(url, options).then(json => { ... });
  * ```
  */
-export class DefaultMdmRestHandler implements IMdmRestHandler {
-  async process(url: string, options: MdmRequestOptions) {
+export class DefaultMdmRestHandler implements MdmRestHandler {
+  async process(url: string, options: RequestSettings) {
     const response = await fetch(url, {
       method: options.method || 'GET',
       headers: options.headers,

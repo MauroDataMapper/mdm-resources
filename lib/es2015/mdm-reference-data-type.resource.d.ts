@@ -1,4 +1,4 @@
-import { MdmRequestOptions, QueryParameters } from './mdm-common.model';
+import { RequestSettings, QueryParameters } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 /**
  * Controller: referenceDataModel
@@ -9,9 +9,9 @@ import { MdmResource } from './mdm-resource';
  |   DELETE | /api/referenceDataModels/${referenceDataModelId}/referenceDataTypes/${referenceDataTypeId}                                                 | Action: delete
  */
 export declare class MdmReferenceDataTypeResource extends MdmResource {
-    list(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    get(referenceDataModelId: string, referenceDataTypeId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
-    save(referenceDataModelId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
-    update(referenceDataModelId: string, referenceDataTypeId: string, data: any, restHandlerOptions?: MdmRequestOptions): any;
-    remove(referenceDataModelId: string, referenceDataTypeId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions): any;
+    list(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    get(referenceDataModelId: string, referenceDataTypeId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    save(referenceDataModelId: string, data: any, restHandlerOptions?: RequestSettings): any;
+    update(referenceDataModelId: string, referenceDataTypeId: string, data: any, restHandlerOptions?: RequestSettings): any;
+    remove(referenceDataModelId: string, referenceDataTypeId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
 }

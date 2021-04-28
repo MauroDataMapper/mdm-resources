@@ -18,9 +18,9 @@ SPDX-License-Identifier: Apache-2.0
 import { MdmResource } from './mdm-resource';
 import { MdmCatalogueItemResource } from './mdm-catalogue-item.resource';
 import { MdmResourcesConfiguration } from './mdm-resources-configuration';
-import { IMdmRestHandler } from './mdm-rest-handler';
+import { MdmRestHandler } from './mdm-rest-handler';
 import { MdmTermResource } from './mdm-term.resource';
-import { MdmRequestOptions, QueryParameters } from './mdm-common.model';
+import { RequestSettings, QueryParameters } from './mdm-common.model';
 
 /**
  * Controller: terminology
@@ -57,93 +57,93 @@ export class MdmTerminologyResource extends MdmResource {
     public terms: MdmTermResource;
     private catalogueItem: MdmCatalogueItemResource;
 
-    constructor(resourcesConfig?: MdmResourcesConfiguration, restHandler?: IMdmRestHandler) {
+    constructor(resourcesConfig?: MdmResourcesConfiguration, restHandler?: MdmRestHandler) {
         super(resourcesConfig, restHandler);
         this.catalogueItem = new MdmCatalogueItemResource(resourcesConfig, restHandler);
         this.terms = new MdmTermResource(resourcesConfig, restHandler);
     }
 
-    importers(queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
+    importers(queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/terminologies/providers/importers`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    exporters(queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
+    exporters(queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/terminologies/providers/exporters`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    importModels(namespace, name, version, data: any, restHandlerOptions?: MdmRequestOptions) {
+    importModels(namespace, name, version, data: any, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/terminologies/import/${namespace}/${name}/${version}`;
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    exportModels(namespace, name, version, data: any, restHandlerOptions?: MdmRequestOptions) {
+    exportModels(namespace, name, version, data: any, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/terminologies/export/${namespace}/${name}/${version}`;
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    newModelVersion(terminologyId: string, data: any, restHandlerOptions?: MdmRequestOptions) {
+    newModelVersion(terminologyId: string, data: any, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/newModelVersion`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    newDocumentationVersion(terminologyId: string, data: any, restHandlerOptions?: MdmRequestOptions) {
+    newDocumentationVersion(terminologyId: string, data: any, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/newDocumentationVersion`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    finalise(terminologyId: string, data: any, restHandlerOptions?: MdmRequestOptions) {
+    finalise(terminologyId: string, data: any, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/finalise`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    newBranchModelVersion(terminologyId: string, data: any, restHandlerOptions?: MdmRequestOptions) {
+    newBranchModelVersion(terminologyId: string, data: any, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/newBranchModelVersion`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    newForkModel(terminologyId: string, data: any, restHandlerOptions?: MdmRequestOptions) {
+    newForkModel(terminologyId: string, data: any, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/newForkModel`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    tree(terminologyId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
+    tree(terminologyId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/tree`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    moveTerminologyToFolder(terminologyId: string, folderId: string, data: any, restHandlerOptions?: MdmRequestOptions) {
+    moveTerminologyToFolder(terminologyId: string, folderId: string, data: any, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/folder/${folderId}`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    diff(terminologyId: string, otherModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
+    diff(terminologyId: string, otherModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/diff/${otherModelId}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    exportModel(terminologyId: string, exporterNamespace, exporterName, exporterVersion, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
+    exportModel(terminologyId: string, exporterNamespace, exporterName, exporterVersion, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/export/${exporterNamespace}/${exporterName}/${exporterVersion}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    list(queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
+    list(queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/terminologies`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    removeAll(queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
+    removeAll(queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/terminologies`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 
-    remove(terminologyId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
+    remove(terminologyId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 
-    update(terminologyId: string, data: any, restHandlerOptions?: MdmRequestOptions) {
+    update(terminologyId: string, data: any, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}`;
         return this.simplePut(url, data, restHandlerOptions);
     }
@@ -154,7 +154,7 @@ export class MdmTerminologyResource extends MdmResource {
     /// <param name="terminologyId">Terminology Id or a path in the format typePrefix:label|typePrefix:label</param>
     /// <param name="queryStringParams">Query String Params</param>
     /// <param name="restHandlerOptions">restHandler Options</param>
-    get(terminologyId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
+    get(terminologyId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
         let url = '';
         if (this.isGuid(terminologyId)) {
             url = `${this.apiEndpoint}/terminologies/${terminologyId}`;
@@ -166,49 +166,49 @@ export class MdmTerminologyResource extends MdmResource {
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    termRelationships(terminologyId: string, termRelationshipTypeId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
+    termRelationships(terminologyId: string, termRelationshipTypeId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/termRelationshipTypes/${termRelationshipTypeId}/termRelationships`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    getTermRelationship(terminologyId: string, termRelationshipTypeId: string, termRelationshipId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
+    getTermRelationship(terminologyId: string, termRelationshipTypeId: string, termRelationshipId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/termRelationshipTypes/${termRelationshipTypeId}/termRelationships/${termRelationshipId}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    removeReadByAuthenticated(terminologyId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
+    removeReadByAuthenticated(terminologyId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/readByAuthenticated`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
-    updateReadByAuthenticated(terminologyId: string, data?, restHandlerOptions?: MdmRequestOptions) {
+    updateReadByAuthenticated(terminologyId: string, data?, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/readByAuthenticated`;
         return this.simplePut(url, data, restHandlerOptions);
     }
-    removeReadByEveryone(terminologyId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
+    removeReadByEveryone(terminologyId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/readByEveryone`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
-    updateReadByEveryone(terminologyId: string, data?, restHandlerOptions?: MdmRequestOptions) {
+    updateReadByEveryone(terminologyId: string, data?, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/readByEveryone`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    latestModelVersion(terminologyId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
+    latestModelVersion(terminologyId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/latestModelVersion`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    latestFinalisedModel(terminologyId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
+    latestFinalisedModel(terminologyId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/latestFinalisedModel`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    modelVersionTree(terminologyId: string, queryStringParams?: QueryParameters, restHandlerOptions?: MdmRequestOptions) {
+    modelVersionTree(terminologyId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/terminologies/${terminologyId}/modelVersionTree`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    undoSoftDelete(terminologyId: string, restHandlerOptions?: MdmRequestOptions) {
+    undoSoftDelete(terminologyId: string, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/admin/terminologies/${terminologyId}/undoSoftDelete`;
         return this.simplePut(url, {}, restHandlerOptions);
     }
