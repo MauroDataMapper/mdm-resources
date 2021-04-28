@@ -41,7 +41,7 @@ export class MdmResource {
    * Constructs a new `MdmResource`.
    *
    * @param resourcesConfig Optionally provide configuration options to this resource class. If not provided, suitable defaults will be used.
-   * @param restHandler Optionally provide a specific [[IMdmRestHandler]]. If not provided, the [[DefaultMdmRestHandler]] implementation will be used.
+   * @param restHandler Optionally provide a specific [[MdmRestHandler]]. If not provided, the [[DefaultMdmRestHandler]] implementation will be used.
    */
   constructor(resourcesConfig?: MdmResourcesConfiguration, restHandler?: MdmRestHandler) {
     this.resourcesConfig = resourcesConfig || new MdmResourcesConfiguration();

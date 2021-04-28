@@ -35,7 +35,7 @@ export interface MdmRestHandler {
 }
 
 /**
- * Default implementation of the [[IMdmRestHandler]] interface, using the `fetch` API to
+ * Default implementation of the [[MdmRestHandler]] interface, using the `fetch` API to
  * complete HTTP requests.
  *
  * By using the `fetch` API, all `process()` return values will become promises
