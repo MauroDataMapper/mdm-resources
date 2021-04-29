@@ -132,7 +132,7 @@ export interface PageParameters {
  */
 export declare type FilterQueryParameters = SortParameters & PageParameters & QueryParameters;
 /**
- * Type to define the options to pass to an [[IMdmRestHandler]] to process
+ * Type to define the options to pass to an [[MdmRestHandler]] to process
  * a resource.
  *
  * This type uses an index signature to provide any property and value to this object, for example:
@@ -147,7 +147,7 @@ export declare type FilterQueryParameters = SortParameters & PageParameters & Qu
  * };
  * ```
  *
- * @see [[IMdmRestHandler]]
+ * @see [[MdmRestHandler]]
  */
 export interface RequestSettings {
     [key: string]: any;

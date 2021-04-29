@@ -16,149 +16,106 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { RequestSettings, QueryParameters } from './mdm-common.model';
+import { ApiProperty } from './mdm-api-properties.model';
+import { RequestSettings, QueryParameters, FilterQueryParameters, Uuid } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 
 /**
- * MDM resource for managing system properties in the Mauro instance.
+ * MDM resource for managing system and user defined properties in Mauro.
+ * 
+ * @description With the exception of the {@link MdmApiPropertyResources.listPublic} endpoint, all these endpoints
+ * require an authenticated administrator to use them.
+ * 
+ * @see {@link ApiProperty}
  */
 export class MdmApiPropertyResources extends MdmResource {
 
-    /**
-     * `HTTP GET` - Gets a list of all API properties.
-     *
-     * @param queryStringParams Optional query string parameters, if required.
-     * @param restHandlerOptions Optional REST handler options, if required.
-     * @returns The result of the `GET` request.
-     *
-     * On success, the response will be a `200 OK` and contain a response body similar to below:
-     *
-     * ```ts
-     * {
-     *  count: 1,
-     *  items: [
-     *      {
-     *          id: 'c7de1358-a4ce-4d72-abca-04013f7f4acc',
-     *          key: 'test.property',
-     *          value: 'test',
-     *          category: 'Test',
-     *          publiclyVisible: false,
-     *          lastUpdatedBy: 'user@test.com',
-     *          createdBy: 'admin@test.com',
-     *          lastUpdated: '2021-03-10T15:17:05.459Z'
-     *      }
-     *  ]
-     * }
-     * ```
-     */
-    list(queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any {
-        const url = `${this.apiEndpoint}/admin/properties`;
-        return this.simpleGet(url, queryStringParams, restHandlerOptions);
-    }
+  /**
+   * `HTTP GET` - Gets a list of all API properties.
+   * @param query Optional query string parameters to filter the list, if required.
+   * @param options Optional REST handler options, if required.
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return a {@link ApiPropertyIndexResponse} containing a list of {@link ApiProperty} items.
+   * 
+   * `403 Forbidden` - user is not an administrator.
+   */
+  list(query?: FilterQueryParameters, options?: RequestSettings): any {
+    const url = `${this.apiEndpoint}/admin/properties`;
+    return this.simpleGet(url, query, options);
+  }
 
-    /**
-     * `HTTP GET` - Gets a list of all publicly accessible API properties. Administrator permissions are not required for this API.
-     *
-     * @param queryStringParams Optional query string parameters, if required.
-     * @param restHandlerOptions Optional REST handler options, if required.
-     * @returns The result of the `GET` request.
-     *
-     * On success, the response will be a `200 OK` and contain a response body similar to below:
-     *
-     * ```ts
-     * {
-     *  count: 1,
-     *  items: [
-     *      {
-     *          id: 'c7de1358-a4ce-4d72-abca-04013f7f4acc',
-     *          key: 'test.property',
-     *          value: 'test',
-     *          category: 'Test',
-     *          publiclyVisible: true,
-     *          lastUpdatedBy: 'user@test.com',
-     *          createdBy: 'admin@test.com',
-     *          lastUpdated: '2021-03-10T15:17:05.459Z'
-     *      }
-     *  ]
-     * }
-     * ```
-     */
-    listPublic(queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any {
-        const url = `${this.apiEndpoint}/properties`;
-        return this.simpleGet(url, queryStringParams, restHandlerOptions);
-    }
+  /**
+   * `HTTP GET` - Gets a list of all publicly accessible API properties. Administrator permissions are _not_ required for this API.
+   * @param query Optional query string parameters, if required.
+   * @param options Optional REST handler options, if required.
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return a {@link ApiPropertyIndexResponse} containing a list of {@link ApiProperty} items.
+   */
+  listPublic(query?: FilterQueryParameters, options?: RequestSettings): any {
+    const url = `${this.apiEndpoint}/properties`;
+    return this.simpleGet(url, query, options);
+  }
 
-    /**
-     * `HTTP GET` - Gets an API property by ID.
-     *
-     * @param id The UUID of the property to get.
-     * @param queryStringParams Optional query string parameters, if required.
-     * @param restHandlerOptions Optional REST handler options, if required.
-     * @returns The result of the `GET` request.
-     *
-     * On success, the response will be a `200 OK` and contain a response body similar to below:
-     *
-     * ```ts
-     *  {
-     *      id: 'c7de1358-a4ce-4d72-abca-04013f7f4acc',
-     *      key: 'test.property',
-     *      value: 'test',
-     *      category: 'Test',
-     *      publiclyVisible: true,
-     *      lastUpdatedBy: 'user@test.com',
-     *      createdBy: 'admin@test.com',
-     *      lastUpdated: '2021-03-10T15:17:05.459Z'
-     *  }
-     * ```
-     */
-    get(id: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any {
-        const url = `${this.apiEndpoint}/admin/properties/${id}`;
-        return this.simpleGet(url, queryStringParams, restHandlerOptions);
-    }
+  /**
+   * `HTTP GET` - Gets an API property by ID.
+   * @param id The unique identifier of the property to get.
+   * @param query Optional query string parameters, if required.
+   * @param options Optional REST handler options, if required.
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return a {@link ApiPropertyResponse} containing a {@link ApiProperty}.
+   * 
+   * `403 Forbidden` - user is not an administrator.
+   */
+  get(id: Uuid, query?: QueryParameters, options?: RequestSettings): any {
+    const url = `${this.apiEndpoint}/admin/properties/${id}`;
+    return this.simpleGet(url, query, options);
+  }
 
-    /**
-     * `HTTP POST` - Creates a new API property.
-     *
-     * @param data The data to use for creation.
-     * @param restHandlerOptions Optional REST handler parameters.
-     * @returns The result of the `POST` request.
-     *
-     * On success, the response will be a `200 OK` and the response body will be the same as that returned
-     * from the `get()` function.
-     */
-    save(data: any, restHandlerOptions?: RequestSettings): any {
-        const url = `${this.apiEndpoint}/admin/properties`;
-        return this.simplePost(url, data, restHandlerOptions);
-    }
+  /**
+   * `HTTP POST` - Creates a new API property.
+   * @param data The data to use for creation.
+   * @param options Optional REST handler parameters.
+   * @returns The result of the `POST` request.
+   *
+   * `200 OK` - will return a {@link ApiPropertyResponse} containing a {@link ApiProperty}.
+   * 
+   * `403 Forbidden` - user is not an administrator.
+   */
+  save(data: ApiProperty, options?: RequestSettings): any {
+    const url = `${this.apiEndpoint}/admin/properties`;
+    return this.simplePost(url, data, options);
+  }
 
-    /**
-     * `HTTP PUT` - Updates an existing API property.
-     *
-     * @param id The UUID of the property to update.
-     * @param data The data to use for the update.
-     * @param restHandlerOptions Optional REST handler options, if required.
-     * @returns The result of the `PUT` request.
-     *
-     * On success, the response will be a `200 OK` and the response body will be the same as that returned
-     * from the `get()` function.
-     */
-    update(id: string, data: any, restHandlerOptions?: RequestSettings): any {
-        const url = `${this.apiEndpoint}/admin/properties/${id}`;
-        return this.simplePut(url, data, restHandlerOptions);
-    }
+  /**
+   * `HTTP PUT` - Updates an existing API property.
+   * @param id The unique identifier of the property to update.
+   * @param data The data to use for the update.
+   * @param options Optional REST handler options, if required.
+   * @returns The result of the `PUT` request.
+   *
+   * `200 OK` - will return a {@link ApiPropertyResponse} containing a {@link ApiProperty}.
+   * 
+   * `403 Forbidden` - user is not an administrator.
+   */
+  update(id: Uuid, data: ApiProperty, options?: RequestSettings): any {
+    const url = `${this.apiEndpoint}/admin/properties/${id}`;
+    return this.simplePut(url, data, options);
+  }
 
-    /**
-     * `HTTP DELETE` - Removes an existing API property.
-     *
-     * @param id The UUID of the property to remove.
-     * @param queryStringParams Optional query string parameters, if required.
-     * @param restHandlerOptions Optional REST handler options, if required.
-     * @returns The result of the `DELETE` request.
-     *
-     * On success, the response will be a `204 No Content` and the response body will be empty.
-     */
-    remove(id: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any {
-        const url = `${this.apiEndpoint}/admin/properties/${id}`;
-        return this.simpleDelete(url, queryStringParams, restHandlerOptions);
-    }
+  /**
+   * `HTTP DELETE` - Removes an existing API property.
+   * @param id The unique identifier of the property to remove.
+   * @param query Optional query string parameters, if required.
+   * @param options Optional REST handler options, if required.
+   * @returns The result of the `DELETE` request.
+   *
+   * On success, the response will be a `204 No Content` and the response body will be empty.
+   */
+  remove(id: Uuid, query?: QueryParameters, options?: RequestSettings): any {
+    const url = `${this.apiEndpoint}/admin/properties/${id}`;
+    return this.simpleDelete(url, query, options);
+  }
 }
