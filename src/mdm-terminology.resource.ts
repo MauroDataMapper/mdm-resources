@@ -18,7 +18,7 @@ SPDX-License-Identifier: Apache-2.0
 import { MdmResource } from './mdm-resource';
 import { RequestSettings, QueryParameters, Uuid, FilterQueryParameters } from './mdm-common.model';
 import { FinalisePayload, ModelRemoveQueryParameters } from './mdm-model-types.model';
-import { TerminologyUpdatePayload } from 'mdm-terminology.model';
+import { TerminologyUpdatePayload } from './mdm-terminology.model';
 
 /**
  * Controller: terminology

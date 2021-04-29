@@ -1,7 +1,7 @@
 import { MdmResource } from './mdm-resource';
 import { RequestSettings, QueryParameters, Uuid, FilterQueryParameters } from './mdm-common.model';
 import { FinalisePayload, ModelRemoveQueryParameters } from './mdm-model-types.model';
-import { TerminologyUpdatePayload } from 'mdm-terminology.model';
+import { TerminologyUpdatePayload } from './mdm-terminology.model';
 /**
  * Controller: terminology
  |   GET    | /api/terminologies/providers/importers                                                                     | Action: importerProviders                       |
