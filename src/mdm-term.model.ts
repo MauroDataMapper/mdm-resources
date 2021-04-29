@@ -17,29 +17,28 @@ SPDX-License-Identifier: Apache-2.0
 */
 
 import { Historical, Securable } from './mdm-model-types.model';
-import { Breadcrumb, CatalogueItemDomainType, MdmIndexResponse, MdmResponse, PageParameters, QueryParameters, SortParameters, Uuid } from './mdm-common.model';
-import { DataTypeReference } from './mdm-data-type.model';
+import { CatalogueItemDomainType, MdmIndexResponse, MdmResponse, Navigatable, Uuid } from './mdm-common.model';
 
-export type DataElementIndexParameters = SortParameters & PageParameters & QueryParameters;
-
-export interface DataElement {
+export interface Term {
   id?: Uuid;
   domainType: CatalogueItemDomainType;
-  label: string;
-  description?: string;
   model?: Uuid;
-  dataClass?: Uuid;
-  dataType?: DataTypeReference;
-  breadcrumbs?: Breadcrumb[];
-  minMultiplicity?: number;
-  maxMultipicity?: number;
+  code: string;
+  definition: string;
+
+  /**
+   * The combination of {@link Term.code} and {@link Term.definition}.
+   */
+  label?: string;
+  
   [key: string]: any;
 }
 
-export type DataElementDetail = 
-  DataElement 
+export type TermDetail = 
+  Term 
+  & Navigatable 
   & Securable 
   & Historical;
 
-export type DataElementIndexResponse = MdmIndexResponse<DataElement>;
-export type DataElementDetailResponse = MdmResponse<DataElementDetail>;
+export type TermIndexResponse = MdmIndexResponse<Term>;
+export type TermDetailResponse = MdmResponse<TermDetail>;

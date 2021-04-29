@@ -16,7 +16,8 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { Breadcrumb, Historical, CatalogueItemDomainType, MdmIndexResponse, MdmResponse, PageParameters, QueryParameters, Securable, SortParameters, Uuid } from './mdm-common.model';
+import { Historical, Securable } from './mdm-model-types.model';
+import { Breadcrumb, CatalogueItemDomainType, MdmIndexResponse, MdmResponse, PageParameters, QueryParameters, SortParameters, Uuid } from './mdm-common.model';
 
 export type DataClassIndexParameters = SortParameters & PageParameters & QueryParameters;
 
@@ -33,7 +34,10 @@ export interface DataClass {
   [key: string]: any;
 }
 
-export type DataClassDetail  = DataClass & Securable & Historical;
+export type DataClassDetail = 
+  DataClass 
+  & Securable 
+  & Historical;
 
 export type DataClassIndexResponse = MdmIndexResponse<DataClass>;
 export type DataClassDetailResponse = MdmResponse<DataClassDetail>;

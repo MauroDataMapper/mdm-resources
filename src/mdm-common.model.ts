@@ -196,36 +196,6 @@ export interface Payload {
   [key: string]: any;
 }
 
-/**
- * Represents a Mauro entity that is securable and has a set of actions defined by the permissions of a user/session.
- */
-export interface Securable {
-  /**
-   * A list of available actions that can be performed on this entity.
-   */
-  availableActions: string[];
-}
-
-/**
- * Represents a Mauro entity that is changed over time.
- */
-export interface Historical {
-  /**
-   * The date and time this entity was last updated.
-   */
-  lastUpdated?: string;
-}
-
-/**
- * Represents a Mauro entity that can be branched for version control.
- */
-export interface Branchable {
-  /**
-   * The name of the branch this entity applies to.
-   */
-  branchName?: string;
-}
-
 export interface Breadcrumb {
   id: Uuid;
   label: string;
@@ -233,10 +203,14 @@ export interface Breadcrumb {
   finalised?: boolean;
 }
 
-export interface Authority {
-  id: Uuid;
-  label: string;
-  url?: string;
+/**
+ * Represents a Mauro entity that can be navigated.
+ */
+export interface Navigatable {
+  /**
+   * The ordered list of breadcrumbs to navigate through the catalogue item chain.
+   */
+  breadcrumbs?: Breadcrumb[];
 }
 
 /**
@@ -254,7 +228,8 @@ export interface CatalogueItemReference {
   [key: string]: any;
 }
 
-export interface Classifier extends Historical {
+export interface Classifier {
   id: Uuid;
   label: string;
+  lastUpdated?: string;
 }

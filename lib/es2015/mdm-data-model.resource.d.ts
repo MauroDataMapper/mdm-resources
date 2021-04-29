@@ -1,5 +1,6 @@
-import { RequestSettings, QueryParameters, Uuid } from './mdm-common.model';
-import { DataModelCreatePayload, DataModelCreateQueryParameters, DataModelFinalisePayload, DataModelIndexParameters, DataModelRemoveQueryParameters, DataModelUpdatePayload } from './mdm-data-model.model';
+import { FinalisePayload, ModelRemoveQueryParameters } from './mdm-model-types.model';
+import { RequestSettings, QueryParameters, Uuid, FilterQueryParameters } from './mdm-common.model';
+import { DataModelCreatePayload, DataModelCreateQueryParameters, DataModelUpdatePayload } from './mdm-data-model.model';
 import { MdmResource } from './mdm-resource';
 /**
  * Controller: dataModel
@@ -94,7 +95,7 @@ export declare class MdmDataModelResource extends MdmResource {
      *
      * `200 OK` - will return a {@link DataModelDetailResponse} containing a {@link DataModelDetail} object.
      */
-    finalise(dataModelId: Uuid, data: DataModelFinalisePayload, options?: RequestSettings): any;
+    finalise(dataModelId: Uuid, data: FinalisePayload, options?: RequestSettings): any;
     newBranchModelVersion(dataModelId: string, data: any, restHandlerOptions?: RequestSettings): any;
     newForkModel(dataModelId: string, data: any, restHandlerOptions?: RequestSettings): any;
     /**
@@ -125,7 +126,7 @@ export declare class MdmDataModelResource extends MdmResource {
      *
      * @see {@link MdmDataModelResource.get}
      */
-    list(query?: DataModelIndexParameters, options?: RequestSettings): any;
+    list(query?: FilterQueryParameters, options?: RequestSettings): any;
     removeAll(queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
     /**
      * `HTTP DELETE` - Removes an existing data model, either temporarily or permanently.
@@ -137,16 +138,16 @@ export declare class MdmDataModelResource extends MdmResource {
      *
      * On success, the response will be a `204 No Content` and the response body will be empty.
      *
-     * @description It is required to pass a {@link DataModelRemoveParameters.permanent} flag to explicitly state whether
+     * @description It is required to pass a {@link ModelRemoveParameters.permanent} flag to explicitly state whether
      * the operation is permanent or not. Setting this to `false` allows the data model to remain in Mauro but hidden; the
      * operation may also be reversed by an administrator using the {@link MdmDataModelResource.undoSoftDelete} endpoint.
      *
-     * If {@link DataModelRemoveParameters.permanent} is set to `true`, then the data model will be permanently deleted with
+     * If {@link ModelRemoveParameters.permanent} is set to `true`, then the data model will be permanently deleted with
      * no method of retrieving it.
      *
      * @see {@link MdmDataModelResource.undoSoftDelete}
      */
-    remove(dataModelId: Uuid, query: DataModelRemoveQueryParameters, options?: RequestSettings): any;
+    remove(dataModelId: Uuid, query: ModelRemoveQueryParameters, options?: RequestSettings): any;
     /**
      * `HTTP PUT` - Updates an existing data model.
      *

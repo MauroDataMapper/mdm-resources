@@ -1,4 +1,5 @@
-import { Breadcrumb, Historical, CatalogueItemDomainType, MdmIndexResponse, MdmResponse, Securable, Uuid, Version, CatalogueItemReference } from './mdm-common.model';
+import { Historical, Securable } from './mdm-model-types.model';
+import { Breadcrumb, CatalogueItemDomainType, MdmIndexResponse, MdmResponse, Uuid, Version, CatalogueItemReference } from './mdm-common.model';
 export interface EnumerationValue {
     index?: number;
     id?: Uuid;
