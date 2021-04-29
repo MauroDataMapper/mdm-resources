@@ -68,6 +68,7 @@ export * from './mdm-edit.resource';
 export * from './mdm-resource';
 export * from './mdm-versioning.resource';
 export * from './mdm-profile.resource';
+export * from './mdm-subscribed-catalogues.model';
 export * from './mdm-subscribed-catalogues.resource';
 export * from './mdm-api-properties.model';
 export * from './mdm-api-properties.resource';
