@@ -7,7 +7,7 @@ export interface CodeSet extends Modelable {
 }
 export declare type CodeSetDetail = CodeSet & ModelableDetail & SecurableModel & Historical & Branchable & Versionable & Finalisable;
 export declare type CodeSetIndexResponse = MdmIndexResponse<CodeSet>;
-export declare type CodeSetDetailResponse = MdmResponse<CodeSet>;
+export declare type CodeSetDetailResponse = MdmResponse<CodeSetDetail>;
 export interface CodeSetCreatePayload extends ModelCreatePayload {
     terms?: CatalogueItemReference[];
 }

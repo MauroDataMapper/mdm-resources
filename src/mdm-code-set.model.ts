@@ -36,7 +36,7 @@ export type CodeSetDetail =
   & Finalisable;
 
 export type CodeSetIndexResponse = MdmIndexResponse<CodeSet>;
-export type CodeSetDetailResponse = MdmResponse<CodeSet>;
+export type CodeSetDetailResponse = MdmResponse<CodeSetDetail>;
 
 export interface CodeSetCreatePayload extends ModelCreatePayload {
   terms?: CatalogueItemReference[];
