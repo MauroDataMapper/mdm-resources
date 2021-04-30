@@ -1,4 +1,4 @@
-import { ContainerUpdatePayload } from './mdm-container-types.model';
+import { ContainerCreatePayload, ContainerUpdatePayload } from './mdm-container-types.model';
 import { RequestSettings, QueryParameters, ModelDomainType, Uuid, FilterQueryParameters } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 import { ModelRemoveQueryParameters } from './mdm-model-types.model';
@@ -37,7 +37,7 @@ export declare class MdmClassifierResource extends MdmResource {
      *
      * `200 OK` - will return a {@link ClassifierDetailResponse} containing a {@link ClassifierDetail} object.
      */
-    save(data: ContainerUpdatePayload, options?: RequestSettings): any;
+    save(data: ContainerCreatePayload, options?: RequestSettings): any;
     /**
      * `HTTP POST` - Creates a new classifier under a chosen classifier.
      *
@@ -48,7 +48,7 @@ export declare class MdmClassifierResource extends MdmResource {
      *
      * `200 OK` - will return a {@link ClassifierDetailResponse} containing a {@link ClassifierDetail} object.
      */
-    saveChildrenOf(classifierId: Uuid, data: ContainerUpdatePayload, options?: RequestSettings): any;
+    saveChildrenOf(classifierId: Uuid, data: ContainerCreatePayload, options?: RequestSettings): any;
     addToCatalogueItem(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, data: any, restHandlerOptions?: RequestSettings): any;
     /**
      * `HTTP GET` - Request the list of classifiers.

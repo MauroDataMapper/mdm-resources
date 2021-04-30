@@ -18,7 +18,7 @@ SPDX-License-Identifier: Apache-2.0
 import { ModelRemoveQueryParameters } from './mdm-model-types.model';
 import { RequestSettings, QueryParameters, FilterQueryParameters, Uuid } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
-import { ContainerUpdatePayload } from './mdm-container-types.model';
+import { ContainerCreatePayload, ContainerUpdatePayload } from './mdm-container-types.model';
 
 /**
  * Controller: folder
@@ -64,7 +64,7 @@ export class MdmFolderResource extends MdmResource {
    *
    * `200 OK` - will return a {@link FolderDetailResponse} containing a {@link FolderDetail} object.
    */
-  save(data: ContainerUpdatePayload, options?: RequestSettings) {
+  save(data: ContainerCreatePayload, options?: RequestSettings) {
     const url = `${this.apiEndpoint}/folders`;
     return this.simplePost(url, data, options);
   }
@@ -79,7 +79,7 @@ export class MdmFolderResource extends MdmResource {
    *
    * `200 OK` - will return a {@link FolderDetailResponse} containing a {@link FolderDetail} object.
    */
-  saveChildrenOf(folderId: Uuid, data: ContainerUpdatePayload, options?: RequestSettings) {
+  saveChildrenOf(folderId: Uuid, data: ContainerCreatePayload, options?: RequestSettings) {
     const url = `${this.apiEndpoint}/folders/${folderId}/folders`;
     return this.simplePost(url, data, options);
   }

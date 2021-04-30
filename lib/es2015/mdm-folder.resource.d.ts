@@ -1,7 +1,7 @@
 import { ModelRemoveQueryParameters } from './mdm-model-types.model';
 import { RequestSettings, QueryParameters, FilterQueryParameters, Uuid } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
-import { ContainerUpdatePayload } from './mdm-container-types.model';
+import { ContainerCreatePayload, ContainerUpdatePayload } from './mdm-container-types.model';
 /**
  * Controller: folder
  |   POST   | /api/folders/${folderId}/folders                                                                      | Action: save
@@ -36,7 +36,7 @@ export declare class MdmFolderResource extends MdmResource {
      *
      * `200 OK` - will return a {@link FolderDetailResponse} containing a {@link FolderDetail} object.
      */
-    save(data: ContainerUpdatePayload, options?: RequestSettings): any;
+    save(data: ContainerCreatePayload, options?: RequestSettings): any;
     /**
      * `HTTP POST` - Creates a new folder under a chosen folder.
      *
@@ -47,7 +47,7 @@ export declare class MdmFolderResource extends MdmResource {
      *
      * `200 OK` - will return a {@link FolderDetailResponse} containing a {@link FolderDetail} object.
      */
-    saveChildrenOf(folderId: Uuid, data: ContainerUpdatePayload, options?: RequestSettings): any;
+    saveChildrenOf(folderId: Uuid, data: ContainerCreatePayload, options?: RequestSettings): any;
     /**
      * `HTTP GET` - Request the list of folders.
      *

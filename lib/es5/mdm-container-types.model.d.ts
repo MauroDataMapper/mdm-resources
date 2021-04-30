@@ -6,6 +6,10 @@ export interface Container {
     description?: string;
     deleted?: boolean;
 }
+export interface ContainerCreatePayload extends Payload {
+    label?: string;
+    description?: string;
+}
 export interface ContainerUpdatePayload extends Payload {
     id: Uuid;
     label?: string;

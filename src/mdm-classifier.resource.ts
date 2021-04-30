@@ -15,7 +15,7 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { ContainerUpdatePayload } from './mdm-container-types.model';
+import { ContainerCreatePayload, ContainerUpdatePayload } from './mdm-container-types.model';
 import { RequestSettings, QueryParameters, ModelDomainType, Uuid, FilterQueryParameters } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 import { ModelRemoveQueryParameters } from './mdm-model-types.model';
@@ -57,7 +57,7 @@ export class MdmClassifierResource extends MdmResource {
    *
    * `200 OK` - will return a {@link ClassifierDetailResponse} containing a {@link ClassifierDetail} object.
    */
-  save(data: ContainerUpdatePayload, options?: RequestSettings) {
+  save(data: ContainerCreatePayload, options?: RequestSettings) {
     const url = `${this.apiEndpoint}/classifiers`;
     return this.simplePost(url, data, options);
   }
@@ -72,7 +72,7 @@ export class MdmClassifierResource extends MdmResource {
    *
    * `200 OK` - will return a {@link ClassifierDetailResponse} containing a {@link ClassifierDetail} object.
    */
-  saveChildrenOf(classifierId: Uuid, data: ContainerUpdatePayload, options?: RequestSettings) {
+  saveChildrenOf(classifierId: Uuid, data: ContainerCreatePayload, options?: RequestSettings) {
     const url = `${this.apiEndpoint}/classifiers/${classifierId}/classifiers`;
     return this.simplePost(url, data, options);
   }
