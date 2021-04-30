@@ -41,6 +41,7 @@ export * from './mdm-session.model';
 export * from './mdm-session.resource';
 export * from './mdm-importer.resource';
 export * from './mdm-data-flow.resource';
+export * from './mdm-folder.model';
 export * from './mdm-folder.resource';
 export * from './mdm-tree-item.model';
 export * from './mdm-tree-item.resource';
