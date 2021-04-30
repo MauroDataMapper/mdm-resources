@@ -17,6 +17,7 @@ export * from './mdm-provider.resource';
 export * from './mdm-data-element.model';
 export * from './mdm-data-element.resource';
 export * from './mdm-catalogue-item.resource';
+export * from './mdm-code-set.model';
 export * from './mdm-code-set.resource';
 export * from './mdm-data-model.model';
 export * from './mdm-data-model.resource';

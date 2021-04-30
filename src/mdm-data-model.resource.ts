@@ -15,9 +15,9 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { FinalisePayload, ModelRemoveQueryParameters } from './mdm-model-types.model';
+import { FinalisePayload, ModelRemoveQueryParameters, ModelUpdatePayload } from './mdm-model-types.model';
 import { RequestSettings, QueryParameters, Uuid, FilterQueryParameters } from './mdm-common.model';
-import { DataModelCreatePayload, DataModelCreateQueryParameters, DataModelUpdatePayload } from './mdm-data-model.model';
+import { DataModelCreatePayload, DataModelCreateQueryParameters } from './mdm-data-model.model';
 import { MdmResource } from './mdm-resource';
 
 /**
@@ -295,7 +295,7 @@ export class MdmDataModelResource extends MdmResource {
    *
    * `200 OK` - will return a {@link DataModelDetailResponse} containing a {@link DataModelDetail} object.
    */
-  update(dataModelId: Uuid, data: DataModelUpdatePayload, options?: RequestSettings) {
+  update(dataModelId: Uuid, data: ModelUpdatePayload, options?: RequestSettings) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}`;
     return this.simplePut(url, data, options);
   }

@@ -16,7 +16,7 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { Branchable, Finalisable, Historical, Modelable, ModelableDetail, SecurableModel, Versionable } from './mdm-model-types.model';
+import { Branchable, Finalisable, Historical, Modelable, ModelableDetail, ModelCreatePayload, SecurableModel, Versionable } from './mdm-model-types.model';
 import { Classifier, CatalogueItemReference, CatalogueItemDomainType, MdmIndexResponse, MdmResponse, PageParameters, QueryParameters, SortParameters, Uuid } from './mdm-common.model';
 import { DataTypeProvider } from './mdm-data-type.model';
 
@@ -40,15 +40,8 @@ export type DataModelDetail =
 export type DataModelIndexResponse = MdmIndexResponse<DataModel>;
 export type DataModelDetailResponse = MdmResponse<DataModelDetail>;
 
-export interface DataModelCreatePayload {
-  folder: Uuid;
-  label: string;
-  author: string;
-  organisation: string;
-  description?: string;
+export interface DataModelCreatePayload extends ModelCreatePayload {  
   type: DataModelType;
-  classifiers?: CatalogueItemReference[];
-  [key: string]: any;
 }
 
 export interface DataModelCreateParameters {
@@ -56,18 +49,6 @@ export interface DataModelCreateParameters {
 }
 
 export type DataModelCreateQueryParameters = DataModelCreateParameters & QueryParameters;
-export interface DataModelUpdatePayload {
-  id: Uuid;
-  domainType: CatalogueItemDomainType;
-  label?: string;
-  author?: string;
-  organisation?: string;
-  description?: string;
-  type?: DataModelType;
-  aliases?: string[];
-  classifiers?: Classifier[];
-  [key: string]: any;
-}
 
 export type DataModelTypesResponse = MdmResponse<string[]>;
 export type DataModelDefaultDataTypesResponse = MdmResponse<DataTypeProvider[]>;

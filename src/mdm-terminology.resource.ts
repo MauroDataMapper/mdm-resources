@@ -17,8 +17,7 @@ SPDX-License-Identifier: Apache-2.0
 */
 import { MdmResource } from './mdm-resource';
 import { RequestSettings, QueryParameters, Uuid, FilterQueryParameters } from './mdm-common.model';
-import { FinalisePayload, ModelRemoveQueryParameters } from './mdm-model-types.model';
-import { TerminologyUpdatePayload } from './mdm-terminology.model';
+import { FinalisePayload, ModelRemoveQueryParameters, ModelUpdatePayload } from './mdm-model-types.model';
 
 /**
  * Controller: terminology
@@ -189,7 +188,7 @@ export class MdmTerminologyResource extends MdmResource {
    *
    * `200 OK` - will return a {@link TerminologyDetailResponse} containing a {@link TerminologyDetail} object.
    */
-  update(terminologyId: Uuid, data: TerminologyUpdatePayload, options?: RequestSettings) {
+  update(terminologyId: Uuid, data: ModelUpdatePayload, options?: RequestSettings) {
     const url = `${this.apiEndpoint}/terminologies/${terminologyId}`;
     return this.simplePut(url, data, options);
   }

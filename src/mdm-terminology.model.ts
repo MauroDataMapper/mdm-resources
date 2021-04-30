@@ -37,14 +37,3 @@ export type TerminologyDetail =
 
 export type TerminologyIndexResponse = MdmIndexResponse<Terminology>;
 export type TerminologyDetailResponse = MdmResponse<TerminologyDetail>;
-
-export interface TerminologyUpdatePayload extends Payload {
-  id: Uuid;
-  domainType: CatalogueItemDomainType;
-  label?: string;
-  author?: string;
-  organisation?: string;
-  description?: string;
-  aliases?: string[];
-  classifiers?: Classifier[];
-}

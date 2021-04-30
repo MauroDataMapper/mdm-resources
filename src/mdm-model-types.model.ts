@@ -16,7 +16,7 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { CatalogueItemDomainType, Classifier, Payload, QueryParameters, Uuid, Version } from './mdm-common.model';
+import { CatalogueItemDomainType, CatalogueItemReference, Classifier, Payload, QueryParameters, Uuid, Version } from './mdm-common.model';
 
 export interface Authority {
   id: Uuid;
@@ -46,6 +46,9 @@ declare const securableActions: readonly [
   'readByAuthenticated'
 ];
 
+/**
+ * Type alias to define available securable actions a catalogue item can perform.
+ */
 export type SecurableAction = typeof securableActions[number];
 
 /**
@@ -54,6 +57,8 @@ export type SecurableAction = typeof securableActions[number];
 export interface Securable {
   /**
    * A list of available actions that can be performed on this entity.
+   * 
+   * @see {@link SecurableAction} - Type definition
    */
   availableActions: SecurableAction[];
 }
@@ -161,4 +166,24 @@ export interface FinalisePayload extends Payload {
    * Set an optional tag name to the finalised version.
    */
   versionTag?: string;
+}
+
+export interface ModelCreatePayload extends Payload {
+  folder: Uuid;
+  label: string;
+  author: string;
+  organisation: string;
+  description?: string;
+  classifiers?: CatalogueItemReference[];
+}
+
+export interface ModelUpdatePayload extends Payload {
+  id: Uuid;
+  domainType: CatalogueItemDomainType;
+  label?: string;
+  author?: string;
+  organisation?: string;
+  description?: string;
+  aliases?: string[];
+  classifiers?: Classifier[];
 }

@@ -1,6 +1,6 @@
-import { FinalisePayload, ModelRemoveQueryParameters } from './mdm-model-types.model';
+import { FinalisePayload, ModelRemoveQueryParameters, ModelUpdatePayload } from './mdm-model-types.model';
 import { RequestSettings, QueryParameters, Uuid, FilterQueryParameters } from './mdm-common.model';
-import { DataModelCreatePayload, DataModelCreateQueryParameters, DataModelUpdatePayload } from './mdm-data-model.model';
+import { DataModelCreatePayload, DataModelCreateQueryParameters } from './mdm-data-model.model';
 import { MdmResource } from './mdm-resource';
 /**
  * Controller: dataModel
@@ -158,7 +158,7 @@ export declare class MdmDataModelResource extends MdmResource {
      *
      * `200 OK` - will return a {@link DataModelDetailResponse} containing a {@link DataModelDetail} object.
      */
-    update(dataModelId: Uuid, data: DataModelUpdatePayload, options?: RequestSettings): any;
+    update(dataModelId: Uuid, data: ModelUpdatePayload, options?: RequestSettings): any;
     /**
      * `HTTP GET` - Request a data model.
      *
