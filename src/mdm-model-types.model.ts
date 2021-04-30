@@ -24,6 +24,30 @@ export interface Authority {
   url?: string;
 }
 
+declare const securableActions: readonly [
+  'show',
+  'update',
+  'changeFolder',
+  'delete',
+  'disable',
+  'index',
+  'save',
+  'comment',
+  'editDescription',
+  'softDelete',
+  'newDocumentationVersion',
+  'newBranchModelVersion',
+  'finalise',
+  'createNewVersions',
+  'newForkModel',
+  'newModelVersion',
+  'mergeInto',
+  'readByEveryone',
+  'readByAuthenticated'
+];
+
+export type SecurableAction = typeof securableActions[number];
+
 /**
  * Represents a Mauro entity that is securable and has a set of actions defined by the permissions of a user/session.
  */
@@ -31,7 +55,7 @@ export interface Securable {
   /**
    * A list of available actions that can be performed on this entity.
    */
-  availableActions: string[];
+  availableActions: SecurableAction[];
 }
 
 /**
