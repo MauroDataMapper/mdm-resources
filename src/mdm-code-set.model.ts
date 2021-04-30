@@ -17,7 +17,7 @@ SPDX-License-Identifier: Apache-2.0
 */
 
 import { CatalogueItemReference, MdmIndexResponse, MdmResponse } from './mdm-common.model';
-import { Branchable, Finalisable, Historical, Modelable, ModelableDetail, ModelCreatePayload, SecurableModel, Versionable } from './mdm-model-types.model';
+import { Branchable, Finalisable, Historical, Modelable, ModelableDetail, ModelCreatePayload, ModelUpdatePayload, SecurableModel, Versionable } from './mdm-model-types.model';
 
 export type CodeSetDataType = 'CodeSet';
 
@@ -39,5 +39,9 @@ export type CodeSetIndexResponse = MdmIndexResponse<CodeSet>;
 export type CodeSetDetailResponse = MdmResponse<CodeSet>;
 
 export interface CodeSetCreatePayload extends ModelCreatePayload {
-  terms: CatalogueItemReference[];
+  terms?: CatalogueItemReference[];
+}
+
+export interface CodeSetUpdatePayload extends ModelUpdatePayload {
+  terms?: CatalogueItemReference[];
 }

@@ -1,7 +1,7 @@
-import { FinalisePayload, ModelRemoveQueryParameters, ModelUpdatePayload } from './mdm-model-types.model';
+import { FinalisePayload, ModelRemoveQueryParameters } from './mdm-model-types.model';
 import { RequestSettings, QueryParameters, Uuid, FilterQueryParameters } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
-import { CodeSetCreatePayload } from 'mdm-code-set.model';
+import { CodeSetCreatePayload, CodeSetUpdatePayload } from './mdm-code-set.model';
 /**
  * Controller: codeSet
  |   GET    | /api/codeSets/providers/importers                                                                          | Action: importerProviders                       |
@@ -118,7 +118,7 @@ export declare class MdmCodeSetResource extends MdmResource {
      *
      * `200 OK` - will return a {@link CodeSetDetailResponse} containing a {@link CodeSetDetail} object.
      */
-    update(codeSetId: Uuid, data: ModelUpdatePayload, options?: RequestSettings): any;
+    update(codeSetId: Uuid, data: CodeSetUpdatePayload, options?: RequestSettings): any;
     /**
      * `HTTP GET` - Request a code set.
      *

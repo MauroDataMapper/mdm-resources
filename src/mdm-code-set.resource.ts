@@ -18,7 +18,7 @@ SPDX-License-Identifier: Apache-2.0
 import { FinalisePayload, ModelRemoveQueryParameters, ModelUpdatePayload } from './mdm-model-types.model';
 import { RequestSettings, QueryParameters, Uuid, FilterQueryParameters } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
-import { CodeSetCreatePayload } from 'mdm-code-set.model';
+import { CodeSetCreatePayload, CodeSetUpdatePayload } from './mdm-code-set.model';
 
 /**
  * Controller: codeSet
@@ -219,7 +219,7 @@ export class MdmCodeSetResource extends MdmResource {
    *
    * `200 OK` - will return a {@link CodeSetDetailResponse} containing a {@link CodeSetDetail} object.
    */
-  update(codeSetId: Uuid, data: ModelUpdatePayload, options?: RequestSettings) {
+  update(codeSetId: Uuid, data: CodeSetUpdatePayload, options?: RequestSettings) {
     const url = `${this.apiEndpoint}/codeSets/${codeSetId}`;
     return this.simplePut(url, data, options);
   }

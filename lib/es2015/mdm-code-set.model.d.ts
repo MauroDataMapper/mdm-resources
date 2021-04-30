@@ -1,5 +1,5 @@
 import { CatalogueItemReference, MdmIndexResponse, MdmResponse } from './mdm-common.model';
-import { Branchable, Finalisable, Historical, Modelable, ModelableDetail, ModelCreatePayload, SecurableModel, Versionable } from './mdm-model-types.model';
+import { Branchable, Finalisable, Historical, Modelable, ModelableDetail, ModelCreatePayload, ModelUpdatePayload, SecurableModel, Versionable } from './mdm-model-types.model';
 export declare type CodeSetDataType = 'CodeSet';
 export interface CodeSet extends Modelable {
     type?: CodeSetDataType;
@@ -9,5 +9,8 @@ export declare type CodeSetDetail = CodeSet & ModelableDetail & SecurableModel &
 export declare type CodeSetIndexResponse = MdmIndexResponse<CodeSet>;
 export declare type CodeSetDetailResponse = MdmResponse<CodeSet>;
 export interface CodeSetCreatePayload extends ModelCreatePayload {
-    terms: CatalogueItemReference[];
+    terms?: CatalogueItemReference[];
+}
+export interface CodeSetUpdatePayload extends ModelUpdatePayload {
+    terms?: CatalogueItemReference[];
 }
