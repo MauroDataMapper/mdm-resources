@@ -189,8 +189,3 @@ export interface CatalogueItemReference {
      */
     [key: string]: any;
 }
-export interface Classifier {
-    id: Uuid;
-    label: string;
-    lastUpdated?: string;
-}

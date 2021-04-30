@@ -18,7 +18,7 @@ SPDX-License-Identifier: Apache-2.0
 import { ModelRemoveQueryParameters } from './mdm-model-types.model';
 import { RequestSettings, QueryParameters, FilterQueryParameters, Uuid } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
-import { FolderUpdatePayload } from './mdm-folder.model';
+import { ContainerUpdatePayload } from './mdm-container-types.model';
 
 /**
  * Controller: folder
@@ -45,7 +45,7 @@ import { FolderUpdatePayload } from './mdm-folder.model';
  */
 export class MdmFolderResource extends MdmResource {
 
-  search(folderId: string, data: any, restHandlerOptions?: RequestSettings) {
+  search(folderId: Uuid, data: any, restHandlerOptions?: RequestSettings) {
     const url = `${this.apiEndpoint}/folders/${folderId}/search`;
     return this.simplePost(url, data, restHandlerOptions);
   }
@@ -55,14 +55,33 @@ export class MdmFolderResource extends MdmResource {
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
 
-  save(data: any, restHandlerOptions?: RequestSettings) {
+  /**
+   * `HTTP POST` - Creates a new root folder.
+   *
+   * @param data The payload of the request containing all the details for the folder to create.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `POST` request.
+   *
+   * `200 OK` - will return a {@link FolderDetailResponse} containing a {@link FolderDetail} object.
+   */
+  save(data: ContainerUpdatePayload, options?: RequestSettings) {
     const url = `${this.apiEndpoint}/folders`;
-    return this.simplePost(url, data, restHandlerOptions);
+    return this.simplePost(url, data, options);
   }
 
-  saveChildrenOf(folderId: string, data: any, restHandlerOptions?: RequestSettings) {
+  /**
+   * `HTTP POST` - Creates a new folder under a chosen folder.
+   *
+   * @param folderId The unique identifier of the folder to create the folder under.
+   * @param data The payload of the request containing all the details for the folder to create.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `POST` request.
+   *
+   * `200 OK` - will return a {@link FolderDetailResponse} containing a {@link FolderDetail} object.
+   */
+  saveChildrenOf(folderId: Uuid, data: ContainerUpdatePayload, options?: RequestSettings) {
     const url = `${this.apiEndpoint}/folders/${folderId}/folders`;
-    return this.simplePost(url, data, restHandlerOptions);
+    return this.simplePost(url, data, options);
   }
 
   /**
@@ -158,7 +177,7 @@ export class MdmFolderResource extends MdmResource {
    * 
    * @see {@link MdmFolderResource.updateChildOf}
    */
-  update(folderId: string, data: FolderUpdatePayload, options?: RequestSettings) {
+  update(folderId: string, data: ContainerUpdatePayload, options?: RequestSettings) {
     const url = `${this.apiEndpoint}/folders/${folderId}`;
     return this.simplePut(url, data, options);
   }
@@ -176,7 +195,7 @@ export class MdmFolderResource extends MdmResource {
    * 
    * @see {@link MdmFolderResource.update}
    */
-  updateChildOf(folderId: Uuid, childId: Uuid, data: FolderUpdatePayload, options?: RequestSettings) {
+  updateChildOf(folderId: Uuid, childId: Uuid, data: ContainerUpdatePayload, options?: RequestSettings) {
     const url = `${this.apiEndpoint}/folders/${folderId}/folders/${childId}`;
     return this.simplePut(url, data, options);
   }

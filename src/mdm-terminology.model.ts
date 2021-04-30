@@ -17,7 +17,7 @@ SPDX-License-Identifier: Apache-2.0
 */
 
 import { Branchable, Finalisable, Historical, Modelable, ModelableDetail, SecurableModel, Versionable } from './mdm-model-types.model';
-import { CatalogueItemDomainType, Classifier, MdmIndexResponse, MdmResponse, Payload, Uuid } from './mdm-common.model';
+import { MdmIndexResponse, MdmResponse } from './mdm-common.model';
 
 export type TerminologyDataType = 'Terminology';
 

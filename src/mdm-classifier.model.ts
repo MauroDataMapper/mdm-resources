@@ -16,19 +16,16 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { Container } from './mdm-container-types.model';
-import { MdmIndexResponse, MdmResponse } from './mdm-common.model';
 import { Historical, SecurableModel } from './mdm-model-types.model';
+import { MdmIndexResponse, MdmResponse } from './mdm-common.model';
+import { Container } from 'mdm-container-types.model';
 
-export interface Folder extends Container {
-  hasChildFolders?: boolean;
-  [key: string]: any;
-}
+export interface Classifier extends Container { }
 
-export type FolderDetail =
-  Folder
+export type ClassifierDetail =
+  Classifier
   & SecurableModel
   & Historical;
 
-export type FolderIndexResponse = MdmIndexResponse<Folder>;
-export type FolderDetailResponse = MdmResponse<FolderDetail>;
+export type ClassifierIndexResponse = MdmIndexResponse<Classifier>;
+export type ClassifierDetailResponse = MdmResponse<ClassifierDetail>;

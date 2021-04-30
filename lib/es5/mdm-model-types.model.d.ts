@@ -1,4 +1,5 @@
-import { CatalogueItemDomainType, CatalogueItemReference, Classifier, Payload, QueryParameters, Uuid, Version } from './mdm-common.model';
+import { Classifier } from './mdm-classifier.model';
+import { CatalogueItemDomainType, CatalogueItemReference, Payload, QueryParameters, Uuid, Version } from './mdm-common.model';
 export interface Authority {
     id: Uuid;
     label: string;

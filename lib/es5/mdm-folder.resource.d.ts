@@ -1,7 +1,7 @@
 import { ModelRemoveQueryParameters } from './mdm-model-types.model';
 import { RequestSettings, QueryParameters, FilterQueryParameters, Uuid } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
-import { FolderUpdatePayload } from './mdm-folder.model';
+import { ContainerUpdatePayload } from './mdm-container-types.model';
 /**
  * Controller: folder
  |   POST   | /api/folders/${folderId}/folders                                                                      | Action: save
@@ -25,10 +25,29 @@ import { FolderUpdatePayload } from './mdm-folder.model';
  * MDM resource for managing folders in Mauro.
  */
 export declare class MdmFolderResource extends MdmResource {
-    search(folderId: string, data: any, restHandlerOptions?: RequestSettings): any;
+    search(folderId: Uuid, data: any, restHandlerOptions?: RequestSettings): any;
     searchByGet(folderId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
-    save(data: any, restHandlerOptions?: RequestSettings): any;
-    saveChildrenOf(folderId: string, data: any, restHandlerOptions?: RequestSettings): any;
+    /**
+     * `HTTP POST` - Creates a new root folder.
+     *
+     * @param data The payload of the request containing all the details for the folder to create.
+     * @param options Optional REST handler parameters, if required.
+     * @returns The result of the `POST` request.
+     *
+     * `200 OK` - will return a {@link FolderDetailResponse} containing a {@link FolderDetail} object.
+     */
+    save(data: ContainerUpdatePayload, options?: RequestSettings): any;
+    /**
+     * `HTTP POST` - Creates a new folder under a chosen folder.
+     *
+     * @param folderId The unique identifier of the folder to create the folder under.
+     * @param data The payload of the request containing all the details for the folder to create.
+     * @param options Optional REST handler parameters, if required.
+     * @returns The result of the `POST` request.
+     *
+     * `200 OK` - will return a {@link FolderDetailResponse} containing a {@link FolderDetail} object.
+     */
+    saveChildrenOf(folderId: Uuid, data: ContainerUpdatePayload, options?: RequestSettings): any;
     /**
      * `HTTP GET` - Request the list of folders.
      *
@@ -106,7 +125,7 @@ export declare class MdmFolderResource extends MdmResource {
      *
      * @see {@link MdmFolderResource.updateChildOf}
      */
-    update(folderId: string, data: FolderUpdatePayload, options?: RequestSettings): any;
+    update(folderId: string, data: ContainerUpdatePayload, options?: RequestSettings): any;
     /**
      * `HTTP PUT` - Updates an existing child folder of a parent.
      *
@@ -120,7 +139,7 @@ export declare class MdmFolderResource extends MdmResource {
      *
      * @see {@link MdmFolderResource.update}
      */
-    updateChildOf(folderId: Uuid, childId: Uuid, data: FolderUpdatePayload, options?: RequestSettings): any;
+    updateChildOf(folderId: Uuid, childId: Uuid, data: ContainerUpdatePayload, options?: RequestSettings): any;
     /**
      * `HTTP GET` - Request a folder.
      *
