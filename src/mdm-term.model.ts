@@ -30,14 +30,14 @@ export interface Term {
    * The combination of {@link Term.code} and {@link Term.definition}.
    */
   label?: string;
-  
+
   [key: string]: any;
 }
 
-export type TermDetail = 
-  Term 
-  & Navigatable 
-  & Securable 
+export type TermDetail =
+  Term
+  & Navigatable
+  & Securable
   & Historical;
 
 export type TermIndexResponse = MdmIndexResponse<Term>;

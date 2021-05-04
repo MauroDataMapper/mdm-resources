@@ -36,9 +36,9 @@ export interface DataElement {
   [key: string]: any;
 }
 
-export type DataElementDetail = 
-  DataElement 
-  & Securable 
+export type DataElementDetail =
+  DataElement
+  & Securable
   & Historical;
 
 export type DataElementIndexResponse = MdmIndexResponse<DataElement>;

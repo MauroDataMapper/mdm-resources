@@ -12,6 +12,7 @@ import { MdmResource } from './mdm-resource';
 export declare class MdmApiPropertyResources extends MdmResource {
     /**
      * `HTTP GET` - Gets a list of all API properties.
+     *
      * @param query Optional query string parameters to filter the list, if required.
      * @param options Optional REST handler options, if required.
      * @returns The result of the `GET` request.
@@ -23,6 +24,7 @@ export declare class MdmApiPropertyResources extends MdmResource {
     list(query?: FilterQueryParameters, options?: RequestSettings): any;
     /**
      * `HTTP GET` - Gets a list of all publicly accessible API properties. Administrator permissions are _not_ required for this API.
+     *
      * @param query Optional query string parameters, if required.
      * @param options Optional REST handler options, if required.
      * @returns The result of the `GET` request.
@@ -32,6 +34,7 @@ export declare class MdmApiPropertyResources extends MdmResource {
     listPublic(query?: FilterQueryParameters, options?: RequestSettings): any;
     /**
      * `HTTP GET` - Gets an API property by ID.
+     *
      * @param id The unique identifier of the property to get.
      * @param query Optional query string parameters, if required.
      * @param options Optional REST handler options, if required.
@@ -44,6 +47,7 @@ export declare class MdmApiPropertyResources extends MdmResource {
     get(id: Uuid, query?: QueryParameters, options?: RequestSettings): any;
     /**
      * `HTTP POST` - Creates a new API property.
+     *
      * @param data The data to use for creation.
      * @param options Optional REST handler parameters.
      * @returns The result of the `POST` request.
@@ -55,6 +59,7 @@ export declare class MdmApiPropertyResources extends MdmResource {
     save(data: ApiProperty, options?: RequestSettings): any;
     /**
      * `HTTP PUT` - Updates an existing API property.
+     *
      * @param id The unique identifier of the property to update.
      * @param data The data to use for the update.
      * @param options Optional REST handler options, if required.
@@ -67,6 +72,7 @@ export declare class MdmApiPropertyResources extends MdmResource {
     update(id: Uuid, data: ApiProperty, options?: RequestSettings): any;
     /**
      * `HTTP DELETE` - Removes an existing API property.
+     *
      * @param id The unique identifier of the property to remove.
      * @param query Optional query string parameters, if required.
      * @param options Optional REST handler options, if required.

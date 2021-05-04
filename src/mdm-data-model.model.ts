@@ -28,19 +28,19 @@ export interface DataModel extends Modelable {
   [key: string]: any;
 }
 
-export type DataModelDetail = 
-  DataModel 
-  & ModelableDetail 
-  & SecurableModel 
+export type DataModelDetail =
+  DataModel
+  & ModelableDetail
+  & SecurableModel
   & Historical
-  & Branchable 
-  & Versionable 
+  & Branchable
+  & Versionable
   & Finalisable;
 
 export type DataModelIndexResponse = MdmIndexResponse<DataModel>;
 export type DataModelDetailResponse = MdmResponse<DataModelDetail>;
 
-export interface DataModelCreatePayload extends ModelCreatePayload {  
+export interface DataModelCreatePayload extends ModelCreatePayload {
   type: DataModelType;
 }
 

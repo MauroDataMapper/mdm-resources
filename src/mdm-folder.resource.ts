@@ -133,7 +133,7 @@ export class MdmFolderResource extends MdmResource {
    *
    * If {@link ModelRemoveParameters.permanent} is set to `true`, then the folder will be permanently deleted with
    * no method of retrieving it.
-   * 
+   *
    * @see {@link MdmFolderResource.removeChildOf}
    */
   remove(folderId: Uuid, query: ModelRemoveQueryParameters, options?: RequestSettings) {
@@ -157,7 +157,7 @@ export class MdmFolderResource extends MdmResource {
    *
    * If {@link ModelRemoveParameters.permanent} is set to `true`, then the folder will be permanently deleted with
    * no method of retrieving it.
-   * 
+   *
    * @see {@link MdmFolderResource.remove}
    */
   removeChildOf(folderId: Uuid, childId: Uuid, query: ModelRemoveQueryParameters, options?: RequestSettings) {
@@ -174,7 +174,7 @@ export class MdmFolderResource extends MdmResource {
    * @returns The result of the `POST` request.
    *
    * `200 OK` - will return a {@link FolderDetailResponse} containing a {@link FolderDetail} object.
-   * 
+   *
    * @see {@link MdmFolderResource.updateChildOf}
    */
   update(folderId: string, data: ContainerUpdatePayload, options?: RequestSettings) {
@@ -192,7 +192,7 @@ export class MdmFolderResource extends MdmResource {
    * @returns The result of the `POST` request.
    *
    * `200 OK` - will return a {@link FolderDetailResponse} containing a {@link FolderDetail} object.
-   * 
+   *
    * @see {@link MdmFolderResource.update}
    */
   updateChildOf(folderId: Uuid, childId: Uuid, data: ContainerUpdatePayload, options?: RequestSettings) {
@@ -209,7 +209,7 @@ export class MdmFolderResource extends MdmResource {
    * @returns The result of the `GET` request.
    *
    * `200 OK` - will return a {@link FolderDetailResponse} containing a {@link FolderDetail} object.
-   * 
+   *
    * @see {@link MdmFolderResource.getChildOf}
    */
   get(folderId: string, query?: QueryParameters, options?: RequestSettings) {
@@ -227,7 +227,7 @@ export class MdmFolderResource extends MdmResource {
    * @returns The result of the `GET` request.
    *
    * `200 OK` - will return a {@link FolderDetailResponse} containing a {@link FolderDetail} object.
-   * 
+   *
    * @see {@link MdmFolderResource.get}
    */
   getChildOf(folderId: Uuid, childId: Uuid, query?: QueryParameters, options?: RequestSettings) {

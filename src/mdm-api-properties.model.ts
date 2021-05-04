@@ -16,11 +16,11 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { MdmIndexResponse, MdmResponse, Uuid } from "./mdm-common.model";
+import { MdmIndexResponse, MdmResponse, Uuid } from './mdm-common.model';
 
 /**
  * Represents an API property in Mauro.
- * 
+ *
  * An API property is a key/value pair that can be used in configuration scenarios.
  */
 export interface ApiProperty {

@@ -34,9 +34,9 @@ export interface DataClass {
   [key: string]: any;
 }
 
-export type DataClassDetail = 
-  DataClass 
-  & Securable 
+export type DataClassDetail =
+  DataClass
+  & Securable
   & Historical;
 
 export type DataClassIndexResponse = MdmIndexResponse<DataClass>;

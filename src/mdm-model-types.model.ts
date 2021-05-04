@@ -58,7 +58,7 @@ export type SecurableAction = typeof securableActions[number];
 export interface Securable {
   /**
    * A list of available actions that can be performed on this entity.
-   * 
+   *
    * @see {@link SecurableAction} - Type definition
    */
   availableActions: SecurableAction[];

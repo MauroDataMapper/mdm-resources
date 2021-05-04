@@ -53,7 +53,7 @@ import { FinalisePayload, ModelRemoveQueryParameters, ModelUpdatePayload } from 
 
 /**
  * MDM resource for the management of terminologies.
- * 
+ *
  * @see {@link MdmTermResource}
  */
 export class MdmTerminologyResource extends MdmResource {

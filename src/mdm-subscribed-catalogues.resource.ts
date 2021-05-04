@@ -26,6 +26,7 @@ import { MdmResource } from './mdm-resource';
 export class MdmSubscribedCataloguesResource extends MdmResource {
   /**
    * `HTTP GET` - Gets a Subscribed Catalogue by ID.
+   *
    * @param id The unique identifier of the Subscribed Catalogue to get.
    * @param query Optional query string parameters for the GET request.
    * @param options Optional REST handler parameters.
@@ -40,6 +41,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
 
   /**
    * `HTTP GET` - Gets a list of all Subscribed Catalogues.
+   *
    * @param query Optional query string parameters for the GET request.
    * @param options Optional REST handler parameters.
    * @returns The result of the `GET` request.
@@ -53,6 +55,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
 
   /**
    * `HTTP POST` - Creates a new Subscribed Catalogue.
+   *
    * @param data The data to use for creation.
    * @param options Optional REST handler parameters.
    * @returns The result of the `POST` request.
@@ -66,6 +69,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
 
   /**
    * `HTTP PUT` - Updates an existing Subscribed Catalogue.
+   *
    * @param id The unique identifier of the Subscribed Catalogue to update.
    * @param data The data to use for the update.
    * @param options Optional REST handler parameters.
@@ -80,6 +84,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
 
   /**
    * `HTTP DELETE` - Removes an existing Subscribed Catalogue.
+   *
    * @param id The unique identifier of the Subscribed Catalogue to remove.
    * @param query Optional query string parameters for the GET request.
    * @param options Optional REST handler parameters.
@@ -94,6 +99,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
 
   /**
    * `HTTP GET` - Gets a list of all available federated models from a Subscribed Catalogue.
+   *
    * @param id The UUID of the Subscribed Catalogue to search in.
    * @param query Optional query string parameters for the GET request.
    * @param options Optional REST handler parameters.
@@ -108,6 +114,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
 
   /**
    * `HTTP GET` - Gets a list of all federated models that this catalogue has subscribed to from a Subscribed Catalogue.
+   *
    * @param id The unique identifier of the Subscribed Catalogue to search in.
    * @param queryStringParams Optional query string parameters for the GET request.
    * @param restHandlerOptions Optional REST handler parameters.
@@ -122,6 +129,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
 
   /**
    * `HTTP POST` - Federate a subscribed model to refresh.
+   *
    * @param id The unique identifier of the Subscribed Model to federate.
    * @param options Optional REST handler parameters.
    * @returns The result of the `POST` request.
@@ -135,6 +143,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
 
   /**
    * `HTTP GET` - Gets a Subscribed Catalogue by ID.
+   *
    * @param catalogueId The UUID of the Subscribed Catalogue to search in.
    * @param id The UUID of the subscription to get.
    * @param query Optional query string parameters for the GET request.
@@ -150,6 +159,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
 
   /**
    * `HTTP POST` - Creates a new subscription to a model in a Subscribed Catalogue.
+   *
    * @param catalogueId The UUID of the Subscribed Catalogue to save to.
    * @param data The data to use for creation.
    * @param options Optional REST handler parameters.
@@ -164,6 +174,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
 
   /**
    * `HTTP DELETE` - Removes an existing subscription to a model in a Subscribed Catalogue.
+   *
    * @param catalogueId The UUID of the Subscribed Catalogue to remove from.
    * @param id The UUID of the subscribed model to remove.
    * @param query Optional query string parameters for the GET request.

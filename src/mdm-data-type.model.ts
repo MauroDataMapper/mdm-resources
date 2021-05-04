@@ -68,9 +68,9 @@ export interface DataType {
   [key: string]: any;
 }
 
-export type DataTypeDetail = 
-  DataType 
-  & Securable 
+export type DataTypeDetail =
+  DataType
+  & Securable
   & Historical;
 
 export type DataTypeIndexResponse = MdmIndexResponse<DataType>;

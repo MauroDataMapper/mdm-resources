@@ -141,7 +141,7 @@ export class MdmClassifierResource extends MdmResource {
    *
    * If {@link ModelRemoveParameters.permanent} is set to `true`, then the classifier will be permanently deleted with
    * no method of retrieving it.
-   * 
+   *
    * @see {@link MdmClassifierResource.removeChildOf}
    */
   remove(classifierId: Uuid, query: ModelRemoveQueryParameters, options?: RequestSettings) {
@@ -165,7 +165,7 @@ export class MdmClassifierResource extends MdmResource {
    *
    * If {@link ModelRemoveParameters.permanent} is set to `true`, then the classifier will be permanently deleted with
    * no method of retrieving it.
-   * 
+   *
    * @see {@link MdmClassifierResource.remove}
    */
   removeChildOf(classifierId: Uuid, childId: Uuid, query: ModelRemoveQueryParameters, options?: RequestSettings) {
@@ -187,7 +187,7 @@ export class MdmClassifierResource extends MdmResource {
    * @returns The result of the `POST` request.
    *
    * `200 OK` - will return a {@link ClassifierDetailResponse} containing a {@link ClassifierDetail} object.
-   * 
+   *
    * @see {@link MdmClassifierResource.updateChildOf}
    */
   update(classifierId: Uuid, data: ContainerUpdatePayload, options?: RequestSettings) {
@@ -205,7 +205,7 @@ export class MdmClassifierResource extends MdmResource {
    * @returns The result of the `POST` request.
    *
    * `200 OK` - will return a {@link ClassifierDetailResponse} containing a {@link ClassifierDetail} object.
-   * 
+   *
    * @see {@link MdmClassifierResource.update}
    */
   updateChildOf(classifierId: Uuid, childId: Uuid, data: ContainerUpdatePayload, options?: RequestSettings) {
@@ -222,7 +222,7 @@ export class MdmClassifierResource extends MdmResource {
    * @returns The result of the `GET` request.
    *
    * `200 OK` - will return a {@link ClassifierDetailResponse} containing a {@link ClassifierDetail} object.
-   * 
+   *
    * @see {@link MdmClassifierResource.getChildOf}
    */
   get(classifierId: Uuid, query?: QueryParameters, options?: RequestSettings) {
@@ -240,7 +240,7 @@ export class MdmClassifierResource extends MdmResource {
    * @returns The result of the `GET` request.
    *
    * `200 OK` - will return a {@link ClassifierDetailResponse} containing a {@link ClassifierDetail} object.
-   * 
+   *
    * @see {@link MdmClassifierResource.get}
    */
   getChildOf(classifierId: Uuid, childId: Uuid, query?: QueryParameters, options?: RequestSettings) {

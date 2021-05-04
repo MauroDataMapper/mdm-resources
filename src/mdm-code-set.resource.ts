@@ -15,7 +15,7 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { FinalisePayload, ModelRemoveQueryParameters, ModelUpdatePayload } from './mdm-model-types.model';
+import { FinalisePayload, ModelRemoveQueryParameters } from './mdm-model-types.model';
 import { RequestSettings, QueryParameters, Uuid, FilterQueryParameters } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 import { CodeSetCreatePayload, CodeSetUpdatePayload } from './mdm-code-set.model';

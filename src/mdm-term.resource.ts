@@ -43,7 +43,7 @@ import { MdmResource } from './mdm-resource';
 
 /**
  * MDM resource for the management of terms within terminologies.
- * 
+ *
  * @see {@link MdmTerminologyResource}
  */
 export class MdmTermResource extends MdmResource {

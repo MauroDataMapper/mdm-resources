@@ -26,13 +26,13 @@ export interface Terminology extends Modelable {
   [key: string]: any;
 }
 
-export type TerminologyDetail = 
-  Terminology 
-  & ModelableDetail 
-  & SecurableModel 
-  & Historical 
-  & Branchable 
-  & Omit<Versionable, 'modelVersion' | 'modelVersionTag'> 
+export type TerminologyDetail =
+  Terminology
+  & ModelableDetail
+  & SecurableModel
+  & Historical
+  & Branchable
+  & Omit<Versionable, 'modelVersion' | 'modelVersionTag'>
   & Finalisable;
 
 export type TerminologyIndexResponse = MdmIndexResponse<Terminology>;
