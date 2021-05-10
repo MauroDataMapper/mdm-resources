@@ -77,7 +77,7 @@ export declare class MdmTerminologyResource extends MdmResource {
     /**
      * `HTTP DELETE` - Removes an existing terminology, either temporarily or permanently.
      *
-     * @param dataModelId The unique identifier of the terminology to remove.
+     * @param terminologyId The unique identifier of the terminology to remove.
      * @param query Query parameters to state if the operation should be temporary, or a "soft delete", or permanent.
      * @param options Optional REST handler options, if required.
      * @returns The result of the `DELETE` request.

@@ -35,13 +35,12 @@ export declare class MdmTermResource extends MdmResource {
      *
      * @param terminologyId The unique identifier of the terminology to create the term under.
      * @param data The payload of the request containing all the details for the term to create.
-     * @param query Optional query parameters to control the creation of the term, if required.
      * @param options Optional REST handler parameters, if required.
      * @returns The result of the `POST` request.
      *
      * `200 OK` - will return a {@link TermDetailResponse} containing a {@link TermDetail} object.
      */
-    save(terminologyId: Uuid, data: Term, restHandlerOptions?: RequestSettings): any;
+    save(terminologyId: Uuid, data: Term, options?: RequestSettings): any;
     /**
      * `HTTP GET` - Request the list of terms.
      *
