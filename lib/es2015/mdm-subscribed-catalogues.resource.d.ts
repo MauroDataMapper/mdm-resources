@@ -1,116 +1,128 @@
+import { SubscribedCatalogue, SubscribedDataModel } from './mdm-subscribed-catalogues.model';
+import { RequestSettings, QueryParameters, Uuid } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
-import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handler';
 /**
- * Controller: subscribedCatalogues
- |   GET    | /api/subscribedCatalogues/${id}                                                                                               | Action: show
- |   GET    | /api/subscribedCatalogues                                                                                                     | Action: index
- |   POST   | /api/subscribedCatalogues                                                                                                     | Action: save
- |   PUT    | /api/subscribedCatalogues/${id}                                                                                               | Action: update
- |  DELETE  | /api/subscribedCatalogues/${id}                                                                                               | Action: delete
- |   GET    | /api/subscribedCatalogues/${id}/availableModels                                                                               | Action: index
- |   POST   | /api/subscribedModels/${id}/federate                                                                                          | Action: federate
- |   GET    | /api/subscribedCatalogues/${id}/subscribedModels                                                                              | Action: index
- |   GET    | /api/subscribedCatalogues/${catalogId}/subscribedModels/${id}                                                                 | Action: show
- |   POST   | /api/subscribedCatalogues/${catalogId}/subscribedModels                                                                       | Action: save
- |  DELETE  | /api/subscribedCatalogues/${catalogId}/subscribedModels/${id}                                                                 | Action: delete
+ * MDM resource for managing subscribed catalogues and federated models.
  */
 export declare class MdmSubscribedCataloguesResource extends MdmResource {
     /**
-     * Gets a Subscribed Catalogue by ID.
+     * `HTTP GET` - Gets a Subscribed Catalogue by ID.
      *
-     * @param id The UUID of the Subscribed Catalogue to get.
-     * @param queryStringParams Optional query string parameters for the GET request.
-     * @param restHandlerOptions Optional REST handler parameters.
-     * @returns An HTTP response object containing the data.
-     */
-    get(id: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    /**
-     * Gets a list of all Subscribed Catalogues.
+     * @param id The unique identifier of the Subscribed Catalogue to get.
+     * @param query Optional query string parameters for the GET request.
+     * @param options Optional REST handler parameters.
+     * @returns The result of the `GET` request.
      *
-     * @param queryStringParams Optional query string parameters for the GET request.
-     * @param restHandlerOptions Optional REST handler parameters.
-     * @returns An HTTP response object containing a count and array of items.
+     * `200 OK` - will return a {@link SubscribedCatalogueResponse} containing a {@link SubscribedCatalogue}.
      */
-    list(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    get(id: Uuid, query?: QueryParameters, options?: RequestSettings): any;
     /**
-     * Creates a new Subscribed Catalogue.
+     * `HTTP GET` - Gets a list of all Subscribed Catalogues.
+     *
+     * @param query Optional query string parameters for the GET request.
+     * @param options Optional REST handler parameters.
+     * @returns The result of the `GET` request.
+     *
+     * `200 OK` - will return a {@link SubscribedCatalogueIndexResponse} containing a list of {@link SubscribedCatalogue} items.
+     */
+    list(query?: QueryParameters, options?: RequestSettings): any;
+    /**
+     * `HTTP POST` - Creates a new Subscribed Catalogue.
      *
      * @param data The data to use for creation.
-     * @param restHandlerOptions Optional REST handler parameters.
-     * @returns An HTTP response object.
-     */
-    save(data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    /**
-     * Updates an existing Subscribed Catalogue.
+     * @param options Optional REST handler parameters.
+     * @returns The result of the `POST` request.
      *
-     * @param id The UUID of the Subscribed Catalogue to update.
+     * `200 OK` - will return a {@link SubscribedCatalogueResponse} containing a {@link SubscribedCatalogue}.
+     */
+    save(data: SubscribedCatalogue, options?: RequestSettings): any;
+    /**
+     * `HTTP PUT` - Updates an existing Subscribed Catalogue.
+     *
+     * @param id The unique identifier of the Subscribed Catalogue to update.
      * @param data The data to use for the update.
-     * @param restHandlerOptions Optional REST handler parameters.
-     * @returns An HTTP response object.
-     */
-    update(id: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    /**
-     * Removes an existing Subscribed Catalogue.
+     * @param options Optional REST handler parameters.
+     * @returns The result of the `PUT` request.
      *
-     * @param id The UUID of the Subscribed Catalogue to remove.
-     * @param queryStringParams Optional query string parameters for the GET request.
-     * @param restHandlerOptions Optional REST handler parameters.
-     * @returns An HTTP response object.
+     * `200 OK` - will return a {@link SubscribedCatalogueResponse} containing a {@link SubscribedCatalogue}.
      */
-    remove(id: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    update(id: Uuid, data: SubscribedCatalogue, options?: RequestSettings): any;
     /**
-     * Gets a list of all available federated models from a Subscribed Catalogue.
+     * `HTTP DELETE` - Removes an existing Subscribed Catalogue.
      *
-     * @param id The UUID of the Subscribed Catalogue to search in.
-     * @param queryStringParams Optional query string parameters for the GET request.
-     * @param restHandlerOptions Optional REST handler parameters.
-     * @returns An HTTP response object containing a count and array of items.
+     * @param id The unique identifier of the Subscribed Catalogue to remove.
+     * @param query Optional query string parameters for the GET request.
+     * @param options Optional REST handler parameters.
+     * @returns The result of the `DELETE` request.
+     *
+     * On success, the response will be a `204 No Content` and the response body will be empty.
      */
-    listAvailableModels(id: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    remove(id: Uuid, query?: QueryParameters, options?: RequestSettings): any;
     /**
-     * Gets a list of all federated models that this catalogue has subscribed to from a Subscribed Catalogue.
+     * `HTTP GET` - Gets a list of all available federated models from a Subscribed Catalogue.
      *
      * @param id The UUID of the Subscribed Catalogue to search in.
+     * @param query Optional query string parameters for the GET request.
+     * @param options Optional REST handler parameters.
+     * @returns The result of the `GET` request.
+     *
+     * `200 OK` - will return a {@link AvailableDataModelIndexResponse} containing a list of {@link AvailableDataModel} items.
+     */
+    listAvailableModels(id: Uuid, query?: QueryParameters, options?: RequestSettings): any;
+    /**
+     * `HTTP GET` - Gets a list of all federated models that this catalogue has subscribed to from a Subscribed Catalogue.
+     *
+     * @param id The unique identifier of the Subscribed Catalogue to search in.
      * @param queryStringParams Optional query string parameters for the GET request.
      * @param restHandlerOptions Optional REST handler parameters.
-     * @returns An HTTP response object containing a count and array of items.
-     */
-    listSubscribedModels(id: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    /**
-     * Federate a subscribed model to refresh.
+     * @returns The result of the `GET` request.
      *
-     * @param id The UUID of the Subscribed Model to federate.
-     * @param restHandlerOptions Optional REST handler parameters.
-     * @returns An HTTP response object containing the data.
+     * `200 OK` - will return a {@link SubscribedDataModelIndexResponse} containing a list of {@link SubscribedDataModel} items.
      */
-    federate(id: string, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    listSubscribedModels(id: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
     /**
-     * Gets a Subscribed Catalogue by ID.
+     * `HTTP POST` - Federate a subscribed model to refresh.
+     *
+     * @param id The unique identifier of the Subscribed Model to federate.
+     * @param options Optional REST handler parameters.
+     * @returns The result of the `POST` request.
+     *
+     * `200 OK` - will return a {@link SubscribedDataModelResponse} containing a {@link SubscribedDataModel}.
+     */
+    federate(id: string, options?: RequestSettings): any;
+    /**
+     * `HTTP GET` - Gets a Subscribed Catalogue by ID.
      *
      * @param catalogueId The UUID of the Subscribed Catalogue to search in.
      * @param id The UUID of the subscription to get.
-     * @param queryStringParams Optional query string parameters for the GET request.
-     * @param restHandlerOptions Optional REST handler parameters.
-     * @returns An HTTP response object containing the data.
+     * @param query Optional query string parameters for the GET request.
+     * @param options Optional REST handler parameters.
+     * @returns The result of the `GET` request.
+     *
+     * `200 OK` - will return a {@link SubscribedDataModelResponse} containing a {@link SubscribedDataModel}.
      */
-    getSubscribedModel(catalogueId: string, id: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    getSubscribedModel(catalogueId: Uuid, id: Uuid, query?: QueryParameters, options?: RequestSettings): any;
     /**
-     * Creates a new subscription to a model in a Subscribed Catalogue.
+     * `HTTP POST` - Creates a new subscription to a model in a Subscribed Catalogue.
      *
      * @param catalogueId The UUID of the Subscribed Catalogue to save to.
      * @param data The data to use for creation.
-     * @param restHandlerOptions Optional REST handler parameters.
-     * @returns An HTTP response object.
+     * @param options Optional REST handler parameters.
+     * @returns The result of the `POST` request.
+     *
+     * `200 OK` - will return a {@link SubscribedDataModelResponse} containing a {@link SubscribedDataModel}.
      */
-    saveSubscribedModel(catalogueId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    saveSubscribedModel(catalogueId: Uuid, data: SubscribedDataModel, options?: RequestSettings): any;
     /**
-     * Removes an existing subscription to a model in a Subscribed Catalogue.
+     * `HTTP DELETE` - Removes an existing subscription to a model in a Subscribed Catalogue.
      *
      * @param catalogueId The UUID of the Subscribed Catalogue to remove from.
      * @param id The UUID of the subscribed model to remove.
-     * @param queryStringParams Optional query string parameters for the GET request.
-     * @param restHandlerOptions Optional REST handler parameters.
-     * @returns An HTTP response object.
+     * @param query Optional query string parameters for the GET request.
+     * @param options Optional REST handler parameters.
+     * @returns The result of the `DELETE` request.
+     *
+     * On success, the response will be a `204 No Content` and the response body will be empty.
      */
-    removeSubscribedModel(catalogueId: string, id: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    removeSubscribedModel(catalogueId: Uuid, id: Uuid, query?: QueryParameters, options?: RequestSettings): any;
 }

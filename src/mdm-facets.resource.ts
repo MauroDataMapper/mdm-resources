@@ -15,12 +15,12 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
+import { RequestSettings } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
-import { IMdmRestHandlerOptions } from './mdm-rest-handler';
 
 export class MdmFacetsResource extends MdmResource {
 
-  attachReferenceFile(id, formData, restHandlerOptions?: IMdmRestHandlerOptions) {
+  attachReferenceFile(id, formData, restHandlerOptions?: RequestSettings) {
 
     const url = `${this.apiEndpoint}'/facets/${id}/referenceFiles`;
 

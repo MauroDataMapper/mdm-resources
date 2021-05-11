@@ -1,5 +1,5 @@
-import { ContainerDomainType, MdmResource } from './mdm-resource';
-import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handler';
+import { RequestSettings, QueryParameters, ContainerDomainType } from './mdm-common.model';
+import { MdmResource } from './mdm-resource';
 /**
  * Controller: catalogueUser
  |   POST   | /api/admin/catalogueUsers/adminRegister                                                                             | Action: adminRegister
@@ -32,30 +32,30 @@ import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handle
  |   PUT    | /api/catalogueUsers/${catalogueUserId}/apiKeys/${apiKey}/refresh/${expiresInDays}                                  | Action: Change expiry day
  */
 export declare class MdmCatalogueUserResource extends MdmResource {
-    adminRegister(data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    pendingCount(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    pending(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    exists(emailAddress: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    reject(catalogueUserId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    approve(catalogueUserId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    adminPasswordReset(catalogueUserId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    search(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    resetPasswordLink(emailAddress: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    resetPassword(catalogueUserId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    changePassword(catalogueUserId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    updateUserPreferences(catalogueUserId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    userPreferences(catalogueUserId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    listInUserGroup(userGroupId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    save(data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    list(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    remove(catalogueUserId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    update(catalogueUserId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    get(catalogueUserId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    listInContainerUserGroup(containerDomainType: string | ContainerDomainType, containerId: string, userGroupId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    listApiKeys(catalogueUserId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    saveApiKey(catalogueUserId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    removeApiKey(catalogueUserId: string, apiKey: string, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    enableApiKey(catalogueUserId: string, apiKey: string, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    disableApiKey(catalogueUserId: string, apiKey: string, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    refreshApiKey(catalogueUserId: string, apiKey: string, noOfDays: number, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    adminRegister(data: any, restHandlerOptions?: RequestSettings): any;
+    pendingCount(queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    pending(queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    exists(emailAddress: any, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    reject(catalogueUserId: string, data: any, restHandlerOptions?: RequestSettings): any;
+    approve(catalogueUserId: string, data: any, restHandlerOptions?: RequestSettings): any;
+    adminPasswordReset(catalogueUserId: string, data: any, restHandlerOptions?: RequestSettings): any;
+    search(queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    resetPasswordLink(emailAddress: any, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    resetPassword(catalogueUserId: string, data: any, restHandlerOptions?: RequestSettings): any;
+    changePassword(catalogueUserId: string, data: any, restHandlerOptions?: RequestSettings): any;
+    updateUserPreferences(catalogueUserId: string, data: any, restHandlerOptions?: RequestSettings): any;
+    userPreferences(catalogueUserId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    listInUserGroup(userGroupId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    save(data: any, restHandlerOptions?: RequestSettings): any;
+    list(queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    remove(catalogueUserId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    update(catalogueUserId: string, data: any, restHandlerOptions?: RequestSettings): any;
+    get(catalogueUserId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    listInContainerUserGroup(containerDomainType: string | ContainerDomainType, containerId: string, userGroupId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    listApiKeys(catalogueUserId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    saveApiKey(catalogueUserId: string, data: any, restHandlerOptions?: RequestSettings): any;
+    removeApiKey(catalogueUserId: string, apiKey: string, restHandlerOptions?: RequestSettings): any;
+    enableApiKey(catalogueUserId: string, apiKey: string, restHandlerOptions?: RequestSettings): any;
+    disableApiKey(catalogueUserId: string, apiKey: string, restHandlerOptions?: RequestSettings): any;
+    refreshApiKey(catalogueUserId: string, apiKey: string, noOfDays: number, restHandlerOptions?: RequestSettings): any;
 }

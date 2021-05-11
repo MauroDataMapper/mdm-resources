@@ -11,7 +11,9 @@
         "changelog": "conventional-changelog -i CHANGELOG.md -s",
         "test": "jest",
         "eslint": "tsc --noEmit && eslint . --ext ts --quiet --fix",
-        "eslint-report": "eslint . --ext ts --fix -f json -o eslint_report.json"
+        "eslint-report": "eslint . --ext ts --fix -f json -o eslint_report.json",
+        "docs": "typedoc --out docs --includeVersion src/index.ts --listInvalidSymbolLinks",
+        "docs-watch": "typedoc --out docs --includeVersion src/index.ts --listInvalidSymbolLinks --watch"
     },
     "repository": {
         "type": "git",
@@ -31,6 +33,7 @@
         "eslint-plugin-jsdoc": "^32.3.0",
         "jest": "^26.4.2",
         "ts-jest": "^26.2.0",
+        "typedoc": "^0.20.32",
         "typescript": "^3.9.6"
     }
 }
