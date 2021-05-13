@@ -1,5 +1,5 @@
 import { Classifier } from './mdm-classifier.model';
-import { CatalogueItemDomainType, CatalogueItemReference, Payload, QueryParameters, Uuid, Version } from './mdm-common.model';
+import { CatalogueItem, CatalogueItemDomainType, CatalogueItemReference, Payload, QueryParameters, Uuid, Version } from './mdm-common.model';
 export interface Authority {
     id: Uuid;
     label: string;
@@ -70,9 +70,7 @@ export interface Finalisable {
      */
     dateFinalised?: string;
 }
-export interface Modelable {
-    id?: Uuid;
-    domainType: CatalogueItemDomainType;
+export interface Modelable extends CatalogueItem {
     label: string;
     description?: string;
     deleted?: boolean;

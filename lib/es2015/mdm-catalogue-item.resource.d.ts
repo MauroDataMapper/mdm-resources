@@ -1,4 +1,5 @@
-import { RequestSettings, QueryParameters, ModelDomainType } from './mdm-common.model';
+import { ReferenceFile, ReferenceFileCreatePayload } from './mdm-catalogue-item.model';
+import { RequestSettings, QueryParameters, ModelDomainType, Uuid, FilterQueryParameters } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 /**
  * Controller: annotation
@@ -43,6 +44,9 @@ import { MdmResource } from './mdm-resource';
  * |   GET    | /api/${catalogueItemDomainType}/${catalogueItemId}/semanticLinks/${id}                                | Action: show
  *
  */
+/**
+ * MDM resources for the management of catalogue items. These endpoints are generally applied to any catalogue item.
+ */
 export declare class MdmCatalogueItemResource extends MdmResource {
     search(data: any, restHandlerOptions?: RequestSettings): any;
     searchByGet(queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
@@ -63,11 +67,71 @@ export declare class MdmCatalogueItemResource extends MdmResource {
     removeMetadata(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, metadataId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
     updateMetadata(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, metadataId: string, data: any, restHandlerOptions?: RequestSettings): any;
     getMetadata(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, metadataId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
-    saveReferenceFiles(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, data: any, restHandlerOptions?: RequestSettings): any;
-    listReferenceFiles(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
-    removeReferenceFile(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, referenceFileId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
-    updateReferenceFile(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, referenceFileId: string, data: any, restHandlerOptions?: RequestSettings): any;
-    getReferenceFile(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, referenceFileId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    /**
+     * `HTTP POST` - Creates a new reference file under a chosen catalogue item.
+     *
+     * @param domainType The domain type of the parent catalogue item.
+     * @param id The unique identifier of the parent catalogue item.
+     * @param data The payload of the request containing all the details for the reference file to create.
+     * @param options Optional REST handler parameters, if required.
+     * @returns The result of the `POST` request.
+     *
+     * `200 OK` - will return a {@link ReferenceFileDetailResponse} containing a {@link ReferenceFile} object.
+     */
+    saveReferenceFiles(domainType: ModelDomainType, id: Uuid, data: ReferenceFileCreatePayload, options?: RequestSettings): any;
+    /**
+     * `HTTP GET` - Request the list of reference files for a catalogue item.
+     *
+     * @param domainType The domain type of the parent catalogue item.
+     * @param id The unique identifier of the parent catalogue item.
+     * @param query Optional query string parameters to filter the returned list, if required.
+     * @param options Optional REST handler parameters, if required.
+     * @returns The result of the `GET` request.
+     *
+     * `200 OK` - will return a {@link ReferenceFileIndexResponse} containing a list of {@link ReferenceFile} items.
+     *
+     * @see {@link MdmCatalogueItemResource.getReferenceFile}
+     */
+    listReferenceFiles(domainType: ModelDomainType, id: Uuid, query?: FilterQueryParameters, options?: RequestSettings): any;
+    /**
+     * `HTTP DELETE` - Removes an existing reference file.
+     *
+     * @param domainType The domain type of the parent catalogue item.
+     * @param catalogueItemId The unique indentifier of the parent catalogue item.
+     * @param referenceFileId The unique identifier of the reference file to remove.
+     * @param query Optional query string parameters, if required.
+     * @param options Optional REST handler options, if required.
+     * @returns The result of the `DELETE` request.
+     *
+     * On success, the response will be a `204 No Content` and the response body will be empty.
+     */
+    removeReferenceFile(domainType: ModelDomainType, catalogueItemId: Uuid, referenceFileId: Uuid, query?: QueryParameters, options?: RequestSettings): any;
+    /**
+     * `HTTP PUT` - Updates an existing reference file.
+     *
+     * @param domainType The domain type of the parent catalogue item.
+     * @param catalogueItemId The unique indentifier of the parent catalogue item.
+     * @param referenceFileId The unique identifier of the reference file to update.
+     * @param data The payload of the request containing all the details for the reference file to update.
+     * @param options Optional REST handler parameters, if required.
+     * @returns The result of the `POST` request.
+     *
+     * `200 OK` - will return a {@link CodeSetDetailResponse} containing a {@link CodeSetDetail} object.
+     */
+    updateReferenceFile(domainType: ModelDomainType, catalogueItemId: Uuid, referenceFileId: Uuid, data: ReferenceFile, restHandlerOptions?: RequestSettings): any;
+    /**
+     * `HTTP GET` - Request a reference file from a chosen catalogue item.
+     *
+     * @param domainType The domain type of the parent catalogue item.
+     * @param catalogueItemId The unique indentifier of the parent catalogue item.
+     * @param referenceFileId The unique identifier of the reference file to get.
+     * @param query Optional query parameters, if required.
+     * @param options Optional REST handler parameters, if required.
+     * @returns The result of the `GET` request.
+     *
+     * `200 OK` - will return a {@link ReferenceFileDetailResponse} containing a {@link ReferenceFile} object.
+     */
+    getReferenceFile(domainType: ModelDomainType, catalogueItemId: Uuid, referenceFileId: Uuid, query?: QueryParameters, options?: RequestSettings): any;
     saveSemanticLinks(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, data: any, restHandlerOptions?: RequestSettings): any;
     listSemanticLinks(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
     removeSemanticLink(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, semanticLinkId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
