@@ -15,8 +15,8 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
+import { RequestSettings, QueryParameters } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
-import { IMdmRestHandlerOptions, IMdmQueryStringParams } from './mdm-rest-handler';
 
 /**
  * Controller: dataElementComponent
@@ -30,37 +30,37 @@ import { IMdmRestHandlerOptions, IMdmQueryStringParams } from './mdm-rest-handle
  */
 export class MdmDataElementComponentResource extends MdmResource {
 
-    save(dataModelId: string, dataFlowId: string, dataClassComponentId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+    save(dataModelId: string, dataFlowId: string, dataClassComponentId: string, data: any, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataFlows/${dataFlowId}/dataClassComponents/${dataClassComponentId}/dataElementComponents`;
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    list(dataModelId: string, dataFlowId: string, dataClassComponentId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    list(dataModelId: string, dataFlowId: string, dataClassComponentId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataFlows/${dataFlowId}/dataClassComponents/${dataClassComponentId}/dataElementComponents`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    remove(dataModelId: string, dataFlowId: string, dataClassComponentId: string, dataElementComponentId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    remove(dataModelId: string, dataFlowId: string, dataClassComponentId: string, dataElementComponentId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataFlows/${dataFlowId}/dataClassComponents/${dataClassComponentId}/dataElementComponents/${dataElementComponentId}`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 
-    update(dataModelId: string, dataFlowId: string, dataClassComponentId: string, dataElementComponentId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+    update(dataModelId: string, dataFlowId: string, dataClassComponentId: string, dataElementComponentId: string, data: any, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataFlows/${dataFlowId}/dataClassComponents/${dataClassComponentId}/dataElementComponents/${dataElementComponentId}`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    get(dataModelId: string, dataFlowId: string, dataClassComponentId: string, dataElementComponentId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    get(dataModelId: string, dataFlowId: string, dataClassComponentId: string, dataElementComponentId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataFlows/${dataFlowId}/dataClassComponents/${dataClassComponentId}/dataElementComponents/${dataElementComponentId}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    removeDataElement(dataModelId: string, dataFlowId: string, dataClassComponentId: string, dataElementComponentId: string, type, dataElementId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    removeDataElement(dataModelId: string, dataFlowId: string, dataClassComponentId: string, dataElementComponentId: string, type, dataElementId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataFlows/${dataFlowId}/dataClassComponents/${dataClassComponentId}/dataElementComponents/${dataElementComponentId}/${type}/${dataElementId}`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 
-    updateDataElement(dataModelId: string, dataFlowId: string, dataClassComponentId: string, dataElementComponentId: string, type, dataElementId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+    updateDataElement(dataModelId: string, dataFlowId: string, dataClassComponentId: string, dataElementComponentId: string, type, dataElementId: string, data: any, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataFlows/${dataFlowId}/dataClassComponents/${dataClassComponentId}/dataElementComponents/${dataElementComponentId}/${type}/${dataElementId}`;
         return this.simplePut(url, data, restHandlerOptions);
     }

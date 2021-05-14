@@ -15,8 +15,8 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { MdmResource, ModelDomainType } from './mdm-resource';
-import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handler';
+import { RequestSettings, QueryParameters, ModelDomainType } from './mdm-common.model';
+import { MdmResource } from './mdm-resource';
 
 /**
  * Controller: versionLink
@@ -27,27 +27,27 @@ import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handle
  |   GET    | /api/${modelDomainType}/${modelId}/versionLinks/${id}                                                 | Action: show
  */
 export class MdmVersionLinkResource extends MdmResource {
-    save(modelDomainType: string | ModelDomainType, modelId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+    save(modelDomainType: string | ModelDomainType, modelId: string, data: any, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/${modelDomainType}/${modelId}/versionLinks`;
         return this.simplePost(url, data, restHandlerOptions);
     }
 
-    list(modelDomainType: string | ModelDomainType, modelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    list(modelDomainType: string | ModelDomainType, modelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/${modelDomainType}/${modelId}/versionLinks`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
-    remove(modelDomainType: string | ModelDomainType, modelId: string, versionLinkId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    remove(modelDomainType: string | ModelDomainType, modelId: string, versionLinkId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/${modelDomainType}/${modelId}/versionLinks/${versionLinkId}`;
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 
-    update(modelDomainType: string | ModelDomainType, modelId: string, versionLinkId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+    update(modelDomainType: string | ModelDomainType, modelId: string, versionLinkId: string, data: any, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/${modelDomainType}/${modelId}/versionLinks/${versionLinkId}`;
         return this.simplePut(url, data, restHandlerOptions);
     }
 
-    get(modelDomainType: string | ModelDomainType, modelId: string, versionLinkId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    get(modelDomainType: string | ModelDomainType, modelId: string, versionLinkId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/${modelDomainType}/${modelId}/versionLinks/${versionLinkId}`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }

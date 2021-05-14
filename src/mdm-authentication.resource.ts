@@ -15,32 +15,45 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
+import { RequestSettings, QueryParameters } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 import { MdmResourcesConfiguration } from './mdm-resources-configuration';
-import { IMdmRestHandler, DefaultMdmRestHandler, IMdmRestHandlerOptions, IMdmQueryStringParams } from './mdm-rest-handler';
+import { MdmRestHandler, DefaultMdmRestHandler } from './mdm-rest-handler';
 import { MdmSecurityResource } from './mdm-security.resource';
 import { MdmSessionResource } from './mdm-session.resource';
 
+/**
+ * @deprecated Use [[MdmSecurityResource]] and [[MdmSessionResource]] instead.
+ */
 export class MdmAuthenticationResource extends MdmResource {
 
     private securityResource: MdmSecurityResource;
     private sesisonResource: MdmSessionResource;
 
-    constructor(resourcesConfig = new MdmResourcesConfiguration(), restHandler: IMdmRestHandler = new DefaultMdmRestHandler()) {
+    constructor(resourcesConfig = new MdmResourcesConfiguration(), restHandler: MdmRestHandler = new DefaultMdmRestHandler()) {
         super(resourcesConfig, restHandler);
         this.securityResource = new MdmSecurityResource(resourcesConfig, restHandler);
         this.sesisonResource = new MdmSessionResource(resourcesConfig, restHandler);
     }
 
-    login(data: any, restHandlerOptions?: IMdmRestHandlerOptions) {
+    /**
+     * @deprecated Use [[MdmSecurityResource.login]] instead.
+     */
+    login(data: any, restHandlerOptions?: RequestSettings) {
         return this.securityResource.login(data, restHandlerOptions);
     }
 
-    logout(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    /**
+     * @deprecated Use [[MdmSecurityResource.logout]] instead.
+     */
+    logout(queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
         return this.securityResource.logout(queryStringParams, restHandlerOptions);
     }
 
-    isAuthenticated(sessionId?: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions) {
+    /**
+     * @deprecated Use [[MdmSessionResource.isAuthenticated]] instead.
+     */
+    isAuthenticated(sessionId?: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
         this.sesisonResource.isAuthenticated(sessionId, queryStringParams, restHandlerOptions);
     }
 }

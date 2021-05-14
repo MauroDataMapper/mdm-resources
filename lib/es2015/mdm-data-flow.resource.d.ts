@@ -1,8 +1,9 @@
 import { MdmResource } from './mdm-resource';
 import { MdmResourcesConfiguration } from './mdm-resources-configuration';
 import { MdmDataClassComponentResource } from './mdm-data-class-component.resource';
-import { IMdmRestHandler, IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handler';
+import { MdmRestHandler } from './mdm-rest-handler';
 import { MdmDataElementComponentResource } from './mdm-data-element-component.resource';
+import { RequestSettings, QueryParameters } from './mdm-common.model';
 /**
  * Controller: dataFlow
  |   GET    | /api/dataFlows/providers/importers                                                                                                                                               | Action: importerProviders
@@ -21,17 +22,17 @@ import { MdmDataElementComponentResource } from './mdm-data-element-component.re
 export declare class MdmDataFlowResource extends MdmResource {
     dataClassComponents: MdmDataClassComponentResource;
     dataElementComponents: MdmDataElementComponentResource;
-    constructor(resourcesConfig?: MdmResourcesConfiguration, restHandler?: IMdmRestHandler);
-    importers(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    exporters(queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    importDataFlows(importerNamespace: any, importerName: any, importerVersion: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    exportDataFlows(exporterNamespace: any, exporterName: any, exporterVersion: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    updateDiagramLayout(dataModelId: string, dataFlowId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    importDataFlow(dataModelId: string, dataFlowId: string, importerNamespace: any, importerName: any, importerVersion: any, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    exportDataFlow(dataModelId: string, dataFlowId: string, importerNamespace: any, importerName: any, importerVersion: any, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    save(dataModelId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    list(dataModelId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    remove(dataModelId: string, dataFlowId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    update(dataModelId: string, dataFlowId: string, data: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    get(dataModelId: string, dataFlowId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    constructor(resourcesConfig?: MdmResourcesConfiguration, restHandler?: MdmRestHandler);
+    importers(queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    exporters(queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    importDataFlows(importerNamespace: any, importerName: any, importerVersion: any, data: any, restHandlerOptions?: RequestSettings): any;
+    exportDataFlows(exporterNamespace: any, exporterName: any, exporterVersion: any, data: any, restHandlerOptions?: RequestSettings): any;
+    updateDiagramLayout(dataModelId: string, dataFlowId: string, data: any, restHandlerOptions?: RequestSettings): any;
+    importDataFlow(dataModelId: string, dataFlowId: string, importerNamespace: any, importerName: any, importerVersion: any, data: any, restHandlerOptions?: RequestSettings): any;
+    exportDataFlow(dataModelId: string, dataFlowId: string, importerNamespace: any, importerName: any, importerVersion: any, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    save(dataModelId: string, data: any, restHandlerOptions?: RequestSettings): any;
+    list(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    remove(dataModelId: string, dataFlowId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    update(dataModelId: string, dataFlowId: string, data: any, restHandlerOptions?: RequestSettings): any;
+    get(dataModelId: string, dataFlowId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
 }

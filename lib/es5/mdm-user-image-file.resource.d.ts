@@ -1,5 +1,5 @@
+import { RequestSettings, QueryParameters } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
-import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handler';
 /**
  * Controller: userImageFile
  |  DELETE  | /api/catalogueUsers/${catalogueUserId}/image                                                                                                                                     | Action: delete
@@ -9,9 +9,9 @@ import { IMdmQueryStringParams, IMdmRestHandlerOptions } from './mdm-rest-handle
  |   GET    | /api/userImageFiles/${id}
  */
 export declare class MdmUserImageFileResource extends MdmResource {
-    remove(catalogueUserId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    update(catalogueUserId: string, data?: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    get(catalogueUserId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    save(catalogueUserId: string, data?: any, restHandlerOptions?: IMdmRestHandlerOptions): any;
-    getUserImageFile(userId: string, queryStringParams?: IMdmQueryStringParams, restHandlerOptions?: IMdmRestHandlerOptions): any;
+    remove(catalogueUserId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    update(catalogueUserId: string, data?: any, restHandlerOptions?: RequestSettings): any;
+    get(catalogueUserId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    save(catalogueUserId: string, data?: any, restHandlerOptions?: RequestSettings): any;
+    getUserImageFile(userId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
 }
