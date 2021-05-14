@@ -168,6 +168,19 @@ export interface Breadcrumb {
     finalised?: boolean;
 }
 /**
+ * Represents a general catalogue item in Mauro.
+ */
+export interface CatalogueItem {
+    /**
+     * The unique identifier of this catalogue item.
+     */
+    id?: Uuid;
+    /**
+     * The domain type of this catalogue item.
+     */
+    domainType: CatalogueItemDomainType;
+}
+/**
  * Represents a Mauro entity that can be navigated.
  */
 export interface Navigatable {
