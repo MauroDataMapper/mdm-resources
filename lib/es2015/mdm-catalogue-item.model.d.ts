@@ -10,15 +10,15 @@ export interface ReferenceFile extends CatalogueItem {
     /**
      * The size of the reference file in bytes.
      */
-    fileSize: number;
+    fileSize?: number;
     /**
      * The MIME type of the reference file.
      */
-    fileType: string;
+    fileType?: string;
     /**
      * The date/time the reference file was last updated in string format.
      */
-    lastUpdated: string;
+    lastUpdated?: string;
     [key: string]: any;
 }
 export declare type ReferenceFileIndexResponse = MdmIndexResponse<ReferenceFile>;

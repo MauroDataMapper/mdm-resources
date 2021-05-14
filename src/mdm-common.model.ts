@@ -58,7 +58,8 @@ export enum CatalogueItemDomainType {
   TerminologyType = 'TerminologyType',
   ReferenceDataModelType = 'ReferenceDataModelType',
   CodeSetType = 'CodeSetType',
-  ModelDataType = 'ModelDataType'
+  ModelDataType = 'ModelDataType',
+  ReferenceFile = 'ReferenceFile'
 }
 
 /**

@@ -36,7 +36,8 @@ export declare enum CatalogueItemDomainType {
     TerminologyType = "TerminologyType",
     ReferenceDataModelType = "ReferenceDataModelType",
     CodeSetType = "CodeSetType",
-    ModelDataType = "ModelDataType"
+    ModelDataType = "ModelDataType",
+    ReferenceFile = "ReferenceFile"
 }
 /**
  * Represents a response from an [[MdmResource]] API endpoint.
