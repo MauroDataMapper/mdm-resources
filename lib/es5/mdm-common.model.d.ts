@@ -18,6 +18,7 @@ export declare enum ModelDomainType {
     TERMINOLOGIES = "terminologies",
     REFERENCEDATAMODELS = "referenceDataModels",
     TERMS = "terms",
+    CLASSIFIERS = "classifiers",
     ALL = "all"
 }
 export declare enum CatalogueItemDomainType {
