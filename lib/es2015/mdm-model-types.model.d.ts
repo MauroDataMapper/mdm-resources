@@ -127,4 +127,37 @@ export interface ModelUpdatePayload extends Payload {
     aliases?: string[];
     classifiers?: Classifier[];
 }
+/**
+ * Payload describing how to fork a model.
+ */
+export interface ForkModelPayload extends Payload {
+    /**
+     * The new label for the forked model.
+     */
+    label: string;
+    /**
+     * State whether permissions from the source model should be copied across to the
+     * forked model.
+     */
+    copyPermissions?: boolean;
+    /**
+     * State whether data flows from the source model should be copied across to the
+     * forked model.
+     */
+    copyDataFlows?: boolean;
+}
+/**
+ * Payload describing how to start a new version of a model.
+ */
+export interface VersionModelPayload extends Payload {
+}
+/**
+ * Payload describing how to start a new branch for a model.
+ */
+export interface BranchModelPayload extends Payload {
+    /**
+     * The new branch name for the branched model.
+     */
+    branchName: string;
+}
 export {};
