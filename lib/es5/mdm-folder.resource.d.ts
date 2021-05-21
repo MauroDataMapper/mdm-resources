@@ -179,8 +179,46 @@ export declare class MdmFolderResource extends MdmResource {
     addTerminologies(folderId: string, data: any, restHandlerOptions?: RequestSettings): any;
     terminologies(folderId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
     alterTerminologyFolder(terminologyId: string, folderId: string, data: any, restHandlerOptions?: RequestSettings): any;
-    removeReadByAuthenticated(folderId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
-    updateReadByAuthenticated(folderId: string, data?: any, restHandlerOptions?: RequestSettings): any;
-    removeReadByEveryone(folderId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
-    updateReadByEveryone(folderId: string, data?: any, restHandlerOptions?: RequestSettings): any;
+    /**
+     * `HTTP DELETE` - Removes the user access check for a folder to only be readable by authenticated users.
+     *
+     * @param id The unique identifier of the folder to update.
+     * @param query Optional query string parameters, if required.
+     * @param options Optional REST handler options, if required.
+     * @returns The result of the `DELETE` request.
+     *
+     * `200 OK` - will return a {@link FolderDetailResponse} containing a {@link FolderDetail} object.
+     */
+    removeReadByAuthenticated(id: Uuid, query?: QueryParameters, options?: RequestSettings): any;
+    /**
+     * `HTTP PUT` - Update a folder to be readable only to authenticated users.
+     *
+     * @param id The unique identifier of the folder to update.
+     * @param options Optional REST handler parameters, if required.
+     * @returns The result of the `PUT` request.
+     *
+     * `200 OK` - will return a {@link FolderDetailResponse} containing a {@link FolderDetail} object.
+     */
+    updateReadByAuthenticated(id: Uuid, options?: RequestSettings): any;
+    /**
+     * `HTTP DELETE` - Removes the user access check for a folder to be readable by either authenticated or anonymous users.
+     *
+     * @param id The unique identifier of the folder to update.
+     * @param query Optional query string parameters, if required.
+     * @param options Optional REST handler options, if required.
+     * @returns The result of the `DELETE` request.
+     *
+     * `200 OK` - will return a {@link FolderDetailResponse} containing a {@link FolderDetail} object.
+     */
+    removeReadByEveryone(id: Uuid, query?: QueryParameters, options?: RequestSettings): any;
+    /**
+     * `HTTP PUT` - Update a folder to be readable to both authenticated and anonymous users.
+     *
+     * @param id The unique identifier of the folder to update.
+     * @param options Optional REST handler parameters, if required.
+     * @returns The result of the `PUT` request.
+     *
+     * `200 OK` - will return a {@link FolderDetailResponse} containing a {@link FolderDetail} object.
+     */
+    updateReadByEveryone(id: Uuid, options?: RequestSettings): any;
 }

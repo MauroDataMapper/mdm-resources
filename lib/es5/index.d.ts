@@ -65,3 +65,5 @@ export * from './mdm-subscribed-catalogues.model';
 export * from './mdm-subscribed-catalogues.resource';
 export * from './mdm-api-properties.model';
 export * from './mdm-api-properties.resource';
+export * from './mdm-versioned-folder.model';
+export * from './mdm-versioned-folder.resource';

@@ -28,7 +28,8 @@ export type Version = string;
 
 export enum ContainerDomainType {
   CLASSIFIERS = 'classifiers',
-  FOLDERS = 'folders'
+  FOLDERS = 'folders',
+  VERSIONED_FOLDERS = 'versionedFolders'
 }
 
 export enum ModelDomainType {
@@ -40,6 +41,7 @@ export enum ModelDomainType {
   REFERENCEDATAMODELS = 'referenceDataModels',
   TERMS = 'terms',
   CLASSIFIERS = 'classifiers',
+  VERSIONED_FOLDERS = 'versionedFolders',
   ALL = 'all'
 }
 
@@ -60,7 +62,8 @@ export enum CatalogueItemDomainType {
   ReferenceDataModelType = 'ReferenceDataModelType',
   CodeSetType = 'CodeSetType',
   ModelDataType = 'ModelDataType',
-  ReferenceFile = 'ReferenceFile'
+  ReferenceFile = 'ReferenceFile',
+  VersionedFolder = 'VersionedFolder'
 }
 
 /**
