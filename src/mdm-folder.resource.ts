@@ -271,21 +271,62 @@ export class MdmFolderResource extends MdmResource {
     return this.simplePut(url, data, restHandlerOptions);
   }
 
-  removeReadByAuthenticated(folderId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
-    const url = `${this.apiEndpoint}/folders/${folderId}/readByAuthenticated`;
-    return this.simpleDelete(url, queryStringParams, restHandlerOptions);
+  /**
+   * `HTTP DELETE` - Removes the user access check for a folder to only be readable by authenticated users.
+   *
+   * @param id The unique identifier of the folder to update.
+   * @param query Optional query string parameters, if required.
+   * @param options Optional REST handler options, if required.
+   * @returns The result of the `DELETE` request.
+   *
+   * `200 OK` - will return a {@link FolderDetailResponse} containing a {@link FolderDetail} object.
+   */
+  removeReadByAuthenticated(id: Uuid, query?: QueryParameters, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/folders/${id}/readByAuthenticated`;
+    return this.simpleDelete(url, query, options);
   }
-  updateReadByAuthenticated(folderId: string, data?, restHandlerOptions?: RequestSettings) {
-    const url = `${this.apiEndpoint}/folders/${folderId}/readByAuthenticated`;
-    return this.simplePut(url, data, restHandlerOptions);
+
+  /**
+   * `HTTP PUT` - Update a folder to be readable only to authenticated users.
+   *
+   * @param id The unique identifier of the folder to update.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `PUT` request.
+   *
+   * `200 OK` - will return a {@link FolderDetailResponse} containing a {@link FolderDetail} object.
+   */
+  updateReadByAuthenticated(id: Uuid, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/folders/${id}/readByAuthenticated`;
+    return this.simplePut(url, { }, options);
   }
-  removeReadByEveryone(folderId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
-    const url = `${this.apiEndpoint}/folders/${folderId}/readByEveryone`;
-    return this.simpleDelete(url, queryStringParams, restHandlerOptions);
+
+  /**
+   * `HTTP DELETE` - Removes the user access check for a folder to be readable by either authenticated or anonymous users.
+   *
+   * @param id The unique identifier of the folder to update.
+   * @param query Optional query string parameters, if required.
+   * @param options Optional REST handler options, if required.
+   * @returns The result of the `DELETE` request.
+   *
+   * `200 OK` - will return a {@link FolderDetailResponse} containing a {@link FolderDetail} object.
+   */
+  removeReadByEveryone(id: Uuid, query?: QueryParameters, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/folders/${id}/readByEveryone`;
+    return this.simpleDelete(url, query, options);
   }
-  updateReadByEveryone(folderId: string, data?, restHandlerOptions?: RequestSettings) {
-    const url = `${this.apiEndpoint}/folders/${folderId}/readByEveryone`;
-    return this.simplePut(url, data, restHandlerOptions);
+
+  /**
+   * `HTTP PUT` - Update a folder to be readable to both authenticated and anonymous users.
+   *
+   * @param id The unique identifier of the folder to update.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `PUT` request.
+   *
+   * `200 OK` - will return a {@link FolderDetailResponse} containing a {@link FolderDetail} object.
+   */
+  updateReadByEveryone(id: Uuid, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/folders/${id}/readByEveryone`;
+    return this.simplePut(url, { }, options);
   }
 
 }
