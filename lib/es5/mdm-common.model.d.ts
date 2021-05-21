@@ -8,7 +8,8 @@ export declare type Uuid = string;
 export declare type Version = string;
 export declare enum ContainerDomainType {
     CLASSIFIERS = "classifiers",
-    FOLDERS = "folders"
+    FOLDERS = "folders",
+    VERSIONED_FOLDERS = "versionedFolders"
 }
 export declare enum ModelDomainType {
     FOLDERS = "folders",
@@ -19,6 +20,7 @@ export declare enum ModelDomainType {
     REFERENCEDATAMODELS = "referenceDataModels",
     TERMS = "terms",
     CLASSIFIERS = "classifiers",
+    VERSIONED_FOLDERS = "versionedFolders",
     ALL = "all"
 }
 export declare enum CatalogueItemDomainType {
@@ -38,7 +40,8 @@ export declare enum CatalogueItemDomainType {
     ReferenceDataModelType = "ReferenceDataModelType",
     CodeSetType = "CodeSetType",
     ModelDataType = "ModelDataType",
-    ReferenceFile = "ReferenceFile"
+    ReferenceFile = "ReferenceFile",
+    VersionedFolder = "VersionedFolder"
 }
 /**
  * Represents a response from an [[MdmResource]] API endpoint.
