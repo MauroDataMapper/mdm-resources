@@ -1,6 +1,7 @@
 export * from './mdm-common.model';
 export * from './mdm-model-types.model';
 export * from './mdm-container-types.model';
+export * from './mdm-merge-types.model';
 export * from './mdm-enumeration-values.resource';
 export * from './mdm-data-class.model';
 export * from './mdm-data-class.resource';

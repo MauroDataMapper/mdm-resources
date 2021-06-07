@@ -73,7 +73,18 @@ export declare class MdmCodeSetResource extends MdmResource {
     removeTerm(codeSetId: string, termId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
     alterTerm(codeSetId: string, termId: string, data: any, restHandlerOptions?: RequestSettings): any;
     moveCodeSetToFolder(codeSetId: string, folderId: string, data: any, restHandlerOptions?: RequestSettings): any;
-    diff(codeSetId: string, otherModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    /**
+     * `HTTP GET` - Performs a comparison between two code sets and returns the differences between them.
+     *
+     * @param leftModelId The unique identifier of the code set on the left (source) side of the comparison.
+     * @param rightModelId The unique identifier of the code set on the right (target) side of the comparison.
+     * @param query Optional query string parameters, if required.
+     * @param options Optional REST handler options, if required.
+     * @returns The result of the `GET` request.
+     *
+     * `200 OK` - will return a {@link DiffCollectionResponse} containing a list of {@link DiffCollection}.
+     */
+    diff(leftModelId: Uuid, rightModelId: Uuid, query?: QueryParameters, options?: RequestSettings): any;
     exportModel(codeSetId: string, exporterNamespace: any, exporterName: any, exporterVersion: any, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
     /**
      * `HTTP GET` - Request the list of code sets.
