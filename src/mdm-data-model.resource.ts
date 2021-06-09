@@ -371,9 +371,20 @@ export class MdmDataModelResource extends MdmResource {
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
 
-  diff(dataModelId: string, otherModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
-    const url = `${this.apiEndpoint}/dataModels/${dataModelId}/diff/${otherModelId}`;
-    return this.simpleGet(url, queryStringParams, restHandlerOptions);
+  /**
+   * `HTTP GET` - Performs a comparison between two data models and returns the differences between them.
+   *
+   * @param leftModelId The unique identifier of the data model on the left (source) side of the comparison.
+   * @param rightModelId The unique identifier of the data model on the right (target) side of the comparison.
+   * @param query Optional query string parameters, if required.
+   * @param options Optional REST handler options, if required.
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return a {@link DiffCollectionResponse} containing a list of {@link DiffCollection}.
+   */
+  diff(leftModelId: Uuid, rightModelId: Uuid, query?: QueryParameters, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/dataModels/${leftModelId}/diff/${rightModelId}`;
+    return this.simpleGet(url, query, options);
   }
 
   /**
