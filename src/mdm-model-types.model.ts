@@ -44,7 +44,15 @@ declare const securableActions: readonly [
   'newModelVersion',
   'mergeInto',
   'readByEveryone',
-  'readByAuthenticated'
+  'readByAuthenticated',
+  'createFolder',
+  'createVersionedFolder',
+  'createContainer',
+  'createModel',
+  'createModelItem',
+  'moveToFolder',
+  'moveToVersionedFolder',
+  'moveToContainer'
 ];
 
 /**
@@ -193,11 +201,11 @@ export interface ModelUpdatePayload extends Payload {
 export interface ForkModelPayload extends Payload {
   /**
    * The new label for the forked model.
-   */  
+   */
   label: string;
 
   /**
-   * State whether permissions from the source model should be copied across to the 
+   * State whether permissions from the source model should be copied across to the
    * forked model.
    */
   copyPermissions?: boolean;
@@ -212,7 +220,7 @@ export interface ForkModelPayload extends Payload {
 /**
  * Payload describing how to start a new version of a model.
  */
-export interface VersionModelPayload extends Payload { }
+export type VersionModelPayload = Payload;
 
 /**
  * Payload describing how to start a new branch for a model.

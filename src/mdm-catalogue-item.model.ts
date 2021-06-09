@@ -57,13 +57,13 @@ export interface ReferenceFileCreatePayload extends Payload {
   /**
    * The raw data of the file contents to store in the reference file.
    */
-  fileContents: any[]
+  fileContents: any[];
 }
 
 /**
  * Represents an annotation, or comment, attached to a catalogue item.
  */
-export interface Annotation extends Historical { 
+export interface Annotation extends Historical {
   /**
    * The unique identifier of this annotation.
    */

@@ -195,6 +195,7 @@ export declare class MdmVersionedFolderResource extends MdmResource {
     updateReadByEveryone(id: Uuid, options?: RequestSettings): any;
     /**
      * `HTTP POST` - Searches this versioned folder for content.
+     *
      * @param id The unique identifier of the versioned folder to search.
      * @param data The payload including the search parameters.
      * @param options Optional REST handler parameters, if required.
@@ -205,6 +206,7 @@ export declare class MdmVersionedFolderResource extends MdmResource {
     search(id: Uuid, data: Payload, options?: RequestSettings): any;
     /**
      * `HTTP GET` - Searches this versioned folder for content.
+     *
      * @param id The unique identifier of the versioned folder to search.
      * @param data The payload including the search parameters.
      * @param options Optional REST handler parameters, if required.

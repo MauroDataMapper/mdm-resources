@@ -16,10 +16,10 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { CatalogueItemDomainType, MdmResponse, QueryParameters, Uuid } from './mdm-common.model';
+import { Securable } from './mdm-model-types.model';
+import { CatalogueItem, MdmResponse, QueryParameters } from './mdm-common.model';
 
-export interface MdmTreeItem {
-  id: Uuid;
+export interface MdmTreeItem extends CatalogueItem, Securable {
   label?: string;
   children?: MdmTreeItem[];
   hasChildren: boolean;
@@ -29,7 +29,6 @@ export interface MdmTreeItem {
   isGhost?: boolean;
   modified?: boolean;
   finalised?: boolean;
-  domainType: CatalogueItemDomainType;
   type?: string;
   terminology?: any;
   term?: any;
@@ -56,6 +55,7 @@ export interface TreeItemListParameters {
   includeDocumentSuperseded?: boolean;
   includeModelSupersedd?: boolean;
   includeDeleted?: boolean;
+  noCache?: boolean;
 }
 
 export interface TreeItemExpandedParameters {

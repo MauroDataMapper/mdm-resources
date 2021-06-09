@@ -132,13 +132,13 @@ export class MdmDataModelResource extends MdmResource {
    * @param namespace The namespace of the importer provider to use.
    * @param name The unique name of the importer provider to use.
    * @param version The version of the importer provider to use.
-   * @param data The payload of the request containing all the details for import. The contents of the payload will depend on the 
+   * @param data The payload of the request containing all the details for import. The contents of the payload will depend on the
    * parameters required for the import provider in use. The parameters required are requested via {@link MdmImporterResource.get}.
    * @param options Optional REST handler parameters, if required.
    * @returns The result of the `POST` request.
    *
    * `200 OK` - will return a {@link ImportResultIndexResponse} containing a list of {@link ImportResult} objects.
-   * 
+   *
    * @see {@link MdmDataModelResource.importers}
    * @see {@link ImporterDetail}
    * @see {@link MdmImporterResource}
@@ -164,19 +164,19 @@ export class MdmDataModelResource extends MdmResource {
    * @returns The result of the `POST` request.
    *
    * `200 OK` - will return the exported data models as the body of the response.
-   * 
+   *
    * @description The response body will depend on the type of exporter used, for example JSON, XML etc.
    * It is advised to take the entire content of the response body and save the entirety of it to file
    * to provide a downloadable source.
-   * 
+   *
    * @see {@link MdmDataModelResource.exporters}
    * @see {@link MdmDataModelResource.exportModel}
    */
   exportModels(
-    namespace: string, 
-    name: string, 
-    version: Version, 
-    modelIds: Uuid[], 
+    namespace: string,
+    name: string,
+    version: Version,
+    modelIds: Uuid[],
     options?: RequestSettings) {
     const url = `${this.apiEndpoint}/dataModels/export/${namespace}/${name}/${version}`;
     return this.simplePost(url, modelIds, options);
@@ -300,18 +300,18 @@ export class MdmDataModelResource extends MdmResource {
    * @returns The result of the `PUT` request.
    *
    * `200 OK` - will return a {@link DataModelDetailResponse} containing a {@link DataModelDetail} object.
-   * 
+   *
    * @see {@link MdmDataModelResource.newForkModel}
-   * 
+   *
    * @example To start a new version of a data model:
-   * 
+   *
    * ```ts
    * const dataModelId = '684c8134-d826-4c4a-a6d1-1412b7e8fc15';
    * dataModelResource.newBranchModelVersion(dataModelId, { });
    * ```
-   * 
+   *
    * @example To start a new branch of a data model:
-   * 
+   *
    * ```ts
    * const dataModelId = '684c8134-d826-4c4a-a6d1-1412b7e8fc15';
    * dataModelResource.newBranchModelVersion(dataModelId, { branchName: 'new-branch' });
@@ -331,7 +331,7 @@ export class MdmDataModelResource extends MdmResource {
    * @returns The result of the `PUT` request.
    *
    * `200 OK` - will return a {@link DataModelDetailResponse} containing a {@link DataModelDetail} object.
-   * 
+   *
    * @see {@link MdmDataModelResource.newBranchModelVersion}
    */
   newForkModel(id: Uuid, data: ForkModelPayload, options?: RequestSettings) {
@@ -388,20 +388,20 @@ export class MdmDataModelResource extends MdmResource {
    * @returns The result of the `GET` request.
    *
    * `200 OK` - will return the exported data model as the body of the response.
-   * 
+   *
    * @description The response body will depend on the type of exporter used, for example JSON, XML etc.
    * It is advised to take the entire content of the response body and save the entirety of it to file
    * to provide a downloadable source.
-   * 
+   *
    * @see {@link MdmDataModelResource.exporters}
    * @see {@link MdmDataModelResource.exportModels}
    */
   exportModel(
-    id: Uuid, 
-    namespace: string, 
-    name: string, 
-    version: Version, 
-    query?: QueryParameters, 
+    id: Uuid,
+    namespace: string,
+    name: string,
+    version: Version,
+    query?: QueryParameters,
     options?: RequestSettings) {
     const url = `${this.apiEndpoint}/dataModels/${id}/export/${namespace}/${name}/${version}`;
     return this.simpleGet(url, query, options);

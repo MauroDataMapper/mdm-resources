@@ -28,7 +28,7 @@ export interface Container {
 }
 
 export interface ContainerDetail {
-  authority?: Authority;  
+  authority?: Authority;
 }
 
 export interface ContainerCreatePayload extends Payload {
