@@ -152,7 +152,7 @@ export class MdmTreeItemResource extends MdmResource {
    * @see {@link MdmTreeItemResource.get}
    */
   list(
-    containerDomainType: string | ContainerDomainType,
+    containerDomainType: ContainerDomainType,
     query?: TreeItemListQueryParameters,
     options?: RequestSettings
   ) {

@@ -17,37 +17,22 @@ SPDX-License-Identifier: Apache-2.0
 */
 
 import { Securable } from './mdm-model-types.model';
-import { CatalogueItem, MdmResponse, QueryParameters } from './mdm-common.model';
+import { CatalogueItem, MdmResponse, QueryParameters, Uuid, Version } from './mdm-common.model';
 
-export interface MdmTreeItem extends CatalogueItem, Securable {
+export interface MdmTreeItem extends Required<CatalogueItem>, Securable {
   label?: string;
   children?: MdmTreeItem[];
-  hasChildren: boolean;
-  created?: boolean;
+  hasChildFolders?: boolean;
   deleted?: boolean;
-  selected?: boolean;
-  isGhost?: boolean;
-  modified?: boolean;
   finalised?: boolean;
   type?: string;
-  terminology?: any;
-  term?: any;
-  open?: boolean;
-  folder?: string;
-  disableChecked?: boolean;
-  code?: string;
-  hasChildFolders?: boolean;
-  checked?: boolean;
-  parentDataClass?: Node;
-  dataModel?: any;
-  isRoot?: boolean;
+  parentFolder?: string;
   superseded?: boolean;
-  documentationVersion?: string;
+  documentationVersion?: Version;
   branchName?: string;
-  modelVersion?: string;
-  modelId?: string;
-  parentId?: string;
-  model?: any;
+  modelVersion?: Version;
+  modelId?: Uuid;
+  parentId?: Uuid;
   [key: string]: any;
 }
 
