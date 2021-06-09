@@ -22,10 +22,10 @@ import { Historical, SecurableModel } from './mdm-model-types.model';
 
 /**
  * Represents a Folder in Mauro.
- * 
- * A folder is a container that can hold further catalogue items to help 
+ *
+ * A folder is a container that can hold further catalogue items to help
  * organise Mauro.
- * 
+ *
  * @see {@link VersionedFolder}
  */
 export interface Folder extends Container {

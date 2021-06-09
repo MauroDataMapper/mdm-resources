@@ -22,7 +22,7 @@ import { ContainerCreatePayload, ContainerUpdatePayload } from './mdm-container-
 import { MdmResource } from './mdm-resource';
 
 /*
-Controller: versionedFolder 
+Controller: versionedFolder
  |   POST   | /api/folders/${folderId}/versionedFolders                                                                                                                                        | Action: save
  |   GET    | /api/folders/${folderId}/versionedFolders                                                                                                                                        | Action: index
  |   GET    | /api/versionedFolders/${versionedFolderId}/search                                                                                                                                | Action: search
@@ -30,7 +30,7 @@ Controller: versionedFolder
  |  DELETE  | /api/versionedFolders/${versionedFolderId}/readByAuthenticated                                                                                                                   | Action: readByAuthenticated
  |   PUT    | /api/versionedFolders/${versionedFolderId}/readByAuthenticated                                                                                                                   | Action: readByAuthenticated
  |  DELETE  | /api/versionedFolders/${versionedFolderId}/readByEveryone                                                                                                                        | Action: readByEveryone
- |   PUT    | /api/versionedFolders/${versionedFolderId}/readByEveryone                                                                                                                        | Action: readByEveryone 
+ |   PUT    | /api/versionedFolders/${versionedFolderId}/readByEveryone                                                                                                                        | Action: readByEveryone
  |  DELETE  | /api/folders/${folderId}/versionedFolders/${id}                                                                                                                                  | Action: delete
  |   PUT    | /api/folders/${folderId}/versionedFolders/${id}                                                                                                                                  | Action: update
  |   GET    | /api/folders/${folderId}/versionedFolders/${id}                                                                                                                                  | Action: show
@@ -38,12 +38,12 @@ Controller: versionedFolder
  |   GET    | /api/versionedFolders                                                                                                                                                            | Action: index
  |  DELETE  | /api/versionedFolders/${id}                                                                                                                                                      | Action: delete
  |   PUT    | /api/versionedFolders/${id}                                                                                                                                                      | Action: update
- |   GET    | /api/versionedFolders/${id}                                                                                                                                                      | Action: show               
+ |   GET    | /api/versionedFolders/${id}                                                                                                                                                      | Action: show
 */
 
 /**
  * MDM resource for the management of Versioned Folders in Mauro.
- * 
+ *
  * @see {@link MdmFolderResource}
  */
 export class MdmVersionedFolderResource extends MdmResource {
@@ -70,7 +70,7 @@ export class MdmVersionedFolderResource extends MdmResource {
    * @returns The result of the `POST` request.
    *
    * `200 OK` - will return a {@link VersionedFolderDetailResponse} containing a {@link VersionedFolderDetail} object.
-   * 
+   *
    * @description A {@link VersionedFolder} may be created as a child of a {@link Folder}, but
    * a {@link VersionedFolder} cannot be a child of another {@link VersionedFolder}.
    */
@@ -290,11 +290,12 @@ export class MdmVersionedFolderResource extends MdmResource {
 
   /**
    * `HTTP POST` - Searches this versioned folder for content.
+   *
    * @param id The unique identifier of the versioned folder to search.
    * @param data The payload including the search parameters.
    * @param options Optional REST handler parameters, if required.
    * @returns The result of the `POST` request.
-   * 
+   *
    * `200 OK` - will return an array of search result objects.
    */
   search(id: Uuid, data: Payload, options?: RequestSettings) {
@@ -304,11 +305,12 @@ export class MdmVersionedFolderResource extends MdmResource {
 
   /**
    * `HTTP GET` - Searches this versioned folder for content.
+   *
    * @param id The unique identifier of the versioned folder to search.
    * @param data The payload including the search parameters.
    * @param options Optional REST handler parameters, if required.
    * @returns The result of the `GET` request.
-   * 
+   *
    * `200 OK` - will return an array of search result objects.
    */
   searchByGet(id: Uuid, query?: QueryParameters, options?: RequestSettings) {
@@ -325,7 +327,7 @@ export class MdmVersionedFolderResource extends MdmResource {
    * @returns The result of the `POST` request.
    *
    * `200 OK` - will return a {@link VersionedFolderDetailResponse} containing a {@link VersionedFolderDetail} object.
-   * 
+   *
    * @description Finalising a versioned folder will automatically finalise all catalogue items within it.
    */
   finalise(id: Uuid, data: FinalisePayload, options?: RequestSettings) {
@@ -343,23 +345,23 @@ export class MdmVersionedFolderResource extends MdmResource {
    * @returns The result of the `PUT` request.
    *
    * `200 OK` - will return a {@link VersionedFolderDetailResponse} containing a {@link VersionedFolderDetail} object.
-   * 
+   *
    * @see {@link MdmVersionedFolderResource.newDocumentationVersion}
    * @see {@link MdmVersionedFolderResource.newForkModel}
-   * 
+   *
    * @example To start a new version of a versioned folder:
-   * 
+   *
    * ```ts
    * const versionedFolderId = '684c8134-d826-4c4a-a6d1-1412b7e8fc15';
    * versionedFolderResource.newBranchModelVersion(versionedFolderId, { });
    * ```
-   * 
+   *
    * @example To start a new branch of a versioned folder:
-   * 
+   *
    * ```ts
    * const versionedFolderId = '684c8134-d826-4c4a-a6d1-1412b7e8fc15';
    * versionedFolderResource.newBranchModelVersion(versionedFolderId, { branchName: 'new-branch' });
-   * ```  
+   * ```
    */
   newBranchModelVersion(id: Uuid, data: VersionModelPayload | BranchModelPayload, restHandlerOptions?: RequestSettings) {
     const url = `${this.apiEndpoint}/versionedFolders/${id}/newBranchModelVersion`;
@@ -375,7 +377,7 @@ export class MdmVersionedFolderResource extends MdmResource {
    * @returns The result of the `PUT` request.
    *
    * `200 OK` - will return a {@link VersionedFolderDetailResponse} containing a {@link VersionedFolderDetail} object.
-   * 
+   *
    * @see {@link MdmVersionedFolderResource.newBranchModelVersion}
    * @see {@link MdmVersionedFolderResource.newForkModel}
    */
@@ -393,7 +395,7 @@ export class MdmVersionedFolderResource extends MdmResource {
    * @returns The result of the `PUT` request.
    *
    * `200 OK` - will return a {@link VersionedFolderDetailResponse} containing a {@link VersionedFolderDetail} object.
-   * 
+   *
    * @see {@link MdmVersionedFolderResource.newBranchModelVersion}
    * @see {@link MdmVersionedFolderResource.newDocumentationVersion}
    */

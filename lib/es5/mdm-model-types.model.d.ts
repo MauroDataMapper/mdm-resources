@@ -5,7 +5,7 @@ export interface Authority {
     label: string;
     url?: string;
 }
-declare const securableActions: readonly ['show', 'update', 'changeFolder', 'delete', 'disable', 'index', 'save', 'comment', 'editDescription', 'softDelete', 'newDocumentationVersion', 'newBranchModelVersion', 'finalise', 'createNewVersions', 'newForkModel', 'newModelVersion', 'mergeInto', 'readByEveryone', 'readByAuthenticated'];
+declare const securableActions: readonly ['show', 'update', 'changeFolder', 'delete', 'disable', 'index', 'save', 'comment', 'editDescription', 'softDelete', 'newDocumentationVersion', 'newBranchModelVersion', 'finalise', 'createNewVersions', 'newForkModel', 'newModelVersion', 'mergeInto', 'readByEveryone', 'readByAuthenticated', 'createFolder', 'createVersionedFolder', 'createContainer', 'createModel', 'createModelItem', 'moveToFolder', 'moveToVersionedFolder', 'moveToContainer'];
 /**
  * Type alias to define available securable actions a catalogue item can perform.
  */
@@ -149,8 +149,7 @@ export interface ForkModelPayload extends Payload {
 /**
  * Payload describing how to start a new version of a model.
  */
-export interface VersionModelPayload extends Payload {
-}
+export declare type VersionModelPayload = Payload;
 /**
  * Payload describing how to start a new branch for a model.
  */
