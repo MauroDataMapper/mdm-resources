@@ -27,22 +27,22 @@ export type Uuid = string;
 export type Version = string;
 
 export enum ContainerDomainType {
-  CLASSIFIERS = 'classifiers',
-  FOLDERS = 'folders',
-  VERSIONED_FOLDERS = 'versionedFolders'
+  Classifiers = 'classifiers',
+  Folders = 'folders',
+  VersionedFolders = 'versionedFolders'
 }
 
 export enum ModelDomainType {
-  FOLDERS = 'folders',
-  DATA_MODELS = 'dataModels',
-  DATA_CLASSES = 'dataClasses',
-  DATA_TYPES = 'dataTypes',
-  TERMINOLOGIES = 'terminologies',
-  REFERENCEDATAMODELS = 'referenceDataModels',
-  TERMS = 'terms',
-  CLASSIFIERS = 'classifiers',
-  VERSIONED_FOLDERS = 'versionedFolders',
-  ALL = 'all'
+  Folders = 'folders',
+  DataModels = 'dataModels',
+  DataClasses = 'dataClasses',
+  DataTypes = 'dataTypes',
+  Terminologies = 'terminologies',
+  ReferenceDataModels = 'referenceDataModels',
+  Terms = 'terms',
+  Classifiers = 'classifiers',
+  VersionedFolders = 'versionedFolders',
+  All = 'all'
 }
 
 export enum CatalogueItemDomainType {
@@ -63,7 +63,12 @@ export enum CatalogueItemDomainType {
   CodeSetType = 'CodeSetType',
   ModelDataType = 'ModelDataType',
   ReferenceFile = 'ReferenceFile',
-  VersionedFolder = 'VersionedFolder'
+  VersionedFolder = 'VersionedFolder',
+  Root = 'Root',
+  LocalCatalogue = 'LocalCatalogue',
+  ExternalCatalogues = 'ExternalCatalogues',
+  SubscribedCatalogue = 'SubscribedCatalogue',
+  FederatedDataModel = 'FederatedDataModel'
 }
 
 /**
