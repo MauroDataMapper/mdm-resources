@@ -72,6 +72,31 @@ export enum CatalogueItemDomainType {
 }
 
 /**
+ * Determine if a given domain type represents a Container.
+ *
+ * @param domainType The {@link CatalogueItemDomainType} to verify.
+ * @returns True if `domainType` is a container type.
+ */
+export function isContainerDomainType(domainType: CatalogueItemDomainType) {
+  return domainType === CatalogueItemDomainType.Classification
+    || domainType === CatalogueItemDomainType.Folder
+    || domainType === CatalogueItemDomainType.VersionedFolder;
+}
+
+/**
+ * Determine if a given domain type represents a Model.
+ *
+ * @param domainType The {@link CatalogueItemDomainType} to verify.
+ * @returns True if `domainType` is a model type.
+ */
+export function isModelDomainType(domainType: CatalogueItemDomainType) {
+  return domainType === CatalogueItemDomainType.DataModel
+    || domainType === CatalogueItemDomainType.CodeSet
+    || domainType === CatalogueItemDomainType.Terminology
+    || domainType === CatalogueItemDomainType.ReferenceDataModel;
+}
+
+/**
  * Represents a response from an [[MdmResource]] API endpoint.
  *
  * @typeparam T The type of object the body of the response represents.

@@ -49,6 +49,20 @@ export declare enum CatalogueItemDomainType {
     FederatedDataModel = "FederatedDataModel"
 }
 /**
+ * Determine if a given domain type represents a Container.
+ *
+ * @param domainType The {@link CatalogueItemDomainType} to verify.
+ * @returns True if `domainType` is a container type.
+ */
+export declare function isContainerDomainType(domainType: CatalogueItemDomainType): boolean;
+/**
+ * Determine if a given domain type represents a Model.
+ *
+ * @param domainType The {@link CatalogueItemDomainType} to verify.
+ * @returns True if `domainType` is a model type.
+ */
+export declare function isModelDomainType(domainType: CatalogueItemDomainType): boolean;
+/**
  * Represents a response from an [[MdmResource]] API endpoint.
  *
  * @typeparam T The type of object the body of the response represents.
