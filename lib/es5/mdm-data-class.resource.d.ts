@@ -20,7 +20,11 @@ import { MdmResource } from './mdm-resource';
  * |   PUT    | /api/dataModels/${dataModelId}/dataClasses/${id}                                                                                     | Action: update
  * |   GET    | /api/dataModels/${dataModelId}/dataClasses/${id}                                                                                     | Action: show
  * |   POST   | /api/dataModels/${dataModelId}/dataClasses/${otherDataModelId}/${otherDataClassId}                                                   | Action: copyDataClass
- *
+ * |
+ * |  DELETE  | /api/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataClasses/${otherDataModelId}/${otherDataClassId}                         | Action: removeImportDataClass
+ * |   PUT    | /api/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataClasses/${otherDataModelId}/${otherDataClassId}                         | Action: addImportDataClass
+ * |  DELETE  | /api/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/${otherDataModelId}/${otherDataClassId}/${otherDataElementId}  | Action: removeImportDataElement
+ * |   PUT    | /api/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/${otherDataModelId}/${otherDataClassId}/${otherDataElementId}  | Action: addImportDataElement
  */
 /**
  * MDM resource for managing data classes attached to data models.
@@ -192,4 +196,10 @@ export declare class MdmDataClassResource extends MdmResource {
      * `200 OK` - will return a {@link DataClassDetailResponse} containing the new copy of a {@link DataClassDetail} object.
      */
     copyDataClass(dataModelId: string, otherDataModelId: string, otherDataClassId: string, restHandlerOptions?: RequestSettings): any;
+    importDataClass(dataModelId: Uuid, dataClassId: Uuid, otherDataModelId: Uuid, otherDataClassId: Uuid, options?: RequestSettings): any;
+    removeImportedDataClass(dataModelId: Uuid, dataClassId: Uuid, otherDataModelId: Uuid, otherDataClassId: Uuid, options?: RequestSettings): any;
+    importDataElement(dataModelId: Uuid, dataClassId: Uuid, otherDataModelId: Uuid, otherDataClassId: Uuid, otherDataElementId: Uuid, options?: RequestSettings): any;
+    removeImportedDataElement(dataModelId: Uuid, dataClassId: Uuid, otherDataModelId: Uuid, otherDataClassId: Uuid, otherDataElementId: Uuid, options?: RequestSettings): any;
+    addExtendDataClass(dataModelId: Uuid, dataClassId: Uuid, otherDataModelId: Uuid, otherDataClassId: Uuid, options?: RequestSettings): any;
+    removeExtendDataClass(dataModelId: Uuid, dataClassId: Uuid, otherDataModelId: Uuid, otherDataClassId: Uuid, options?: RequestSettings): any;
 }

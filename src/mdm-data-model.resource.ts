@@ -57,6 +57,11 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/dataModels/${dataModelId}/latestModelVersion                                                                                    | Action: latestModelVersion
  |   GET    | /api/dataModels/${dataModelId}/latestFinalisedModel                                                                                  | Action: latestFinalisedModel
  |   GET    | /api/dataModels/${dataModelId}/modelVersionTree                                                                                      | Action: modelVersionTree
+ |
+ |  DELETE  | /api/dataModels/${dataModelId}/dataTypes/${otherDataModelId}/${otherDataTypeId}                                                      | Action: removeImportDataType
+ |   PUT    | /api/dataModels/${dataModelId}/dataTypes/${otherDataModelId}/${otherDataTypeId}                                                      | Action: addImportDataType
+ |  DELETE  | /api/dataModels/${dataModelId}/dataClasses/${otherDataModelId}/${otherDataClassId}                                                   | Action: removeImportDataClass
+ |   PUT    | /api/dataModels/${dataModelId}/dataClasses/${otherDataModelId}/${otherDataClassId}                                                   | Action: addImportDataClass
  */
 
 /**
@@ -535,5 +540,25 @@ export class MdmDataModelResource extends MdmResource {
   undoSoftDelete(dataModelId: Uuid, options?: RequestSettings) {
     const url = `${this.apiEndpoint}/admin/dataModels/${dataModelId}/undoSoftDelete`;
     return this.simplePut(url, {}, options);
+  }
+
+  importDataType(dataModelId: Uuid, otherDataModelId: Uuid, otherDataTypeId: Uuid, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataTypes/${otherDataModelId}/${otherDataTypeId}`;
+    return this.simplePut(url, {}, options);
+  }
+
+  removeImportedDataType(dataModelId: Uuid, otherDataModelId: Uuid, otherDataTypeId: Uuid, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataTypes/${otherDataModelId}/${otherDataTypeId}`;
+    return this.simpleDelete(url, {}, options);
+  }
+
+  importDataClass(dataModelId: Uuid, otherDataModelId: Uuid, otherDataClassId: Uuid, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${otherDataModelId}/${otherDataClassId}`;
+    return this.simplePut(url, {}, options);
+  }
+
+  removeImportedDataClass(dataModelId: Uuid, otherDataModelId: Uuid, otherDataClassId: Uuid, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${otherDataModelId}/${otherDataClassId}`;
+    return this.simpleDelete(url, {}, options);
   }
 }

@@ -39,6 +39,11 @@ import { MdmResource } from './mdm-resource';
  |   GET    | /api/dataModels/${dataModelId}/latestModelVersion                                                                                    | Action: latestModelVersion
  |   GET    | /api/dataModels/${dataModelId}/latestFinalisedModel                                                                                  | Action: latestFinalisedModel
  |   GET    | /api/dataModels/${dataModelId}/modelVersionTree                                                                                      | Action: modelVersionTree
+ |
+ |  DELETE  | /api/dataModels/${dataModelId}/dataTypes/${otherDataModelId}/${otherDataTypeId}                                                      | Action: removeImportDataType
+ |   PUT    | /api/dataModels/${dataModelId}/dataTypes/${otherDataModelId}/${otherDataTypeId}                                                      | Action: addImportDataType
+ |  DELETE  | /api/dataModels/${dataModelId}/dataClasses/${otherDataModelId}/${otherDataClassId}                                                   | Action: removeImportDataClass
+ |   PUT    | /api/dataModels/${dataModelId}/dataClasses/${otherDataModelId}/${otherDataClassId}                                                   | Action: addImportDataClass
  */
 /**
  * MDM resource for managing data models.
@@ -354,4 +359,8 @@ export declare class MdmDataModelResource extends MdmResource {
      * @see {@link MdmDataModelResource.remove}
      */
     undoSoftDelete(dataModelId: Uuid, options?: RequestSettings): any;
+    importDataType(dataModelId: Uuid, otherDataModelId: Uuid, otherDataTypeId: Uuid, options?: RequestSettings): any;
+    removeImportedDataType(dataModelId: Uuid, otherDataModelId: Uuid, otherDataTypeId: Uuid, options?: RequestSettings): any;
+    importDataClass(dataModelId: Uuid, otherDataModelId: Uuid, otherDataClassId: Uuid, options?: RequestSettings): any;
+    removeImportedDataClass(dataModelId: Uuid, otherDataModelId: Uuid, otherDataClassId: Uuid, options?: RequestSettings): any;
 }

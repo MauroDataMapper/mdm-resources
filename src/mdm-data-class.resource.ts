@@ -38,7 +38,11 @@ import { MdmResource } from './mdm-resource';
  * |   PUT    | /api/dataModels/${dataModelId}/dataClasses/${id}                                                                                     | Action: update
  * |   GET    | /api/dataModels/${dataModelId}/dataClasses/${id}                                                                                     | Action: show
  * |   POST   | /api/dataModels/${dataModelId}/dataClasses/${otherDataModelId}/${otherDataClassId}                                                   | Action: copyDataClass
- *
+ * |
+ * |  DELETE  | /api/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataClasses/${otherDataModelId}/${otherDataClassId}                         | Action: removeImportDataClass
+ * |   PUT    | /api/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataClasses/${otherDataModelId}/${otherDataClassId}                         | Action: addImportDataClass
+ * |  DELETE  | /api/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/${otherDataModelId}/${otherDataClassId}/${otherDataElementId}  | Action: removeImportDataElement
+ * |   PUT    | /api/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/${otherDataModelId}/${otherDataClassId}/${otherDataElementId}  | Action: addImportDataElement
  */
 
 /**
@@ -277,5 +281,35 @@ export class MdmDataClassResource extends MdmResource {
   copyDataClass(dataModelId: string, otherDataModelId: string, otherDataClassId: string, restHandlerOptions?: RequestSettings) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${otherDataModelId}/${otherDataClassId}`;
     return this.simplePost(url, { }, restHandlerOptions);
+  }
+
+  importDataClass(dataModelId: Uuid, dataClassId: Uuid, otherDataModelId: Uuid, otherDataClassId: Uuid, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataClasses/${otherDataModelId}/${otherDataClassId}`;
+    return this.simplePut(url, { }, options);
+  }
+
+  removeImportedDataClass(dataModelId: Uuid, dataClassId: Uuid, otherDataModelId: Uuid, otherDataClassId: Uuid, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataClasses/${otherDataModelId}/${otherDataClassId}`;
+    return this.simpleDelete(url, { }, options);
+  }
+
+  importDataElement(dataModelId: Uuid, dataClassId: Uuid, otherDataModelId: Uuid, otherDataClassId: Uuid, otherDataElementId: Uuid, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/${otherDataModelId}/${otherDataClassId}/${otherDataElementId}`;
+    return this.simplePut(url, { }, options);
+  }
+
+  removeImportedDataElement(dataModelId: Uuid, dataClassId: Uuid, otherDataModelId: Uuid, otherDataClassId: Uuid, otherDataElementId: Uuid, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/${otherDataModelId}/${otherDataClassId}/${otherDataElementId}`;
+    return this.simpleDelete(url, { }, options);
+  }
+
+  addExtendDataClass(dataModelId: Uuid, dataClassId: Uuid, otherDataModelId: Uuid, otherDataClassId: Uuid, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/extends/${otherDataModelId}/${otherDataClassId}`;
+    return this.simplePut(url, { }, options);
+  }
+
+  removeExtendDataClass(dataModelId: Uuid, dataClassId: Uuid, otherDataModelId: Uuid, otherDataClassId: Uuid, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/extends/${otherDataModelId}/${otherDataClassId}`;
+    return this.simpleDelete(url, { }, options);
   }
 }
