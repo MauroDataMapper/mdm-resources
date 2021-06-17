@@ -297,6 +297,21 @@ export class MdmCodeSetResource extends MdmResource {
   }
 
   /**
+   * `HTTP GET` - Request a simplified model version tree for a Code Set.
+   *
+   * @param codeSetId The unique identifier of the code set.
+   * @param query Optional query parameters, if required.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return a {@link BasicModelVersionTreeResponse} containing a list of {@link BasicModelVersionItem} objects.
+   */
+   simpleModelVersionTree(codeSetId: Uuid, query?: QueryParameters, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/codeSets/${codeSetId}/simpleModelVersionTree`;
+    return this.simpleGet(url, query, options);
+  }
+
+  /**
    * `HTTP PUT` - Restores a temporarily deleted code set.
    *
    * @param codeSetId The unique identifier of the code set to restore.
