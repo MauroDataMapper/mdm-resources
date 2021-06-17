@@ -403,4 +403,24 @@ export class MdmVersionedFolderResource extends MdmResource {
     const url = `${this.apiEndpoint}/versionedFolders/${id}/newForkModel`;
     return this.simplePut(url, data, options);
   }
+
+  modelVersionTree(id: string, query?: QueryParameters, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/versionedFolders/${id}/modelVersionTree`;
+    return this.simpleGet(url, query, options);
+  }
+
+  /**
+   * `HTTP GET` - Request a simplified model version tree for a Versioned Folder.
+   *
+   * @param id The unique identifier of the versioned folder.
+   * @param query Optional query parameters, if required.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return a {@link BasicModelVersionTreeResponse} containing a list of {@link BasicModelVersionItem} objects.
+   */
+  simpleModelVersionTree(id: Uuid, query?: QueryParameters, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/versionedFolders/${id}/simpleModelVersionTree`;
+    return this.simpleGet(url, query, options);
+  }
 }

@@ -269,6 +269,21 @@ export class MdmTerminologyResource extends MdmResource {
   }
 
   /**
+   * `HTTP GET` - Request a simplified model version tree for a Terminology.
+   *
+   * @param terminologyId The unique identifier of the terminology.
+   * @param query Optional query parameters, if required.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return a {@link BasicModelVersionTreeResponse} containing a list of {@link BasicModelVersionItem} objects.
+   */
+   simpleModelVersionTree(terminologyId: Uuid, query?: QueryParameters, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/terminologies/${terminologyId}/simpleModelVersionTree`;
+    return this.simpleGet(url, query, options);
+  }
+
+  /**
    * `HTTP PUT` - Restores a temporarily deleted terminology.
    *
    * @param terminologyId The unique identifier of the terminology to restore.

@@ -17,7 +17,7 @@ SPDX-License-Identifier: Apache-2.0
 */
 
 import { Classifier } from './mdm-classifier.model';
-import { CatalogueItem, CatalogueItemDomainType, CatalogueItemReference, Payload, QueryParameters, Uuid, Version } from './mdm-common.model';
+import { CatalogueItem, CatalogueItemDomainType, CatalogueItemReference, MdmResponse, Payload, QueryParameters, Uuid, Version } from './mdm-common.model';
 
 export interface Authority {
   id: Uuid;
@@ -231,3 +231,16 @@ export interface BranchModelPayload extends Payload {
    */
   branchName: string;
 }
+
+/**
+ * Represents basic details of an item from a model version tree.
+ */
+export interface BasicModelVersionItem {
+  id: Uuid;
+  branch?: string;
+  modelVersion?: Version;
+  documentationVersion?: Version;
+  displayName: string;
+}
+
+export type BasicModelVersionTreeResponse = MdmResponse<BasicModelVersionItem[]>;
