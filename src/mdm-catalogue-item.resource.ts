@@ -15,7 +15,7 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { ReferenceFile, ReferenceFileCreatePayload } from './mdm-catalogue-item.model';
+import { AnnotationChildCreatePayload, AnnotationCreatePayload, ReferenceFile, ReferenceFileCreatePayload } from './mdm-catalogue-item.model';
 import { RequestSettings, QueryParameters, ModelDomainType, Uuid, FilterQueryParameters } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 
@@ -81,44 +81,144 @@ export class MdmCatalogueItemResource extends MdmResource {
 
   // Annotation
 
-  saveAnnotations(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, data: any, restHandlerOptions?: RequestSettings) {
-    const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/annotations`;
-    return this.simplePost(url, data, restHandlerOptions);
+  /**
+   * `HTTP POST` - Creates a new annotation under a chosen catalogue item.
+   *
+   * @param domainType The domain type of the parent catalogue item.
+   * @param id The unique identifier of the parent catalogue item.
+   * @param data The payload of the request containing all the details for the annotation to create.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `POST` request.
+   *
+   * `200 OK` - will return a {@link AnnotationDetailResponse} containing a {@link Annotation} object.
+   */
+  saveAnnotations(domainType: ModelDomainType, id: Uuid, data: AnnotationCreatePayload, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/${domainType}/${id}/annotations`;
+    return this.simplePost(url, data, options);
   }
 
-  saveAnnotationChildren(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, annotationId: string, data: any, restHandlerOptions?: RequestSettings) {
-    const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/annotations/${annotationId}/annotations`;
-    return this.simplePost(url, data, restHandlerOptions);
+  /**
+   * `HTTP POST` - Creates a new child annotation under a chosen annotation.
+   *
+   * @param domainType The domain type of the parent catalogue item.
+   * @param catalogueItemId The unique identifier of the parent catalogue item.
+   * @param annotationId The unique identifier of the parent annotation to add to.
+   * @param data The payload of the request containing all the details for the child annotation to create.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `POST` request.
+   *
+   * `200 OK` - will return a {@link AnnotationDetailResponse} containing a {@link Annotation} object.
+   */
+  saveAnnotationChildren(domainType: ModelDomainType, catalogueItemId: Uuid, annotationId: Uuid, data: AnnotationChildCreatePayload, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/${domainType}/${catalogueItemId}/annotations/${annotationId}/annotations`;
+    return this.simplePost(url, data, options);
   }
 
-  listAnnotations(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
-    const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/annotations`;
-    return this.simpleGet(url, queryStringParams, restHandlerOptions);
+  /**
+   * `HTTP GET` - Request the list of annotations for a catalogue item.
+   *
+   * @param domainType The domain type of the parent catalogue item.
+   * @param id The unique identifier of the parent catalogue item.
+   * @param query Optional query string parameters to filter the returned list, if required.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return a {@link AnnotationIndexResponse} containing a list of {@link Annotation} items.
+   *
+   * @see {@link MdmCatalogueItemResource.getAnnotation}
+   */
+  listAnnotations(domainType: ModelDomainType, id: Uuid, query?: FilterQueryParameters, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/${domainType}/${id}/annotations`;
+    return this.simpleGet(url, query, options);
   }
 
-  listAnnotationChildren(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, annotationId?: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
-    const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/annotations/${annotationId}/annotations`;
-    return this.simpleGet(url, queryStringParams, restHandlerOptions);
+  /**
+   * `HTTP GET` - Request the list of child annotations for a parent annotation.
+   *
+   * @param domainType The domain type of the parent catalogue item.
+   * @param catalogueItemId The unique identifier of the parent catalogue item.
+   * @param annotationId The unique identifier of the parent annotation.
+   * @param query Optional query string parameters to filter the returned list, if required.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return a {@link AnnotationIndexResponse} containing a list of {@link Annotation} items.
+   *
+   * @see {@link MdmCatalogueItemResource.getAnnotation}
+   */
+  listAnnotationChildren(domainType: ModelDomainType, catalogueItemId: Uuid, annotationId: Uuid, query?: FilterQueryParameters, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/${domainType}/${catalogueItemId}/annotations/${annotationId}/annotations`;
+    return this.simpleGet(url, query, options);
   }
 
-  removeAnnotation(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, annotationId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
-    const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/annotations/${annotationId}`;
-    return this.simpleDelete(url, queryStringParams, restHandlerOptions);
+  /**
+   * `HTTP DELETE` - Removes an existing annotation.
+   *
+   * @param domainType The domain type of the parent catalogue item.
+   * @param catalogueItemId The unique indentifier of the parent catalogue item.
+   * @param annotationId The unique identifier of the annotation to remove.
+   * @param query Optional query string parameters, if required.
+   * @param options Optional REST handler options, if required.
+   * @returns The result of the `DELETE` request.
+   *
+   * On success, the response will be a `204 No Content` and the response body will be empty.
+   */
+  removeAnnotation(domainType: ModelDomainType, catalogueItemId: Uuid, annotationId: Uuid, query?: QueryParameters, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/${domainType}/${catalogueItemId}/annotations/${annotationId}`;
+    return this.simpleDelete(url, query, options);
   }
 
-  removeAnnotationChild(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, annotationId: string, childId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
-    const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/annotations/${annotationId}/annotations/${childId}`;
-    return this.simpleDelete(url, queryStringParams, restHandlerOptions);
+  /**
+   * `HTTP DELETE` - Removes an existing child annotation.
+   *
+   * @param domainType The domain type of the parent catalogue item.
+   * @param catalogueItemId The unique indentifier of the parent catalogue item.
+   * @param annotationId The unique identifier of the parent annotation.
+   * @param childId The unique identifier of the child annotation to remove.
+   * @param query Optional query string parameters, if required.
+   * @param options Optional REST handler options, if required.
+   * @returns The result of the `DELETE` request.
+   *
+   * On success, the response will be a `204 No Content` and the response body will be empty.
+   */
+  removeAnnotationChild(domainType: ModelDomainType, catalogueItemId: Uuid, annotationId: Uuid, childId: Uuid, query?: QueryParameters, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/${domainType}/${catalogueItemId}/annotations/${annotationId}/annotations/${childId}`;
+    return this.simpleDelete(url, query, options);
   }
 
-  getAnnotation(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, annotationId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
-    const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/annotations/${annotationId}`;
-    return this.simpleGet(url, queryStringParams, restHandlerOptions);
+  /**
+   * `HTTP GET` - Request an annotation from a chosen catalogue item.
+   *
+   * @param domainType The domain type of the parent catalogue item.
+   * @param catalogueItemId The unique indentifier of the parent catalogue item.
+   * @param annotationId The unique identifier of the annotation to get.
+   * @param query Optional query parameters, if required.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return a {@link AnnotationDetailResponse} containing a {@link Annotation} object.
+   */
+  getAnnotation(domainType: ModelDomainType, catalogueItemId: Uuid, annotationId: Uuid, query?: QueryParameters, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/${domainType}/${catalogueItemId}/annotations/${annotationId}`;
+    return this.simpleGet(url, query, options);
   }
 
-  getAnnotationChild(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, annotationId: string, childId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
-    const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/annotations/${annotationId}/annotations/${childId}`;
-    return this.simpleGet(url, queryStringParams, restHandlerOptions);
+  /**
+   * `HTTP GET` - Request a child annotation from a chosen parent annotation.
+   *
+   * @param domainType The domain type of the parent catalogue item.
+   * @param catalogueItemId The unique indentifier of the parent catalogue item.
+   * @param annotationId The unique identifier of the parent annotation.
+   * @param childId The unique identifier of the child annotation to get.
+   * @param query Optional query parameters, if required.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return a {@link AnnotationDetailResponse} containing a {@link Annotation} object.
+   */
+  getAnnotationChild(domainType: ModelDomainType, catalogueItemId: Uuid, annotationId: Uuid, childId: Uuid, query?: QueryParameters, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/${domainType}/${catalogueItemId}/annotations/${annotationId}/annotations/${childId}`;
+    return this.simpleGet(url, query, options);
   }
 
   // Classifier

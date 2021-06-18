@@ -257,4 +257,19 @@ export class MdmReferenceDataModelResource extends MdmResource {
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
 
+  /**
+   * `HTTP GET` - Request a simplified model version tree for a Reference Data Model.
+   *
+   * @param referenceDataModelId The unique identifier of the reference data model.
+   * @param query Optional query parameters, if required.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return a {@link BasicModelVersionTreeResponse} containing a list of {@link BasicModelVersionItem} objects.
+   */
+   simpleModelVersionTree(referenceDataModelId: Uuid, query?: QueryParameters, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/simpleModelVersionTree`;
+    return this.simpleGet(url, query, options);
+  }
+
 }

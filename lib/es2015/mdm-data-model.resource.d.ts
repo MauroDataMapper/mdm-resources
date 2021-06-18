@@ -1,5 +1,5 @@
-import { FinalisePayload, ModelRemoveQueryParameters, ModelUpdatePayload } from './mdm-model-types.model';
-import { RequestSettings, QueryParameters, Uuid, FilterQueryParameters } from './mdm-common.model';
+import { BranchModelPayload, FinalisePayload, ForkModelPayload, ModelRemoveQueryParameters, ModelUpdatePayload, VersionModelPayload } from './mdm-model-types.model';
+import { RequestSettings, QueryParameters, Uuid, FilterQueryParameters, Payload, Version } from './mdm-common.model';
 import { DataModelCreatePayload, DataModelCreateQueryParameters } from './mdm-data-model.model';
 import { MdmResource } from './mdm-resource';
 /**
@@ -60,8 +60,26 @@ export declare class MdmDataModelResource extends MdmResource {
      * `200 OK` - will return a {@link DataModelDefaultDataTypesResponse} containing an array of {@link DataTypeProvider} objects.
      */
     defaultDataTypes(query?: QueryParameters, options?: RequestSettings): any;
-    importers(queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
-    exporters(queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    /**
+     * `HTTP GET` - Request the available importer providers for data models.
+     *
+     * @param query Optional query parameters, if required.
+     * @param options Optional REST handler parameters, if required.
+     * @returns The result of the `GET` request.
+     *
+     * `200 OK` - will return a {@link ImporterIndexResponse} containing an array of {@link Importer} objects.
+     */
+    importers(query?: QueryParameters, options?: RequestSettings): any;
+    /**
+     * `HTTP GET` - Request the available exporter providers for data models.
+     *
+     * @param query Optional query parameters, if required.
+     * @param options Optional REST handler parameters, if required.
+     * @returns The result of the `GET` request.
+     *
+     * `200 OK` - will return a {@link ExporterIndexResponse} containing an array of {@link Exporter} objects.
+     */
+    exporters(query?: QueryParameters, options?: RequestSettings): any;
     /**
      * `HTTP GET` - Request the available types for creating data models.
      *
@@ -72,15 +90,89 @@ export declare class MdmDataModelResource extends MdmResource {
      * `200 OK` - will return a {@link DataModelTypesResponse} containing an array of strings.
      */
     types(query?: QueryParameters, options?: RequestSettings): any;
-    importModels(importerNamespace: any, importerName: any, importerVersion: any, data: any, restHandlerOptions?: RequestSettings): any;
-    exportModels(exporterNamespace: any, exporterName: any, exporterVersion: any, data: any, restHandlerOptions?: RequestSettings): any;
+    /**
+     * `HTTP POST` - Imports a data model.
+     *
+     * @param namespace The namespace of the importer provider to use.
+     * @param name The unique name of the importer provider to use.
+     * @param version The version of the importer provider to use.
+     * @param data The payload of the request containing all the details for import. The contents of the payload will depend on the
+     * parameters required for the import provider in use. The parameters required are requested via {@link MdmImporterResource.get}.
+     * @param options Optional REST handler parameters, if required.
+     * @returns The result of the `POST` request.
+     *
+     * `200 OK` - will return a {@link ImportResultIndexResponse} containing a list of {@link ImportResult} objects.
+     *
+     * @see {@link MdmDataModelResource.importers}
+     * @see {@link ImporterDetail}
+     * @see {@link MdmImporterResource}
+     */
+    importModels(namespace: string, name: string, version: Version, data: Payload, options?: RequestSettings): any;
+    /**
+     * `HTTP POST` - Exports one or more data models.
+     *
+     * @param namespace The namespace of the exporter provider to use.
+     * @param name The unique name of the exporter provider to use.
+     * @param version The version of the exporter provider to use.
+     * @param modelIds The list of data model identifiers to export.
+     * @param options Optional REST handler parameters, if required.
+     * @returns The result of the `POST` request.
+     *
+     * `200 OK` - will return the exported data models as the body of the response.
+     *
+     * @description The response body will depend on the type of exporter used, for example JSON, XML etc.
+     * It is advised to take the entire content of the response body and save the entirety of it to file
+     * to provide a downloadable source.
+     *
+     * @see {@link MdmDataModelResource.exporters}
+     * @see {@link MdmDataModelResource.exportModel}
+     */
+    exportModels(namespace: string, name: string, version: Version, modelIds: Uuid[], options?: RequestSettings): any;
     removeAllUnusedDataClasses(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
     removeAllUnusedDataTypes(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
     listInFolder(folderId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
-    removeReadByAuthenticated(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
-    updateReadByAuthenticated(dataModelId: string, data: any, restHandlerOptions?: RequestSettings): any;
-    removeReadByEveryone(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
-    updateReadByEveryone(dataModelId: string, data: any, restHandlerOptions?: RequestSettings): any;
+    /**
+     * `HTTP DELETE` - Removes the user access check for a data model to only be readable by authenticated users.
+     *
+     * @param id The unique identifier of the data model to update.
+     * @param query Optional query string parameters, if required.
+     * @param options Optional REST handler options, if required.
+     * @returns The result of the `DELETE` request.
+     *
+     * `200 OK` - will return a {@link DataModelDetailResponse} containing a {@link DataModelDetail} object.
+     */
+    removeReadByAuthenticated(id: Uuid, query?: QueryParameters, options?: RequestSettings): any;
+    /**
+     * `HTTP PUT` - Update a data model to be readable only to authenticated users.
+     *
+     * @param id The unique identifier of the data model to update.
+     * @param options Optional REST handler parameters, if required.
+     * @returns The result of the `PUT` request.
+     *
+     * `200 OK` - will return a {@link DataModelDetailResponse} containing a {@link DataModelDetail} object.
+     */
+    updateReadByAuthenticated(id: Uuid, options?: RequestSettings): any;
+    /**
+     * `HTTP DELETE` - Removes the user access check for a data model to be readable by either authenticated or anonymous users.
+     *
+     * @param id The unique identifier of the data model to update.
+     * @param query Optional query string parameters, if required.
+     * @param options Optional REST handler options, if required.
+     * @returns The result of the `DELETE` request.
+     *
+     * `200 OK` - will return a {@link DataModelDetailResponse} containing a {@link DataModelDetail} object.
+     */
+    removeReadByEveryone(id: Uuid, query?: QueryParameters, options?: RequestSettings): any;
+    /**
+     * `HTTP PUT` - Update a data model to be readable to both authenticated and anonymous users.
+     *
+     * @param id The unique identifier of the data model to update.
+     * @param options Optional REST handler parameters, if required.
+     * @returns The result of the `PUT` request.
+     *
+     * `200 OK` - will return a {@link DataModelDetailResponse} containing a {@link DataModelDetail} object.
+     */
+    updateReadByEveryone(id: Uuid, options?: RequestSettings): any;
     search(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
     hierarchy(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
     newModelVersion(dataModelId: string, data: any, restHandlerOptions?: RequestSettings): any;
@@ -96,8 +188,47 @@ export declare class MdmDataModelResource extends MdmResource {
      * `200 OK` - will return a {@link DataModelDetailResponse} containing a {@link DataModelDetail} object.
      */
     finalise(dataModelId: Uuid, data: FinalisePayload, options?: RequestSettings): any;
-    newBranchModelVersion(dataModelId: string, data: any, restHandlerOptions?: RequestSettings): any;
-    newForkModel(dataModelId: string, data: any, restHandlerOptions?: RequestSettings): any;
+    /**
+     * `HTTP PUT` - Branch a data model to create the next working copy of a data model. Can be applied to create
+     * the next version of the data model, or to create a separate working branch to be merged back later.
+     *
+     * @param id The unique identifier of the data model to branch.
+     * @param data The payload to pass to the request when branching or creating the next version of the data model.
+     * @param options Optional REST handler parameters, if required.
+     * @returns The result of the `PUT` request.
+     *
+     * `200 OK` - will return a {@link DataModelDetailResponse} containing a {@link DataModelDetail} object.
+     *
+     * @see {@link MdmDataModelResource.newForkModel}
+     *
+     * @example To start a new version of a data model:
+     *
+     * ```ts
+     * const dataModelId = '684c8134-d826-4c4a-a6d1-1412b7e8fc15';
+     * dataModelResource.newBranchModelVersion(dataModelId, { });
+     * ```
+     *
+     * @example To start a new branch of a data model:
+     *
+     * ```ts
+     * const dataModelId = '684c8134-d826-4c4a-a6d1-1412b7e8fc15';
+     * dataModelResource.newBranchModelVersion(dataModelId, { branchName: 'new-branch' });
+     * ```
+     */
+    newBranchModelVersion(id: Uuid, data: VersionModelPayload | BranchModelPayload, restHandlerOptions?: RequestSettings): any;
+    /**
+     * `HTTP PUT` - Fork a data model to create a new copy of a data model with a new 'main' branch.
+     *
+     * @param id The unique identifier of the data model to fork.
+     * @param data The payload to pass to the request when forking the data model.
+     * @param options Optional REST handler parameters, if required.
+     * @returns The result of the `PUT` request.
+     *
+     * `200 OK` - will return a {@link DataModelDetailResponse} containing a {@link DataModelDetail} object.
+     *
+     * @see {@link MdmDataModelResource.newBranchModelVersion}
+     */
+    newForkModel(id: Uuid, data: ForkModelPayload, options?: RequestSettings): any;
     /**
      * `HTTP POST` - Creates a new data model under a chosen folder.
      *
@@ -113,8 +244,39 @@ export declare class MdmDataModelResource extends MdmResource {
     updateDataModelInFolder(folderId: string, dataModelId: string, data: any, restHandlerOptions?: RequestSettings): any;
     moveDataModelToFolder(dataModelId: string, folderId: string, data: any, restHandlerOptions?: RequestSettings): any;
     suggestLinks(dataModelId: string, otherModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
-    diff(dataModelId: string, otherModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
-    exportModel(dataModelId: string, exporterNamespace: any, exporterName: any, exporterVersion: any, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    /**
+     * `HTTP GET` - Performs a comparison between two data models and returns the differences between them.
+     *
+     * @param leftModelId The unique identifier of the data model on the left (source) side of the comparison.
+     * @param rightModelId The unique identifier of the data model on the right (target) side of the comparison.
+     * @param query Optional query string parameters, if required.
+     * @param options Optional REST handler options, if required.
+     * @returns The result of the `GET` request.
+     *
+     * `200 OK` - will return a {@link DiffCollectionResponse} containing a list of {@link DiffCollection}.
+     */
+    diff(leftModelId: Uuid, rightModelId: Uuid, query?: QueryParameters, options?: RequestSettings): any;
+    /**
+     * `HTTP GET` - Exports a data model.
+     *
+     * @param id The unique identifier of the data model to export.
+     * @param namespace The namespace of the exporter provider to use.
+     * @param name The unique name of the exporter provider to use.
+     * @param version The version of the exporter provider to use.
+     * @param query Optional query string parameters, if required.
+     * @param options Optional REST handler parameters, if required.
+     * @returns The result of the `GET` request.
+     *
+     * `200 OK` - will return the exported data model as the body of the response.
+     *
+     * @description The response body will depend on the type of exporter used, for example JSON, XML etc.
+     * It is advised to take the entire content of the response body and save the entirety of it to file
+     * to provide a downloadable source.
+     *
+     * @see {@link MdmDataModelResource.exporters}
+     * @see {@link MdmDataModelResource.exportModels}
+     */
+    exportModel(id: Uuid, namespace: string, name: string, version: Version, query?: QueryParameters, options?: RequestSettings): any;
     /**
      * `HTTP GET` - Request the list of data models.
      *
@@ -173,6 +335,17 @@ export declare class MdmDataModelResource extends MdmResource {
     latestModelVersion(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
     latestFinalisedModel(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
     modelVersionTree(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    /**
+     * `HTTP GET` - Request a simplified model version tree for a Data Model.
+     *
+     * @param dataModelId The unique identifier of the data model.
+     * @param query Optional query parameters, if required.
+     * @param options Optional REST handler parameters, if required.
+     * @returns The result of the `GET` request.
+     *
+     * `200 OK` - will return a {@link BasicModelVersionTreeResponse} containing a list of {@link BasicModelVersionItem} objects.
+     */
+    simpleModelVersionTree(dataModelId: Uuid, query?: QueryParameters, options?: RequestSettings): any;
     /**
      * `HTTP PUT` - Restores a temporarily deleted data model.
      *

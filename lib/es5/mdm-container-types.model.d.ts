@@ -1,3 +1,4 @@
+import { Authority } from './mdm-model-types.model';
 import { CatalogueItemDomainType, Payload, Uuid } from './mdm-common.model';
 export interface Container {
     id?: Uuid;
@@ -5,6 +6,9 @@ export interface Container {
     label: string;
     description?: string;
     deleted?: boolean;
+}
+export interface ContainerDetail {
+    authority?: Authority;
 }
 export interface ContainerCreatePayload extends Payload {
     label?: string;

@@ -27,19 +27,22 @@ export type Uuid = string;
 export type Version = string;
 
 export enum ContainerDomainType {
-  CLASSIFIERS = 'classifiers',
-  FOLDERS = 'folders'
+  Classifiers = 'classifiers',
+  Folders = 'folders',
+  VersionedFolders = 'versionedFolders'
 }
 
 export enum ModelDomainType {
-  FOLDERS = 'folders',
-  DATA_MODELS = 'dataModels',
-  DATA_CLASSES = 'dataClasses',
-  DATA_TYPES = 'dataTypes',
-  TERMINOLOGIES = 'terminologies',
-  REFERENCEDATAMODELS = 'referenceDataModels',
-  TERMS = 'terms',
-  ALL = 'all'
+  Folders = 'folders',
+  DataModels = 'dataModels',
+  DataClasses = 'dataClasses',
+  DataTypes = 'dataTypes',
+  Terminologies = 'terminologies',
+  ReferenceDataModels = 'referenceDataModels',
+  Terms = 'terms',
+  Classifiers = 'classifiers',
+  VersionedFolders = 'versionedFolders',
+  All = 'all'
 }
 
 export enum CatalogueItemDomainType {
@@ -59,7 +62,38 @@ export enum CatalogueItemDomainType {
   ReferenceDataModelType = 'ReferenceDataModelType',
   CodeSetType = 'CodeSetType',
   ModelDataType = 'ModelDataType',
-  ReferenceFile = 'ReferenceFile'
+  ReferenceFile = 'ReferenceFile',
+  VersionedFolder = 'VersionedFolder',
+  Root = 'Root',
+  LocalCatalogue = 'LocalCatalogue',
+  ExternalCatalogues = 'ExternalCatalogues',
+  SubscribedCatalogue = 'SubscribedCatalogue',
+  FederatedDataModel = 'FederatedDataModel'
+}
+
+/**
+ * Determine if a given domain type represents a Container.
+ *
+ * @param domainType The {@link CatalogueItemDomainType} to verify.
+ * @returns True if `domainType` is a container type.
+ */
+export function isContainerDomainType(domainType: CatalogueItemDomainType) {
+  return domainType === CatalogueItemDomainType.Classification
+    || domainType === CatalogueItemDomainType.Folder
+    || domainType === CatalogueItemDomainType.VersionedFolder;
+}
+
+/**
+ * Determine if a given domain type represents a Model.
+ *
+ * @param domainType The {@link CatalogueItemDomainType} to verify.
+ * @returns True if `domainType` is a model type.
+ */
+export function isModelDomainType(domainType: CatalogueItemDomainType) {
+  return domainType === CatalogueItemDomainType.DataModel
+    || domainType === CatalogueItemDomainType.CodeSet
+    || domainType === CatalogueItemDomainType.Terminology
+    || domainType === CatalogueItemDomainType.ReferenceDataModel;
 }
 
 /**

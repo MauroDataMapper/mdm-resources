@@ -7,18 +7,21 @@ export declare type Uuid = string;
  */
 export declare type Version = string;
 export declare enum ContainerDomainType {
-    CLASSIFIERS = "classifiers",
-    FOLDERS = "folders"
+    Classifiers = "classifiers",
+    Folders = "folders",
+    VersionedFolders = "versionedFolders"
 }
 export declare enum ModelDomainType {
-    FOLDERS = "folders",
-    DATA_MODELS = "dataModels",
-    DATA_CLASSES = "dataClasses",
-    DATA_TYPES = "dataTypes",
-    TERMINOLOGIES = "terminologies",
-    REFERENCEDATAMODELS = "referenceDataModels",
-    TERMS = "terms",
-    ALL = "all"
+    Folders = "folders",
+    DataModels = "dataModels",
+    DataClasses = "dataClasses",
+    DataTypes = "dataTypes",
+    Terminologies = "terminologies",
+    ReferenceDataModels = "referenceDataModels",
+    Terms = "terms",
+    Classifiers = "classifiers",
+    VersionedFolders = "versionedFolders",
+    All = "all"
 }
 export declare enum CatalogueItemDomainType {
     Folder = "Folder",
@@ -37,8 +40,28 @@ export declare enum CatalogueItemDomainType {
     ReferenceDataModelType = "ReferenceDataModelType",
     CodeSetType = "CodeSetType",
     ModelDataType = "ModelDataType",
-    ReferenceFile = "ReferenceFile"
+    ReferenceFile = "ReferenceFile",
+    VersionedFolder = "VersionedFolder",
+    Root = "Root",
+    LocalCatalogue = "LocalCatalogue",
+    ExternalCatalogues = "ExternalCatalogues",
+    SubscribedCatalogue = "SubscribedCatalogue",
+    FederatedDataModel = "FederatedDataModel"
 }
+/**
+ * Determine if a given domain type represents a Container.
+ *
+ * @param domainType The {@link CatalogueItemDomainType} to verify.
+ * @returns True if `domainType` is a container type.
+ */
+export declare function isContainerDomainType(domainType: CatalogueItemDomainType): boolean;
+/**
+ * Determine if a given domain type represents a Model.
+ *
+ * @param domainType The {@link CatalogueItemDomainType} to verify.
+ * @returns True if `domainType` is a model type.
+ */
+export declare function isModelDomainType(domainType: CatalogueItemDomainType): boolean;
 /**
  * Represents a response from an [[MdmResource]] API endpoint.
  *

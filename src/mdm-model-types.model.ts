@@ -17,7 +17,7 @@ SPDX-License-Identifier: Apache-2.0
 */
 
 import { Classifier } from './mdm-classifier.model';
-import { CatalogueItem, CatalogueItemDomainType, CatalogueItemReference, Payload, QueryParameters, Uuid, Version } from './mdm-common.model';
+import { CatalogueItem, CatalogueItemDomainType, CatalogueItemReference, MdmResponse, Payload, QueryParameters, Uuid, Version } from './mdm-common.model';
 
 export interface Authority {
   id: Uuid;
@@ -44,7 +44,15 @@ declare const securableActions: readonly [
   'newModelVersion',
   'mergeInto',
   'readByEveryone',
-  'readByAuthenticated'
+  'readByAuthenticated',
+  'createFolder',
+  'createVersionedFolder',
+  'createContainer',
+  'createModel',
+  'createModelItem',
+  'moveToFolder',
+  'moveToVersionedFolder',
+  'moveToContainer'
 ];
 
 /**
@@ -186,3 +194,53 @@ export interface ModelUpdatePayload extends Payload {
   aliases?: string[];
   classifiers?: Classifier[];
 }
+
+/**
+ * Payload describing how to fork a model.
+ */
+export interface ForkModelPayload extends Payload {
+  /**
+   * The new label for the forked model.
+   */
+  label: string;
+
+  /**
+   * State whether permissions from the source model should be copied across to the
+   * forked model.
+   */
+  copyPermissions?: boolean;
+
+  /**
+   * State whether data flows from the source model should be copied across to the
+   * forked model.
+   */
+  copyDataFlows?: boolean;
+}
+
+/**
+ * Payload describing how to start a new version of a model.
+ */
+export type VersionModelPayload = Payload;
+
+/**
+ * Payload describing how to start a new branch for a model.
+ */
+export interface BranchModelPayload extends Payload {
+  /**
+   * The new branch name for the branched model.
+   */
+  branchName: string;
+}
+
+/**
+ * Represents basic details of an item from a model version tree.
+ */
+export interface BasicModelVersionItem {
+  id: Uuid;
+  branch?: string;
+  modelVersion?: Version;
+  documentationVersion?: Version;
+  displayName: string;
+}
+
+export type BasicModelVersionTreeResponse = MdmResponse<BasicModelVersionItem[]>;

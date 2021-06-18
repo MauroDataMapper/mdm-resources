@@ -36,7 +36,8 @@ export declare enum SecurableDomainType {
     CodeSets = "codeSets",
     DataModels = "dataModels",
     Folders = "folders",
-    ReferenceDataModels = "referenceDataModels"
+    ReferenceDataModels = "referenceDataModels",
+    VersionedFolders = "versionedFolders"
 }
 export interface PermissionGroup {
     id: Uuid;

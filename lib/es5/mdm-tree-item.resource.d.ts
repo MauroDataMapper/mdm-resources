@@ -96,7 +96,7 @@ export declare class MdmTreeItemResource extends MdmResource {
      *
      * @see {@link MdmTreeItemResource.get}
      */
-    list(containerDomainType: string | ContainerDomainType, query?: TreeItemListQueryParameters, options?: RequestSettings): any;
+    list(containerDomainType: ContainerDomainType, query?: TreeItemListQueryParameters, options?: RequestSettings): any;
     /**
      * `HTTP GET` - Request children model entities within the Mauro instance for a given parent entity.
      *
