@@ -26,7 +26,7 @@ export class MdmSecurityResource extends MdmResource {
   /**
    * `HTTP POST` - Login using a username and password to generate a new authenticated session.
    *
-   * @param data The username/password to use.
+   * @param data The payload to use.
    * @param options Optional REST handler options, if required.
    * @returns The result of the `POST` request.
    *
