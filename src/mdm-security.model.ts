@@ -22,7 +22,7 @@ import { MdmResponse, Uuid } from './mdm-common.model';
 /**
  * Payload for login endpoint to authenticate a user with username and password.
  *
- * @see [[MdmSecurityResource.login]]
+ * @see {@link MdmSecurityResource.login}
  */
 export interface BasicLoginPayload {
   username: string;

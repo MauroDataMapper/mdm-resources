@@ -22,9 +22,21 @@ import { MdmResource } from './mdm-resource';
 
 /**
  * MDM resource for managing OpenID Connect providers in Mauro.
+ * 
+ * In order to use these endpoints, the [mdm-plugin-authentication-openid-connect](https://github.com/MauroDataMapper-Plugins/mdm-plugin-authentication-openid-connect)
+ * plugin must be installed in the Mauro instance.
  *
- * @description With the exception of the {@link MdmPluginOpenIdConnectResource.listPublic} endpoint, all these endpoints
+ * With the exception of the {@link MdmPluginOpenIdConnectResource.listPublic} endpoint, all these endpoints
  * require an authenticated administrator to use them.
+ * 
+ * The OpenID Connect providers allow users of Mauro to authenticate via external providers supporting the OpenID Connect
+ * specification, such as Google, Microsoft, etc. Once external authenticated, the user can then be redirected back
+ * to the Mauro client application and complete a {@link MdmSecurityResource.login} request using a {@link OpenIdConnectLoginPayload}
+ * with the authorization state needed.
+ * 
+ * Most of these endpoints revolve around administration of the OpenID Connect providers in Mauro (add/edit/delete), but
+ * {@link MdmPluginOpenIdConnectResource.listPublic} provides anonymous user access to all the providers available and
+ * their authentication endpoints to redirect to. This data can be used for displaying in a login form, for example.
  *
  * @see {@link OpenIdConnectProvider}
  * @see {@link PublicOpenIdConnectProvider}
