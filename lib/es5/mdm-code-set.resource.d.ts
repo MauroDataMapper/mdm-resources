@@ -150,6 +150,17 @@ export declare class MdmCodeSetResource extends MdmResource {
     latestFinalisedModel(codeSetId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
     modelVersionTree(codeSetId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
     /**
+     * `HTTP GET` - Request a simplified model version tree for a Code Set.
+     *
+     * @param codeSetId The unique identifier of the code set.
+     * @param query Optional query parameters, if required.
+     * @param options Optional REST handler parameters, if required.
+     * @returns The result of the `GET` request.
+     *
+     * `200 OK` - will return a {@link BasicModelVersionTreeResponse} containing a list of {@link BasicModelVersionItem} objects.
+     */
+    simpleModelVersionTree(codeSetId: Uuid, query?: QueryParameters, options?: RequestSettings): any;
+    /**
      * `HTTP PUT` - Restores a temporarily deleted code set.
      *
      * @param codeSetId The unique identifier of the code set to restore.

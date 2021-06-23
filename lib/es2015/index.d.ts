@@ -68,3 +68,5 @@ export * from './mdm-api-properties.model';
 export * from './mdm-api-properties.resource';
 export * from './mdm-versioned-folder.model';
 export * from './mdm-versioned-folder.resource';
+export * from './mdm-plugin-openid-connect.model';
+export * from './mdm-plugin-openid-connect.resource';
