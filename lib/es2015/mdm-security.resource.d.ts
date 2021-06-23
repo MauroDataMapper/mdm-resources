@@ -6,15 +6,55 @@ import { MdmResource } from './mdm-resource';
  */
 export declare class MdmSecurityResource extends MdmResource {
     /**
-     * `HTTP POST` - Login using a username and password to generate a new authenticated session.
+     * `HTTP POST` - Login to Mauro to generate a new authenticated session.
      *
-     * @param data The username/password to use.
+     * @param data The payload to use.
      * @param options Optional REST handler options, if required.
      * @returns The result of the `POST` request.
      *
-     * `200 OK` - will return a [[LoginResponse]] containing the [[LoginResult]].
+     * `200 OK` - will return a {@link LoginResponse} containing the {@link LoginResult}.
      *
-     * @see [[MdmSessionResource.isAuthenticated]]
+     * @see {@link MdmSessionResource.isAuthenticated}
+     *
+     * @description There can be multiple methods of logging in to generate a session:
+     *
+     * * The most basic authentication method is via username and password to match against
+     * an existing user account in the Mauro instance. This requires a {@link BasicLoginPayload}
+     * where the username and password must be provided.
+     *
+     * * An alternative authentication method is via OpenID Connect. This requires the
+     * [mdm-plugin-authentication-openid-connect](https://github.com/MauroDataMapper-Plugins/mdm-plugin-authentication-openid-connect)
+     * plugin to be installed in the Mauro instance to work. With this authentication method, a user
+     * is authenticated via an external provider using a different account (e.g. Google or Microsoft account),
+     * and the success response returned by the OpenID Connect provider will be passed to Mauro via
+     * an {@link OpenIdConnectLoginPayload} containing the authorization state data.
+     *
+     * @example To login with basic authentication:
+     *
+     * ```ts
+     * const payload: BasicLoginPayload = {
+     *  username: 'test',
+     *  password: 'secret'
+     * };
+     *
+     * const response = securityResource.login(payload);
+     * ```
+     *
+     * @example To login with OpenID Connect (assuming the
+     * [mdm-plugin-authentication-openid-connect](https://github.com/MauroDataMapper-Plugins/mdm-plugin-authentication-openid-connect)
+     * is installed):
+     *
+     * ```ts
+     * const payload: OpenIdConnectPayload = {
+     *  openidConnectProviderId: 'Uuid-of-OpenID-connect-provider';
+     *  sessionState: 'value-from-provider';
+     *  code: 'value-from-provider';
+     *  state: 'value-from-provider';
+     *  redirectUrl: 'https://ui.url/redirect';
+     * };
+     *
+     * const response = securityResource.login(payload);
+     * ```
      */
     login(data: LoginPayload, options?: RequestSettings): any;
     /**
