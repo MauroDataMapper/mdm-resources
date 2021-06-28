@@ -105,6 +105,23 @@ export interface OpenIdConnectProviderDetail extends OpenIdConnectProvider {
   clientId: string;
   clientSecret: string;
   authorizationEndpointParameters?: OpenIdAuthorizationEndpointParameters;
+
+  /**
+   * For standard providers, this provides the URL to the main discovery document for the provider.
+   * 
+   * This is used by Mauro to automatically fill the {@link OpenIdConnectProviderDetail.discoveryDocument}
+   * property and key endpoints.
+   * 
+   * This is not required if the provided is non-standard.
+   */
+  discoveryDocumentUrl?: string;
+
+  /**
+   * Provides all the necessary endpoints for discovery, namely which endpoints to contact for authorization etc.
+   * 
+   * If this is a standard provider, this will be automatically managed by Mauro using the
+   * {@link OpenIdConnectProviderDetail.discoveryDocumentUrl}. Otherwise this is manually entered.
+   */
   discoveryDocument?: OpenIdDiscoveryDocument;
 }
 
@@ -217,5 +234,5 @@ export interface OpenIdConnectLoginPayload {
    * The redirect URL sent by the application to the provider. This needs to be the *exact* URL used
    * when the user was redirected to the provider site.
    */
-  redirectUrl: string;
+  redirectUri: string;
 }
