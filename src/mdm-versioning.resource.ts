@@ -44,6 +44,12 @@ export class MdmVersioningResource extends MdmResource {
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
+    
+    mergeDiffV2(modelDomainType: string | ModelDomainType, modelId: string, otherModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+        const url = `${this.apiEndpoint}/${modelDomainType}/${modelId}/mergeDiff/${otherModelId}?isLegacy=false`;
+        return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    }
+
     currentMainBranch(modelDomainType: string | ModelDomainType, modelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/${modelDomainType}/${modelId}/currentMainBranch`;
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
@@ -54,6 +60,7 @@ export class MdmVersioningResource extends MdmResource {
         return this.simpleGet(url, queryStringParams, restHandlerOptions);
     }
 
+    
     mergeInto(modelDomainType: string | ModelDomainType, sourceModelId: string, targetModelId: string, data: any, restHandlerOptions?: RequestSettings) {
         const url = `${this.apiEndpoint}/${modelDomainType}/${sourceModelId}/mergeInto/${targetModelId}`;
         return this.simplePut(url, data, restHandlerOptions);
