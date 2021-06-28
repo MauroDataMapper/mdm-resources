@@ -234,5 +234,5 @@ export interface OpenIdConnectLoginPayload {
    * The redirect URL sent by the application to the provider. This needs to be the *exact* URL used
    * when the user was redirected to the provider site.
    */
-  redirectUrl: string;
+  redirectUri: string;
 }
