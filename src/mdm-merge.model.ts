@@ -32,7 +32,7 @@ export interface MergeItem
 
 export interface Merge
 {
-    sourceID: Uuid;
+    sourceId: Uuid;
     targetId: Uuid;
     path:string;
     label:string;
@@ -47,4 +47,11 @@ export enum MergeType
     Modification = 'modification'
 }
 
-export type VersioningResponse = MdmResponse<MergeItem>;
+export enum MergeUsed
+{
+    Source = 'source',
+    Target = 'target',
+    Mixed = 'mixed'
+}
+
+export type MergeResponse = MdmResponse<MergeItem>;
