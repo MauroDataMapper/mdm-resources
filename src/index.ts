@@ -77,6 +77,7 @@ export * from './mdm-user-image-file.resource';
 export * from './mdm-data-element-component.resource';
 export * from './mdm-edit.resource';
 export * from './mdm-resource';
+export * from './mdm-merge.model';
 export * from './mdm-versioning.resource';
 export * from './mdm-profile.resource';
 export * from './mdm-subscribed-catalogues.model';
@@ -87,3 +88,5 @@ export * from './mdm-versioned-folder.model';
 export * from './mdm-versioned-folder.resource';
 export * from './mdm-plugin-openid-connect.model';
 export * from './mdm-plugin-openid-connect.resource';
+export * from './mdm-merge.model';
+export * from './mdm-merge.resource'
