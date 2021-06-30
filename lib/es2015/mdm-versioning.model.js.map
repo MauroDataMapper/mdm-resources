@@ -1,1 +1,1 @@
-{"version":3,"file":"mdm-versioning.model.js","sourceRoot":"","sources":["../../src/mdm-versioning.model.ts"],"names":[],"mappings":"AAAA;;;;;;;;;;;;;;;;EAgBE;AA0BF,MAAM,CAAN,IAAY,SAKX;AALD,WAAY,SAAS;IAEjB,iDAAQ,CAAA;IACR,iDAAQ,CAAA;IACR,yDAAY,CAAA;AAChB,CAAC,EALW,SAAS,KAAT,SAAS,QAKpB"}
+{"version":3,"file":"mdm-versioning.model.js","sourceRoot":"","sources":["../../src/mdm-versioning.model.ts"],"names":[],"mappings":"AAAA;;;;;;;;;;;;;;;;EAgBE;AA0BF,MAAM,CAAN,IAAY,SAKX;AALD,WAAY,SAAS;IAEjB,kCAAqB,CAAA;IACrB,kCAAsB,CAAA;IACtB,0CAA6B,CAAA;AACjC,CAAC,EALW,SAAS,KAAT,SAAS,QAKpB"}

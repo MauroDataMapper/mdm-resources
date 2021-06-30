@@ -42,9 +42,9 @@ export interface Merge
 
 export enum MergeType
 {
-    Creation,
-    Deletion,
-    Modification
+    Creation = 'creation' ,
+    Deletion =  'deletion',
+    Modification = 'modification'
 }
 
 export type VersioningResponse = MdmResponse<MergeItem>;

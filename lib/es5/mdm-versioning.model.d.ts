@@ -18,8 +18,8 @@ export interface Merge {
     diffs: Array<MergeItem>;
 }
 export declare enum MergeType {
-    Creation = 0,
-    Deletion = 1,
-    Modification = 2
+    Creation = "creation",
+    Deletion = "deletion",
+    Modification = "modification"
 }
 export declare type VersioningResponse = MdmResponse<MergeItem>;
