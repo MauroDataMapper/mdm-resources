@@ -1,4 +1,4 @@
-import { CatalogueItemDomainType, MdmIndexResponse, MdmResponse, Uuid } from './mdm-common.model';
+import { CatalogueItemDomainType, MdmIndexResponse, MdmResponse, Payload, Uuid } from './mdm-common.model';
 export interface SubscribedCatalogue {
     id?: Uuid;
     url: string;
@@ -15,9 +15,10 @@ export interface AvailableDataModel {
     description?: string;
     modelType: CatalogueItemDomainType;
 }
-export interface SubscribedDataModel {
+export interface SubscribedDataModel extends Payload {
     id?: Uuid;
     subscribedModelId: Uuid;
+    subscribedModelType: CatalogueItemDomainType;
     folderId: Uuid;
 }
 export declare type AvailableDataModelIndexResponse = MdmIndexResponse<AvailableDataModel>;
