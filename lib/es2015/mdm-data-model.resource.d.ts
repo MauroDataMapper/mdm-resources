@@ -340,16 +340,6 @@ export declare class MdmDataModelResource extends MdmResource {
     latestModelVersion(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
     latestFinalisedModel(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
     modelVersionTree(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
-    /**
-     * `HTTP GET` - Request a simplified model version tree for a Data Model.
-     *
-     * @param dataModelId The unique identifier of the data model.
-     * @param query Optional query parameters, if required.
-     * @param options Optional REST handler parameters, if required.
-     * @returns The result of the `GET` request.
-     *
-     * `200 OK` - will return a {@link BasicModelVersionTreeResponse} containing a list of {@link BasicModelVersionItem} objects.
-     */
     simpleModelVersionTree(dataModelId: Uuid, query?: QueryParameters, options?: RequestSettings): any;
     /**
      * `HTTP PUT` - Restores a temporarily deleted data model.
