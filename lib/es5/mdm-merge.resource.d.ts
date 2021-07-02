@@ -1,3 +1,4 @@
+import { CommitMergePayload } from "mdm-merge.model";
 import { ModelDomainType, QueryParameters, RequestSettings, Uuid } from "./mdm-common.model";
 import { MdmResource } from "./mdm-resource";
 export declare class MdmMergeResource extends MdmResource {
@@ -20,11 +21,11 @@ export declare class MdmMergeResource extends MdmResource {
  * @param modelDomainType The model domain type of item
  * @param sourceModelId The id of the source model
  * @param targetModelId The id of the target model
- * @param data The payload of the request containing all the details for the data model to update.
+ * @param data The payload of the request containing all the details for merge
  * @param options Optional REST handler parameters, if required.
  * @returns The result of the `POST` request.
  *
  * `200 OK`.
  */
-    mergeInto(modelDomainType: string | ModelDomainType, sourceModelId: Uuid, targetModelId: Uuid, data: any, restHandlerOptions?: RequestSettings): any;
+    mergeInto(modelDomainType: string | ModelDomainType, sourceModelId: Uuid, targetModelId: Uuid, data: CommitMergePayload, restHandlerOptions?: RequestSettings): any;
 }

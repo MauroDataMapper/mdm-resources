@@ -16,6 +16,7 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
+import { CommitMergePayload } from "mdm-merge.model";
 import { ModelDomainType, QueryParameters, RequestSettings, Uuid } from "./mdm-common.model";
 import { MdmResource } from "./mdm-resource";
 
@@ -44,7 +45,7 @@ export class MdmMergeResource extends MdmResource {
    * @param modelDomainType The model domain type of item
    * @param sourceModelId The id of the source model
    * @param targetModelId The id of the target model
-   * @param data The payload of the request containing all the details for the data model to update.
+   * @param data The payload of the request containing all the details for merge
    * @param options Optional REST handler parameters, if required.
    * @returns The result of the `POST` request.
    *
@@ -55,7 +56,7 @@ export class MdmMergeResource extends MdmResource {
         modelDomainType: string | ModelDomainType,
         sourceModelId: Uuid,
         targetModelId: Uuid,
-        data: any,
+        data: CommitMergePayload,
         restHandlerOptions?: RequestSettings
       ) {
         const url = `${this.apiEndpoint}/${modelDomainType}/${sourceModelId}/mergeInto/${targetModelId}`;
