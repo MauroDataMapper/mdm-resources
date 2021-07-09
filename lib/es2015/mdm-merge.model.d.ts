@@ -9,6 +9,18 @@ export interface MergeItem {
     isSourceModificationAndTargetDeletion?: boolean;
     type: MergeType;
 }
+export interface CommitMergePayload {
+    changeNotice?: string;
+    deleteBranch?: boolean;
+    patch: {
+        sourceId: Uuid;
+        targetId: Uuid;
+        path?: string;
+        label?: string;
+        count?: number;
+        patches: Array<MergeItem>;
+    };
+}
 export interface Merge {
     sourceId: Uuid;
     targetId: Uuid;
@@ -27,4 +39,4 @@ export declare enum MergeUsed {
     Target = "target",
     Mixed = "mixed"
 }
-export declare type MergeResponse = MdmResponse<MergeItem>;
+export declare type MergeResponse = MdmResponse<Merge>;
