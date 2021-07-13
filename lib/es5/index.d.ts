@@ -71,5 +71,7 @@ export * from './mdm-versioned-folder.model';
 export * from './mdm-versioned-folder.resource';
 export * from './mdm-plugin-openid-connect.model';
 export * from './mdm-plugin-openid-connect.resource';
+export * from './mdm-plugin-doi.model';
+export * from './mdm-plugin-doi.resource';
 export * from './mdm-merge.model';
 export * from './mdm-merge.resource';
