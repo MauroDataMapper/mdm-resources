@@ -42,7 +42,7 @@ export class MdmProfileResource extends MdmResource {
    * `200 OK` - will return a {@link ProfileSummaryIndexResponse} containing a list of {@link ProfileSummary} objects.
    */
   usedProfiles(
-    catalogueItemDomainType: ModelDomainType,
+    catalogueItemDomainType: ModelDomainType | string,
     catalogueItemId: Uuid,
     query?: QueryParameters,
     options?: RequestSettings) {
@@ -62,7 +62,7 @@ export class MdmProfileResource extends MdmResource {
    * `200 OK` - will return a {@link ProfileSummaryIndexResponse} containing a list of {@link ProfileSummary} objects.
    */
   unusedProfiles(
-    catalogueItemDomainType: ModelDomainType,
+    catalogueItemDomainType: ModelDomainType | string,
     catalogueItemId: string,
     query?: QueryParameters,
     options?: RequestSettings) {
@@ -82,7 +82,7 @@ export class MdmProfileResource extends MdmResource {
    * `200 OK` - will return a {@link MetadataIndexResponse} containing a list of {@link Metadata} objects.
    */
   otherMetadata(
-    catalogueItemDomainType: ModelDomainType,
+    catalogueItemDomainType: ModelDomainType | string,
     catalogueItemId: string,
     query?: QueryParameters,
     options?: RequestSettings) {
@@ -105,7 +105,7 @@ export class MdmProfileResource extends MdmResource {
    * `200 OK` - will return a {@link ProfileResponse} containing a {@link Profile}.
    */
   profile(
-    catalogueItemDomainType: string | ModelDomainType,
+    catalogueItemDomainType: ModelDomainType | string,
     catalogueItemId: Uuid,
     profileNamespace: string,
     profileName: string,
@@ -134,11 +134,11 @@ export class MdmProfileResource extends MdmResource {
    * `200 OK` - will return a {@link ProfileResponse} containing a {@link Profile}.
    */
   saveProfile(
-    catalogueItemDomainType: ModelDomainType,
+    catalogueItemDomainType: ModelDomainType | string,
     catalogueItemId: Uuid,
     profileNamespace: string,
     profileName: string,
-    data: ProfilePayload,
+    data: string,
     profileVersion?: Version,
     options?: RequestSettings) {
     let url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/profile/${profileNamespace}/${profileName}`;
@@ -163,7 +163,7 @@ export class MdmProfileResource extends MdmResource {
    * On success, the response will be a `204 No Content` and the response body will be empty.
    */
   deleteProfile(
-    catalogueItemDomainType: ModelDomainType,
+    catalogueItemDomainType: ModelDomainType | string,
     catalogueItemId: Uuid,
     profileNamespace: string,
     profileName: string,
@@ -193,9 +193,9 @@ export class MdmProfileResource extends MdmResource {
   validateProfile(
     profileNamespace: string,
     profileName: string,
-    catalogueItemDomainType: ModelDomainType,
+    catalogueItemDomainType: ModelDomainType | string,
     catalogueItemId: Uuid,
-    data: ProfilePayload) {
+    data: string) {
     const url = `${this.apiEndpoint}/profiles/${profileNamespace}/${profileName}/${catalogueItemDomainType}/${catalogueItemId}/validate`;
     return this.simplePost(url, data);
   }

@@ -1,4 +1,3 @@
-import { ProfilePayload } from './mdm-profile.model';
 import { RequestSettings, QueryParameters, ModelDomainType, Uuid, Version } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 /**
@@ -22,7 +21,7 @@ export declare class MdmProfileResource extends MdmResource {
      *
      * `200 OK` - will return a {@link ProfileSummaryIndexResponse} containing a list of {@link ProfileSummary} objects.
      */
-    usedProfiles(catalogueItemDomainType: ModelDomainType, catalogueItemId: Uuid, query?: QueryParameters, options?: RequestSettings): any;
+    usedProfiles(catalogueItemDomainType: ModelDomainType | string, catalogueItemId: Uuid, query?: QueryParameters, options?: RequestSettings): any;
     /**
      * `HTTP GET` - Gets a list of profiles not used on a particular catalogue item but are available.
      *
@@ -34,7 +33,7 @@ export declare class MdmProfileResource extends MdmResource {
      *
      * `200 OK` - will return a {@link ProfileSummaryIndexResponse} containing a list of {@link ProfileSummary} objects.
      */
-    unusedProfiles(catalogueItemDomainType: ModelDomainType, catalogueItemId: string, query?: QueryParameters, options?: RequestSettings): any;
+    unusedProfiles(catalogueItemDomainType: ModelDomainType | string, catalogueItemId: string, query?: QueryParameters, options?: RequestSettings): any;
     /**
      * `HTTP GET` - Gets a list of all metadata for a catalogue item that is not attached to any profile on that item.
      *
@@ -46,7 +45,7 @@ export declare class MdmProfileResource extends MdmResource {
      *
      * `200 OK` - will return a {@link MetadataIndexResponse} containing a list of {@link Metadata} objects.
      */
-    otherMetadata(catalogueItemDomainType: ModelDomainType, catalogueItemId: string, query?: QueryParameters, options?: RequestSettings): any;
+    otherMetadata(catalogueItemDomainType: ModelDomainType | string, catalogueItemId: string, query?: QueryParameters, options?: RequestSettings): any;
     /**
      * `HTTP GET` - Gets a profile from a catalogue item.
      *
@@ -61,7 +60,7 @@ export declare class MdmProfileResource extends MdmResource {
      *
      * `200 OK` - will return a {@link ProfileResponse} containing a {@link Profile}.
      */
-    profile(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: Uuid, profileNamespace: string, profileName: string, profileVersion?: Version, query?: QueryParameters, options?: RequestSettings): any;
+    profile(catalogueItemDomainType: ModelDomainType | string, catalogueItemId: Uuid, profileNamespace: string, profileName: string, profileVersion?: Version, query?: QueryParameters, options?: RequestSettings): any;
     /**
      * `HTTP POST` - Saves a profile and its metadata values to a catalogue item.
      *
@@ -76,7 +75,7 @@ export declare class MdmProfileResource extends MdmResource {
      *
      * `200 OK` - will return a {@link ProfileResponse} containing a {@link Profile}.
      */
-    saveProfile(catalogueItemDomainType: ModelDomainType, catalogueItemId: Uuid, profileNamespace: string, profileName: string, data: ProfilePayload, profileVersion?: Version, options?: RequestSettings): any;
+    saveProfile(catalogueItemDomainType: ModelDomainType | string, catalogueItemId: Uuid, profileNamespace: string, profileName: string, data: string, profileVersion?: Version, options?: RequestSettings): any;
     /**
      * `HTTP DELETE` - Removes an existing Digital Object Identifier from a catalogue item.
      *
@@ -91,7 +90,7 @@ export declare class MdmProfileResource extends MdmResource {
      *
      * On success, the response will be a `204 No Content` and the response body will be empty.
      */
-    deleteProfile(catalogueItemDomainType: ModelDomainType, catalogueItemId: Uuid, profileNamespace: string, profileName: string, profileVersion?: Version, query?: QueryParameters, options?: RequestSettings): any;
+    deleteProfile(catalogueItemDomainType: ModelDomainType | string, catalogueItemId: Uuid, profileNamespace: string, profileName: string, profileVersion?: Version, query?: QueryParameters, options?: RequestSettings): any;
     /**
      * `HTTP POST` - Post a profile with values for a catalogue item and returns the same profile back with any validation errors included.
      *
@@ -104,6 +103,6 @@ export declare class MdmProfileResource extends MdmResource {
      *
      * `200 OK` - will return a {@link ProfileResponse} containing a {@link Profile}.
      */
-    validateProfile(profileNamespace: string, profileName: string, catalogueItemDomainType: ModelDomainType, catalogueItemId: Uuid, data: ProfilePayload): any;
+    validateProfile(profileNamespace: string, profileName: string, catalogueItemDomainType: ModelDomainType | string, catalogueItemId: Uuid, data: string): any;
     providerDynamic(): any;
 }
