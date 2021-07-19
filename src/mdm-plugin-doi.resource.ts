@@ -17,7 +17,7 @@ SPDX-License-Identifier: Apache-2.0
 */
 
 import { DoiSubmissionQueryParameters } from './mdm-plugin-doi.model';
-import { ModelDomainType, QueryParameters, RequestSettings, Uuid } from './mdm-common.model';
+import { CatalogueItemDomainType, getMultiFacetAwareDomainType, MultiFacetAwareDomainType, QueryParameters, RequestSettings, Uuid } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 
 /**
@@ -41,8 +41,12 @@ export class MdmPluginDoiResource extends MdmResource {
    *
    * `200 OK` - will return a {@link DoiStatusResponse} containing a {@link DoiStatus} object.  
    */
-  get(domainType: ModelDomainType, id: Uuid, query?: QueryParameters, options?: RequestSettings): any {
-    const url = `${this.apiEndpoint}/${domainType}/${id}/doi`;
+  get(
+    domainType: MultiFacetAwareDomainType | CatalogueItemDomainType, 
+    id: Uuid, 
+    query?: QueryParameters, 
+    options?: RequestSettings): any {
+    const url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(domainType)}/${id}/doi`;
     return this.simpleGet(url, query, options);
   }
 
@@ -57,9 +61,13 @@ export class MdmPluginDoiResource extends MdmResource {
    *
    * `200 OK` - will return a {@link DoiSubmissionResponse} containing a {@link DoiSubmissionState} object.
    */
-  save(domainType: ModelDomainType, id: Uuid, query?: DoiSubmissionQueryParameters, options?: RequestSettings): any {
+  save(
+    domainType: MultiFacetAwareDomainType | CatalogueItemDomainType, 
+    id: Uuid, 
+    query?: DoiSubmissionQueryParameters, 
+    options?: RequestSettings): any {
     const queryString = this.generateQueryString(query);
-    const url = `${this.apiEndpoint}/${domainType}/${id}/doi${queryString}`;
+    const url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(domainType)}/${id}/doi${queryString}`;
     return this.simplePost(url, {}, options);
   }
 
@@ -74,8 +82,12 @@ export class MdmPluginDoiResource extends MdmResource {
    *
    * On success, the response will be a `204 No Content` and the response body will be empty.
    */
-  remove(domainType: ModelDomainType, id: Uuid, query?: QueryParameters, options?: RequestSettings) {
-    const url = `${this.apiEndpoint}/${domainType}/${id}/doi`;
+  remove(
+    domainType: MultiFacetAwareDomainType | CatalogueItemDomainType, 
+    id: Uuid, 
+    query?: QueryParameters, 
+    options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(domainType)}/${id}/doi`;
     return this.simpleDelete(url, query, options);
   }
 }

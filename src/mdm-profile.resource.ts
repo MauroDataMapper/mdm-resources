@@ -15,8 +15,7 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { ProfilePayload } from './mdm-profile.model';
-import { RequestSettings, QueryParameters, ModelDomainType, Uuid, Version } from './mdm-common.model';
+import { RequestSettings, QueryParameters, Uuid, Version, MultiFacetAwareDomainType, CatalogueItemDomainType, getMultiFacetAwareDomainType } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 
 /**
@@ -33,7 +32,7 @@ export class MdmProfileResource extends MdmResource {
   /**
    * `HTTP GET` - Gets a list of profiles used on a particular catalogue item.
    * 
-   * @param catalogueItemDomainType The domain type of the catalogue item to get.
+   * @param domainType The domain type of the catalogue item to get.
    * @param catalogueItemId The unique identifier of the catalogue item to get.
    * @param query Optional query string parameters, if required.
    * @param options Optional REST handler options, if required.
@@ -42,18 +41,18 @@ export class MdmProfileResource extends MdmResource {
    * `200 OK` - will return a {@link ProfileSummaryIndexResponse} containing a list of {@link ProfileSummary} objects.
    */
   usedProfiles(
-    catalogueItemDomainType: ModelDomainType | string,
+    domainType: MultiFacetAwareDomainType | CatalogueItemDomainType,
     catalogueItemId: Uuid,
     query?: QueryParameters,
     options?: RequestSettings) {
-    const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/profiles/used`;
+    const url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(domainType)}/${catalogueItemId}/profiles/used`;
     return this.simpleGet(url, query, options);
   }
 
   /**
    * `HTTP GET` - Gets a list of profiles not used on a particular catalogue item but are available.
    * 
-   * @param catalogueItemDomainType The domain type of the catalogue item to get.
+   * @param domainType The domain type of the catalogue item to get.
    * @param catalogueItemId The unique identifier of the catalogue item to get.
    * @param query Optional query string parameters, if required.
    * @param options Optional REST handler options, if required.
@@ -62,18 +61,18 @@ export class MdmProfileResource extends MdmResource {
    * `200 OK` - will return a {@link ProfileSummaryIndexResponse} containing a list of {@link ProfileSummary} objects.
    */
   unusedProfiles(
-    catalogueItemDomainType: ModelDomainType | string,
+    domainType: MultiFacetAwareDomainType | CatalogueItemDomainType,
     catalogueItemId: string,
     query?: QueryParameters,
     options?: RequestSettings) {
-    const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/profiles/unused`;
+    const url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(domainType)}/${catalogueItemId}/profiles/unused`;
     return this.simpleGet(url, query, options);
   }
 
   /**
    * `HTTP GET` - Gets a list of all metadata for a catalogue item that is not attached to any profile on that item.
    * 
-   * @param catalogueItemDomainType The domain type of the catalogue item to get.
+   * @param domainType The domain type of the catalogue item to get.
    * @param catalogueItemId The unique identifier of the catalogue item to get.
    * @param query Optional query string parameters, if required.
    * @param options Optional REST handler options, if required.
@@ -82,18 +81,18 @@ export class MdmProfileResource extends MdmResource {
    * `200 OK` - will return a {@link MetadataIndexResponse} containing a list of {@link Metadata} objects.
    */
   otherMetadata(
-    catalogueItemDomainType: ModelDomainType | string,
+    domainType: MultiFacetAwareDomainType | CatalogueItemDomainType,
     catalogueItemId: string,
     query?: QueryParameters,
     options?: RequestSettings) {
-    const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/profiles/otherMetadata`;
+    const url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(domainType)}/${catalogueItemId}/profiles/otherMetadata`;
     return this.simpleGet(url, query, options);
   } 
 
   /**
    * `HTTP GET` - Gets a profile from a catalogue item.
    * 
-   * @param catalogueItemDomainType The domain type of the catalogue item to get.
+   * @param domainType The domain type of the catalogue item to get.
    * @param catalogueItemId The unique identifier of the catalogue item to get.
    * @param profileNamespace The namespace of the profile to get.
    * @param profileName The name of the profile to get.
@@ -105,14 +104,14 @@ export class MdmProfileResource extends MdmResource {
    * `200 OK` - will return a {@link ProfileResponse} containing a {@link Profile}.
    */
   profile(
-    catalogueItemDomainType: ModelDomainType | string,
+    domainType: MultiFacetAwareDomainType | CatalogueItemDomainType,
     catalogueItemId: Uuid,
     profileNamespace: string,
     profileName: string,
     profileVersion?: Version,
     query?: QueryParameters,
     options?: RequestSettings) {
-    let url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/profile/${profileNamespace}/${profileName}`;
+    let url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(domainType)}/${catalogueItemId}/profile/${profileNamespace}/${profileName}`;
     if (profileVersion) {
       url += `/${profileVersion}`;
     }
@@ -122,7 +121,7 @@ export class MdmProfileResource extends MdmResource {
   /**
    * `HTTP POST` - Saves a profile and its metadata values to a catalogue item.
    *
-   * @param catalogueItemDomainType The domain type of the catalogue item to get.
+   * @param domainType The domain type of the catalogue item to get.
    * @param catalogueItemId The unique identifier of the catalogue item to get.
    * @param profileNamespace The namespace of the profile to save.
    * @param profileName The name of the profile to save.
@@ -134,14 +133,14 @@ export class MdmProfileResource extends MdmResource {
    * `200 OK` - will return a {@link ProfileResponse} containing a {@link Profile}.
    */
   saveProfile(
-    catalogueItemDomainType: ModelDomainType | string,
+    domainType: MultiFacetAwareDomainType | CatalogueItemDomainType,
     catalogueItemId: Uuid,
     profileNamespace: string,
     profileName: string,
     data: string,
     profileVersion?: Version,
     options?: RequestSettings) {
-    let url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/profile/${profileNamespace}/${profileName}`;
+    let url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(domainType)}/${catalogueItemId}/profile/${profileNamespace}/${profileName}`;
     if (profileVersion) {
       url += `/${profileVersion}`;
     }
@@ -151,7 +150,7 @@ export class MdmProfileResource extends MdmResource {
   /**
    * `HTTP DELETE` - Removes an existing Digital Object Identifier from a catalogue item.
    *
-   * @param catalogueItemDomainType The domain type of the catalogue item to get.
+   * @param domainType The domain type of the catalogue item to get.
    * @param catalogueItemId The unique identifier of the catalogue item to get.
    * @param profileNamespace The namespace of the profile to delete.
    * @param profileName The name of the profile to delete.
@@ -163,14 +162,14 @@ export class MdmProfileResource extends MdmResource {
    * On success, the response will be a `204 No Content` and the response body will be empty.
    */
   deleteProfile(
-    catalogueItemDomainType: ModelDomainType | string,
+    domainType: MultiFacetAwareDomainType | CatalogueItemDomainType,
     catalogueItemId: Uuid,
     profileNamespace: string,
     profileName: string,
     profileVersion?: Version,
     query?: QueryParameters,
     options?: RequestSettings) {
-    let url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/profile/${profileNamespace}/${profileName}`;
+    let url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(domainType)}/${catalogueItemId}/profile/${profileNamespace}/${profileName}`;
     if (profileVersion) {
       url += `/${profileVersion}`;
     }
@@ -183,7 +182,7 @@ export class MdmProfileResource extends MdmResource {
    *      
    * @param profileNamespace The namespace of the profile to validate.
    * @param profileName The name of the profile to validate.
-   * @param catalogueItemDomainType The domain type of the catalogue item to get.
+   * @param domainType The domain type of the catalogue item to get.
    * @param catalogueItemId The unique identifier of the catalogue item to get.
    * @param data The data payload containing the profile sections/fields to validate.
    * @returns The result of the `POST` request.
@@ -193,10 +192,10 @@ export class MdmProfileResource extends MdmResource {
   validateProfile(
     profileNamespace: string,
     profileName: string,
-    catalogueItemDomainType: ModelDomainType | string,
+    domainType: MultiFacetAwareDomainType | CatalogueItemDomainType,
     catalogueItemId: Uuid,
     data: string) {
-    const url = `${this.apiEndpoint}/profiles/${profileNamespace}/${profileName}/${catalogueItemDomainType}/${catalogueItemId}/validate`;
+    const url = `${this.apiEndpoint}/profiles/${profileNamespace}/${profileName}/${getMultiFacetAwareDomainType(domainType)}/${catalogueItemId}/validate`;
     return this.simplePost(url, data);
   }
 

@@ -1,5 +1,5 @@
 import { DoiSubmissionQueryParameters } from './mdm-plugin-doi.model';
-import { ModelDomainType, QueryParameters, RequestSettings, Uuid } from './mdm-common.model';
+import { CatalogueItemDomainType, MultiFacetAwareDomainType, QueryParameters, RequestSettings, Uuid } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 /**
  * MDM resource for managing Digital Object Identifiers (DOI) on catalogue items.
@@ -22,7 +22,7 @@ export declare class MdmPluginDoiResource extends MdmResource {
      *
      * `200 OK` - will return a {@link DoiStatusResponse} containing a {@link DoiStatus} object.
      */
-    get(domainType: ModelDomainType, id: Uuid, query?: QueryParameters, options?: RequestSettings): any;
+    get(domainType: MultiFacetAwareDomainType | CatalogueItemDomainType, id: Uuid, query?: QueryParameters, options?: RequestSettings): any;
     /**
      * `HTTP POST` - Submits the data required to generate a new Digital Object Identifier for a catalogue item.
      *
@@ -34,7 +34,7 @@ export declare class MdmPluginDoiResource extends MdmResource {
      *
      * `200 OK` - will return a {@link DoiSubmissionResponse} containing a {@link DoiSubmissionState} object.
      */
-    save(domainType: ModelDomainType, id: Uuid, query?: DoiSubmissionQueryParameters, options?: RequestSettings): any;
+    save(domainType: MultiFacetAwareDomainType | CatalogueItemDomainType, id: Uuid, query?: DoiSubmissionQueryParameters, options?: RequestSettings): any;
     /**
      * `HTTP DELETE` - Removes an existing Digital Object Identifier from a catalogue item.
      *
@@ -46,5 +46,5 @@ export declare class MdmPluginDoiResource extends MdmResource {
      *
      * On success, the response will be a `204 No Content` and the response body will be empty.
      */
-    remove(domainType: ModelDomainType, id: Uuid, query?: QueryParameters, options?: RequestSettings): any;
+    remove(domainType: MultiFacetAwareDomainType | CatalogueItemDomainType, id: Uuid, query?: QueryParameters, options?: RequestSettings): any;
 }

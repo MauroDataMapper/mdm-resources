@@ -45,6 +45,11 @@ export enum ModelDomainType {
   All = 'all'
 }
 
+/**
+ * Represents the available catalogue items in Mauro.
+ * 
+ * @see {@link catalogueItemToMultiFacetAware}
+ */
 export enum CatalogueItemDomainType {
   Folder = 'Folder',
   DataModel = 'DataModel',
@@ -72,6 +77,42 @@ export enum CatalogueItemDomainType {
 }
 
 /**
+ * Represents any catalogue item that is "multi-facet aware", meaning an item that can contain multiple facets or metadata values.
+ * 
+ * @description These string constants are typically used in URL endpoints to generalise endpoints that are grouped by action.
+ * 
+ * @see {@link multiFacetAwareToCatalogueItem}
+ */
+export enum MultiFacetAwareDomainType {
+  Classifiers = 'classifiers',
+  CodeSet = 'codeSets',
+  DataClasses = 'dataClasses',
+  DataClassComponents = 'dataClassComponents',
+  DataElements = 'dataElements',
+  DataElementComponents = 'dataElementComponents',
+  DataFlows = 'dataFlows',
+  DataModel = 'dataModels',
+  DataTypes = 'dataTypes',
+  EnumerationTypes = 'enumerationTypes',
+  EnumerationValues = 'enumerationValues',
+  Folders = 'folders',
+  ModelDataTypes = 'modelDataTypes',
+  PrimitiveTypes = 'primitiveTypes',
+  ReferenceDataElements = 'referenceDataElements',
+  ReferenceDataModels = 'referenceDataModels',
+  ReferenceDataTypes = 'referenceDataTypes',
+  ReferenceEnumerationTypes = 'referenceEnumerationTypes',
+  ReferenceEnumerationValues = 'referenceEnumerationValues',
+  ReferencePrimitiveTypes = 'referencePrimitiveTypes',
+  ReferenceTypes = 'referenceTypes',
+  Terms = 'terms',
+  TermRelationships = 'termRelationships',
+  TermRelationshipTypes = 'termRelationshipTypes',
+  Terminologies = 'terminologies',
+  VersionedFolders = 'versionedFolders'
+}
+
+/**
  * Determine if a given domain type represents a Container.
  *
  * @param domainType The {@link CatalogueItemDomainType} to verify.
@@ -94,6 +135,80 @@ export function isModelDomainType(domainType: CatalogueItemDomainType) {
     || domainType === CatalogueItemDomainType.CodeSet
     || domainType === CatalogueItemDomainType.Terminology
     || domainType === CatalogueItemDomainType.ReferenceDataModel;
+}
+
+/**
+ * Maps a {@link CatalogueItemDomainType} to an equivalent {@link MultiFacetAwareDomainType}.
+ * @param value The catalogue item domain type to map from.
+ * @returns The correct {@link MultiFacetAwareDomainType} or `undefined` if there is no equivalent.
+ * 
+ * @description Use this utility function for generalising some endpoints when only given an object that is a {@link CatalogueItem}.
+ */
+export function catalogueItemToMultiFacetAware(value: CatalogueItemDomainType): MultiFacetAwareDomainType | undefined {
+  switch (value) {
+    case CatalogueItemDomainType.Classification: return MultiFacetAwareDomainType.Classifiers;
+    case CatalogueItemDomainType.CodeSet: return MultiFacetAwareDomainType.CodeSet;
+    case CatalogueItemDomainType.DataClass: return MultiFacetAwareDomainType.DataClasses;
+    case CatalogueItemDomainType.DataElement: return MultiFacetAwareDomainType.DataElements;    
+    case CatalogueItemDomainType.DataModel: return MultiFacetAwareDomainType.DataModel;
+    case CatalogueItemDomainType.EnumerationType: return MultiFacetAwareDomainType.EnumerationTypes;
+    case CatalogueItemDomainType.Folder: return MultiFacetAwareDomainType.Folders;
+    case CatalogueItemDomainType.ModelDataType: return MultiFacetAwareDomainType.ModelDataTypes;
+    case CatalogueItemDomainType.PrimitiveType: return MultiFacetAwareDomainType.PrimitiveTypes;
+    case CatalogueItemDomainType.ReferenceDataModel: return MultiFacetAwareDomainType.ReferenceDataModels;
+    case CatalogueItemDomainType.ReferenceType: return MultiFacetAwareDomainType.ReferenceTypes;
+    case CatalogueItemDomainType.Term: return MultiFacetAwareDomainType.Terms;
+    case CatalogueItemDomainType.Terminology: return MultiFacetAwareDomainType.Terminologies;
+    case CatalogueItemDomainType.VersionedFolder: return MultiFacetAwareDomainType.VersionedFolders;
+    default: return undefined;
+  }
+}
+
+/**
+ * Maps a {@link MultiFacetAwareDomainType} to an equivalent {@link CatalogueItemDomainType}.
+ * @param value The multi facet aware domain type to map from.
+ * @returns The correct {@link CatalogueItemDomainType} or `undefined` if there is no equivalent.
+ */
+export function multiFacetAwareToCatalogueItem(value: MultiFacetAwareDomainType): CatalogueItemDomainType | undefined {
+  switch (value) {
+    case MultiFacetAwareDomainType.Classifiers: return CatalogueItemDomainType.Classification;
+    case MultiFacetAwareDomainType.CodeSet: return CatalogueItemDomainType.CodeSet;
+    case MultiFacetAwareDomainType.DataClasses: return CatalogueItemDomainType.DataClass;
+    case MultiFacetAwareDomainType.DataElements: return CatalogueItemDomainType.DataElement;
+    case MultiFacetAwareDomainType.DataModel: return CatalogueItemDomainType.DataModel;
+    case MultiFacetAwareDomainType.EnumerationTypes: return CatalogueItemDomainType.EnumerationType;
+    case MultiFacetAwareDomainType.Folders: return CatalogueItemDomainType.Folder;
+    case MultiFacetAwareDomainType.ModelDataTypes: return CatalogueItemDomainType.ModelDataType;
+    case MultiFacetAwareDomainType.PrimitiveTypes: return CatalogueItemDomainType.PrimitiveType;
+    case MultiFacetAwareDomainType.ReferenceDataModels: return CatalogueItemDomainType.ReferenceDataModel;
+    case MultiFacetAwareDomainType.ReferenceTypes: return CatalogueItemDomainType.ReferenceType;
+    case MultiFacetAwareDomainType.Terms: return CatalogueItemDomainType.Term;
+    case MultiFacetAwareDomainType.Terminologies: return CatalogueItemDomainType.Terminology;
+    case MultiFacetAwareDomainType.VersionedFolders: return CatalogueItemDomainType.VersionedFolder;
+    default: return undefined;
+  }
+}
+
+function isValueOfEnum<T>(object: T, token: any): token is T[keyof T] {
+  return Object.values(object).includes(token);
+}
+
+/**
+ * Gets a {@link MultiFacetAwareDomainType}. If not originally  {@link MultiFacetAwareDomainType} then a conversion will be attempted.
+ * @param value A value representing either a {@link MultiFacetAwareDomainType} or a {@link CatalogueItemDomainType}.
+ * @returns A suitable {@link MultiFacetAwareDomainType}.
+ */
+export function getMultiFacetAwareDomainType(value: MultiFacetAwareDomainType | CatalogueItemDomainType): MultiFacetAwareDomainType {
+  if (isValueOfEnum(CatalogueItemDomainType, value)) {
+    const multiFacetAware = catalogueItemToMultiFacetAware(value);
+    if (!multiFacetAware) {
+      throw new Error(`Cannot determine MultiFacetAwareDomainType from '${value}'`);
+    }
+
+    return multiFacetAware;
+  }
+
+  return value;
 }
 
 /**

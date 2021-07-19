@@ -23,6 +23,11 @@ export declare enum ModelDomainType {
     VersionedFolders = "versionedFolders",
     All = "all"
 }
+/**
+ * Represents the available catalogue items in Mauro.
+ *
+ * @see {@link catalogueItemToMultiFacetAware}
+ */
 export declare enum CatalogueItemDomainType {
     Folder = "Folder",
     DataModel = "DataModel",
@@ -49,6 +54,41 @@ export declare enum CatalogueItemDomainType {
     FederatedDataModel = "FederatedDataModel"
 }
 /**
+ * Represents any catalogue item that is "multi-facet aware", meaning an item that can contain multiple facets or metadata values.
+ *
+ * @description These string constants are typically used in URL endpoints to generalise endpoints that are grouped by action.
+ *
+ * @see {@link multiFacetAwareToCatalogueItem}
+ */
+export declare enum MultiFacetAwareDomainType {
+    Classifiers = "classifiers",
+    CodeSet = "codeSets",
+    DataClasses = "dataClasses",
+    DataClassComponents = "dataClassComponents",
+    DataElements = "dataElements",
+    DataElementComponents = "dataElementComponents",
+    DataFlows = "dataFlows",
+    DataModel = "dataModels",
+    DataTypes = "dataTypes",
+    EnumerationTypes = "enumerationTypes",
+    EnumerationValues = "enumerationValues",
+    Folders = "folders",
+    ModelDataTypes = "modelDataTypes",
+    PrimitiveTypes = "primitiveTypes",
+    ReferenceDataElements = "referenceDataElements",
+    ReferenceDataModels = "referenceDataModels",
+    ReferenceDataTypes = "referenceDataTypes",
+    ReferenceEnumerationTypes = "referenceEnumerationTypes",
+    ReferenceEnumerationValues = "referenceEnumerationValues",
+    ReferencePrimitiveTypes = "referencePrimitiveTypes",
+    ReferenceTypes = "referenceTypes",
+    Terms = "terms",
+    TermRelationships = "termRelationships",
+    TermRelationshipTypes = "termRelationshipTypes",
+    Terminologies = "terminologies",
+    VersionedFolders = "versionedFolders"
+}
+/**
  * Determine if a given domain type represents a Container.
  *
  * @param domainType The {@link CatalogueItemDomainType} to verify.
@@ -62,6 +102,26 @@ export declare function isContainerDomainType(domainType: CatalogueItemDomainTyp
  * @returns True if `domainType` is a model type.
  */
 export declare function isModelDomainType(domainType: CatalogueItemDomainType): boolean;
+/**
+ * Maps a {@link CatalogueItemDomainType} to an equivalent {@link MultiFacetAwareDomainType}.
+ * @param value The catalogue item domain type to map from.
+ * @returns The correct {@link MultiFacetAwareDomainType} or `undefined` if there is no equivalent.
+ *
+ * @description Use this utility function for generalising some endpoints when only given an object that is a {@link CatalogueItem}.
+ */
+export declare function catalogueItemToMultiFacetAware(value: CatalogueItemDomainType): MultiFacetAwareDomainType | undefined;
+/**
+ * Maps a {@link MultiFacetAwareDomainType} to an equivalent {@link CatalogueItemDomainType}.
+ * @param value The multi facet aware domain type to map from.
+ * @returns The correct {@link CatalogueItemDomainType} or `undefined` if there is no equivalent.
+ */
+export declare function multiFacetAwareToCatalogueItem(value: MultiFacetAwareDomainType): CatalogueItemDomainType | undefined;
+/**
+ * Gets a {@link MultiFacetAwareDomainType}. If not originally  {@link MultiFacetAwareDomainType} then a conversion will be attempted.
+ * @param value A value representing either a {@link MultiFacetAwareDomainType} or a {@link CatalogueItemDomainType}.
+ * @returns A suitable {@link MultiFacetAwareDomainType}.
+ */
+export declare function getMultiFacetAwareDomainType(value: MultiFacetAwareDomainType | CatalogueItemDomainType): MultiFacetAwareDomainType;
 /**
  * Represents a response from an [[MdmResource]] API endpoint.
  *
