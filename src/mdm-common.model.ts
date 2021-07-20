@@ -138,6 +138,21 @@ export function isModelDomainType(domainType: CatalogueItemDomainType) {
 }
 
 /**
+ * Determine if a given domain type represents a Mauro data type.
+ * @param domainType The {@link CatalogueItemDomainType} to verify.
+ * @returns True if `domainType` is a data type.
+ */
+export function isDataType(domainType: CatalogueItemDomainType) {
+  return domainType === CatalogueItemDomainType.CodeSetType
+    || domainType === CatalogueItemDomainType.ModelDataType
+    || domainType === CatalogueItemDomainType.PrimitiveType
+    || domainType === CatalogueItemDomainType.ReferenceType
+    || domainType === CatalogueItemDomainType.EnumerationType
+    || domainType === CatalogueItemDomainType.TerminologyType
+    || domainType === CatalogueItemDomainType.ReferenceDataModelType;
+}
+
+/**
  * Maps a {@link CatalogueItemDomainType} to an equivalent {@link MultiFacetAwareDomainType}.
  * @param value The catalogue item domain type to map from.
  * @returns The correct {@link MultiFacetAwareDomainType} or `undefined` if there is no equivalent.

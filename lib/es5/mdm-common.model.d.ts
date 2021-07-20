@@ -103,6 +103,12 @@ export declare function isContainerDomainType(domainType: CatalogueItemDomainTyp
  */
 export declare function isModelDomainType(domainType: CatalogueItemDomainType): boolean;
 /**
+ * Determine if a given domain type represents a Mauro data type.
+ * @param domainType The {@link CatalogueItemDomainType} to verify.
+ * @returns True if `domainType` is a data type.
+ */
+export declare function isDataType(domainType: CatalogueItemDomainType): boolean;
+/**
  * Maps a {@link CatalogueItemDomainType} to an equivalent {@link MultiFacetAwareDomainType}.
  * @param value The catalogue item domain type to map from.
  * @returns The correct {@link MultiFacetAwareDomainType} or `undefined` if there is no equivalent.
