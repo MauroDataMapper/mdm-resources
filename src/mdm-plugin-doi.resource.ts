@@ -90,4 +90,18 @@ export class MdmPluginDoiResource extends MdmResource {
     const url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(domainType)}/${id}/doi`;
     return this.simpleDelete(url, query, options);
   }
+
+  /**
+   * `HTTP GET` - Resolves a Digital Object Identifier (DOI) to return the mapped Mauro catalogue item.
+   * @param identifier The Digital Object Identifier (DOI) to resolve to a catalogue item.
+   * @param query Optional query string parameters, if required.
+   * @param options Optional REST handler options, if required.
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return a {@link DoiResolvedItemResponse} containing a {@link DoiResolvedItem} object. 
+   */
+  resolve(identifier: string, query?: QueryParameters, options?: RequestSettings): any {
+    const url = `${this.apiEndpoint}/doi/${identifier}`;
+    return this.simpleGet(url, query, options);
+  }
 }

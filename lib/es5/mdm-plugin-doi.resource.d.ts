@@ -47,4 +47,14 @@ export declare class MdmPluginDoiResource extends MdmResource {
      * On success, the response will be a `204 No Content` and the response body will be empty.
      */
     remove(domainType: MultiFacetAwareDomainType | CatalogueItemDomainType, id: Uuid, query?: QueryParameters, options?: RequestSettings): any;
+    /**
+     * `HTTP GET` - Resolves a Digital Object Identifier (DOI) to return the mapped Mauro catalogue item.
+     * @param identifier The Digital Object Identifier (DOI) to resolve to a catalogue item.
+     * @param query Optional query string parameters, if required.
+     * @param options Optional REST handler options, if required.
+     * @returns The result of the `GET` request.
+     *
+     * `200 OK` - will return a {@link DoiResolvedItemResponse} containing a {@link DoiResolvedItem} object.
+     */
+    resolve(identifier: string, query?: QueryParameters, options?: RequestSettings): any;
 }

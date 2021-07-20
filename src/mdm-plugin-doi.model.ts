@@ -54,4 +54,8 @@ export type DoiStatusResponse = MdmResponse<DoiStatus>;
 
 export type DoiSubmissionStatus = CatalogueItem & { [key: string]: any };
 
-export type DoiSubmissionResponse = MdmResponse<DoiSubmissionStatus>
+export type DoiSubmissionResponse = MdmResponse<DoiSubmissionStatus>;
+
+export type DoiResolvedItem = CatalogueItem & { [key: string]: any };
+
+export type DoiResolvedItemResponse = MdmResponse<DoiResolvedItem>;

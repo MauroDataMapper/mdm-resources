@@ -31,3 +31,7 @@ export declare type DoiSubmissionStatus = CatalogueItem & {
     [key: string]: any;
 };
 export declare type DoiSubmissionResponse = MdmResponse<DoiSubmissionStatus>;
+export declare type DoiResolvedItem = CatalogueItem & {
+    [key: string]: any;
+};
+export declare type DoiResolvedItemResponse = MdmResponse<DoiResolvedItem>;

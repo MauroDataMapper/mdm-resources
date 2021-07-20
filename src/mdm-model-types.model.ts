@@ -52,7 +52,9 @@ declare const securableActions: readonly [
   'createModelItem',
   'moveToFolder',
   'moveToVersionedFolder',
-  'moveToContainer'
+  'moveToContainer',
+  'postFinalisedReadable',
+  'postFinalisedEditable'
 ];
 
 /**
