@@ -20,7 +20,7 @@ import { DataModelDetail } from './mdm-data-model.model';
 import { Branchable, Modelable } from './mdm-model-types.model';
 import { ReferenceDataModelDetail } from './mdm-reference-data-model.model';
 import { TerminologyDetail } from './mdm-terminology.model';
-import { VersionedFolderDetail } from 'mdm-versioned-folder.model';
+import { VersionedFolderDetail } from './mdm-versioned-folder.model';
 import { MdmResponse, MultiFacetAwareDomainType, Payload, Uuid } from './mdm-common.model';
 
 /**
