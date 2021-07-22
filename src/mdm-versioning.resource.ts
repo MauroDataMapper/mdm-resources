@@ -54,7 +54,7 @@ export class MdmVersioningResource extends MdmResource {
   }
 
   /**
-   * @deprecated use {@link MdmMergeResource.mergeDiff} instead
+   * @deprecated use {@link MdmMergeResource.mergeDiff} instead. This endpoint is maintained until older Merge UIs have been deprecated.
    */
   mergeDiff(
     modelDomainType: string | ModelDomainType,
@@ -68,7 +68,7 @@ export class MdmVersioningResource extends MdmResource {
   }
 
   /**
-   * @deprecated use {@link MdmMergeResource.currentMainBranch} instead
+   * @deprecated use {@link MdmMergeResource.currentMainBranch} instead. This endpoint is maintained until older Merge UIs have been deprecated.
    */
   currentMainBranch(
     modelDomainType: string | ModelDomainType,
@@ -91,7 +91,7 @@ export class MdmVersioningResource extends MdmResource {
   }
 
   /**
-   * @deprecated use {@link MdmMergeResource.mergeInto} instead
+   * @deprecated use {@link MdmMergeResource.mergeInto} instead. This endpoint is maintained until older Merge UIs have been deprecated.
    */
   mergeInto(
     modelDomainType: string | ModelDomainType,

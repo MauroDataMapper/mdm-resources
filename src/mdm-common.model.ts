@@ -85,13 +85,13 @@ export enum CatalogueItemDomainType {
  */
 export enum MultiFacetAwareDomainType {
   Classifiers = 'classifiers',
-  CodeSet = 'codeSets',
+  CodeSets = 'codeSets',
   DataClasses = 'dataClasses',
   DataClassComponents = 'dataClassComponents',
   DataElements = 'dataElements',
   DataElementComponents = 'dataElementComponents',
   DataFlows = 'dataFlows',
-  DataModel = 'dataModels',
+  DataModels = 'dataModels',
   DataTypes = 'dataTypes',
   EnumerationTypes = 'enumerationTypes',
   EnumerationValues = 'enumerationValues',
@@ -162,10 +162,10 @@ export function isDataType(domainType: CatalogueItemDomainType) {
 export function catalogueItemToMultiFacetAware(value: CatalogueItemDomainType): MultiFacetAwareDomainType | undefined {
   switch (value) {
     case CatalogueItemDomainType.Classification: return MultiFacetAwareDomainType.Classifiers;
-    case CatalogueItemDomainType.CodeSet: return MultiFacetAwareDomainType.CodeSet;
+    case CatalogueItemDomainType.CodeSet: return MultiFacetAwareDomainType.CodeSets;
     case CatalogueItemDomainType.DataClass: return MultiFacetAwareDomainType.DataClasses;
     case CatalogueItemDomainType.DataElement: return MultiFacetAwareDomainType.DataElements;    
-    case CatalogueItemDomainType.DataModel: return MultiFacetAwareDomainType.DataModel;
+    case CatalogueItemDomainType.DataModel: return MultiFacetAwareDomainType.DataModels;
     case CatalogueItemDomainType.EnumerationType: return MultiFacetAwareDomainType.EnumerationTypes;
     case CatalogueItemDomainType.Folder: return MultiFacetAwareDomainType.Folders;
     case CatalogueItemDomainType.ModelDataType: return MultiFacetAwareDomainType.ModelDataTypes;
@@ -187,10 +187,10 @@ export function catalogueItemToMultiFacetAware(value: CatalogueItemDomainType): 
 export function multiFacetAwareToCatalogueItem(value: MultiFacetAwareDomainType): CatalogueItemDomainType | undefined {
   switch (value) {
     case MultiFacetAwareDomainType.Classifiers: return CatalogueItemDomainType.Classification;
-    case MultiFacetAwareDomainType.CodeSet: return CatalogueItemDomainType.CodeSet;
+    case MultiFacetAwareDomainType.CodeSets: return CatalogueItemDomainType.CodeSet;
     case MultiFacetAwareDomainType.DataClasses: return CatalogueItemDomainType.DataClass;
     case MultiFacetAwareDomainType.DataElements: return CatalogueItemDomainType.DataElement;
-    case MultiFacetAwareDomainType.DataModel: return CatalogueItemDomainType.DataModel;
+    case MultiFacetAwareDomainType.DataModels: return CatalogueItemDomainType.DataModel;
     case MultiFacetAwareDomainType.EnumerationTypes: return CatalogueItemDomainType.EnumerationType;
     case MultiFacetAwareDomainType.Folders: return CatalogueItemDomainType.Folder;
     case MultiFacetAwareDomainType.ModelDataTypes: return CatalogueItemDomainType.ModelDataType;
