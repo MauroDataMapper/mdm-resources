@@ -62,13 +62,13 @@ export declare enum CatalogueItemDomainType {
  */
 export declare enum MultiFacetAwareDomainType {
     Classifiers = "classifiers",
-    CodeSet = "codeSets",
+    CodeSets = "codeSets",
     DataClasses = "dataClasses",
     DataClassComponents = "dataClassComponents",
     DataElements = "dataElements",
     DataElementComponents = "dataElementComponents",
     DataFlows = "dataFlows",
-    DataModel = "dataModels",
+    DataModels = "dataModels",
     DataTypes = "dataTypes",
     EnumerationTypes = "enumerationTypes",
     EnumerationValues = "enumerationValues",
