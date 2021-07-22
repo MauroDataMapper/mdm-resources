@@ -11,7 +11,7 @@ export declare type MergableMultiFacetAwareDomainType = MultiFacetAwareDomainTyp
 /**
  * Represents the possible types that could be returned after a successful committed merge operation.
  */
-export declare type CommittedMergeCatalogueItem = DataModelDetail | ReferenceDataModelDetail | TerminologyDetail | VersionedFolderDetail;
+export declare type MergableCatalogueItem = DataModelDetail | ReferenceDataModelDetail | TerminologyDetail | VersionedFolderDetail;
 /**
  * Represents a catalogue item that is the main branch of a branchable catalogue item.
  *
@@ -177,4 +177,4 @@ export interface CommitMergePayload extends Payload {
      */
     patch: CommitMergePatchPayload;
 }
-export declare type CommittedMergeResponse = MdmResponse<CommittedMergeCatalogueItem>;
+export declare type CommittedMergeResponse = MdmResponse<MergableCatalogueItem>;

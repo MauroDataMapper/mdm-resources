@@ -35,7 +35,7 @@ export type MergableMultiFacetAwareDomainType =
 /**
  * Represents the possible types that could be returned after a successful committed merge operation.
  */
-export type CommittedMergeCatalogueItem =
+export type MergableCatalogueItem =
   DataModelDetail 
   | ReferenceDataModelDetail 
   | TerminologyDetail 
@@ -236,4 +236,4 @@ export interface CommitMergePayload extends Payload {
   patch: CommitMergePatchPayload;
 }
 
-export type CommittedMergeResponse = MdmResponse<CommittedMergeCatalogueItem>;
+export type CommittedMergeResponse = MdmResponse<MergableCatalogueItem>;
