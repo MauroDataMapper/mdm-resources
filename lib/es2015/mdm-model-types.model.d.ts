@@ -161,6 +161,8 @@ export interface BranchModelPayload extends Payload {
 }
 /**
  * Represents basic details of an item from a model version tree.
+ *
+ * @see {@link ModelVersionItem}
  */
 export interface BasicModelVersionItem {
     id: Uuid;
@@ -170,4 +172,25 @@ export interface BasicModelVersionItem {
     displayName: string;
 }
 export declare type BasicModelVersionTreeResponse = MdmResponse<BasicModelVersionItem[]>;
+export interface ModelVersionItemTarget {
+    id: Uuid;
+    description?: string;
+}
+/**
+ * Represents full details of an item from a model version tree.
+ *
+ * @see {@link BasicModelVersionItem}
+ */
+export interface ModelVersionItem {
+    id: Uuid;
+    label: string;
+    branch?: string;
+    modelVersion?: Version;
+    documentationVersion?: Version;
+    isNewBranchModelVersion?: boolean;
+    isNewDocumentationVersion?: boolean;
+    isNewFork?: boolean;
+    targets: ModelVersionItemTarget[];
+}
+export declare type ModelVersionTreeResponse = MdmResponse<ModelVersionItem[]>;
 export {};

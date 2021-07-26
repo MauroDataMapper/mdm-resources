@@ -135,18 +135,28 @@ export declare class MdmTerminologyResource extends MdmResource {
     updateReadByEveryone(terminologyId: string, data?: any, restHandlerOptions?: RequestSettings): any;
     latestModelVersion(terminologyId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
     latestFinalisedModel(terminologyId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
-    modelVersionTree(terminologyId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    /**
+     * `HTTP GET` - Request a full model version tree for a Terminology.
+     *
+     * @param id The unique identifier of the Terinology.
+     * @param query Optional query parameters, if required.
+     * @param options Optional REST handler parameters, if required.
+     * @returns The result of the `GET` request.
+     *
+     * `200 OK` - will return a {@link ModelVersionTreeResponse} containing a list of {@link ModelVersionItem} objects.
+     */
+    modelVersionTree(id: Uuid, query?: QueryParameters, options?: RequestSettings): any;
     /**
      * `HTTP GET` - Request a simplified model version tree for a Terminology.
      *
-     * @param terminologyId The unique identifier of the terminology.
+     * @param id The unique identifier of the terminology.
      * @param query Optional query parameters, if required.
      * @param options Optional REST handler parameters, if required.
      * @returns The result of the `GET` request.
      *
      * `200 OK` - will return a {@link BasicModelVersionTreeResponse} containing a list of {@link BasicModelVersionItem} objects.
      */
-    simpleModelVersionTree(terminologyId: Uuid, query?: QueryParameters, options?: RequestSettings): any;
+    simpleModelVersionTree(id: Uuid, query?: QueryParameters, options?: RequestSettings): any;
     /**
      * `HTTP PUT` - Restores a temporarily deleted terminology.
      *

@@ -291,23 +291,33 @@ export class MdmCodeSetResource extends MdmResource {
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
 
-  modelVersionTree(codeSetId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
-    const url = `${this.apiEndpoint}/codeSets/${codeSetId}/modelVersionTree`;
-    return this.simpleGet(url, queryStringParams, restHandlerOptions);
+  /**
+   * `HTTP GET` - Request a full model version tree for a Code Set.
+   *
+   * @param id The unique identifier of the code set.
+   * @param query Optional query parameters, if required.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return a {@link ModelVersionTreeResponse} containing a list of {@link ModelVersionItem} objects.
+   */
+  modelVersionTree(id: Uuid, query?: QueryParameters, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/codeSets/${id}/modelVersionTree`;
+    return this.simpleGet(url, query, options);
   }
 
   /**
    * `HTTP GET` - Request a simplified model version tree for a Code Set.
    *
-   * @param codeSetId The unique identifier of the code set.
+   * @param id The unique identifier of the code set.
    * @param query Optional query parameters, if required.
    * @param options Optional REST handler parameters, if required.
    * @returns The result of the `GET` request.
    *
    * `200 OK` - will return a {@link BasicModelVersionTreeResponse} containing a list of {@link BasicModelVersionItem} objects.
    */
-   simpleModelVersionTree(codeSetId: Uuid, query?: QueryParameters, options?: RequestSettings) {
-    const url = `${this.apiEndpoint}/codeSets/${codeSetId}/simpleModelVersionTree`;
+   simpleModelVersionTree(id: Uuid, query?: QueryParameters, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/codeSets/${id}/simpleModelVersionTree`;
     return this.simpleGet(url, query, options);
   }
 

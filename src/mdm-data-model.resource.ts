@@ -509,14 +509,33 @@ export class MdmDataModelResource extends MdmResource {
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
 
-  modelVersionTree(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
-    const url = `${this.apiEndpoint}/dataModels/${dataModelId}/modelVersionTree`;
-    return this.simpleGet(url, queryStringParams, restHandlerOptions);
+  /**
+   * `HTTP GET` - Request a full model version tree for a Data Model.
+   *
+   * @param id The unique identifier of the Data Model.
+   * @param query Optional query parameters, if required.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return a {@link ModelVersionTreeResponse} containing a list of {@link ModelVersionItem} objects.
+   */
+  modelVersionTree(id: Uuid, query?: QueryParameters, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/dataModels/${id}/modelVersionTree`;
+    return this.simpleGet(url, query, options);
   }
 
-
-  simpleModelVersionTree(dataModelId: Uuid, query?: QueryParameters, options?: RequestSettings) {
-    const url = `${this.apiEndpoint}/dataModels/${dataModelId}/simpleModelVersionTree`;
+  /**
+   * `HTTP GET` - Request a simplified model version tree for a Data Model.
+   *
+   * @param id The unique identifier of the Data Model.
+   * @param query Optional query parameters, if required.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return a {@link BasicModelVersionTreeResponse} containing a list of {@link BasicModelVersionItem} objects.
+   */
+  simpleModelVersionTree(id: Uuid, query?: QueryParameters, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/dataModels/${id}/simpleModelVersionTree`;
     return this.simpleGet(url, query, options);
   }
 
