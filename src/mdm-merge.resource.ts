@@ -16,50 +16,88 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { ModelDomainType, QueryParameters, RequestSettings, Uuid } from "./mdm-common.model";
-import { MdmResource } from "./mdm-resource";
+import { CommitMergePayload, MergableMultiFacetAwareDomainType } from './mdm-merge.model';
+import { QueryParameters, RequestSettings, Uuid } from './mdm-common.model';
+import { MdmResource } from './mdm-resource';
 
+/**
+ * MDM resource for merge operations against catalogue items.
+ * 
+ * Note: these endpoints work for the latest path-based merge responses. To use the original Mauro merge data, see the deprecated
+ * {@link MdmVersioningResource} endpoints.
+ */
 export class MdmMergeResource extends MdmResource {
-    apiEndpoint: any;
 
-      /**
-   * `HTTP GET` - Request a the current main branch of the current item.
+  /**
+   * `HTTP GET` - Locates the catalogue item that acts as the "main" branch of the provided catalogue item.
    *
-   * @param modelDomainType The model domain type of item
-   * @param modelId The unique identifier of the item.
+   * @param domainType The domain type of the catalogue item. Only supported {@link MultiFacetAwareDomainType} values are allowed.
+   * @param id The unique identifier of the current item.
    * @param query Optional query parameters, if required.
    * @param options Optional REST handler parameters, if required.
    * @returns The result of the `GET` request.
    *
-   * `200 OK` - will return a object containing the main branch.
+   * `200 OK` - will return a {@link MainBranchResponse} containing a {@link MainBranchItem} object.
    */
-    currentMainBranch(modelDomainType: string | ModelDomainType, modelId: string, query?: QueryParameters, options?: RequestSettings) {
-        const url = `${this.apiEndpoint}/${modelDomainType}/${modelId}/currentMainBranch`;
-        return this.simpleGet(url, query, options);
-    }
-    
-      /**
-   * `HTTP PUT` - Updates an existing data model.
+  currentMainBranch(
+    domainType: MergableMultiFacetAwareDomainType,
+    id: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/${domainType}/${id}/currentMainBranch`;
+    return this.simpleGet(url, query, options);
+  }
+
+  /**
+   * `HTTP GET` - Gets a collection of differences between two catalogue items for the purpose of merging them together.
    *
-   * @param modelDomainType The model domain type of item
-   * @param sourceModelId The id of the source model
-   * @param targetModelId The id of the target model
-   * @param data The payload of the request containing all the details for the data model to update.
+   * @param domainType The domain type of catalogue items. Only supported {@link MultiFacetAwareDomainType} values are allowed.
+   * @param sourceId The unique identifier of the source catalogue item - the catalogue item that is going to be _merged_ into the _target_.
+   * @param targetId The unique identifier of the target catalogue item - the catalogue item that the _source_ will be _merged_ into.
+   * @param query Optional query parameters, if required.
    * @param options Optional REST handler parameters, if required.
-   * @returns The result of the `POST` request.
+   * @returns The result of the `GET` request.
    *
-   * `200 OK`.
+   * `200 OK` - will return a {@link MergeDiffResponse} containing a {@link MergeDiff} object.
    */
+  mergeDiff(
+    domainType: MergableMultiFacetAwareDomainType,
+    sourceId: Uuid,
+    targetId: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings) {
+    const queryString = this.generateQueryString({
+      isLegacy: false,  // Required to use latest JSON response format
+      ...query
+    });
+    const url = `${this.apiEndpoint}/${domainType}/${sourceId}/mergeDiff/${targetId}${queryString}`;
+    return this.simpleGet(url, query, options);
+  }
 
-    mergeInto(
-        modelDomainType: string | ModelDomainType,
-        sourceModelId: Uuid,
-        targetModelId: Uuid,
-        data: any,
-        restHandlerOptions?: RequestSettings
-      ) {
-        const url = `${this.apiEndpoint}/${modelDomainType}/${sourceModelId}/mergeInto/${targetModelId}`;
-        return this.simplePut(url, data, restHandlerOptions);
-      }
-
+  /**
+   * `HTTP PUT` - Merges a _source_ catalogue item into a _target_ catalogue item.
+   * 
+   * This is achieved by applying a list of _patches_ to the _target_ catalogue item to save/override previous values.
+   *
+   * @param domainType The domain type of catalogue items. Only supported {@link MultiFacetAwareDomainType} values are allowed.
+   * @param sourceId The unique identifier of the source catalogue item - the catalogue item that is going to be _merged_ into the _target_.
+   * @param targetId The unique identifier of the target catalogue item - the catalogue item that the _source_ will be _merged_ into.
+   * @param data The payload of the request containing all the patch details.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `PUT` request.
+   *
+   * `200 OK` - will return a {@link CommittedMergeResponse} containing a {@link CommittedMergeCatalogueItem}.
+   */
+  mergeInto(
+    domainType: MergableMultiFacetAwareDomainType,
+    sourceId: Uuid,
+    targetId: Uuid,
+    data: CommitMergePayload,
+    options?: RequestSettings) {
+    const queryString = this.generateQueryString({
+      isLegacy: false  // Required to use latest JSON response format
+    });
+    const url = `${this.apiEndpoint}/${domainType}/${sourceId}/mergeInto/${targetId}${queryString}`;
+    return this.simplePut(url, data, options);
+  }
 }

@@ -143,16 +143,26 @@ export declare class MdmReferenceDataModelResource extends MdmResource {
     newForkModel(referenceDataModelId: string, data: any, restHandlerOptions?: RequestSettings): any;
     latestModelVersion(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
     latestFinalisedModel(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
-    modelVersionTree(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    /**
+     * `HTTP GET` - Request a full model version tree for a Reference Data Model.
+     *
+     * @param id The unique identifier of the reference data model.
+     * @param query Optional query parameters, if required.
+     * @param options Optional REST handler parameters, if required.
+     * @returns The result of the `GET` request.
+     *
+     * `200 OK` - will return a {@link ModelVersionTreeResponse} containing a list of {@link ModelVersionItem} objects.
+     */
+    modelVersionTree(id: Uuid, query?: QueryParameters, options?: RequestSettings): any;
     /**
      * `HTTP GET` - Request a simplified model version tree for a Reference Data Model.
      *
-     * @param referenceDataModelId The unique identifier of the reference data model.
+     * @param id The unique identifier of the reference data model.
      * @param query Optional query parameters, if required.
      * @param options Optional REST handler parameters, if required.
      * @returns The result of the `GET` request.
      *
      * `200 OK` - will return a {@link BasicModelVersionTreeResponse} containing a list of {@link BasicModelVersionItem} objects.
      */
-    simpleModelVersionTree(referenceDataModelId: Uuid, query?: QueryParameters, options?: RequestSettings): any;
+    simpleModelVersionTree(id: Uuid, query?: QueryParameters, options?: RequestSettings): any;
 }

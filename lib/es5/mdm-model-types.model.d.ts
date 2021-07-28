@@ -5,7 +5,7 @@ export interface Authority {
     label: string;
     url?: string;
 }
-declare const securableActions: readonly ['show', 'update', 'changeFolder', 'delete', 'disable', 'index', 'save', 'comment', 'editDescription', 'softDelete', 'newDocumentationVersion', 'newBranchModelVersion', 'finalise', 'createNewVersions', 'newForkModel', 'newModelVersion', 'mergeInto', 'readByEveryone', 'readByAuthenticated', 'createFolder', 'createVersionedFolder', 'createContainer', 'createModel', 'createModelItem', 'moveToFolder', 'moveToVersionedFolder', 'moveToContainer'];
+declare const securableActions: readonly ['show', 'update', 'changeFolder', 'delete', 'disable', 'index', 'save', 'comment', 'editDescription', 'softDelete', 'newDocumentationVersion', 'newBranchModelVersion', 'finalise', 'createNewVersions', 'newForkModel', 'newModelVersion', 'mergeInto', 'readByEveryone', 'readByAuthenticated', 'createFolder', 'createVersionedFolder', 'createContainer', 'createModel', 'createModelItem', 'moveToFolder', 'moveToVersionedFolder', 'moveToContainer', 'postFinalisedReadable', 'postFinalisedEditable'];
 /**
  * Type alias to define available securable actions a catalogue item can perform.
  */
@@ -161,6 +161,8 @@ export interface BranchModelPayload extends Payload {
 }
 /**
  * Represents basic details of an item from a model version tree.
+ *
+ * @see {@link ModelVersionItem}
  */
 export interface BasicModelVersionItem {
     id: Uuid;
@@ -170,4 +172,25 @@ export interface BasicModelVersionItem {
     displayName: string;
 }
 export declare type BasicModelVersionTreeResponse = MdmResponse<BasicModelVersionItem[]>;
+export interface ModelVersionItemTarget {
+    id: Uuid;
+    description?: string;
+}
+/**
+ * Represents full details of an item from a model version tree.
+ *
+ * @see {@link BasicModelVersionItem}
+ */
+export interface ModelVersionItem {
+    id: Uuid;
+    label: string;
+    branch?: string;
+    modelVersion?: Version;
+    documentationVersion?: Version;
+    isNewBranchModelVersion?: boolean;
+    isNewDocumentationVersion?: boolean;
+    isNewFork?: boolean;
+    targets: ModelVersionItemTarget[];
+}
+export declare type ModelVersionTreeResponse = MdmResponse<ModelVersionItem[]>;
 export {};

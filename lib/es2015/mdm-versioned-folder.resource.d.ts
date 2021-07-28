@@ -285,6 +285,16 @@ export declare class MdmVersionedFolderResource extends MdmResource {
      * @see {@link MdmVersionedFolderResource.newDocumentationVersion}
      */
     newForkModel(id: Uuid, data: ForkModelPayload, options?: RequestSettings): any;
+    /**
+     * `HTTP GET` - Request a full model version tree for a Versioned Folder.
+     *
+     * @param id The unique identifier of the versioned folder.
+     * @param query Optional query parameters, if required.
+     * @param options Optional REST handler parameters, if required.
+     * @returns The result of the `GET` request.
+     *
+     * `200 OK` - will return a {@link ModelVersionTreeResponse} containing a list of {@link ModelVersionItem} objects.
+     */
     modelVersionTree(id: string, query?: QueryParameters, options?: RequestSettings): any;
     /**
      * `HTTP GET` - Request a simplified model version tree for a Versioned Folder.

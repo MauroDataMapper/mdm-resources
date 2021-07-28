@@ -11,11 +11,17 @@ import { MdmResource } from "./mdm-resource";
 export declare class MdmVersioningResource extends MdmResource {
     commonAncestor(modelDomainType: string | ModelDomainType, modelId: string, otherModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
     latestVersion(modelDomainType: string | ModelDomainType, modelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    /**
+     * @deprecated use {@link MdmMergeResource.mergeDiff} instead. This endpoint is maintained until older Merge UIs have been deprecated.
+     */
     mergeDiff(modelDomainType: string | ModelDomainType, modelId: string, otherModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
     /**
-     * @deprecated use {@link MdmMergeResource.currentMainBranch} instead
+     * @deprecated use {@link MdmMergeResource.currentMainBranch} instead. This endpoint is maintained until older Merge UIs have been deprecated.
      */
     currentMainBranch(modelDomainType: string | ModelDomainType, modelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
     availableBranches(modelDomainType: string | ModelDomainType, modelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings): any;
+    /**
+     * @deprecated use {@link MdmMergeResource.mergeInto} instead. This endpoint is maintained until older Merge UIs have been deprecated.
+     */
     mergeInto(modelDomainType: string | ModelDomainType, sourceModelId: string, targetModelId: string, data: any, restHandlerOptions?: RequestSettings): any;
 }
