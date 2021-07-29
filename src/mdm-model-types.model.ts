@@ -53,8 +53,8 @@ declare const securableActions: readonly [
   'moveToFolder',
   'moveToVersionedFolder',
   'moveToContainer',
-  'postFinalisedReadable',
-  'postFinalisedEditable'
+  'finalisedReadActions',
+  'finalisedEditActions'
 ];
 
 /**
