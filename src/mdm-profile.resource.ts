@@ -15,6 +15,7 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
+import { Profile } from './mdm-profile.model';
 import { RequestSettings, QueryParameters, Uuid, Version, MultiFacetAwareDomainType, CatalogueItemDomainType, getMultiFacetAwareDomainType } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 
@@ -137,7 +138,7 @@ export class MdmProfileResource extends MdmResource {
     catalogueItemId: Uuid,
     profileNamespace: string,
     profileName: string,
-    data: string,
+    data: Profile,
     profileVersion?: Version,
     options?: RequestSettings) {
     let url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(domainType)}/${catalogueItemId}/profile/${profileNamespace}/${profileName}`;
@@ -194,7 +195,7 @@ export class MdmProfileResource extends MdmResource {
     profileName: string,
     domainType: MultiFacetAwareDomainType | CatalogueItemDomainType,
     catalogueItemId: Uuid,
-    data: string) {
+    data: Profile) {
     const url = `${this.apiEndpoint}/profiles/${profileNamespace}/${profileName}/${getMultiFacetAwareDomainType(domainType)}/${catalogueItemId}/validate`;
     return this.simplePost(url, data);
   }

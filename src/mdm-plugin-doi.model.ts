@@ -31,9 +31,9 @@ export interface DoiStatus {
   identifier?: string;
 
   /** 
-   * Gets the current state of the DOI.
+   * Gets the current status of the DOI.
   */
-  state: DoiState;
+  status: DoiState;
 
   [key: string]: any;
 }
