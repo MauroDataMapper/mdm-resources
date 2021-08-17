@@ -196,10 +196,84 @@ export declare class MdmDataClassResource extends MdmResource {
      * `200 OK` - will return a {@link DataClassDetailResponse} containing the new copy of a {@link DataClassDetail} object.
      */
     copyDataClass(dataModelId: string, otherDataModelId: string, otherDataClassId: string, restHandlerOptions?: RequestSettings): any;
+    /**
+     * `HTTP PUT` - Import a data class into specified data class.
+     *
+     * @param dataModelId The unique identifier of the data model the target data class exists under.
+     * @param dataClassId The unique identifier of the target data class.
+     * @param otherDataModelId The unique identifier of the data model the imported data class exists under.
+     * @param otherDataClassId The unique identifier of the imported data class.
+     * @param options Optional REST handler parameters, if required.
+     * @returns The result of the `PUT` request.
+     *
+     * `200 OK` - will return a {@link DataClassDetailResponse} containing a {@link DataClassDetail} object.
+     */
     importDataClass(dataModelId: Uuid, dataClassId: Uuid, otherDataModelId: Uuid, otherDataClassId: Uuid, options?: RequestSettings): any;
+    /**
+     * `HTTP DELETE` - Removes an imported data class from specified data class.
+     *
+     * @param dataModelId The unique identifier of the data model the target data class exists under.
+     * @param dataClasseId The unique indentifier of the target data class to remove from.
+     * @param otherDataModelId The unique identifier of the data model the imported data class exists under.
+     * @param otherDataClassId The unique identifier of the imported data class.
+     * @param options Optional REST handler options, if required.
+     * @returns The result of the `DELETE` request.
+     *
+     * On success, the response will be a `204 No Content` and the response body will be empty.
+     */
     removeImportedDataClass(dataModelId: Uuid, dataClassId: Uuid, otherDataModelId: Uuid, otherDataClassId: Uuid, options?: RequestSettings): any;
+    /**
+     * `HTTP PUT` - Import a data element into specified data class.
+     *
+     * @param dataModelId The unique identifier of the data model the target data class exists under.
+     * @param dataClassId The unique identifier of the target data class.
+     * @param otherDataModelId The unique identifier of the data model the data element exists under.
+     * @param otherDataClassId The unique identifier of the data class the data element exists under.
+     * @param otherDataElementId The unique identifier of the data element.
+     * @param options Optional REST handler parameters, if required.
+     * @returns The result of the `PUT` request.
+     *
+     * `200 OK` - will return a {@link DataClassDetailResponse} containing a {@link DataClassDetail} object.
+     */
     importDataElement(dataModelId: Uuid, dataClassId: Uuid, otherDataModelId: Uuid, otherDataClassId: Uuid, otherDataElementId: Uuid, options?: RequestSettings): any;
+    /**
+     * `HTTP DELETE` - Removes an imported data element from specified data class.
+     *
+     * @param dataModelId The unique identifier of the data model the target data class exists under.
+     * @param dataClasseId The unique indentifier of the target data class to remove from.
+     * @param otherDataModelId The unique identifier of the data model the data element exists under.
+     * @param otherDataClassId The unique identifier of the data class the data element exists under.
+     * @param otherDataElementId The unique identifier of the data element.
+     * @param options Optional REST handler options, if required.
+     * @returns The result of the `DELETE` request.
+     *
+     * On success, the response will be a `204 No Content` and the response body will be empty.
+     */
     removeImportedDataElement(dataModelId: Uuid, dataClassId: Uuid, otherDataModelId: Uuid, otherDataClassId: Uuid, otherDataElementId: Uuid, options?: RequestSettings): any;
+    /**
+     * `HTTP PUT` - Add data class to the extension list of specified data class.
+     *
+     * @param dataModelId The unique identifier of the data model the target data class exists under.
+     * @param dataClassId The unique identifier of the target data class.
+     * @param otherDataModelId The unique identifier of the data model the extension data class exists under.
+     * @param otherDataClassId The unique identifier of the data class to be added.
+     * @param options Optional REST handler parameters, if required.
+     * @returns The result of the `PUT` request.
+     *
+     * `200 OK` - will return a {@link DataClassDetailResponse} containing a {@link DataClassDetail} object.
+     */
     addExtendDataClass(dataModelId: Uuid, dataClassId: Uuid, otherDataModelId: Uuid, otherDataClassId: Uuid, options?: RequestSettings): any;
+    /**
+     * `HTTP DELETE` - Removes data class from the extension list of specified data class.
+     *
+     * @param dataModelId The unique identifier of the data model the target data class exists under.
+     * @param dataClassId The unique identifier of the target data class.
+     * @param otherDataModelId The unique identifier of the data model the extension data class exists under.
+     * @param otherDataClassId The unique identifier of the extension data class to be removed.
+     * @param options Optional REST handler options, if required.
+     * @returns The result of the `DELETE` request.
+     *
+     * On success, the response will be a `204 No Content` and the response body will be empty.
+     */
     removeExtendDataClass(dataModelId: Uuid, dataClassId: Uuid, otherDataModelId: Uuid, otherDataClassId: Uuid, options?: RequestSettings): any;
 }
