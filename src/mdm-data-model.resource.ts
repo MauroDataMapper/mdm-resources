@@ -567,21 +567,65 @@ export class MdmDataModelResource extends MdmResource {
     return this.simplePut(url, {}, options);
   }
 
+  /**
+   * `HTTP PUT` - Import a data type into specified data model.
+   *
+   * @param dataModelId The unique identifier of the target data model.
+   * @param otherDataModelId The unique identifier of the data model the imported data type exists under.
+   * @param otherDataTypeId The unique identifier of the imported data type.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `PUT` request.
+   *
+   * `200 OK` - will return a {@link DataModelDetailResponse} containing a {@link DataModelDetail} object.
+   */
   importDataType(dataModelId: Uuid, otherDataModelId: Uuid, otherDataTypeId: Uuid, options?: RequestSettings) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataTypes/${otherDataModelId}/${otherDataTypeId}`;
     return this.simplePut(url, {}, options);
   }
 
+  /**
+   * `HTTP DELETE` - Removes an imported data type from specified data model.
+   *
+   * @param dataModelId The unique identifier of the target data model.
+   * @param otherDataModelId The unique identifier of the data model the imported data type exists under.
+   * @param otherDataTypeId The unique identifier of the imported data type to remove.
+   * @param options Optional REST handler options, if required.
+   * @returns The result of the `DELETE` request.
+   *
+   * On success, the response will be a `204 No Content` and the response body will be empty.
+   */
   removeImportedDataType(dataModelId: Uuid, otherDataModelId: Uuid, otherDataTypeId: Uuid, options?: RequestSettings) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataTypes/${otherDataModelId}/${otherDataTypeId}`;
     return this.simpleDelete(url, {}, options);
   }
 
+  /**
+   * `HTTP PUT` - Import a data class into specified data model.
+   *
+   * @param dataModelId The unique identifier of the target data model.
+   * @param otherDataModelId The unique identifier of the data model the imported data class exists under.
+   * @param otherDataClassId The unique identifier of the imported data class.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `PUT` request.
+   *
+   * `200 OK` - will return a {@link DataModelDetailResponse} containing a {@link DataModelDetail} object.
+   */
   importDataClass(dataModelId: Uuid, otherDataModelId: Uuid, otherDataClassId: Uuid, options?: RequestSettings) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${otherDataModelId}/${otherDataClassId}`;
     return this.simplePut(url, {}, options);
   }
 
+  /**
+   * `HTTP DELETE` - Removes an imported data class from specified data model.
+   *
+   * @param dataModelId The unique identifier of the targetdata model.
+   * @param otherDataModelId The unique identifier of the data model the imported data class exists under.
+   * @param otherDataClassId The unique identifier of the imported data class to remove.
+   * @param options Optional REST handler options, if required.
+   * @returns The result of the `DELETE` request.
+   *
+   * On success, the response will be a `204 No Content` and the response body will be empty.
+   */
   removeImportedDataClass(dataModelId: Uuid, otherDataModelId: Uuid, otherDataClassId: Uuid, options?: RequestSettings) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${otherDataModelId}/${otherDataClassId}`;
     return this.simpleDelete(url, {}, options);
