@@ -1,21 +1,23 @@
 import { CatalogueItemDomainType, MdmIndexResponse, MdmResponse, Payload, Uuid, Version } from './mdm-common.model';
-export declare type ProfileFieldDataType = 'BOOLEAN' | 'STRING' | 'TEXT' | 'INT' | 'DECIMAL' | 'DATE' | 'DATETIME' | 'TIME' | 'FOLDER' | 'MODEL' | 'JSON';
+export declare type ProfileFieldDataType = 'boolean' | 'string' | 'text' | 'int' | 'decimal' | 'date' | 'datetime' | 'time' | 'folder' | 'model' | 'json';
 export interface ProfileField {
-    allowedValues?: any;
+    allowedValues?: string[];
     currentValue?: string;
     dataType: ProfileFieldDataType;
+    derived?: boolean;
+    derivedFrom?: string;
     description?: string;
     fieldName: string;
     maxMultiplicity?: number;
     metadataPropertyName: string;
     minMultiplicity?: number;
     regularExpressions?: any;
-    validationErrors?: string[];
+    uneditable?: boolean;
     [key: string]: any;
 }
 export interface ProfileSection {
-    sectionName: string;
-    sectionDescription?: string;
+    name: string;
+    description?: string;
     fields: ProfileField[];
 }
 export interface Profile {
@@ -48,3 +50,13 @@ export interface Metadata {
 }
 export declare type MetadataIndexResponse = MdmIndexResponse<Metadata>;
 export declare type ProfilePayload = Profile & Payload;
+export interface ProfileValidationError {
+    fieldName: string;
+    message: string;
+    metadataPropertyName?: string;
+}
+export interface ProfileValidationErrorList {
+    errors: ProfileValidationError[];
+    total: number;
+}
+export declare type ProfileValidationResponse = MdmResponse<ProfileValidationErrorList>;

@@ -103,6 +103,7 @@ export declare class MdmProfileResource extends MdmResource {
      * @returns The result of the `POST` request.
      *
      * `200 OK` - will return a {@link ProfileResponse} containing a {@link Profile}.
+     * `422 Unprocessable Entity` - will return a {@link ProfileValidationResponse} containing a {@link ProfileValidationErrorList}.
      */
     validateProfile(profileNamespace: string, profileName: string, domainType: MultiFacetAwareDomainType | CatalogueItemDomainType, catalogueItemId: Uuid, data: Profile): any;
     providerDynamic(): any;
