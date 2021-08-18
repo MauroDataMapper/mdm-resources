@@ -19,29 +19,31 @@ SPDX-License-Identifier: Apache-2.0
 import { CatalogueItemDomainType, MdmIndexResponse, MdmResponse, Payload, Uuid, Version } from './mdm-common.model';
 
 export type ProfileFieldDataType =
-  'BOOLEAN'
-  | 'STRING'
-  | 'TEXT'
-  | 'INT'
-  | 'DECIMAL'
-  | 'DATE'
-  | 'DATETIME'
-  | 'TIME'
-  | 'FOLDER'
-  | 'MODEL'
-  | 'JSON';
+  'boolean'
+  | 'string'
+  | 'text'
+  | 'int'
+  | 'decimal'
+  | 'date'
+  | 'datetime'
+  | 'time'
+  | 'folder'
+  | 'model'
+  | 'json';
 
 export interface ProfileField {
-  allowedValues?: any;
+  allowedValues?: string[];
   currentValue?: string;
   dataType: ProfileFieldDataType;
+  derived?: boolean;
+  derivedFrom?: string;
   description?: string;
   fieldName: string;
   maxMultiplicity?: number;
   metadataPropertyName: string;
   minMultiplicity?: number;
-  regularExpressions?: any;
-  validationErrors?: string[];
+  regularExpressions?: any;  
+  uneditable?: boolean;
   [key: string]: any;
 }
 
@@ -87,3 +89,16 @@ export interface Metadata {
 export type MetadataIndexResponse = MdmIndexResponse<Metadata>;
 
 export type ProfilePayload = Profile & Payload;
+
+export interface ProfileValidationError {
+  fieldName: string;
+  message: string;
+  metadataPropertyName?: string;
+}
+
+export interface ProfileValidationErrorList {
+  errors: ProfileValidationError[];
+  total: number;
+}
+
+export type ProfileValidationResponse = MdmResponse<ProfileValidationErrorList>;
