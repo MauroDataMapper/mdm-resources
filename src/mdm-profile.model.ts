@@ -48,8 +48,8 @@ export interface ProfileField {
 }
 
 export interface ProfileSection {
-  sectionName: string;
-  sectionDescription?: string;
+  name: string;
+  description?: string;
   fields: ProfileField[];
 }
 

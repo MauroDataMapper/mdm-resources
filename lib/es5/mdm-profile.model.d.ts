@@ -16,8 +16,8 @@ export interface ProfileField {
     [key: string]: any;
 }
 export interface ProfileSection {
-    sectionName: string;
-    sectionDescription?: string;
+    name: string;
+    description?: string;
     fields: ProfileField[];
 }
 export interface Profile {
