@@ -23,9 +23,9 @@ import { DataTypeProvider } from './mdm-data-type.model';
 export type DataModelType = 'Data Standard' | 'Data Asset';
 
 export interface DataModel extends Modelable {
+  [key: string]: any;
   type?: DataModelType;
   semanticLinks?: any[];
-  [key: string]: any;
 }
 
 export type DataModelDetail =

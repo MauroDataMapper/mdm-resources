@@ -22,6 +22,7 @@ import { Breadcrumb, CatalogueItemDomainType, MdmIndexResponse, MdmResponse, Pag
 export type DataClassIndexParameters = SortParameters & PageParameters & QueryParameters;
 
 export interface DataClass {
+  [key: string]: any;
   id?: Uuid;
   domainType: CatalogueItemDomainType;
   label: string;
@@ -31,7 +32,6 @@ export interface DataClass {
   breadcrumbs?: Breadcrumb[];
   minMultiplicity?: number;
   maxMultipicity?: number;
-  [key: string]: any;
 }
 
 export type DataClassDetail =
