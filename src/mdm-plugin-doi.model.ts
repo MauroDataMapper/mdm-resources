@@ -18,7 +18,7 @@ SPDX-License-Identifier: Apache-2.0
 
 import { CatalogueItem, MdmResponse, QueryParameters } from './mdm-common.model';
 
-export type DoiState = 'draft' | 'final' | 'retired' | 'not applicable';
+export type DoiState = 'draft' | 'final' | 'retired' | 'not submitted';
 export type DoiSubmissionState = 'draft' | 'finalise' | 'retire';
 
 /**
@@ -31,9 +31,9 @@ export interface DoiStatus {
   identifier?: string;
 
   /** 
-   * Gets the current state of the DOI.
+   * Gets the current status of the DOI.
   */
-  state: DoiState;
+  status: DoiState;
 
   [key: string]: any;
 }

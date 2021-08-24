@@ -1,5 +1,5 @@
 import { CatalogueItem, MdmResponse, QueryParameters } from './mdm-common.model';
-export declare type DoiState = 'draft' | 'final' | 'retired' | 'not applicable';
+export declare type DoiState = 'draft' | 'final' | 'retired' | 'not submitted';
 export declare type DoiSubmissionState = 'draft' | 'finalise' | 'retire';
 /**
  * Represents the status of a Digital Object Identifier on a catalogue item.
@@ -10,9 +10,9 @@ export interface DoiStatus {
      */
     identifier?: string;
     /**
-     * Gets the current state of the DOI.
+     * Gets the current status of the DOI.
     */
-    state: DoiState;
+    status: DoiState;
     [key: string]: any;
 }
 export declare type DoiStatusResponse = MdmResponse<DoiStatus>;

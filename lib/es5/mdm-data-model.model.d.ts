@@ -3,9 +3,9 @@ import { MdmIndexResponse, MdmResponse, QueryParameters } from './mdm-common.mod
 import { DataTypeProvider } from './mdm-data-type.model';
 export declare type DataModelType = 'Data Standard' | 'Data Asset';
 export interface DataModel extends Modelable {
+    [key: string]: any;
     type?: DataModelType;
     semanticLinks?: any[];
-    [key: string]: any;
 }
 export declare type DataModelDetail = DataModel & ModelableDetail & SecurableModel & Historical & Branchable & Versionable & Finalisable;
 export declare type DataModelIndexResponse = MdmIndexResponse<DataModel>;

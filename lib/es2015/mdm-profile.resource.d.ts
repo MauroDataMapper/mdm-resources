@@ -1,3 +1,4 @@
+import { Profile } from './mdm-profile.model';
 import { RequestSettings, QueryParameters, Uuid, Version, MultiFacetAwareDomainType, CatalogueItemDomainType } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 /**
@@ -75,7 +76,7 @@ export declare class MdmProfileResource extends MdmResource {
      *
      * `200 OK` - will return a {@link ProfileResponse} containing a {@link Profile}.
      */
-    saveProfile(domainType: MultiFacetAwareDomainType | CatalogueItemDomainType, catalogueItemId: Uuid, profileNamespace: string, profileName: string, data: string, profileVersion?: Version, options?: RequestSettings): any;
+    saveProfile(domainType: MultiFacetAwareDomainType | CatalogueItemDomainType, catalogueItemId: Uuid, profileNamespace: string, profileName: string, data: Profile, profileVersion?: Version, options?: RequestSettings): any;
     /**
      * `HTTP DELETE` - Removes an existing Digital Object Identifier from a catalogue item.
      *
@@ -102,7 +103,8 @@ export declare class MdmProfileResource extends MdmResource {
      * @returns The result of the `POST` request.
      *
      * `200 OK` - will return a {@link ProfileResponse} containing a {@link Profile}.
+     * `422 Unprocessable Entity` - will return a {@link ProfileValidationResponse} containing a {@link ProfileValidationErrorList}.
      */
-    validateProfile(profileNamespace: string, profileName: string, domainType: MultiFacetAwareDomainType | CatalogueItemDomainType, catalogueItemId: Uuid, data: string): any;
+    validateProfile(profileNamespace: string, profileName: string, domainType: MultiFacetAwareDomainType | CatalogueItemDomainType, catalogueItemId: Uuid, data: Profile): any;
     providerDynamic(): any;
 }
