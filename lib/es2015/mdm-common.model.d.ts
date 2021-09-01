@@ -46,6 +46,7 @@ export declare enum CatalogueItemDomainType {
     ReferencePrimitiveType = "ReferencePrimitiveType",
     ReferenceEnumerationType = "ReferenceEnumerationType",
     ReferenceEnumerationValue = "ReferenceEnumerationValue",
+    ReferenceDataElement = "ReferenceDataElement",
     CodeSetType = "CodeSetType",
     ModelDataType = "ModelDataType",
     ReferenceFile = "ReferenceFile",
