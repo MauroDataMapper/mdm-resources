@@ -27,6 +27,7 @@ export * from './mdm-data-model.model';
 export * from './mdm-data-model.resource';
 export * from './mdm-reference-data-model.model';
 export * from './mdm-reference-data-model.resource';
+export * from './mdm-reference-data-element.model';
 export * from './mdm-reference-data-element.resource';
 export * from './mdm-reference-data-type.model';
 export * from './mdm-reference-data-type.resource';
