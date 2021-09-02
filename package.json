@@ -6,7 +6,7 @@
     "license": "Apache-2.0",
     "private": true,
     "scripts": {
-        "build": "tsc && tsc --target ES5 --outDir lib/es5",
+        "build": "rm -rf lib &&  tsc && tsc --target ES5 --outDir lib/es5",
         "start": "tsc --watch",
         "changelog": "conventional-changelog -i CHANGELOG.md -s",
         "test": "jest",
