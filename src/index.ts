@@ -48,6 +48,7 @@ export * from './mdm-reference-data-element.model';
 export * from './mdm-reference-data-element.resource';
 export * from './mdm-reference-data-type.model';
 export * from './mdm-reference-data-type.resource';
+export * from './mdm-reference-data-value.model';
 export * from './mdm-reference-data-value.resource';
 export * from './mdm-version-link.resource';
 export * from './mdm-admin.model';
