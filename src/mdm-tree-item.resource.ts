@@ -208,26 +208,48 @@ export class MdmTreeItemResource extends MdmResource {
     return this.simpleGet(url, query, options);
   }
 
-    /**
-   * `HTTP GET` - Request the children of the folder
-   *   * 
-   * @param id The unique identifier of the folder to fetch children for.
+  /**
+ * `HTTP GET` - Request the children of the folder
+ *   * 
+ * @param id The unique identifier of the folder to fetch children for.
+ * @param query Optional query string parameters to filter the returned list, if required.
+ * @param options Optional REST handler parameters, if required.
+ * @returns The result of the `GET` request.
+ *
+ * `200 OK` - will return a {@link MdmTreeItemResponse} containing a {@link MdmTreeItem} node. If the tree item contains any children,
+ * these will be returned also under {@link MdmTreeItem.children}.
+ *
+ * @see {@link MdmTreeItemResource.list}
+ */
+  getFolder(
+    id: Uuid,
+    query?: TreeItemExpandedQueryParameters,
+    options?: RequestSettings
+  ) {
+    const url = `${this.apiEndpoint}/tree/folders/${id}`;
+    return this.simpleGet(url, query, options);
+  }
+
+  /**
+   * `HTTP GET` - get all the ancestor items from the tree for a given catalogue tree item.
+   * 
+   * @param containerDomainType State the container domain type to inspect.
+   * @param modelDomainType State the model domain type to inspect.
+   * @param id The unique identifier of the entity to fetch ancestors for.
    * @param query Optional query string parameters to filter the returned list, if required.
    * @param options Optional REST handler parameters, if required.
    * @returns The result of the `GET` request.
    *
-   * `200 OK` - will return a {@link MdmTreeItemResponse} containing a {@link MdmTreeItem} node. If the tree item contains any children,
-   * these will be returned also under {@link MdmTreeItem.children}.
-   *
-   * @see {@link MdmTreeItemResource.list}
+   * `200 OK` - will return a {@link MdmTreeItemResponse} containing a {@link MdmTreeItem} with children down to
+   * the original tree item.
    */
-  getFolder(    
+  ancestors(
+    containerDomainType: ContainerDomainType,
+    modelDomainType: ModelDomainType,
     id: Uuid,
-    query?: TreeItemExpandedQueryParameters,
-    options?: RequestSettings
-    )
-    {
-      const url = `${this.apiEndpoint}/tree/folders/${id}`;
-      return this.simpleGet(url, query, options);
-    }
+    query?: QueryParameters,
+    options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/tree/${containerDomainType}/${modelDomainType}/${id}/ancestors`;
+    return this.simpleGet(url, query, options);
+  }
 }
