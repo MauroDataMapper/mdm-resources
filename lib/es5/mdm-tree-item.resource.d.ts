@@ -1,7 +1,6 @@
-import { RequestSettings, QueryParameters, ContainerDomainType, ModelDomainType, Uuid } from './mdm-common.model';
+import { RequestSettings, QueryParameters, ContainerDomainType, ModelDomainType, Uuid, MultiFacetAwareDomainType } from './mdm-common.model';
 import { TreeItemExpandedQueryParameters, TreeItemListQueryParameters, TreeItemSearchQueryParameters } from './mdm-tree-item.model';
 import { MdmResource } from './mdm-resource';
-import { MultiFacetAwareDomainType } from 'index';
 /**
  * Controller: treeItem
  |   GET    | /api/admin/tree/${containerDomainType}/${modelDomainType}/deleted                                     | Action: deletedModels
