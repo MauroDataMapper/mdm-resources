@@ -18,6 +18,7 @@ SPDX-License-Identifier: Apache-2.0
 import { RequestSettings, QueryParameters, ContainerDomainType, ModelDomainType, Uuid } from './mdm-common.model';
 import { TreeItemExpandedQueryParameters, TreeItemListQueryParameters, TreeItemSearchQueryParameters } from './mdm-tree-item.model';
 import { MdmResource } from './mdm-resource';
+import { MultiFacetAwareDomainType } from 'index';
 
 /**
  * Controller: treeItem
@@ -234,7 +235,7 @@ export class MdmTreeItemResource extends MdmResource {
    * `HTTP GET` - get all the ancestor items from the tree for a given catalogue tree item.
    * 
    * @param containerDomainType State the container domain type to inspect.
-   * @param modelDomainType State the model domain type to inspect.
+   * @param multiFacetAwareDomainType State the model domain type to inspect.
    * @param id The unique identifier of the entity to fetch ancestors for.
    * @param query Optional query string parameters to filter the returned list, if required.
    * @param options Optional REST handler parameters, if required.
@@ -245,11 +246,11 @@ export class MdmTreeItemResource extends MdmResource {
    */
   ancestors(
     containerDomainType: ContainerDomainType,
-    modelDomainType: ModelDomainType,
+    multiFacetAwareDomainType: MultiFacetAwareDomainType,
     id: Uuid,
     query?: QueryParameters,
     options?: RequestSettings) {
-    const url = `${this.apiEndpoint}/tree/${containerDomainType}/${modelDomainType}/${id}/ancestors`;
+    const url = `${this.apiEndpoint}/tree/${containerDomainType}/${multiFacetAwareDomainType}/${id}/ancestors`;
     return this.simpleGet(url, query, options);
   }
 }
