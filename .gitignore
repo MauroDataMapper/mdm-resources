@@ -241,3 +241,4 @@ yarn.lock
 /eslint_report.*
 .scannerwork
 docs
+lib
