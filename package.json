@@ -6,9 +6,11 @@
     "license": "Apache-2.0",
     "private": true,
     "scripts": {
-        "build": "rm -rf lib &&  tsc && tsc --target ES5 --outDir lib/es5",
+        "clean": "rm -rf lib",
+        "build": "rm -rf lib && tsc && tsc --target ES5 --outDir lib/es5",
         "start": "tsc --watch",
-        "changelog": "conventional-changelog -i CHANGELOG.md -s",
+        "changelog": "rm CHANGELOG.md && conventional-changelog -p angular -i CHANGELOG.md -s -u -r 0",
+        "changelog-help": "conventional-changelog --help",
         "test": "jest",
         "eslint": "tsc --noEmit && eslint . --ext ts --quiet --fix",
         "eslint-report": "eslint . --ext ts --fix -f json -o eslint_report.json",
@@ -18,9 +20,6 @@
     "repository": {
         "type": "git",
         "url": "github:MauroDataMapper/mdm-resources"
-    },
-    "publishConfig": {
-        "registry": "https://npm.pkg.github.com/"
     },
     "devDependencies": {
         "@types/jest": "^26.0.10",
