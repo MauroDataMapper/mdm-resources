@@ -13,7 +13,8 @@
         "eslint": "tsc --noEmit && eslint . --ext ts --quiet --fix",
         "eslint-report": "eslint . --ext ts --fix -f json -o eslint_report.json",
         "docs": "typedoc --out docs --includeVersion src/index.ts --listInvalidSymbolLinks",
-        "docs-watch": "typedoc --out docs --includeVersion src/index.ts --listInvalidSymbolLinks --watch"
+        "docs-watch": "typedoc --out docs --includeVersion src/index.ts --listInvalidSymbolLinks --watch",
+      "license-check": "license-check-and-add -f license-check-and-add-config.json"
     },
     "repository": {
         "type": "git",
@@ -28,6 +29,7 @@
         "eslint-plugin-import": "^2.22.1",
         "eslint-plugin-jsdoc": "^32.3.0",
         "jest": "^26.4.2",
+        "license-check-and-add": "^3.0.4",
         "ts-jest": "^26.2.0",
         "typedoc": "^0.20.32",
         "typescript": "^3.9.6"
