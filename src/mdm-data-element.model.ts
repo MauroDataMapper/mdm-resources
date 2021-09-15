@@ -41,6 +41,7 @@ import { DataTypeReference } from './mdm-data-type.model';
 export type DataElementIndexParameters = SortParameters & PageParameters & QueryParameters;
 
 export interface DataElement {
+  [key: string]: any;
   id?: Uuid;
   domainType: CatalogueItemDomainType;
   label: string;
@@ -51,7 +52,6 @@ export interface DataElement {
   breadcrumbs?: Breadcrumb[];
   minMultiplicity?: number;
   maxMultipicity?: number;
-  [key: string]: any;
 }
 
 export type DataElementDetail =

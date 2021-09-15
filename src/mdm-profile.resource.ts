@@ -44,13 +44,13 @@ import { MdmResource } from './mdm-resource';
 
 /**
  * MDM resource for the management of profiles over catalogue items.
- * 
+ *
  * Profiles act as projections over less structured catalogue item metadata.
  */
 export class MdmProfileResource extends MdmResource {
   /**
    * `HTTP GET` - Gets a list of profiles used on a particular catalogue item.
-   * 
+   *
    * @param domainType The domain type of the catalogue item to get.
    * @param catalogueItemId The unique identifier of the catalogue item to get.
    * @param query Optional query string parameters, if required.
@@ -70,7 +70,7 @@ export class MdmProfileResource extends MdmResource {
 
   /**
    * `HTTP GET` - Gets a list of profiles not used on a particular catalogue item but are available.
-   * 
+   *
    * @param domainType The domain type of the catalogue item to get.
    * @param catalogueItemId The unique identifier of the catalogue item to get.
    * @param query Optional query string parameters, if required.
@@ -90,7 +90,7 @@ export class MdmProfileResource extends MdmResource {
 
   /**
    * `HTTP GET` - Gets a list of all metadata for a catalogue item that is not attached to any profile on that item.
-   * 
+   *
    * @param domainType The domain type of the catalogue item to get.
    * @param catalogueItemId The unique identifier of the catalogue item to get.
    * @param query Optional query string parameters, if required.
@@ -106,11 +106,11 @@ export class MdmProfileResource extends MdmResource {
     options?: RequestSettings) {
     const url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(domainType)}/${catalogueItemId}/profiles/otherMetadata`;
     return this.simpleGet(url, query, options);
-  } 
+  }
 
   /**
    * `HTTP GET` - Gets a profile from a catalogue item.
-   * 
+   *
    * @param domainType The domain type of the catalogue item to get.
    * @param catalogueItemId The unique identifier of the catalogue item to get.
    * @param profileNamespace The namespace of the profile to get.
@@ -198,7 +198,7 @@ export class MdmProfileResource extends MdmResource {
 
   /**
    * `HTTP POST` - Post a profile with values for a catalogue item and returns the same profile back with any validation errors included.
-   *      
+   *
    * @param profileNamespace The namespace of the profile to validate.
    * @param profileName The name of the profile to validate.
    * @param domainType The domain type of the catalogue item to get.

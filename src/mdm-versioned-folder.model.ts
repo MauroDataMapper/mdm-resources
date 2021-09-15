@@ -48,8 +48,8 @@ import { MdmIndexResponse, MdmResponse } from './mdm-common.model';
  * @see {@link Folder}
  */
 export interface VersionedFolder extends Container {
-  hasChildFolders?: boolean;
   [key: string]: any;
+  hasChildFolders?: boolean;
 }
 
 export type VersionedFolderDetail =

@@ -49,21 +49,22 @@ export interface BasicLoginPayload {
 
 /**
  * Payload for login endpoint to authenticate a user.
- * 
+ *
  * Login payload could be one of:
- * 
+ *
  * * A {@link BasicLoginPayload} with username/password
  * * An {@link OpenIdConnectLoginPayload} for handling login after external authorization. This
  * will only work when the Open ID Connect plugin is installed in Mauro.
  */
-export type LoginPayload = 
-  BasicLoginPayload 
+export type LoginPayload =
+  BasicLoginPayload
   | OpenIdConnectLoginPayload;
 
 /**
  * Response body for a successful login attempt of a user.
  */
 export interface LoginResult {
+  [key: string]: any;
   id: Uuid;
   token?: string;
   emailAddress: string;
@@ -74,7 +75,6 @@ export interface LoginResult {
   createdBy?: string;
   userRole?: string;
   needsToResetPassword?: boolean;
-  [key: string]: any;
 }
 
 /**

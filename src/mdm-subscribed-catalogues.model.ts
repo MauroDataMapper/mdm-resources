@@ -34,7 +34,7 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { CatalogueItemDomainType, MdmIndexResponse, MdmResponse, ModelDomainType, Payload, Uuid } from './mdm-common.model';
+import { CatalogueItemDomainType, MdmIndexResponse, MdmResponse, Payload, Uuid } from './mdm-common.model';
 
 export interface SubscribedCatalogue {
   id?: Uuid;

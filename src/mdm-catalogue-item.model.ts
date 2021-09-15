@@ -41,6 +41,8 @@ import { CatalogueItem, MdmIndexResponse, MdmResponse, Payload, Uuid } from './m
  * Represents a reference file (attachment) for model.
  */
 export interface ReferenceFile extends CatalogueItem {
+
+  [key: string]: any;
   /**
    * The name of the reference file.
    */
@@ -61,7 +63,6 @@ export interface ReferenceFile extends CatalogueItem {
    */
   lastUpdated?: string;
 
-  [key: string]: any;
 }
 
 export type ReferenceFileIndexResponse = MdmIndexResponse<ReferenceFile>;
@@ -82,6 +83,8 @@ export interface ReferenceFileCreatePayload extends Payload {
  * Represents an annotation, or comment, attached to a catalogue item.
  */
 export interface Annotation extends Historical {
+
+  [key: string]: any;
   /**
    * The unique identifier of this annotation.
    */
@@ -107,7 +110,6 @@ export interface Annotation extends Historical {
    */
   childAnnotations?: Annotation[];
 
-  [key: string]: any;
 }
 
 export type AnnotationIndexResponse = MdmIndexResponse<Annotation>;

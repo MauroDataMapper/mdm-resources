@@ -40,8 +40,8 @@ import { Branchable, Finalisable, Historical, Modelable, ModelableDetail, ModelC
 export type CodeSetDataType = 'CodeSet';
 
 export interface CodeSet extends Modelable {
-  type?: CodeSetDataType;
   [key: string]: any;
+  type?: CodeSetDataType;
 }
 
 export type CodeSetDetail =

@@ -47,8 +47,8 @@ import { Historical, SecurableModel } from './mdm-model-types.model';
  * @see {@link VersionedFolder}
  */
 export interface Folder extends Container {
-  hasChildFolders?: boolean;
   [key: string]: any;
+  hasChildFolders?: boolean;
 }
 
 export type FolderDetail =

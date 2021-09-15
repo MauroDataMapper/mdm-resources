@@ -38,6 +38,7 @@ import { Securable } from './mdm-model-types.model';
 import { CatalogueItem, MdmResponse, QueryParameters, Uuid, Version } from './mdm-common.model';
 
 export interface MdmTreeItem extends Required<CatalogueItem>, Securable {
+  [key: string]: any;
   label?: string;
   children?: MdmTreeItem[];
   hasChildFolders?: boolean;
@@ -51,7 +52,6 @@ export interface MdmTreeItem extends Required<CatalogueItem>, Securable {
   modelVersion?: Version;
   modelId?: Uuid;
   parentId?: Uuid;
-  [key: string]: any;
 }
 
 export interface TreeItemListParameters {

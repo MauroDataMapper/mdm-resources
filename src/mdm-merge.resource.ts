@@ -40,7 +40,7 @@ import { MdmResource } from './mdm-resource';
 
 /**
  * MDM resource for merge operations against catalogue items.
- * 
+ *
  * Note: these endpoints work for the latest path-based merge responses. To use the original Mauro merge data, see the deprecated
  * {@link MdmVersioningResource} endpoints.
  */
@@ -94,7 +94,7 @@ export class MdmMergeResource extends MdmResource {
 
   /**
    * `HTTP PUT` - Merges a _source_ catalogue item into a _target_ catalogue item.
-   * 
+   *
    * This is achieved by applying a list of _patches_ to the _target_ catalogue item to save/override previous values.
    *
    * @param domainType The domain type of catalogue items. Only supported {@link MultiFacetAwareDomainType} values are allowed.

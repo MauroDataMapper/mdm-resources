@@ -38,6 +38,7 @@ import { Historical, Securable } from './mdm-model-types.model';
 import { CatalogueItemDomainType, MdmIndexResponse, MdmResponse, Navigatable, Uuid } from './mdm-common.model';
 
 export interface Term {
+  [key: string]: any;
   id?: Uuid;
   domainType: CatalogueItemDomainType;
   model?: Uuid;
@@ -48,8 +49,6 @@ export interface Term {
    * The combination of {@link Term.code} and {@link Term.definition}.
    */
   label?: string;
-
-  [key: string]: any;
 }
 
 export type TermDetail =

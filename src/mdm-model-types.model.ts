@@ -254,7 +254,7 @@ export interface BranchModelPayload extends Payload {
 
 /**
  * Represents basic details of an item from a model version tree.
- * 
+ *
  * @see {@link ModelVersionItem}
  */
 export interface BasicModelVersionItem {
@@ -274,7 +274,7 @@ export interface ModelVersionItemTarget {
 
 /**
  * Represents full details of an item from a model version tree.
- * 
+ *
  * @see {@link BasicModelVersionItem}
  */
 export interface ModelVersionItem {

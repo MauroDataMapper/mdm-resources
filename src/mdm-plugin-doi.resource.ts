@@ -40,10 +40,10 @@ import { MdmResource } from './mdm-resource';
 
 /**
  * MDM resource for managing Digital Object Identifiers (DOI) on catalogue items.
- * 
+ *
  * In order to use these endpoints, the [mdm-plugin-digital-object-identifiers](https://github.com/MauroDataMapper-Plugins/mdm-plugin-digital-object-identifiers)
  * plugin must be installed in the Mauro instance.
- * 
+ *
  * The Digital Object Identifiers plugin allows for the submission and usage of DOIs on Mauro catalogue items. See https://www.doi.org/ for more details on
  * Digital Object Identifiers.
  */
@@ -57,12 +57,12 @@ export class MdmPluginDoiResource extends MdmResource {
    * @param options Optional REST handler options, if required.
    * @returns The result of the `GET` request.
    *
-   * `200 OK` - will return a {@link DoiStatusResponse} containing a {@link DoiStatus} object.  
+   * `200 OK` - will return a {@link DoiStatusResponse} containing a {@link DoiStatus} object.
    */
   get(
-    domainType: MultiFacetAwareDomainType | CatalogueItemDomainType, 
-    id: Uuid, 
-    query?: QueryParameters, 
+    domainType: MultiFacetAwareDomainType | CatalogueItemDomainType,
+    id: Uuid,
+    query?: QueryParameters,
     options?: RequestSettings): any {
     const url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(domainType)}/${id}/doi`;
     return this.simpleGet(url, query, options);
@@ -80,9 +80,9 @@ export class MdmPluginDoiResource extends MdmResource {
    * `200 OK` - will return a {@link DoiSubmissionResponse} containing a {@link DoiSubmissionState} object.
    */
   save(
-    domainType: MultiFacetAwareDomainType | CatalogueItemDomainType, 
-    id: Uuid, 
-    query?: DoiSubmissionQueryParameters, 
+    domainType: MultiFacetAwareDomainType | CatalogueItemDomainType,
+    id: Uuid,
+    query?: DoiSubmissionQueryParameters,
     options?: RequestSettings): any {
     const queryString = this.generateQueryString(query);
     const url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(domainType)}/${id}/doi${queryString}`;
@@ -101,9 +101,9 @@ export class MdmPluginDoiResource extends MdmResource {
    * On success, the response will be a `204 No Content` and the response body will be empty.
    */
   remove(
-    domainType: MultiFacetAwareDomainType | CatalogueItemDomainType, 
-    id: Uuid, 
-    query?: QueryParameters, 
+    domainType: MultiFacetAwareDomainType | CatalogueItemDomainType,
+    id: Uuid,
+    query?: QueryParameters,
     options?: RequestSettings) {
     const url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(domainType)}/${id}/doi`;
     return this.simpleDelete(url, query, options);
@@ -111,12 +111,13 @@ export class MdmPluginDoiResource extends MdmResource {
 
   /**
    * `HTTP GET` - Resolves a Digital Object Identifier (DOI) to return the mapped Mauro catalogue item.
+   *
    * @param identifier The Digital Object Identifier (DOI) to resolve to a catalogue item.
    * @param query Optional query string parameters, if required.
    * @param options Optional REST handler options, if required.
    * @returns The result of the `GET` request.
    *
-   * `200 OK` - will return a {@link DoiResolvedItemResponse} containing a {@link DoiResolvedItem} object. 
+   * `200 OK` - will return a {@link DoiResolvedItemResponse} containing a {@link DoiResolvedItem} object.
    */
   resolve(identifier: string, query?: QueryParameters, options?: RequestSettings): any {
     const url = `${this.apiEndpoint}/doi/${identifier}`;

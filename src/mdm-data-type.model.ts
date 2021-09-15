@@ -55,10 +55,10 @@ export interface ReferenceClass {
 }
 
 export interface DataTypeDescriptor {
+  [key: string]: any;
   domainType: CatalogueItemDomainType;
   label: string;
   description?: string;
-  [key: string]: any;
 }
 
 export interface DataTypeProvider {
@@ -69,11 +69,12 @@ export interface DataTypeProvider {
 }
 
 export interface DataTypeReference {
-  id: Uuid;
   [key: string]: any;
+  id: Uuid;
 }
 
 export interface DataType {
+  [key: string]: any;
   id?: Uuid;
   domainType: CatalogueItemDomainType;
   label: string;
@@ -83,7 +84,6 @@ export interface DataType {
   enumerationValues?: EnumerationValue[];
   referenceClass?: ReferenceClass;
   classifiers?: CatalogueItemReference[];
-  [key: string]: any;
 }
 
 export type DataTypeDetail =

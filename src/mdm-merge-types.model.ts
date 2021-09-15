@@ -43,6 +43,7 @@ import { Breadcrumb, MdmResponse, Uuid } from './mdm-common.model';
  * property name of the {@link Diff} object.
  */
 export interface DiffObject {
+  [key: string]: any;
   /**
    * The unique identifer of this object.
    */
@@ -51,7 +52,6 @@ export interface DiffObject {
   /**
    * Collection of properties and values for this object.
    */
-  [key: string]: any;
 }
 
 /**

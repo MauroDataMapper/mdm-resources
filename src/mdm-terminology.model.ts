@@ -40,8 +40,8 @@ import { MdmIndexResponse, MdmResponse } from './mdm-common.model';
 export type TerminologyDataType = 'Terminology';
 
 export interface Terminology extends Modelable {
-  type?: TerminologyDataType;
   [key: string]: any;
+  type?: TerminologyDataType;
 }
 
 export type TerminologyDetail =

@@ -37,8 +37,8 @@ import {
   RequestSettings,
   QueryParameters,
   ModelDomainType,
-} from "./mdm-common.model";
-import { MdmResource } from "./mdm-resource";
+} from './mdm-common.model';
+import { MdmResource } from './mdm-resource';
 
 /**
  * Controller: versionLink

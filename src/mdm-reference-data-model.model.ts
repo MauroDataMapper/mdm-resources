@@ -41,8 +41,8 @@ import { Branchable, Finalisable, Historical, Modelable, ModelableDetail, Secura
 export type ReferenceDataModelType = 'ReferenceDataModel';
 
 export interface ReferenceDataModel extends Modelable {
-  type?: ReferenceDataModelType;
   [key: string]: any;
+  type?: ReferenceDataModelType;
 }
 
 export type ReferenceDataModelDetail =

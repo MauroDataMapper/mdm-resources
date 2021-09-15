@@ -43,24 +43,23 @@ export type DoiSubmissionState = 'draft' | 'finalise' | 'retire';
  * Represents the status of a Digital Object Identifier on a catalogue item.
  */
 export interface DoiStatus {
+  [key: string]: any;
   /**
    * Gets the DOI applied to the catalogue item, if available.
    */
   identifier?: string;
 
-  /** 
+  /**
    * Gets the current status of the DOI.
-  */
+   */
   status: DoiState;
-
-  [key: string]: any;
 }
 
 export type DoiStatusResponse = MdmResponse<DoiStatus>;
 
 /**
  * Represents parameters that can be applied during the submission of a Digital Object Identifier.
- * 
+ *
  * @see {@link MdmPluginDoiResource.save}
  */
  export interface DoiSubmissionQueryParameters extends QueryParameters {
