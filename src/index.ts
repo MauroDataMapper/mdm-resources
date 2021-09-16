@@ -55,6 +55,7 @@ export * from './mdm-security.model';
 export * from './mdm-security.resource';
 export * from './mdm-terminology.model';
 export * from './mdm-terminology.resource';
+export * from './mdm-term-relationship-type.model';
 export * from './mdm-term-replationship-type.resource';
 export * from './mdm-data-class-component.resource';
 export * from './mdm-namespaces.resource';
@@ -92,4 +93,4 @@ export * from './mdm-plugin-openid-connect.resource';
 export * from './mdm-plugin-doi.model';
 export * from './mdm-plugin-doi.resource';
 export * from './mdm-merge.model';
-export * from './mdm-merge.resource'
+export * from './mdm-merge.resource';

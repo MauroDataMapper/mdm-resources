@@ -51,7 +51,8 @@ export declare enum CatalogueItemDomainType {
     LocalCatalogue = "LocalCatalogue",
     ExternalCatalogues = "ExternalCatalogues",
     SubscribedCatalogue = "SubscribedCatalogue",
-    FederatedDataModel = "FederatedDataModel"
+    FederatedDataModel = "FederatedDataModel",
+    TermRelationshipType = "TermRelationshipType"
 }
 /**
  * Represents any catalogue item that is "multi-facet aware", meaning an item that can contain multiple facets or metadata values.
