@@ -1,5 +1,6 @@
 /*
-Copyright 2021 University of Oxford
+Copyright 2020-2021 University of Oxford
+and Health and Social Care Information Centre, also known as NHS Digital
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -29,8 +30,8 @@ import { Historical, SecurableModel } from './mdm-model-types.model';
  * @see {@link VersionedFolder}
  */
 export interface Folder extends Container {
-  hasChildFolders?: boolean;
   [key: string]: any;
+  hasChildFolders?: boolean;
 }
 
 export type FolderDetail =

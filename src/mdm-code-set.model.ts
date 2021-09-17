@@ -1,5 +1,6 @@
 /*
-Copyright 2021 University of Oxford
+Copyright 2020-2021 University of Oxford
+and Health and Social Care Information Centre, also known as NHS Digital
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -22,8 +23,8 @@ import { Branchable, Finalisable, Historical, Modelable, ModelableDetail, ModelC
 export type CodeSetDataType = 'CodeSet';
 
 export interface CodeSet extends Modelable {
-  type?: CodeSetDataType;
   [key: string]: any;
+  type?: CodeSetDataType;
 }
 
 export type CodeSetDetail =

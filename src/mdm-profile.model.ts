@@ -1,5 +1,6 @@
 /*
-Copyright 2021 University of Oxford
+Copyright 2020-2021 University of Oxford
+and Health and Social Care Information Centre, also known as NHS Digital
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -32,6 +33,7 @@ export type ProfileFieldDataType =
   | 'json';
 
 export interface ProfileField {
+  [key: string]: any;
   allowedValues?: string[];
   currentValue?: string;
   dataType: ProfileFieldDataType;
@@ -42,9 +44,8 @@ export interface ProfileField {
   maxMultiplicity?: number;
   metadataPropertyName: string;
   minMultiplicity?: number;
-  regularExpressions?: any;  
+  regularExpressions?: any;
   uneditable?: boolean;
-  [key: string]: any;
 }
 
 export interface ProfileSection {
@@ -54,16 +55,17 @@ export interface ProfileSection {
 }
 
 export interface Profile {
+  [key: string]: any;
   id: Uuid;
   domainType: CatalogueItemDomainType;
   label: string;
-  sections: ProfileSection[]; 
-  [key: string]: any;
+  sections: ProfileSection[];
 }
 
 export type ProfileResponse = MdmResponse<Profile>;
 
 export interface ProfileSummary {
+  [key: string]: any;
   allowsExtraMetadataKeys: boolean;
   displayName: string;
   domains: CatalogueItemDomainType[];
@@ -73,7 +75,6 @@ export interface ProfileSummary {
   namespace: string;
   providerType: string;
   version: Version;
-  [key: string]: any;
 }
 
 export type ProfileSummaryIndexResponse = MdmResponse<ProfileSummary[]>;

@@ -1,5 +1,6 @@
 /*
-Copyright 2021 University of Oxford
+Copyright 2020-2021 University of Oxford
+and Health and Social Care Information Centre, also known as NHS Digital
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -25,6 +26,7 @@ export type AuthorizationPromptType = 'NONE' | 'LOGIN' | 'CONSENT' | 'SELECT_ACC
  * Represents a discovery document containing all endpoints for an OpenID Connect provider.
  */
 export interface OpenIdDiscoveryDocument {
+  [key: string]: any;
   id: Uuid;
   lastUpdated?: string;
   issuer: string;
@@ -33,15 +35,15 @@ export interface OpenIdDiscoveryDocument {
   userinfoEndpoint?: string;
   endSessionEndpoint?: string;
   jwksUri: string;
-  [key: string]: any;
 }
 
 /**
  * Represents the authorization endpoint parameters for an OpenID Connect provider.
- * 
+ *
  * @see https://openid.net/specs/openid-connect-core-1_0.html#AuthorizationEndpoint
  */
 export interface OpenIdAuthorizationEndpointParameters {
+  [key: string]: any;
   id: Uuid;
   lastUpdated?: string;
   scope?: string;
@@ -54,29 +56,28 @@ export interface OpenIdAuthorizationEndpointParameters {
   idTokenHint?: string;
   loginHint?: string;
   acrValues?: string;
-  [key: string]: any;
 }
 
 /**
  * Represents the core details of an OpenID Connect provider registered in Mauro.
- * 
+ *
  * @description A provider can either be "Standard" or "Non-Standard", as denoted by
  * the {@link OpenIdConnectProviderCore.standardProvider} flag. "Standard" providers
- * support full discovery of endpoints, whilst "Non-Standard" providers must be manually 
+ * support full discovery of endpoints, whilst "Non-Standard" providers must be manually
  * configured with all necessary endpoints.
  */
 export interface OpenIdConnectProviderCore {
+  [key: string]: any;
   id: Uuid;
-  label: string;  
+  label: string;
   standardProvider: boolean;
   imageUrl?: string;
-  [key: string]: any;
 }
 
 /**
- * Represents a publicly useable OpenID Connect provider. 
- * 
- * @description This is used for anonymous users to use on sign-in forms say, by using the provided 
+ * Represents a publicly useable OpenID Connect provider.
+ *
+ * @description This is used for anonymous users to use on sign-in forms say, by using the provided
  * {@link PublicOpenIdConnectProvider.authorizationEndpoint} to redirect to the provider.
  */
 export interface PublicOpenIdConnectProvider extends OpenIdConnectProviderCore {
@@ -85,10 +86,10 @@ export interface PublicOpenIdConnectProvider extends OpenIdConnectProviderCore {
 
 /**
  * Represents the minimal details of an OpenID Connect provider.
- * 
+ *
  * @description This object type contains properties used for administration purposes,
  * and should not be visible to anonymous users.
- * 
+ *
  * @see {@link PublicOpenIdConnectProvider}
  */
 export interface OpenIdConnectProvider extends OpenIdConnectProviderCore {
@@ -97,7 +98,7 @@ export interface OpenIdConnectProvider extends OpenIdConnectProviderCore {
 
 /**
  * Represents the full details of an OpenID Connect provider.
- * 
+ *
  * @description This object type contains properties used for administration purposes,
  * and should not be visible to anonymous users.
  */
@@ -108,17 +109,17 @@ export interface OpenIdConnectProviderDetail extends OpenIdConnectProvider {
 
   /**
    * For standard providers, this provides the URL to the main discovery document for the provider.
-   * 
+   *
    * This is used by Mauro to automatically fill the {@link OpenIdConnectProviderDetail.discoveryDocument}
    * property and key endpoints.
-   * 
+   *
    * This is not required if the provided is non-standard.
    */
   discoveryDocumentUrl?: string;
 
   /**
    * Provides all the necessary endpoints for discovery, namely which endpoints to contact for authorization etc.
-   * 
+   *
    * If this is a standard provider, this will be automatically managed by Mauro using the
    * {@link OpenIdConnectProviderDetail.discoveryDocumentUrl}. Otherwise this is manually entered.
    */
@@ -159,17 +160,17 @@ export interface OpenIdAuthorizationEndpointParametersPayload extends Payload {
 
 /**
  * Represents the payload state for creating/updating an OpenID Connect provider.
- * 
+ *
  * @description This object type contains the core details necessary for creating an
  * OpenID Connect provider. However, the types {@link StandardOpenIdConnectProviderPayload}
  * and {@link NonStandardOpenIdConnectProviderPayload} should be used directly to create/update
  * the correct provider type.
- * 
+ *
  * @see {@link StandardOpenIdConnectProviderPayload}
  * @see {@link NonStandardOpenIdConnectProviderPayload}
  */
 export interface OpenIdConnectProviderPayload extends Payload {
-  label: string;  
+  label: string;
   clientId: string;
   clientSecret: string;
   imageUrl?: string;
@@ -178,7 +179,7 @@ export interface OpenIdConnectProviderPayload extends Payload {
 
 /**
  * Represents the payload state for creating/updating a "Standard" OpenID Connect provider.
- * 
+ *
  * @description Every standard OpenID Connect provider requires a discovery document URL, which
  * Mauro will use to fill in all required endpoints.
  */
@@ -189,9 +190,9 @@ export interface StandardOpenIdConnectProviderPayload extends OpenIdConnectProvi
 
 /**
  * Represents the payload state for creating/updating a "Non-Standard" OpenID Connect provider.
- * 
+ *
  * @description Every non-standard OpenID Connect provider requires the full list of endpoints
- * manually entered - Mauro will not be able to automatically fetch these details from the 
+ * manually entered - Mauro will not be able to automatically fetch these details from the
  * provider.
  */
 export interface NonStandardOpenIdConnectProviderPayload extends OpenIdConnectProviderPayload {
@@ -199,8 +200,8 @@ export interface NonStandardOpenIdConnectProviderPayload extends OpenIdConnectPr
   discoveryDocument: OpenIdDiscoveryDocumentPayload;
 }
 
-export type OpenIdConnectProviderUpdatePayload = 
-  StandardOpenIdConnectProviderPayload 
+export type OpenIdConnectProviderUpdatePayload =
+  StandardOpenIdConnectProviderPayload
   | NonStandardOpenIdConnectProviderPayload;
 
 /**

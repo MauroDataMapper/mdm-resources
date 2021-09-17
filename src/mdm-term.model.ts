@@ -1,5 +1,6 @@
 /*
-Copyright 2021 University of Oxford
+Copyright 2020-2021 University of Oxford
+and Health and Social Care Information Centre, also known as NHS Digital
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -15,11 +16,11 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-
 import { Historical, Securable } from './mdm-model-types.model';
 import { CatalogueItemDomainType, MdmIndexResponse, MdmResponse, Navigatable, Uuid } from './mdm-common.model';
 
 export interface Term {
+  [key: string]: any;
   id?: Uuid;
   domainType: CatalogueItemDomainType;
   model?: Uuid;
@@ -30,8 +31,6 @@ export interface Term {
    * The combination of {@link Term.code} and {@link Term.definition}.
    */
   label?: string;
-
-  [key: string]: any;
 }
 
 export type TermDetail =

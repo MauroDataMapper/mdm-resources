@@ -1,5 +1,6 @@
 /*
-Copyright 2021 University of Oxford
+Copyright 2020-2021 University of Oxford
+and Health and Social Care Information Centre, also known as NHS Digital
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -15,11 +16,11 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-
 import { Securable } from './mdm-model-types.model';
 import { CatalogueItem, MdmResponse, QueryParameters, Uuid, Version } from './mdm-common.model';
 
 export interface MdmTreeItem extends Required<CatalogueItem>, Securable {
+  [key: string]: any;
   label?: string;
   children?: MdmTreeItem[];
   hasChildFolders?: boolean;
@@ -33,7 +34,6 @@ export interface MdmTreeItem extends Required<CatalogueItem>, Securable {
   modelVersion?: Version;
   modelId?: Uuid;
   parentId?: Uuid;
-  [key: string]: any;
 }
 
 export interface TreeItemListParameters {

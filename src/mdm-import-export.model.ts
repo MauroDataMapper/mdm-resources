@@ -1,5 +1,6 @@
 /*
-Copyright 2021 University of Oxford
+Copyright 2020-2021 University of Oxford
+and Health and Social Care Information Centre, also known as NHS Digital
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -19,6 +20,7 @@ SPDX-License-Identifier: Apache-2.0
 import { CatalogueItem, MdmIndexResponse, MdmResponse, Version } from './mdm-common.model';
 
 export interface Importer {
+  [key: string]: any;
   name: string;
   displayName: string;
   namespace: string;
@@ -28,7 +30,6 @@ export interface Importer {
   canImportMultipleDomains: boolean;
   allowsExtraMetadataKeys: boolean;
   knownMetadataKeys: any[];
-  [key: string]: any;
 }
 
 export type ImporterParameterType = 'Integer' | 'String' | 'Text' | 'Password' | 'Boolean' | 'boolean' | 'int' | 'File' | 'Folder' | 'DataModel';
@@ -58,6 +59,7 @@ export type ImporterDetailResponse = MdmResponse<ImporterDetail>;
 export type ImportResultIndexResponse = MdmIndexResponse<ImportResult>;
 
 export interface Exporter {
+  [key: string]: any;
   name: string;
   displayName: string;
   namespace: string;
@@ -68,7 +70,6 @@ export interface Exporter {
   knownMetadataKeys: any[];
   fileExtension: string;
   fileType: string;
-  [key: string]: any;
 }
 
 export type ExporterIndexResponse = MdmResponse<Exporter[]>;

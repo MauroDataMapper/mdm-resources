@@ -1,5 +1,6 @@
 /*
-Copyright 2020 University of Oxford
+Copyright 2020-2021 University of Oxford
+and Health and Social Care Information Centre, also known as NHS Digital
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -209,18 +210,19 @@ export class MdmTreeItemResource extends MdmResource {
   }
 
   /**
- * `HTTP GET` - Request the children of the folder
- *   * 
- * @param id The unique identifier of the folder to fetch children for.
- * @param query Optional query string parameters to filter the returned list, if required.
- * @param options Optional REST handler parameters, if required.
- * @returns The result of the `GET` request.
- *
- * `200 OK` - will return a {@link MdmTreeItemResponse} containing a {@link MdmTreeItem} node. If the tree item contains any children,
- * these will be returned also under {@link MdmTreeItem.children}.
- *
- * @see {@link MdmTreeItemResource.list}
- */
+   * `HTTP GET` - Request the children of the folder
+   *
+   *
+   * @param id The unique identifier of the folder to fetch children for.
+   * @param query Optional query string parameters to filter the returned list, if required.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return a {@link MdmTreeItemResponse} containing a {@link MdmTreeItem} node. If the tree item contains any children,
+   * these will be returned also under {@link MdmTreeItem.children}.
+   *
+   * @see {@link MdmTreeItemResource.list}
+   */
   getFolder(
     id: Uuid,
     query?: TreeItemExpandedQueryParameters,
@@ -232,7 +234,7 @@ export class MdmTreeItemResource extends MdmResource {
 
   /**
    * `HTTP GET` - get all the ancestor items from the tree for a given catalogue tree item.
-   * 
+   *
    * @param containerDomainType State the container domain type to inspect.
    * @param multiFacetAwareDomainType State the model domain type to inspect.
    * @param id The unique identifier of the entity to fetch ancestors for.
