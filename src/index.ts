@@ -94,8 +94,4 @@ export * from './mdm-plugin-openid-connect.resource';
 export * from './mdm-plugin-doi.model';
 export * from './mdm-plugin-doi.resource';
 export * from './mdm-merge.model';
-<<<<<<< HEAD
 export * from './mdm-merge.resource';
-=======
-export * from './mdm-merge.resource';
->>>>>>> 96bdd5d (Fix all eslint issues)
