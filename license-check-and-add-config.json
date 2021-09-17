@@ -29,7 +29,8 @@
     ".npmignore",
     "jest.config.js",
     ".npmrc",
-    "lib"
+    "lib",
+    "docs"
   ],
   "license": "NOTICE",
 
