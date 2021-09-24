@@ -50,12 +50,12 @@ import { MdmResource } from './mdm-resource';
  */
 export class MdmTermResource extends MdmResource {
 
-  search(terminologyId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  search(terminologyId: Uuid, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
     const url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms/search`;
     return this.simplePost(url, queryStringParams, restHandlerOptions);
   }
 
-  tree(terminologyId: string, termId?: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  tree(terminologyId: Uuid, termId?: Uuid, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
     const url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms/tree${termId ? `/${termId}` : ''}`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
@@ -146,32 +146,32 @@ export class MdmTermResource extends MdmResource {
     return this.simpleGet(url, query, options);
   }
 
-  addTermRelationships(terminologyId: string, termId: string, data: any, restHandlerOptions?: RequestSettings) {
+  addTermRelationships(terminologyId: Uuid, termId: Uuid, data: any, restHandlerOptions?: RequestSettings) {
     const url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms/${termId}/termRelationships`;
     return this.simplePost(url, data, restHandlerOptions);
   }
 
-  termRelationships(terminologyId: string, termId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  termRelationships(terminologyId: Uuid, termId: Uuid, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
     const url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms/${termId}/termRelationships`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
 
-  removeTermRelationship(terminologyId: string, termId: string, termRelationshipId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  removeTermRelationship(terminologyId: Uuid, termId: Uuid, termRelationshipId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
     const url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms/${termId}/termRelationships/${termRelationshipId}`;
     return this.simpleDelete(url, queryStringParams, restHandlerOptions);
   }
 
-  updateTermRelationship(terminologyId: string, termId: string, termRelationshipId: string, data: any, restHandlerOptions?: RequestSettings) {
+  updateTermRelationship(terminologyId: Uuid, termId: Uuid, termRelationshipId: string, data: any, restHandlerOptions?: RequestSettings) {
     const url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms/${termId}/termRelationships/${termRelationshipId}`;
     return this.simplePut(url, data, restHandlerOptions);
   }
 
-  getTermRelationship(terminologyId: string, termId: string, termRelationshipId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  getTermRelationship(terminologyId: Uuid, termId: Uuid, termRelationshipId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
     const url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms/${termId}/termRelationships/${termRelationshipId}`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
 
-  codesetsForTerm(terminologyId: string, termId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  codesetsForTerm(terminologyId: Uuid, termId: Uuid, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
     const url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms/${termId}/codeSets`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
