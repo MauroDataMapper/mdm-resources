@@ -31,6 +31,7 @@ import { MdmResource } from './mdm-resource';
  |  DELETE  | /api/terminologies/${terminologyId}/terms/${id}                                                            | Action: delete                                  |
  |   PUT    | /api/terminologies/${terminologyId}/terms/${id}                                                            | Action: update                                  |
  |   GET    | /api/terminologies/${terminologyId}/terms/${id}                                                            | Action: show
+ |   GET    | /api/terminologies/${terminologyId}/terms/${id}/codeSets                                                   | Action: show
  *
  * Controller: termRelationship
  |   GET    | /api/terminologies/${terminologyId}/termRelationshipTypes/${termRelationshipTypeId}/termRelationships            | Action: index                                   |
@@ -167,6 +168,11 @@ export class MdmTermResource extends MdmResource {
 
   getTermRelationship(terminologyId: string, termId: string, termRelationshipId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
     const url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms/${termId}/termRelationships/${termRelationshipId}`;
+    return this.simpleGet(url, queryStringParams, restHandlerOptions);
+  }
+
+  codesetsForTerm(terminologyId: string, termId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+    const url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms/${termId}/codeSets`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
 }
