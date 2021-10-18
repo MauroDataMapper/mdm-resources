@@ -59,7 +59,7 @@ export enum CatalogueItemDomainType {
   Terminology = 'Terminology',
   Term = 'Term',
   CodeSet = 'CodeSet',
-  Classification = 'Classification',
+  Classifier = 'classifier',
   ReferenceDataModel = 'ReferenceDataModel',
   EnumerationType = 'EnumerationType',
   PrimitiveType = 'PrimitiveType',
@@ -121,7 +121,7 @@ export enum MultiFacetAwareDomainType {
  * @returns True if `domainType` is a container type.
  */
 export const isContainerDomainType = (domainType: CatalogueItemDomainType)  => {
-  return domainType === CatalogueItemDomainType.Classification
+  return domainType === CatalogueItemDomainType.Classifier
     || domainType === CatalogueItemDomainType.Folder
     || domainType === CatalogueItemDomainType.VersionedFolder;
 };
@@ -165,7 +165,7 @@ export const isDataType = (domainType: CatalogueItemDomainType) => {
  */
 export const catalogueItemToMultiFacetAware = (value: CatalogueItemDomainType): MultiFacetAwareDomainType | undefined => {
   switch (value) {
-    case CatalogueItemDomainType.Classification: return MultiFacetAwareDomainType.Classifiers;
+    case CatalogueItemDomainType.Classifier: return MultiFacetAwareDomainType.Classifiers;
     case CatalogueItemDomainType.CodeSet: return MultiFacetAwareDomainType.CodeSets;
     case CatalogueItemDomainType.DataClass: return MultiFacetAwareDomainType.DataClasses;
     case CatalogueItemDomainType.DataElement: return MultiFacetAwareDomainType.DataElements;
@@ -191,7 +191,7 @@ export const catalogueItemToMultiFacetAware = (value: CatalogueItemDomainType): 
  */
 export const multiFacetAwareToCatalogueItem = (value: MultiFacetAwareDomainType): CatalogueItemDomainType | undefined => {
   switch (value) {
-    case MultiFacetAwareDomainType.Classifiers: return CatalogueItemDomainType.Classification;
+    case MultiFacetAwareDomainType.Classifiers: return CatalogueItemDomainType.Classifier;
     case MultiFacetAwareDomainType.CodeSets: return CatalogueItemDomainType.CodeSet;
     case MultiFacetAwareDomainType.DataClasses: return CatalogueItemDomainType.DataClass;
     case MultiFacetAwareDomainType.DataElements: return CatalogueItemDomainType.DataElement;
