@@ -78,20 +78,20 @@ pipeline {
       }
     }
 
-    stage('Sonarqube') {
-      when {
-        branch 'develop'
-      }
-      steps {
-        withSonarQubeEnv('JenkinsQube') {
-          nvm('') {
-            catchError(buildResult: 'UNSTABLE', stageResult: 'UNSTABLE') {
-              sh 'npm run sonar'
-            }
-          }
-        }
-      }
-    }
+//    stage('Sonarqube') {
+//      when {
+//        branch 'develop'
+//      }
+//      steps {
+//        withSonarQubeEnv('JenkinsQube') {
+//          nvm('') {
+//            catchError(buildResult: 'UNSTABLE', stageResult: 'UNSTABLE') {
+//              sh 'npm run sonar'
+//            }
+//          }
+//        }
+//      }
+//    }
 
     stage('Publish main branch') {
       when {
