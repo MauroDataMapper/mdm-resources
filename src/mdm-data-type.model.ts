@@ -1,5 +1,6 @@
 /*
-Copyright 2021 University of Oxford
+Copyright 2020-2021 University of Oxford
+and Health and Social Care Information Centre, also known as NHS Digital
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -37,10 +38,10 @@ export interface ReferenceClass {
 }
 
 export interface DataTypeDescriptor {
+  [key: string]: any;
   domainType: CatalogueItemDomainType;
   label: string;
   description?: string;
-  [key: string]: any;
 }
 
 export interface DataTypeProvider {
@@ -51,11 +52,12 @@ export interface DataTypeProvider {
 }
 
 export interface DataTypeReference {
-  id: Uuid;
   [key: string]: any;
+  id: Uuid;
 }
 
 export interface DataType {
+  [key: string]: any;
   id?: Uuid;
   domainType: CatalogueItemDomainType;
   label: string;
@@ -65,7 +67,6 @@ export interface DataType {
   enumerationValues?: EnumerationValue[];
   referenceClass?: ReferenceClass;
   classifiers?: CatalogueItemReference[];
-  [key: string]: any;
 }
 
 export type DataTypeDetail =

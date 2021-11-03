@@ -1,5 +1,6 @@
 /*
-Copyright 2021 University of Oxford
+Copyright 2020-2021 University of Oxford
+and Health and Social Care Information Centre, also known as NHS Digital
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -47,7 +48,7 @@ export enum ModelDomainType {
 
 /**
  * Represents the available catalogue items in Mauro.
- * 
+ *
  * @see {@link catalogueItemToMultiFacetAware}
  */
 export enum CatalogueItemDomainType {
@@ -58,7 +59,7 @@ export enum CatalogueItemDomainType {
   Terminology = 'Terminology',
   Term = 'Term',
   CodeSet = 'CodeSet',
-  Classification = 'Classification',
+  Classifier = 'classifier',
   ReferenceDataModel = 'ReferenceDataModel',
   EnumerationType = 'EnumerationType',
   PrimitiveType = 'PrimitiveType',
@@ -73,14 +74,15 @@ export enum CatalogueItemDomainType {
   LocalCatalogue = 'LocalCatalogue',
   ExternalCatalogues = 'ExternalCatalogues',
   SubscribedCatalogue = 'SubscribedCatalogue',
-  FederatedDataModel = 'FederatedDataModel'
+  FederatedDataModel = 'FederatedDataModel',
+  TermRelationshipType = 'TermRelationshipType'
 }
 
 /**
  * Represents any catalogue item that is "multi-facet aware", meaning an item that can contain multiple facets or metadata values.
- * 
+ *
  * @description These string constants are typically used in URL endpoints to generalise endpoints that are grouped by action.
- * 
+ *
  * @see {@link multiFacetAwareToCatalogueItem}
  */
 export enum MultiFacetAwareDomainType {
@@ -118,11 +120,11 @@ export enum MultiFacetAwareDomainType {
  * @param domainType The {@link CatalogueItemDomainType} to verify.
  * @returns True if `domainType` is a container type.
  */
-export function isContainerDomainType(domainType: CatalogueItemDomainType) {
-  return domainType === CatalogueItemDomainType.Classification
+export const isContainerDomainType = (domainType: CatalogueItemDomainType)  => {
+  return domainType === CatalogueItemDomainType.Classifier
     || domainType === CatalogueItemDomainType.Folder
     || domainType === CatalogueItemDomainType.VersionedFolder;
-}
+};
 
 /**
  * Determine if a given domain type represents a Model.
@@ -130,19 +132,20 @@ export function isContainerDomainType(domainType: CatalogueItemDomainType) {
  * @param domainType The {@link CatalogueItemDomainType} to verify.
  * @returns True if `domainType` is a model type.
  */
-export function isModelDomainType(domainType: CatalogueItemDomainType) {
+export const isModelDomainType = (domainType: CatalogueItemDomainType) => {
   return domainType === CatalogueItemDomainType.DataModel
     || domainType === CatalogueItemDomainType.CodeSet
     || domainType === CatalogueItemDomainType.Terminology
     || domainType === CatalogueItemDomainType.ReferenceDataModel;
-}
+};
 
 /**
  * Determine if a given domain type represents a Mauro data type.
+ *
  * @param domainType The {@link CatalogueItemDomainType} to verify.
  * @returns True if `domainType` is a data type.
  */
-export function isDataType(domainType: CatalogueItemDomainType) {
+export const isDataType = (domainType: CatalogueItemDomainType) => {
   return domainType === CatalogueItemDomainType.CodeSetType
     || domainType === CatalogueItemDomainType.ModelDataType
     || domainType === CatalogueItemDomainType.PrimitiveType
@@ -150,21 +153,22 @@ export function isDataType(domainType: CatalogueItemDomainType) {
     || domainType === CatalogueItemDomainType.EnumerationType
     || domainType === CatalogueItemDomainType.TerminologyType
     || domainType === CatalogueItemDomainType.ReferenceDataModelType;
-}
+};
 
 /**
  * Maps a {@link CatalogueItemDomainType} to an equivalent {@link MultiFacetAwareDomainType}.
+ *
  * @param value The catalogue item domain type to map from.
  * @returns The correct {@link MultiFacetAwareDomainType} or `undefined` if there is no equivalent.
- * 
+ *
  * @description Use this utility function for generalising some endpoints when only given an object that is a {@link CatalogueItem}.
  */
-export function catalogueItemToMultiFacetAware(value: CatalogueItemDomainType): MultiFacetAwareDomainType | undefined {
+export const catalogueItemToMultiFacetAware = (value: CatalogueItemDomainType): MultiFacetAwareDomainType | undefined => {
   switch (value) {
-    case CatalogueItemDomainType.Classification: return MultiFacetAwareDomainType.Classifiers;
+    case CatalogueItemDomainType.Classifier: return MultiFacetAwareDomainType.Classifiers;
     case CatalogueItemDomainType.CodeSet: return MultiFacetAwareDomainType.CodeSets;
     case CatalogueItemDomainType.DataClass: return MultiFacetAwareDomainType.DataClasses;
-    case CatalogueItemDomainType.DataElement: return MultiFacetAwareDomainType.DataElements;    
+    case CatalogueItemDomainType.DataElement: return MultiFacetAwareDomainType.DataElements;
     case CatalogueItemDomainType.DataModel: return MultiFacetAwareDomainType.DataModels;
     case CatalogueItemDomainType.EnumerationType: return MultiFacetAwareDomainType.EnumerationTypes;
     case CatalogueItemDomainType.Folder: return MultiFacetAwareDomainType.Folders;
@@ -177,16 +181,17 @@ export function catalogueItemToMultiFacetAware(value: CatalogueItemDomainType): 
     case CatalogueItemDomainType.VersionedFolder: return MultiFacetAwareDomainType.VersionedFolders;
     default: return undefined;
   }
-}
+};
 
 /**
  * Maps a {@link MultiFacetAwareDomainType} to an equivalent {@link CatalogueItemDomainType}.
+ *
  * @param value The multi facet aware domain type to map from.
  * @returns The correct {@link CatalogueItemDomainType} or `undefined` if there is no equivalent.
  */
-export function multiFacetAwareToCatalogueItem(value: MultiFacetAwareDomainType): CatalogueItemDomainType | undefined {
+export const multiFacetAwareToCatalogueItem = (value: MultiFacetAwareDomainType): CatalogueItemDomainType | undefined => {
   switch (value) {
-    case MultiFacetAwareDomainType.Classifiers: return CatalogueItemDomainType.Classification;
+    case MultiFacetAwareDomainType.Classifiers: return CatalogueItemDomainType.Classifier;
     case MultiFacetAwareDomainType.CodeSets: return CatalogueItemDomainType.CodeSet;
     case MultiFacetAwareDomainType.DataClasses: return CatalogueItemDomainType.DataClass;
     case MultiFacetAwareDomainType.DataElements: return CatalogueItemDomainType.DataElement;
@@ -202,18 +207,19 @@ export function multiFacetAwareToCatalogueItem(value: MultiFacetAwareDomainType)
     case MultiFacetAwareDomainType.VersionedFolders: return CatalogueItemDomainType.VersionedFolder;
     default: return undefined;
   }
-}
+};
 
-function isValueOfEnum<T>(object: T, token: any): token is T[keyof T] {
+const isValueOfEnum = <T>(object: T, token: any): token is T[keyof T] => {
   return Object.values(object).includes(token);
-}
+};
 
 /**
  * Gets a {@link MultiFacetAwareDomainType}. If not originally  {@link MultiFacetAwareDomainType} then a conversion will be attempted.
+ *
  * @param value A value representing either a {@link MultiFacetAwareDomainType} or a {@link CatalogueItemDomainType}.
  * @returns A suitable {@link MultiFacetAwareDomainType}.
  */
-export function getMultiFacetAwareDomainType(value: MultiFacetAwareDomainType | CatalogueItemDomainType): MultiFacetAwareDomainType {
+export const getMultiFacetAwareDomainType = (value: MultiFacetAwareDomainType | CatalogueItemDomainType): MultiFacetAwareDomainType => {
   if (isValueOfEnum(CatalogueItemDomainType, value)) {
     const multiFacetAware = catalogueItemToMultiFacetAware(value);
     if (!multiFacetAware) {
@@ -224,7 +230,7 @@ export function getMultiFacetAwareDomainType(value: MultiFacetAwareDomainType | 
   }
 
   return value;
-}
+};
 
 /**
  * Represents a response from an [[MdmResource]] API endpoint.
@@ -397,6 +403,7 @@ export interface Navigatable {
  * Represents a reference to another catalogue item.
  */
 export interface CatalogueItemReference {
+  [key: string]: any;
   /**
    * The unique identifier of the other catalogue item.
    */
@@ -405,5 +412,4 @@ export interface CatalogueItemReference {
   /**
    * Any additional properties that may optionally be needed for this object.
    */
-  [key: string]: any;
 }

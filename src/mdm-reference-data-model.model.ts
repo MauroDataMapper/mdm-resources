@@ -1,5 +1,6 @@
 /*
-Copyright 2021 University of Oxford
+Copyright 2020-2021 University of Oxford
+and Health and Social Care Information Centre, also known as NHS Digital
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -15,7 +16,6 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-
 import { DataTypeProvider } from './mdm-data-type.model';
 import { MdmIndexResponse, MdmResponse } from './mdm-common.model';
 import { Branchable, Finalisable, Historical, Modelable, ModelableDetail, SecurableModel, Versionable } from './mdm-model-types.model';
@@ -23,8 +23,8 @@ import { Branchable, Finalisable, Historical, Modelable, ModelableDetail, Secura
 export type ReferenceDataModelType = 'ReferenceDataModel';
 
 export interface ReferenceDataModel extends Modelable {
-  type?: ReferenceDataModelType;
   [key: string]: any;
+  type?: ReferenceDataModelType;
 }
 
 export type ReferenceDataModelDetail =

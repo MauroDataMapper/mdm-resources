@@ -1,5 +1,6 @@
 /*
 Copyright 2020-2021 University of Oxford
+and Health and Social Care Information Centre, also known as NHS Digital
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -23,6 +24,8 @@ import { CatalogueItem, MdmIndexResponse, MdmResponse, Payload, Uuid } from './m
  * Represents a reference file (attachment) for model.
  */
 export interface ReferenceFile extends CatalogueItem {
+
+  [key: string]: any;
   /**
    * The name of the reference file.
    */
@@ -43,7 +46,6 @@ export interface ReferenceFile extends CatalogueItem {
    */
   lastUpdated?: string;
 
-  [key: string]: any;
 }
 
 export type ReferenceFileIndexResponse = MdmIndexResponse<ReferenceFile>;
@@ -64,6 +66,8 @@ export interface ReferenceFileCreatePayload extends Payload {
  * Represents an annotation, or comment, attached to a catalogue item.
  */
 export interface Annotation extends Historical {
+
+  [key: string]: any;
   /**
    * The unique identifier of this annotation.
    */
@@ -89,7 +93,6 @@ export interface Annotation extends Historical {
    */
   childAnnotations?: Annotation[];
 
-  [key: string]: any;
 }
 
 export type AnnotationIndexResponse = MdmIndexResponse<Annotation>;

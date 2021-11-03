@@ -1,5 +1,6 @@
 /*
-Copyright 2021 University of Oxford
+Copyright 2020-2021 University of Oxford
+and Health and Social Care Information Centre, also known as NHS Digital
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -236,7 +237,7 @@ export interface BranchModelPayload extends Payload {
 
 /**
  * Represents basic details of an item from a model version tree.
- * 
+ *
  * @see {@link ModelVersionItem}
  */
 export interface BasicModelVersionItem {
@@ -256,7 +257,7 @@ export interface ModelVersionItemTarget {
 
 /**
  * Represents full details of an item from a model version tree.
- * 
+ *
  * @see {@link BasicModelVersionItem}
  */
 export interface ModelVersionItem {

@@ -1,5 +1,6 @@
 /*
-Copyright 2021 University of Oxford
+Copyright 2020-2021 University of Oxford
+and Health and Social Care Information Centre, also known as NHS Digital
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -15,7 +16,6 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-
 import { BranchModelPayload, FinalisePayload, ForkModelPayload, ModelRemoveQueryParameters, VersionModelPayload } from './mdm-model-types.model';
 import { FilterQueryParameters, Payload, QueryParameters, RequestSettings, Uuid } from './mdm-common.model';
 import { ContainerCreatePayload, ContainerUpdatePayload } from './mdm-container-types.model';

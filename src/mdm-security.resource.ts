@@ -1,5 +1,6 @@
 /*
-Copyright 2020 University of Oxford
+Copyright 2020-2021 University of Oxford
+and Health and Social Care Information Centre, also known as NHS Digital
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -33,35 +34,35 @@ export class MdmSecurityResource extends MdmResource {
    * `200 OK` - will return a {@link LoginResponse} containing the {@link LoginResult}.
    *
    * @see {@link MdmSessionResource.isAuthenticated}
-   * 
+   *
    * @description There can be multiple methods of logging in to generate a session:
-   * 
+   *
    * * The most basic authentication method is via username and password to match against
    * an existing user account in the Mauro instance. This requires a {@link BasicLoginPayload}
    * where the username and password must be provided.
-   * 
+   *
    * * An alternative authentication method is via OpenID Connect. This requires the
    * [mdm-plugin-authentication-openid-connect](https://github.com/MauroDataMapper-Plugins/mdm-plugin-authentication-openid-connect)
    * plugin to be installed in the Mauro instance to work. With this authentication method, a user
    * is authenticated via an external provider using a different account (e.g. Google or Microsoft account),
    * and the success response returned by the OpenID Connect provider will be passed to Mauro via
    * an {@link OpenIdConnectLoginPayload} containing the authorization state data.
-   * 
+   *
    * @example To login with basic authentication:
-   * 
+   *
    * ```ts
    * const payload: BasicLoginPayload = {
    *  username: 'test',
    *  password: 'secret'
    * };
-   * 
+   *
    * const response = securityResource.login(payload);
    * ```
-   * 
+   *
    * @example To login with OpenID Connect (assuming the
    * [mdm-plugin-authentication-openid-connect](https://github.com/MauroDataMapper-Plugins/mdm-plugin-authentication-openid-connect)
    * is installed):
-   * 
+   *
    * ```ts
    * const payload: OpenIdConnectPayload = {
    *  openidConnectProviderId: 'Uuid-of-OpenID-connect-provider';
@@ -70,7 +71,7 @@ export class MdmSecurityResource extends MdmResource {
    *  state: 'value-from-provider';
    *  redirectUrl: 'https://ui.url/redirect';
    * };
-   * 
+   *
    * const response = securityResource.login(payload);
    * ```
    */

@@ -1,5 +1,6 @@
 /*
-Copyright 2021 University of Oxford
+Copyright 2020-2021 University of Oxford
+and Health and Social Care Information Centre, also known as NHS Digital
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -25,6 +26,7 @@ import { Breadcrumb, MdmResponse, Uuid } from './mdm-common.model';
  * property name of the {@link Diff} object.
  */
 export interface DiffObject {
+  [key: string]: any;
   /**
    * The unique identifer of this object.
    */
@@ -33,7 +35,6 @@ export interface DiffObject {
   /**
    * Collection of properties and values for this object.
    */
-  [key: string]: any;
 }
 
 /**

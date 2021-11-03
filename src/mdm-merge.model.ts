@@ -1,5 +1,6 @@
 /*
-Copyright 2021 University of Oxford
+Copyright 2020-2021 University of Oxford
+and Health and Social Care Information Centre, also known as NHS Digital
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -36,14 +37,14 @@ export type MergableMultiFacetAwareDomainType =
  * Represents the possible types that could be returned after a successful committed merge operation.
  */
 export type MergableCatalogueItem =
-  DataModelDetail 
-  | ReferenceDataModelDetail 
-  | TerminologyDetail 
+  DataModelDetail
+  | ReferenceDataModelDetail
+  | TerminologyDetail
   | VersionedFolderDetail;
 
 /**
  * Represents a catalogue item that is the main branch of a branchable catalogue item.
- * 
+ *
  * This type represents the minimal set of properties required to understand what type of catalogue item this is. The
  * {@link Branchable.branchName} should always be "main".
  */
@@ -118,12 +119,12 @@ export interface MergeDiffItem {
   /**
    * Gets the common ancestor value of this field.
    */
-  commonAncestorValue?: string,
+  commonAncestorValue?: string;
 
   /**
    * Determines if this change will produce a merge conflict. If so, it must be resolved.
    */
-  isMergeConflict: boolean,
+  isMergeConflict: boolean;
 
   /**
    * Determines if the value was changed in _source_ but deleted in _target_.
@@ -175,7 +176,7 @@ export type MergeDiffResponse = MdmResponse<MergeDiff>;
 
 /**
  * Represents the patch information to apply to a _target_ catalogue item to complete a merge operation.
- * 
+ *
  * @see {@link CommitMergePayload}
  */
 export interface CommitMergePatchPayload extends Payload {
@@ -212,10 +213,10 @@ export interface CommitMergePatchPayload extends Payload {
 
 /**
  * Represents the payload for committing a merge from a _source_ catalogue item into a _target_ catalogue item.
- * 
+ *
  * The merge commit payload contains all the differences to apply to the _target_ to save all changes made. To find
  * the initial differences, use the {@link MdmMergeResource.mergeDiff} endpoint.
- * 
+ *
  * @see {@link MdmMergeResource.mergeDiff}
  * @see {@link MergeDiff}
  */
