@@ -19,12 +19,15 @@ SPDX-License-Identifier: Apache-2.0
 
 import { Historical, Securable } from './mdm-model-types.model';
 import { CatalogueItem, MdmIndexResponse, MdmResponse, Navigatable, Uuid } from './mdm-common.model';
+import { TermDetail } from './mdm-term.model';
 
 export interface TermRelationshipType extends CatalogueItem, Navigatable {
   [key: string]: any;
   model?: Uuid;
   displayLabel: string;
   label?: string;
+  parentalRelationship: boolean;
+  childRelationship: boolean;
 }
 
 export type TermRelationshipTypeDetail =
@@ -34,3 +37,16 @@ export type TermRelationshipTypeDetail =
 
 export type TermRelationshipTypeIndexResponse = MdmIndexResponse<TermRelationshipType>;
 export type TermRelationshipTypeDetailResponse = MdmResponse<TermRelationshipTypeDetail>;
+
+export interface TermRelationship extends CatalogueItem, Navigatable {
+  [key: string]: any;
+  model?: Uuid;
+  displayLabel: string;
+  label?: string;
+  relationshipType: TermRelationshipType;
+  sourceTerm: TermDetail;
+  targetTerm: TermDetail;
+}
+
+export type TermRelationshipIndexResponse = MdmIndexResponse<TermRelationship>;
+export type TermRelationshipDetailResponse = MdmResponse<TermRelationship>;
