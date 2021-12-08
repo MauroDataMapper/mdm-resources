@@ -104,6 +104,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
    * @param query Optional query string parameters for the GET request.
    * @param options Optional REST handler parameters.
    * @returns The result of the `GET` request.
+   * @deprecated use listPublishedModels
    *
    * `200 OK` - will return a {@link AvailableDataModelIndexResponse} containing a list of {@link AvailableDataModel} items.
    */
@@ -111,6 +112,21 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
     const url = `${this.apiEndpoint}/subscribedCatalogues/${id}/availableModels`;
     return this.simpleGet(url, query, options);
   }
+
+    /**
+   * `HTTP GET` - Gets a list of all published models from a Subscribed Catalogue.
+   *
+   * @param id The UUID of the Subscribed Catalogue to search in.
+   * @param query Optional query string parameters for the GET request.
+   * @param options Optional REST handler parameters.
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return a {@link PublishedDataModelIndexResponse} containing a list of {@link PublishedDataModel} items.
+   */
+     listPublishedModels(id: Uuid, query?: QueryParameters, options?: RequestSettings) {
+      const url = `${this.apiEndpoint}/subscribedCatalogues/${id}/publishedModels`;
+      return this.simpleGet(url, query, options);
+    }
 
   /**
    * `HTTP GET` - Gets a list of all federated models that this catalogue has subscribed to from a Subscribed Catalogue.
@@ -133,6 +149,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
    * @param id The unique identifier of the Subscribed Model to federate.
    * @param options Optional REST handler parameters.
    * @returns The result of the `POST` request.
+   * @deprecated no longer in use, perfomed as part of save operation 
    *
    * `200 OK` - will return a {@link SubscribedDataModelResponse} containing a {@link SubscribedDataModel}.
    */
@@ -186,5 +203,21 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
   removeSubscribedModel(catalogueId: Uuid, id: Uuid, query?: QueryParameters, options?: RequestSettings) {
     const url = `${this.apiEndpoint}/subscribedCatalogues/${catalogueId}/subscribedModels/${id}`;
     return this.simpleDelete(url, query, options);
+  }
+
+    /**
+   * `HTTP GET` - Tests subscribed catalogue URL.
+   *
+   * @param id The unique identifier of the Subscribed Catalogue to get.
+   * @param query Optional query string parameters for the GET request.
+   * @param options Optional REST handler parameters.
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return a blank success.
+   */
+  testConnection(id: Uuid, query?: QueryParameters, options?: RequestSettings)
+  {
+    const url = `${this.apiEndpoint}/subscribedCatalogues/${id}/testConnection`;
+    return this.simpleGet(url, query, options);
   }
 }
