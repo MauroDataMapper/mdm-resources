@@ -6,7 +6,7 @@
   "license": "Apache-2.0",
   "scripts": {
     "clean": "rm -rf lib",
-    "build": "rm -rf lib && tsc && tsc --target ES5 --outDir lib/es5",
+    "build": "rm -rf lib && tsc && tsc --target ES5 --outDir lib/es5 && tsc --target ES6 --outDir lib/es6",
     "start": "tsc --watch",
     "test": "jest",
     "eslint": "tsc --noEmit && eslint . --ext ts --fix",
