@@ -35,6 +35,7 @@ export interface AvailableDataModel {
   label: string;
   description?: string;
   modelType: CatalogueItemDomainType;
+  version? : string;
 }
 
 export interface PublishedDataModel {
@@ -42,6 +43,7 @@ export interface PublishedDataModel {
   label: string;
   description?: string;
   modelType: CatalogueItemDomainType;
+  version? : string;
 }
 
 
