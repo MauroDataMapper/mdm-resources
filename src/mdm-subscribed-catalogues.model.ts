@@ -37,6 +37,14 @@ export interface AvailableDataModel {
   modelType: CatalogueItemDomainType;
 }
 
+export interface PublishedDataModel {
+  modelId?: Uuid;
+  label: string;
+  description?: string;
+  modelType: CatalogueItemDomainType;
+}
+
+
 export interface SubscribedDataModel extends Payload {
   id?: Uuid;
   subscribedModelId: Uuid;
@@ -45,5 +53,6 @@ export interface SubscribedDataModel extends Payload {
 }
 
 export type AvailableDataModelIndexResponse = MdmIndexResponse<AvailableDataModel>;
+export type PublishedDataModelIndexResponse = MdmIndexResponse<PublishedDataModel>;
 export type SubscribedDataModelResponse = MdmResponse<SubscribedDataModel>;
 export type SubscribedDataModelIndexResponse = MdmIndexResponse<SubscribedDataModel>;
