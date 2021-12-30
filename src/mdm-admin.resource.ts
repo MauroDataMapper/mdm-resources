@@ -16,7 +16,8 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { RequestSettings, QueryParameters, Payload, ContainerDomainType, ModelDomainType } from './mdm-common.model';
+import { SubscribedCatalogue } from './mdm-subscribed-catalogues.model';
+import { RequestSettings, QueryParameters, Payload, ContainerDomainType, ModelDomainType, Uuid } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 
 /**
@@ -110,6 +111,94 @@ export class MdmAdminResource extends MdmResource {
   rebuildLuceneIndexes(payload?: Payload, options?: RequestSettings) {
     const url = `${this.apiEndpoint}/admin/rebuildLuceneIndexes`;
     return this.simplePost(url, payload, options);
+  }
+
+/**
+ * `HTTP GET` - Gets a Subscribed Catalogue by ID.
+ *
+ * @param id The unique identifier of the Subscribed Catalogue to get.
+ * @param query Optional query string parameters for the GET request.
+ * @param options Optional REST handler parameters.
+ * @returns The result of the `GET` request.
+ *
+ * `200 OK` - will return a {@link SubscribedCatalogueResponse} containing a {@link SubscribedCatalogue}.
+ */
+  getSubscribedCatalogue(id: Uuid, query?: QueryParameters, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/admin/subscribedCatalogues/${id}`;
+    return this.simpleGet(url, query, options);
+  }
+
+    /**
+     * `HTTP POST` - Creates a new Subscribed Catalogue.
+     *
+     * @param data The data to use for creation.
+     * @param options Optional REST handler parameters.
+     * @returns The result of the `POST` request.
+     *
+     * `200 OK` - will return a {@link SubscribedCatalogueResponse} containing a {@link SubscribedCatalogue}.
+     */
+     saveSubscribedCatalogues(data: SubscribedCatalogue, options?: RequestSettings) {
+      const url = `${this.apiEndpoint}/admin/subscribedCatalogues`;
+      return this.simplePost(url, data, options);
+    }
+
+/**
+ * `HTTP GET` - Gets a list of all Subscribed Catalogues.
+ *
+ * @param query Optional query string parameters for the GET request.
+ * @param options Optional REST handler parameters.
+ * @returns The result of the `GET` request.
+ *
+ * `200 OK` - will return a {@link SubscribedCatalogueIndexResponse} containing a list of {@link SubscribedCatalogue} items.
+ */
+  listSubscribedCatalogues(query?: QueryParameters, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/admin/subscribedCatalogues`;
+    return this.simpleGet(url, query, options);
+  }
+
+  /**
+   * `HTTP PUT` - Updates an existing Subscribed Catalogue.
+   *
+   * @param id The unique identifier of the Subscribed Catalogue to update.
+   * @param data The data to use for the update.
+   * @param options Optional REST handler parameters.
+   * @returns The result of the `PUT` request.
+   *
+   * `200 OK` - will return a {@link SubscribedCatalogueResponse} containing a {@link SubscribedCatalogue}.
+   */
+  updateSubscribedCatalogue(id: Uuid, data: SubscribedCatalogue, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/admin/subscribedCatalogues/${id}`;
+    return this.simplePut(url, data, options);
+  }
+
+  /**
+   * `HTTP DELETE` - Removes an existing Subscribed Catalogue.
+   *
+   * @param id The unique identifier of the Subscribed Catalogue to remove.
+   * @param query Optional query string parameters for the GET request.
+   * @param options Optional REST handler parameters.
+   * @returns The result of the `DELETE` request.
+   *
+   * On success, the response will be a `204 No Content` and the response body will be empty.
+   */
+     removeSubscribedCatalogue(id: Uuid, query?: QueryParameters, options?: RequestSettings) {
+      const url = `${this.apiEndpoint}/admin/subscribedCatalogues/${id}`;
+      return this.simpleDelete(url, query, options);
+    }
+
+     /**
+      * `HTTP GET` - Tests subscribed catalogue URL.
+      *
+      * @param id The unique identifier of the Subscribed Catalogue to get.
+      * @param query Optional query string parameters for the GET request.
+      * @param options Optional REST handler parameters.
+      * @returns The result of the `GET` request.
+      *
+      * `200 OK` - will return a blank success.
+      */
+  testSubscribedCatalogueConnection(id: Uuid, query?: QueryParameters, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/admin/subscribedCatalogues/${id}/testConnection`;
+    return this.simpleGet(url, query, options);
   }
 
   /**
