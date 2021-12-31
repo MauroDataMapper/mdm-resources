@@ -441,6 +441,22 @@ export class MdmDataModelResource extends MdmResource {
     return this.simpleGet(url, query, options);
   }
 
+   /**
+   * `HTTP GET` - Request the list of  data Elements on a  data model.
+   *
+   * @param query Optional query string parameters to filter the returned list, if required.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return a {@link DataElementIndexResponse} containing a list of {@link DataElements} items.
+   *
+   * @see {@link MdmDataModelResource.get}
+   */
+    dataElements(dataModelId: Uuid, query?: FilterQueryParameters, options?: RequestSettings) {
+      const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataElements`;
+      return this.simpleGet(url, query, options);
+    }
+
   removeAll(queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
     const url = `${this.apiEndpoint}/dataModels`;
     return this.simpleDelete(url, queryStringParams, restHandlerOptions);
