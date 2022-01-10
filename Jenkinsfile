@@ -14,6 +14,7 @@ pipeline {
     stage('Tool Versions') {
       steps {
         nvm('') {
+          sh 'npm i -g npm@7.24.1'
           sh 'node --version'
           sh 'npm --version'
         }
@@ -78,20 +79,20 @@ pipeline {
       }
     }
 
-    stage('Sonarqube') {
-      when {
-        branch 'develop'
-      }
-      steps {
-        withSonarQubeEnv('JenkinsQube') {
-          nvm('') {
-            catchError(buildResult: 'UNSTABLE', stageResult: 'UNSTABLE') {
-              sh 'npm run sonar'
-            }
-          }
-        }
-      }
-    }
+//    stage('Sonarqube') {
+//      when {
+//        branch 'develop'
+//      }
+//      steps {
+//        withSonarQubeEnv('JenkinsQube') {
+//          nvm('') {
+//            catchError(buildResult: 'UNSTABLE', stageResult: 'UNSTABLE') {
+//              sh 'npm run sonar'
+//            }
+//          }
+//        }
+//      }
+//    }
 
     stage('Publish main branch') {
       when {
