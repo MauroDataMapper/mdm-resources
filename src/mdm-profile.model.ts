@@ -64,6 +64,34 @@ export interface Profile {
 
 export type ProfileResponse = MdmResponse<Profile>;
 
+export interface ProfileProvider {
+  name: string;
+  namespace: string;
+  version?: Version;
+}
+
+export interface ProfileContext {
+  profile: Profile;
+  profileProviderService: ProfileProvider;
+}
+
+export interface ProfileContextCollection {
+  count: number;
+  profilesProvided: ProfileContext[];
+}
+
+export interface MultiFacetAwareItem {
+  multiFacetAwareItemDomainType: CatalogueItemDomainType;
+  multiFacetAwareItemId: Uuid;
+}
+
+export interface ProfileContextIndexPayload extends Payload {
+  multiFacetAwareItems: MultiFacetAwareItem[];
+  profileProviderServices: ProfileProvider[];
+}
+
+export type ProfileContextIndexResponse = MdmResponse<ProfileContextCollection>;
+
 export interface ProfileSummary {
   [key: string]: any;
   allowsExtraMetadataKeys: boolean;

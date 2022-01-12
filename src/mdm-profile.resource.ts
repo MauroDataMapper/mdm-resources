@@ -16,7 +16,7 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { Profile } from './mdm-profile.model';
+import { Profile, ProfileContextIndexPayload } from './mdm-profile.model';
 import { RequestSettings, QueryParameters, Uuid, Version, MultiFacetAwareDomainType, CatalogueItemDomainType, getMultiFacetAwareDomainType } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 
@@ -207,27 +207,27 @@ export class MdmProfileResource extends MdmResource {
     return this.simpleGet(url);
   }
 
-    /**
+  /**
    * `HTTP POST` - Gets a list of all profiles on a particular catalogue item.
    *
    * @param domainType The domain type of the catalogue item to get.
    * @param catalogueItemId The unique identifier of the catalogue item to get.
-   * @param query Optional query string parameters, if required.
+   * @param payload The payload containing the information to filter by.
    * @param options Optional REST handler options, if required.
    * @returns The result of the `POST` request.
    *
-   * `200 OK` - will return a {@link ProfileSummaryIndexResponse} containing a list of {@link ProfileSummary} objects.
+   * `200 OK` - will return a {@link ProfileContextIndexResponse} containing an {@link ProfileContextIndexBody} object.
    */
-     getMany(
-      domainType: MultiFacetAwareDomainType | CatalogueItemDomainType,
-      catalogueItemId: Uuid,
-      query?: QueryParameters,
-      options?: RequestSettings) {
-      const url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(domainType)}/${catalogueItemId}/profile/getMany`;
-      return this.simplePost(url, query, options);
-    }
+  getMany(
+    domainType: MultiFacetAwareDomainType | CatalogueItemDomainType,
+    catalogueItemId: Uuid,
+    payload: ProfileContextIndexPayload,
+    options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(domainType)}/${catalogueItemId}/profile/getMany`;
+    return this.simplePost(url, payload, options);
+  }
 
-        /**
+  /**
    * `HTTP POST` - Saves a list of all profiles on a particular catalogue item.
    *
    * @param domainType The domain type of the catalogue item to get.
@@ -235,19 +235,19 @@ export class MdmProfileResource extends MdmResource {
    * @param query Optional query string parameters, if required.
    * @param options Optional REST handler options, if required.
    * @returns The result of the `POST` request.
-   *
+   * 
    * `200 OK` - will return a {@link ProfileSummaryIndexResponse} containing a list of {@link ProfileSummary} objects.
    */
-         saveMany(
-          domainType: MultiFacetAwareDomainType | CatalogueItemDomainType,
-          catalogueItemId: Uuid,
-          query?: QueryParameters,
-          options?: RequestSettings) {
-          const url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(domainType)}/${catalogueItemId}/profile/saveMany`;
-          return this.simplePost(url, query, options);
-        }
+  saveMany(
+    domainType: MultiFacetAwareDomainType | CatalogueItemDomainType,
+    catalogueItemId: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(domainType)}/${catalogueItemId}/profile/saveMany`;
+    return this.simplePost(url, query, options);
+  }
 
-         /**
+  /**
    * `HTTP POST` - Validates a list of profiles on a particular catalogue item.
    *
    * @param domainType The domain type of the catalogue item to get.
@@ -258,12 +258,12 @@ export class MdmProfileResource extends MdmResource {
    *
    * `200 OK` - will return a {@link ProfileSummaryIndexResponse} containing a list of {@link ProfileSummary} objects.
    */
-          validateMany(
-            domainType: MultiFacetAwareDomainType | CatalogueItemDomainType,
-            catalogueItemId: Uuid,
-            query?: QueryParameters,
-            options?: RequestSettings) {
-            const url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(domainType)}/${catalogueItemId}/profile/validateMany`;
-            return this.simplePost(url, query, options);
-          }
+  validateMany(
+    domainType: MultiFacetAwareDomainType | CatalogueItemDomainType,
+    catalogueItemId: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(domainType)}/${catalogueItemId}/profile/validateMany`;
+    return this.simplePost(url, query, options);
+  }
 }
