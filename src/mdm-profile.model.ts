@@ -48,6 +48,20 @@ export interface ProfileField {
   uneditable?: boolean;
 }
 
+export interface ProfileValidationError {
+  fieldName: string;
+  message: string;
+  metadataPropertyName?: string;
+}
+
+export interface ProfileValidationErrorList {
+  errors: ProfileValidationError[];
+  total: number;
+  fieldTotal?: number;
+}
+
+export type ProfileValidationResponse = MdmResponse<ProfileValidationErrorList>;
+
 export interface ProfileSection {
   name: string;
   description?: string;
@@ -73,6 +87,7 @@ export interface ProfileProvider {
 export interface ProfileContext {
   profile: Profile;
   profileProviderService: ProfileProvider;
+  errors?: ProfileValidationErrorList;
 }
 
 export interface ProfileContextCollection {
@@ -88,6 +103,10 @@ export interface MultiFacetAwareItem {
 export interface ProfileContextIndexPayload extends Payload {
   multiFacetAwareItems: MultiFacetAwareItem[];
   profileProviderServices: ProfileProvider[];
+}
+
+export interface ProfileContextValidationPayload extends Payload {
+  profilesProvided: ProfileContext[];
 }
 
 export type ProfileContextIndexResponse = MdmResponse<ProfileContextCollection>;
@@ -118,16 +137,3 @@ export interface Metadata {
 export type MetadataIndexResponse = MdmIndexResponse<Metadata>;
 
 export type ProfilePayload = Profile & Payload;
-
-export interface ProfileValidationError {
-  fieldName: string;
-  message: string;
-  metadataPropertyName?: string;
-}
-
-export interface ProfileValidationErrorList {
-  errors: ProfileValidationError[];
-  total: number;
-}
-
-export type ProfileValidationResponse = MdmResponse<ProfileValidationErrorList>;
