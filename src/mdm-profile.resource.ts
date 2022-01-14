@@ -235,7 +235,7 @@ export class MdmProfileResource extends MdmResource {
    * @param payload Array of profile context information containing the data to save.
    * @param options Optional REST handler options, if required.
    * @returns The result of the `POST` request.
-   * 
+   *
    * `200 OK` - will return a {@link ProfileContextIndexResponse} containing an {@link ProfileContextIndexBody} object.
    */
   saveMany(
@@ -257,7 +257,7 @@ export class MdmProfileResource extends MdmResource {
    * @returns The result of the `POST` request.
    *
    * `200 OK` - will return a {@link ProfileContextIndexResponse} containing an {@link ProfileContextIndexBody} object.
-   * 
+   *
    * `422 Unprocessable Entity` - will return a {@link ProfileContextIndexResponse} containing a {@link ProfileContextIndexBody}.
    * Each {@link ProfileContext} will contain an `errors` object containing all validation errors.
    */
