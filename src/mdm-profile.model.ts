@@ -30,7 +30,8 @@ export type ProfileFieldDataType =
   | 'time'
   | 'folder'
   | 'model'
-  | 'json';
+  | 'json'
+  | 'enumeration';
 
 export interface ProfileField {
   [key: string]: any;
