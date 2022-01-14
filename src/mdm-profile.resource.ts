@@ -16,7 +16,7 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { Profile, ProfileContextIndexPayload, ProfileContextValidationPayload } from './mdm-profile.model';
+import { Profile, ProfileContextIndexPayload, ProfileContextPayload } from './mdm-profile.model';
 import { RequestSettings, QueryParameters, Uuid, Version, MultiFacetAwareDomainType, CatalogueItemDomainType, getMultiFacetAwareDomainType } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 
@@ -232,19 +232,19 @@ export class MdmProfileResource extends MdmResource {
    *
    * @param domainType The domain type of the catalogue item to get.
    * @param catalogueItemId The unique identifier of the catalogue item to get.
-   * @param query Optional query string parameters, if required.
+   * @param payload Array of profile context information containing the data to save.
    * @param options Optional REST handler options, if required.
    * @returns The result of the `POST` request.
    * 
-   * `200 OK` - will return a {@link ProfileSummaryIndexResponse} containing a list of {@link ProfileSummary} objects.
+   * `200 OK` - will return a {@link ProfileContextIndexResponse} containing an {@link ProfileContextIndexBody} object.
    */
   saveMany(
     domainType: MultiFacetAwareDomainType | CatalogueItemDomainType,
     catalogueItemId: Uuid,
-    query?: QueryParameters,
+    payload: ProfileContextPayload,
     options?: RequestSettings) {
     const url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(domainType)}/${catalogueItemId}/profile/saveMany`;
-    return this.simplePost(url, query, options);
+    return this.simplePost(url, payload, options);
   }
 
   /**
@@ -264,7 +264,7 @@ export class MdmProfileResource extends MdmResource {
   validateMany(
     domainType: MultiFacetAwareDomainType | CatalogueItemDomainType,
     catalogueItemId: Uuid,
-    payload: ProfileContextValidationPayload,
+    payload: ProfileContextPayload,
     options?: RequestSettings) {
     const url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(domainType)}/${catalogueItemId}/profile/validateMany`;
     return this.simplePost(url, payload, options);

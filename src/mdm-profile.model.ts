@@ -105,7 +105,7 @@ export interface ProfileContextIndexPayload extends Payload {
   profileProviderServices: ProfileProvider[];
 }
 
-export interface ProfileContextValidationPayload extends Payload {
+export interface ProfileContextPayload extends Payload {
   profilesProvided: ProfileContext[];
 }
 
