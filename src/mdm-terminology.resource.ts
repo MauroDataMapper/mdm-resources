@@ -18,7 +18,7 @@ SPDX-License-Identifier: Apache-2.0
 */
 import { MdmResource } from './mdm-resource';
 import { RequestSettings, QueryParameters, Uuid, FilterQueryParameters } from './mdm-common.model';
-import { FinalisePayload, ModelRemoveQueryParameters, ModelUpdatePayload } from './mdm-model-types.model';
+import { FinalisePayload, ModelCreatePayload, ModelRemoveQueryParameters, ModelUpdatePayload } from './mdm-model-types.model';
 
 /**
  * Controller: terminology
@@ -112,6 +112,22 @@ export class MdmTerminologyResource extends MdmResource {
   newForkModel(terminologyId: string, data: any, restHandlerOptions?: RequestSettings) {
     const url = `${this.apiEndpoint}/terminologies/${terminologyId}/newForkModel`;
     return this.simplePut(url, data, restHandlerOptions);
+  }
+
+  /**
+   * `HTTP POST` - Creates a new terminology under a chosen folder.
+   *
+   * @param folderId The unique identifier of the folder to create the terminology under.
+   * @param data The payload of the request containing all the details for the terminology to create.
+   * @param query Optional query parameters to control the creation of the terminology, if required.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `POST` request.
+   *
+   * `200 OK` - will return a {@link TerminologyDetailResponse} containing a {@link TerminologyDetail} object.
+   */
+   addToFolder(folderId: Uuid, data: ModelCreatePayload, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/folders/${folderId}/terminologies`;
+    return this.simplePost(url, data, options);
   }
 
   tree(terminologyId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
