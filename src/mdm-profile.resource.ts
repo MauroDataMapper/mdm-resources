@@ -16,7 +16,7 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { Profile } from './mdm-profile.model';
+import { Profile, ProfileContextIndexPayload, ProfileContextPayload } from './mdm-profile.model';
 import { RequestSettings, QueryParameters, Uuid, Version, MultiFacetAwareDomainType, CatalogueItemDomainType, getMultiFacetAwareDomainType } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 
@@ -205,5 +205,68 @@ export class MdmProfileResource extends MdmResource {
   providerDynamic() {
     const url = `${this.apiEndpoint}/profiles/providers/dynamic`;
     return this.simpleGet(url);
+  }
+
+  /**
+   * `HTTP POST` - Gets a list of all profiles on a particular catalogue item.
+   *
+   * @param domainType The domain type of the catalogue item to get.
+   * @param catalogueItemId The unique identifier of the catalogue item to get.
+   * @param payload The payload containing the information to filter by.
+   * @param options Optional REST handler options, if required.
+   * @returns The result of the `POST` request.
+   *
+   * `200 OK` - will return a {@link ProfileContextIndexResponse} containing an {@link ProfileContextIndexBody} object.
+   */
+  getMany(
+    domainType: MultiFacetAwareDomainType | CatalogueItemDomainType,
+    catalogueItemId: Uuid,
+    payload: ProfileContextIndexPayload,
+    options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(domainType)}/${catalogueItemId}/profile/getMany`;
+    return this.simplePost(url, payload, options);
+  }
+
+  /**
+   * `HTTP POST` - Saves a list of all profiles on a particular catalogue item.
+   *
+   * @param domainType The domain type of the catalogue item to get.
+   * @param catalogueItemId The unique identifier of the catalogue item to get.
+   * @param payload Array of profile context information containing the data to save.
+   * @param options Optional REST handler options, if required.
+   * @returns The result of the `POST` request.
+   *
+   * `200 OK` - will return a {@link ProfileContextIndexResponse} containing an {@link ProfileContextIndexBody} object.
+   */
+  saveMany(
+    domainType: MultiFacetAwareDomainType | CatalogueItemDomainType,
+    catalogueItemId: Uuid,
+    payload: ProfileContextPayload,
+    options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(domainType)}/${catalogueItemId}/profile/saveMany`;
+    return this.simplePost(url, payload, options);
+  }
+
+  /**
+   * `HTTP POST` - Validates a list of profiles on a particular catalogue item.
+   *
+   * @param domainType The domain type of the catalogue item to get.
+   * @param catalogueItemId The unique identifier of the catalogue item to get.
+   * @param payload Array of profile context information containing the data to validate.
+   * @param options Optional REST handler options, if required.
+   * @returns The result of the `POST` request.
+   *
+   * `200 OK` - will return a {@link ProfileContextIndexResponse} containing an {@link ProfileContextIndexBody} object.
+   *
+   * `422 Unprocessable Entity` - will return a {@link ProfileContextIndexResponse} containing a {@link ProfileContextIndexBody}.
+   * Each {@link ProfileContext} will contain an `errors` object containing all validation errors.
+   */
+  validateMany(
+    domainType: MultiFacetAwareDomainType | CatalogueItemDomainType,
+    catalogueItemId: Uuid,
+    payload: ProfileContextPayload,
+    options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(domainType)}/${catalogueItemId}/profile/validateMany`;
+    return this.simplePost(url, payload, options);
   }
 }

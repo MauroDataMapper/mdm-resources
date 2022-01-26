@@ -30,7 +30,8 @@ export type ProfileFieldDataType =
   | 'time'
   | 'folder'
   | 'model'
-  | 'json';
+  | 'json'
+  | 'enumeration';
 
 export interface ProfileField {
   [key: string]: any;
@@ -48,6 +49,20 @@ export interface ProfileField {
   uneditable?: boolean;
 }
 
+export interface ProfileValidationError {
+  fieldName: string;
+  message: string;
+  metadataPropertyName?: string;
+}
+
+export interface ProfileValidationErrorList {
+  errors: ProfileValidationError[];
+  total: number;
+  fieldTotal?: number;
+}
+
+export type ProfileValidationResponse = MdmResponse<ProfileValidationErrorList>;
+
 export interface ProfileSection {
   name: string;
   description?: string;
@@ -63,6 +78,39 @@ export interface Profile {
 }
 
 export type ProfileResponse = MdmResponse<Profile>;
+
+export interface ProfileProvider {
+  name: string;
+  namespace: string;
+  version?: Version;
+}
+
+export interface ProfileContext {
+  profile: Profile;
+  profileProviderService: ProfileProvider;
+  errors?: ProfileValidationErrorList;
+}
+
+export interface ProfileContextCollection {
+  count: number;
+  profilesProvided: ProfileContext[];
+}
+
+export interface MultiFacetAwareItem {
+  multiFacetAwareItemDomainType: CatalogueItemDomainType;
+  multiFacetAwareItemId: Uuid;
+}
+
+export interface ProfileContextIndexPayload extends Payload {
+  multiFacetAwareItems: MultiFacetAwareItem[];
+  profileProviderServices: ProfileProvider[];
+}
+
+export interface ProfileContextPayload extends Payload {
+  profilesProvided: ProfileContext[];
+}
+
+export type ProfileContextIndexResponse = MdmResponse<ProfileContextCollection>;
 
 export interface ProfileSummary {
   [key: string]: any;
@@ -90,16 +138,3 @@ export interface Metadata {
 export type MetadataIndexResponse = MdmIndexResponse<Metadata>;
 
 export type ProfilePayload = Profile & Payload;
-
-export interface ProfileValidationError {
-  fieldName: string;
-  message: string;
-  metadataPropertyName?: string;
-}
-
-export interface ProfileValidationErrorList {
-  errors: ProfileValidationError[];
-  total: number;
-}
-
-export type ProfileValidationResponse = MdmResponse<ProfileValidationErrorList>;
