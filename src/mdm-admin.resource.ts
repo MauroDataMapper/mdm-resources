@@ -109,7 +109,7 @@ export class MdmAdminResource extends MdmResource {
    * `403 Forbidden` - user is not an administrator.
    */
   rebuildLuceneIndexes(payload?: Payload, options?: RequestSettings) {
-    const url = `${this.apiEndpoint}/admin/rebuildLuceneIndexes`;
+    const url = `${this.apiEndpoint}/admin/rebuildHibernateSearchIndexes`;
     return this.simplePost(url, payload, options);
   }
 
