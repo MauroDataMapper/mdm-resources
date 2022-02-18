@@ -106,3 +106,46 @@ export interface AnnotationCreatePayload extends Payload {
 export interface AnnotationChildCreatePayload extends Payload {
   description: string;
 }
+
+/**
+ * Represents all the domain types that can be used with the Mauro path APIs.
+ */
+export type PathableDomainType =
+  'annotations'
+  | 'authorities'
+  | 'classifiers'
+  | 'codeSets'
+  | 'catalogueUsers'
+  | 'dataClasses'
+  | 'dataClassComponents'
+  | 'dataElement'
+  | 'dataElementComponents'
+  | 'dataFlows'
+  | 'dataModels'
+  | 'enumerationTypes'
+  | 'edits'
+  | 'enumerationValues'
+  | 'folders'
+  | 'groupRoles'
+  | 'metadata'
+  | 'referenceDataElements'
+  | 'referenceDataModels'
+  | 'referenceEnumerationTypes'
+  | 'referenceDataValues'
+  | 'referenceEnumerationValues'
+  | 'referenceFiles'
+  | 'ruleRepresentations'
+  | 'referenceSummaryMetadata'
+  | 'referenceSummaryMetadataReports'
+  | 'rules'
+  | 'semanticLinks'
+  | 'summaryMetadata'
+  | 'summaryMetadataReports'
+  | 'terminologies'
+  | 'terms'
+  | 'termRelationships'
+  | 'termRelationshipTypes'
+  | 'userGroups'
+  | 'userImageFiles'
+  | 'versionedFolders'
+  | 'versionLinks';
