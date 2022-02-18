@@ -679,7 +679,7 @@ export class MdmDataModelResource extends MdmResource {
    * `200 OK` - will return a {@link DataModelIntersectionResponse} containing a {@link DataModelIntersection} object.
    */
   intersects(sourceId: Uuid, targetId: Uuid, query?: QueryParameters, options?: RequestSettings) {
-    const url = `${this.apiEndpoint}/dataModels/${sourceId}/subset/${targetId}`;
+    const url = `${this.apiEndpoint}/dataModels/${sourceId}/intersects/${targetId}`;
     return this.simpleGet(url, query, options);
   }
 }
