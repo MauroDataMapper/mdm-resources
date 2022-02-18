@@ -19,7 +19,7 @@ SPDX-License-Identifier: Apache-2.0
 
 import { BranchModelPayload, FinalisePayload, ForkModelPayload, ModelRemoveQueryParameters, ModelUpdatePayload, VersionModelPayload } from './mdm-model-types.model';
 import { RequestSettings, QueryParameters, Uuid, FilterQueryParameters, Payload, Version } from './mdm-common.model';
-import { DataModelCreatePayload, DataModelCreateQueryParameters } from './mdm-data-model.model';
+import { DataModelCreatePayload, DataModelCreateQueryParameters, DataModelSubsetPayload } from './mdm-data-model.model';
 import { MdmResource } from './mdm-resource';
 
 /**
@@ -647,5 +647,39 @@ export class MdmDataModelResource extends MdmResource {
   removeImportedDataClass(dataModelId: Uuid, otherDataModelId: Uuid, otherDataClassId: Uuid, options?: RequestSettings) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${otherDataModelId}/${otherDataClassId}`;
     return this.simpleDelete(url, {}, options);
+  }
+
+  /**
+   * `HTTP PUT` - Copy a subset of a Data Model to another Data Model. Define which Data Elements to add/remove and the related
+   * schema will also be copied to the target as well.
+   *
+   * @param sourceId The unique identifier of the source Data Model to copy from.
+   * @param targetId The unique identifier of the target Data Model to copy to.
+   * @param payload The payload containing details on what to copy.
+   * @param options Optional REST handler options, if required.
+   * @returns The result of the `PUT` request.
+   *
+   * `200 OK` - will return a {@link DataModelDetailResponse} containing a {@link DataModelDetail} object.
+   */
+  copySubset(sourceId: Uuid, targetId: Uuid, payload: DataModelSubsetPayload, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/dataModels/${sourceId}/subset/${targetId}`;
+    return this.simplePut(url, payload, options);
+  }
+
+  /**
+   * `HTTP GET` - Identify the intersection between two Data Models, determining what are common between them.
+   * Will provide a list of Data Element identifiers from the source model that match what is in the target model.
+   *
+   * @param sourceId The unique identifier of the source Data Model to copy from.
+   * @param targetId The unique identifier of the target Data Model to copy to.
+   * @param query Optional query parameters, if required.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return a {@link DataModelIntersectionResponse} containing a {@link DataModelIntersection} object.
+   */
+  intersects(sourceId: Uuid, targetId: Uuid, query?: QueryParameters, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/dataModels/${sourceId}/intersects/${targetId}`;
+    return this.simpleGet(url, query, options);
   }
 }
