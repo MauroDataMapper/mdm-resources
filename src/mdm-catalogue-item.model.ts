@@ -118,7 +118,7 @@ export type PathableDomainType =
   | 'catalogueUsers'
   | 'dataClasses'
   | 'dataClassComponents'
-  | 'dataElement'
+  | 'dataElements'
   | 'dataElementComponents'
   | 'dataFlows'
   | 'dataModels'
