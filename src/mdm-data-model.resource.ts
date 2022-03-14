@@ -18,7 +18,7 @@ SPDX-License-Identifier: Apache-2.0
 */
 
 import { BranchModelPayload, FinalisePayload, ForkModelPayload, ModelRemoveQueryParameters, ModelUpdatePayload, VersionModelPayload } from './mdm-model-types.model';
-import { RequestSettings, QueryParameters, Uuid, FilterQueryParameters, Payload, Version } from './mdm-common.model';
+import { RequestSettings, QueryParameters, Uuid, FilterQueryParameters, Payload, Version, SearchQueryParameters } from './mdm-common.model';
 import { DataModelCreatePayload, DataModelCreateQueryParameters, DataModelSubsetPayload } from './mdm-data-model.model';
 import { MdmResource } from './mdm-resource';
 
@@ -262,9 +262,20 @@ export class MdmDataModelResource extends MdmResource {
     return this.simplePut(url, {}, options);
   }
 
-  search(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
-    const url = `${this.apiEndpoint}/dataModels/${dataModelId}/search`;
-    return this.simplePost(url, queryStringParams, restHandlerOptions);
+  /**
+   * `HTTP POST` - Search within a data model for one or more search terms.
+   *
+   * @param id The unique identifier of the data model to search.
+   * @param query The query parameters to control the search.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `POST` request.
+   *
+   * `200 OK` - will return a {@link CatalogueItemSearchResponse} containing a collection of
+   * {@link CatalogueItemSearchResult} object.
+   */
+  search(id: Uuid, query?: SearchQueryParameters, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/dataModels/${id}/search`;
+    return this.simplePost(url, query, options);
   }
 
   hierarchy(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {

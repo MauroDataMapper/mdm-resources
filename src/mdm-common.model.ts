@@ -27,6 +27,11 @@ export type Uuid = string;
  */
 export type Version = string;
 
+/**
+ * Type alias for a date represented as a string.
+ */
+export type MdmDate = string;
+
 export enum ContainerDomainType {
   Classifiers = 'classifiers',
   Folders = 'folders',
@@ -413,3 +418,60 @@ export interface CatalogueItemReference {
    * Any additional properties that may optionally be needed for this object.
    */
 }
+
+/**
+ * Represents the standard query parameters to use for a search operation.
+ */
+export interface SearchQueryParameters extends QueryParameters {
+  /**
+   * The term(s) to search for in the catalogue.
+   */
+  searchTerm?: string;
+
+  /**
+   * Specify the property to sort by e.g. 'label'.
+   */
+  sort?: string;
+
+  /**
+   * Specify the order to sort by.
+   */
+  order?: 'asc' | 'desc';
+
+  /**
+   * Specify the maximum number of results to return in a single page of results.
+   */
+  max?: number;
+
+  /**
+   * Specify the offset to start search results from.
+   *
+   * When combined with {@link max}, this can be used to page results.
+   */
+  offset?: number;
+
+  /**
+   * State whether to only search for terms within labels of catalogue items.
+   */
+  labelOnly?: boolean;
+
+  lastUpdatedBefore?: MdmDate;
+  lastUpdatedAfter?: MdmDate;
+  createdBefore?: MdmDate;
+  createdAfter?: MdmDate;
+  domainTypes?: string[];
+  dataModelTypes?: string[];
+  classifiers?: string[];
+}
+
+/**
+ * Represents the result of a catalogue search.
+ */
+export interface CatalogueItemSearchResult extends CatalogueItem {
+  [key: string]: any;
+  label: string;
+  description?: string;
+  breadcrumbs: Breadcrumb[];
+}
+
+export type CatalogueItemSearchResponse = MdmIndexResponse<CatalogueItemSearchResult>;
