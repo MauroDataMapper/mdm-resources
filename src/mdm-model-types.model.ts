@@ -135,6 +135,12 @@ export interface Modelable extends CatalogueItem {
   label: string;
   description?: string;
   deleted?: boolean;
+
+  /**
+   * If this model is finalised, this represents the version number of this model. If not finalised,
+   * this is not defined.
+   */
+  modelVersion?: Version;
 }
 
 export interface ModelableDetail {

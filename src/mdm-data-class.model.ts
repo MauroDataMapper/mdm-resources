@@ -19,6 +19,7 @@ SPDX-License-Identifier: Apache-2.0
 
 import { Historical, Securable } from './mdm-model-types.model';
 import { Breadcrumb, CatalogueItemDomainType, MdmIndexResponse, MdmResponse, PageParameters, QueryParameters, SortParameters, Uuid } from './mdm-common.model';
+import { DataElementDetail } from './mdm-data-element.model';
 
 export type DataClassIndexParameters = SortParameters & PageParameters & QueryParameters;
 
@@ -42,3 +43,22 @@ export type DataClassDetail =
 
 export type DataClassIndexResponse = MdmIndexResponse<DataClass>;
 export type DataClassDetailResponse = MdmResponse<DataClassDetail>;
+
+/**
+ * Represents hierarchy information for a Data Class.
+ */
+export interface DataClassHierarchy {
+  /**
+   * The child data classes under this Data Class.
+   */
+  dataClasses?: DataClassHierarchy[];
+
+  /**
+   * The Data Elements under this Data Class.
+   */
+  dataElements?: DataElementDetail[];
+}
+
+export type DataClassFull = 
+  DataClassDetail 
+  & DataClassHierarchy;

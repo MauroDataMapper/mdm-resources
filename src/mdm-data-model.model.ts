@@ -19,7 +19,8 @@ SPDX-License-Identifier: Apache-2.0
 
 import { Branchable, Finalisable, Historical, Modelable, ModelableDetail, ModelCreatePayload, SecurableModel, Versionable } from './mdm-model-types.model';
 import { MdmIndexResponse, MdmResponse, Payload, QueryParameters, Uuid } from './mdm-common.model';
-import { DataTypeProvider } from './mdm-data-type.model';
+import { DataTypeDetail, DataTypeProvider } from './mdm-data-type.model';
+import { DataClassFull } from './mdm-data-class.model';
 
 export type DataModelType = 'Data Standard' | 'Data Asset';
 
@@ -80,3 +81,24 @@ export interface DataModelIntersection {
 }
 
 export type DataModelIntersectionResponse = MdmResponse<DataModelIntersection>;
+
+/**
+ * Represents hierarchy information for a Data Model.
+ */
+export interface DataModelHierarchy {
+  /**
+   * The data types available for this Data Model.
+   */
+  dataTypes?: DataTypeDetail[];
+
+  /**
+   * Gets all child Data Classes for this Data Model.
+   */
+  childDataClasses?: DataClassFull[];
+}
+
+export type DataModelFull = 
+  DataModelDetail 
+  & DataModelHierarchy;
+
+export type DataModelFullResponse = MdmResponse<DataModelFull>;
