@@ -97,8 +97,8 @@ export interface DataModelHierarchy {
   childDataClasses?: DataClassFull[];
 }
 
-export type DataModelFull = 
-  DataModelDetail 
+export type DataModelFull =
+  DataModelDetail
   & DataModelHierarchy;
 
 export type DataModelFullResponse = MdmResponse<DataModelFull>;

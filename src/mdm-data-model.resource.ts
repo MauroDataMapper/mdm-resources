@@ -280,12 +280,13 @@ export class MdmDataModelResource extends MdmResource {
 
   /**
    * Gets the hierarchical information for a Data Model, returning all child classes, elements and types.
+   *
    * @param id The unique identifier of the data model to get.
    * @param query Optional query parameters, if required.
    * @param options Optional REST handler parameters, if required.
    * @returns The result of the `GET` request.
    *
-   * `200 OK` - will return a {@link DataModelFullResponse} containing a single {@link DataModelFull} object, 
+   * `200 OK` - will return a {@link DataModelFullResponse} containing a single {@link DataModelFull} object,
    * including all details of the Data Model/Type/Class/Element hierarchy.
    */
   hierarchy(id: Uuid, query?: QueryParameters, options?: RequestSettings) {

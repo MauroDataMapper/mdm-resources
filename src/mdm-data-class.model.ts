@@ -59,6 +59,6 @@ export interface DataClassHierarchy {
   dataElements?: DataElementDetail[];
 }
 
-export type DataClassFull = 
-  DataClassDetail 
+export type DataClassFull =
+  DataClassDetail
   & DataClassHierarchy;

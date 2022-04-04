@@ -426,7 +426,7 @@ export interface SearchQueryParameters extends SortParameters, PageParameters, Q
   /**
    * The term(s) to search for in the catalogue.
    */
-  searchTerm?: string;   
+  searchTerm?: string;
 
   /**
    * State whether to only search for terms within labels of catalogue items.
