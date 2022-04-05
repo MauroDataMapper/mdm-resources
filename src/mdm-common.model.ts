@@ -422,33 +422,11 @@ export interface CatalogueItemReference {
 /**
  * Represents the standard query parameters to use for a search operation.
  */
-export interface SearchQueryParameters extends QueryParameters {
+export interface SearchQueryParameters extends SortParameters, PageParameters, QueryParameters {
   /**
    * The term(s) to search for in the catalogue.
    */
   searchTerm?: string;
-
-  /**
-   * Specify the property to sort by e.g. 'label'.
-   */
-  sort?: string;
-
-  /**
-   * Specify the order to sort by.
-   */
-  order?: 'asc' | 'desc';
-
-  /**
-   * Specify the maximum number of results to return in a single page of results.
-   */
-  max?: number;
-
-  /**
-   * Specify the offset to start search results from.
-   *
-   * When combined with {@link max}, this can be used to page results.
-   */
-  offset?: number;
 
   /**
    * State whether to only search for terms within labels of catalogue items.
