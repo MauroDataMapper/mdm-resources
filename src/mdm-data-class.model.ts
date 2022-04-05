@@ -45,13 +45,13 @@ export type DataClassIndexResponse = MdmIndexResponse<DataClass>;
 export type DataClassDetailResponse = MdmResponse<DataClassDetail>;
 
 /**
- * Represents hierarchy information for a Data Class.
+ * Represents information for a Data Class relating to a hierarchy.
  */
-export interface DataClassHierarchy {
+export interface DataClassNode {
   /**
    * The child data classes under this Data Class.
    */
-  dataClasses?: DataClassHierarchy[];
+  dataClasses?: DataClassNode[];
 
   /**
    * The Data Elements under this Data Class.
@@ -61,4 +61,4 @@ export interface DataClassHierarchy {
 
 export type DataClassFull =
   DataClassDetail
-  & DataClassHierarchy;
+  & DataClassNode;

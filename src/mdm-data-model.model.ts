@@ -83,9 +83,9 @@ export interface DataModelIntersection {
 export type DataModelIntersectionResponse = MdmResponse<DataModelIntersection>;
 
 /**
- * Represents hierarchy information for a Data Model.
+ * Represents information for a Data Model relating to a hierarchy.
  */
-export interface DataModelHierarchy {
+export interface DataModelNode {
   /**
    * The data types available for this Data Model.
    */
@@ -99,6 +99,6 @@ export interface DataModelHierarchy {
 
 export type DataModelFull =
   DataModelDetail
-  & DataModelHierarchy;
+  & DataModelNode;
 
 export type DataModelFullResponse = MdmResponse<DataModelFull>;
