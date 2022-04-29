@@ -230,6 +230,10 @@ export class MdmTerminologyResource extends MdmResource {
    * @returns The result of the `GET` request.
    *
    * `200 OK` - will return a {@link TerminologyDetailResponse} containing a {@link TerminologyDetail} object.
+   *
+   * This function does allow either an ID or a path string, but should ideally be used only for IDs. For using paths,
+   * see the {@link MdmCatalogueItemResource.getPath()} function instead; there are no guarantees this function will support
+   * paths in the future, but will currently be supported for backwards compatibility.
    */
   get(terminologyId: Uuid, query?: QueryParameters, options?: RequestSettings) {
     let url = '';

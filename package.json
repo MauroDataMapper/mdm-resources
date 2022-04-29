@@ -1,12 +1,14 @@
 {
   "name": "@maurodatamapper/mdm-resources",
-  "version": "5.0.0",
+  "version": "5.1.0",
   "main": "lib/es2015/index.js",
   "module": "lib/es2015/index.js",
   "license": "Apache-2.0",
   "scripts": {
     "clean": "rm -rf lib",
+    "clean-windows": "del /s /f /q lib",
     "build": "rm -rf lib && tsc && tsc --target ES5 --outDir lib/es5 && tsc --target ES6 --outDir lib/es6",
+    "build-windows": "del /s /f /q lib && tsc && tsc --target ES5 --outDir lib/es5 && tsc --target ES6 --outDir lib/es6",
     "start": "tsc --watch",
     "test": "jest",
     "eslint": "tsc --noEmit && eslint . --ext ts --fix",

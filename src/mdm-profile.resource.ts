@@ -197,8 +197,13 @@ export class MdmProfileResource extends MdmResource {
     profileName: string,
     domainType: MultiFacetAwareDomainType | CatalogueItemDomainType,
     catalogueItemId: Uuid,
-    data: Profile) {
-    const url = `${this.apiEndpoint}/profiles/${profileNamespace}/${profileName}/${getMultiFacetAwareDomainType(domainType)}/${catalogueItemId}/validate`;
+    data: Profile,
+    profileVersion?: Version) {
+    let url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(domainType)}/${catalogueItemId}/profile/${profileNamespace}/${profileName}`;
+    if (profileVersion) {
+      url += `/${profileVersion}`;
+    }
+    url += '/validate';
     return this.simplePost(url, data);
   }
 

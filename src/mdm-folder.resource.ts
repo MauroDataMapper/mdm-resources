@@ -330,4 +330,20 @@ export class MdmFolderResource extends MdmResource {
     return this.simplePut(url, { }, options);
   }
 
+  /**
+   * `HTTP PUT` - Move a folder another parent folder, or to the root of the tree if no parent is provided.
+   *
+   * @param folderId The unique identifier of the folder to move.
+   * @param targetFolderId The unique identifier of the target folder that {@link folderId} should be moved to.
+   * If not provided, then the root of the tree is assumed.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `PUT` request.
+   *
+   * `200 OK` - will return a {@link FolderDetailResponse} containing a {@link FolderDetail} object of the folder
+   * that was moved.
+   */
+  moveFolderToFolder(folderId: Uuid, targetFolderId?: Uuid, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/folders/${folderId}/folder/${targetFolderId ?? 'root'}`;
+    return this.simplePut(url, { }, options);
+  }
 }

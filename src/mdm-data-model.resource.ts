@@ -18,8 +18,8 @@ SPDX-License-Identifier: Apache-2.0
 */
 
 import { BranchModelPayload, FinalisePayload, ForkModelPayload, ModelRemoveQueryParameters, ModelUpdatePayload, VersionModelPayload } from './mdm-model-types.model';
-import { RequestSettings, QueryParameters, Uuid, FilterQueryParameters, Payload, Version } from './mdm-common.model';
-import { DataModelCreatePayload, DataModelCreateQueryParameters } from './mdm-data-model.model';
+import { RequestSettings, QueryParameters, Uuid, FilterQueryParameters, Payload, Version, SearchQueryParameters } from './mdm-common.model';
+import { DataModelCreatePayload, DataModelCreateQueryParameters, DataModelSubsetPayload } from './mdm-data-model.model';
 import { MdmResource } from './mdm-resource';
 
 /**
@@ -262,14 +262,36 @@ export class MdmDataModelResource extends MdmResource {
     return this.simplePut(url, {}, options);
   }
 
-  search(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
-    const url = `${this.apiEndpoint}/dataModels/${dataModelId}/search`;
-    return this.simplePost(url, queryStringParams, restHandlerOptions);
+  /**
+   * `HTTP POST` - Search within a data model for one or more search terms.
+   *
+   * @param id The unique identifier of the data model to search.
+   * @param query The query parameters to control the search.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `POST` request.
+   *
+   * `200 OK` - will return a {@link CatalogueItemSearchResponse} containing a collection of
+   * {@link CatalogueItemSearchResult} object.
+   */
+  search(id: Uuid, query?: SearchQueryParameters, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/dataModels/${id}/search`;
+    return this.simplePost(url, query, options);
   }
 
-  hierarchy(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
-    const url = `${this.apiEndpoint}/dataModels/${dataModelId}/hierarchy`;
-    return this.simpleGet(url, queryStringParams, restHandlerOptions);
+  /**
+   * Gets the hierarchical information for a Data Model, returning all child classes, elements and types.
+   *
+   * @param id The unique identifier of the data model to get.
+   * @param query Optional query parameters, if required.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return a {@link DataModelFullResponse} containing a single {@link DataModelFull} object,
+   * including all details of the Data Model/Type/Class/Element hierarchy.
+   */
+  hierarchy(id: Uuid, query?: QueryParameters, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/dataModels/${id}/hierarchy`;
+    return this.simpleGet(url, query, options);
   }
 
   newModelVersion(dataModelId: string, data: any, restHandlerOptions?: RequestSettings) {
@@ -510,6 +532,10 @@ export class MdmDataModelResource extends MdmResource {
    * @returns The result of the `GET` request.
    *
    * `200 OK` - will return a {@link DataModelDetailResponse} containing a {@link DataModelDetail} object.
+   *
+   * This function does allow either an ID or a path string, but should ideally be used only for IDs. For using paths,
+   * see the {@link MdmCatalogueItemResource.getPath()} function instead; there are no guarantees this function will support
+   * paths in the future, but will currently be supported for backwards compatibility.
    */
   get(dataModelId: Uuid, query?: QueryParameters, options?: RequestSettings) {
     let url = '';
@@ -647,5 +673,39 @@ export class MdmDataModelResource extends MdmResource {
   removeImportedDataClass(dataModelId: Uuid, otherDataModelId: Uuid, otherDataClassId: Uuid, options?: RequestSettings) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${otherDataModelId}/${otherDataClassId}`;
     return this.simpleDelete(url, {}, options);
+  }
+
+  /**
+   * `HTTP PUT` - Copy a subset of a Data Model to another Data Model. Define which Data Elements to add/remove and the related
+   * schema will also be copied to the target as well.
+   *
+   * @param sourceId The unique identifier of the source Data Model to copy from.
+   * @param targetId The unique identifier of the target Data Model to copy to.
+   * @param payload The payload containing details on what to copy.
+   * @param options Optional REST handler options, if required.
+   * @returns The result of the `PUT` request.
+   *
+   * `200 OK` - will return a {@link DataModelDetailResponse} containing a {@link DataModelDetail} object.
+   */
+  copySubset(sourceId: Uuid, targetId: Uuid, payload: DataModelSubsetPayload, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/dataModels/${sourceId}/subset/${targetId}`;
+    return this.simplePut(url, payload, options);
+  }
+
+  /**
+   * `HTTP GET` - Identify the intersection between two Data Models, determining what are common between them.
+   * Will provide a list of Data Element identifiers from the source model that match what is in the target model.
+   *
+   * @param sourceId The unique identifier of the source Data Model to copy from.
+   * @param targetId The unique identifier of the target Data Model to copy to.
+   * @param query Optional query parameters, if required.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return a {@link DataModelIntersectionResponse} containing a {@link DataModelIntersection} object.
+   */
+  intersects(sourceId: Uuid, targetId: Uuid, query?: QueryParameters, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/dataModels/${sourceId}/intersects/${targetId}`;
+    return this.simpleGet(url, query, options);
   }
 }

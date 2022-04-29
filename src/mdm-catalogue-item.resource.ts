@@ -17,7 +17,7 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { AnnotationChildCreatePayload, AnnotationCreatePayload, ReferenceFile, ReferenceFileCreatePayload } from './mdm-catalogue-item.model';
+import { AnnotationChildCreatePayload, AnnotationCreatePayload, PathableDomainType, ReferenceFile, ReferenceFileCreatePayload } from './mdm-catalogue-item.model';
 import { RequestSettings, QueryParameters, ModelDomainType, Uuid, FilterQueryParameters } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 
@@ -421,6 +421,61 @@ export class MdmCatalogueItemResource extends MdmResource {
   removeRulesRepresentation(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, ruleId: string, representationId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
     const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/rules/${ruleId}/representations/${representationId}`;
     return this.simpleDelete(url, queryStringParams, restHandlerOptions);
+  }
+
+  // Paths
+
+  /**
+   * `HTTP GET` - Gets a catalogue item by its path.
+   *
+   * @param domainType The domain type of the parent catalogue item.
+   * @param path The path to the catalogue item. Use Mauro pathing syntax. This will automatically be URL encoded before
+   * submitting.
+   * @param query Optional query parameters, if required.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return an {@link MdmResponse} containing the catalogue item requested. The type of object in the response
+   * body will depend on the path requested.
+   *
+   * @example
+   *
+   * ```ts
+   * getPath('dataModels', 'dm:My Data Model')
+   * getPath('codeSets', 'cs:My Code Set')
+   * getPath('folders', 'fo:My Folder')
+   * ```
+   */
+  getPath(domainType: PathableDomainType, path: string, query?: QueryParameters, options?: RequestSettings) {
+    const encodedPath = encodeURIComponent(path);
+    const url = `${this.apiEndpoint}/${domainType}/path/${encodedPath}`;
+    return this.simpleGet(url, query, options);
+  }
+
+   /**
+    * `HTTP GET` - Gets a catalogue item by its path, where the catalogue item is a child of a specific parent item.
+    *
+    * @param domainType The domain type of the parent catalogue item.
+    * @param id The unique identifier of the parent catalogue item.
+    * @param path The path to the child catalogue item. Use Mauro pathing syntax. This will automatically be URL encoded before
+    * submitting.
+    * @param query Optional query parameters, if required.
+    * @param options Optional REST handler parameters, if required.
+    * @returns The result of the `GET` request.
+    *
+    * `200 OK` - will return an {@link MdmResponse} containing the catalogue item requested. The type of object in the response
+    * body will depend on the path requested.
+    *
+    * @example
+    *
+    * ```ts
+    * getPath('folders', '52c8a239-afad-4041-ac9f-932b89525c0d', 'dm:My Data Model')
+    * ```
+    */
+  getPathFromParent(domainType: PathableDomainType, id: Uuid, path: string, query?: QueryParameters, options?: RequestSettings) {
+    const encodedPath = encodeURIComponent(path);
+    const url = `${this.apiEndpoint}/${domainType}/${id}/path/${encodedPath}`;
+    return this.simpleGet(url, query, options);
   }
 
 }
