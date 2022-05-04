@@ -276,7 +276,7 @@ export class MdmProfileResource extends MdmResource {
   }
 
   /**
-   * `HTTP POST` - Search within the catalogue for one or more search terms and return profile fields matching 
+   * `HTTP POST` - Search within the catalogue for one or more search terms and return profile fields matching
    * the provided profile.
    *
    * @param profileNamespace The namespace of the profile to validate.
@@ -298,7 +298,7 @@ export class MdmProfileResource extends MdmResource {
   }
 
   /**
-   * `HTTP POST` - Search within a single catalogue item for one or more search terms and return profile fields matching 
+   * `HTTP POST` - Search within a single catalogue item for one or more search terms and return profile fields matching
    * the provided profile.
    *
    * @param domainType The domain type of the catalogue item to search in.

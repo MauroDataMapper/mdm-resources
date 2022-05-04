@@ -425,7 +425,7 @@ export interface CatalogueItemReference {
 export interface SearchQueryParameters extends SortParameters, PageParameters, QueryParameters {
   /**
    * The term(s) to search for in the catalogue.
-   * 
+   *
    * You can supply the search term "*" to return all catalogue items under a catalogue or parent catalogue item.
    */
   searchTerm?: string;
