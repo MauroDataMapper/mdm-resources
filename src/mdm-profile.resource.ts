@@ -132,12 +132,12 @@ export class MdmProfileResource extends MdmResource {
    *
    * `200 OK` - will return a {@link ProfileDefinitionResponse} containing a {@link ProfileDefinition}.
    */
-  definition(    
+  definition(
     profileNamespace: string,
     profileName: string,
     query?: QueryParameters,
     options?: RequestSettings) {
-    const url = `${this.apiEndpoint}/profiles/${profileNamespace}/${profileName}`;    
+    const url = `${this.apiEndpoint}/profiles/${profileNamespace}/${profileName}`;
     return this.simpleGet(url, query, options);
   }
 
