@@ -79,6 +79,13 @@ export interface Profile {
 
 export type ProfileResponse = MdmResponse<Profile>;
 
+export interface ProfileDefinition {
+  [key: string]: any;
+  sections: ProfileSection[];
+}
+
+export type ProfileDefinitionResponse = MdmResponse<ProfileDefinition>;
+
 export interface ProfileProvider {
   name: string;
   namespace: string;

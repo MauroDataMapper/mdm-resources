@@ -121,6 +121,27 @@ export class MdmProfileResource extends MdmResource {
   }
 
   /**
+   * `HTTP GET` - Gets a profile definition for a namespace/name. This is similar to a full profile but
+   * without any assigned values or mapped to a catalogue item.
+   *
+   * @param profileNamespace The namespace of the profile to get.
+   * @param profileName The name of the profile to get.
+   * @param query Optional query string parameters, if required.
+   * @param options Optional REST handler options, if required.
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return a {@link ProfileDefinitionResponse} containing a {@link ProfileDefinition}.
+   */
+  definition(    
+    profileNamespace: string,
+    profileName: string,
+    query?: QueryParameters,
+    options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/profiles/${profileNamespace}/${profileName}`;    
+    return this.simpleGet(url, query, options);
+  }
+
+  /**
    * `HTTP POST` - Saves a profile and its metadata values to a catalogue item.
    *
    * @param domainType The domain type of the catalogue item to get.
