@@ -714,10 +714,10 @@ export class MdmDataModelResource extends MdmResource {
   }
 
   /**
-   * `HTTP POST` - Identify the intersections between a source Data Model and many target Data Models, determining 
-   * for each target the data elements - checking only the list of data elements provided in the request body - from the 
+   * `HTTP POST` - Identify the intersections between a source Data Model and many target Data Models, determining
+   * for each target the data elements - checking only the list of data elements provided in the request body - from the
    * source which exist in the target.
-   * Will provide a collection of SourceTargetIntersection, each of which lists the data elements intersecting between the 
+   * Will provide a collection of SourceTargetIntersection, each of which lists the data elements intersecting between the
    * source and target.
    *
    * @param sourceId The unique identifier of the source Data Model
@@ -730,5 +730,5 @@ export class MdmDataModelResource extends MdmResource {
    intersectsMany(sourceId: Uuid, data: SourceTargetIntersectionPayload, options?: RequestSettings) {
     const url = `${this.apiEndpoint}/dataModels/${sourceId}/intersectsMany`;
     return this.simplePost(url, data, options);
-  }  
+  }
 }

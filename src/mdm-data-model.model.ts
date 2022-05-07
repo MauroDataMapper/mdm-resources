@@ -89,12 +89,12 @@ export type DataModelIntersectionResponse = MdmResponse<DataModelIntersection>;
   /**
    * The source Data Model Id
    */
-  sourceDataModelId: Uuid; 
+  sourceDataModelId: Uuid;
 
   /**
    * The target Data Model Id
    */
-  targetDataModelId: Uuid; 
+  targetDataModelId: Uuid;
 
   /**
    * The list of identifiers of elements that are in source model, and which were provided in a request, for which a data element
@@ -118,7 +118,7 @@ export interface SourceTargetIntersectionPayload {
 
   /**
    * The data elements to be checked. Each id identifies a data element in ßa source data model.
-   */  
+   */
   dataElementIds: Uuid[];
 }
 
