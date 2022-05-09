@@ -17,7 +17,7 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 import { Profile, ProfileContextIndexPayload, ProfileContextPayload } from './mdm-profile.model';
-import { RequestSettings, QueryParameters, Uuid, Version, MultiFacetAwareDomainType, CatalogueItemDomainType, getMultiFacetAwareDomainType } from './mdm-common.model';
+import { RequestSettings, QueryParameters, Uuid, Version, MultiFacetAwareDomainType, CatalogueItemDomainType, getMultiFacetAwareDomainType, SearchQueryParameters } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 
 /**
@@ -117,6 +117,27 @@ export class MdmProfileResource extends MdmResource {
     if (profileVersion) {
       url += `/${profileVersion}`;
     }
+    return this.simpleGet(url, query, options);
+  }
+
+  /**
+   * `HTTP GET` - Gets a profile definition for a namespace/name. This is similar to a full profile but
+   * without any assigned values or mapped to a catalogue item.
+   *
+   * @param profileNamespace The namespace of the profile to get.
+   * @param profileName The name of the profile to get.
+   * @param query Optional query string parameters, if required.
+   * @param options Optional REST handler options, if required.
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return a {@link ProfileDefinitionResponse} containing a {@link ProfileDefinition}.
+   */
+  definition(
+    profileNamespace: string,
+    profileName: string,
+    query?: QueryParameters,
+    options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/profiles/${profileNamespace}/${profileName}`;
     return this.simpleGet(url, query, options);
   }
 
@@ -273,5 +294,53 @@ export class MdmProfileResource extends MdmResource {
     options?: RequestSettings) {
     const url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(domainType)}/${catalogueItemId}/profile/validateMany`;
     return this.simplePost(url, payload, options);
+  }
+
+  /**
+   * `HTTP POST` - Search within the catalogue for one or more search terms and return profile fields matching
+   * the provided profile.
+   *
+   * @param profileNamespace The namespace of the profile to validate.
+   * @param profileName The name of the profile to validate.
+   * @param query The query parameters to control the search.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `POST` request.
+   *
+   * `200 OK` - will return a {@link ProfileSearchResponse} containing a collection of
+   * {@link ProfileSearchResult} objects.
+   */
+  search(
+    profileNamespace: string,
+    profileName: string,
+    query: SearchQueryParameters,
+    options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/profiles/${profileNamespace}/${profileName}/search`;
+    return this.simplePost(url, query, options);
+  }
+
+  /**
+   * `HTTP POST` - Search within a single catalogue item for one or more search terms and return profile fields matching
+   * the provided profile.
+   *
+   * @param domainType The domain type of the catalogue item to search in.
+   * @param id The unique identifier of the catalogue item to search in.
+   * @param profileNamespace The namespace of the profile to validate.
+   * @param profileName The name of the profile to validate.
+   * @param query The query parameters to control the search.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `POST` request.
+   *
+   * `200 OK` - will return a {@link ProfileSearchResponse} containing a collection of
+   * {@link ProfileSearchResult} objects.
+   */
+  searchCatalogueItem(
+    domainType: MultiFacetAwareDomainType,
+    id: Uuid,
+    profileNamespace: string,
+    profileName: string,
+    query: SearchQueryParameters,
+    options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(domainType)}/${id}/profiles/${profileNamespace}/${profileName}/search`;
+    return this.simplePost(url, query, options);
   }
 }

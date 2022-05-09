@@ -17,7 +17,7 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { CatalogueItemDomainType, MdmIndexResponse, MdmResponse, Payload, Uuid, Version } from './mdm-common.model';
+import { Breadcrumb, CatalogueItemDomainType, MdmIndexResponse, MdmResponse, Payload, Uuid, Version } from './mdm-common.model';
 
 export type ProfileFieldDataType =
   'boolean'
@@ -79,6 +79,13 @@ export interface Profile {
 
 export type ProfileResponse = MdmResponse<Profile>;
 
+export interface ProfileDefinition {
+  [key: string]: any;
+  sections: ProfileSection[];
+}
+
+export type ProfileDefinitionResponse = MdmResponse<ProfileDefinition>;
+
 export interface ProfileProvider {
   name: string;
   namespace: string;
@@ -138,3 +145,23 @@ export interface Metadata {
 export type MetadataIndexResponse = MdmIndexResponse<Metadata>;
 
 export type ProfilePayload = Profile & Payload;
+
+export interface ProfileSearchResultField {
+  [key: string]: any;
+  fieldName: string;
+  metadataPropertyName: string;
+  currentValue?: string;
+  dataType: ProfileFieldDataType;
+  allowedValues?: string[];
+}
+
+export interface ProfileSearchResult {
+  [key: string]: any;
+  id: Uuid;
+  label: string;
+  description?: string;
+  breadcrumbs: Breadcrumb[];
+  profileFields: ProfileSearchResultField[];
+}
+
+export type ProfileSearchResponse = MdmIndexResponse<ProfileSearchResult>;
