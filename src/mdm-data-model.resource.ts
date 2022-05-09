@@ -19,7 +19,7 @@ SPDX-License-Identifier: Apache-2.0
 
 import { BranchModelPayload, FinalisePayload, ForkModelPayload, ModelRemoveQueryParameters, ModelUpdatePayload, VersionModelPayload } from './mdm-model-types.model';
 import { RequestSettings, QueryParameters, Uuid, FilterQueryParameters, Payload, Version, SearchQueryParameters } from './mdm-common.model';
-import { DataModelCreatePayload, DataModelCreateQueryParameters, DataModelSubsetPayload } from './mdm-data-model.model';
+import { DataModelCreatePayload, DataModelCreateQueryParameters, DataModelSubsetPayload, SourceTargetIntersectionPayload } from './mdm-data-model.model';
 import { MdmResource } from './mdm-resource';
 
 /**
@@ -64,6 +64,10 @@ import { MdmResource } from './mdm-resource';
  |   PUT    | /api/dataModels/${dataModelId}/dataTypes/${otherDataModelId}/${otherDataTypeId}                                                      | Action: addImportDataType
  |  DELETE  | /api/dataModels/${dataModelId}/dataClasses/${otherDataModelId}/${otherDataClassId}                                                   | Action: removeImportDataClass
  |   PUT    | /api/dataModels/${dataModelId}/dataClasses/${otherDataModelId}/${otherDataClassId}                                                   | Action: addImportDataClass
+ |
+ |   PUT    | /api/dataModels/${sourceId}/subset/${targetId}                                                                                       | Action: subset
+ |   GET    | /api/dataModels/${sourceId}/intersects/${targetId}                                                                                   | Action: intersects
+ |   POST   | /api/dataModels/${dataModelId}/intersectsMany                                                                                        | Action: intersectsMany
  */
 
 /**
@@ -707,5 +711,24 @@ export class MdmDataModelResource extends MdmResource {
   intersects(sourceId: Uuid, targetId: Uuid, query?: QueryParameters, options?: RequestSettings) {
     const url = `${this.apiEndpoint}/dataModels/${sourceId}/intersects/${targetId}`;
     return this.simpleGet(url, query, options);
+  }
+
+  /**
+   * `HTTP POST` - Identify the intersections between a source Data Model and many target Data Models, determining
+   * for each target the data elements - checking only the list of data elements provided in the request body - from the
+   * source which exist in the target.
+   * Will provide a collection of SourceTargetIntersection, each of which lists the data elements intersecting between the
+   * source and target.
+   *
+   * @param sourceId The unique identifier of the source Data Model
+   * @param data The payload of the request containing all the details for the intersection. The payload is a SourceTargetIntersectionPayload
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `POST` request.
+   *
+   * `200 OK` - will return a {@link MdmIndexResponse} containing a collection of {@link SourceTargetIntersection} objects.
+   */
+   intersectsMany(sourceId: Uuid, data: SourceTargetIntersectionPayload, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/dataModels/${sourceId}/intersectsMany`;
+    return this.simplePost(url, data, options);
   }
 }

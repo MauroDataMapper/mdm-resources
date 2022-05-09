@@ -83,6 +83,46 @@ export interface DataModelIntersection {
 export type DataModelIntersectionResponse = MdmResponse<DataModelIntersection>;
 
 /**
+ * Represents the intersection between a source and target Data Model, but limited to a requested set of data elements
+ */
+ export interface SourceTargetIntersection {
+  /**
+   * The source Data Model Id
+   */
+  sourceDataModelId: Uuid;
+
+  /**
+   * The target Data Model Id
+   */
+  targetDataModelId: Uuid;
+
+  /**
+   * The list of identifiers of elements that are in source model, and which were provided in a request, for which a data element
+   * matching the source by path exists in the target.
+   */
+  intersects: Uuid[];
+}
+
+export type SourceTargetIntersectionResponse = MdmIndexResponse<SourceTargetIntersection>;
+
+/**
+ * Represents the payload of the request to determine intersections between a source and many target data models.
+ * For each target (of those listed in targetDataModelIds), the request will determine which data elements (of those listed
+ * in dataElementIds) exist in the source and match by path in the target.
+ */
+export interface SourceTargetIntersectionPayload {
+  /**
+   * The target data models to be checked
+   */
+  targetDataModelIds: Uuid[];
+
+  /**
+   * The data elements to be checked. Each id identifies a data element in ßa source data model.
+   */
+  dataElementIds: Uuid[];
+}
+
+/**
  * Represents information for a Data Model relating to a hierarchy.
  */
 export interface DataModelNode {
