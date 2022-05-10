@@ -327,6 +327,12 @@ export interface PageParameters {
    * Define the offset to start at when returning query results.
    */
   offset?: number;
+
+  /**
+   * If wanting to request all objects, pass the `all: true` parameter. Note that this automatically overrides
+   * any `max` and/or `offset` set.
+   */
+  all?: boolean;
 }
 
 /**
