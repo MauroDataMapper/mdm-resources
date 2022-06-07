@@ -17,7 +17,7 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 import { ModelRemoveQueryParameters } from './mdm-model-types.model';
-import { RequestSettings, QueryParameters, FilterQueryParameters, Uuid } from './mdm-common.model';
+import { RequestSettings, QueryParameters, FilterQueryParameters, Uuid, SearchQueryParameters } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 import { ContainerCreatePayload, ContainerUpdatePayload } from './mdm-container-types.model';
 
@@ -46,9 +46,20 @@ import { ContainerCreatePayload, ContainerUpdatePayload } from './mdm-container-
  */
 export class MdmFolderResource extends MdmResource {
 
-  search(folderId: Uuid, data: any, restHandlerOptions?: RequestSettings) {
-    const url = `${this.apiEndpoint}/folders/${folderId}/search`;
-    return this.simplePost(url, data, restHandlerOptions);
+  /**
+   * `HTTP POST` - Search within a folder for one or more search terms.
+   *
+   * @param id The unique identifier of the folder to search.
+   * @param query The query parameters to control the search.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `POST` request.
+   *
+   * `200 OK` - will return a {@link CatalogueItemSearchResponse} containing a collection of
+   * {@link CatalogueItemSearchResult} object.
+   */
+  search(id: Uuid, query: SearchQueryParameters, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/folders/${id}/search`;
+    return this.simplePost(url, query, options);
   }
 
   searchByGet(folderId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {

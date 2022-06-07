@@ -18,7 +18,7 @@ SPDX-License-Identifier: Apache-2.0
 */
 
 import { AnnotationChildCreatePayload, AnnotationCreatePayload, PathableDomainType, ReferenceFile, ReferenceFileCreatePayload } from './mdm-catalogue-item.model';
-import { RequestSettings, QueryParameters, ModelDomainType, Uuid, FilterQueryParameters } from './mdm-common.model';
+import { RequestSettings, QueryParameters, ModelDomainType, Uuid, FilterQueryParameters, SearchQueryParameters } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 
 /**
@@ -71,9 +71,19 @@ import { MdmResource } from './mdm-resource';
 export class MdmCatalogueItemResource extends MdmResource {
   // Search
 
-  search(data: any, restHandlerOptions?: RequestSettings) {
+  /**
+   * `HTTP POST` - Search within the entire catalogue for one or more search terms.
+   *
+   * @param query The query parameters to control the search.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `POST` request.
+   *
+   * `200 OK` - will return a {@link CatalogueItemSearchResponse} containing a collection of
+   * {@link CatalogueItemSearchResult} objects.
+   */
+  search(query: SearchQueryParameters, options?: RequestSettings) {
     const url = `${this.apiEndpoint}/catalogueItems/search`;
-    return this.simplePost(url, data, restHandlerOptions);
+    return this.simplePost(url, query, options);
   }
 
   searchByGet(queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {

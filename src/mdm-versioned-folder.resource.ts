@@ -17,7 +17,7 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 import { BranchModelPayload, FinalisePayload, ForkModelPayload, ModelRemoveQueryParameters, VersionModelPayload } from './mdm-model-types.model';
-import { FilterQueryParameters, Payload, QueryParameters, RequestSettings, Uuid } from './mdm-common.model';
+import { FilterQueryParameters, QueryParameters, RequestSettings, SearchQueryParameters, Uuid } from './mdm-common.model';
 import { ContainerCreatePayload, ContainerUpdatePayload } from './mdm-container-types.model';
 import { MdmResource } from './mdm-resource';
 
@@ -289,18 +289,19 @@ export class MdmVersionedFolderResource extends MdmResource {
   }
 
   /**
-   * `HTTP POST` - Searches this versioned folder for content.
+   * `HTTP POST` - Search within a versioned folder for one or more search terms.
    *
    * @param id The unique identifier of the versioned folder to search.
-   * @param data The payload including the search parameters.
+   * @param query The query parameters to control the search.
    * @param options Optional REST handler parameters, if required.
    * @returns The result of the `POST` request.
    *
-   * `200 OK` - will return an array of search result objects.
+   * `200 OK` - will return a {@link CatalogueItemSearchResponse} containing a collection of
+   * {@link CatalogueItemSearchResult} object.
    */
-  search(id: Uuid, data: Payload, options?: RequestSettings) {
+  search(id: Uuid, query: SearchQueryParameters, options?: RequestSettings) {
     const url = `${this.apiEndpoint}/versionedFolders/${id}/search`;
-    return this.simplePost(url, data, options);
+    return this.simplePost(url, query, options);
   }
 
   /**

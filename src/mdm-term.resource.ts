@@ -17,7 +17,7 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 import { Term } from './mdm-term.model';
-import { RequestSettings, QueryParameters, Uuid, FilterQueryParameters } from './mdm-common.model';
+import { RequestSettings, QueryParameters, Uuid, FilterQueryParameters, SearchQueryParameters } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 
 /**
@@ -50,9 +50,20 @@ import { MdmResource } from './mdm-resource';
  */
 export class MdmTermResource extends MdmResource {
 
-  search(terminologyId: Uuid, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
-    const url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms/search`;
-    return this.simplePost(url, queryStringParams, restHandlerOptions);
+  /**
+   * `HTTP POST` - Search within a terminology for terms that match one or more search terms.
+   *
+   * @param id The unique identifier of the terminology to search.
+   * @param query The query parameters to control the search.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `POST` request.
+   *
+   * `200 OK` - will return a {@link CatalogueItemSearchResponse} containing a collection of
+   * {@link CatalogueItemSearchResult} object.
+   */
+  search(id: Uuid, query?: SearchQueryParameters, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/terminologies/${id}/terms/search`;
+    return this.simplePost(url, query, options);
   }
 
   tree(terminologyId: Uuid, termId?: Uuid, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {

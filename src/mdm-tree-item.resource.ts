@@ -16,8 +16,8 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { RequestSettings, QueryParameters, ContainerDomainType, ModelDomainType, Uuid, MultiFacetAwareDomainType } from './mdm-common.model';
-import { TreeItemExpandedQueryParameters, TreeItemListQueryParameters, TreeItemSearchQueryParameters } from './mdm-tree-item.model';
+import { RequestSettings, QueryParameters, ContainerDomainType, ModelDomainType, Uuid, MultiFacetAwareDomainType, SearchQueryParameters } from './mdm-common.model';
+import { TreeItemExpandedQueryParameters, TreeItemListQueryParameters } from './mdm-tree-item.model';
 import { MdmResource } from './mdm-resource';
 
 /**
@@ -133,7 +133,7 @@ export class MdmTreeItemResource extends MdmResource {
   search(
     containerDomainType: ContainerDomainType,
     searchTerm: string,
-    query?: TreeItemSearchQueryParameters,
+    query?: SearchQueryParameters,
     options?: RequestSettings
   ) {
     const url = `${this.apiEndpoint}/tree/${containerDomainType}/search/${searchTerm}`;
