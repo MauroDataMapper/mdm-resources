@@ -17,7 +17,7 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 import { FinalisePayload, ModelRemoveQueryParameters, ModelUpdatePayload } from './mdm-model-types.model';
-import { FilterQueryParameters, QueryParameters, RequestSettings, Uuid } from './mdm-common.model';
+import { FilterQueryParameters, QueryParameters, RequestSettings, SearchQueryParameters, Uuid } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 
 /**
@@ -109,9 +109,20 @@ export class MdmReferenceDataModelResource extends MdmResource {
     return this.simplePut(url, data, restHandlerOptions);
   }
 
-  search(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
-    const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/search`;
-    return this.simplePost(url, queryStringParams, restHandlerOptions);
+  /**
+   * `HTTP POST` - Search within a reference data model for one or more search terms.
+   *
+   * @param id The unique identifier of the reference data model to search.
+   * @param query The query parameters to control the search.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `POST` request.
+   *
+   * `200 OK` - will return a {@link CatalogueItemSearchResponse} containing a collection of
+   * {@link CatalogueItemSearchResult} object.
+   */
+  search(id: Uuid, query?: SearchQueryParameters, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/referenceDataModels/${id}/search`;
+    return this.simplePost(url, query, options);
   }
 
   exportModel(referenceDataModelId: string, exporterNamespace, exporterName, exporterVersion, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {

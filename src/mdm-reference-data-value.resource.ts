@@ -16,7 +16,7 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { RequestSettings, QueryParameters } from './mdm-common.model';
+import { RequestSettings, QueryParameters, SearchQueryParameters } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 
 /**
@@ -54,8 +54,19 @@ export class MdmReferenceDataValueResource extends MdmResource {
         return this.simpleDelete(url, queryStringParams, restHandlerOptions);
     }
 
-    search(referenceDataModelId: string, data: any, restHandlerOptions?: RequestSettings) {
-        const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/referenceDataValues/search?asRows=true`;
-        return this.simplePost(url, data, restHandlerOptions);
-    }
+  /**
+   * `HTTP POST` - Search within a reference data model for reference data values that match one or more search terms.
+   *
+   * @param id The unique identifier of the reference data model to search.
+   * @param query The query parameters to control the search.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `POST` request.
+   *
+   * `200 OK` - will return a {@link CatalogueItemSearchResponse} containing a collection of
+   * {@link CatalogueItemSearchResult} object.
+   */
+  search(id: string, data: SearchQueryParameters, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/referenceDataModels/${id}/referenceDataValues/search?asRows=true`;
+    return this.simplePost(url, data, options);
+  }
 }

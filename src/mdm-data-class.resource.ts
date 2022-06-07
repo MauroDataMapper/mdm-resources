@@ -16,9 +16,8 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { RequestSettings, QueryParameters, Uuid } from './mdm-common.model';
+import { RequestSettings, QueryParameters, Uuid, SearchQueryParameters } from './mdm-common.model';
 import { DataClass, DataClassIndexParameters } from './mdm-data-class.model';
-import { TreeItemSearchQueryParameters } from './mdm-tree-item.model';
 import { MdmResource } from './mdm-resource';
 
 /**
@@ -86,19 +85,20 @@ export class MdmDataClassResource extends MdmResource {
   }
 
   /**
-   * `HTTP GET` - Request a full text search against the a parent data class within a data model.
+   * `HTTP POST` - Request a full text search against the a parent data class within a data model.
    *
    * @param dataModelId The identifier of the data model to search in.
    * @param dataClassId The identifier of the parent data class to search in.
    * @param query Additional search parameters to filter the search results.
    * @param options Optional REST handler parameters, if required.
-   * @returns The result of the `GET` request.
+   * @returns The result of the `POST` request.
    *
-   * `200 OK` - will return a {@link MdmTreeItemListResponse} containing a list of {@link MdmTreeItem} nodes.
+   * `200 OK` - will return a {@link CatalogueItemSearchResponse} containing a collection of
+   * {@link CatalogueItemSearchResult} objects.
    *
    * @see {@link TreeItemSearchParameters}
    */
-  search(dataModelId: Uuid, dataClassId: Uuid, query?: TreeItemSearchQueryParameters, options?: RequestSettings) {
+  search(dataModelId: Uuid, dataClassId: Uuid, query?: SearchQueryParameters, options?: RequestSettings) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/search`;
     return this.simplePost(url, query, options);
   }
