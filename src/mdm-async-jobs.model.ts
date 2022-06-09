@@ -16,17 +16,32 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { Modelable, ModelDomainDetail } from './mdm-model-types.model';
-import { MdmIndexResponse, MdmResponse } from './mdm-common.model';
+import { MdmIndexResponse, MdmResponse, Uuid } from './mdm-common.model';
 
-export type TerminologyDataType = 'Terminology';
+/**
+ * The different states an async job can be in.
+ */
+export type AsyncJobStatus =
+  | 'CREATED'
+  | 'RUNNING'
+  | 'COMPLETED'
+  | 'FAILED'
+  | 'CANCELLING'
+  | 'CANCELLED';
 
-export interface Terminology extends Modelable {
-  [key: string]: any;
-  type?: TerminologyDataType;
+/**
+ * Represents an asynchronous job that is running, or has run to completion, in Mauro.
+ */
+export interface AsyncJob {
+  id: Uuid;
+  jobName: string;
+  startedByUser: string;
+  dateTimeStarted: string;
+  status: AsyncJobStatus;
+  message?: string;
+  location: string;
 }
 
-export type TerminologyDetail = Terminology & ModelDomainDetail;
+export type AsyncJobResponse = MdmResponse<AsyncJob>;
 
-export type TerminologyIndexResponse = MdmIndexResponse<Terminology>;
-export type TerminologyDetailResponse = MdmResponse<TerminologyDetail>;
+export type AsyncJobIndexResponse = MdmIndexResponse<AsyncJob>;

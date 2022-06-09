@@ -16,77 +16,33 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { MdmResource } from './mdm-resource';
-import { RequestSettings, QueryParameters, Uuid, FilterQueryParameters } from './mdm-common.model';
-import { FinalisePayload, ModelCreatePayload, ModelRemoveQueryParameters, ModelUpdatePayload } from './mdm-model-types.model';
-
-/**
- * Controller: terminology
- |   GET    | /api/terminologies/providers/importers                                                                     | Action: importerProviders                       |
- |   GET    | /api/terminologies/providers/exporters                                                                     | Action: exporterProviders                       |
- |   POST   | /api/terminologies/import/${importerNamespace}/${importerName}/${importerVersion}                          | Action: importModels                            |
- |   POST   | /api/terminologies/export/${exporterNamespace}/${exporterName}/${exporterVersion}                          | Action: exportModels                            |
- |  DELETE  | /api/terminologies/${terminologyId}/readByAuthenticated                                                    | Action: readByAuthenticated                     |
- |   PUT    | /api/terminologies/${terminologyId}/readByAuthenticated                                                    | Action: readByAuthenticated                     |
- |  DELETE  | /api/terminologies/${terminologyId}/readByEveryone                                                         | Action: readByEveryone                          |
- |   PUT    | /api/terminologies/${terminologyId}/readByEveryone                                                         | Action: readByEveryone                          |
- |   PUT    | /api/terminologies/${terminologyId}/newModelVersion                                                        | Action: newModelVersion                         |
- |   PUT    | /api/terminologies/${terminologyId}/newDocumentationVersion                                                | Action: newDocumentationVersion                 |
- |   PUT    | /api/terminologies/${terminologyId}/finalise                                                               | Action: finalise                                |
- |   GET    | /api/terminologies/${terminologyId}/tree                                                                   | Action: tree                                    |
- |   POST   | /api/folders/${folderId}/terminologies                                                                     | Action: save                                    |
- |   GET    | /api/folders/${folderId}/terminologies                                                                     | Action: index                                   |
- |   PUT    | /api/terminologies/${terminologyId}/folder/${folderId}                                                     | Action: changeFolder                            |
- |   GET    | /api/terminologies/${terminologyId}/diff/${otherModelId}                                                   | Action: diff                                    |
- |   PUT    | /api/folders/${folderId}/terminologies/${terminologyId}                                                    | Action: changeFolder                            |
- |   GET    | /api/terminologies/${terminologyId}/export/${exporterNamespace}/${exporterName}/${exporterVersion}         | Action: exportModel                             |
- |   GET    | /api/terminologies                                                                                         | Action: index                                   |
- |  DELETE  | /api/terminologies                                                                                         | Action: deleteAll                               |
- |  DELETE  | /api/terminologies/${id}                                                                                   | Action: delete                                  |
- |   PUT    | /api/terminologies/${id}                                                                                   | Action: update                                  |
- |   GET    | /api/terminologies/${id}                                                                                   | Action: show                                    |
- |   PUT    | /api/terminologies/${terminologyId}/newBranchModelVersion                                                  | Action: newBranchModelVersion                   |
- |   PUT    | /api/terminologies/${terminologyId}/newForkModel                                                           | Action: newForkModel                            |
- |   GET    | /api/terminologies/${terminologyId}/latestModelVersion                                                     | Action: latestModelVersion                      |
- |   GET    | /api/terminologies/${terminologyId}/latestFinalisedModel                                                   | Action: latestFinalisedModel                    |
- |   GET    | /api/terminologies/${terminologyId}/modelVersionTree                                                       | Action: modelVersionTree                        |
- */
+import {
+  RequestSettings,
+  QueryParameters,
+  Uuid,
+  FilterQueryParameters,
+  RemoveQueryParameters
+} from './mdm-common.model';
+import {
+  FinalisePayload,
+  ModelCreatePayload,
+  ModelUpdatePayload
+} from './mdm-model-types.model';
+import { MdmModelDomainResource } from './mdm-model-types.resource';
+import { MdmResourcesConfiguration } from './mdm-resources-configuration';
+import { MdmRestHandler } from './mdm-rest-handler';
 
 /**
  * MDM resource for the management of terminologies.
  *
  * @see {@link MdmTermResource}
  */
-export class MdmTerminologyResource extends MdmResource {
-
-  importers(queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
-    const url = `${this.apiEndpoint}/terminologies/providers/importers`;
-    return this.simpleGet(url, queryStringParams, restHandlerOptions);
-  }
-
-  exporters(queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
-    const url = `${this.apiEndpoint}/terminologies/providers/exporters`;
-    return this.simpleGet(url, queryStringParams, restHandlerOptions);
-  }
-
-  importModels(namespace, name, version, data: any, restHandlerOptions?: RequestSettings) {
-    const url = `${this.apiEndpoint}/terminologies/import/${namespace}/${name}/${version}`;
-    return this.simplePost(url, data, restHandlerOptions);
-  }
-
-  exportModels(namespace, name, version, data: any, restHandlerOptions?: RequestSettings) {
-    const url = `${this.apiEndpoint}/terminologies/export/${namespace}/${name}/${version}`;
-    return this.simplePost(url, data, restHandlerOptions);
-  }
-
-  newModelVersion(terminologyId: string, data: any, restHandlerOptions?: RequestSettings) {
-    const url = `${this.apiEndpoint}/terminologies/${terminologyId}/newModelVersion`;
-    return this.simplePut(url, data, restHandlerOptions);
-  }
-
-  newDocumentationVersion(terminologyId: string, data: any, restHandlerOptions?: RequestSettings) {
-    const url = `${this.apiEndpoint}/terminologies/${terminologyId}/newDocumentationVersion`;
-    return this.simplePut(url, data, restHandlerOptions);
+export class MdmTerminologyResource extends MdmModelDomainResource {
+  constructor(
+    config?: MdmResourcesConfiguration,
+    restHandler?: MdmRestHandler
+  ) {
+    super('terminologies', config, restHandler);
   }
 
   /**
@@ -99,19 +55,13 @@ export class MdmTerminologyResource extends MdmResource {
    *
    * `200 OK` - will return a {@link TerminologyDetailResponse} containing a {@link TerminologyDetail} object.
    */
-  finalise(terminologyId: Uuid, data: FinalisePayload, options?: RequestSettings) {
+  finalise(
+    terminologyId: Uuid,
+    data: FinalisePayload,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/terminologies/${terminologyId}/finalise`;
     return this.simplePut(url, data, options);
-  }
-
-  newBranchModelVersion(terminologyId: string, data: any, restHandlerOptions?: RequestSettings) {
-    const url = `${this.apiEndpoint}/terminologies/${terminologyId}/newBranchModelVersion`;
-    return this.simplePut(url, data, restHandlerOptions);
-  }
-
-  newForkModel(terminologyId: string, data: any, restHandlerOptions?: RequestSettings) {
-    const url = `${this.apiEndpoint}/terminologies/${terminologyId}/newForkModel`;
-    return this.simplePut(url, data, restHandlerOptions);
   }
 
   /**
@@ -125,17 +75,30 @@ export class MdmTerminologyResource extends MdmResource {
    *
    * `200 OK` - will return a {@link TerminologyDetailResponse} containing a {@link TerminologyDetail} object.
    */
-   addToFolder(folderId: Uuid, data: ModelCreatePayload, options?: RequestSettings) {
+  addToFolder(
+    folderId: Uuid,
+    data: ModelCreatePayload,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/folders/${folderId}/terminologies`;
     return this.simplePost(url, data, options);
   }
 
-  tree(terminologyId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  tree(
+    terminologyId: string,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/terminologies/${terminologyId}/tree`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
 
-  moveTerminologyToFolder(terminologyId: string, folderId: string, data: any, restHandlerOptions?: RequestSettings) {
+  moveTerminologyToFolder(
+    terminologyId: string,
+    folderId: string,
+    data: any,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/terminologies/${terminologyId}/folder/${folderId}`;
     return this.simplePut(url, data, restHandlerOptions);
   }
@@ -151,14 +114,14 @@ export class MdmTerminologyResource extends MdmResource {
    *
    * `200 OK` - will return a {@link DiffCollectionResponse} containing a list of {@link DiffCollection}.
    */
-  diff(leftModelId: Uuid, rightModelId: Uuid, query?: QueryParameters, options?: RequestSettings) {
+  diff(
+    leftModelId: Uuid,
+    rightModelId: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/terminologies/${leftModelId}/diff/${rightModelId}`;
     return this.simpleGet(url, query, options);
-  }
-
-  exportModel(terminologyId: string, exporterNamespace, exporterName, exporterVersion, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
-    const url = `${this.apiEndpoint}/terminologies/${terminologyId}/export/${exporterNamespace}/${exporterName}/${exporterVersion}`;
-    return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
 
   /**
@@ -177,7 +140,10 @@ export class MdmTerminologyResource extends MdmResource {
     return this.simpleGet(url, query, options);
   }
 
-  removeAll(queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  removeAll(
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/terminologies`;
     return this.simpleDelete(url, queryStringParams, restHandlerOptions);
   }
@@ -201,7 +167,11 @@ export class MdmTerminologyResource extends MdmResource {
    *
    * @see {@link MdmDataModelResource.undoSoftDelete}
    */
-  remove(terminologyId: Uuid, query: ModelRemoveQueryParameters, options?: RequestSettings) {
+  remove(
+    terminologyId: Uuid,
+    query: RemoveQueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/terminologies/${terminologyId}`;
     return this.simpleDelete(url, query, options);
   }
@@ -216,7 +186,11 @@ export class MdmTerminologyResource extends MdmResource {
    *
    * `200 OK` - will return a {@link TerminologyDetailResponse} containing a {@link TerminologyDetail} object.
    */
-  update(terminologyId: Uuid, data: ModelUpdatePayload, options?: RequestSettings) {
+  update(
+    terminologyId: Uuid,
+    data: ModelUpdatePayload,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/terminologies/${terminologyId}`;
     return this.simplePut(url, data, options);
   }
@@ -239,47 +213,81 @@ export class MdmTerminologyResource extends MdmResource {
     let url = '';
     if (this.isGuid(terminologyId)) {
       url = `${this.apiEndpoint}/terminologies/${terminologyId}`;
-    }
-    else {
+    } else {
       url = `${this.apiEndpoint}/terminologies/path/${terminologyId}`;
     }
 
     return this.simpleGet(url, query, options);
   }
 
-  termRelationships(terminologyId: string, termRelationshipTypeId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  termRelationships(
+    terminologyId: string,
+    termRelationshipTypeId: string,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/terminologies/${terminologyId}/termRelationshipTypes/${termRelationshipTypeId}/termRelationships`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
 
-  getTermRelationship(terminologyId: string, termRelationshipTypeId: string, termRelationshipId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  getTermRelationship(
+    terminologyId: string,
+    termRelationshipTypeId: string,
+    termRelationshipId: string,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/terminologies/${terminologyId}/termRelationshipTypes/${termRelationshipTypeId}/termRelationships/${termRelationshipId}`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
 
-  removeReadByAuthenticated(terminologyId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  removeReadByAuthenticated(
+    terminologyId: string,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/terminologies/${terminologyId}/readByAuthenticated`;
     return this.simpleDelete(url, queryStringParams, restHandlerOptions);
   }
-  updateReadByAuthenticated(terminologyId: string, data?, restHandlerOptions?: RequestSettings) {
+  updateReadByAuthenticated(
+    terminologyId: string,
+    data?,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/terminologies/${terminologyId}/readByAuthenticated`;
     return this.simplePut(url, data, restHandlerOptions);
   }
-  removeReadByEveryone(terminologyId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  removeReadByEveryone(
+    terminologyId: string,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/terminologies/${terminologyId}/readByEveryone`;
     return this.simpleDelete(url, queryStringParams, restHandlerOptions);
   }
-  updateReadByEveryone(terminologyId: string, data?, restHandlerOptions?: RequestSettings) {
+  updateReadByEveryone(
+    terminologyId: string,
+    data?,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/terminologies/${terminologyId}/readByEveryone`;
     return this.simplePut(url, data, restHandlerOptions);
   }
 
-  latestModelVersion(terminologyId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  latestModelVersion(
+    terminologyId: string,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/terminologies/${terminologyId}/latestModelVersion`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
 
-  latestFinalisedModel(terminologyId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  latestFinalisedModel(
+    terminologyId: string,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/terminologies/${terminologyId}/latestFinalisedModel`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
@@ -294,7 +302,11 @@ export class MdmTerminologyResource extends MdmResource {
    *
    * `200 OK` - will return a {@link ModelVersionTreeResponse} containing a list of {@link ModelVersionItem} objects.
    */
-  modelVersionTree(id: Uuid, query?: QueryParameters, options?: RequestSettings) {
+  modelVersionTree(
+    id: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/terminologies/${id}/modelVersionTree`;
     return this.simpleGet(url, query, options);
   }
@@ -309,7 +321,11 @@ export class MdmTerminologyResource extends MdmResource {
    *
    * `200 OK` - will return a {@link BasicModelVersionTreeResponse} containing a list of {@link BasicModelVersionItem} objects.
    */
-   simpleModelVersionTree(id: Uuid, query?: QueryParameters, options?: RequestSettings) {
+  simpleModelVersionTree(
+    id: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/terminologies/${id}/simpleModelVersionTree`;
     return this.simpleGet(url, query, options);
   }

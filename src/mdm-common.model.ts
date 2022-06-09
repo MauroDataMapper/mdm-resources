@@ -125,10 +125,12 @@ export enum MultiFacetAwareDomainType {
  * @param domainType The {@link CatalogueItemDomainType} to verify.
  * @returns True if `domainType` is a container type.
  */
-export const isContainerDomainType = (domainType: CatalogueItemDomainType)  => {
-  return domainType === CatalogueItemDomainType.Classifier
-    || domainType === CatalogueItemDomainType.Folder
-    || domainType === CatalogueItemDomainType.VersionedFolder;
+export const isContainerDomainType = (domainType: CatalogueItemDomainType) => {
+  return (
+    domainType === CatalogueItemDomainType.Classifier ||
+    domainType === CatalogueItemDomainType.Folder ||
+    domainType === CatalogueItemDomainType.VersionedFolder
+  );
 };
 
 /**
@@ -138,10 +140,12 @@ export const isContainerDomainType = (domainType: CatalogueItemDomainType)  => {
  * @returns True if `domainType` is a model type.
  */
 export const isModelDomainType = (domainType: CatalogueItemDomainType) => {
-  return domainType === CatalogueItemDomainType.DataModel
-    || domainType === CatalogueItemDomainType.CodeSet
-    || domainType === CatalogueItemDomainType.Terminology
-    || domainType === CatalogueItemDomainType.ReferenceDataModel;
+  return (
+    domainType === CatalogueItemDomainType.DataModel ||
+    domainType === CatalogueItemDomainType.CodeSet ||
+    domainType === CatalogueItemDomainType.Terminology ||
+    domainType === CatalogueItemDomainType.ReferenceDataModel
+  );
 };
 
 /**
@@ -151,13 +155,15 @@ export const isModelDomainType = (domainType: CatalogueItemDomainType) => {
  * @returns True if `domainType` is a data type.
  */
 export const isDataType = (domainType: CatalogueItemDomainType) => {
-  return domainType === CatalogueItemDomainType.CodeSetType
-    || domainType === CatalogueItemDomainType.ModelDataType
-    || domainType === CatalogueItemDomainType.PrimitiveType
-    || domainType === CatalogueItemDomainType.ReferenceType
-    || domainType === CatalogueItemDomainType.EnumerationType
-    || domainType === CatalogueItemDomainType.TerminologyType
-    || domainType === CatalogueItemDomainType.ReferenceDataModelType;
+  return (
+    domainType === CatalogueItemDomainType.CodeSetType ||
+    domainType === CatalogueItemDomainType.ModelDataType ||
+    domainType === CatalogueItemDomainType.PrimitiveType ||
+    domainType === CatalogueItemDomainType.ReferenceType ||
+    domainType === CatalogueItemDomainType.EnumerationType ||
+    domainType === CatalogueItemDomainType.TerminologyType ||
+    domainType === CatalogueItemDomainType.ReferenceDataModelType
+  );
 };
 
 /**
@@ -168,23 +174,40 @@ export const isDataType = (domainType: CatalogueItemDomainType) => {
  *
  * @description Use this utility function for generalising some endpoints when only given an object that is a {@link CatalogueItem}.
  */
-export const catalogueItemToMultiFacetAware = (value: CatalogueItemDomainType): MultiFacetAwareDomainType | undefined => {
+export const catalogueItemToMultiFacetAware = (
+  value: CatalogueItemDomainType
+): MultiFacetAwareDomainType | undefined => {
   switch (value) {
-    case CatalogueItemDomainType.Classifier: return MultiFacetAwareDomainType.Classifiers;
-    case CatalogueItemDomainType.CodeSet: return MultiFacetAwareDomainType.CodeSets;
-    case CatalogueItemDomainType.DataClass: return MultiFacetAwareDomainType.DataClasses;
-    case CatalogueItemDomainType.DataElement: return MultiFacetAwareDomainType.DataElements;
-    case CatalogueItemDomainType.DataModel: return MultiFacetAwareDomainType.DataModels;
-    case CatalogueItemDomainType.EnumerationType: return MultiFacetAwareDomainType.EnumerationTypes;
-    case CatalogueItemDomainType.Folder: return MultiFacetAwareDomainType.Folders;
-    case CatalogueItemDomainType.ModelDataType: return MultiFacetAwareDomainType.ModelDataTypes;
-    case CatalogueItemDomainType.PrimitiveType: return MultiFacetAwareDomainType.PrimitiveTypes;
-    case CatalogueItemDomainType.ReferenceDataModel: return MultiFacetAwareDomainType.ReferenceDataModels;
-    case CatalogueItemDomainType.ReferenceType: return MultiFacetAwareDomainType.ReferenceTypes;
-    case CatalogueItemDomainType.Term: return MultiFacetAwareDomainType.Terms;
-    case CatalogueItemDomainType.Terminology: return MultiFacetAwareDomainType.Terminologies;
-    case CatalogueItemDomainType.VersionedFolder: return MultiFacetAwareDomainType.VersionedFolders;
-    default: return undefined;
+    case CatalogueItemDomainType.Classifier:
+      return MultiFacetAwareDomainType.Classifiers;
+    case CatalogueItemDomainType.CodeSet:
+      return MultiFacetAwareDomainType.CodeSets;
+    case CatalogueItemDomainType.DataClass:
+      return MultiFacetAwareDomainType.DataClasses;
+    case CatalogueItemDomainType.DataElement:
+      return MultiFacetAwareDomainType.DataElements;
+    case CatalogueItemDomainType.DataModel:
+      return MultiFacetAwareDomainType.DataModels;
+    case CatalogueItemDomainType.EnumerationType:
+      return MultiFacetAwareDomainType.EnumerationTypes;
+    case CatalogueItemDomainType.Folder:
+      return MultiFacetAwareDomainType.Folders;
+    case CatalogueItemDomainType.ModelDataType:
+      return MultiFacetAwareDomainType.ModelDataTypes;
+    case CatalogueItemDomainType.PrimitiveType:
+      return MultiFacetAwareDomainType.PrimitiveTypes;
+    case CatalogueItemDomainType.ReferenceDataModel:
+      return MultiFacetAwareDomainType.ReferenceDataModels;
+    case CatalogueItemDomainType.ReferenceType:
+      return MultiFacetAwareDomainType.ReferenceTypes;
+    case CatalogueItemDomainType.Term:
+      return MultiFacetAwareDomainType.Terms;
+    case CatalogueItemDomainType.Terminology:
+      return MultiFacetAwareDomainType.Terminologies;
+    case CatalogueItemDomainType.VersionedFolder:
+      return MultiFacetAwareDomainType.VersionedFolders;
+    default:
+      return undefined;
   }
 };
 
@@ -194,23 +217,40 @@ export const catalogueItemToMultiFacetAware = (value: CatalogueItemDomainType): 
  * @param value The multi facet aware domain type to map from.
  * @returns The correct {@link CatalogueItemDomainType} or `undefined` if there is no equivalent.
  */
-export const multiFacetAwareToCatalogueItem = (value: MultiFacetAwareDomainType): CatalogueItemDomainType | undefined => {
+export const multiFacetAwareToCatalogueItem = (
+  value: MultiFacetAwareDomainType
+): CatalogueItemDomainType | undefined => {
   switch (value) {
-    case MultiFacetAwareDomainType.Classifiers: return CatalogueItemDomainType.Classifier;
-    case MultiFacetAwareDomainType.CodeSets: return CatalogueItemDomainType.CodeSet;
-    case MultiFacetAwareDomainType.DataClasses: return CatalogueItemDomainType.DataClass;
-    case MultiFacetAwareDomainType.DataElements: return CatalogueItemDomainType.DataElement;
-    case MultiFacetAwareDomainType.DataModels: return CatalogueItemDomainType.DataModel;
-    case MultiFacetAwareDomainType.EnumerationTypes: return CatalogueItemDomainType.EnumerationType;
-    case MultiFacetAwareDomainType.Folders: return CatalogueItemDomainType.Folder;
-    case MultiFacetAwareDomainType.ModelDataTypes: return CatalogueItemDomainType.ModelDataType;
-    case MultiFacetAwareDomainType.PrimitiveTypes: return CatalogueItemDomainType.PrimitiveType;
-    case MultiFacetAwareDomainType.ReferenceDataModels: return CatalogueItemDomainType.ReferenceDataModel;
-    case MultiFacetAwareDomainType.ReferenceTypes: return CatalogueItemDomainType.ReferenceType;
-    case MultiFacetAwareDomainType.Terms: return CatalogueItemDomainType.Term;
-    case MultiFacetAwareDomainType.Terminologies: return CatalogueItemDomainType.Terminology;
-    case MultiFacetAwareDomainType.VersionedFolders: return CatalogueItemDomainType.VersionedFolder;
-    default: return undefined;
+    case MultiFacetAwareDomainType.Classifiers:
+      return CatalogueItemDomainType.Classifier;
+    case MultiFacetAwareDomainType.CodeSets:
+      return CatalogueItemDomainType.CodeSet;
+    case MultiFacetAwareDomainType.DataClasses:
+      return CatalogueItemDomainType.DataClass;
+    case MultiFacetAwareDomainType.DataElements:
+      return CatalogueItemDomainType.DataElement;
+    case MultiFacetAwareDomainType.DataModels:
+      return CatalogueItemDomainType.DataModel;
+    case MultiFacetAwareDomainType.EnumerationTypes:
+      return CatalogueItemDomainType.EnumerationType;
+    case MultiFacetAwareDomainType.Folders:
+      return CatalogueItemDomainType.Folder;
+    case MultiFacetAwareDomainType.ModelDataTypes:
+      return CatalogueItemDomainType.ModelDataType;
+    case MultiFacetAwareDomainType.PrimitiveTypes:
+      return CatalogueItemDomainType.PrimitiveType;
+    case MultiFacetAwareDomainType.ReferenceDataModels:
+      return CatalogueItemDomainType.ReferenceDataModel;
+    case MultiFacetAwareDomainType.ReferenceTypes:
+      return CatalogueItemDomainType.ReferenceType;
+    case MultiFacetAwareDomainType.Terms:
+      return CatalogueItemDomainType.Term;
+    case MultiFacetAwareDomainType.Terminologies:
+      return CatalogueItemDomainType.Terminology;
+    case MultiFacetAwareDomainType.VersionedFolders:
+      return CatalogueItemDomainType.VersionedFolder;
+    default:
+      return undefined;
   }
 };
 
@@ -224,11 +264,15 @@ const isValueOfEnum = <T>(object: T, token: any): token is T[keyof T] => {
  * @param value A value representing either a {@link MultiFacetAwareDomainType} or a {@link CatalogueItemDomainType}.
  * @returns A suitable {@link MultiFacetAwareDomainType}.
  */
-export const getMultiFacetAwareDomainType = (value: MultiFacetAwareDomainType | CatalogueItemDomainType): MultiFacetAwareDomainType => {
+export const getMultiFacetAwareDomainType = (
+  value: MultiFacetAwareDomainType | CatalogueItemDomainType
+): MultiFacetAwareDomainType => {
   if (isValueOfEnum(CatalogueItemDomainType, value)) {
     const multiFacetAware = catalogueItemToMultiFacetAware(value);
     if (!multiFacetAware) {
-      throw new Error(`Cannot determine MultiFacetAwareDomainType from '${value}'`);
+      throw new Error(
+        `Cannot determine MultiFacetAwareDomainType from '${value}'`
+      );
     }
 
     return multiFacetAware;
@@ -338,7 +382,21 @@ export interface PageParameters {
  * * Pagination
  * * Any other query string parameters, such as filters
  */
-export type FilterQueryParameters = SortParameters & PageParameters & QueryParameters;
+export type FilterQueryParameters = SortParameters &
+  PageParameters &
+  QueryParameters;
+
+/**
+ * Type to define remove options for removing/deleting catalogue items.
+ */
+export interface RemoveParameters {
+  /**
+   * State if the removal is permanent.
+   */
+  permanent?: boolean;
+}
+
+export type RemoveQueryParameters = RemoveParameters & QueryParameters;
 
 /**
  * Type to define the options to pass to an [[MdmRestHandler]] to process
@@ -422,7 +480,10 @@ export interface CatalogueItemReference {
 /**
  * Represents the standard query parameters to use for a search operation.
  */
-export interface SearchQueryParameters extends SortParameters, PageParameters, QueryParameters {
+export interface SearchQueryParameters
+  extends SortParameters,
+    PageParameters,
+    QueryParameters {
   /**
    * The term(s) to search for in the catalogue.
    *
@@ -454,4 +515,22 @@ export interface CatalogueItemSearchResult extends CatalogueItem {
   breadcrumbs: Breadcrumb[];
 }
 
-export type CatalogueItemSearchResponse = MdmIndexResponse<CatalogueItemSearchResult>;
+export type CatalogueItemSearchResponse = MdmIndexResponse<
+  CatalogueItemSearchResult
+>;
+
+/**
+ * Set of parameters to define if an operation should be handled asynchronously.
+ */
+export interface AsyncParameters {
+  /**
+   * State if an operation should be handled asynchronously in Mauro.
+   *
+   * If not provided or `false`, then the request sent to Mauro will wait until it is completed before sending a response back.
+   *
+   * If `true`, the Mauro endpoint will return a `HTTP 202 (ACCEPTED)` status code back in the response almost immediately.
+   * The operation will continue to run in Mauro until it is completed, but the client application may continue to send
+   * other requests.
+   */
+  asynchronous?: boolean;
+}

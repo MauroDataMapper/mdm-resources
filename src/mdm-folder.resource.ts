@@ -16,10 +16,19 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { ModelRemoveQueryParameters } from './mdm-model-types.model';
-import { RequestSettings, QueryParameters, FilterQueryParameters, Uuid, SearchQueryParameters } from './mdm-common.model';
+import {
+  RequestSettings,
+  QueryParameters,
+  FilterQueryParameters,
+  Uuid,
+  SearchQueryParameters,
+  RemoveQueryParameters
+} from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
-import { ContainerCreatePayload, ContainerUpdatePayload } from './mdm-container-types.model';
+import {
+  ContainerCreatePayload,
+  ContainerUpdatePayload
+} from './mdm-container-types.model';
 
 /**
  * Controller: folder
@@ -45,7 +54,6 @@ import { ContainerCreatePayload, ContainerUpdatePayload } from './mdm-container-
  * MDM resource for managing folders in Mauro.
  */
 export class MdmFolderResource extends MdmResource {
-
   /**
    * `HTTP POST` - Search within a folder for one or more search terms.
    *
@@ -62,7 +70,11 @@ export class MdmFolderResource extends MdmResource {
     return this.simplePost(url, query, options);
   }
 
-  searchByGet(folderId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  searchByGet(
+    folderId: string,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/folders/${folderId}/search`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
@@ -91,7 +103,11 @@ export class MdmFolderResource extends MdmResource {
    *
    * `200 OK` - will return a {@link FolderDetailResponse} containing a {@link FolderDetail} object.
    */
-  saveChildrenOf(folderId: Uuid, data: ContainerCreatePayload, options?: RequestSettings) {
+  saveChildrenOf(
+    folderId: Uuid,
+    data: ContainerCreatePayload,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/folders/${folderId}/folders`;
     return this.simplePost(url, data, options);
   }
@@ -125,7 +141,11 @@ export class MdmFolderResource extends MdmResource {
    * @see {@link MdmFolderResource.list}
    * @see {@link MdmFolderResource.get}
    */
-  listChildrenOf(folderId: Uuid, query?: QueryParameters, options?: RequestSettings) {
+  listChildrenOf(
+    folderId: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/folders/${folderId}/folders`;
     return this.simpleGet(url, query, options);
   }
@@ -148,7 +168,11 @@ export class MdmFolderResource extends MdmResource {
    *
    * @see {@link MdmFolderResource.removeChildOf}
    */
-  remove(folderId: Uuid, query: ModelRemoveQueryParameters, options?: RequestSettings) {
+  remove(
+    folderId: Uuid,
+    query: RemoveQueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/folders/${folderId}`;
     return this.simpleDelete(url, query, options);
   }
@@ -172,7 +196,12 @@ export class MdmFolderResource extends MdmResource {
    *
    * @see {@link MdmFolderResource.remove}
    */
-  removeChildOf(folderId: Uuid, childId: Uuid, query: ModelRemoveQueryParameters, options?: RequestSettings) {
+  removeChildOf(
+    folderId: Uuid,
+    childId: Uuid,
+    query: RemoveQueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/folders/${folderId}/folders/${childId}`;
     return this.simpleDelete(url, query, options);
   }
@@ -189,7 +218,11 @@ export class MdmFolderResource extends MdmResource {
    *
    * @see {@link MdmFolderResource.updateChildOf}
    */
-  update(folderId: string, data: ContainerUpdatePayload, options?: RequestSettings) {
+  update(
+    folderId: string,
+    data: ContainerUpdatePayload,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/folders/${folderId}`;
     return this.simplePut(url, data, options);
   }
@@ -207,7 +240,12 @@ export class MdmFolderResource extends MdmResource {
    *
    * @see {@link MdmFolderResource.update}
    */
-  updateChildOf(folderId: Uuid, childId: Uuid, data: ContainerUpdatePayload, options?: RequestSettings) {
+  updateChildOf(
+    folderId: Uuid,
+    childId: Uuid,
+    data: ContainerUpdatePayload,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/folders/${folderId}/folders/${childId}`;
     return this.simplePut(url, data, options);
   }
@@ -242,7 +280,12 @@ export class MdmFolderResource extends MdmResource {
    *
    * @see {@link MdmFolderResource.get}
    */
-  getChildOf(folderId: Uuid, childId: Uuid, query?: QueryParameters, options?: RequestSettings) {
+  getChildOf(
+    folderId: Uuid,
+    childId: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/folders/${folderId}/folders/${childId}`;
     return this.simpleGet(url, query, options);
   }
@@ -250,7 +293,11 @@ export class MdmFolderResource extends MdmResource {
   /**
    * @deprecated Use {@link MdmCodeSetResource.addToFolder} instead.
    */
-  addCondeSets(folderId: string, data: any, restHandlerOptions?: RequestSettings) {
+  addCondeSets(
+    folderId: string,
+    data: any,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/folders/${folderId}/codeSets`;
     return this.simplePost(url, data, restHandlerOptions);
   }
@@ -258,27 +305,49 @@ export class MdmFolderResource extends MdmResource {
   /**
    * @deprecated Use {@link MdmCodeSetResource.listCodeSetsInFolder} instead.
    */
-  codeSets(folderId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  codeSets(
+    folderId: string,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/folders/${folderId}/codeSets`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
 
-  alterCodeSetFolder(codeSetId: string, folderId: string, data: any, restHandlerOptions?: RequestSettings) {
+  alterCodeSetFolder(
+    codeSetId: string,
+    folderId: string,
+    data: any,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/folders/${folderId}/codeSets/${codeSetId}`;
     return this.simplePut(url, data, restHandlerOptions);
   }
 
-  addTerminologies(folderId: string, data: any, restHandlerOptions?: RequestSettings) {
+  addTerminologies(
+    folderId: string,
+    data: any,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/folders/${folderId}/terminologies`;
     return this.simplePost(url, data, restHandlerOptions);
   }
 
-  terminologies(folderId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  terminologies(
+    folderId: string,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/folders/${folderId}/terminologies`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
 
-  alterTerminologyFolder(terminologyId: string, folderId: string, data: any, restHandlerOptions?: RequestSettings) {
+  alterTerminologyFolder(
+    terminologyId: string,
+    folderId: string,
+    data: any,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/folders/${folderId}/terminologies/${terminologyId}`;
     return this.simplePut(url, data, restHandlerOptions);
   }
@@ -293,7 +362,11 @@ export class MdmFolderResource extends MdmResource {
    *
    * `200 OK` - will return a {@link FolderDetailResponse} containing a {@link FolderDetail} object.
    */
-  removeReadByAuthenticated(id: Uuid, query?: QueryParameters, options?: RequestSettings) {
+  removeReadByAuthenticated(
+    id: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/folders/${id}/readByAuthenticated`;
     return this.simpleDelete(url, query, options);
   }
@@ -309,7 +382,7 @@ export class MdmFolderResource extends MdmResource {
    */
   updateReadByAuthenticated(id: Uuid, options?: RequestSettings) {
     const url = `${this.apiEndpoint}/folders/${id}/readByAuthenticated`;
-    return this.simplePut(url, { }, options);
+    return this.simplePut(url, {}, options);
   }
 
   /**
@@ -322,7 +395,11 @@ export class MdmFolderResource extends MdmResource {
    *
    * `200 OK` - will return a {@link FolderDetailResponse} containing a {@link FolderDetail} object.
    */
-  removeReadByEveryone(id: Uuid, query?: QueryParameters, options?: RequestSettings) {
+  removeReadByEveryone(
+    id: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/folders/${id}/readByEveryone`;
     return this.simpleDelete(url, query, options);
   }
@@ -338,7 +415,7 @@ export class MdmFolderResource extends MdmResource {
    */
   updateReadByEveryone(id: Uuid, options?: RequestSettings) {
     const url = `${this.apiEndpoint}/folders/${id}/readByEveryone`;
-    return this.simplePut(url, { }, options);
+    return this.simplePut(url, {}, options);
   }
 
   /**
@@ -353,8 +430,14 @@ export class MdmFolderResource extends MdmResource {
    * `200 OK` - will return a {@link FolderDetailResponse} containing a {@link FolderDetail} object of the folder
    * that was moved.
    */
-  moveFolderToFolder(folderId: Uuid, targetFolderId?: Uuid, options?: RequestSettings) {
-    const url = `${this.apiEndpoint}/folders/${folderId}/folder/${targetFolderId ?? 'root'}`;
-    return this.simplePut(url, { }, options);
+  moveFolderToFolder(
+    folderId: Uuid,
+    targetFolderId?: Uuid,
+    options?: RequestSettings
+  ) {
+    const url = `${this.apiEndpoint}/folders/${folderId}/folder/${
+      targetFolderId ?? 'root'
+    }`;
+    return this.simplePut(url, {}, options);
   }
 }

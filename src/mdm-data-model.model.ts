@@ -17,8 +17,18 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { Branchable, Finalisable, Historical, Modelable, ModelableDetail, ModelCreatePayload, SecurableModel, Versionable } from './mdm-model-types.model';
-import { MdmIndexResponse, MdmResponse, Payload, QueryParameters, Uuid } from './mdm-common.model';
+import {
+  Modelable,
+  ModelCreatePayload,
+  ModelDomainDetail
+} from './mdm-model-types.model';
+import {
+  MdmIndexResponse,
+  MdmResponse,
+  Payload,
+  QueryParameters,
+  Uuid
+} from './mdm-common.model';
 import { DataTypeDetail, DataTypeProvider } from './mdm-data-type.model';
 import { DataClassFull } from './mdm-data-class.model';
 
@@ -30,14 +40,7 @@ export interface DataModel extends Modelable {
   semanticLinks?: any[];
 }
 
-export type DataModelDetail =
-  DataModel
-  & ModelableDetail
-  & SecurableModel
-  & Historical
-  & Branchable
-  & Versionable
-  & Finalisable;
+export type DataModelDetail = DataModel & ModelDomainDetail;
 
 export type DataModelIndexResponse = MdmIndexResponse<DataModel>;
 export type DataModelDetailResponse = MdmResponse<DataModelDetail>;
@@ -50,7 +53,8 @@ export interface DataModelCreateParameters {
   defaultDataTypeProvider?: string;
 }
 
-export type DataModelCreateQueryParameters = DataModelCreateParameters & QueryParameters;
+export type DataModelCreateQueryParameters = DataModelCreateParameters &
+  QueryParameters;
 
 export type DataModelTypesResponse = MdmResponse<string[]>;
 export type DataModelDefaultDataTypesResponse = MdmResponse<DataTypeProvider[]>;
@@ -85,7 +89,7 @@ export type DataModelIntersectionResponse = MdmResponse<DataModelIntersection>;
 /**
  * Represents the intersection between a source and target Data Model, but limited to a requested set of data elements
  */
- export interface SourceTargetIntersection {
+export interface SourceTargetIntersection {
   /**
    * The source Data Model Id
    */
@@ -103,7 +107,9 @@ export type DataModelIntersectionResponse = MdmResponse<DataModelIntersection>;
   intersects: Uuid[];
 }
 
-export type SourceTargetIntersectionResponse = MdmIndexResponse<SourceTargetIntersection>;
+export type SourceTargetIntersectionResponse = MdmIndexResponse<
+  SourceTargetIntersection
+>;
 
 /**
  * Represents the payload of the request to determine intersections between a source and many target data models.
@@ -137,8 +143,6 @@ export interface DataModelNode {
   childDataClasses?: DataClassFull[];
 }
 
-export type DataModelFull =
-  DataModelDetail
-  & DataModelNode;
+export type DataModelFull = DataModelDetail & DataModelNode;
 
 export type DataModelFullResponse = MdmResponse<DataModelFull>;

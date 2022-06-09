@@ -17,8 +17,17 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { CatalogueItemReference, MdmIndexResponse, MdmResponse } from './mdm-common.model';
-import { Branchable, Finalisable, Historical, Modelable, ModelableDetail, ModelCreatePayload, ModelUpdatePayload, SecurableModel, Versionable } from './mdm-model-types.model';
+import {
+  CatalogueItemReference,
+  MdmIndexResponse,
+  MdmResponse
+} from './mdm-common.model';
+import {
+  Modelable,
+  ModelCreatePayload,
+  ModelDomainDetail,
+  ModelUpdatePayload
+} from './mdm-model-types.model';
 
 export type CodeSetDataType = 'CodeSet';
 
@@ -27,14 +36,7 @@ export interface CodeSet extends Modelable {
   type?: CodeSetDataType;
 }
 
-export type CodeSetDetail =
-  CodeSet
-  & ModelableDetail
-  & SecurableModel
-  & Historical
-  & Branchable
-  & Versionable
-  & Finalisable;
+export type CodeSetDetail = CodeSet & ModelDomainDetail;
 
 export type CodeSetIndexResponse = MdmIndexResponse<CodeSet>;
 export type CodeSetDetailResponse = MdmResponse<CodeSetDetail>;
