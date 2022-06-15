@@ -80,7 +80,7 @@ export interface CommonResource {
    * If the domain does not support the option of soft or permanent deletion, the {@link RemoveQueryParameters.permanent} will
    * have no effect.
    */
-  remove(id: Uuid, query: RemoveQueryParameters, options?: RequestSettings);
+  remove(id: Uuid, query?: RemoveQueryParameters, options?: RequestSettings);
 }
 
 export class MdmCommonDomainResource
@@ -111,7 +111,7 @@ export class MdmCommonDomainResource
     return this.simpleGet(url, query, options);
   }
 
-  remove(id: string, query: RemoveQueryParameters, options?: RequestSettings) {
+  remove(id: string, query?: RemoveQueryParameters, options?: RequestSettings) {
     const url = `${this.apiEndpoint}/${this.domain}/${id}`;
     return this.simpleDelete(url, query, options);
   }
