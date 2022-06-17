@@ -18,9 +18,7 @@ SPDX-License-Identifier: Apache-2.0
 */
 import { FinalisePayload, ModelUpdatePayload } from './mdm-model-types.model';
 import {
-  FilterQueryParameters,
   QueryParameters,
-  RemoveQueryParameters,
   RequestSettings,
   SearchQueryParameters,
   Uuid
