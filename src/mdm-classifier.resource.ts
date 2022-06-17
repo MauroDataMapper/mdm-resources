@@ -17,10 +17,19 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { ContainerCreatePayload, ContainerUpdatePayload } from './mdm-container-types.model';
-import { RequestSettings, QueryParameters, ModelDomainType, Uuid, FilterQueryParameters } from './mdm-common.model';
+import {
+  ContainerCreatePayload,
+  ContainerUpdatePayload
+} from './mdm-container-types.model';
+import {
+  RequestSettings,
+  QueryParameters,
+  ModelDomainType,
+  Uuid,
+  FilterQueryParameters,
+  RemoveQueryParameters
+} from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
-import { ModelRemoveQueryParameters } from './mdm-model-types.model';
 
 /**
  * Controller: classifier
@@ -49,7 +58,6 @@ import { ModelRemoveQueryParameters } from './mdm-model-types.model';
  * MDM resource for managing classifications.
  */
 export class MdmClassifierResource extends MdmResource {
-
   /**
    * `HTTP POST` - Creates a new root classifier.
    *
@@ -74,12 +82,21 @@ export class MdmClassifierResource extends MdmResource {
    *
    * `200 OK` - will return a {@link ClassifierDetailResponse} containing a {@link ClassifierDetail} object.
    */
-  saveChildrenOf(classifierId: Uuid, data: ContainerCreatePayload, options?: RequestSettings) {
+  saveChildrenOf(
+    classifierId: Uuid,
+    data: ContainerCreatePayload,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/classifiers/${classifierId}/classifiers`;
     return this.simplePost(url, data, options);
   }
 
-  addToCatalogueItem(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, data: any, restHandlerOptions?: RequestSettings) {
+  addToCatalogueItem(
+    catalogueItemDomainType: string | ModelDomainType,
+    catalogueItemId: string,
+    data: any,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/classifiers`;
     return this.simplePost(url, data, restHandlerOptions);
   }
@@ -113,17 +130,30 @@ export class MdmClassifierResource extends MdmResource {
    * @see {@link MdmClassifierResource.list}
    * @see {@link MdmClassifierResource.get}
    */
-  listChildrenOf(classifierId: Uuid, query?: FilterQueryParameters, options?: RequestSettings) {
+  listChildrenOf(
+    classifierId: Uuid,
+    query?: FilterQueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/classifiers/${classifierId}/classifiers`;
     return this.simpleGet(url, query, options);
   }
 
-  listCatalogueItemsFor(classifierId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  listCatalogueItemsFor(
+    classifierId: string,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/classifiers/${classifierId}/catalogueItems`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
 
-  listForCatalogueItem(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  listForCatalogueItem(
+    catalogueItemDomainType: string | ModelDomainType,
+    catalogueItemId: string,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/classifiers`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
@@ -146,7 +176,11 @@ export class MdmClassifierResource extends MdmResource {
    *
    * @see {@link MdmClassifierResource.removeChildOf}
    */
-  remove(classifierId: Uuid, query: ModelRemoveQueryParameters, options?: RequestSettings) {
+  remove(
+    classifierId: Uuid,
+    query: RemoveQueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/classifiers/${classifierId}`;
     return this.simpleDelete(url, query, options);
   }
@@ -170,12 +204,23 @@ export class MdmClassifierResource extends MdmResource {
    *
    * @see {@link MdmClassifierResource.remove}
    */
-  removeChildOf(classifierId: Uuid, childId: Uuid, query: ModelRemoveQueryParameters, options?: RequestSettings) {
+  removeChildOf(
+    classifierId: Uuid,
+    childId: Uuid,
+    query: RemoveQueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/classifiers/${classifierId}/classifiers/${childId}`;
     return this.simpleDelete(url, query, options);
   }
 
-  removeFromCatalogueItem(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, classifierId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  removeFromCatalogueItem(
+    catalogueItemDomainType: string | ModelDomainType,
+    catalogueItemId: string,
+    classifierId: string,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/classifiers/${classifierId}`;
     return this.simpleDelete(url, queryStringParams, restHandlerOptions);
   }
@@ -192,7 +237,11 @@ export class MdmClassifierResource extends MdmResource {
    *
    * @see {@link MdmClassifierResource.updateChildOf}
    */
-  update(classifierId: Uuid, data: ContainerUpdatePayload, options?: RequestSettings) {
+  update(
+    classifierId: Uuid,
+    data: ContainerUpdatePayload,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/classifiers/${classifierId}`;
     return this.simplePut(url, data, options);
   }
@@ -210,7 +259,12 @@ export class MdmClassifierResource extends MdmResource {
    *
    * @see {@link MdmClassifierResource.update}
    */
-  updateChildOf(classifierId: Uuid, childId: Uuid, data: ContainerUpdatePayload, options?: RequestSettings) {
+  updateChildOf(
+    classifierId: Uuid,
+    childId: Uuid,
+    data: ContainerUpdatePayload,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/classifiers/${classifierId}/classifiers/${childId}`;
     return this.simplePut(url, data, options);
   }
@@ -245,29 +299,56 @@ export class MdmClassifierResource extends MdmResource {
    *
    * @see {@link MdmClassifierResource.get}
    */
-  getChildOf(classifierId: Uuid, childId: Uuid, query?: QueryParameters, options?: RequestSettings) {
+  getChildOf(
+    classifierId: Uuid,
+    childId: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/classifiers/${classifierId}/classifiers/${childId}`;
     return this.simpleGet(url, query, options);
   }
 
-  getFromCatalogueItem(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, classifierId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  getFromCatalogueItem(
+    catalogueItemDomainType: string | ModelDomainType,
+    catalogueItemId: string,
+    classifierId: string,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/classifiers/${classifierId}`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
 
-  removeReadByAuthenticated(classifierId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  removeReadByAuthenticated(
+    classifierId: string,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/classifiers/${classifierId}/readByAuthenticated`;
     return this.simpleDelete(url, queryStringParams, restHandlerOptions);
   }
-  updateReadByAuthenticated(classifierId: string, data?, restHandlerOptions?: RequestSettings) {
+  updateReadByAuthenticated(
+    classifierId: string,
+    data?,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/classifiers/${classifierId}/readByAuthenticated`;
     return this.simplePut(url, data, restHandlerOptions);
   }
-  removeReadByEveryone(classifierId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  removeReadByEveryone(
+    classifierId: string,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/classifiers/${classifierId}/readByEveryone`;
     return this.simpleDelete(url, queryStringParams, restHandlerOptions);
   }
-  updateReadByEveryone(classifierId: string, data?, restHandlerOptions?: RequestSettings) {
+  updateReadByEveryone(
+    classifierId: string,
+    data?,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/classifiers/${classifierId}/readByEveryone`;
     return this.simplePut(url, data, restHandlerOptions);
   }

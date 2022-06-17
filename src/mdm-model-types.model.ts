@@ -18,7 +18,23 @@ SPDX-License-Identifier: Apache-2.0
 */
 
 import { Classifier } from './mdm-classifier.model';
-import { CatalogueItem, CatalogueItemDomainType, CatalogueItemReference, MdmResponse, Payload, QueryParameters, Uuid, Version } from './mdm-common.model';
+import {
+  AsyncParameters,
+  CatalogueItem,
+  CatalogueItemDomainType,
+  CatalogueItemReference,
+  MdmResponse,
+  Payload,
+  Uuid,
+  Version
+} from './mdm-common.model';
+
+export type ModelDomain =
+  | 'dataModels'
+  | 'terminologies'
+  | 'codeSets'
+  | 'referenceDataModels'
+  | 'versionedFolders';
 
 export interface Authority {
   id: Uuid;
@@ -135,12 +151,6 @@ export interface Modelable extends CatalogueItem {
   label: string;
   description?: string;
   deleted?: boolean;
-
-  /**
-   * If this model is finalised, this represents the version number of this model. If not finalised,
-   * this is not defined.
-   */
-  modelVersion?: Version;
 }
 
 export interface ModelableDetail {
@@ -156,11 +166,18 @@ export interface SecurableModel extends Securable {
   readableByAuthenticatedUsers?: boolean;
 }
 
-export interface ModelRemoveParameters {
-  permanent: boolean;
-}
+/**
+ * Represents all the properties contained in a model domain object.
+ */
+export type ModelDomainDetail = Modelable &
+  ModelableDetail &
+  SecurableModel &
+  Historical &
+  Branchable &
+  Versionable &
+  Finalisable;
 
-export type ModelRemoveQueryParameters = ModelRemoveParameters & QueryParameters;
+export type ModelDomainDetailResponse = MdmResponse<ModelDomainDetail>;
 
 /**
  * Payload for endpoints that finalise a model type.
@@ -207,7 +224,7 @@ export interface ModelUpdatePayload extends Payload {
 /**
  * Payload describing how to fork a model.
  */
-export interface ForkModelPayload extends Payload {
+export interface ForkModelPayload extends Payload, AsyncParameters {
   /**
    * The new label for the forked model.
    */
@@ -229,12 +246,12 @@ export interface ForkModelPayload extends Payload {
 /**
  * Payload describing how to start a new version of a model.
  */
-export type VersionModelPayload = Payload;
+export type VersionModelPayload = Payload & AsyncParameters;
 
 /**
  * Payload describing how to start a new branch for a model.
  */
-export interface BranchModelPayload extends Payload {
+export interface BranchModelPayload extends Payload, AsyncParameters {
   /**
    * The new branch name for the branched model.
    */
@@ -254,7 +271,9 @@ export interface BasicModelVersionItem {
   displayName: string;
 }
 
-export type BasicModelVersionTreeResponse = MdmResponse<BasicModelVersionItem[]>;
+export type BasicModelVersionTreeResponse = MdmResponse<
+  BasicModelVersionItem[]
+>;
 
 export interface ModelVersionItemTarget {
   id: Uuid;

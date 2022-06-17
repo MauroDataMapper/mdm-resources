@@ -17,7 +17,19 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { CatalogueItem, MdmIndexResponse, MdmResponse, Version } from './mdm-common.model';
+import { CodeSetDetail } from './mdm-code-set.model';
+import { DataModelDetail } from './mdm-data-model.model';
+import { ReferenceDataModelDetail } from './mdm-reference-data-model.model';
+import { TerminologyDetail } from './mdm-terminology.model';
+import {
+  AsyncParameters,
+  CatalogueItem,
+  MdmIndexResponse,
+  MdmResponse,
+  QueryParameters,
+  Uuid,
+  Version
+} from './mdm-common.model';
 
 export interface Importer {
   [key: string]: any;
@@ -32,9 +44,20 @@ export interface Importer {
   knownMetadataKeys: any[];
 }
 
-export type ImporterParameterType = 'Integer' | 'String' | 'Text' | 'Password' | 'Boolean' | 'boolean' | 'int' | 'File' | 'Folder' | 'DataModel';
+export type ImporterParameterType =
+  | 'Integer'
+  | 'String'
+  | 'Text'
+  | 'Password'
+  | 'Boolean'
+  | 'boolean'
+  | 'int'
+  | 'File'
+  | 'Folder'
+  | 'DataModel';
 
 export interface ImporterParameter {
+  [key: string]: any;
   name: string;
   displayName: string;
   description?: string;
@@ -61,15 +84,45 @@ export type ImportResultIndexResponse = MdmIndexResponse<ImportResult>;
 export interface Exporter {
   [key: string]: any;
   name: string;
-  displayName: string;
+  displayName?: string;
   namespace: string;
   version: Version;
-  providerType: string;
-  canExportMultipleDomains: boolean;
-  allowsExtraMetadataKeys: boolean;
-  knownMetadataKeys: any[];
-  fileExtension: string;
-  fileType: string;
+  providerType?: string;
+  canExportMultipleDomains?: boolean;
+  allowsExtraMetadataKeys?: boolean;
+  knownMetadataKeys?: any[];
+  fileExtension?: string;
+  fileType?: string;
 }
 
 export type ExporterIndexResponse = MdmResponse<Exporter[]>;
+
+export type ExportQueryParameters = AsyncParameters & QueryParameters;
+
+export type ExportModelsPayload = Uuid[];
+
+export interface ExportMetadata {
+  exportedBy: string;
+  exportedOn: string;
+  exporter: Exporter;
+}
+
+export interface ExportModelDetail {
+  exportMetadata: ExportMetadata;
+  dataModel?: DataModelDetail;
+  terminology?: TerminologyDetail;
+  codeSet?: CodeSetDetail;
+  referenceDataModel?: ReferenceDataModelDetail;
+}
+
+export type ExportModelDetailResponse = MdmResponse<ExportModelDetail>;
+
+export interface ExportModelList {
+  exportMetadata: ExportMetadata;
+  dataModels?: DataModelDetail[];
+  terminologies?: TerminologyDetail[];
+  codeSets?: CodeSetDetail[];
+  referenceDataModels?: ReferenceDataModelDetail[];
+}
+
+export type ExportModelIndexResponse = MdmResponse<ExportModelList>;

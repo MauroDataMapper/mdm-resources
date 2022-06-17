@@ -16,37 +16,38 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { BranchModelPayload, FinalisePayload, ForkModelPayload, ModelRemoveQueryParameters, VersionModelPayload } from './mdm-model-types.model';
-import { FilterQueryParameters, QueryParameters, RequestSettings, SearchQueryParameters, Uuid } from './mdm-common.model';
-import { ContainerCreatePayload, ContainerUpdatePayload } from './mdm-container-types.model';
+import {
+  BranchModelPayload,
+  FinalisePayload,
+  ForkModelPayload,
+  VersionModelPayload
+} from './mdm-model-types.model';
+import {
+  FilterQueryParameters,
+  QueryParameters,
+  RemoveQueryParameters,
+  RequestSettings,
+  SearchQueryParameters,
+  Uuid
+} from './mdm-common.model';
+import {
+  ContainerCreatePayload,
+  ContainerUpdatePayload
+} from './mdm-container-types.model';
 import { MdmResource } from './mdm-resource';
-
-/*
-Controller: versionedFolder
- |   POST   | /api/folders/${folderId}/versionedFolders                                                                                                                                        | Action: save
- |   GET    | /api/folders/${folderId}/versionedFolders                                                                                                                                        | Action: index
- |   GET    | /api/versionedFolders/${versionedFolderId}/search                                                                                                                                | Action: search
- |   POST   | /api/versionedFolders/${versionedFolderId}/search                                                                                                                                | Action: search
- |  DELETE  | /api/versionedFolders/${versionedFolderId}/readByAuthenticated                                                                                                                   | Action: readByAuthenticated
- |   PUT    | /api/versionedFolders/${versionedFolderId}/readByAuthenticated                                                                                                                   | Action: readByAuthenticated
- |  DELETE  | /api/versionedFolders/${versionedFolderId}/readByEveryone                                                                                                                        | Action: readByEveryone
- |   PUT    | /api/versionedFolders/${versionedFolderId}/readByEveryone                                                                                                                        | Action: readByEveryone
- |  DELETE  | /api/folders/${folderId}/versionedFolders/${id}                                                                                                                                  | Action: delete
- |   PUT    | /api/folders/${folderId}/versionedFolders/${id}                                                                                                                                  | Action: update
- |   GET    | /api/folders/${folderId}/versionedFolders/${id}                                                                                                                                  | Action: show
- |   POST   | /api/versionedFolders                                                                                                                                                            | Action: save
- |   GET    | /api/versionedFolders                                                                                                                                                            | Action: index
- |  DELETE  | /api/versionedFolders/${id}                                                                                                                                                      | Action: delete
- |   PUT    | /api/versionedFolders/${id}                                                                                                                                                      | Action: update
- |   GET    | /api/versionedFolders/${id}                                                                                                                                                      | Action: show
-*/
+import {
+  BranchableResource,
+  ForkableResource
+} from './mdm-model-types.resource';
 
 /**
  * MDM resource for the management of Versioned Folders in Mauro.
  *
  * @see {@link MdmFolderResource}
  */
-export class MdmVersionedFolderResource extends MdmResource {
+export class MdmVersionedFolderResource
+  extends MdmResource
+  implements BranchableResource, ForkableResource {
   /**
    * `HTTP POST` - Creates a new root versioned folder.
    *
@@ -74,7 +75,11 @@ export class MdmVersionedFolderResource extends MdmResource {
    * @description A {@link VersionedFolder} may be created as a child of a {@link Folder}, but
    * a {@link VersionedFolder} cannot be a child of another {@link VersionedFolder}.
    */
-  saveToFolder(folderId: Uuid, data: ContainerCreatePayload, options?: RequestSettings) {
+  saveToFolder(
+    folderId: Uuid,
+    data: ContainerCreatePayload,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/folders/${folderId}/versionedFolders`;
     return this.simplePost(url, data, options);
   }
@@ -108,7 +113,11 @@ export class MdmVersionedFolderResource extends MdmResource {
    * @see {@link MdmVersionedFolderResource.list}
    * @see {@link MdmVersionedFolderResource.get}
    */
-  listInFolder(folderId: Uuid, query?: QueryParameters, options?: RequestSettings) {
+  listInFolder(
+    folderId: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/folders/${folderId}/versionedFolders`;
     return this.simpleGet(url, query, options);
   }
@@ -131,7 +140,11 @@ export class MdmVersionedFolderResource extends MdmResource {
    *
    * @see {@link MdmVersionedFolderResource.removeFromFolder}
    */
-  remove(versionedFolderId: Uuid, query: ModelRemoveQueryParameters, options?: RequestSettings) {
+  remove(
+    versionedFolderId: Uuid,
+    query: RemoveQueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/versionedFolders/${versionedFolderId}`;
     return this.simpleDelete(url, query, options);
   }
@@ -155,7 +168,12 @@ export class MdmVersionedFolderResource extends MdmResource {
    *
    * @see {@link MdmVersionedFolderResource.remove}
    */
-  removeFromFolder(folderId: Uuid, versionedFolderId: Uuid, query: ModelRemoveQueryParameters, options?: RequestSettings) {
+  removeFromFolder(
+    folderId: Uuid,
+    versionedFolderId: Uuid,
+    query: RemoveQueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/folders/${folderId}/versionedFolders/${versionedFolderId}`;
     return this.simpleDelete(url, query, options);
   }
@@ -172,7 +190,11 @@ export class MdmVersionedFolderResource extends MdmResource {
    *
    * @see {@link MdmVersionedFolderResource.updateInFolder}
    */
-  update(versionedFolderId: Uuid, data: ContainerUpdatePayload, options?: RequestSettings) {
+  update(
+    versionedFolderId: Uuid,
+    data: ContainerUpdatePayload,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/versionedFolders/${versionedFolderId}`;
     return this.simplePut(url, data, options);
   }
@@ -190,7 +212,12 @@ export class MdmVersionedFolderResource extends MdmResource {
    *
    * @see {@link MdmVersionedFolderResource.update}
    */
-  updateInFolder(folderId: Uuid, versionedFolderId: Uuid, data: ContainerUpdatePayload, options?: RequestSettings) {
+  updateInFolder(
+    folderId: Uuid,
+    versionedFolderId: Uuid,
+    data: ContainerUpdatePayload,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/folders/${folderId}/versionedFolders/${versionedFolderId}`;
     return this.simplePut(url, data, options);
   }
@@ -207,7 +234,11 @@ export class MdmVersionedFolderResource extends MdmResource {
    *
    * @see {@link MdmVersionedFolderResource.getFromFolder}
    */
-  get(versionedFolderId: Uuid, query?: QueryParameters, options?: RequestSettings) {
+  get(
+    versionedFolderId: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/versionedFolders/${versionedFolderId}`;
     return this.simpleGet(url, query, options);
   }
@@ -225,7 +256,12 @@ export class MdmVersionedFolderResource extends MdmResource {
    *
    * @see {@link MdmVersionedFolderResource.get}
    */
-  getFromFolder(folderId: Uuid, versionedFolderId: Uuid, query?: QueryParameters, options?: RequestSettings) {
+  getFromFolder(
+    folderId: Uuid,
+    versionedFolderId: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/folders/${folderId}/versionedFolders/${versionedFolderId}`;
     return this.simpleGet(url, query, options);
   }
@@ -240,7 +276,11 @@ export class MdmVersionedFolderResource extends MdmResource {
    *
    * `200 OK` - will return a {@link VersionedFolderDetailResponse} containing a {@link VersionedFolderDetail} object.
    */
-  removeReadByAuthenticated(id: Uuid, query?: QueryParameters, options?: RequestSettings) {
+  removeReadByAuthenticated(
+    id: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/versionedFolders/${id}/readByAuthenticated`;
     return this.simpleDelete(url, query, options);
   }
@@ -269,7 +309,11 @@ export class MdmVersionedFolderResource extends MdmResource {
    *
    * `200 OK` - will return a {@link VersionedFolderDetailResponse} containing a {@link VersionedFolderDetail} object.
    */
-  removeReadByEveryone(id: Uuid, query?: QueryParameters, options?: RequestSettings) {
+  removeReadByEveryone(
+    id: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/versionedFolders/${id}/readByEveryone`;
     return this.simpleDelete(url, query, options);
   }
@@ -336,35 +380,11 @@ export class MdmVersionedFolderResource extends MdmResource {
     return this.simplePut(url, data, options);
   }
 
-  /**
-   * `HTTP PUT` - Branch a versioned folder to create the next working copy of a versioned folder. Can be applied to create
-   * the next version of the versioned folder, or to create a separate working branch to be merged back later.
-   *
-   * @param id The unique identifier of the versioned folder to branch.
-   * @param data The payload to pass to the request when branching or creating the next version of the versioned folder.
-   * @param options Optional REST handler parameters, if required.
-   * @returns The result of the `PUT` request.
-   *
-   * `200 OK` - will return a {@link VersionedFolderDetailResponse} containing a {@link VersionedFolderDetail} object.
-   *
-   * @see {@link MdmVersionedFolderResource.newDocumentationVersion}
-   * @see {@link MdmVersionedFolderResource.newForkModel}
-   *
-   * @example To start a new version of a versioned folder:
-   *
-   * ```ts
-   * const versionedFolderId = '684c8134-d826-4c4a-a6d1-1412b7e8fc15';
-   * versionedFolderResource.newBranchModelVersion(versionedFolderId, { });
-   * ```
-   *
-   * @example To start a new branch of a versioned folder:
-   *
-   * ```ts
-   * const versionedFolderId = '684c8134-d826-4c4a-a6d1-1412b7e8fc15';
-   * versionedFolderResource.newBranchModelVersion(versionedFolderId, { branchName: 'new-branch' });
-   * ```
-   */
-  newBranchModelVersion(id: Uuid, data: VersionModelPayload | BranchModelPayload, restHandlerOptions?: RequestSettings) {
+  newBranchModelVersion(
+    id: Uuid,
+    data: VersionModelPayload | BranchModelPayload,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/versionedFolders/${id}/newBranchModelVersion`;
     return this.simplePut(url, data, restHandlerOptions);
   }
@@ -382,25 +402,16 @@ export class MdmVersionedFolderResource extends MdmResource {
    * @see {@link MdmVersionedFolderResource.newBranchModelVersion}
    * @see {@link MdmVersionedFolderResource.newForkModel}
    */
-  newDocumentationVersion(id: Uuid, data: VersionModelPayload, options?: RequestSettings) {
+  newDocumentationVersion(
+    id: Uuid,
+    data: VersionModelPayload,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/versionedFolders/${id}/newDocumentationVersion`;
     return this.simplePut(url, data, options);
   }
 
-  /**
-   * `HTTP PUT` - Fork a versioned folder to create a new copy of a versioned folder with a new 'main' branch.
-   *
-   * @param id The unique identifier of the versioned folder to fork.
-   * @param data The payload to pass to the request when forking the versioned folder.
-   * @param options Optional REST handler parameters, if required.
-   * @returns The result of the `PUT` request.
-   *
-   * `200 OK` - will return a {@link VersionedFolderDetailResponse} containing a {@link VersionedFolderDetail} object.
-   *
-   * @see {@link MdmVersionedFolderResource.newBranchModelVersion}
-   * @see {@link MdmVersionedFolderResource.newDocumentationVersion}
-   */
-   newForkModel(id: Uuid, data: ForkModelPayload, options?: RequestSettings) {
+  newForkModel(id: Uuid, data: ForkModelPayload, options?: RequestSettings) {
     const url = `${this.apiEndpoint}/versionedFolders/${id}/newForkModel`;
     return this.simplePut(url, data, options);
   }
@@ -415,7 +426,11 @@ export class MdmVersionedFolderResource extends MdmResource {
    *
    * `200 OK` - will return a {@link ModelVersionTreeResponse} containing a list of {@link ModelVersionItem} objects.
    */
-  modelVersionTree(id: string, query?: QueryParameters, options?: RequestSettings) {
+  modelVersionTree(
+    id: string,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/versionedFolders/${id}/modelVersionTree`;
     return this.simpleGet(url, query, options);
   }
@@ -430,7 +445,11 @@ export class MdmVersionedFolderResource extends MdmResource {
    *
    * `200 OK` - will return a {@link BasicModelVersionTreeResponse} containing a list of {@link BasicModelVersionItem} objects.
    */
-  simpleModelVersionTree(id: Uuid, query?: QueryParameters, options?: RequestSettings) {
+  simpleModelVersionTree(
+    id: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/versionedFolders/${id}/simpleModelVersionTree`;
     return this.simpleGet(url, query, options);
   }

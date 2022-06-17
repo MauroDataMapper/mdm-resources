@@ -16,44 +16,27 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { FinalisePayload, ModelRemoveQueryParameters, ModelUpdatePayload } from './mdm-model-types.model';
-import { FilterQueryParameters, QueryParameters, RequestSettings, SearchQueryParameters, Uuid } from './mdm-common.model';
-import { MdmResource } from './mdm-resource';
-
-/**
- * Controller: referenceDataModel
- * |   GET    | /api/referenceDataModels/providers/defaultDataTypeProviders                                                                                   | Action: defaultDataTypeProviders
- * |   GET    | /api/referenceDataModels/providers/importers                                                                                                  | Action: importerProviders
- * |   GET    | /api/referenceDataModels/providers/exporters                                                                                                  | Action: exporterProviders
- * |   POST   | /api/referenceDataModels/import/${importerNamespace}/${importerName}/${importerVersion}                                                       | Action: importModels
- * |   POST   | /api/referenceDataModels/export/${exporterNamespace}/${exporterName}/${exporterVersion}                                                       | Action: exportModels
- * |  DELETE  | /api/referenceDataModels/${referenceDataModelId}/readByAuthenticated                                                                          | Action: readByAuthenticated
- * |   PUT    | /api/referenceDataModels/${referenceDataModelId}/readByAuthenticated                                                                          | Action: readByAuthenticated
- * |  DELETE  | /api/referenceDataModels/${referenceDataModelId}/readByEveryone                                                                               | Action: readByEveryone
- * |   PUT    | /api/referenceDataModels/${referenceDataModelId}/readByEveryone                                                                               | Action: readByEveryone
- * |   GET    | /api/referenceDataModels/${referenceDataModelId}/search                                                                                       | Action: search
- * |   POST   | /api/referenceDataModels/${referenceDataModelId}/search                                                                                       | Action: search
- * |   GET    | /api/referenceDataModels/${referenceDataModelId}/export/${exporterNamespace}/${exporterName}/${exporterVersion}                               | Action: exportModel
- * |   GET    | /api/referenceDataModels                                                                                                                      | Action: index
- * |  DELETE  | /api/referenceDataModels/${id}                                                                                                                | Action: delete
- * |   PUT    | /api/referenceDataModels/${id}                                                                                                                | Action: update
- * |   GET    | /api/referenceDataModels/${id}                                                                                                                | Action: show
- * |   PUT    | /api/referenceDataModels/${referenceDataModelId}/folder/${folderId}                                                                           | Action: changeFolder
- * |   PUT    | /api/referenceDataModels/${referenceDataModelId}/newModelVersion                                                                              | Action: newModelVersion
- * |   PUT    | /api/referenceDataModels/${referenceDataModelId}/newDocumentationVersion                                                                      | Action: newDocumentationVersion
- * |   PUT    | /api/referenceDataModels/${referenceDataModelId}/finalise                                                                                     | Action: finalise
- * |   PUT    | /api/referenceDataModels/${referenceDataModelId}/newBranchModelVersion                                                                        | Action: newBranchModelVersion
- * |   PUT    | /api/referenceDataModels/${referenceDataModelId}/newForkModel                                                                                 | Action: newForkModel
- * |   GET    | /api/referenceDataModels/${referenceDataModelId}/latestModelVersion                                                                           | Action: latestModelVersion
- * |   GET    | /api/referenceDataModels/${referenceDataModelId}/latestFinalisedModel                                                                         | Action: latestFinalisedModel
- * |   GET    | /api/referenceDataModels/${referenceDataModelId}/modelVersionTree                                                                             | Action: modelVersionTree
- *
- */
+import { FinalisePayload, ModelUpdatePayload } from './mdm-model-types.model';
+import {
+  QueryParameters,
+  RequestSettings,
+  SearchQueryParameters,
+  Uuid
+} from './mdm-common.model';
+import { MdmModelDomainResource } from './mdm-model-types.resource';
+import { MdmResourcesConfiguration } from './mdm-resources-configuration';
+import { MdmRestHandler } from './mdm-rest-handler';
 
 /**
  * MDM resource for the management of Reference Data Models.
  */
-export class MdmReferenceDataModelResource extends MdmResource {
+export class MdmReferenceDataModelResource extends MdmModelDomainResource {
+  constructor(
+    config?: MdmResourcesConfiguration,
+    restHandler?: MdmRestHandler
+  ) {
+    super('referenceDataModels', config, restHandler);
+  }
 
   /**
    * `HTTP GET` - Request the available default type providers for creating reference data models.
@@ -69,42 +52,38 @@ export class MdmReferenceDataModelResource extends MdmResource {
     return this.simpleGet(url, query, options);
   }
 
-  importers(queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
-    const url = `${this.apiEndpoint}/referenceDataModels/providers/importers`;
-    return this.simpleGet(url, queryStringParams, restHandlerOptions);
-  }
-
-  exporters(queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
-    const url = `${this.apiEndpoint}/referenceDataModels/providers/exporters`;
-    return this.simpleGet(url, queryStringParams, restHandlerOptions);
-  }
-
-  importModels(importerNamespace, importerName, importerVersion, data: any, restHandlerOptions?: RequestSettings) {
-    const url = `${this.apiEndpoint}/referenceDataModels/import/${importerNamespace}/${importerName}/${importerVersion}`;
-    return this.simplePost(url, data, restHandlerOptions);
-  }
-
-  exportModels(exporterNamespace, exporterName, exporterVersion, data: any, restHandlerOptions?: RequestSettings) {
-    const url = `${this.apiEndpoint}/referenceDataModels/export/${exporterNamespace}/${exporterName}/${exporterVersion}`;
-    return this.simplePost(url, data, restHandlerOptions);
-  }
-
-  removeReadByAuthenticated(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  removeReadByAuthenticated(
+    referenceDataModelId: string,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/readByAuthenticated`;
     return this.simpleDelete(url, queryStringParams, restHandlerOptions);
   }
 
-  updateReadByAuthenticated(referenceDataModelId: string, data: any, restHandlerOptions?: RequestSettings) {
+  updateReadByAuthenticated(
+    referenceDataModelId: string,
+    data: any,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/readByAuthenticated`;
     return this.simplePut(url, data, restHandlerOptions);
   }
 
-  removeReadByEveryone(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  removeReadByEveryone(
+    referenceDataModelId: string,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/readByEveryone`;
     return this.simpleDelete(url, queryStringParams, restHandlerOptions);
   }
 
-  updateReadByEveryone(referenceDataModelId: string, data: any, restHandlerOptions?: RequestSettings) {
+  updateReadByEveryone(
+    referenceDataModelId: string,
+    data: any,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/readByEveryone`;
     return this.simplePut(url, data, restHandlerOptions);
   }
@@ -125,52 +104,6 @@ export class MdmReferenceDataModelResource extends MdmResource {
     return this.simplePost(url, query, options);
   }
 
-  exportModel(referenceDataModelId: string, exporterNamespace, exporterName, exporterVersion, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
-    const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/export/${exporterNamespace}/${exporterName}/${exporterVersion}`;
-    return this.simpleGet(url, queryStringParams, restHandlerOptions);
-  }
-
-
-  /**
-   * `HTTP GET` - Request the list of reference data models.
-   *
-   * @param query Optional query string parameters to filter the returned list, if required.
-   * @param options Optional REST handler parameters, if required.
-   * @returns The result of the `GET` request.
-   *
-   * `200 OK` - will return a {@link ReferenceDataModelIndexResponse} containing a list of {@link ReferenceDataModel} items.
-   *
-   * @see {@link MdmReferenceDataModelResource.get}
-   */
-  list(query?: FilterQueryParameters, options?: RequestSettings) {
-    const url = `${this.apiEndpoint}/referenceDataModels`;
-    return this.simpleGet(url, query, options);
-  }
-
-  /**
-   * `HTTP DELETE` - Removes an existing reference data model, either temporarily or permanently.
-   *
-   * @param referenceDataModelId The unique identifier of the reference data model to remove.
-   * @param query Query parameters to state if the operation should be temporary, or a "soft delete", or permanent.
-   * @param options Optional REST handler options, if required.
-   * @returns The result of the `DELETE` request.
-   *
-   * On success, the response will be a `204 No Content` and the response body will be empty.
-   *
-   * @description It is required to pass a {@link ModelRemoveParameters.permanent} flag to explicitly state whether
-   * the operation is permanent or not. Setting this to `false` allows the reference data model to remain in Mauro but hidden; the
-   * operation may also be reversed by an administrator using the {@link MdmReferenceDataModelResource.undoSoftDelete} endpoint.
-   *
-   * If {@link ModelRemoveParameters.permanent} is set to `true`, then the reference data model will be permanently deleted with
-   * no method of retrieving it.
-   *
-   * @see {@link MdmReferenceDataModelResource.undoSoftDelete}
-   */
-  remove(referenceDataModelId: Uuid, query?: ModelRemoveQueryParameters, options?: RequestSettings) {
-    const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}`;
-    return this.simpleDelete(url, query, options);
-  }
-
   /**
    * `HTTP PUT` - Updates an existing reference data model.
    *
@@ -181,27 +114,21 @@ export class MdmReferenceDataModelResource extends MdmResource {
    *
    * `200 OK` - will return a {@link ReferenceDataModelDetailResponse} containing a {@link ReferenceDataModelDetail} object.
    */
-  update(referenceDataModelId: Uuid, data: ModelUpdatePayload, options?: RequestSettings) {
+  update(
+    referenceDataModelId: Uuid,
+    data: ModelUpdatePayload,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}`;
     return this.simplePut(url, data, options);
   }
 
-  /**
-   * `HTTP GET` - Request a reference data model.
-   *
-   * @param referenceDataModelId A unique identifier of the reference data model to get.
-   * @param query Optional query parameters, if required.
-   * @param options Optional REST handler parameters, if required.
-   * @returns The result of the `GET` request.
-   *
-   * `200 OK` - will return a {@link ReferenceDataModelDetailResponse} containing a {@link ReferenceDataModelDetail} object.
-   */
-  get(referenceDataModelId: Uuid, query?: QueryParameters, options?: RequestSettings) {
-    const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}`;
-    return this.simpleGet(url, query, options);
-  }
-
-  moveReferenceDataModelToFolder(referenceDataModelId: string, folderId: string, data: any, restHandlerOptions?: RequestSettings) {
+  moveReferenceDataModelToFolder(
+    referenceDataModelId: string,
+    folderId: string,
+    data: any,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/folder/${folderId}`;
     return this.simplePut(url, data, restHandlerOptions);
   }
@@ -239,27 +166,29 @@ export class MdmReferenceDataModelResource extends MdmResource {
    *
    * `200 OK` - will return a {@link ReferenceDataModelDetailResponse} containing a {@link ReferenceDataModelDetail} object.
    */
-  finalise(referenceDataModelId: Uuid, data: FinalisePayload, options?: RequestSettings) {
+  finalise(
+    referenceDataModelId: Uuid,
+    data: FinalisePayload,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/finalise`;
     return this.simplePut(url, data, options);
   }
 
-  newBranchModelVersion(referenceDataModelId: string, data: any, restHandlerOptions?: RequestSettings) {
-    const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/newBranchModelVersion`;
-    return this.simplePut(url, data, restHandlerOptions);
-  }
-
-  newForkModel(referenceDataModelId: string, data: any, restHandlerOptions?: RequestSettings) {
-    const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/newForkModel`;
-    return this.simplePut(url, data, restHandlerOptions);
-  }
-
-  latestModelVersion(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  latestModelVersion(
+    referenceDataModelId: string,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/latestModelVersion`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
 
-  latestFinalisedModel(referenceDataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  latestFinalisedModel(
+    referenceDataModelId: string,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/latestFinalisedModel`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
@@ -274,7 +203,11 @@ export class MdmReferenceDataModelResource extends MdmResource {
    *
    * `200 OK` - will return a {@link ModelVersionTreeResponse} containing a list of {@link ModelVersionItem} objects.
    */
-  modelVersionTree(id: Uuid, query?: QueryParameters, options?: RequestSettings) {
+  modelVersionTree(
+    id: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/referenceDataModels/${id}/modelVersionTree`;
     return this.simpleGet(url, query, options);
   }
@@ -289,9 +222,12 @@ export class MdmReferenceDataModelResource extends MdmResource {
    *
    * `200 OK` - will return a {@link BasicModelVersionTreeResponse} containing a list of {@link BasicModelVersionItem} objects.
    */
-   simpleModelVersionTree(id: Uuid, query?: QueryParameters, options?: RequestSettings) {
+  simpleModelVersionTree(
+    id: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/referenceDataModels/${id}/simpleModelVersionTree`;
     return this.simpleGet(url, query, options);
   }
-
 }
