@@ -27,7 +27,8 @@ import { Exporter } from './mdm-import-export.model';
 import { ModelDomain } from './mdm-model-types.model';
 
 export interface DomainExportCatalogueItem {
-  domainId: Uuid;
+  domainId?: Uuid;
+  domainIds?: Uuid[];
   domainType: CatalogueItemDomainType;
 }
 

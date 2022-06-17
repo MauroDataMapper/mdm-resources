@@ -139,56 +139,12 @@ export class MdmCodeSetResource extends MdmModelDomainResource {
     return this.simpleGet(url, query, options);
   }
 
-  /**
-   * `HTTP GET` - Request the list of code sets.
-   *
-   * @param query Optional query string parameters to filter the returned list, if required.
-   * @param options Optional REST handler parameters, if required.
-   * @returns The result of the `GET` request.
-   *
-   * `200 OK` - will return a {@link CodeSetIndexResponse} containing a list of {@link CodeSet} items.
-   *
-   * @see {@link MdmCodeSetResource.get}
-   */
-  list(query?: FilterQueryParameters, options?: RequestSettings) {
-    const url = `${this.apiEndpoint}/codeSets`;
-    return this.simpleGet(url, query, options);
-  }
-
   removeAll(
     queryStringParams?: QueryParameters,
     restHandlerOptions?: RequestSettings
   ) {
     const url = `${this.apiEndpoint}/codeSets`;
     return this.simpleDelete(url, queryStringParams, restHandlerOptions);
-  }
-
-  /**
-   * `HTTP DELETE` - Removes an existing code set, either temporarily or permanently.
-   *
-   * @param codeSetId The unique identifier of the code set to remove.
-   * @param query Query parameters to state if the operation should be temporary, or a "soft delete", or permanent.
-   * @param options Optional REST handler options, if required.
-   * @returns The result of the `DELETE` request.
-   *
-   * On success, the response will be a `204 No Content` and the response body will be empty.
-   *
-   * @description It is required to pass a {@link ModelRemoveParameters.permanent} flag to explicitly state whether
-   * the operation is permanent or not. Setting this to `false` allows the code set to remain in Mauro but hidden; the
-   * operation may also be reversed by an administrator using the {@link MdmCodeSetResource.undoSoftDelete} endpoint.
-   *
-   * If {@link ModelRemoveParameters.permanent} is set to `true`, then the code set will be permanently deleted with
-   * no method of retrieving it.
-   *
-   * @see {@link MdmCodeSetResource.undoSoftDelete}
-   */
-  remove(
-    codeSetId: Uuid,
-    query?: RemoveQueryParameters,
-    options?: RequestSettings
-  ) {
-    const url = `${this.apiEndpoint}/codeSets/${codeSetId}`;
-    return this.simpleDelete(url, query, options);
   }
 
   /**
@@ -208,34 +164,6 @@ export class MdmCodeSetResource extends MdmModelDomainResource {
   ) {
     const url = `${this.apiEndpoint}/codeSets/${codeSetId}`;
     return this.simplePut(url, data, options);
-  }
-
-  /**
-   * `HTTP GET` - Request a code set.
-   *
-   * @param dataModelId Either a unique identifier of the code set, or a path in the format `typePrefix:label|typePrefix:label`.
-   * @param query Optional query parameters, if required.
-   * @param options Optional REST handler parameters, if required.
-   * @returns The result of the `GET` request.
-   *
-   * `200 OK` - will return a {@link CodeSetDetailResponse} containing a {@link CodeSetDetail} object.
-   *
-   * This function does allow either an ID or a path string, but should ideally be used only for IDs. For using paths,
-   * see the {@link MdmCatalogueItemResource.getPath()} function instead; there are no guarantees this function will support
-   * paths in the future, but will currently be supported for backwards compatibility.
-   */
-  get(
-    codeSetId: Uuid | string,
-    query?: QueryParameters,
-    options?: RequestSettings
-  ) {
-    let url = '';
-    if (this.isGuid(codeSetId)) {
-      url = `${this.apiEndpoint}/codeSets/${codeSetId}`;
-    } else {
-      url = `${this.apiEndpoint}/codeSets/path/${codeSetId}`;
-    }
-    return this.simpleGet(url, query, options);
   }
 
   terms(

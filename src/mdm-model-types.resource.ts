@@ -33,9 +33,9 @@ import {
   ExportModelsPayload,
   ExportQueryParameters
 } from './mdm-import-export.model';
-import { MdmResource } from './mdm-resource';
 import { MdmResourcesConfiguration } from './mdm-resources-configuration';
 import { MdmRestHandler } from './mdm-rest-handler';
+import { MdmCommonDomainResource } from './mdm-common.resource';
 
 /**
  * Definition of resource operations for a domain that supports branching and versionining models.
@@ -237,7 +237,7 @@ export interface ExportableResource {
  * Model domain types allowed are defined by the {@link ModelDomain} type.
  */
 export class MdmModelDomainResource
-  extends MdmResource
+  extends MdmCommonDomainResource
   implements
     BranchableResource,
     ForkableResource,
@@ -251,11 +251,11 @@ export class MdmModelDomainResource
    * @param restHandler Optionally provide a specific {@link MdmRestHandler}. If not provided, the {@link DefaultMdmRestHandler} implementation will be used.
    */
   constructor(
-    private domain: ModelDomain,
+    domain: ModelDomain,
     config?: MdmResourcesConfiguration,
     restHandler?: MdmRestHandler
   ) {
-    super(config, restHandler);
+    super(domain, config, restHandler);
   }
 
   newBranchModelVersion(

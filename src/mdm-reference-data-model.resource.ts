@@ -107,50 +107,6 @@ export class MdmReferenceDataModelResource extends MdmModelDomainResource {
   }
 
   /**
-   * `HTTP GET` - Request the list of reference data models.
-   *
-   * @param query Optional query string parameters to filter the returned list, if required.
-   * @param options Optional REST handler parameters, if required.
-   * @returns The result of the `GET` request.
-   *
-   * `200 OK` - will return a {@link ReferenceDataModelIndexResponse} containing a list of {@link ReferenceDataModel} items.
-   *
-   * @see {@link MdmReferenceDataModelResource.get}
-   */
-  list(query?: FilterQueryParameters, options?: RequestSettings) {
-    const url = `${this.apiEndpoint}/referenceDataModels`;
-    return this.simpleGet(url, query, options);
-  }
-
-  /**
-   * `HTTP DELETE` - Removes an existing reference data model, either temporarily or permanently.
-   *
-   * @param referenceDataModelId The unique identifier of the reference data model to remove.
-   * @param query Query parameters to state if the operation should be temporary, or a "soft delete", or permanent.
-   * @param options Optional REST handler options, if required.
-   * @returns The result of the `DELETE` request.
-   *
-   * On success, the response will be a `204 No Content` and the response body will be empty.
-   *
-   * @description It is required to pass a {@link ModelRemoveParameters.permanent} flag to explicitly state whether
-   * the operation is permanent or not. Setting this to `false` allows the reference data model to remain in Mauro but hidden; the
-   * operation may also be reversed by an administrator using the {@link MdmReferenceDataModelResource.undoSoftDelete} endpoint.
-   *
-   * If {@link ModelRemoveParameters.permanent} is set to `true`, then the reference data model will be permanently deleted with
-   * no method of retrieving it.
-   *
-   * @see {@link MdmReferenceDataModelResource.undoSoftDelete}
-   */
-  remove(
-    referenceDataModelId: Uuid,
-    query?: RemoveQueryParameters,
-    options?: RequestSettings
-  ) {
-    const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}`;
-    return this.simpleDelete(url, query, options);
-  }
-
-  /**
    * `HTTP PUT` - Updates an existing reference data model.
    *
    * @param referenceDataModelId The unique identifier of the reference data model to update.
@@ -167,25 +123,6 @@ export class MdmReferenceDataModelResource extends MdmModelDomainResource {
   ) {
     const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}`;
     return this.simplePut(url, data, options);
-  }
-
-  /**
-   * `HTTP GET` - Request a reference data model.
-   *
-   * @param referenceDataModelId A unique identifier of the reference data model to get.
-   * @param query Optional query parameters, if required.
-   * @param options Optional REST handler parameters, if required.
-   * @returns The result of the `GET` request.
-   *
-   * `200 OK` - will return a {@link ReferenceDataModelDetailResponse} containing a {@link ReferenceDataModelDetail} object.
-   */
-  get(
-    referenceDataModelId: Uuid,
-    query?: QueryParameters,
-    options?: RequestSettings
-  ) {
-    const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}`;
-    return this.simpleGet(url, query, options);
   }
 
   moveReferenceDataModelToFolder(

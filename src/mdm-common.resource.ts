@@ -89,7 +89,7 @@ export class MdmCommonDomainResource
   /**
    * Constructs a new `MdmCommonDomainResource`.
    *
-   * @param domain The domain type for the operations.
+   * @param domain The domain type for the operations. This must be the pluralised form of the domain name e.g. 'dataModels', 'terminologies', etc.
    * @param config Optionally provide configuration options to this resource class. If not provided, suitable defaults will be used.
    * @param restHandler Optionally provide a specific {@link MdmRestHandler}. If not provided, the {@link DefaultMdmRestHandler} implementation will be used.
    */

@@ -299,22 +299,6 @@ export class MdmDataModelResource extends MdmModelDomainResource {
   }
 
   /**
-   * `HTTP GET` - Request the list of data models.
-   *
-   * @param query Optional query string parameters to filter the returned list, if required.
-   * @param options Optional REST handler parameters, if required.
-   * @returns The result of the `GET` request.
-   *
-   * `200 OK` - will return a {@link DataModelIndexResponse} containing a list of {@link DataModel} items.
-   *
-   * @see {@link MdmDataModelResource.get}
-   */
-  list(query?: FilterQueryParameters, options?: RequestSettings) {
-    const url = `${this.apiEndpoint}/dataModels`;
-    return this.simpleGet(url, query, options);
-  }
-
-  /**
    * `HTTP GET` - Request the list of  data Elements on a  data model.
    *
    * @param query Optional query string parameters to filter the returned list, if required.
@@ -342,33 +326,33 @@ export class MdmDataModelResource extends MdmModelDomainResource {
     return this.simpleDelete(url, queryStringParams, restHandlerOptions);
   }
 
-  /**
-   * `HTTP DELETE` - Removes an existing data model, either temporarily or permanently.
-   *
-   * @param dataModelId The unique identifier of the data model to remove.
-   * @param query Query parameters to state if the operation should be temporary, or a "soft delete", or permanent.
-   * @param options Optional REST handler options, if required.
-   * @returns The result of the `DELETE` request.
-   *
-   * On success, the response will be a `204 No Content` and the response body will be empty.
-   *
-   * @description It is required to pass a {@link ModelRemoveParameters.permanent} flag to explicitly state whether
-   * the operation is permanent or not. Setting this to `false` allows the data model to remain in Mauro but hidden; the
-   * operation may also be reversed by an administrator using the {@link MdmDataModelResource.undoSoftDelete} endpoint.
-   *
-   * If {@link ModelRemoveParameters.permanent} is set to `true`, then the data model will be permanently deleted with
-   * no method of retrieving it.
-   *
-   * @see {@link MdmDataModelResource.undoSoftDelete}
-   */
-  remove(
-    dataModelId: Uuid,
-    query: RemoveQueryParameters,
-    options?: RequestSettings
-  ) {
-    const url = `${this.apiEndpoint}/dataModels/${dataModelId}`;
-    return this.simpleDelete(url, query, options);
-  }
+  // /**
+  //  * `HTTP DELETE` - Removes an existing data model, either temporarily or permanently.
+  //  *
+  //  * @param dataModelId The unique identifier of the data model to remove.
+  //  * @param query Query parameters to state if the operation should be temporary, or a "soft delete", or permanent.
+  //  * @param options Optional REST handler options, if required.
+  //  * @returns The result of the `DELETE` request.
+  //  *
+  //  * On success, the response will be a `204 No Content` and the response body will be empty.
+  //  *
+  //  * @description It is required to pass a {@link ModelRemoveParameters.permanent} flag to explicitly state whether
+  //  * the operation is permanent or not. Setting this to `false` allows the data model to remain in Mauro but hidden; the
+  //  * operation may also be reversed by an administrator using the {@link MdmDataModelResource.undoSoftDelete} endpoint.
+  //  *
+  //  * If {@link ModelRemoveParameters.permanent} is set to `true`, then the data model will be permanently deleted with
+  //  * no method of retrieving it.
+  //  *
+  //  * @see {@link MdmDataModelResource.undoSoftDelete}
+  //  */
+  // remove(
+  //   dataModelId: Uuid,
+  //   query: RemoveQueryParameters,
+  //   options?: RequestSettings
+  // ) {
+  //   const url = `${this.apiEndpoint}/dataModels/${dataModelId}`;
+  //   return this.simpleDelete(url, query, options);
+  // }
 
   /**
    * `HTTP PUT` - Updates an existing data model.
@@ -389,29 +373,29 @@ export class MdmDataModelResource extends MdmModelDomainResource {
     return this.simplePut(url, data, options);
   }
 
-  /**
-   * `HTTP GET` - Request a data model.
-   *
-   * @param dataModelId Either a unique identifier of the data model, or a path in the format `typePrefix:label|typePrefix:label`.
-   * @param query Optional query parameters, if required.
-   * @param options Optional REST handler parameters, if required.
-   * @returns The result of the `GET` request.
-   *
-   * `200 OK` - will return a {@link DataModelDetailResponse} containing a {@link DataModelDetail} object.
-   *
-   * This function does allow either an ID or a path string, but should ideally be used only for IDs. For using paths,
-   * see the {@link MdmCatalogueItemResource.getPath()} function instead; there are no guarantees this function will support
-   * paths in the future, but will currently be supported for backwards compatibility.
-   */
-  get(dataModelId: Uuid, query?: QueryParameters, options?: RequestSettings) {
-    let url = '';
-    if (this.isGuid(dataModelId)) {
-      url = `${this.apiEndpoint}/dataModels/${dataModelId}`;
-    } else {
-      url = `${this.apiEndpoint}/dataModels/path/${dataModelId}`;
-    }
-    return this.simpleGet(url, query, options);
-  }
+  // /**
+  //  * `HTTP GET` - Request a data model.
+  //  *
+  //  * @param dataModelId Either a unique identifier of the data model, or a path in the format `typePrefix:label|typePrefix:label`.
+  //  * @param query Optional query parameters, if required.
+  //  * @param options Optional REST handler parameters, if required.
+  //  * @returns The result of the `GET` request.
+  //  *
+  //  * `200 OK` - will return a {@link DataModelDetailResponse} containing a {@link DataModelDetail} object.
+  //  *
+  //  * This function does allow either an ID or a path string, but should ideally be used only for IDs. For using paths,
+  //  * see the {@link MdmCatalogueItemResource.getPath()} function instead; there are no guarantees this function will support
+  //  * paths in the future, but will currently be supported for backwards compatibility.
+  //  */
+  // get(dataModelId: Uuid, query?: QueryParameters, options?: RequestSettings) {
+  //   let url = '';
+  //   if (this.isGuid(dataModelId)) {
+  //     url = `${this.apiEndpoint}/dataModels/${dataModelId}`;
+  //   } else {
+  //     url = `${this.apiEndpoint}/dataModels/path/${dataModelId}`;
+  //   }
+  //   return this.simpleGet(url, query, options);
+  // }
 
   latestModelVersion(
     dataModelId: string,
