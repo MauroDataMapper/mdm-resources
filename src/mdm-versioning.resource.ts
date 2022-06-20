@@ -19,7 +19,7 @@ SPDX-License-Identifier: Apache-2.0
 import {
   RequestSettings,
   QueryParameters,
-  ModelDomainType,
+  ModelDomainType
 } from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 

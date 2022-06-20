@@ -18,7 +18,7 @@ SPDX-License-Identifier: Apache-2.0
 */
 
 import { CodeSetDetail } from './mdm-code-set.model';
-import { DataModelDetail } from './mdm-data-model.model';
+import { DataModelDetail } from './models/mdm-data-model.model';
 import { ReferenceDataModelDetail } from './mdm-reference-data-model.model';
 import { TerminologyDetail } from './mdm-terminology.model';
 import {

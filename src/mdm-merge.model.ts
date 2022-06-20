@@ -17,18 +17,23 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { DataModelDetail } from './mdm-data-model.model';
+import { DataModelDetail } from './models/mdm-data-model.model';
 import { Branchable, Modelable } from './mdm-model-types.model';
 import { ReferenceDataModelDetail } from './mdm-reference-data-model.model';
 import { TerminologyDetail } from './mdm-terminology.model';
 import { VersionedFolderDetail } from './mdm-versioned-folder.model';
-import { MdmResponse, MultiFacetAwareDomainType, Payload, Uuid } from './mdm-common.model';
+import {
+  MdmResponse,
+  MultiFacetAwareDomainType,
+  Payload,
+  Uuid
+} from './mdm-common.model';
 
 /**
  * Represents all {@link MultiFacetAwareDomainType} values that can be used for merge operations.
  */
 export type MergableMultiFacetAwareDomainType =
-  MultiFacetAwareDomainType.DataModels
+  | MultiFacetAwareDomainType.DataModels
   | MultiFacetAwareDomainType.ReferenceDataModels
   | MultiFacetAwareDomainType.Terminologies
   | MultiFacetAwareDomainType.VersionedFolders;
@@ -37,7 +42,7 @@ export type MergableMultiFacetAwareDomainType =
  * Represents the possible types that could be returned after a successful committed merge operation.
  */
 export type MergableCatalogueItem =
-  DataModelDetail
+  | DataModelDetail
   | ReferenceDataModelDetail
   | TerminologyDetail
   | VersionedFolderDetail;

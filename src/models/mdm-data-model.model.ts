@@ -21,16 +21,16 @@ import {
   Modelable,
   ModelCreatePayload,
   ModelDomainDetail
-} from './mdm-model-types.model';
+} from '../mdm-model-types.model';
 import {
   MdmIndexResponse,
   MdmResponse,
   Payload,
   QueryParameters,
   Uuid
-} from './mdm-common.model';
-import { DataTypeDetail, DataTypeProvider } from './mdm-data-type.model';
-import { DataClassFull } from './mdm-data-class.model';
+} from '../mdm-common.model';
+import { DataTypeDetail, DataTypeProvider } from '../mdm-data-type.model';
+import { DataClassFull } from '../mdm-data-class.model';
 
 export type DataModelType = 'Data Standard' | 'Data Asset';
 

@@ -17,23 +17,23 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { FinalisePayload, ModelUpdatePayload } from './mdm-model-types.model';
+import { FinalisePayload, ModelUpdatePayload } from '../mdm-model-types.model';
 import {
   RequestSettings,
   QueryParameters,
   Uuid,
   FilterQueryParameters,
   SearchQueryParameters
-} from './mdm-common.model';
+} from '../mdm-common.model';
 import {
   DataModelCreatePayload,
   DataModelCreateQueryParameters,
   DataModelSubsetPayload,
   SourceTargetIntersectionPayload
 } from './mdm-data-model.model';
-import { MdmModelDomainResource } from './mdm-model-types.resource';
-import { MdmResourcesConfiguration } from './mdm-resources-configuration';
-import { MdmRestHandler } from './mdm-rest-handler';
+import { MdmModelDomainResource } from '../mdm-model-types.resource';
+import { MdmResourcesConfiguration } from '../mdm-resources-configuration';
+import { MdmRestHandler } from '../mdm-rest-handler';
 
 /**
  * MDM resource for managing data models.
