@@ -18,8 +18,13 @@ SPDX-License-Identifier: Apache-2.0
 */
 
 import { ApiProperty } from './mdm-api-properties.model';
-import { RequestSettings, QueryParameters, FilterQueryParameters, Uuid } from './mdm-common.model';
-import { MdmResource } from './mdm-resource';
+import {
+  RequestSettings,
+  QueryParameters,
+  FilterQueryParameters,
+  Uuid
+} from '../../mdm-common.model';
+import { MdmResource } from '../../mdm-resource';
 
 /**
  * MDM resource for managing system and user defined properties in Mauro.
@@ -30,7 +35,6 @@ import { MdmResource } from './mdm-resource';
  * @see {@link ApiProperty}
  */
 export class MdmApiPropertyResources extends MdmResource {
-
   /**
    * `HTTP GET` - Gets a list of all API properties.
    *

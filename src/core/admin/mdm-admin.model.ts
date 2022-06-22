@@ -17,7 +17,7 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { MdmResponse } from './mdm-common.model';
+import { MdmResponse } from '../../mdm-common.model';
 
 /**
  * Type to represent the status information of a Mauro instance.

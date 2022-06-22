@@ -16,7 +16,7 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { SubscribedCatalogue } from './federation/mdm-subscribed-catalogues.model';
+import { SubscribedCatalogue } from '../../federation/mdm-subscribed-catalogues.model';
 import {
   RequestSettings,
   QueryParameters,
@@ -24,8 +24,8 @@ import {
   ContainerDomainType,
   ModelDomainType,
   Uuid
-} from './mdm-common.model';
-import { MdmResource } from './mdm-resource';
+} from '../../mdm-common.model';
+import { MdmResource } from '../../mdm-resource';
 
 /**
  * Controller: admin
