@@ -17,7 +17,8 @@
     "eslint-report": "eslint . --ext ts --format checkstyle -o eslint_report.xml",
     "docs": "typedoc --out docs --includeVersion src/index.ts --listInvalidSymbolLinks",
     "docs-watch": "typedoc --out docs --includeVersion src/index.ts --listInvalidSymbolLinks --watch",
-    "license-check": "license-check-and-add -f license-check-and-add-config.json"
+    "license-check": "license-check-and-add -f license-check-and-add-config.json",
+    "pr-checks": "npm run license-check check && npm run eslint && npm run build"
   },
   "repository": {
     "type": "git",
