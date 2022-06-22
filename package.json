@@ -6,7 +6,6 @@
   "license": "Apache-2.0",
   "scripts": {
     "clean": "shx rm -rf lib",
-    "build-old": "rm -rf lib && tsc && tsc --target ES5 --outDir lib/es5 && tsc --target ES6 --outDir lib/es6",
     "build:es5": "tsc",
     "build:es6": "tsc --target es6 --outDir lib/es6",
     "build:es2015": "tsc --target es2015 --outDir lib/es2015",

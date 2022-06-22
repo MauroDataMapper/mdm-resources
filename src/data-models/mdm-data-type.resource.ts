@@ -16,9 +16,14 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { RequestSettings, QueryParameters, Uuid, FilterQueryParameters } from './mdm-common.model';
+import {
+  RequestSettings,
+  QueryParameters,
+  Uuid,
+  FilterQueryParameters
+} from '../mdm-common.model';
 import { DataType } from './mdm-data-type.model';
-import { MdmResource } from './mdm-resource';
+import { MdmResource } from '../mdm-resource';
 
 /**
  * Controller: dataType
@@ -61,7 +66,11 @@ export class MdmDataTypeResource extends MdmResource {
    *
    * @see {@link MdmDataTypeResource.get}
    */
-  list(dataModelId: Uuid, query?: FilterQueryParameters, options?: RequestSettings) {
+  list(
+    dataModelId: Uuid,
+    query?: FilterQueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataTypes`;
     return this.simpleGet(url, query, options);
   }
@@ -77,7 +86,12 @@ export class MdmDataTypeResource extends MdmResource {
    *
    * On success, the response will be a `204 No Content` and the response body will be empty.
    */
-  remove(dataModelId: Uuid, dataTypeId: Uuid, query?: QueryParameters, options?: RequestSettings) {
+  remove(
+    dataModelId: Uuid,
+    dataTypeId: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataTypes/${dataTypeId}`;
     return this.simpleDelete(url, query, options);
   }
@@ -93,7 +107,12 @@ export class MdmDataTypeResource extends MdmResource {
    *
    * `200 OK` - will return a {@link DataTypeDetailResponse} containing a {@link DataTypeDetail} object.
    */
-  update(dataModelId: Uuid, dataTypeId: Uuid, data: DataType, options?: RequestSettings) {
+  update(
+    dataModelId: Uuid,
+    dataTypeId: Uuid,
+    data: DataType,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataTypes/${dataTypeId}`;
     return this.simplePut(url, data, options);
   }
@@ -113,12 +132,16 @@ export class MdmDataTypeResource extends MdmResource {
    * see the {@link MdmCatalogueItemResource.getPath()} function instead; there are no guarantees this function will support
    * paths in the future, but will currently be supported for backwards compatibility.
    */
-  get(dataModelId: Uuid, dataTypeId: Uuid | string, query?: QueryParameters, options?: RequestSettings) {
+  get(
+    dataModelId: Uuid,
+    dataTypeId: Uuid | string,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
     let url = '';
     if (this.isGuid(dataModelId)) {
       url = url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataTypes/${dataTypeId}`;
-    }
-    else {
+    } else {
       url = url = `${this.apiEndpoint}/dataModels/path/${dataTypeId}`;
     }
     return this.simpleGet(url, query, options);
@@ -135,8 +158,13 @@ export class MdmDataTypeResource extends MdmResource {
    *
    * `200 OK` - will return a {@link DataTypeDetailResponse} containing the new copy of a {@link DataTypeDetail} object.
    */
-  copyDataType(dataModelId: Uuid, otherDataModelId: Uuid, dataTypeId: Uuid, options?: RequestSettings) {
+  copyDataType(
+    dataModelId: Uuid,
+    otherDataModelId: Uuid,
+    dataTypeId: Uuid,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataTypes/${otherDataModelId}/${dataTypeId}`;
-    return this.simplePost(url, { }, options);
+    return this.simplePost(url, {}, options);
   }
 }

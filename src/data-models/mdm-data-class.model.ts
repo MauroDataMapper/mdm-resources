@@ -17,11 +17,22 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { Historical, Securable } from './mdm-model-types.model';
-import { Breadcrumb, CatalogueItemDomainType, MdmIndexResponse, MdmResponse, PageParameters, QueryParameters, SortParameters, Uuid } from './mdm-common.model';
+import { Historical, Securable } from '../mdm-model-types.model';
+import {
+  Breadcrumb,
+  CatalogueItemDomainType,
+  MdmIndexResponse,
+  MdmResponse,
+  PageParameters,
+  QueryParameters,
+  SortParameters,
+  Uuid
+} from '../mdm-common.model';
 import { DataElementDetail } from './mdm-data-element.model';
 
-export type DataClassIndexParameters = SortParameters & PageParameters & QueryParameters;
+export type DataClassIndexParameters = SortParameters &
+  PageParameters &
+  QueryParameters;
 
 export interface DataClass {
   [key: string]: any;
@@ -36,10 +47,7 @@ export interface DataClass {
   maxMultipicity?: number;
 }
 
-export type DataClassDetail =
-  DataClass
-  & Securable
-  & Historical;
+export type DataClassDetail = DataClass & Securable & Historical;
 
 export type DataClassIndexResponse = MdmIndexResponse<DataClass>;
 export type DataClassDetailResponse = MdmResponse<DataClassDetail>;
@@ -59,6 +67,4 @@ export interface DataClassNode {
   dataElements?: DataElementDetail[];
 }
 
-export type DataClassFull =
-  DataClassDetail
-  & DataClassNode;
+export type DataClassFull = DataClassDetail & DataClassNode;

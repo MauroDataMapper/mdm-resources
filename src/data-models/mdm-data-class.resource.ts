@@ -16,9 +16,14 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { RequestSettings, QueryParameters, Uuid, SearchQueryParameters } from './mdm-common.model';
+import {
+  RequestSettings,
+  QueryParameters,
+  Uuid,
+  SearchQueryParameters
+} from '../mdm-common.model';
 import { DataClass, DataClassIndexParameters } from './mdm-data-class.model';
-import { MdmResource } from './mdm-resource';
+import { MdmResource } from '../mdm-resource';
 
 /**
  * Controller: dataClass
@@ -49,7 +54,6 @@ import { MdmResource } from './mdm-resource';
  * MDM resource for managing data classes attached to data models.
  */
 export class MdmDataClassResource extends MdmResource {
-
   /**
    * `HTTP POST` - Creates a new data class under a chosen parent data class.
    *
@@ -61,7 +65,12 @@ export class MdmDataClassResource extends MdmResource {
    *
    * `200 OK` - will return a {@link DataClassDetailResponse} containing a {@link DataClassDetail} object.
    */
-  addChildDataClass(dataModelId: Uuid, dataClassId: Uuid, data: DataClass, options?: RequestSettings) {
+  addChildDataClass(
+    dataModelId: Uuid,
+    dataClassId: Uuid,
+    data: DataClass,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataClasses`;
     return this.simplePost(url, data, options);
   }
@@ -79,7 +88,12 @@ export class MdmDataClassResource extends MdmResource {
    *
    * @see {@link MdmDataClassResource.getChildDataClass}
    */
-  listChildDataClasses(dataModelId: Uuid, dataClassId: Uuid, query?: DataClassIndexParameters, options?: RequestSettings) {
+  listChildDataClasses(
+    dataModelId: Uuid,
+    dataClassId: Uuid,
+    query?: DataClassIndexParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataClasses`;
     return this.simpleGet(url, query, options);
   }
@@ -98,12 +112,22 @@ export class MdmDataClassResource extends MdmResource {
    *
    * @see {@link TreeItemSearchParameters}
    */
-  search(dataModelId: Uuid, dataClassId: Uuid, query?: SearchQueryParameters, options?: RequestSettings) {
+  search(
+    dataModelId: Uuid,
+    dataClassId: Uuid,
+    query?: SearchQueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/search`;
     return this.simplePost(url, query, options);
   }
 
-  content(dataModelId: string, dataClassId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  content(
+    dataModelId: string,
+    dataClassId: string,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/content`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
@@ -120,7 +144,13 @@ export class MdmDataClassResource extends MdmResource {
    *
    * On success, the response will be a `204 No Content` and the response body will be empty.
    */
-  removeChildDataClass(dataModelId: Uuid, dataClassId: Uuid, childDataClassId: Uuid, query?: QueryParameters, options?: RequestSettings) {
+  removeChildDataClass(
+    dataModelId: Uuid,
+    dataClassId: Uuid,
+    childDataClassId: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataClasses/${childDataClassId}`;
     return this.simpleDelete(url, query, options);
   }
@@ -137,7 +167,13 @@ export class MdmDataClassResource extends MdmResource {
    *
    * `200 OK` - will return a {@link DataClassDetailResponse} containing a {@link DataClassDetail} object.
    */
-  updateChildDataClass(dataModelId: Uuid, dataClassId: Uuid, childDataClassId: Uuid, data: DataClass, options?: RequestSettings) {
+  updateChildDataClass(
+    dataModelId: Uuid,
+    dataClassId: Uuid,
+    childDataClassId: Uuid,
+    data: DataClass,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataClasses/${childDataClassId}`;
     return this.simplePut(url, data, options);
   }
@@ -158,12 +194,17 @@ export class MdmDataClassResource extends MdmResource {
    * see the {@link MdmCatalogueItemResource.getPath()} function instead; there are no guarantees this function will support
    * paths in the future, but will currently be supported for backwards compatibility.
    */
-  getChildDataClass(dataModelId: Uuid, dataClassId: Uuid, childDataClassId: Uuid, query?: QueryParameters, options?: RequestSettings) {
+  getChildDataClass(
+    dataModelId: Uuid,
+    dataClassId: Uuid,
+    childDataClassId: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
     let url = '';
     if (this.isGuid(childDataClassId)) {
       url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataClasses/${childDataClassId}`;
-    }
-    else {
+    } else {
       url = `${this.apiEndpoint}/dataModels/path/${childDataClassId}`;
     }
 
@@ -182,9 +223,15 @@ export class MdmDataClassResource extends MdmResource {
    *
    * `200 OK` - will return a {@link DataClassDetailResponse} containing the new copy of a {@link DataClassDetail} object.
    */
-  copyChildDataClass(dataModelId: Uuid, dataClassId: Uuid, otherDataModelId: Uuid, otherDataClassId: Uuid, options?: RequestSettings) {
+  copyChildDataClass(
+    dataModelId: Uuid,
+    dataClassId: Uuid,
+    otherDataModelId: Uuid,
+    otherDataClassId: Uuid,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataClasses/${otherDataModelId}/${otherDataClassId}`;
-    return this.simplePost(url, { }, options);
+    return this.simplePost(url, {}, options);
   }
 
   /**
@@ -219,7 +266,11 @@ export class MdmDataClassResource extends MdmResource {
     return this.simpleGet(url, query, options);
   }
 
-  all(dataModelId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  all(
+    dataModelId: string,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/allDataClasses`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
@@ -235,7 +286,12 @@ export class MdmDataClassResource extends MdmResource {
    *
    * On success, the response will be a `204 No Content` and the response body will be empty.
    */
-  remove(dataModelId: Uuid, dataClassId: Uuid, query?: QueryParameters, options?: RequestSettings) {
+  remove(
+    dataModelId: Uuid,
+    dataClassId: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}`;
     return this.simpleDelete(url, query, options);
   }
@@ -251,7 +307,12 @@ export class MdmDataClassResource extends MdmResource {
    *
    * `200 OK` - will return a {@link DataClassDetailResponse} containing a {@link DataClassDetail} object.
    */
-  update(dataModelId: Uuid, dataClassId: Uuid, data: DataClass, options?: RequestSettings) {
+  update(
+    dataModelId: Uuid,
+    dataClassId: Uuid,
+    data: DataClass,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}`;
     return this.simplePut(url, data, options);
   }
@@ -267,7 +328,12 @@ export class MdmDataClassResource extends MdmResource {
    *
    * `200 OK` - will return a {@link DataClassDetailResponse} containing a {@link DataClassDetail} object.
    */
-  get(dataModelId: Uuid, dataClassId: Uuid, query?: QueryParameters, options?: RequestSettings) {
+  get(
+    dataModelId: Uuid,
+    dataClassId: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}`;
     return this.simpleGet(url, query, options);
   }
@@ -283,9 +349,14 @@ export class MdmDataClassResource extends MdmResource {
    *
    * `200 OK` - will return a {@link DataClassDetailResponse} containing the new copy of a {@link DataClassDetail} object.
    */
-  copyDataClass(dataModelId: string, otherDataModelId: string, otherDataClassId: string, restHandlerOptions?: RequestSettings) {
+  copyDataClass(
+    dataModelId: string,
+    otherDataModelId: string,
+    otherDataClassId: string,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${otherDataModelId}/${otherDataClassId}`;
-    return this.simplePost(url, { }, restHandlerOptions);
+    return this.simplePost(url, {}, restHandlerOptions);
   }
 
   /**
@@ -300,9 +371,15 @@ export class MdmDataClassResource extends MdmResource {
    *
    * `200 OK` - will return a {@link DataClassDetailResponse} containing a {@link DataClassDetail} object.
    */
-  importDataClass(dataModelId: Uuid, dataClassId: Uuid, otherDataModelId: Uuid, otherDataClassId: Uuid, options?: RequestSettings) {
+  importDataClass(
+    dataModelId: Uuid,
+    dataClassId: Uuid,
+    otherDataModelId: Uuid,
+    otherDataClassId: Uuid,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataClasses/${otherDataModelId}/${otherDataClassId}`;
-    return this.simplePut(url, { }, options);
+    return this.simplePut(url, {}, options);
   }
 
   /**
@@ -317,9 +394,15 @@ export class MdmDataClassResource extends MdmResource {
    *
    * On success, the response will be a `204 No Content` and the response body will be empty.
    */
-  removeImportedDataClass(dataModelId: Uuid, dataClassId: Uuid, otherDataModelId: Uuid, otherDataClassId: Uuid, options?: RequestSettings) {
+  removeImportedDataClass(
+    dataModelId: Uuid,
+    dataClassId: Uuid,
+    otherDataModelId: Uuid,
+    otherDataClassId: Uuid,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataClasses/${otherDataModelId}/${otherDataClassId}`;
-    return this.simpleDelete(url, { }, options);
+    return this.simpleDelete(url, {}, options);
   }
 
   /**
@@ -335,9 +418,16 @@ export class MdmDataClassResource extends MdmResource {
    *
    * `200 OK` - will return a {@link DataClassDetailResponse} containing a {@link DataClassDetail} object.
    */
-  importDataElement(dataModelId: Uuid, dataClassId: Uuid, otherDataModelId: Uuid, otherDataClassId: Uuid, otherDataElementId: Uuid, options?: RequestSettings) {
+  importDataElement(
+    dataModelId: Uuid,
+    dataClassId: Uuid,
+    otherDataModelId: Uuid,
+    otherDataClassId: Uuid,
+    otherDataElementId: Uuid,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/${otherDataModelId}/${otherDataClassId}/${otherDataElementId}`;
-    return this.simplePut(url, { }, options);
+    return this.simplePut(url, {}, options);
   }
 
   /**
@@ -353,9 +443,16 @@ export class MdmDataClassResource extends MdmResource {
    *
    * On success, the response will be a `204 No Content` and the response body will be empty.
    */
-  removeImportedDataElement(dataModelId: Uuid, dataClassId: Uuid, otherDataModelId: Uuid, otherDataClassId: Uuid, otherDataElementId: Uuid, options?: RequestSettings) {
+  removeImportedDataElement(
+    dataModelId: Uuid,
+    dataClassId: Uuid,
+    otherDataModelId: Uuid,
+    otherDataClassId: Uuid,
+    otherDataElementId: Uuid,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/${otherDataModelId}/${otherDataClassId}/${otherDataElementId}`;
-    return this.simpleDelete(url, { }, options);
+    return this.simpleDelete(url, {}, options);
   }
 
   /**
@@ -370,9 +467,15 @@ export class MdmDataClassResource extends MdmResource {
    *
    * `200 OK` - will return a {@link DataClassDetailResponse} containing a {@link DataClassDetail} object.
    */
-  addExtendDataClass(dataModelId: Uuid, dataClassId: Uuid, otherDataModelId: Uuid, otherDataClassId: Uuid, options?: RequestSettings) {
+  addExtendDataClass(
+    dataModelId: Uuid,
+    dataClassId: Uuid,
+    otherDataModelId: Uuid,
+    otherDataClassId: Uuid,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/extends/${otherDataModelId}/${otherDataClassId}`;
-    return this.simplePut(url, { }, options);
+    return this.simplePut(url, {}, options);
   }
 
   /**
@@ -387,8 +490,14 @@ export class MdmDataClassResource extends MdmResource {
    *
    * On success, the response will be a `204 No Content` and the response body will be empty.
    */
-  removeExtendDataClass(dataModelId: Uuid, dataClassId: Uuid, otherDataModelId: Uuid, otherDataClassId: Uuid, options?: RequestSettings) {
+  removeExtendDataClass(
+    dataModelId: Uuid,
+    dataClassId: Uuid,
+    otherDataModelId: Uuid,
+    otherDataClassId: Uuid,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/extends/${otherDataModelId}/${otherDataClassId}`;
-    return this.simpleDelete(url, { }, options);
+    return this.simpleDelete(url, {}, options);
   }
 }

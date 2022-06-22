@@ -17,7 +17,7 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { DataModelDetail } from './models/mdm-data-model.model';
+import { DataModelDetail } from './data-models/mdm-data-model.model';
 import { Branchable, Modelable } from './mdm-model-types.model';
 import { ReferenceDataModelDetail } from './mdm-reference-data-model.model';
 import { TerminologyDetail } from './mdm-terminology.model';
