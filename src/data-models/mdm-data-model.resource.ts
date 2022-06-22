@@ -32,8 +32,7 @@ import {
   SourceTargetIntersectionPayload
 } from './mdm-data-model.model';
 import { MdmModelDomainResource } from '../mdm-model-types.resource';
-import { MdmResourcesConfiguration } from '../mdm-resources-configuration';
-import { MdmRestHandler } from '../mdm-rest-handler';
+import { MdmResourcesConfiguration, MdmRestHandler } from '../mdm-resource';
 
 /**
  * MDM resource for managing data models.

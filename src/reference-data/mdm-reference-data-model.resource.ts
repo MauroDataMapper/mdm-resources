@@ -24,8 +24,7 @@ import {
   Uuid
 } from '../mdm-common.model';
 import { MdmModelDomainResource } from '../mdm-model-types.resource';
-import { MdmResourcesConfiguration } from '../mdm-resources-configuration';
-import { MdmRestHandler } from '../mdm-rest-handler';
+import { MdmResourcesConfiguration, MdmRestHandler } from '../mdm-resource';
 
 /**
  * MDM resource for the management of Reference Data Models.

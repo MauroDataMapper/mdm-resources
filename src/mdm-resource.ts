@@ -17,8 +17,69 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 import { RequestSettings, QueryParameters } from './mdm-common.model';
-import { MdmResourcesConfiguration } from './mdm-resources-configuration';
-import { DefaultMdmRestHandler, MdmRestHandler } from './mdm-rest-handler';
+//import { MdmResourcesConfiguration } from './mdm-resources-configuration';
+//import { DefaultMdmRestHandler, MdmRestHandler } from './mdm-rest-handler';
+
+/**
+ * Type to store common configuration options for the `mdm-resources` library.
+ */
+export class MdmResourcesConfiguration {
+  /**
+   * Defines the base API endpoint to direct all REST resource requests to.
+   */
+  apiEndpoint?: string = 'http://localhost:8080/api';
+
+  /**
+   * Defines the default HTTP request options to apply to every request.
+   */
+  defaultHttpRequestOptions?: RequestSettings = {};
+}
+
+/**
+ * Interface to define a REST handler for all `MdmResource` objects to handle HTTP requests/responses.
+ *
+ * @see DefaultMdmRestHandler
+ */
+export interface MdmRestHandler {
+  /**
+   * Processes a REST resource request and returns the response and data.
+   *
+   * @param url The URL to the resource to request.
+   * @param options The options as part of the request to further control the request.
+   * @returns The response from the REST resource request.
+   */
+  process(url: string, options: RequestSettings);
+}
+
+/**
+ * Default implementation of the [[MdmRestHandler]] interface, using the `fetch` API to
+ * complete HTTP requests.
+ *
+ * By using the `fetch` API, all `process()` return values will become promises
+ * to handle the asynchronous responses and finally return the `json` body content of each response.
+ *
+ * @example
+ *
+ * ```ts
+ * const handler = new DefaultMdmRestHandler();
+ * handler.process(url, options).then(json => { ... });
+ * ```
+ */
+export class DefaultMdmRestHandler implements MdmRestHandler {
+  async process(url: string, options: RequestSettings) {
+    const response = await fetch(url, {
+      method: options.method || 'GET',
+      headers: options.headers,
+      credentials:
+        options.credentials || options.withCredentials
+          ? 'include'
+          : 'same-origin',
+      body: JSON.stringify(options.body)
+    });
+    const json = await response.json();
+    return json;
+  }
+}
 
 /**
  * Superclass for all Mauro resource classes.
@@ -44,7 +105,10 @@ export class MdmResource {
    * @param resourcesConfig Optionally provide configuration options to this resource class. If not provided, suitable defaults will be used.
    * @param restHandler Optionally provide a specific [[MdmRestHandler]]. If not provided, the [[DefaultMdmRestHandler]] implementation will be used.
    */
-  constructor(resourcesConfig?: MdmResourcesConfiguration, restHandler?: MdmRestHandler) {
+  constructor(
+    resourcesConfig?: MdmResourcesConfiguration,
+    restHandler?: MdmRestHandler
+  ) {
     this.resourcesConfig = resourcesConfig || new MdmResourcesConfiguration();
     this.restHandler = restHandler || new DefaultMdmRestHandler();
     this.apiEndpoint = this.resourcesConfig.apiEndpoint;
@@ -60,7 +124,12 @@ export class MdmResource {
    * @returns The result of the `POST` request.
    */
   simplePost(url: string, data: any, options?: RequestSettings) {
-    const opts: RequestSettings = { ...this.defaultRequestOptions, body: data, ...options, method: 'POST' };
+    const opts: RequestSettings = {
+      ...this.defaultRequestOptions,
+      body: data,
+      ...options,
+      method: 'POST'
+    };
     return this.simpleRequest(url, {}, opts);
   }
 
@@ -72,8 +141,16 @@ export class MdmResource {
    * @param options Optional REST handler options, if required.
    * @returns The result of the `GET` request.
    */
-  simpleGet(url: string, query: QueryParameters = {}, options?: RequestSettings) {
-    const opts: RequestSettings = { ...this.defaultRequestOptions, ...options, method: 'GET' };
+  simpleGet(
+    url: string,
+    query: QueryParameters = {},
+    options?: RequestSettings
+  ) {
+    const opts: RequestSettings = {
+      ...this.defaultRequestOptions,
+      ...options,
+      method: 'GET'
+    };
     return this.simpleRequest(url, query, opts);
   }
 
@@ -85,8 +162,16 @@ export class MdmResource {
    * @param options Optional REST handler options, if required.
    * @returns The result of the `DELETE` request.
    */
-  simpleDelete(url: string, query: QueryParameters = {}, options?: RequestSettings) {
-    const opts: RequestSettings = { ...this.defaultRequestOptions, ...options, method: 'DELETE' };
+  simpleDelete(
+    url: string,
+    query: QueryParameters = {},
+    options?: RequestSettings
+  ) {
+    const opts: RequestSettings = {
+      ...this.defaultRequestOptions,
+      ...options,
+      method: 'DELETE'
+    };
     return this.simpleRequest(url, query, opts);
   }
 
@@ -99,7 +184,12 @@ export class MdmResource {
    * @returns The result of the `PUT` request.
    */
   simplePut(url: string, data: any, options?: RequestSettings) {
-    const opts: RequestSettings = { ...this.defaultRequestOptions, body: data, ...options, method: 'PUT' };
+    const opts: RequestSettings = {
+      ...this.defaultRequestOptions,
+      body: data,
+      ...options,
+      method: 'PUT'
+    };
     return this.simpleRequest(url, {}, opts);
   }
 
@@ -117,7 +207,11 @@ export class MdmResource {
    * simpleRequest('http://localhost/api/test', { }, { method: 'GET' });
    * ```
    */
-  simpleRequest(url: string, query: QueryParameters = {}, options?: RequestSettings) {
+  simpleRequest(
+    url: string,
+    query: QueryParameters = {},
+    options?: RequestSettings
+  ) {
     const queryString = this.generateQueryString(query);
     return this.restHandler.process(`${url}${queryString}`, options);
   }
@@ -143,7 +237,9 @@ export class MdmResource {
    * @returns A URL encoded string containing each parameter and value, or an empty string if no properties were provided.
    */
   protected generateQueryString(query: QueryParameters = {}): string {
-    const queryParams: string[] = Object.keys(query).map(key => `${key}=${query[key]}`);
-    return (queryParams?.length > 0) ? `?${queryParams.join('&')}` : '';
+    const queryParams: string[] = Object.keys(query).map(
+      (key) => `${key}=${query[key]}`
+    );
+    return queryParams?.length > 0 ? `?${queryParams.join('&')}` : '';
   }
 }

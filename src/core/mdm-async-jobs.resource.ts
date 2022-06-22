@@ -17,8 +17,7 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 import { MdmCommonDomainResource } from '../mdm-common.resource';
-import { MdmResourcesConfiguration } from '../mdm-resources-configuration';
-import { MdmRestHandler } from '../mdm-rest-handler';
+import { MdmResourcesConfiguration, MdmRestHandler } from '../mdm-resource';
 
 /**
  * Operations for managing async jobs.

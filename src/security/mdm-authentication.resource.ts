@@ -19,8 +19,11 @@ SPDX-License-Identifier: Apache-2.0
 
 import { RequestSettings, QueryParameters } from '../mdm-common.model';
 import { MdmResource } from '../mdm-resource';
-import { MdmResourcesConfiguration } from '../mdm-resources-configuration';
-import { MdmRestHandler, DefaultMdmRestHandler } from '../mdm-rest-handler';
+import {
+  MdmResourcesConfiguration,
+  MdmRestHandler,
+  DefaultMdmRestHandler
+} from '../mdm-resource';
 import { MdmSecurityResource } from './mdm-security.resource';
 import { MdmSessionResource } from '../core/mdm-session.resource';
 

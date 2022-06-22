@@ -24,8 +24,7 @@ import {
   CodeSetUpdatePayload
 } from './mdm-code-set.model';
 import { MdmModelDomainResource } from '../mdm-model-types.resource';
-import { MdmRestHandler } from '../mdm-rest-handler';
-import { MdmResourcesConfiguration } from '../mdm-resources-configuration';
+import { MdmResourcesConfiguration, MdmRestHandler } from '../mdm-resource';
 
 /**
  * MDM resources for the management of code sets.

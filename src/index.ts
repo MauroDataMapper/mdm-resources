@@ -21,8 +21,6 @@ export * from './mdm-common.resource';
 export * from './mdm-model-types.model';
 export * from './mdm-model-types.resource';
 export * from './mdm-container-types.model';
-export * from './mdm-resources-configuration';
-export * from './mdm-rest-handler';
 export * from './mdm-resource';
 
 export * from './core/index';
