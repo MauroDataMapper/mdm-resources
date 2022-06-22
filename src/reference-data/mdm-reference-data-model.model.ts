@@ -16,9 +16,9 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { DataTypeProvider } from './data-models/mdm-data-type.model';
-import { MdmIndexResponse, MdmResponse } from './mdm-common.model';
-import { Modelable, ModelDomainDetail } from './mdm-model-types.model';
+import { DataTypeProvider } from '../data-models/mdm-data-type.model';
+import { MdmIndexResponse, MdmResponse } from '../mdm-common.model';
+import { Modelable, ModelDomainDetail } from '../mdm-model-types.model';
 
 export type ReferenceDataModelType = 'ReferenceDataModel';
 
