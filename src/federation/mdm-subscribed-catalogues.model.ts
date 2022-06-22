@@ -16,7 +16,13 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { CatalogueItemDomainType, MdmIndexResponse, MdmResponse, Payload, Uuid } from './mdm-common.model';
+import {
+  CatalogueItemDomainType,
+  MdmIndexResponse,
+  MdmResponse,
+  Payload,
+  Uuid
+} from '../mdm-common.model';
 
 export interface SubscribedCatalogue {
   id?: Uuid;
@@ -28,14 +34,16 @@ export interface SubscribedCatalogue {
 }
 
 export type SubscribedCatalogueResponse = MdmResponse<SubscribedCatalogue>;
-export type SubscribedCatalogueIndexResponse = MdmIndexResponse<SubscribedCatalogue>;
+export type SubscribedCatalogueIndexResponse = MdmIndexResponse<
+  SubscribedCatalogue
+>;
 
 export interface AvailableDataModel {
   modelId?: Uuid;
   label: string;
   description?: string;
   modelType: CatalogueItemDomainType;
-  version? : string;
+  version?: string;
 }
 
 export interface PublishedDataModel {
@@ -43,9 +51,8 @@ export interface PublishedDataModel {
   label: string;
   description?: string;
   modelType: CatalogueItemDomainType;
-  version? : string;
+  version?: string;
 }
-
 
 export interface SubscribedDataModel extends Payload {
   id?: Uuid;
@@ -54,7 +61,13 @@ export interface SubscribedDataModel extends Payload {
   folderId: Uuid;
 }
 
-export type AvailableDataModelIndexResponse = MdmIndexResponse<AvailableDataModel>;
-export type PublishedDataModelIndexResponse = MdmIndexResponse<PublishedDataModel>;
+export type AvailableDataModelIndexResponse = MdmIndexResponse<
+  AvailableDataModel
+>;
+export type PublishedDataModelIndexResponse = MdmIndexResponse<
+  PublishedDataModel
+>;
 export type SubscribedDataModelResponse = MdmResponse<SubscribedDataModel>;
-export type SubscribedDataModelIndexResponse = MdmIndexResponse<SubscribedDataModel>;
+export type SubscribedDataModelIndexResponse = MdmIndexResponse<
+  SubscribedDataModel
+>;

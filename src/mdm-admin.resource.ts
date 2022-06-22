@@ -16,8 +16,15 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { SubscribedCatalogue } from './mdm-subscribed-catalogues.model';
-import { RequestSettings, QueryParameters, Payload, ContainerDomainType, ModelDomainType, Uuid } from './mdm-common.model';
+import { SubscribedCatalogue } from './federation/mdm-subscribed-catalogues.model';
+import {
+  RequestSettings,
+  QueryParameters,
+  Payload,
+  ContainerDomainType,
+  ModelDomainType,
+  Uuid
+} from './mdm-common.model';
 import { MdmResource } from './mdm-resource';
 
 /**
@@ -113,44 +120,51 @@ export class MdmAdminResource extends MdmResource {
     return this.simplePost(url, payload, options);
   }
 
-/**
- * `HTTP GET` - Gets a Subscribed Catalogue by ID.
- *
- * @param id The unique identifier of the Subscribed Catalogue to get.
- * @param query Optional query string parameters for the GET request.
- * @param options Optional REST handler parameters.
- * @returns The result of the `GET` request.
- *
- * `200 OK` - will return a {@link SubscribedCatalogueResponse} containing a {@link SubscribedCatalogue}.
- */
-  getSubscribedCatalogue(id: Uuid, query?: QueryParameters, options?: RequestSettings) {
+  /**
+   * `HTTP GET` - Gets a Subscribed Catalogue by ID.
+   *
+   * @param id The unique identifier of the Subscribed Catalogue to get.
+   * @param query Optional query string parameters for the GET request.
+   * @param options Optional REST handler parameters.
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return a {@link SubscribedCatalogueResponse} containing a {@link SubscribedCatalogue}.
+   */
+  getSubscribedCatalogue(
+    id: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/admin/subscribedCatalogues/${id}`;
     return this.simpleGet(url, query, options);
   }
 
-    /**
-     * `HTTP POST` - Creates a new Subscribed Catalogue.
-     *
-     * @param data The data to use for creation.
-     * @param options Optional REST handler parameters.
-     * @returns The result of the `POST` request.
-     *
-     * `200 OK` - will return a {@link SubscribedCatalogueResponse} containing a {@link SubscribedCatalogue}.
-     */
-     saveSubscribedCatalogues(data: SubscribedCatalogue, options?: RequestSettings) {
-      const url = `${this.apiEndpoint}/admin/subscribedCatalogues`;
-      return this.simplePost(url, data, options);
-    }
+  /**
+   * `HTTP POST` - Creates a new Subscribed Catalogue.
+   *
+   * @param data The data to use for creation.
+   * @param options Optional REST handler parameters.
+   * @returns The result of the `POST` request.
+   *
+   * `200 OK` - will return a {@link SubscribedCatalogueResponse} containing a {@link SubscribedCatalogue}.
+   */
+  saveSubscribedCatalogues(
+    data: SubscribedCatalogue,
+    options?: RequestSettings
+  ) {
+    const url = `${this.apiEndpoint}/admin/subscribedCatalogues`;
+    return this.simplePost(url, data, options);
+  }
 
-/**
- * `HTTP GET` - Gets a list of all Subscribed Catalogues.
- *
- * @param query Optional query string parameters for the GET request.
- * @param options Optional REST handler parameters.
- * @returns The result of the `GET` request.
- *
- * `200 OK` - will return a {@link SubscribedCatalogueIndexResponse} containing a list of {@link SubscribedCatalogue} items.
- */
+  /**
+   * `HTTP GET` - Gets a list of all Subscribed Catalogues.
+   *
+   * @param query Optional query string parameters for the GET request.
+   * @param options Optional REST handler parameters.
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return a {@link SubscribedCatalogueIndexResponse} containing a list of {@link SubscribedCatalogue} items.
+   */
   listSubscribedCatalogues(query?: QueryParameters, options?: RequestSettings) {
     const url = `${this.apiEndpoint}/admin/subscribedCatalogues`;
     return this.simpleGet(url, query, options);
@@ -166,7 +180,11 @@ export class MdmAdminResource extends MdmResource {
    *
    * `200 OK` - will return a {@link SubscribedCatalogueResponse} containing a {@link SubscribedCatalogue}.
    */
-  updateSubscribedCatalogue(id: Uuid, data: SubscribedCatalogue, options?: RequestSettings) {
+  updateSubscribedCatalogue(
+    id: Uuid,
+    data: SubscribedCatalogue,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/admin/subscribedCatalogues/${id}`;
     return this.simplePut(url, data, options);
   }
@@ -181,22 +199,30 @@ export class MdmAdminResource extends MdmResource {
    *
    * On success, the response will be a `204 No Content` and the response body will be empty.
    */
-     removeSubscribedCatalogue(id: Uuid, query?: QueryParameters, options?: RequestSettings) {
-      const url = `${this.apiEndpoint}/admin/subscribedCatalogues/${id}`;
-      return this.simpleDelete(url, query, options);
-    }
+  removeSubscribedCatalogue(
+    id: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
+    const url = `${this.apiEndpoint}/admin/subscribedCatalogues/${id}`;
+    return this.simpleDelete(url, query, options);
+  }
 
-     /**
-      * `HTTP GET` - Tests subscribed catalogue URL.
-      *
-      * @param id The unique identifier of the Subscribed Catalogue to get.
-      * @param query Optional query string parameters for the GET request.
-      * @param options Optional REST handler parameters.
-      * @returns The result of the `GET` request.
-      *
-      * `200 OK` - will return a blank success.
-      */
-  testSubscribedCatalogueConnection(id: Uuid, query?: QueryParameters, options?: RequestSettings) {
+  /**
+   * `HTTP GET` - Tests subscribed catalogue URL.
+   *
+   * @param id The unique identifier of the Subscribed Catalogue to get.
+   * @param query Optional query string parameters for the GET request.
+   * @param options Optional REST handler parameters.
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return a blank success.
+   */
+  testSubscribedCatalogueConnection(
+    id: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/admin/subscribedCatalogues/${id}/testConnection`;
     return this.simpleGet(url, query, options);
   }
@@ -220,7 +246,12 @@ export class MdmAdminResource extends MdmResource {
   /**
    * @@deprecated Use [[MdmTreeItemResource.deletedModels]] instead.
    */
-  deletedModels(containerDomainType: string | ContainerDomainType, modelDomainType: string | ModelDomainType, query?: QueryParameters, options?: RequestSettings) {
+  deletedModels(
+    containerDomainType: string | ContainerDomainType,
+    modelDomainType: string | ModelDomainType,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/admin/tree/${containerDomainType}/${modelDomainType}/deleted`;
     return this.simpleGet(url, query, options);
   }
@@ -228,7 +259,12 @@ export class MdmAdminResource extends MdmResource {
   /**
    * @@deprecated Use [[MdmTreeItemResource.modelSupersededModels]] instead.
    */
-  modelSupersededModels(containerDomainType: string | ContainerDomainType, modelDomainType: string | ModelDomainType, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  modelSupersededModels(
+    containerDomainType: string | ContainerDomainType,
+    modelDomainType: string | ModelDomainType,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/admin/tree/${containerDomainType}/${modelDomainType}/modelSuperseded`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
@@ -236,12 +272,20 @@ export class MdmAdminResource extends MdmResource {
   /**
    * @@deprecated Use [[MdmTreeItemResource.documentationSupersededModels]] instead.
    */
-  documentationSupersededModels(containerDomainType: string | ContainerDomainType, modelDomainType: string | ModelDomainType, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  documentationSupersededModels(
+    containerDomainType: string | ContainerDomainType,
+    modelDomainType: string | ModelDomainType,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/admin/tree/${containerDomainType}/${modelDomainType}/documentationSuperseded`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
 
-  emails(queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  emails(
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/admin/emails`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }

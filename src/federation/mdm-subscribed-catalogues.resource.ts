@@ -16,9 +16,12 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { SubscribedCatalogue, SubscribedDataModel } from './mdm-subscribed-catalogues.model';
-import { RequestSettings, QueryParameters, Uuid } from './mdm-common.model';
-import { MdmResource } from './mdm-resource';
+import {
+  SubscribedCatalogue,
+  SubscribedDataModel
+} from './mdm-subscribed-catalogues.model';
+import { RequestSettings, QueryParameters, Uuid } from '../mdm-common.model';
+import { MdmResource } from '../mdm-resource';
 
 /**
  * MDM resource for managing subscribed catalogues and federated models.
@@ -108,7 +111,11 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
    *
    * `200 OK` - will return a {@link AvailableDataModelIndexResponse} containing a list of {@link AvailableDataModel} items.
    */
-  listAvailableModels(id: Uuid, query?: QueryParameters, options?: RequestSettings) {
+  listAvailableModels(
+    id: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/subscribedCatalogues/${id}/availableModels`;
     return this.simpleGet(url, query, options);
   }
@@ -123,7 +130,11 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
    *
    * `200 OK` - will return a {@link PublishedDataModelIndexResponse} containing a list of {@link PublishedDataModel} items.
    */
-  listPublishedModels(id: Uuid, query?: QueryParameters, options?: RequestSettings) {
+  listPublishedModels(
+    id: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/subscribedCatalogues/${id}/publishedModels`;
     return this.simpleGet(url, query, options);
   }
@@ -138,7 +149,11 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
    *
    * `200 OK` - will return a {@link SubscribedDataModelIndexResponse} containing a list of {@link SubscribedDataModel} items.
    */
-  listSubscribedModels(id: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  listSubscribedModels(
+    id: string,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/subscribedCatalogues/${id}/subscribedModels`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
@@ -169,7 +184,12 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
    *
    * `200 OK` - will return a {@link SubscribedDataModelResponse} containing a {@link SubscribedDataModel}.
    */
-  getSubscribedModel(catalogueId: Uuid, id: Uuid, query?: QueryParameters, options?: RequestSettings) {
+  getSubscribedModel(
+    catalogueId: Uuid,
+    id: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/subscribedCatalogues/${catalogueId}/subscribedModels/${id}`;
     return this.simpleGet(url, query, options);
   }
@@ -184,7 +204,11 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
    *
    * `200 OK` - will return a {@link SubscribedDataModelResponse} containing a {@link SubscribedDataModel}.
    */
-  saveSubscribedModel(catalogueId: Uuid, data: SubscribedDataModel, options?: RequestSettings) {
+  saveSubscribedModel(
+    catalogueId: Uuid,
+    data: SubscribedDataModel,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/subscribedCatalogues/${catalogueId}/subscribedModels`;
     return this.simplePost(url, data, options);
   }
@@ -200,7 +224,12 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
    *
    * On success, the response will be a `204 No Content` and the response body will be empty.
    */
-  removeSubscribedModel(catalogueId: Uuid, id: Uuid, query?: QueryParameters, options?: RequestSettings) {
+  removeSubscribedModel(
+    catalogueId: Uuid,
+    id: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/subscribedCatalogues/${catalogueId}/subscribedModels/${id}`;
     return this.simpleDelete(url, query, options);
   }
@@ -231,7 +260,12 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
    *
    * `200 OK` - will return a list of all newer models.
    */
-  newerVersions(subscribedCatalogueId: Uuid, publishedModelId: Uuid, query?: QueryParameters, options?: RequestSettings) {
+  newerVersions(
+    subscribedCatalogueId: Uuid,
+    publishedModelId: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/subscribedCatalogues/${subscribedCatalogueId}/publishedModels/${publishedModelId}/newerVersions`;
     return this.simpleGet(url, query, options);
   }
