@@ -17,10 +17,18 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { Breadcrumb, CatalogueItemDomainType, MdmIndexResponse, MdmResponse, Payload, Uuid, Version } from './mdm-common.model';
+import {
+  Breadcrumb,
+  CatalogueItemDomainType,
+  MdmIndexResponse,
+  MdmResponse,
+  Payload,
+  Uuid,
+  Version
+} from '../mdm-common.model';
 
 export type ProfileFieldDataType =
-  'boolean'
+  | 'boolean'
   | 'string'
   | 'text'
   | 'int'

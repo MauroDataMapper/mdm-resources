@@ -16,9 +16,22 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { Profile, ProfileContextIndexPayload, ProfileContextPayload } from './mdm-profile.model';
-import { RequestSettings, QueryParameters, Uuid, Version, MultiFacetAwareDomainType, CatalogueItemDomainType, getMultiFacetAwareDomainType, SearchQueryParameters } from './mdm-common.model';
-import { MdmResource } from './mdm-resource';
+import {
+  Profile,
+  ProfileContextIndexPayload,
+  ProfileContextPayload
+} from './mdm-profile.model';
+import {
+  RequestSettings,
+  QueryParameters,
+  Uuid,
+  Version,
+  MultiFacetAwareDomainType,
+  CatalogueItemDomainType,
+  getMultiFacetAwareDomainType,
+  SearchQueryParameters
+} from '../mdm-common.model';
+import { MdmResource } from '../mdm-resource';
 
 /**
  * Controller: mauroDataMapperServiceProvider
@@ -46,8 +59,11 @@ export class MdmProfileResource extends MdmResource {
     domainType: MultiFacetAwareDomainType | CatalogueItemDomainType,
     catalogueItemId: Uuid,
     query?: QueryParameters,
-    options?: RequestSettings) {
-    const url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(domainType)}/${catalogueItemId}/profiles/used`;
+    options?: RequestSettings
+  ) {
+    const url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(
+      domainType
+    )}/${catalogueItemId}/profiles/used`;
     return this.simpleGet(url, query, options);
   }
 
@@ -66,8 +82,11 @@ export class MdmProfileResource extends MdmResource {
     domainType: MultiFacetAwareDomainType | CatalogueItemDomainType,
     catalogueItemId: string,
     query?: QueryParameters,
-    options?: RequestSettings) {
-    const url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(domainType)}/${catalogueItemId}/profiles/unused`;
+    options?: RequestSettings
+  ) {
+    const url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(
+      domainType
+    )}/${catalogueItemId}/profiles/unused`;
     return this.simpleGet(url, query, options);
   }
 
@@ -86,8 +105,11 @@ export class MdmProfileResource extends MdmResource {
     domainType: MultiFacetAwareDomainType | CatalogueItemDomainType,
     catalogueItemId: string,
     query?: QueryParameters,
-    options?: RequestSettings) {
-    const url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(domainType)}/${catalogueItemId}/profiles/otherMetadata`;
+    options?: RequestSettings
+  ) {
+    const url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(
+      domainType
+    )}/${catalogueItemId}/profiles/otherMetadata`;
     return this.simpleGet(url, query, options);
   }
 
@@ -112,8 +134,11 @@ export class MdmProfileResource extends MdmResource {
     profileName: string,
     profileVersion?: Version,
     query?: QueryParameters,
-    options?: RequestSettings) {
-    let url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(domainType)}/${catalogueItemId}/profile/${profileNamespace}/${profileName}`;
+    options?: RequestSettings
+  ) {
+    let url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(
+      domainType
+    )}/${catalogueItemId}/profile/${profileNamespace}/${profileName}`;
     if (profileVersion) {
       url += `/${profileVersion}`;
     }
@@ -136,7 +161,8 @@ export class MdmProfileResource extends MdmResource {
     profileNamespace: string,
     profileName: string,
     query?: QueryParameters,
-    options?: RequestSettings) {
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/profiles/${profileNamespace}/${profileName}`;
     return this.simpleGet(url, query, options);
   }
@@ -162,8 +188,11 @@ export class MdmProfileResource extends MdmResource {
     profileName: string,
     data: Profile,
     profileVersion?: Version,
-    options?: RequestSettings) {
-    let url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(domainType)}/${catalogueItemId}/profile/${profileNamespace}/${profileName}`;
+    options?: RequestSettings
+  ) {
+    let url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(
+      domainType
+    )}/${catalogueItemId}/profile/${profileNamespace}/${profileName}`;
     if (profileVersion) {
       url += `/${profileVersion}`;
     }
@@ -191,8 +220,11 @@ export class MdmProfileResource extends MdmResource {
     profileName: string,
     profileVersion?: Version,
     query?: QueryParameters,
-    options?: RequestSettings) {
-    let url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(domainType)}/${catalogueItemId}/profile/${profileNamespace}/${profileName}`;
+    options?: RequestSettings
+  ) {
+    let url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(
+      domainType
+    )}/${catalogueItemId}/profile/${profileNamespace}/${profileName}`;
     if (profileVersion) {
       url += `/${profileVersion}`;
     }
@@ -219,8 +251,11 @@ export class MdmProfileResource extends MdmResource {
     domainType: MultiFacetAwareDomainType | CatalogueItemDomainType,
     catalogueItemId: Uuid,
     data: Profile,
-    profileVersion?: Version) {
-    let url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(domainType)}/${catalogueItemId}/profile/${profileNamespace}/${profileName}`;
+    profileVersion?: Version
+  ) {
+    let url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(
+      domainType
+    )}/${catalogueItemId}/profile/${profileNamespace}/${profileName}`;
     if (profileVersion) {
       url += `/${profileVersion}`;
     }
@@ -248,8 +283,11 @@ export class MdmProfileResource extends MdmResource {
     domainType: MultiFacetAwareDomainType | CatalogueItemDomainType,
     catalogueItemId: Uuid,
     payload: ProfileContextIndexPayload,
-    options?: RequestSettings) {
-    const url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(domainType)}/${catalogueItemId}/profile/getMany`;
+    options?: RequestSettings
+  ) {
+    const url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(
+      domainType
+    )}/${catalogueItemId}/profile/getMany`;
     return this.simplePost(url, payload, options);
   }
 
@@ -268,8 +306,11 @@ export class MdmProfileResource extends MdmResource {
     domainType: MultiFacetAwareDomainType | CatalogueItemDomainType,
     catalogueItemId: Uuid,
     payload: ProfileContextPayload,
-    options?: RequestSettings) {
-    const url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(domainType)}/${catalogueItemId}/profile/saveMany`;
+    options?: RequestSettings
+  ) {
+    const url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(
+      domainType
+    )}/${catalogueItemId}/profile/saveMany`;
     return this.simplePost(url, payload, options);
   }
 
@@ -291,8 +332,11 @@ export class MdmProfileResource extends MdmResource {
     domainType: MultiFacetAwareDomainType | CatalogueItemDomainType,
     catalogueItemId: Uuid,
     payload: ProfileContextPayload,
-    options?: RequestSettings) {
-    const url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(domainType)}/${catalogueItemId}/profile/validateMany`;
+    options?: RequestSettings
+  ) {
+    const url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(
+      domainType
+    )}/${catalogueItemId}/profile/validateMany`;
     return this.simplePost(url, payload, options);
   }
 
@@ -313,7 +357,8 @@ export class MdmProfileResource extends MdmResource {
     profileNamespace: string,
     profileName: string,
     query: SearchQueryParameters,
-    options?: RequestSettings) {
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/profiles/${profileNamespace}/${profileName}/search`;
     return this.simplePost(url, query, options);
   }
@@ -339,8 +384,11 @@ export class MdmProfileResource extends MdmResource {
     profileNamespace: string,
     profileName: string,
     query: SearchQueryParameters,
-    options?: RequestSettings) {
-    const url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(domainType)}/${id}/profiles/${profileNamespace}/${profileName}/search`;
+    options?: RequestSettings
+  ) {
+    const url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(
+      domainType
+    )}/${id}/profiles/${profileNamespace}/${profileName}/search`;
     return this.simplePost(url, query, options);
   }
 }
