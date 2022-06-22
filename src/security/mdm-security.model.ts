@@ -17,7 +17,7 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 import { OpenIdConnectLoginPayload } from './mdm-plugin-openid-connect.model';
-import { MdmResponse, Uuid } from './mdm-common.model';
+import { MdmResponse, Uuid } from '../mdm-common.model';
 
 /**
  * Payload for login endpoint to authenticate a user with username and password.
@@ -38,9 +38,7 @@ export interface BasicLoginPayload {
  * * An {@link OpenIdConnectLoginPayload} for handling login after external authorization. This
  * will only work when the Open ID Connect plugin is installed in Mauro.
  */
-export type LoginPayload =
-  BasicLoginPayload
-  | OpenIdConnectLoginPayload;
+export type LoginPayload = BasicLoginPayload | OpenIdConnectLoginPayload;
 
 /**
  * Response body for a successful login attempt of a user.

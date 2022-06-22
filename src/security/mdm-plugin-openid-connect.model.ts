@@ -17,10 +17,19 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { MdmIndexResponse, MdmResponse, Payload, Uuid } from './mdm-common.model';
+import {
+  MdmIndexResponse,
+  MdmResponse,
+  Payload,
+  Uuid
+} from '../mdm-common.model';
 
 export type AuthorizationDisplayType = 'PAGE' | 'POPUP' | 'TOUCH' | 'WRAP';
-export type AuthorizationPromptType = 'NONE' | 'LOGIN' | 'CONSENT' | 'SELECT_ACCOUNT';
+export type AuthorizationPromptType =
+  | 'NONE'
+  | 'LOGIN'
+  | 'CONSENT'
+  | 'SELECT_ACCOUNT';
 
 /**
  * Represents a discovery document containing all endpoints for an OpenID Connect provider.
@@ -126,9 +135,15 @@ export interface OpenIdConnectProviderDetail extends OpenIdConnectProvider {
   discoveryDocument?: OpenIdDiscoveryDocument;
 }
 
-export type OpenIdConnectProvidersIndexResponse = MdmIndexResponse<OpenIdConnectProvider>;
-export type PublicOpenIdConnectProvidersIndexResponse = MdmResponse<PublicOpenIdConnectProvider[]>;
-export type OpenIdConnectProvidersDetailResponse = MdmResponse<OpenIdConnectProviderDetail>;
+export type OpenIdConnectProvidersIndexResponse = MdmIndexResponse<
+  OpenIdConnectProvider
+>;
+export type PublicOpenIdConnectProvidersIndexResponse = MdmResponse<
+  PublicOpenIdConnectProvider[]
+>;
+export type OpenIdConnectProvidersDetailResponse = MdmResponse<
+  OpenIdConnectProviderDetail
+>;
 
 /**
  * Represents the payload state for creating/updating an OpenID Connect provider's discovery document.
@@ -183,7 +198,8 @@ export interface OpenIdConnectProviderPayload extends Payload {
  * @description Every standard OpenID Connect provider requires a discovery document URL, which
  * Mauro will use to fill in all required endpoints.
  */
-export interface StandardOpenIdConnectProviderPayload extends OpenIdConnectProviderPayload {
+export interface StandardOpenIdConnectProviderPayload
+  extends OpenIdConnectProviderPayload {
   standardProvider: true;
   discoveryDocumentUrl: string;
 }
@@ -195,13 +211,14 @@ export interface StandardOpenIdConnectProviderPayload extends OpenIdConnectProvi
  * manually entered - Mauro will not be able to automatically fetch these details from the
  * provider.
  */
-export interface NonStandardOpenIdConnectProviderPayload extends OpenIdConnectProviderPayload {
+export interface NonStandardOpenIdConnectProviderPayload
+  extends OpenIdConnectProviderPayload {
   standardProvider: false;
   discoveryDocument: OpenIdDiscoveryDocumentPayload;
 }
 
 export type OpenIdConnectProviderUpdatePayload =
-  StandardOpenIdConnectProviderPayload
+  | StandardOpenIdConnectProviderPayload
   | NonStandardOpenIdConnectProviderPayload;
 
 /**

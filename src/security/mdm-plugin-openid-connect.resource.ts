@@ -18,8 +18,13 @@ SPDX-License-Identifier: Apache-2.0
 */
 
 import { OpenIdConnectProviderUpdatePayload } from './mdm-plugin-openid-connect.model';
-import { FilterQueryParameters, QueryParameters, RequestSettings, Uuid } from './mdm-common.model';
-import { MdmResource } from './mdm-resource';
+import {
+  FilterQueryParameters,
+  QueryParameters,
+  RequestSettings,
+  Uuid
+} from '../mdm-common.model';
+import { MdmResource } from '../mdm-resource';
 
 /**
  * MDM resource for managing OpenID Connect providers in Mauro.
@@ -103,7 +108,10 @@ export class MdmPluginOpenIdConnectResource extends MdmResource {
    *
    * `403 Forbidden` - user is not an administrator.
    */
-  save(data: OpenIdConnectProviderUpdatePayload, options?: RequestSettings): any {
+  save(
+    data: OpenIdConnectProviderUpdatePayload,
+    options?: RequestSettings
+  ): any {
     const url = `${this.apiEndpoint}/admin/openidConnectProviders`;
     return this.simplePost(url, data, options);
   }
@@ -120,7 +128,11 @@ export class MdmPluginOpenIdConnectResource extends MdmResource {
    *
    * `403 Forbidden` - user is not an administrator.
    */
-  update(id: Uuid, data: OpenIdConnectProviderUpdatePayload, options?: RequestSettings): any {
+  update(
+    id: Uuid,
+    data: OpenIdConnectProviderUpdatePayload,
+    options?: RequestSettings
+  ): any {
     const url = `${this.apiEndpoint}/admin/openidConnectProviders/${id}`;
     return this.simplePut(url, data, options);
   }

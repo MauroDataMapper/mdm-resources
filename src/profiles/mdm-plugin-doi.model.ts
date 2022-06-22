@@ -17,7 +17,11 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { CatalogueItem, MdmResponse, QueryParameters } from './mdm-common.model';
+import {
+  CatalogueItem,
+  MdmResponse,
+  QueryParameters
+} from '../mdm-common.model';
 
 export type DoiState = 'draft' | 'final' | 'retired' | 'not submitted';
 export type DoiSubmissionState = 'draft' | 'finalise' | 'retire';
@@ -45,7 +49,7 @@ export type DoiStatusResponse = MdmResponse<DoiStatus>;
  *
  * @see {@link MdmPluginDoiResource.save}
  */
- export interface DoiSubmissionQueryParameters extends QueryParameters {
+export interface DoiSubmissionQueryParameters extends QueryParameters {
   /**
    * Declare what state the DOI should be in when created. If not provided, the default of `final` is used.
    */

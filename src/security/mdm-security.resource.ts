@@ -16,9 +16,9 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { RequestSettings, QueryParameters, Uuid } from './mdm-common.model';
+import { RequestSettings, QueryParameters, Uuid } from '../mdm-common.model';
 import { LoginPayload, SecurableDomainType } from './mdm-security.model';
-import { MdmResource } from './mdm-resource';
+import { MdmResource } from '../mdm-resource';
 
 /**
  * MDM resource for managing security and authentication.
@@ -109,7 +109,8 @@ export class MdmSecurityResource extends MdmResource {
     domainType: SecurableDomainType,
     securableResourceId: Uuid,
     query?: QueryParameters,
-    options?: RequestSettings) {
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${domainType}/${securableResourceId}/permissions`;
     return this.simpleGet(url, query, options);
   }

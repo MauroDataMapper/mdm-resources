@@ -18,8 +18,15 @@ SPDX-License-Identifier: Apache-2.0
 */
 
 import { DoiSubmissionQueryParameters } from './mdm-plugin-doi.model';
-import { CatalogueItemDomainType, getMultiFacetAwareDomainType, MultiFacetAwareDomainType, QueryParameters, RequestSettings, Uuid } from './mdm-common.model';
-import { MdmResource } from './mdm-resource';
+import {
+  CatalogueItemDomainType,
+  getMultiFacetAwareDomainType,
+  MultiFacetAwareDomainType,
+  QueryParameters,
+  RequestSettings,
+  Uuid
+} from '../mdm-common.model';
+import { MdmResource } from '../mdm-resource';
 
 /**
  * MDM resource for managing Digital Object Identifiers (DOI) on catalogue items.
@@ -46,8 +53,11 @@ export class MdmPluginDoiResource extends MdmResource {
     domainType: MultiFacetAwareDomainType | CatalogueItemDomainType,
     id: Uuid,
     query?: QueryParameters,
-    options?: RequestSettings): any {
-    const url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(domainType)}/${id}/doi`;
+    options?: RequestSettings
+  ): any {
+    const url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(
+      domainType
+    )}/${id}/doi`;
     return this.simpleGet(url, query, options);
   }
 
@@ -66,9 +76,12 @@ export class MdmPluginDoiResource extends MdmResource {
     domainType: MultiFacetAwareDomainType | CatalogueItemDomainType,
     id: Uuid,
     query?: DoiSubmissionQueryParameters,
-    options?: RequestSettings): any {
+    options?: RequestSettings
+  ): any {
     const queryString = this.generateQueryString(query);
-    const url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(domainType)}/${id}/doi${queryString}`;
+    const url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(
+      domainType
+    )}/${id}/doi${queryString}`;
     return this.simplePost(url, {}, options);
   }
 
@@ -87,8 +100,11 @@ export class MdmPluginDoiResource extends MdmResource {
     domainType: MultiFacetAwareDomainType | CatalogueItemDomainType,
     id: Uuid,
     query?: QueryParameters,
-    options?: RequestSettings) {
-    const url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(domainType)}/${id}/doi`;
+    options?: RequestSettings
+  ) {
+    const url = `${this.apiEndpoint}/${getMultiFacetAwareDomainType(
+      domainType
+    )}/${id}/doi`;
     return this.simpleDelete(url, query, options);
   }
 
@@ -102,7 +118,11 @@ export class MdmPluginDoiResource extends MdmResource {
    *
    * `200 OK` - will return a {@link DoiResolvedItemResponse} containing a {@link DoiResolvedItem} object.
    */
-  resolve(identifier: string, query?: QueryParameters, options?: RequestSettings): any {
+  resolve(
+    identifier: string,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ): any {
     const url = `${this.apiEndpoint}/doi/${identifier}`;
     return this.simpleGet(url, query, options);
   }
