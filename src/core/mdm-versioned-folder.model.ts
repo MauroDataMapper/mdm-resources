@@ -16,9 +16,15 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { Branchable, Finalisable, Historical, SecurableModel, Versionable } from './mdm-model-types.model';
-import { Container, ContainerDetail } from './mdm-container-types.model';
-import { MdmIndexResponse, MdmResponse } from './mdm-common.model';
+import {
+  Branchable,
+  Finalisable,
+  Historical,
+  SecurableModel,
+  Versionable
+} from '../mdm-model-types.model';
+import { Container, ContainerDetail } from '../mdm-container-types.model';
+import { MdmIndexResponse, MdmResponse } from '../mdm-common.model';
 
 /**
  * Represents a Versioned Folder in Mauro.
@@ -34,14 +40,13 @@ export interface VersionedFolder extends Container {
   hasChildFolders?: boolean;
 }
 
-export type VersionedFolderDetail =
-  VersionedFolder
-  & ContainerDetail
-  & SecurableModel
-  & Historical
-  & Branchable
-  & Versionable
-  & Finalisable;
+export type VersionedFolderDetail = VersionedFolder &
+  ContainerDetail &
+  SecurableModel &
+  Historical &
+  Branchable &
+  Versionable &
+  Finalisable;
 
 export type VersionedFolderIndexResponse = MdmIndexResponse<VersionedFolder>;
 export type VersionedFolderDetailResponse = MdmResponse<VersionedFolderDetail>;

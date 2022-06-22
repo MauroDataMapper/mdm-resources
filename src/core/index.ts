@@ -17,6 +17,16 @@ export * from './mdm-async-jobs.resource';
 export * from './mdm-domain-exports.model';
 export * from './mdm-domain-exports.resource';
 export * from './mdm-importer.resource';
+export * from './mdm-user-image-file.resource';
+export * from './mdm-version-link.resource';
+export * from './mdm-versioned-folder.model';
+export * from './mdm-versioned-folder.resource';
+export * from './mdm-import-export.model';
+export * from './mdm-versioning.resource';
+export * from './mdm-facets.resource';
+export * from './mdm-merge-types.model';
+export * from './mdm-merge.model';
+export * from './mdm-merge.resource';
 
 export * from './admin/mdm-admin.model';
 export * from './admin/mdm-admin.resource';

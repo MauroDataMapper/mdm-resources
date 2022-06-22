@@ -21,7 +21,7 @@ import {
   FinalisePayload,
   ForkModelPayload,
   VersionModelPayload
-} from './mdm-model-types.model';
+} from '../mdm-model-types.model';
 import {
   FilterQueryParameters,
   QueryParameters,
@@ -29,16 +29,16 @@ import {
   RequestSettings,
   SearchQueryParameters,
   Uuid
-} from './mdm-common.model';
+} from '../mdm-common.model';
 import {
   ContainerCreatePayload,
   ContainerUpdatePayload
-} from './mdm-container-types.model';
-import { MdmResource } from './mdm-resource';
+} from '../mdm-container-types.model';
+import { MdmResource } from '../mdm-resource';
 import {
   BranchableResource,
   ForkableResource
-} from './mdm-model-types.resource';
+} from '../mdm-model-types.resource';
 
 /**
  * MDM resource for the management of Versioned Folders in Mauro.

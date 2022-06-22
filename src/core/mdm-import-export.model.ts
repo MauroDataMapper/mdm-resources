@@ -17,10 +17,10 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { CodeSetDetail } from './terminologies/mdm-code-set.model';
-import { DataModelDetail } from './data-models/mdm-data-model.model';
-import { ReferenceDataModelDetail } from './reference-data/mdm-reference-data-model.model';
-import { TerminologyDetail } from './terminologies/mdm-terminology.model';
+import { CodeSetDetail } from '../terminologies/mdm-code-set.model';
+import { DataModelDetail } from '../data-models/mdm-data-model.model';
+import { ReferenceDataModelDetail } from '../reference-data/mdm-reference-data-model.model';
+import { TerminologyDetail } from '../terminologies/mdm-terminology.model';
 import {
   AsyncParameters,
   CatalogueItem,
@@ -29,7 +29,7 @@ import {
   QueryParameters,
   Uuid,
   Version
-} from './mdm-common.model';
+} from '../mdm-common.model';
 
 export interface Importer {
   [key: string]: any;

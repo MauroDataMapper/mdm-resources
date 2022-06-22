@@ -17,17 +17,17 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { DataModelDetail } from './data-models/mdm-data-model.model';
-import { Branchable, Modelable } from './mdm-model-types.model';
-import { ReferenceDataModelDetail } from './reference-data/mdm-reference-data-model.model';
-import { TerminologyDetail } from './terminologies/mdm-terminology.model';
-import { VersionedFolderDetail } from './mdm-versioned-folder.model';
+import { DataModelDetail } from '../data-models/mdm-data-model.model';
+import { Branchable, Modelable } from '../mdm-model-types.model';
+import { ReferenceDataModelDetail } from '../reference-data/mdm-reference-data-model.model';
+import { TerminologyDetail } from '../terminologies/mdm-terminology.model';
+import { VersionedFolderDetail } from '../core/mdm-versioned-folder.model';
 import {
   MdmResponse,
   MultiFacetAwareDomainType,
   Payload,
   Uuid
-} from './mdm-common.model';
+} from '../mdm-common.model';
 
 /**
  * Represents all {@link MultiFacetAwareDomainType} values that can be used for merge operations.

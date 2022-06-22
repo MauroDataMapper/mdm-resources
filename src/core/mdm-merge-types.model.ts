@@ -17,7 +17,7 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { Breadcrumb, MdmResponse, Uuid } from './mdm-common.model';
+import { Breadcrumb, MdmResponse, Uuid } from '../mdm-common.model';
 
 /**
  * Represents the object values of a catalogue item or element under comparison.

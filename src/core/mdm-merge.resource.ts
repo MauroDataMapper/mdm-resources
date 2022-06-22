@@ -17,9 +17,12 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { CommitMergePayload, MergableMultiFacetAwareDomainType } from './mdm-merge.model';
-import { QueryParameters, RequestSettings, Uuid } from './mdm-common.model';
-import { MdmResource } from './mdm-resource';
+import {
+  CommitMergePayload,
+  MergableMultiFacetAwareDomainType
+} from './mdm-merge.model';
+import { QueryParameters, RequestSettings, Uuid } from '../mdm-common.model';
+import { MdmResource } from '../mdm-resource';
 
 /**
  * MDM resource for merge operations against catalogue items.
@@ -28,7 +31,6 @@ import { MdmResource } from './mdm-resource';
  * {@link MdmVersioningResource} endpoints.
  */
 export class MdmMergeResource extends MdmResource {
-
   /**
    * `HTTP GET` - Locates the catalogue item that acts as the "main" branch of the provided catalogue item.
    *
@@ -44,7 +46,8 @@ export class MdmMergeResource extends MdmResource {
     domainType: MergableMultiFacetAwareDomainType,
     id: Uuid,
     query?: QueryParameters,
-    options?: RequestSettings) {
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${domainType}/${id}/currentMainBranch`;
     return this.simpleGet(url, query, options);
   }
@@ -66,9 +69,10 @@ export class MdmMergeResource extends MdmResource {
     sourceId: Uuid,
     targetId: Uuid,
     query?: QueryParameters,
-    options?: RequestSettings) {
+    options?: RequestSettings
+  ) {
     const queryString = this.generateQueryString({
-      isLegacy: false,  // Required to use latest JSON response format
+      isLegacy: false, // Required to use latest JSON response format
       ...query
     });
     const url = `${this.apiEndpoint}/${domainType}/${sourceId}/mergeDiff/${targetId}${queryString}`;
@@ -94,9 +98,10 @@ export class MdmMergeResource extends MdmResource {
     sourceId: Uuid,
     targetId: Uuid,
     data: CommitMergePayload,
-    options?: RequestSettings) {
+    options?: RequestSettings
+  ) {
     const queryString = this.generateQueryString({
-      isLegacy: false  // Required to use latest JSON response format
+      isLegacy: false // Required to use latest JSON response format
     });
     const url = `${this.apiEndpoint}/${domainType}/${sourceId}/mergeInto/${targetId}${queryString}`;
     return this.simplePut(url, data, options);

@@ -23,7 +23,7 @@ import {
   Uuid,
   Version
 } from '../mdm-common.model';
-import { Exporter } from '../mdm-import-export.model';
+import { Exporter } from './mdm-import-export.model';
 import { ModelDomain } from '../mdm-model-types.model';
 
 export interface DomainExportCatalogueItem {
