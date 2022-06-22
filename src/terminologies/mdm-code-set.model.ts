@@ -21,13 +21,13 @@ import {
   CatalogueItemReference,
   MdmIndexResponse,
   MdmResponse
-} from './mdm-common.model';
+} from '../mdm-common.model';
 import {
   Modelable,
   ModelCreatePayload,
   ModelDomainDetail,
   ModelUpdatePayload
-} from './mdm-model-types.model';
+} from '../mdm-model-types.model';
 
 export type CodeSetDataType = 'CodeSet';
 

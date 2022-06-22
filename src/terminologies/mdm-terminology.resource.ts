@@ -16,15 +16,15 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { RequestSettings, QueryParameters, Uuid } from './mdm-common.model';
+import { RequestSettings, QueryParameters, Uuid } from '../mdm-common.model';
 import {
   FinalisePayload,
   ModelCreatePayload,
   ModelUpdatePayload
-} from './mdm-model-types.model';
-import { MdmModelDomainResource } from './mdm-model-types.resource';
-import { MdmResourcesConfiguration } from './mdm-resources-configuration';
-import { MdmRestHandler } from './mdm-rest-handler';
+} from '../mdm-model-types.model';
+import { MdmModelDomainResource } from '../mdm-model-types.resource';
+import { MdmResourcesConfiguration } from '../mdm-resources-configuration';
+import { MdmRestHandler } from '../mdm-rest-handler';
 
 /**
  * MDM resource for the management of terminologies.

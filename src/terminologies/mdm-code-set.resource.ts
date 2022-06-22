@@ -17,15 +17,15 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { FinalisePayload } from './mdm-model-types.model';
-import { RequestSettings, QueryParameters, Uuid } from './mdm-common.model';
+import { FinalisePayload } from '../mdm-model-types.model';
+import { RequestSettings, QueryParameters, Uuid } from '../mdm-common.model';
 import {
   CodeSetCreatePayload,
   CodeSetUpdatePayload
 } from './mdm-code-set.model';
-import { MdmModelDomainResource } from './mdm-model-types.resource';
-import { MdmRestHandler } from './mdm-rest-handler';
-import { MdmResourcesConfiguration } from './mdm-resources-configuration';
+import { MdmModelDomainResource } from '../mdm-model-types.resource';
+import { MdmRestHandler } from '../mdm-rest-handler';
+import { MdmResourcesConfiguration } from '../mdm-resources-configuration';
 
 /**
  * MDM resources for the management of code sets.

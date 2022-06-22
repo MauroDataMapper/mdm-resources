@@ -16,17 +16,30 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { Modelable, ModelDomainDetail } from './mdm-model-types.model';
-import { MdmIndexResponse, MdmResponse } from './mdm-common.model';
+import { Historical, Securable } from '../mdm-model-types.model';
+import {
+  CatalogueItemDomainType,
+  MdmIndexResponse,
+  MdmResponse,
+  Navigatable,
+  Uuid
+} from '../mdm-common.model';
 
-export type TerminologyDataType = 'Terminology';
-
-export interface Terminology extends Modelable {
+export interface Term {
   [key: string]: any;
-  type?: TerminologyDataType;
+  id?: Uuid;
+  domainType: CatalogueItemDomainType;
+  model?: Uuid;
+  code: string;
+  definition: string;
+
+  /**
+   * The combination of {@link Term.code} and {@link Term.definition}.
+   */
+  label?: string;
 }
 
-export type TerminologyDetail = Terminology & ModelDomainDetail;
+export type TermDetail = Term & Navigatable & Securable & Historical;
 
-export type TerminologyIndexResponse = MdmIndexResponse<Terminology>;
-export type TerminologyDetailResponse = MdmResponse<TerminologyDetail>;
+export type TermIndexResponse = MdmIndexResponse<Term>;
+export type TermDetailResponse = MdmResponse<TermDetail>;
