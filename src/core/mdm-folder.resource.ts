@@ -23,12 +23,12 @@ import {
   Uuid,
   SearchQueryParameters,
   RemoveQueryParameters
-} from './mdm-common.model';
-import { MdmResource } from './mdm-resource';
+} from '../mdm-common.model';
+import { MdmResource } from '../mdm-resource';
 import {
   ContainerCreatePayload,
   ContainerUpdatePayload
-} from './mdm-container-types.model';
+} from '../mdm-container-types.model';
 
 /**
  * Controller: folder

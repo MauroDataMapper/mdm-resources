@@ -16,8 +16,12 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { RequestSettings, QueryParameters, ModelDomainType } from './mdm-common.model';
-import { MdmResource } from './mdm-resource';
+import {
+  RequestSettings,
+  QueryParameters,
+  ModelDomainType
+} from '../mdm-common.model';
+import { MdmResource } from '../mdm-resource';
 
 /**
  * Controller: annotation
@@ -36,11 +40,15 @@ import { MdmResource } from './mdm-resource';
  * @deprecated Use {@link MdmCatalogueItemResource} and the annotation endpoints there instead.
  */
 export class MdmAnnotationResource extends MdmResource {
-
   /**
    * @deprecated Use {@link MdmCatalogueItemResource.saveAnnotations} instead.
    */
-  save(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, data: any, restHandlerOptions?: RequestSettings) {
+  save(
+    catalogueItemDomainType: string | ModelDomainType,
+    catalogueItemId: string,
+    data: any,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/annotations`;
     return this.simplePost(url, data, restHandlerOptions);
   }
@@ -48,7 +56,13 @@ export class MdmAnnotationResource extends MdmResource {
   /**
    * @deprecated Use {@link MdmCatalogueItemResource.saveAnnotationChildren} instead.
    */
-  saveChildren(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, annotationId: string, data: any, restHandlerOptions?: RequestSettings) {
+  saveChildren(
+    catalogueItemDomainType: string | ModelDomainType,
+    catalogueItemId: string,
+    annotationId: string,
+    data: any,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/annotations/${annotationId}/annotations`;
     return this.simplePost(url, data, restHandlerOptions);
   }
@@ -56,7 +70,12 @@ export class MdmAnnotationResource extends MdmResource {
   /**
    * @deprecated Use {@link MdmCatalogueItemResource.listAnnotations} instead.
    */
-  list(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  list(
+    catalogueItemDomainType: string | ModelDomainType,
+    catalogueItemId: string,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/annotations`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
@@ -64,7 +83,13 @@ export class MdmAnnotationResource extends MdmResource {
   /**
    * @deprecated Use {@link MdmCatalogueItemResource.listAnnotationChildren} instead.
    */
-  listChildren(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, annotationId?: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  listChildren(
+    catalogueItemDomainType: string | ModelDomainType,
+    catalogueItemId: string,
+    annotationId?: string,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/annotations/${annotationId}/annotations`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
@@ -72,7 +97,13 @@ export class MdmAnnotationResource extends MdmResource {
   /**
    * @deprecated Use {@link MdmCatalogueItemResource.removeAnnotation} instead.
    */
-  remove(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, annotationId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  remove(
+    catalogueItemDomainType: string | ModelDomainType,
+    catalogueItemId: string,
+    annotationId: string,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/annotations/${annotationId}`;
     return this.simpleDelete(url, queryStringParams, restHandlerOptions);
   }
@@ -80,7 +111,14 @@ export class MdmAnnotationResource extends MdmResource {
   /**
    * @deprecated Use {@link MdmCatalogueItemResource.removeAnnotationChild} instead.
    */
-  removeChild(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, annotationId: string, childId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  removeChild(
+    catalogueItemDomainType: string | ModelDomainType,
+    catalogueItemId: string,
+    annotationId: string,
+    childId: string,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/annotations/${annotationId}/annotations/${childId}`;
     return this.simpleDelete(url, queryStringParams, restHandlerOptions);
   }
@@ -88,7 +126,13 @@ export class MdmAnnotationResource extends MdmResource {
   /**
    * @deprecated Use {@link MdmCatalogueItemResource.getAnnotation} instead.
    */
-  get(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, annotationId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  get(
+    catalogueItemDomainType: string | ModelDomainType,
+    catalogueItemId: string,
+    annotationId: string,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/annotations/${annotationId}`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
@@ -96,7 +140,14 @@ export class MdmAnnotationResource extends MdmResource {
   /**
    * @deprecated Use {@link MdmCatalogueItemResource.getAnnotationChild} instead.
    */
-  getChild(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, annotationId: string, childId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  getChild(
+    catalogueItemDomainType: string | ModelDomainType,
+    catalogueItemId: string,
+    annotationId: string,
+    childId: string,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/annotations/${annotationId}/annotations/${childId}`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }

@@ -21,11 +21,11 @@ import {
   QueryParameters,
   RequestSettings,
   Uuid
-} from './mdm-common.model';
+} from '../mdm-common.model';
 import { DomainExportListFilters } from './mdm-domain-exports.model';
-import { MdmCommonDomainResource } from './mdm-common.resource';
-import { MdmResourcesConfiguration } from './mdm-resources-configuration';
-import { MdmRestHandler } from './mdm-rest-handler';
+import { MdmCommonDomainResource } from '../mdm-common.resource';
+import { MdmResourcesConfiguration } from '../mdm-resources-configuration';
+import { MdmRestHandler } from '../mdm-rest-handler';
 
 /**
  * Operations for managing domain level exports of catalogue data.

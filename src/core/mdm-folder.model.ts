@@ -16,17 +16,25 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { RequestSettings, QueryParameters } from './mdm-common.model';
-import { MdmResource } from './mdm-resource';
+
+import { Container } from '../mdm-container-types.model';
+import { MdmIndexResponse, MdmResponse } from '../mdm-common.model';
+import { Historical, SecurableModel } from '../mdm-model-types.model';
 
 /**
- * Controller: metadata
- |   GET    | /api/metadata/namespaces/${id}?                                                                       | Action: namespaces
+ * Represents a Folder in Mauro.
+ *
+ * A folder is a container that can hold further catalogue items to help
+ * organise Mauro.
+ *
+ * @see {@link VersionedFolder}
  */
-export class MdmNamespacesResource extends MdmResource {
-
-    get(metadataId?: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
-        const url = `${this.apiEndpoint}/metadata/namespaces${metadataId ? `/${metadataId}`:''}`;
-        return this.simpleGet(url, queryStringParams, restHandlerOptions);
-    }
+export interface Folder extends Container {
+  [key: string]: any;
+  hasChildFolders?: boolean;
 }
+
+export type FolderDetail = Folder & SecurableModel & Historical;
+
+export type FolderIndexResponse = MdmIndexResponse<Folder>;
+export type FolderDetailResponse = MdmResponse<FolderDetail>;

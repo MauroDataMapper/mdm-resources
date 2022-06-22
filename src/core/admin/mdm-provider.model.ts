@@ -16,7 +16,11 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { MdmResponse, QueryParameters, SortParameters } from './mdm-common.model';
+import {
+  MdmResponse,
+  QueryParameters,
+  SortParameters
+} from '../../mdm-common.model';
 
 export type ProviderQueryParameters = SortParameters & QueryParameters;
 

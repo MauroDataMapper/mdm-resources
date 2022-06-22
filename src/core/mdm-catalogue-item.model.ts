@@ -17,14 +17,19 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { Historical } from './mdm-model-types.model';
-import { CatalogueItem, MdmIndexResponse, MdmResponse, Payload, Uuid } from './mdm-common.model';
+import { Historical } from '../mdm-model-types.model';
+import {
+  CatalogueItem,
+  MdmIndexResponse,
+  MdmResponse,
+  Payload,
+  Uuid
+} from '../mdm-common.model';
 
 /**
  * Represents a reference file (attachment) for model.
  */
 export interface ReferenceFile extends CatalogueItem {
-
   [key: string]: any;
   /**
    * The name of the reference file.
@@ -45,7 +50,6 @@ export interface ReferenceFile extends CatalogueItem {
    * The date/time the reference file was last updated in string format.
    */
   lastUpdated?: string;
-
 }
 
 export type ReferenceFileIndexResponse = MdmIndexResponse<ReferenceFile>;
@@ -66,7 +70,6 @@ export interface ReferenceFileCreatePayload extends Payload {
  * Represents an annotation, or comment, attached to a catalogue item.
  */
 export interface Annotation extends Historical {
-
   [key: string]: any;
   /**
    * The unique identifier of this annotation.
@@ -92,7 +95,6 @@ export interface Annotation extends Historical {
    * Annotations that are children to this annotation.
    */
   childAnnotations?: Annotation[];
-
 }
 
 export type AnnotationIndexResponse = MdmIndexResponse<Annotation>;
@@ -111,7 +113,7 @@ export interface AnnotationChildCreatePayload extends Payload {
  * Represents all the domain types that can be used with the Mauro path APIs.
  */
 export type PathableDomainType =
-  'annotations'
+  | 'annotations'
   | 'authorities'
   | 'classifiers'
   | 'codeSets'

@@ -16,32 +16,21 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { MdmIndexResponse, MdmResponse, Uuid } from './mdm-common.model';
+import { RequestSettings, QueryParameters } from '../mdm-common.model';
+import { MdmResource } from '../mdm-resource';
 
 /**
- * The different states an async job can be in.
+ * Controller: edit
+ |   GET    | /api/${resourceDomainType}/${resourceId}/edits                                                        | Action: index
  */
-export type AsyncJobStatus =
-  | 'CREATED'
-  | 'RUNNING'
-  | 'COMPLETED'
-  | 'FAILED'
-  | 'CANCELLING'
-  | 'CANCELLED';
-
-/**
- * Represents an asynchronous job that is running, or has run to completion, in Mauro.
- */
-export interface AsyncJob {
-  id: Uuid;
-  jobName: string;
-  startedByUser: string;
-  dateTimeStarted: string;
-  status: AsyncJobStatus;
-  message?: string;
-  location: string;
+export class MdmEditResource extends MdmResource {
+  status(
+    resourceDomainType,
+    resourceId: string,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
+    const url = `${this.apiEndpoint}/${resourceDomainType}/${resourceId}/edits`;
+    return this.simpleGet(url, queryStringParams, restHandlerOptions);
+  }
 }
-
-export type AsyncJobResponse = MdmResponse<AsyncJob>;
-
-export type AsyncJobIndexResponse = MdmIndexResponse<AsyncJob>;

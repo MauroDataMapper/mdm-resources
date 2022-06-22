@@ -16,8 +16,14 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { Securable } from './mdm-model-types.model';
-import { CatalogueItem, MdmResponse, QueryParameters, Uuid, Version } from './mdm-common.model';
+import { Securable } from '../mdm-model-types.model';
+import {
+  CatalogueItem,
+  MdmResponse,
+  QueryParameters,
+  Uuid,
+  Version
+} from '../mdm-common.model';
 
 export interface MdmTreeItem extends Required<CatalogueItem>, Securable {
   [key: string]: any;
@@ -50,8 +56,10 @@ export interface TreeItemExpandedParameters {
   forDiff: boolean;
 }
 
-export type TreeItemListQueryParameters = TreeItemListParameters & QueryParameters;
-export type TreeItemExpandedQueryParameters = TreeItemExpandedParameters & QueryParameters;
+export type TreeItemListQueryParameters = TreeItemListParameters &
+  QueryParameters;
+export type TreeItemExpandedQueryParameters = TreeItemExpandedParameters &
+  QueryParameters;
 
 export type MdmTreeItemListResponse = MdmResponse<MdmTreeItem[]>;
 export type MdmTreeItemResponse = MdmResponse<MdmTreeItem>;

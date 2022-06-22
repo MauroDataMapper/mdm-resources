@@ -16,9 +16,9 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { RequestSettings } from './mdm-common.model';
+import { RequestSettings } from '../../mdm-common.model';
 import { ProviderQueryParameters } from './mdm-provider.model';
-import { MdmResource } from './mdm-resource';
+import { MdmResource } from '../../mdm-resource';
 
 /**
  * Controller: mauroDataMapperServiceProvider

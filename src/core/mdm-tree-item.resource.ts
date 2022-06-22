@@ -16,9 +16,20 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { RequestSettings, QueryParameters, ContainerDomainType, ModelDomainType, Uuid, MultiFacetAwareDomainType, SearchQueryParameters } from './mdm-common.model';
-import { TreeItemExpandedQueryParameters, TreeItemListQueryParameters } from './mdm-tree-item.model';
-import { MdmResource } from './mdm-resource';
+import {
+  RequestSettings,
+  QueryParameters,
+  ContainerDomainType,
+  ModelDomainType,
+  Uuid,
+  MultiFacetAwareDomainType,
+  SearchQueryParameters
+} from '../mdm-common.model';
+import {
+  TreeItemExpandedQueryParameters,
+  TreeItemListQueryParameters
+} from './mdm-tree-item.model';
+import { MdmResource } from '../mdm-resource';
 
 /**
  * Controller: treeItem
@@ -180,7 +191,8 @@ export class MdmTreeItemResource extends MdmResource {
     modelDomainType: string | ModelDomainType,
     id: Uuid,
     query?: QueryParameters,
-    options?: RequestSettings) {
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/tree/${containerDomainType}/${modelDomainType}/${id}`;
     return this.simpleGet(url, query, options);
   }
@@ -250,7 +262,8 @@ export class MdmTreeItemResource extends MdmResource {
     multiFacetAwareDomainType: MultiFacetAwareDomainType,
     id: Uuid,
     query?: QueryParameters,
-    options?: RequestSettings) {
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/tree/${containerDomainType}/${multiFacetAwareDomainType}/${id}/ancestors`;
     return this.simpleGet(url, query, options);
   }

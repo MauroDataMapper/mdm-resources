@@ -16,7 +16,12 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { MdmResponse, QueryParameters, SortParameters, Uuid } from './mdm-common.model';
+import {
+  MdmResponse,
+  QueryParameters,
+  SortParameters,
+  Uuid
+} from '../mdm-common.model';
 
 /**
  * Response body for a successful authentication check on a session.

@@ -17,7 +17,7 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { Classifier } from './mdm-classifier.model';
+import { Classifier } from './core/mdm-classifier.model';
 import {
   AsyncParameters,
   CatalogueItem,

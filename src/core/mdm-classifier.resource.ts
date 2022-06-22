@@ -20,7 +20,7 @@ SPDX-License-Identifier: Apache-2.0
 import {
   ContainerCreatePayload,
   ContainerUpdatePayload
-} from './mdm-container-types.model';
+} from '../mdm-container-types.model';
 import {
   RequestSettings,
   QueryParameters,
@@ -28,8 +28,8 @@ import {
   Uuid,
   FilterQueryParameters,
   RemoveQueryParameters
-} from './mdm-common.model';
-import { MdmResource } from './mdm-resource';
+} from '../mdm-common.model';
+import { MdmResource } from '../mdm-resource';
 
 /**
  * Controller: classifier

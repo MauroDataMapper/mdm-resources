@@ -22,7 +22,7 @@ import { MdmResource } from '../mdm-resource';
 import { MdmResourcesConfiguration } from '../mdm-resources-configuration';
 import { MdmRestHandler, DefaultMdmRestHandler } from '../mdm-rest-handler';
 import { MdmSecurityResource } from './mdm-security.resource';
-import { MdmSessionResource } from '../mdm-session.resource';
+import { MdmSessionResource } from '../core/mdm-session.resource';
 
 /**
  * @deprecated Use [[MdmSecurityResource]] and [[MdmSessionResource]] instead.

@@ -16,28 +16,32 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-
-import { Container } from './mdm-container-types.model';
-import { MdmIndexResponse, MdmResponse } from './mdm-common.model';
-import { Historical, SecurableModel } from './mdm-model-types.model';
+import { MdmIndexResponse, MdmResponse, Uuid } from '../mdm-common.model';
 
 /**
- * Represents a Folder in Mauro.
- *
- * A folder is a container that can hold further catalogue items to help
- * organise Mauro.
- *
- * @see {@link VersionedFolder}
+ * The different states an async job can be in.
  */
-export interface Folder extends Container {
-  [key: string]: any;
-  hasChildFolders?: boolean;
+export type AsyncJobStatus =
+  | 'CREATED'
+  | 'RUNNING'
+  | 'COMPLETED'
+  | 'FAILED'
+  | 'CANCELLING'
+  | 'CANCELLED';
+
+/**
+ * Represents an asynchronous job that is running, or has run to completion, in Mauro.
+ */
+export interface AsyncJob {
+  id: Uuid;
+  jobName: string;
+  startedByUser: string;
+  dateTimeStarted: string;
+  status: AsyncJobStatus;
+  message?: string;
+  location: string;
 }
 
-export type FolderDetail =
-  Folder
-  & SecurableModel
-  & Historical;
+export type AsyncJobResponse = MdmResponse<AsyncJob>;
 
-export type FolderIndexResponse = MdmIndexResponse<Folder>;
-export type FolderDetailResponse = MdmResponse<FolderDetail>;
+export type AsyncJobIndexResponse = MdmIndexResponse<AsyncJob>;

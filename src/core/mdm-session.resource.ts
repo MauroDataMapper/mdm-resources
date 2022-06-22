@@ -16,9 +16,9 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { RequestSettings, QueryParameters, Uuid } from './mdm-common.model';
+import { RequestSettings, QueryParameters, Uuid } from '../mdm-common.model';
 import { SessionListQueryParameters } from './mdm-session.model';
-import { MdmResource } from './mdm-resource';
+import { MdmResource } from '../mdm-resource';
 
 /**
  * MDM resource for managing sessions in Mauro.
@@ -40,7 +40,10 @@ export class MdmSessionResource extends MdmResource {
    *
    * `403 Forbidden` - user is not an administrator.
    */
-  activeSessions(query?: SessionListQueryParameters, options?: RequestSettings) {
+  activeSessions(
+    query?: SessionListQueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/admin/activeSessions`;
     return this.simpleGet(url, query, options);
   }
@@ -57,8 +60,14 @@ export class MdmSessionResource extends MdmResource {
    *
    * @see [[MdmSecurityResource.login]]
    */
-  isAuthenticated(sessionId?: Uuid, query?: QueryParameters, options?: RequestSettings) {
-    const url = `${this.apiEndpoint}/session/isAuthenticated${sessionId ? `/${sessionId}` : ''}`;
+  isAuthenticated(
+    sessionId?: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
+    const url = `${this.apiEndpoint}/session/isAuthenticated${
+      sessionId ? `/${sessionId}` : ''
+    }`;
     return this.simpleGet(url, query, options);
   }
 
@@ -71,7 +80,10 @@ export class MdmSessionResource extends MdmResource {
    *
    * `200 OK` - will return a [[AdminSessionResponse]] containing the [[AdminSessionResult]].
    */
-  isApplicationAdministration(query?: QueryParameters, options?: RequestSettings) {
+  isApplicationAdministration(
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/session/isApplicationAdministration`;
     return this.simpleGet(url, query, options);
   }

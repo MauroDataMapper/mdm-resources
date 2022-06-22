@@ -17,9 +17,22 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { AnnotationChildCreatePayload, AnnotationCreatePayload, PathableDomainType, ReferenceFile, ReferenceFileCreatePayload } from './mdm-catalogue-item.model';
-import { RequestSettings, QueryParameters, ModelDomainType, Uuid, FilterQueryParameters, SearchQueryParameters } from './mdm-common.model';
-import { MdmResource } from './mdm-resource';
+import {
+  AnnotationChildCreatePayload,
+  AnnotationCreatePayload,
+  PathableDomainType,
+  ReferenceFile,
+  ReferenceFileCreatePayload
+} from './mdm-catalogue-item.model';
+import {
+  RequestSettings,
+  QueryParameters,
+  ModelDomainType,
+  Uuid,
+  FilterQueryParameters,
+  SearchQueryParameters
+} from '../mdm-common.model';
+import { MdmResource } from '../mdm-resource';
 
 /**
  * Controller: annotation
@@ -86,7 +99,10 @@ export class MdmCatalogueItemResource extends MdmResource {
     return this.simplePost(url, query, options);
   }
 
-  searchByGet(queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  searchByGet(
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/catalogueItems/search`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
@@ -104,7 +120,12 @@ export class MdmCatalogueItemResource extends MdmResource {
    *
    * `200 OK` - will return a {@link AnnotationDetailResponse} containing a {@link Annotation} object.
    */
-  saveAnnotations(domainType: ModelDomainType, id: Uuid, data: AnnotationCreatePayload, options?: RequestSettings) {
+  saveAnnotations(
+    domainType: ModelDomainType,
+    id: Uuid,
+    data: AnnotationCreatePayload,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${domainType}/${id}/annotations`;
     return this.simplePost(url, data, options);
   }
@@ -121,7 +142,13 @@ export class MdmCatalogueItemResource extends MdmResource {
    *
    * `200 OK` - will return a {@link AnnotationDetailResponse} containing a {@link Annotation} object.
    */
-  saveAnnotationChildren(domainType: ModelDomainType, catalogueItemId: Uuid, annotationId: Uuid, data: AnnotationChildCreatePayload, options?: RequestSettings) {
+  saveAnnotationChildren(
+    domainType: ModelDomainType,
+    catalogueItemId: Uuid,
+    annotationId: Uuid,
+    data: AnnotationChildCreatePayload,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${domainType}/${catalogueItemId}/annotations/${annotationId}/annotations`;
     return this.simplePost(url, data, options);
   }
@@ -139,7 +166,12 @@ export class MdmCatalogueItemResource extends MdmResource {
    *
    * @see {@link MdmCatalogueItemResource.getAnnotation}
    */
-  listAnnotations(domainType: ModelDomainType, id: Uuid, query?: FilterQueryParameters, options?: RequestSettings) {
+  listAnnotations(
+    domainType: ModelDomainType,
+    id: Uuid,
+    query?: FilterQueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${domainType}/${id}/annotations`;
     return this.simpleGet(url, query, options);
   }
@@ -158,7 +190,13 @@ export class MdmCatalogueItemResource extends MdmResource {
    *
    * @see {@link MdmCatalogueItemResource.getAnnotation}
    */
-  listAnnotationChildren(domainType: ModelDomainType, catalogueItemId: Uuid, annotationId: Uuid, query?: FilterQueryParameters, options?: RequestSettings) {
+  listAnnotationChildren(
+    domainType: ModelDomainType,
+    catalogueItemId: Uuid,
+    annotationId: Uuid,
+    query?: FilterQueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${domainType}/${catalogueItemId}/annotations/${annotationId}/annotations`;
     return this.simpleGet(url, query, options);
   }
@@ -175,7 +213,13 @@ export class MdmCatalogueItemResource extends MdmResource {
    *
    * On success, the response will be a `204 No Content` and the response body will be empty.
    */
-  removeAnnotation(domainType: ModelDomainType, catalogueItemId: Uuid, annotationId: Uuid, query?: QueryParameters, options?: RequestSettings) {
+  removeAnnotation(
+    domainType: ModelDomainType,
+    catalogueItemId: Uuid,
+    annotationId: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${domainType}/${catalogueItemId}/annotations/${annotationId}`;
     return this.simpleDelete(url, query, options);
   }
@@ -193,7 +237,14 @@ export class MdmCatalogueItemResource extends MdmResource {
    *
    * On success, the response will be a `204 No Content` and the response body will be empty.
    */
-  removeAnnotationChild(domainType: ModelDomainType, catalogueItemId: Uuid, annotationId: Uuid, childId: Uuid, query?: QueryParameters, options?: RequestSettings) {
+  removeAnnotationChild(
+    domainType: ModelDomainType,
+    catalogueItemId: Uuid,
+    annotationId: Uuid,
+    childId: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${domainType}/${catalogueItemId}/annotations/${annotationId}/annotations/${childId}`;
     return this.simpleDelete(url, query, options);
   }
@@ -210,7 +261,13 @@ export class MdmCatalogueItemResource extends MdmResource {
    *
    * `200 OK` - will return a {@link AnnotationDetailResponse} containing a {@link Annotation} object.
    */
-  getAnnotation(domainType: ModelDomainType, catalogueItemId: Uuid, annotationId: Uuid, query?: QueryParameters, options?: RequestSettings) {
+  getAnnotation(
+    domainType: ModelDomainType,
+    catalogueItemId: Uuid,
+    annotationId: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${domainType}/${catalogueItemId}/annotations/${annotationId}`;
     return this.simpleGet(url, query, options);
   }
@@ -228,54 +285,111 @@ export class MdmCatalogueItemResource extends MdmResource {
    *
    * `200 OK` - will return a {@link AnnotationDetailResponse} containing a {@link Annotation} object.
    */
-  getAnnotationChild(domainType: ModelDomainType, catalogueItemId: Uuid, annotationId: Uuid, childId: Uuid, query?: QueryParameters, options?: RequestSettings) {
+  getAnnotationChild(
+    domainType: ModelDomainType,
+    catalogueItemId: Uuid,
+    annotationId: Uuid,
+    childId: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${domainType}/${catalogueItemId}/annotations/${annotationId}/annotations/${childId}`;
     return this.simpleGet(url, query, options);
   }
 
   // Classifier
-  saveClassifiers(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, data: any, restHandlerOptions?: RequestSettings) {
+  saveClassifiers(
+    catalogueItemDomainType: string | ModelDomainType,
+    catalogueItemId: string,
+    data: any,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/classifiers`;
     return this.simplePost(url, data, restHandlerOptions);
   }
 
-  listClassifiers(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  listClassifiers(
+    catalogueItemDomainType: string | ModelDomainType,
+    catalogueItemId: string,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/classifiers`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
 
-  removeClassifier(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, classifierId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  removeClassifier(
+    catalogueItemDomainType: string | ModelDomainType,
+    catalogueItemId: string,
+    classifierId: string,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/classifiers/${classifierId}`;
     return this.simpleDelete(url, queryStringParams, restHandlerOptions);
   }
 
-  getClassifier(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, classifierId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  getClassifier(
+    catalogueItemDomainType: string | ModelDomainType,
+    catalogueItemId: string,
+    classifierId: string,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/classifiers/${classifierId}`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
 
   // Metadata
-  saveMetadata(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, data: any, restHandlerOptions?: RequestSettings) {
+  saveMetadata(
+    catalogueItemDomainType: string | ModelDomainType,
+    catalogueItemId: string,
+    data: any,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/metadata`;
     return this.simplePost(url, data, restHandlerOptions);
   }
 
-  listMetadata(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  listMetadata(
+    catalogueItemDomainType: string | ModelDomainType,
+    catalogueItemId: string,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/metadata`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
 
-  removeMetadata(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, metadataId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  removeMetadata(
+    catalogueItemDomainType: string | ModelDomainType,
+    catalogueItemId: string,
+    metadataId: string,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/metadata/${metadataId}`;
     return this.simpleDelete(url, queryStringParams, restHandlerOptions);
   }
 
-  updateMetadata(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, metadataId: string, data: any, restHandlerOptions?: RequestSettings) {
+  updateMetadata(
+    catalogueItemDomainType: string | ModelDomainType,
+    catalogueItemId: string,
+    metadataId: string,
+    data: any,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/metadata/${metadataId}`;
     return this.simplePut(url, data, restHandlerOptions);
   }
 
-  getMetadata(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, metadataId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  getMetadata(
+    catalogueItemDomainType: string | ModelDomainType,
+    catalogueItemId: string,
+    metadataId: string,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/metadata/${metadataId}`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
@@ -293,7 +407,12 @@ export class MdmCatalogueItemResource extends MdmResource {
    *
    * `200 OK` - will return a {@link ReferenceFileDetailResponse} containing a {@link ReferenceFile} object.
    */
-  saveReferenceFiles(domainType: ModelDomainType, id: Uuid, data: ReferenceFileCreatePayload, options?: RequestSettings) {
+  saveReferenceFiles(
+    domainType: ModelDomainType,
+    id: Uuid,
+    data: ReferenceFileCreatePayload,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${domainType}/${id}/referenceFiles`;
     return this.simplePost(url, data, options);
   }
@@ -311,7 +430,12 @@ export class MdmCatalogueItemResource extends MdmResource {
    *
    * @see {@link MdmCatalogueItemResource.getReferenceFile}
    */
-  listReferenceFiles(domainType: ModelDomainType, id: Uuid, query?: FilterQueryParameters, options?: RequestSettings) {
+  listReferenceFiles(
+    domainType: ModelDomainType,
+    id: Uuid,
+    query?: FilterQueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${domainType}/${id}/referenceFiles`;
     return this.simpleGet(url, query, options);
   }
@@ -328,7 +452,13 @@ export class MdmCatalogueItemResource extends MdmResource {
    *
    * On success, the response will be a `204 No Content` and the response body will be empty.
    */
-  removeReferenceFile(domainType: ModelDomainType, catalogueItemId: Uuid, referenceFileId: Uuid, query?: QueryParameters, options?: RequestSettings) {
+  removeReferenceFile(
+    domainType: ModelDomainType,
+    catalogueItemId: Uuid,
+    referenceFileId: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${domainType}/${catalogueItemId}/referenceFiles/${referenceFileId}`;
     return this.simpleDelete(url, query, options);
   }
@@ -345,7 +475,13 @@ export class MdmCatalogueItemResource extends MdmResource {
    *
    * `200 OK` - will return a {@link CodeSetDetailResponse} containing a {@link CodeSetDetail} object.
    */
-  updateReferenceFile(domainType: ModelDomainType, catalogueItemId: Uuid, referenceFileId: Uuid, data: ReferenceFile, restHandlerOptions?: RequestSettings) {
+  updateReferenceFile(
+    domainType: ModelDomainType,
+    catalogueItemId: Uuid,
+    referenceFileId: Uuid,
+    data: ReferenceFile,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${domainType}/${catalogueItemId}/referenceFiles/${referenceFileId}`;
     return this.simplePut(url, data, restHandlerOptions);
   }
@@ -362,73 +498,155 @@ export class MdmCatalogueItemResource extends MdmResource {
    *
    * `200 OK` - will return a {@link ReferenceFileDetailResponse} containing a {@link ReferenceFile} object.
    */
-  getReferenceFile(domainType: ModelDomainType, catalogueItemId: Uuid, referenceFileId: Uuid, query?: QueryParameters, options?: RequestSettings) {
+  getReferenceFile(
+    domainType: ModelDomainType,
+    catalogueItemId: Uuid,
+    referenceFileId: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${domainType}/${catalogueItemId}/referenceFiles/${referenceFileId}`;
     return this.simpleGet(url, query, options);
   }
 
   // Semantic Links
-  saveSemanticLinks(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, data: any, restHandlerOptions?: RequestSettings) {
+  saveSemanticLinks(
+    catalogueItemDomainType: string | ModelDomainType,
+    catalogueItemId: string,
+    data: any,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/semanticLinks`;
     return this.simplePost(url, data, restHandlerOptions);
   }
 
-  listSemanticLinks(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  listSemanticLinks(
+    catalogueItemDomainType: string | ModelDomainType,
+    catalogueItemId: string,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/semanticLinks`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
 
-  removeSemanticLink(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, semanticLinkId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  removeSemanticLink(
+    catalogueItemDomainType: string | ModelDomainType,
+    catalogueItemId: string,
+    semanticLinkId: string,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/semanticLinks/${semanticLinkId}`;
     return this.simpleDelete(url, queryStringParams, restHandlerOptions);
   }
 
-  updateSemanticLink(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, semanticLinkId: string, data: any, restHandlerOptions?: RequestSettings) {
+  updateSemanticLink(
+    catalogueItemDomainType: string | ModelDomainType,
+    catalogueItemId: string,
+    semanticLinkId: string,
+    data: any,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/semanticLinks/${semanticLinkId}`;
     return this.simplePut(url, data, restHandlerOptions);
   }
 
-  getSemanticLink(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, semanticLinkId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  getSemanticLink(
+    catalogueItemDomainType: string | ModelDomainType,
+    catalogueItemId: string,
+    semanticLinkId: string,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/semanticLinks/${semanticLinkId}`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
 
-  listRules(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  listRules(
+    catalogueItemDomainType: string | ModelDomainType,
+    catalogueItemId: string,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/rules`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
 
-  saveRule(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, data: any, restHandlerOptions?: RequestSettings) {
+  saveRule(
+    catalogueItemDomainType: string | ModelDomainType,
+    catalogueItemId: string,
+    data: any,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/rules`;
     return this.simplePost(url, data, restHandlerOptions);
   }
 
-  updateRule(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, ruleId: string, data: any, restHandlerOptions?: RequestSettings) {
+  updateRule(
+    catalogueItemDomainType: string | ModelDomainType,
+    catalogueItemId: string,
+    ruleId: string,
+    data: any,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/rules/${ruleId}`;
     return this.simplePut(url, data, restHandlerOptions);
   }
 
-  listRuleRepresentations(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, ruleId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  listRuleRepresentations(
+    catalogueItemDomainType: string | ModelDomainType,
+    catalogueItemId: string,
+    ruleId: string,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/rules/${ruleId}/representations`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
 
-  saveRulesRepresentation(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, data: any, ruleId: string, restHandlerOptions?: RequestSettings) {
+  saveRulesRepresentation(
+    catalogueItemDomainType: string | ModelDomainType,
+    catalogueItemId: string,
+    data: any,
+    ruleId: string,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/rules/${ruleId}/representations`;
     return this.simplePost(url, data, restHandlerOptions);
   }
 
-  updateRulesRepresentation(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, data: any, ruleId: string, representationId: string, restHandlerOptions?: RequestSettings) {
+  updateRulesRepresentation(
+    catalogueItemDomainType: string | ModelDomainType,
+    catalogueItemId: string,
+    data: any,
+    ruleId: string,
+    representationId: string,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/rules/${ruleId}/representations/${representationId}`;
     return this.simplePut(url, data, restHandlerOptions);
   }
 
-  removeRule(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, ruleId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  removeRule(
+    catalogueItemDomainType: string | ModelDomainType,
+    catalogueItemId: string,
+    ruleId: string,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/rules/${ruleId}`;
     return this.simpleDelete(url, queryStringParams, restHandlerOptions);
   }
 
-  removeRulesRepresentation(catalogueItemDomainType: string | ModelDomainType, catalogueItemId: string, ruleId: string, representationId: string, queryStringParams?: QueryParameters, restHandlerOptions?: RequestSettings) {
+  removeRulesRepresentation(
+    catalogueItemDomainType: string | ModelDomainType,
+    catalogueItemId: string,
+    ruleId: string,
+    representationId: string,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
     const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/rules/${ruleId}/representations/${representationId}`;
     return this.simpleDelete(url, queryStringParams, restHandlerOptions);
   }
@@ -456,36 +674,46 @@ export class MdmCatalogueItemResource extends MdmResource {
    * getPath('folders', 'fo:My Folder')
    * ```
    */
-  getPath(domainType: PathableDomainType, path: string, query?: QueryParameters, options?: RequestSettings) {
+  getPath(
+    domainType: PathableDomainType,
+    path: string,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
     const encodedPath = encodeURIComponent(path);
     const url = `${this.apiEndpoint}/${domainType}/path/${encodedPath}`;
     return this.simpleGet(url, query, options);
   }
 
-   /**
-    * `HTTP GET` - Gets a catalogue item by its path, where the catalogue item is a child of a specific parent item.
-    *
-    * @param domainType The domain type of the parent catalogue item.
-    * @param id The unique identifier of the parent catalogue item.
-    * @param path The path to the child catalogue item. Use Mauro pathing syntax. This will automatically be URL encoded before
-    * submitting.
-    * @param query Optional query parameters, if required.
-    * @param options Optional REST handler parameters, if required.
-    * @returns The result of the `GET` request.
-    *
-    * `200 OK` - will return an {@link MdmResponse} containing the catalogue item requested. The type of object in the response
-    * body will depend on the path requested.
-    *
-    * @example
-    *
-    * ```ts
-    * getPath('folders', '52c8a239-afad-4041-ac9f-932b89525c0d', 'dm:My Data Model')
-    * ```
-    */
-  getPathFromParent(domainType: PathableDomainType, id: Uuid, path: string, query?: QueryParameters, options?: RequestSettings) {
+  /**
+   * `HTTP GET` - Gets a catalogue item by its path, where the catalogue item is a child of a specific parent item.
+   *
+   * @param domainType The domain type of the parent catalogue item.
+   * @param id The unique identifier of the parent catalogue item.
+   * @param path The path to the child catalogue item. Use Mauro pathing syntax. This will automatically be URL encoded before
+   * submitting.
+   * @param query Optional query parameters, if required.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return an {@link MdmResponse} containing the catalogue item requested. The type of object in the response
+   * body will depend on the path requested.
+   *
+   * @example
+   *
+   * ```ts
+   * getPath('folders', '52c8a239-afad-4041-ac9f-932b89525c0d', 'dm:My Data Model')
+   * ```
+   */
+  getPathFromParent(
+    domainType: PathableDomainType,
+    id: Uuid,
+    path: string,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
     const encodedPath = encodeURIComponent(path);
     const url = `${this.apiEndpoint}/${domainType}/${id}/path/${encodedPath}`;
     return this.simpleGet(url, query, options);
   }
-
 }
