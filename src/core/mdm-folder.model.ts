@@ -16,18 +16,25 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-export * from './mdm-common.model';
-export * from './mdm-common.resource';
-export * from './mdm-model-types.model';
-export * from './mdm-model-types.resource';
-export * from './mdm-container-types.model';
-export * from './mdm-resource';
 
-export * from './core/index';
-export * from './data-flows/index';
-export * from './data-models/index';
-export * from './federation/index';
-export * from './profiles/index';
-export * from './terminologies/index';
-export * from './reference-data/index';
-export * from './security/index';
+import { Container } from '../mdm-container-types.model';
+import { MdmIndexResponse, MdmResponse } from '../mdm-common.model';
+import { Historical, SecurableModel } from '../mdm-model-types.model';
+
+/**
+ * Represents a Folder in Mauro.
+ *
+ * A folder is a container that can hold further catalogue items to help
+ * organise Mauro.
+ *
+ * @see {@link VersionedFolder}
+ */
+export interface Folder extends Container {
+  [key: string]: any;
+  hasChildFolders?: boolean;
+}
+
+export type FolderDetail = Folder & SecurableModel & Historical;
+
+export type FolderIndexResponse = MdmIndexResponse<Folder>;
+export type FolderDetailResponse = MdmResponse<FolderDetail>;

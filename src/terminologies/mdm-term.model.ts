@@ -16,18 +16,30 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-export * from './mdm-common.model';
-export * from './mdm-common.resource';
-export * from './mdm-model-types.model';
-export * from './mdm-model-types.resource';
-export * from './mdm-container-types.model';
-export * from './mdm-resource';
+import { Historical, Securable } from '../mdm-model-types.model';
+import {
+  CatalogueItemDomainType,
+  MdmIndexResponse,
+  MdmResponse,
+  Navigatable,
+  Uuid
+} from '../mdm-common.model';
 
-export * from './core/index';
-export * from './data-flows/index';
-export * from './data-models/index';
-export * from './federation/index';
-export * from './profiles/index';
-export * from './terminologies/index';
-export * from './reference-data/index';
-export * from './security/index';
+export interface Term {
+  [key: string]: any;
+  id?: Uuid;
+  domainType: CatalogueItemDomainType;
+  model?: Uuid;
+  code: string;
+  definition: string;
+
+  /**
+   * The combination of {@link Term.code} and {@link Term.definition}.
+   */
+  label?: string;
+}
+
+export type TermDetail = Term & Navigatable & Securable & Historical;
+
+export type TermIndexResponse = MdmIndexResponse<Term>;
+export type TermDetailResponse = MdmResponse<TermDetail>;

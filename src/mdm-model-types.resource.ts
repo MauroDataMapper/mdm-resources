@@ -32,9 +32,8 @@ import {
 import {
   ExportModelsPayload,
   ExportQueryParameters
-} from './mdm-import-export.model';
-import { MdmResourcesConfiguration } from './mdm-resources-configuration';
-import { MdmRestHandler } from './mdm-rest-handler';
+} from './core/mdm-import-export.model';
+import { MdmResourcesConfiguration, MdmRestHandler } from './mdm-resource';
 import { MdmCommonDomainResource } from './mdm-common.resource';
 
 /**

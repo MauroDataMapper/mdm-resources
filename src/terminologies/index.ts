@@ -16,18 +16,11 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-export * from './mdm-common.model';
-export * from './mdm-common.resource';
-export * from './mdm-model-types.model';
-export * from './mdm-model-types.resource';
-export * from './mdm-container-types.model';
-export * from './mdm-resource';
-
-export * from './core/index';
-export * from './data-flows/index';
-export * from './data-models/index';
-export * from './federation/index';
-export * from './profiles/index';
-export * from './terminologies/index';
-export * from './reference-data/index';
-export * from './security/index';
+export * from './mdm-code-set.model';
+export * from './mdm-code-set.resource';
+export * from './mdm-terminology.model';
+export * from './mdm-terminology.resource';
+export * from './mdm-term.model';
+export * from './mdm-term.resource';
+export * from './mdm-term-relationship-type.model';
+export * from './mdm-term-relationship-type.resource';

@@ -16,18 +16,32 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-export * from './mdm-common.model';
-export * from './mdm-common.resource';
-export * from './mdm-model-types.model';
-export * from './mdm-model-types.resource';
-export * from './mdm-container-types.model';
-export * from './mdm-resource';
+import { MdmIndexResponse, MdmResponse, Uuid } from '../mdm-common.model';
 
-export * from './core/index';
-export * from './data-flows/index';
-export * from './data-models/index';
-export * from './federation/index';
-export * from './profiles/index';
-export * from './terminologies/index';
-export * from './reference-data/index';
-export * from './security/index';
+/**
+ * The different states an async job can be in.
+ */
+export type AsyncJobStatus =
+  | 'CREATED'
+  | 'RUNNING'
+  | 'COMPLETED'
+  | 'FAILED'
+  | 'CANCELLING'
+  | 'CANCELLED';
+
+/**
+ * Represents an asynchronous job that is running, or has run to completion, in Mauro.
+ */
+export interface AsyncJob {
+  id: Uuid;
+  jobName: string;
+  startedByUser: string;
+  dateTimeStarted: string;
+  status: AsyncJobStatus;
+  message?: string;
+  location: string;
+}
+
+export type AsyncJobResponse = MdmResponse<AsyncJob>;
+
+export type AsyncJobIndexResponse = MdmIndexResponse<AsyncJob>;

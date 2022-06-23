@@ -16,18 +16,24 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-export * from './mdm-common.model';
-export * from './mdm-common.resource';
-export * from './mdm-model-types.model';
-export * from './mdm-model-types.resource';
-export * from './mdm-container-types.model';
-export * from './mdm-resource';
+import {
+  MdmResponse,
+  QueryParameters,
+  SortParameters
+} from '../../mdm-common.model';
 
-export * from './core/index';
-export * from './data-flows/index';
-export * from './data-models/index';
-export * from './federation/index';
-export * from './profiles/index';
-export * from './terminologies/index';
-export * from './reference-data/index';
-export * from './security/index';
+export type ProviderQueryParameters = SortParameters & QueryParameters;
+
+export interface Provider {
+  name: string;
+  version: string;
+  displayName: string;
+  namespace: string;
+  allowsExtraMetadataKeys?: boolean;
+  knownMetadataKeys?: string[];
+  providerType?: string;
+  paramClassType?: string;
+  canImportMultipleDomains?: boolean;
+}
+
+export type ProviderListResponse = MdmResponse<Provider[]>;
