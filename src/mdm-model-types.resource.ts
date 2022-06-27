@@ -335,7 +335,7 @@ export class MdmModelDomainResource
   }
 
   search(id: string, query?: SearchQueryParameters, options?: RequestSettings) {
-    const url = `${this.apiEndpoint}/${this.domain}}/${id}/search`;
+    const url = `${this.apiEndpoint}/${this.domain}/${id}/search`;
     return this.simplePost(url, query, options);
   }
 }
