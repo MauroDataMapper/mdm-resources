@@ -22,8 +22,7 @@ import {
   RequestSettings,
   QueryParameters,
   Uuid,
-  FilterQueryParameters,
-  SearchQueryParameters
+  FilterQueryParameters
 } from '../mdm-common.model';
 import {
   DataModelCreatePayload,
