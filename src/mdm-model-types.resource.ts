@@ -26,6 +26,7 @@ import {
   Payload,
   QueryParameters,
   RequestSettings,
+  SearchQueryParameters,
   Uuid,
   Version
 } from './mdm-common.model';
@@ -230,6 +231,21 @@ export interface ExportableResource {
   );
 }
 
+export interface SearchableItemResource {
+  /**
+   * `HTTP POST` - Search within a model for one or more search terms.
+   *
+   * @param id The unique identifier of the model to search.
+   * @param query The query parameters to control the search.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `POST` request.
+   *
+   * `200 OK` - will return a {@link CatalogueItemSearchResponse} containing a collection of
+   * {@link CatalogueItemSearchResult} object.
+   */
+  search(id: Uuid, query?: SearchQueryParameters, options?: RequestSettings);
+}
+
 /**
  * Base class representing all the operations that a typical model can perform.
  *
@@ -241,7 +257,8 @@ export class MdmModelDomainResource
     BranchableResource,
     ForkableResource,
     ImportableResource,
-    ExportableResource {
+    ExportableResource,
+    SearchableItemResource {
   /**
    * Constructs a new `MdmModelDomainResource`.
    *
@@ -315,5 +332,10 @@ export class MdmModelDomainResource
     const queryString = this.generateQueryString(query);
     const url = `${this.apiEndpoint}/${this.domain}/export/${namespace}/${name}/${version}${queryString}`;
     return this.simplePost(url, payload, options);
+  }
+
+  search(id: string, query?: SearchQueryParameters, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/${this.domain}/${id}/search`;
+    return this.simplePost(url, query, options);
   }
 }
