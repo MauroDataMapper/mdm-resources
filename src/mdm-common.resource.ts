@@ -26,6 +26,7 @@ import {
   QueryParameters,
   RemoveQueryParameters,
   RequestSettings,
+  SearchQueryParameters,
   Uuid
 } from './mdm-common.model';
 
@@ -83,6 +84,24 @@ export interface CommonResource {
    * have no effect.
    */
   remove(id: Uuid, query?: RemoveQueryParameters, options?: RequestSettings);
+}
+
+/**
+ * Definition of a searchable catalogue item.
+ */
+export interface SearchableItemResource {
+  /**
+   * `HTTP POST` - Search within a model for one or more search terms.
+   *
+   * @param id The unique identifier of the model to search.
+   * @param query The query parameters to control the search.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `POST` request.
+   *
+   * `200 OK` - will return a {@link CatalogueItemSearchResponse} containing a collection of
+   * {@link CatalogueItemSearchResult} object.
+   */
+  search(id: Uuid, query?: SearchQueryParameters, options?: RequestSettings);
 }
 
 export class MdmCommonDomainResource

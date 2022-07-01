@@ -35,7 +35,10 @@ import {
   ExportQueryParameters
 } from './core/mdm-import-export.model';
 import { MdmResourcesConfiguration, MdmRestHandler } from './mdm-resource';
-import { MdmCommonDomainResource } from './mdm-common.resource';
+import {
+  MdmCommonDomainResource,
+  SearchableItemResource
+} from './mdm-common.resource';
 
 /**
  * Definition of resource operations for a domain that supports branching and versionining models.
@@ -229,21 +232,6 @@ export interface ExportableResource {
     query?: ExportQueryParameters,
     options?: RequestSettings
   );
-}
-
-export interface SearchableItemResource {
-  /**
-   * `HTTP POST` - Search within a model for one or more search terms.
-   *
-   * @param id The unique identifier of the model to search.
-   * @param query The query parameters to control the search.
-   * @param options Optional REST handler parameters, if required.
-   * @returns The result of the `POST` request.
-   *
-   * `200 OK` - will return a {@link CatalogueItemSearchResponse} containing a collection of
-   * {@link CatalogueItemSearchResult} object.
-   */
-  search(id: Uuid, query?: SearchQueryParameters, options?: RequestSettings);
 }
 
 /**

@@ -23,22 +23,21 @@ import {
   VersionModelPayload
 } from '../mdm-model-types.model';
 import {
-  FilterQueryParameters,
   QueryParameters,
   RemoveQueryParameters,
   RequestSettings,
-  SearchQueryParameters,
   Uuid
 } from '../mdm-common.model';
 import {
   ContainerCreatePayload,
   ContainerUpdatePayload
 } from '../mdm-container-types.model';
-import { MdmResource } from '../mdm-resource';
 import {
   BranchableResource,
   ForkableResource
 } from '../mdm-model-types.resource';
+import { MdmContainerDomainResource } from '../mdm-container-types.resource';
+import { MdmResourcesConfiguration, MdmRestHandler } from '../mdm-resource';
 
 /**
  * MDM resource for the management of Versioned Folders in Mauro.
@@ -46,8 +45,15 @@ import {
  * @see {@link MdmFolderResource}
  */
 export class MdmVersionedFolderResource
-  extends MdmResource
+  extends MdmContainerDomainResource
   implements BranchableResource, ForkableResource {
+  constructor(
+    config?: MdmResourcesConfiguration,
+    restHandler?: MdmRestHandler
+  ) {
+    super('versionedFolders', config, restHandler);
+  }
+
   /**
    * `HTTP POST` - Creates a new root versioned folder.
    *
@@ -85,22 +91,6 @@ export class MdmVersionedFolderResource
   }
 
   /**
-   * `HTTP GET` - Request the list of versioned folders.
-   *
-   * @param query Optional query string parameters to filter the returned list, if required.
-   * @param options Optional REST handler parameters, if required.
-   * @returns The result of the `GET` request.
-   *
-   * `200 OK` - will return a {@link VersionedFolderIndexResponse} containing a list of {@link VersionedFolder} items.
-   *
-   * @see {@link MdmVersionedFolderResource.get}
-   */
-  list(query?: FilterQueryParameters, options?: RequestSettings) {
-    const url = `${this.apiEndpoint}/versionedFolders`;
-    return this.simpleGet(url, query, options);
-  }
-
-  /**
    * `HTTP GET` - Request the list of child versioned folders under a parent folder.
    *
    * @param folderId The unique identifier of the parent folder.
@@ -120,33 +110,6 @@ export class MdmVersionedFolderResource
   ) {
     const url = `${this.apiEndpoint}/folders/${folderId}/versionedFolders`;
     return this.simpleGet(url, query, options);
-  }
-
-  /**
-   * `HTTP DELETE` - Removes an existing versioned folder, either temporarily or permanently.
-   *
-   * @param versionedFolderId The unique identifier of the versioned folder to remove.
-   * @param query Query parameters to state if the operation should be temporary, or a "soft delete", or permanent.
-   * @param options Optional REST handler options, if required.
-   * @returns The result of the `DELETE` request.
-   *
-   * On success, the response will be a `204 No Content` and the response body will be empty.
-   *
-   * @description It is required to pass a {@link ModelRemoveParameters.permanent} flag to explicitly state whether
-   * the operation is permanent or not. Setting this to `false` allows the versioned folder to remain in Mauro but hidden.
-   *
-   * If {@link ModelRemoveParameters.permanent} is set to `true`, then the versioned folder will be permanently deleted with
-   * no method of retrieving it.
-   *
-   * @see {@link MdmVersionedFolderResource.removeFromFolder}
-   */
-  remove(
-    versionedFolderId: Uuid,
-    query: RemoveQueryParameters,
-    options?: RequestSettings
-  ) {
-    const url = `${this.apiEndpoint}/versionedFolders/${versionedFolderId}`;
-    return this.simpleDelete(url, query, options);
   }
 
   /**
@@ -220,27 +183,6 @@ export class MdmVersionedFolderResource
   ) {
     const url = `${this.apiEndpoint}/folders/${folderId}/versionedFolders/${versionedFolderId}`;
     return this.simplePut(url, data, options);
-  }
-
-  /**
-   * `HTTP GET` - Request a versioned folder.
-   *
-   * @param versionedFolderId A unique identifier of the versioned folder to get.
-   * @param query Optional query parameters, if required.
-   * @param options Optional REST handler parameters, if required.
-   * @returns The result of the `GET` request.
-   *
-   * `200 OK` - will return a {@link VersionedFolderDetailResponse} containing a {@link VersionedFolderDetail} object.
-   *
-   * @see {@link MdmVersionedFolderResource.getFromFolder}
-   */
-  get(
-    versionedFolderId: Uuid,
-    query?: QueryParameters,
-    options?: RequestSettings
-  ) {
-    const url = `${this.apiEndpoint}/versionedFolders/${versionedFolderId}`;
-    return this.simpleGet(url, query, options);
   }
 
   /**
@@ -330,22 +272,6 @@ export class MdmVersionedFolderResource
   updateReadByEveryone(id: Uuid, options?: RequestSettings) {
     const url = `${this.apiEndpoint}/versionedFolders/${id}/readByEveryone`;
     return this.simplePut(url, {}, options);
-  }
-
-  /**
-   * `HTTP POST` - Search within a versioned folder for one or more search terms.
-   *
-   * @param id The unique identifier of the versioned folder to search.
-   * @param query The query parameters to control the search.
-   * @param options Optional REST handler parameters, if required.
-   * @returns The result of the `POST` request.
-   *
-   * `200 OK` - will return a {@link CatalogueItemSearchResponse} containing a collection of
-   * {@link CatalogueItemSearchResult} object.
-   */
-  search(id: Uuid, query: SearchQueryParameters, options?: RequestSettings) {
-    const url = `${this.apiEndpoint}/versionedFolders/${id}/search`;
-    return this.simplePost(url, query, options);
   }
 
   /**

@@ -20,6 +20,8 @@ SPDX-License-Identifier: Apache-2.0
 import { Authority } from './mdm-model-types.model';
 import { CatalogueItemDomainType, Payload, Uuid } from './mdm-common.model';
 
+export type ContainerDomain = 'folders' | 'versionedFolders';
+
 export interface Container {
   id?: Uuid;
   domainType: CatalogueItemDomainType;
