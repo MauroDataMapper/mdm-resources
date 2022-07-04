@@ -19,55 +19,25 @@ SPDX-License-Identifier: Apache-2.0
 import {
   RequestSettings,
   QueryParameters,
-  FilterQueryParameters,
   Uuid,
-  SearchQueryParameters,
   RemoveQueryParameters
 } from '../mdm-common.model';
-import { MdmResource } from '../mdm-resource';
+import { MdmResourcesConfiguration, MdmRestHandler } from '../mdm-resource';
 import {
   ContainerCreatePayload,
   ContainerUpdatePayload
 } from '../mdm-container-types.model';
-
-/**
- * Controller: folder
- |   POST   | /api/folders/${folderId}/folders                                                                      | Action: save
- |   GET    | /api/folders/${folderId}/folders                                                                      | Action: index
- |   GET    | /api/folders/${folderId}/search                                                                       | Action: search
- |   POST   | /api/folders/${folderId}/search                                                                       | Action: search
- |  DELETE  | /api/folders/${folderId}/readByAuthenticated                                                          | Action: readByAuthenticated
- |   PUT    | /api/folders/${folderId}/readByAuthenticated                                                          | Action: readByAuthenticated
- |  DELETE  | /api/folders/${folderId}/readByEveryone                                                               | Action: readByEveryone
- |   PUT    | /api/folders/${folderId}/readByEveryone                                                               | Action: readByEveryone
- |  DELETE  | /api/folders/${folderId}/folders/${id}                                                                | Action: delete
- |   PUT    | /api/folders/${folderId}/folders/${id}                                                                | Action: update
- |   GET    | /api/folders/${folderId}/folders/${id}                                                                | Action: show
- |   POST   | /api/folders                                                                                          | Action: save
- |   GET    | /api/folders                                                                                          | Action: index
- |  DELETE  | /api/folders/${id}                                                                                    | Action: delete
- |   PUT    | /api/folders/${id}                                                                                    | Action: update
- |   GET    | /api/folders/${id}                                                                                    | Action: show
- */
+import { MdmContainerDomainResource } from '../mdm-container-types.resource';
 
 /**
  * MDM resource for managing folders in Mauro.
  */
-export class MdmFolderResource extends MdmResource {
-  /**
-   * `HTTP POST` - Search within a folder for one or more search terms.
-   *
-   * @param id The unique identifier of the folder to search.
-   * @param query The query parameters to control the search.
-   * @param options Optional REST handler parameters, if required.
-   * @returns The result of the `POST` request.
-   *
-   * `200 OK` - will return a {@link CatalogueItemSearchResponse} containing a collection of
-   * {@link CatalogueItemSearchResult} object.
-   */
-  search(id: Uuid, query: SearchQueryParameters, options?: RequestSettings) {
-    const url = `${this.apiEndpoint}/folders/${id}/search`;
-    return this.simplePost(url, query, options);
+export class MdmFolderResource extends MdmContainerDomainResource {
+  constructor(
+    config?: MdmResourcesConfiguration,
+    restHandler?: MdmRestHandler
+  ) {
+    super('folders', config, restHandler);
   }
 
   searchByGet(
@@ -113,22 +83,6 @@ export class MdmFolderResource extends MdmResource {
   }
 
   /**
-   * `HTTP GET` - Request the list of folders.
-   *
-   * @param query Optional query string parameters to filter the returned list, if required.
-   * @param options Optional REST handler parameters, if required.
-   * @returns The result of the `GET` request.
-   *
-   * `200 OK` - will return a {@link FolderIndexResponse} containing a list of {@link Folder} items.
-   *
-   * @see {@link MdmFolderResource.get}
-   */
-  list(query?: FilterQueryParameters, options?: RequestSettings) {
-    const url = `${this.apiEndpoint}/folders`;
-    return this.simpleGet(url, query, options);
-  }
-
-  /**
    * `HTTP GET` - Request the list of child folders under a parent.
    *
    * @param folderId The unique identifier of the parent folder.
@@ -148,33 +102,6 @@ export class MdmFolderResource extends MdmResource {
   ) {
     const url = `${this.apiEndpoint}/folders/${folderId}/folders`;
     return this.simpleGet(url, query, options);
-  }
-
-  /**
-   * `HTTP DELETE` - Removes an existing folder, either temporarily or permanently.
-   *
-   * @param folderId The unique identifier of the folder to remove.
-   * @param query Query parameters to state if the operation should be temporary, or a "soft delete", or permanent.
-   * @param options Optional REST handler options, if required.
-   * @returns The result of the `DELETE` request.
-   *
-   * On success, the response will be a `204 No Content` and the response body will be empty.
-   *
-   * @description It is required to pass a {@link ModelRemoveParameters.permanent} flag to explicitly state whether
-   * the operation is permanent or not. Setting this to `false` allows the folder to remain in Mauro but hidden.
-   *
-   * If {@link ModelRemoveParameters.permanent} is set to `true`, then the folder will be permanently deleted with
-   * no method of retrieving it.
-   *
-   * @see {@link MdmFolderResource.removeChildOf}
-   */
-  remove(
-    folderId: Uuid,
-    query: RemoveQueryParameters,
-    options?: RequestSettings
-  ) {
-    const url = `${this.apiEndpoint}/folders/${folderId}`;
-    return this.simpleDelete(url, query, options);
   }
 
   /**
@@ -248,23 +175,6 @@ export class MdmFolderResource extends MdmResource {
   ) {
     const url = `${this.apiEndpoint}/folders/${folderId}/folders/${childId}`;
     return this.simplePut(url, data, options);
-  }
-
-  /**
-   * `HTTP GET` - Request a folder.
-   *
-   * @param folderId A unique identifier of the folder to get.
-   * @param query Optional query parameters, if required.
-   * @param options Optional REST handler parameters, if required.
-   * @returns The result of the `GET` request.
-   *
-   * `200 OK` - will return a {@link FolderDetailResponse} containing a {@link FolderDetail} object.
-   *
-   * @see {@link MdmFolderResource.getChildOf}
-   */
-  get(folderId: string, query?: QueryParameters, options?: RequestSettings) {
-    const url = `${this.apiEndpoint}/folders/${folderId}`;
-    return this.simpleGet(url, query, options);
   }
 
   /**
