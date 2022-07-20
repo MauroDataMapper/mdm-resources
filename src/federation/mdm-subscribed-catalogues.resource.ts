@@ -18,7 +18,6 @@ SPDX-License-Identifier: Apache-2.0
 */
 import {
   SubscribedCatalogue,
-  SubscribedDataModel,
   SubscribedDataModelPayload
 } from './mdm-subscribed-catalogues.model';
 import { RequestSettings, QueryParameters, Uuid } from '../mdm-common.model';
