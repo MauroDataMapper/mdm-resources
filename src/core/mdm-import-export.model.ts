@@ -44,6 +44,12 @@ export interface Importer {
   knownMetadataKeys: any[];
 }
 
+export interface ImporterProvider {
+  name: string;
+  namespace: string;
+  version?: Version;
+}
+
 export type ImporterParameterType =
   | 'Integer'
   | 'String'

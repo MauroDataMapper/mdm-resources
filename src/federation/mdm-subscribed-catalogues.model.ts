@@ -16,6 +16,7 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
+import { ImporterProvider } from '../core';
 import {
   CatalogueItemDomainType,
   MdmIndexResponse,
@@ -24,6 +25,8 @@ import {
   Uuid
 } from '../mdm-common.model';
 
+export type SubscribedCatalogueTypeResponse = MdmResponse<string[]>;
+
 export interface SubscribedCatalogue {
   id?: Uuid;
   url: string;
@@ -31,6 +34,7 @@ export interface SubscribedCatalogue {
   label: string;
   description?: string;
   refreshPeriod?: number;
+  subscribedCatalogueType: string;
 }
 
 export type SubscribedCatalogueResponse = MdmResponse<SubscribedCatalogue>;
@@ -38,32 +42,60 @@ export type SubscribedCatalogueIndexResponse = MdmIndexResponse<
   SubscribedCatalogue
 >;
 
-export interface AvailableDataModel {
-  modelId?: Uuid;
-  label: string;
-  description?: string;
-  modelType: CatalogueItemDomainType;
-  version?: string;
+export interface PublishedDataModelLink {
+  contentType: string;
+  url: string;
 }
 
 export interface PublishedDataModel {
   modelId?: Uuid;
   label: string;
   description?: string;
-  modelType: CatalogueItemDomainType;
+  modelType?: CatalogueItemDomainType;
   version?: string;
+  dateCreated?: string;
+  datePublished?: string;
+  lastUpdated?: string;
+  links?: PublishedDataModelLink[];
 }
 
-export interface SubscribedDataModel extends Payload {
-  id?: Uuid;
+export interface SubscribedDataModel {
+  id: Uuid;
+  subscribedModelId: Uuid;
+  folderId: Uuid;
+  federated: boolean;
+  localModelId?: Uuid;
+}
+
+export interface CreateSubscribedDataModel {
   subscribedModelId: Uuid;
   subscribedModelType: CatalogueItemDomainType;
   folderId: Uuid;
 }
 
-export type AvailableDataModelIndexResponse = MdmIndexResponse<
-  AvailableDataModel
->;
+export interface SubscribedDataModelPayload extends Payload {
+  /**
+   * The details of the published model to subscribe to.
+   */
+  subscribedModel: CreateSubscribedDataModel;
+
+  /**
+   * Optional content URL to fetch the published model from.
+   */
+  url?: string;
+
+  /**
+   * Optional content type when using the URL.
+   */
+  contentType?: string;
+
+  /**
+   * Optional importer service to use for the subscription. This is not required, but can be used to
+   * override the subscription process.
+   */
+  importerProviderService?: ImporterProvider;
+}
+
 export type PublishedDataModelIndexResponse = MdmIndexResponse<
   PublishedDataModel
 >;

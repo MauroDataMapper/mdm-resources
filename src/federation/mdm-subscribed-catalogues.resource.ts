@@ -18,42 +18,27 @@ SPDX-License-Identifier: Apache-2.0
 */
 import {
   SubscribedCatalogue,
-  SubscribedDataModel
+  SubscribedDataModelPayload
 } from './mdm-subscribed-catalogues.model';
 import { RequestSettings, QueryParameters, Uuid } from '../mdm-common.model';
-import { MdmResource } from '../mdm-resource';
+import { MdmCommonDomainResource } from '../mdm-common.resource';
+import { MdmResourcesConfiguration, MdmRestHandler } from '../mdm-resource';
 
 /**
  * MDM resource for managing subscribed catalogues and federated models.
  */
-export class MdmSubscribedCataloguesResource extends MdmResource {
+export class MdmSubscribedCataloguesResource extends MdmCommonDomainResource {
   /**
-   * `HTTP GET` - Gets a Subscribed Catalogue by ID.
+   * Constructs a new `MdmSubscribedCataloguesResource`.
    *
-   * @param id The unique identifier of the Subscribed Catalogue to get.
-   * @param query Optional query string parameters for the GET request.
-   * @param options Optional REST handler parameters.
-   * @returns The result of the `GET` request.
-   *
-   * `200 OK` - will return a {@link SubscribedCatalogueResponse} containing a {@link SubscribedCatalogue}.
+   * @param config Optionally provide configuration options to this resource class. If not provided, suitable defaults will be used.
+   * @param restHandler Optionally provide a specific {@link MdmRestHandler}. If not provided, the {@link DefaultMdmRestHandler} implementation will be used.
    */
-  get(id: Uuid, query?: QueryParameters, options?: RequestSettings) {
-    const url = `${this.apiEndpoint}/subscribedCatalogues/${id}`;
-    return this.simpleGet(url, query, options);
-  }
-
-  /**
-   * `HTTP GET` - Gets a list of all Subscribed Catalogues.
-   *
-   * @param query Optional query string parameters for the GET request.
-   * @param options Optional REST handler parameters.
-   * @returns The result of the `GET` request.
-   *
-   * `200 OK` - will return a {@link SubscribedCatalogueIndexResponse} containing a list of {@link SubscribedCatalogue} items.
-   */
-  list(query?: QueryParameters, options?: RequestSettings) {
-    const url = `${this.apiEndpoint}/subscribedCatalogues`;
-    return this.simpleGet(url, query, options);
+  constructor(
+    config?: MdmResourcesConfiguration,
+    restHandler?: MdmRestHandler
+  ) {
+    super('subscribedCatalogues', config, restHandler);
   }
 
   /**
@@ -86,37 +71,16 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
   }
 
   /**
-   * `HTTP DELETE` - Removes an existing Subscribed Catalogue.
+   * `HTTP GET` - Gets a list of all available connection types supported by Subscribed Catalogues.
    *
-   * @param id The unique identifier of the Subscribed Catalogue to remove.
-   * @param query Optional query string parameters for the GET request.
-   * @param options Optional REST handler parameters.
-   * @returns The result of the `DELETE` request.
-   *
-   * On success, the response will be a `204 No Content` and the response body will be empty.
-   */
-  remove(id: Uuid, query?: QueryParameters, options?: RequestSettings) {
-    const url = `${this.apiEndpoint}/subscribedCatalogues/${id}`;
-    return this.simpleDelete(url, query, options);
-  }
-
-  /**
-   * `HTTP GET` - Gets a list of all available federated models from a Subscribed Catalogue.
-   *
-   * @param id The UUID of the Subscribed Catalogue to search in.
    * @param query Optional query string parameters for the GET request.
    * @param options Optional REST handler parameters.
    * @returns The result of the `GET` request.
-   * @deprecated use listPublishedModels
    *
-   * `200 OK` - will return a {@link AvailableDataModelIndexResponse} containing a list of {@link AvailableDataModel} items.
+   * `200 OK` - will return a {@link SubscribedCatalogueTypeResponse} containing a list of connnection type names.
    */
-  listAvailableModels(
-    id: Uuid,
-    query?: QueryParameters,
-    options?: RequestSettings
-  ) {
-    const url = `${this.apiEndpoint}/subscribedCatalogues/${id}/availableModels`;
+  types(query?: QueryParameters, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/${this.domain}/types`;
     return this.simpleGet(url, query, options);
   }
 
@@ -198,7 +162,7 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
    * `HTTP POST` - Creates a new subscription to a model in a Subscribed Catalogue.
    *
    * @param catalogueId The UUID of the Subscribed Catalogue to save to.
-   * @param data The data to use for creation.
+   * @param payload The data to use for creation.
    * @param options Optional REST handler parameters.
    * @returns The result of the `POST` request.
    *
@@ -206,11 +170,11 @@ export class MdmSubscribedCataloguesResource extends MdmResource {
    */
   saveSubscribedModel(
     catalogueId: Uuid,
-    data: SubscribedDataModel,
+    payload: SubscribedDataModelPayload,
     options?: RequestSettings
   ) {
     const url = `${this.apiEndpoint}/subscribedCatalogues/${catalogueId}/subscribedModels`;
-    return this.simplePost(url, data, options);
+    return this.simplePost(url, payload, options);
   }
 
   /**
