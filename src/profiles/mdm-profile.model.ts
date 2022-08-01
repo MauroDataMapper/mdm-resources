@@ -19,6 +19,7 @@ SPDX-License-Identifier: Apache-2.0
 
 import {
   Breadcrumb,
+  CatalogueItemDetail,
   CatalogueItemDomainType,
   MdmIndexResponse,
   MdmResponse,
@@ -102,6 +103,7 @@ export interface ProfileProvider {
 
 export interface ProfileContext {
   profile: Profile;
+  multiFacetAwareItem?: CatalogueItemDetail;
   profileProviderService: ProfileProvider;
   errors?: ProfileValidationErrorList;
 }
@@ -111,7 +113,7 @@ export interface ProfileContextCollection {
   profilesProvided: ProfileContext[];
 }
 
-export interface MultiFacetAwareItem {
+export interface MultiFacetAwareItem  {
   multiFacetAwareItemDomainType: CatalogueItemDomainType;
   multiFacetAwareItemId: Uuid;
 }

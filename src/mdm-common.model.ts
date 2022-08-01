@@ -458,6 +458,13 @@ export interface CatalogueItem {
   domainType: CatalogueItemDomainType;
 }
 
+export interface CatalogueItemDetail extends Required<CatalogueItem> {
+  [key: string]: any;
+  label: string;
+  description?: string;
+  breadcrumbs?: Breadcrumb[];
+}
+
 /**
  * Represents a Mauro entity that can be navigated.
  */
