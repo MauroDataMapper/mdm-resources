@@ -19,7 +19,6 @@ SPDX-License-Identifier: Apache-2.0
 
 import {
   Breadcrumb,
-  CatalogueItem,
   CatalogueItemDetail,
   CatalogueItemDomainType,
   MdmIndexResponse,
