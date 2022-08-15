@@ -16,31 +16,12 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-
-import { Authority } from './mdm-model-types.model';
-import { CatalogueItemDomainType, Payload, Uuid } from './mdm-common.model';
-
-export type ContainerDomain = 'folders' | 'versionedFolders';
-
-export interface Container {
-  id?: Uuid;
-  domainType: CatalogueItemDomainType;
-  label: string;
-  description?: string;
-  deleted?: boolean;
-}
-
-export interface ContainerDetail {
-  authority?: Authority;
-}
-
-export interface ContainerCreatePayload extends Payload {
-  label?: string;
-  description?: string;
-}
-
-export interface ContainerUpdatePayload extends Payload {
-  id: Uuid;
-  label?: string;
-  description?: string;
-}
+export * from './mdm-security.model';
+export * from './mdm-security.resource';
+export * from './mdm-securable.resource';
+export * from './mdm-authentication.resource';
+export * from './mdm-plugin-openid-connect.model';
+export * from './mdm-plugin-openid-connect.resource';
+export * from './mdm-catalogue-user.resource';
+export * from './mdm-group-role.resource';
+export * from './mdm-user-groups.resource';

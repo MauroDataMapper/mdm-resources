@@ -16,31 +16,25 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
+import { RequestSettings } from '../mdm-common.model';
+import { MdmResource } from '../mdm-resource';
 
-import { Authority } from './mdm-model-types.model';
-import { CatalogueItemDomainType, Payload, Uuid } from './mdm-common.model';
+export class MdmFacetsResource extends MdmResource {
+  attachReferenceFile(id, formData, restHandlerOptions?: RequestSettings) {
+    const url = `${this.apiEndpoint}'/facets/${id}/referenceFiles`;
 
-export type ContainerDomain = 'folders' | 'versionedFolders';
+    return this.simplePost(
+      url,
+      {
+        method: 'POST',
+        withCredentials: true,
+        data: formData
+      },
+      restHandlerOptions
+    );
+  }
 
-export interface Container {
-  id?: Uuid;
-  domainType: CatalogueItemDomainType;
-  label: string;
-  description?: string;
-  deleted?: boolean;
-}
-
-export interface ContainerDetail {
-  authority?: Authority;
-}
-
-export interface ContainerCreatePayload extends Payload {
-  label?: string;
-  description?: string;
-}
-
-export interface ContainerUpdatePayload extends Payload {
-  id: Uuid;
-  label?: string;
-  description?: string;
+  downloadLinkReferenceFile(elementId: string, fileId) {
+    return `${this.apiEndpoint}/facets/${elementId}/referenceFiles/${fileId}`;
+  }
 }

@@ -16,31 +16,24 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
+import {
+  MdmResponse,
+  QueryParameters,
+  SortParameters
+} from '../../mdm-common.model';
 
-import { Authority } from './mdm-model-types.model';
-import { CatalogueItemDomainType, Payload, Uuid } from './mdm-common.model';
+export type ProviderQueryParameters = SortParameters & QueryParameters;
 
-export type ContainerDomain = 'folders' | 'versionedFolders';
-
-export interface Container {
-  id?: Uuid;
-  domainType: CatalogueItemDomainType;
-  label: string;
-  description?: string;
-  deleted?: boolean;
+export interface Provider {
+  name: string;
+  version: string;
+  displayName: string;
+  namespace: string;
+  allowsExtraMetadataKeys?: boolean;
+  knownMetadataKeys?: string[];
+  providerType?: string;
+  paramClassType?: string;
+  canImportMultipleDomains?: boolean;
 }
 
-export interface ContainerDetail {
-  authority?: Authority;
-}
-
-export interface ContainerCreatePayload extends Payload {
-  label?: string;
-  description?: string;
-}
-
-export interface ContainerUpdatePayload extends Payload {
-  id: Uuid;
-  label?: string;
-  description?: string;
-}
+export type ProviderListResponse = MdmResponse<Provider[]>;

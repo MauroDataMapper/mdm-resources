@@ -16,31 +16,30 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
+import { Historical, Securable } from '../mdm-model-types.model';
+import {
+  CatalogueItemDomainType,
+  MdmIndexResponse,
+  MdmResponse,
+  Navigatable,
+  Uuid
+} from '../mdm-common.model';
 
-import { Authority } from './mdm-model-types.model';
-import { CatalogueItemDomainType, Payload, Uuid } from './mdm-common.model';
-
-export type ContainerDomain = 'folders' | 'versionedFolders';
-
-export interface Container {
+export interface Term {
+  [key: string]: any;
   id?: Uuid;
   domainType: CatalogueItemDomainType;
-  label: string;
-  description?: string;
-  deleted?: boolean;
-}
+  model?: Uuid;
+  code: string;
+  definition: string;
 
-export interface ContainerDetail {
-  authority?: Authority;
-}
-
-export interface ContainerCreatePayload extends Payload {
+  /**
+   * The combination of {@link Term.code} and {@link Term.definition}.
+   */
   label?: string;
-  description?: string;
 }
 
-export interface ContainerUpdatePayload extends Payload {
-  id: Uuid;
-  label?: string;
-  description?: string;
-}
+export type TermDetail = Term & Navigatable & Securable & Historical;
+
+export type TermIndexResponse = MdmIndexResponse<Term>;
+export type TermDetailResponse = MdmResponse<TermDetail>;

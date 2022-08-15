@@ -1,32 +1,23 @@
 {
-    "compileOnSave": false,
-    "compilerOptions": {
-        "module": "ESNEXT",
-        "skipLibCheck": true,
-        "typeRoots": [
-            "./node_modules/@types"
-        ],
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "esModuleInterop": true,
-        "sourceMap": true,
-        "declaration": true,
-        "target": "ES2015",
-        "lib": [
-            "ES2017",
-            "DOM"
-        ],
-        "moduleResolution": "node",
-        "baseUrl": "src",
-        "resolveJsonModule": true,
-        "outDir": "lib/es2015"
-    },
-    "include": [
-        "./src/**/*.ts",
-        "./test/**/*.ts",
-        "./types/**/*.d.ts"
-    ],
-    "atom": {
-        "rewriteTsconfig": false
-    }
+  "compileOnSave": false,
+  "compilerOptions": {
+    "target": "es5",
+    "outDir": "lib/es5",
+    "module": "esnext",
+    "lib": ["ES2017", "DOM"],
+    "sourceMap": true,
+    "declaration": true,
+    "skipLibCheck": true,
+    "typeRoots": ["./node_modules/@types"],
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "baseUrl": "src",
+    "resolveJsonModule": true
+  },
+  "include": ["./src/**/*.ts", "./test/**/*.ts", "./types/**/*.d.ts"],
+  "atom": {
+    "rewriteTsconfig": false
+  }
 }

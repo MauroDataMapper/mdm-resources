@@ -16,31 +16,21 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
+import { RequestSettings, QueryParameters } from '../mdm-common.model';
+import { MdmResource } from '../mdm-resource';
 
-import { Authority } from './mdm-model-types.model';
-import { CatalogueItemDomainType, Payload, Uuid } from './mdm-common.model';
-
-export type ContainerDomain = 'folders' | 'versionedFolders';
-
-export interface Container {
-  id?: Uuid;
-  domainType: CatalogueItemDomainType;
-  label: string;
-  description?: string;
-  deleted?: boolean;
-}
-
-export interface ContainerDetail {
-  authority?: Authority;
-}
-
-export interface ContainerCreatePayload extends Payload {
-  label?: string;
-  description?: string;
-}
-
-export interface ContainerUpdatePayload extends Payload {
-  id: Uuid;
-  label?: string;
-  description?: string;
+/**
+ * Controller: edit
+ |   GET    | /api/${resourceDomainType}/${resourceId}/edits                                                        | Action: index
+ */
+export class MdmEditResource extends MdmResource {
+  status(
+    resourceDomainType,
+    resourceId: string,
+    queryStringParams?: QueryParameters,
+    restHandlerOptions?: RequestSettings
+  ) {
+    const url = `${this.apiEndpoint}/${resourceDomainType}/${resourceId}/edits`;
+    return this.simpleGet(url, queryStringParams, restHandlerOptions);
+  }
 }
