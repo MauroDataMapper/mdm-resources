@@ -56,6 +56,7 @@ export interface ProfileField {
   minMultiplicity?: number;
   regularExpressions?: any;
   uneditable?: boolean;
+  editableAfterFinalisation?: boolean;
 }
 
 export interface ProfileValidationError {
@@ -113,7 +114,7 @@ export interface ProfileContextCollection {
   profilesProvided: ProfileContext[];
 }
 
-export interface MultiFacetAwareItem  {
+export interface MultiFacetAwareItem {
   multiFacetAwareItemDomainType: CatalogueItemDomainType;
   multiFacetAwareItemId: Uuid;
 }
@@ -140,6 +141,7 @@ export interface ProfileSummary {
   namespace: string;
   providerType: string;
   version: Version;
+  editableAfterFinalisation?: boolean;
 }
 
 export type ProfileSummaryIndexResponse = MdmResponse<ProfileSummary[]>;
