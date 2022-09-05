@@ -16,7 +16,7 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { FinalisePayload, ModelUpdatePayload } from '../mdm-model-types.model';
+import { FinalisePayload } from '../mdm-model-types.model';
 import { QueryParameters, RequestSettings, Uuid } from '../mdm-common.model';
 import { MdmModelDomainResource } from '../mdm-model-types.resource';
 import { MdmResourcesConfiguration, MdmRestHandler } from '../mdm-resource';
@@ -80,25 +80,6 @@ export class MdmReferenceDataModelResource extends MdmModelDomainResource {
   ) {
     const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/readByEveryone`;
     return this.simplePut(url, data, restHandlerOptions);
-  }
-
-  /**
-   * `HTTP PUT` - Updates an existing reference data model.
-   *
-   * @param referenceDataModelId The unique identifier of the reference data model to update.
-   * @param data The payload of the request containing all the details for the data model to update.
-   * @param options Optional REST handler parameters, if required.
-   * @returns The result of the `POST` request.
-   *
-   * `200 OK` - will return a {@link ReferenceDataModelDetailResponse} containing a {@link ReferenceDataModelDetail} object.
-   */
-  update(
-    referenceDataModelId: Uuid,
-    data: ModelUpdatePayload,
-    options?: RequestSettings
-  ) {
-    const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}`;
-    return this.simplePut(url, data, options);
   }
 
   moveReferenceDataModelToFolder(
