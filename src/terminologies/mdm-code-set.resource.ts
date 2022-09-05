@@ -19,10 +19,7 @@ SPDX-License-Identifier: Apache-2.0
 
 import { FinalisePayload } from '../mdm-model-types.model';
 import { RequestSettings, QueryParameters, Uuid } from '../mdm-common.model';
-import {
-  CodeSetCreatePayload,
-  CodeSetUpdatePayload
-} from './mdm-code-set.model';
+import { CodeSetCreatePayload } from './mdm-code-set.model';
 import { MdmModelDomainResource } from '../mdm-model-types.resource';
 import { MdmResourcesConfiguration, MdmRestHandler } from '../mdm-resource';
 
