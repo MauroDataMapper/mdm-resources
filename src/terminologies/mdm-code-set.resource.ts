@@ -19,10 +19,7 @@ SPDX-License-Identifier: Apache-2.0
 
 import { FinalisePayload } from '../mdm-model-types.model';
 import { RequestSettings, QueryParameters, Uuid } from '../mdm-common.model';
-import {
-  CodeSetCreatePayload,
-  CodeSetUpdatePayload
-} from './mdm-code-set.model';
+import { CodeSetCreatePayload } from './mdm-code-set.model';
 import { MdmModelDomainResource } from '../mdm-model-types.resource';
 import { MdmResourcesConfiguration, MdmRestHandler } from '../mdm-resource';
 
@@ -53,23 +50,14 @@ export class MdmCodeSetResource extends MdmModelDomainResource {
   }
 
   /**
-   * `HTTP POST` - Creates a new code set under a chosen folder.
-   *
-   * @param folderId The unique identifier of the folder to create the code set under.
-   * @param data The payload of the request containing all the details for the code set to create.
-   * @param query Optional query parameters to control the creation of the code set, if required.
-   * @param options Optional REST handler parameters, if required.
-   * @returns The result of the `POST` request.
-   *
-   * `200 OK` - will return a {@link CodeSetDetailResponse} containing a {@link CodeSetDetail} object.
+   * @deprecated Use {@link MdmModelDomainResource.create()} instead.
    */
   addToFolder(
     folderId: Uuid,
     data: CodeSetCreatePayload,
     options?: RequestSettings
   ) {
-    const url = `${this.apiEndpoint}/folders/${folderId}/codeSets`;
-    return this.simplePost(url, data, options);
+    return this.create(folderId, data, null, options);
   }
 
   listCodeSetsInFolder(
@@ -138,25 +126,6 @@ export class MdmCodeSetResource extends MdmModelDomainResource {
   ) {
     const url = `${this.apiEndpoint}/codeSets`;
     return this.simpleDelete(url, queryStringParams, restHandlerOptions);
-  }
-
-  /**
-   * `HTTP PUT` - Updates an existing code set.
-   *
-   * @param codeSetId The unique identifier of the code set to update.
-   * @param data The payload of the request containing all the details for the code set to update.
-   * @param options Optional REST handler parameters, if required.
-   * @returns The result of the `POST` request.
-   *
-   * `200 OK` - will return a {@link CodeSetDetailResponse} containing a {@link CodeSetDetail} object.
-   */
-  update(
-    codeSetId: Uuid,
-    data: CodeSetUpdatePayload,
-    options?: RequestSettings
-  ) {
-    const url = `${this.apiEndpoint}/codeSets/${codeSetId}`;
-    return this.simplePut(url, data, options);
   }
 
   terms(

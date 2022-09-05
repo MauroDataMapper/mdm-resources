@@ -17,7 +17,7 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { FinalisePayload, ModelUpdatePayload } from '../mdm-model-types.model';
+import { FinalisePayload } from '../mdm-model-types.model';
 import {
   RequestSettings,
   QueryParameters,
@@ -207,15 +207,7 @@ export class MdmDataModelResource extends MdmModelDomainResource {
   }
 
   /**
-   * `HTTP POST` - Creates a new data model under a chosen folder.
-   *
-   * @param folderId The unique identifier of the folder to create the data model under.
-   * @param data The payload of the request containing all the details for the data model to create.
-   * @param query Optional query parameters to control the creation of the data model, if required.
-   * @param options Optional REST handler parameters, if required.
-   * @returns The result of the `POST` request.
-   *
-   * `200 OK` - will return a {@link DataModelDetailResponse} containing a {@link DataModelDetail} object.
+   * @deprecated Use {@link MdmModelDomainResource.create()} instead.
    */
   addToFolder(
     folderId: Uuid,
@@ -223,9 +215,7 @@ export class MdmDataModelResource extends MdmModelDomainResource {
     query?: DataModelCreateQueryParameters,
     options?: RequestSettings
   ) {
-    const queryString = this.generateQueryString(query);
-    const url = `${this.apiEndpoint}/folders/${folderId}/dataModels${queryString}`;
-    return this.simplePost(url, data, options);
+    return this.create(folderId, data, query, options);
   }
 
   updateDataModelInFolder(
@@ -306,77 +296,6 @@ export class MdmDataModelResource extends MdmModelDomainResource {
     const url = `${this.apiEndpoint}/dataModels`;
     return this.simpleDelete(url, queryStringParams, restHandlerOptions);
   }
-
-  // /**
-  //  * `HTTP DELETE` - Removes an existing data model, either temporarily or permanently.
-  //  *
-  //  * @param dataModelId The unique identifier of the data model to remove.
-  //  * @param query Query parameters to state if the operation should be temporary, or a "soft delete", or permanent.
-  //  * @param options Optional REST handler options, if required.
-  //  * @returns The result of the `DELETE` request.
-  //  *
-  //  * On success, the response will be a `204 No Content` and the response body will be empty.
-  //  *
-  //  * @description It is required to pass a {@link ModelRemoveParameters.permanent} flag to explicitly state whether
-  //  * the operation is permanent or not. Setting this to `false` allows the data model to remain in Mauro but hidden; the
-  //  * operation may also be reversed by an administrator using the {@link MdmDataModelResource.undoSoftDelete} endpoint.
-  //  *
-  //  * If {@link ModelRemoveParameters.permanent} is set to `true`, then the data model will be permanently deleted with
-  //  * no method of retrieving it.
-  //  *
-  //  * @see {@link MdmDataModelResource.undoSoftDelete}
-  //  */
-  // remove(
-  //   dataModelId: Uuid,
-  //   query: RemoveQueryParameters,
-  //   options?: RequestSettings
-  // ) {
-  //   const url = `${this.apiEndpoint}/dataModels/${dataModelId}`;
-  //   return this.simpleDelete(url, query, options);
-  // }
-
-  /**
-   * `HTTP PUT` - Updates an existing data model.
-   *
-   * @param dataModelId The unique identifier of the data model to update.
-   * @param data The payload of the request containing all the details for the data model to update.
-   * @param options Optional REST handler parameters, if required.
-   * @returns The result of the `POST` request.
-   *
-   * `200 OK` - will return a {@link DataModelDetailResponse} containing a {@link DataModelDetail} object.
-   */
-  update(
-    dataModelId: Uuid,
-    data: ModelUpdatePayload,
-    options?: RequestSettings
-  ) {
-    const url = `${this.apiEndpoint}/dataModels/${dataModelId}`;
-    return this.simplePut(url, data, options);
-  }
-
-  // /**
-  //  * `HTTP GET` - Request a data model.
-  //  *
-  //  * @param dataModelId Either a unique identifier of the data model, or a path in the format `typePrefix:label|typePrefix:label`.
-  //  * @param query Optional query parameters, if required.
-  //  * @param options Optional REST handler parameters, if required.
-  //  * @returns The result of the `GET` request.
-  //  *
-  //  * `200 OK` - will return a {@link DataModelDetailResponse} containing a {@link DataModelDetail} object.
-  //  *
-  //  * This function does allow either an ID or a path string, but should ideally be used only for IDs. For using paths,
-  //  * see the {@link MdmCatalogueItemResource.getPath()} function instead; there are no guarantees this function will support
-  //  * paths in the future, but will currently be supported for backwards compatibility.
-  //  */
-  // get(dataModelId: Uuid, query?: QueryParameters, options?: RequestSettings) {
-  //   let url = '';
-  //   if (this.isGuid(dataModelId)) {
-  //     url = `${this.apiEndpoint}/dataModels/${dataModelId}`;
-  //   } else {
-  //     url = `${this.apiEndpoint}/dataModels/path/${dataModelId}`;
-  //   }
-  //   return this.simpleGet(url, query, options);
-  // }
 
   latestModelVersion(
     dataModelId: string,

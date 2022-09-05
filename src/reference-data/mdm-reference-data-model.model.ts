@@ -18,7 +18,12 @@ SPDX-License-Identifier: Apache-2.0
 */
 import { DataTypeProvider } from '../data-models/mdm-data-type.model';
 import { MdmIndexResponse, MdmResponse } from '../mdm-common.model';
-import { Modelable, ModelDomainDetail } from '../mdm-model-types.model';
+import {
+  Modelable,
+  ModelCreatePayload,
+  ModelDomainDetail,
+  ModelUpdatePayload
+} from '../mdm-model-types.model';
 
 export type ReferenceDataModelType = 'ReferenceDataModel';
 
@@ -28,6 +33,10 @@ export interface ReferenceDataModel extends Modelable {
 }
 
 export type ReferenceDataModelDetail = ReferenceDataModel & ModelDomainDetail;
+
+export type ReferenceDataModelCreatePayload = ModelCreatePayload;
+
+export type ReferenceDataModelUpdatePayload = ModelUpdatePayload;
 
 export type ReferenceDataModelIndexResponse = MdmIndexResponse<
   ReferenceDataModel

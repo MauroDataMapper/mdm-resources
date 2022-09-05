@@ -17,11 +17,7 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 import { RequestSettings, QueryParameters, Uuid } from '../mdm-common.model';
-import {
-  FinalisePayload,
-  ModelCreatePayload,
-  ModelUpdatePayload
-} from '../mdm-model-types.model';
+import { FinalisePayload, ModelCreatePayload } from '../mdm-model-types.model';
 import { MdmModelDomainResource } from '../mdm-model-types.resource';
 import { MdmResourcesConfiguration, MdmRestHandler } from '../mdm-resource';
 
@@ -58,23 +54,14 @@ export class MdmTerminologyResource extends MdmModelDomainResource {
   }
 
   /**
-   * `HTTP POST` - Creates a new terminology under a chosen folder.
-   *
-   * @param folderId The unique identifier of the folder to create the terminology under.
-   * @param data The payload of the request containing all the details for the terminology to create.
-   * @param query Optional query parameters to control the creation of the terminology, if required.
-   * @param options Optional REST handler parameters, if required.
-   * @returns The result of the `POST` request.
-   *
-   * `200 OK` - will return a {@link TerminologyDetailResponse} containing a {@link TerminologyDetail} object.
+   * @deprecated Use {@link MdmModelDomainResource.create()} instead.
    */
   addToFolder(
     folderId: Uuid,
     data: ModelCreatePayload,
     options?: RequestSettings
   ) {
-    const url = `${this.apiEndpoint}/folders/${folderId}/terminologies`;
-    return this.simplePost(url, data, options);
+    return this.create(folderId, data, null, options);
   }
 
   tree(
@@ -124,78 +111,6 @@ export class MdmTerminologyResource extends MdmModelDomainResource {
     const url = `${this.apiEndpoint}/terminologies`;
     return this.simpleDelete(url, queryStringParams, restHandlerOptions);
   }
-
-  // /**
-  //  * `HTTP DELETE` - Removes an existing terminology, either temporarily or permanently.
-  //  *
-  //  * @param terminologyId The unique identifier of the terminology to remove.
-  //  * @param query Query parameters to state if the operation should be temporary, or a "soft delete", or permanent.
-  //  * @param options Optional REST handler options, if required.
-  //  * @returns The result of the `DELETE` request.
-  //  *
-  //  * On success, the response will be a `204 No Content` and the response body will be empty.
-  //  *
-  //  * @description It is required to pass a {@link ModelRemoveParameters.permanent} flag to explicitly state whether
-  //  * the operation is permanent or not. Setting this to `false` allows the terminology to remain in Mauro but hidden; the
-  //  * operation may also be reversed by an administrator using the {@link MdmTerminologyResource.undoSoftDelete} endpoint.
-  //  *
-  //  * If {@link ModelRemoveParameters.permanent} is set to `true`, then the terminology will be permanently deleted with
-  //  * no method of retrieving it.
-  //  *
-  //  * @see {@link MdmDataModelResource.undoSoftDelete}
-  //  */
-  // remove(
-  //   terminologyId: Uuid,
-  //   query: RemoveQueryParameters,
-  //   options?: RequestSettings
-  // ) {
-  //   const url = `${this.apiEndpoint}/terminologies/${terminologyId}`;
-  //   return this.simpleDelete(url, query, options);
-  // }
-
-  /**
-   * `HTTP PUT` - Updates an existing terminology.
-   *
-   * @param terminologyId The unique identifier of the terminology to update.
-   * @param data The payload of the request containing all the details for the terminology to update.
-   * @param options Optional REST handler parameters, if required.
-   * @returns The result of the `POST` request.
-   *
-   * `200 OK` - will return a {@link TerminologyDetailResponse} containing a {@link TerminologyDetail} object.
-   */
-  update(
-    terminologyId: Uuid,
-    data: ModelUpdatePayload,
-    options?: RequestSettings
-  ) {
-    const url = `${this.apiEndpoint}/terminologies/${terminologyId}`;
-    return this.simplePut(url, data, options);
-  }
-
-  // /**
-  //  * `HTTP GET` - Request a terminology.
-  //  *
-  //  * @param dataModelId Either a unique identifier of the terminology, or a path in the format `typePrefix:label|typePrefix:label`.
-  //  * @param query Optional query parameters, if required.
-  //  * @param options Optional REST handler parameters, if required.
-  //  * @returns The result of the `GET` request.
-  //  *
-  //  * `200 OK` - will return a {@link TerminologyDetailResponse} containing a {@link TerminologyDetail} object.
-  //  *
-  //  * This function does allow either an ID or a path string, but should ideally be used only for IDs. For using paths,
-  //  * see the {@link MdmCatalogueItemResource.getPath()} function instead; there are no guarantees this function will support
-  //  * paths in the future, but will currently be supported for backwards compatibility.
-  //  */
-  // get(terminologyId: Uuid, query?: QueryParameters, options?: RequestSettings) {
-  //   let url = '';
-  //   if (this.isGuid(terminologyId)) {
-  //     url = `${this.apiEndpoint}/terminologies/${terminologyId}`;
-  //   } else {
-  //     url = `${this.apiEndpoint}/terminologies/path/${terminologyId}`;
-  //   }
-
-  //   return this.simpleGet(url, query, options);
-  // }
 
   termRelationships(
     terminologyId: string,
