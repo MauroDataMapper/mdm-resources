@@ -179,6 +179,13 @@ export type ModelDomainDetail = Modelable &
 
 export type ModelDomainDetailResponse = MdmResponse<ModelDomainDetail>;
 
+export interface ModelChildItem {
+  /**
+   * The unique identifier of the parent/owner model.
+   */
+  model?: Uuid;
+}
+
 /**
  * Payload for endpoints that finalise a model type.
  */
@@ -210,6 +217,11 @@ export interface ModelCreatePayload extends Payload {
   classifiers?: CatalogueItemReference[];
 }
 
+export interface ModelChildCreatePayload extends Payload {
+  label: string;
+  description?: string;
+}
+
 export interface ModelUpdatePayload extends Payload {
   id: Uuid;
   domainType: CatalogueItemDomainType;
@@ -219,6 +231,12 @@ export interface ModelUpdatePayload extends Payload {
   description?: string;
   aliases?: string[];
   classifiers?: Classifier[];
+}
+
+export interface ModelChildUpdatePayload extends Payload {
+  id: Uuid;
+  label: string;
+  description?: string;
 }
 
 /**
