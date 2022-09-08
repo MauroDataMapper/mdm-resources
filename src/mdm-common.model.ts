@@ -80,7 +80,9 @@ export enum CatalogueItemDomainType {
   ExternalCatalogues = 'ExternalCatalogues',
   SubscribedCatalogue = 'SubscribedCatalogue',
   FederatedDataModel = 'FederatedDataModel',
-  TermRelationshipType = 'TermRelationshipType'
+  TermRelationshipType = 'TermRelationshipType',
+  ReferencePrimitiveType = 'ReferencePrimitiveType',
+  ReferenceEnumerationType = 'ReferenceEnumerationType'
 }
 
 /**
