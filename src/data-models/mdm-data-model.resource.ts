@@ -297,13 +297,23 @@ export class MdmDataModelResource extends MdmModelDomainResource {
     return this.simpleDelete(url, queryStringParams, restHandlerOptions);
   }
 
+  /**
+   * `HTTP GET` - Request the latest model version of a Data Model.
+   *
+   * @param id The unique identifier of the Data Model.
+   * @param query Optional query string parameters, if required.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return a {@link ModelVersionResponse} containing a {@link ModelVersion}.
+   */
   latestModelVersion(
-    dataModelId: string,
-    queryStringParams?: QueryParameters,
-    restHandlerOptions?: RequestSettings
+    id: string,
+    query?: QueryParameters,
+    options?: RequestSettings
   ) {
-    const url = `${this.apiEndpoint}/dataModels/${dataModelId}/latestModelVersion`;
-    return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    const url = `${this.apiEndpoint}/dataModels/${id}/latestModelVersion`;
+    return this.simpleGet(url, query, options);
   }
 
   latestFinalisedModel(

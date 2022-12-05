@@ -379,4 +379,23 @@ export class MdmVersionedFolderResource
     const url = `${this.apiEndpoint}/versionedFolders/${id}/simpleModelVersionTree`;
     return this.simpleGet(url, query, options);
   }
+
+  /**
+   * `HTTP GET` - Request the latest model version of a Versioned Folder.
+   *
+   * @param id The unique identifier of the Versioned Folder.
+   * @param query Optional query string parameters, if required.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return a {@link ModelVersionResponse} containing a {@link ModelVersion}.
+   */
+  latestModelVersion(
+    id: string,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
+    const url = `${this.apiEndpoint}/versionedFolders/${id}/latestModelVersion`;
+    return this.simpleGet(url, query, options);
+  }
 }
