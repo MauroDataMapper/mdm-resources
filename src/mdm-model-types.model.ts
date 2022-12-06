@@ -316,3 +316,9 @@ export interface ModelVersionItem {
 }
 
 export type ModelVersionTreeResponse = MdmResponse<ModelVersionItem[]>;
+
+export interface ModelVersion {
+  modelVersion: Version;
+}
+
+export type ModelVersionResponse = MdmResponse<ModelVersion>;
