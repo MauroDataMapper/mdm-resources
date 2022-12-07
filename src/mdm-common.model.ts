@@ -446,6 +446,16 @@ export interface Breadcrumb {
 }
 
 /**
+ * Represents an identifiable item in Mauro.
+ */
+export interface Identifiable {
+  /**
+   * The unique identifier of this item.
+   */
+  id: Uuid;
+}
+
+/**
  * Represents a general catalogue item in Mauro.
  */
 export interface CatalogueItem {

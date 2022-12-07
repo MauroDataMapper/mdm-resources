@@ -20,6 +20,7 @@ SPDX-License-Identifier: Apache-2.0
 import { Historical } from '../mdm-model-types.model';
 import {
   CatalogueItem,
+  Identifiable,
   MdmIndexResponse,
   MdmResponse,
   Payload,
@@ -151,3 +152,54 @@ export type PathableDomainType =
   | 'userImageFiles'
   | 'versionedFolders'
   | 'versionLinks';
+
+export type RuleDomainType =
+  | 'codeSets'
+  | 'dataClasses'
+  | 'dataElements'
+  | 'dataModels'
+  | 'dataTypes'
+  | 'folders'
+  | 'referenceDataModels'
+  | 'terminologies'
+  | 'terms'
+  | 'versionedFolders';
+
+/**
+ * Represents the contents of a Rule.
+ */
+export interface RulePayload {
+  name: string;
+  description?: string;
+}
+
+/**
+ * Represents the contents of a Rule Representation.
+ */
+export interface RuleRepresentationPayload {
+  /**
+   * Defines the language of this representation.
+   */
+  language: string;
+
+  /**
+   * Defines the content representation of the rule, based on the specified language.
+   */
+  representation: string;
+}
+
+export interface Rule extends RulePayload, Identifiable, Historical {
+  ruleRepresentations: RuleRepresentation[];
+}
+
+export interface RuleRepresentation
+  extends RuleRepresentationPayload,
+    Identifiable,
+    Historical {}
+
+export type RuleResponse = MdmResponse<Rule>;
+export type RuleIndexResponse = MdmIndexResponse<Rule>;
+export type RuleRepresentationResponse = MdmResponse<RuleRepresentation>;
+export type RuleRepresentationIndexResponse = MdmIndexResponse<
+  RuleRepresentation
+>;
