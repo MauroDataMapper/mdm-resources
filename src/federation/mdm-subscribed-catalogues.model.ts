@@ -53,6 +53,7 @@ export interface PublishedDataModel {
   description?: string;
   modelType?: CatalogueItemDomainType;
   version?: string;
+  modelVersionTag?: string;
   dateCreated?: string;
   datePublished?: string;
   lastUpdated?: string;
