@@ -588,6 +588,29 @@ export class MdmCatalogueItemResource extends MdmResource {
   }
 
   /**
+   * `HTTP GET` - Requests a rule for a catalogue item.
+   *
+   * @param domainType The domain type of the parent catalogue item.
+   * @param itemId The unique identifier of the parent catalogue item.
+   * @param ruleId The unique identifier of the rule to get.
+   * @param query Optional query string parameters, if required.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return a {@link RuleResponse} containing a {@link Rule} item.
+   */
+  getRule(
+    domainType: RuleDomainType,
+    itemId: Uuid,
+    ruleId: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
+    const url = `${this.apiEndpoint}/${domainType}/${itemId}/rules/${ruleId}`;
+    return this.simpleGet(url, query, options);
+  }
+
+  /**
    * `HTTP POST` - Creates a rule on a catalogue item.
    *
    * @param domainType The domain type of the parent catalogue item.
@@ -674,6 +697,31 @@ export class MdmCatalogueItemResource extends MdmResource {
     options?: RequestSettings
   ) {
     const url = `${this.apiEndpoint}/${domainType}/${itemId}/rules/${ruleId}/representations`;
+    return this.simpleGet(url, query, options);
+  }
+
+  /**
+   * `HTTP GET` - Requests a rule representation for a rule on a catalogue item.
+   *
+   * @param domainType The domain type of the parent catalogue item.
+   * @param itemId The unique identifier of the parent catalogue item.
+   * @param ruleId The unique identifier of the parent rule.
+   * @param representationId The unique identifier of the representation to get.
+   * @param query Optional query string parameters, if required.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return a {@link RuleRepresentationResponse} containing a {@link RuleRepresentation} item.
+   */
+  getRuleRepresentation(
+    domainType: RuleDomainType,
+    itemId: Uuid,
+    ruleId: Uuid,
+    representationId: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
+    const url = `${this.apiEndpoint}/${domainType}/${itemId}/rules/${ruleId}/representations/${representationId}`;
     return this.simpleGet(url, query, options);
   }
 

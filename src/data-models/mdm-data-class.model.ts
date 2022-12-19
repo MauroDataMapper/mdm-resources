@@ -59,7 +59,7 @@ export interface DataClassNode {
   /**
    * The child data classes under this Data Class.
    */
-  dataClasses?: DataClassNode[];
+  dataClasses?: DataClassFull[];
 
   /**
    * The Data Elements under this Data Class.
