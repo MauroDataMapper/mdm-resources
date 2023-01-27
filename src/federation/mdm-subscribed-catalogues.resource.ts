@@ -85,6 +85,20 @@ export class MdmSubscribedCataloguesResource extends MdmCommonDomainResource {
   }
 
   /**
+   * `HTTP GET` - Gets a list of all available authentication types supported by Subscribed Catalogues.
+   *
+   * @param query Optional query string parameters for the GET request.
+   * @param options Optional REST handler parameters.
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return a {@link SubscribedCatalogueAuthenticationTypeResponse} containing a list of connnection type names.
+   */
+  authenticationTypes(query?: QueryParameters, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/${this.domain}/authenticationTypes`;
+    return this.simpleGet(url, query, options);
+  }
+
+  /**
    * `HTTP GET` - Gets a list of all published models from a Subscribed Catalogue.
    *
    * @param id The UUID of the Subscribed Catalogue to search in.

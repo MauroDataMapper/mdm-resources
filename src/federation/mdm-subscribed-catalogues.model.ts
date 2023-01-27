@@ -27,14 +27,20 @@ import {
 
 export type SubscribedCatalogueTypeResponse = MdmResponse<string[]>;
 
+export type SubscribedCatalogueAuthenticationTypeResponse = MdmResponse<string[]>;
+
 export interface SubscribedCatalogue {
   id?: Uuid;
+  subscribedCatalogueType: string;
   url: string;
-  apiKey?: Uuid;
   label: string;
   description?: string;
   refreshPeriod?: number;
-  subscribedCatalogueType: string;
+  subscribedCatalogueAuthenticationType: string;
+  apiKey?: string;
+  tokenUrl?: string;
+  clientId?: string;
+  clientSecret?: string;
 }
 
 export type SubscribedCatalogueResponse = MdmResponse<SubscribedCatalogue>;
@@ -53,6 +59,7 @@ export interface PublishedDataModel {
   description?: string;
   modelType?: CatalogueItemDomainType;
   version?: string;
+  modelVersionTag?: string;
   dateCreated?: string;
   datePublished?: string;
   lastUpdated?: string;
