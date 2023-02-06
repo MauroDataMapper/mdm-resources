@@ -293,7 +293,7 @@ export class MdmAdminResource extends MdmResource {
   /**
    * @deprecated Use [[MdmSessionResource.activeSessions]] instead.
    */
-  activeSessions(data: any, restHandlerOptions?: RequestSettings) {
+  activeSessions(data: QueryParameters, restHandlerOptions?: RequestSettings) {
     const url = `${this.apiEndpoint}/admin/activeSessions`;
     return this.simpleGet(url, data, restHandlerOptions);
   }
