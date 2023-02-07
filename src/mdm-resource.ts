@@ -220,7 +220,7 @@ export class MdmResource {
    * @param value The string to test.
    * @returns True if `value` represents a UUID.
    */
-  protected isGuid(value) {
+  protected isGuid(value: string) {
     if (value[0] === '{') {
       value = value.substring(1, value.length - 1);
     }

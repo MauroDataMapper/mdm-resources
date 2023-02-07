@@ -21,7 +21,7 @@ npm install --save @maurodatamapper/mdm-resources
 
 ### Requirements
 
-Please use [nvm](https://github.com/nvm-sh/nvm) to manage the required node dependencies, and then run `npm i -g npm@7.24.1` to update to v7 of npm
+Please use [nvm](https://github.com/nvm-sh/nvm) to manage the required node dependencies, and then run `npm i -g npm@8.3.0` to update to v8 of npm
 
 ### Setup
 

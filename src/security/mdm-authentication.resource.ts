@@ -26,6 +26,7 @@ import {
 } from '../mdm-resource';
 import { MdmSecurityResource } from './mdm-security.resource';
 import { MdmSessionResource } from '../core/mdm-session.resource';
+import { LoginPayload } from './mdm-security.model';
 
 /**
  * @deprecated Use [[MdmSecurityResource]] and [[MdmSessionResource]] instead.
@@ -49,7 +50,7 @@ export class MdmAuthenticationResource extends MdmResource {
   /**
    * @deprecated Use [[MdmSecurityResource.login]] instead.
    */
-  login(data: any, restHandlerOptions?: RequestSettings) {
+  login(data: LoginPayload, restHandlerOptions?: RequestSettings) {
     return this.securityResource.login(data, restHandlerOptions);
   }
 
