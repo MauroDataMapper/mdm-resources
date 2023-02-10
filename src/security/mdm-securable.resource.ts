@@ -16,7 +16,13 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { RequestSettings, QueryParameters } from '../mdm-common.model';
+import {
+  RequestSettings,
+  QueryParameters,
+  CatalogueItemDomainType,
+  Uuid,
+  FilterQueryParameters
+} from '../mdm-common.model';
 import { MdmResource } from '../mdm-resource';
 
 /**
@@ -97,25 +103,49 @@ export class MdmSecurableResource extends MdmResource {
     return this.simplePut(url, data, restHandlerOptions);
   }
 
+  /**
+   * `HTTP GET` - Gets the available securable resource group roles for a securable resource.
+   *
+   * @param securableResourceDomainType The domain type of the resource to check.
+   * @param securableResourceId The ID of the resource to check.
+   * @param groupRoleId The ID of the particular securable resource group role to get. Leave blank to get all roles.
+   * @param query Optional query string parameters, if required.
+   * @param options Optional REST handler options, if required.
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return a {@link SecurableResourceGroupRoleIndexResponse} for a list of roles, or a {@link SecurableResourceGroupRoleResponse} for a single role.
+   */
   getSecurableResourceGroupRole(
-    securableResourceDomainType,
-    securableResourceId: string,
-    securableResourceGroupRoleId: string,
-    queryStringParams?: QueryParameters,
-    restHandlerOptions?: RequestSettings
+    securableResourceDomainType: CatalogueItemDomainType,
+    securableResourceId: Uuid,
+    securableResourceGroupRoleId: Uuid,
+    query?: FilterQueryParameters,
+    options?: RequestSettings
   ) {
     const url = `${this.apiEndpoint}/${securableResourceDomainType}/${securableResourceId}/securableResourceGroupRoles/${securableResourceGroupRoleId}`;
-    return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    return this.simpleGet(url, query, options);
   }
 
+  /**
+   * `HTTP GET` - Gets the available group roles for a securable resource.
+   *
+   * @param securableResourceDomainType The domain type of the resource to check.
+   * @param securableResourceId The ID of the resource to check.
+   * @param groupRoleId The ID of the particular group role to get. Leave blank to get all roles.
+   * @param query Optional query string parameters, if required.
+   * @param options Optional REST handler options, if required.
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return a {@link GroupRoleIndexResponse} for a list of roles, or a {@link GroupRoleResponse} for a single role.
+   */
   getGroupRoles(
-    securableResourceDomainType,
-    securableResourceId: string,
-    groupRoleId: string,
-    queryStringParams?: QueryParameters,
-    restHandlerOptions?: RequestSettings
+    securableResourceDomainType: CatalogueItemDomainType,
+    securableResourceId: Uuid,
+    groupRoleId: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
   ) {
     const url = `${this.apiEndpoint}/${securableResourceDomainType}/${securableResourceId}/groupRoles/${groupRoleId}`;
-    return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    return this.simpleGet(url, query, options);
   }
 }
