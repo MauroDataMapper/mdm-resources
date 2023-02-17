@@ -19,7 +19,8 @@ SPDX-License-Identifier: Apache-2.0
 import {
   RequestSettings,
   QueryParameters,
-  ContainerDomainType
+  ContainerDomainType,
+  FilterQueryParameters
 } from '../mdm-common.model';
 import { MdmResource } from '../mdm-resource';
 
@@ -106,12 +107,18 @@ export class MdmUserGroupsResource extends MdmResource {
     return this.simplePost(url, data, restHandlerOptions);
   }
 
-  list(
-    queryStringParams?: QueryParameters,
-    restHandlerOptions?: RequestSettings
-  ) {
+  /**
+   * `HTTP GET` - Request the list of user groups available.
+   *
+   * @param query Optional query string parameters to filter the returned list, if required.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return a {@link MdmIndexResponse} containing a list of {@link UserGroup} objects.
+   */
+  list(query?: FilterQueryParameters, options?: RequestSettings) {
     const url = `${this.apiEndpoint}/userGroups`;
-    return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    return this.simpleGet(url, query, options);
   }
 
   remove(
