@@ -1,6 +1,5 @@
 /*
-Copyright 2020-2021 University of Oxford
-and Health and Social Care Information Centre, also known as NHS Digital
+Copyright 2020-2023 University of Oxford and NHS England
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -293,7 +292,7 @@ export class MdmAdminResource extends MdmResource {
   /**
    * @deprecated Use [[MdmSessionResource.activeSessions]] instead.
    */
-  activeSessions(data: any, restHandlerOptions?: RequestSettings) {
+  activeSessions(data: QueryParameters, restHandlerOptions?: RequestSettings) {
     const url = `${this.apiEndpoint}/admin/activeSessions`;
     return this.simpleGet(url, data, restHandlerOptions);
   }

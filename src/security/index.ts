@@ -1,6 +1,5 @@
 /*
-Copyright 2020-2021 University of Oxford
-and Health and Social Care Information Centre, also known as NHS Digital
+Copyright 2020-2023 University of Oxford and NHS England
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -18,10 +17,12 @@ SPDX-License-Identifier: Apache-2.0
 */
 export * from './mdm-security.model';
 export * from './mdm-security.resource';
+export * from './mdm-securable.model';
 export * from './mdm-securable.resource';
 export * from './mdm-authentication.resource';
 export * from './mdm-plugin-openid-connect.model';
 export * from './mdm-plugin-openid-connect.resource';
 export * from './mdm-catalogue-user.resource';
 export * from './mdm-group-role.resource';
+export * from './mdm-user-groups.model';
 export * from './mdm-user-groups.resource';

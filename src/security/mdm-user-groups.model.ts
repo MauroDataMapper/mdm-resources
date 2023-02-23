@@ -15,11 +15,12 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-export * from './mdm-code-set.model';
-export * from './mdm-code-set.resource';
-export * from './mdm-terminology.model';
-export * from './mdm-terminology.resource';
-export * from './mdm-term.model';
-export * from './mdm-term.resource';
-export * from './mdm-term-relationship-type.model';
-export * from './mdm-term-relationship-type.resource';
+import { Identifiable, MdmIndexResponse } from '../mdm-common.model';
+import { Securable } from '../mdm-model-types.model';
+
+export interface UserGroup extends Identifiable, Securable {
+  name: string;
+  createdBy?: string;
+}
+
+export type UserGroupIndexResponse = MdmIndexResponse<UserGroup>;

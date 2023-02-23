@@ -1,6 +1,5 @@
 /*
-Copyright 2020-2021 University of Oxford
-and Health and Social Care Information Centre, also known as NHS Digital
+Copyright 2020-2023 University of Oxford and NHS England
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -18,7 +17,12 @@ SPDX-License-Identifier: Apache-2.0
 */
 import { DataTypeProvider } from '../data-models/mdm-data-type.model';
 import { MdmIndexResponse, MdmResponse } from '../mdm-common.model';
-import { Modelable, ModelDomainDetail } from '../mdm-model-types.model';
+import {
+  Modelable,
+  ModelCreatePayload,
+  ModelDomainDetail,
+  ModelUpdatePayload
+} from '../mdm-model-types.model';
 
 export type ReferenceDataModelType = 'ReferenceDataModel';
 
@@ -28,6 +32,10 @@ export interface ReferenceDataModel extends Modelable {
 }
 
 export type ReferenceDataModelDetail = ReferenceDataModel & ModelDomainDetail;
+
+export type ReferenceDataModelCreatePayload = ModelCreatePayload;
+
+export type ReferenceDataModelUpdatePayload = ModelUpdatePayload;
 
 export type ReferenceDataModelIndexResponse = MdmIndexResponse<
   ReferenceDataModel

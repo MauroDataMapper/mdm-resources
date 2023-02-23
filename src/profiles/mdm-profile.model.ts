@@ -1,6 +1,5 @@
 /*
-Copyright 2020-2021 University of Oxford
-and Health and Social Care Information Centre, also known as NHS Digital
+Copyright 2020-2023 University of Oxford and NHS England
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -56,6 +55,7 @@ export interface ProfileField {
   minMultiplicity?: number;
   regularExpressions?: any;
   uneditable?: boolean;
+  editableAfterFinalisation?: boolean;
 }
 
 export interface ProfileValidationError {
@@ -113,7 +113,7 @@ export interface ProfileContextCollection {
   profilesProvided: ProfileContext[];
 }
 
-export interface MultiFacetAwareItem  {
+export interface MultiFacetAwareItem {
   multiFacetAwareItemDomainType: CatalogueItemDomainType;
   multiFacetAwareItemId: Uuid;
 }
@@ -140,6 +140,7 @@ export interface ProfileSummary {
   namespace: string;
   providerType: string;
   version: Version;
+  editableAfterFinalisation?: boolean;
 }
 
 export type ProfileSummaryIndexResponse = MdmResponse<ProfileSummary[]>;

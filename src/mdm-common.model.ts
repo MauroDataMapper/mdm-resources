@@ -1,6 +1,5 @@
 /*
-Copyright 2020-2021 University of Oxford
-and Health and Social Care Information Centre, also known as NHS Digital
+Copyright 2020-2023 University of Oxford and NHS England
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -80,7 +79,9 @@ export enum CatalogueItemDomainType {
   ExternalCatalogues = 'ExternalCatalogues',
   SubscribedCatalogue = 'SubscribedCatalogue',
   FederatedDataModel = 'FederatedDataModel',
-  TermRelationshipType = 'TermRelationshipType'
+  TermRelationshipType = 'TermRelationshipType',
+  ReferencePrimitiveType = 'ReferencePrimitiveType',
+  ReferenceEnumerationType = 'ReferenceEnumerationType'
 }
 
 /**
@@ -441,6 +442,16 @@ export interface Breadcrumb {
   label: string;
   domainType: CatalogueItemDomainType;
   finalised?: boolean;
+}
+
+/**
+ * Represents an identifiable item in Mauro.
+ */
+export interface Identifiable {
+  /**
+   * The unique identifier of this item.
+   */
+  id: Uuid;
 }
 
 /**

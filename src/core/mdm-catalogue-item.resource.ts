@@ -1,6 +1,5 @@
 /*
-Copyright 2020-2021 University of Oxford
-and Health and Social Care Information Centre, also known as NHS Digital
+Copyright 2020-2023 University of Oxford and NHS England
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -22,7 +21,10 @@ import {
   AnnotationCreatePayload,
   PathableDomainType,
   ReferenceFile,
-  ReferenceFileCreatePayload
+  ReferenceFileCreatePayload,
+  RuleDomainType,
+  RulePayload,
+  RuleRepresentationPayload
 } from './mdm-catalogue-item.model';
 import {
   RequestSettings,
@@ -563,92 +565,236 @@ export class MdmCatalogueItemResource extends MdmResource {
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
 
+  /**
+   * `HTTP GET` - Request the list of rules for a catalogue item.
+   *
+   * @param domainType The domain type of the parent catalogue item.
+   * @param id The unique identifier of the parent catalogue item.
+   * @param query Optional query string parameters to filter the returned list, if required.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return a {@link RuleIndexResponse} containing a list of {@link Rule} items.
+   */
   listRules(
-    catalogueItemDomainType: string | ModelDomainType,
-    catalogueItemId: string,
-    queryStringParams?: QueryParameters,
-    restHandlerOptions?: RequestSettings
+    domainType: RuleDomainType,
+    id: Uuid,
+    query?: FilterQueryParameters,
+    options?: RequestSettings
   ) {
-    const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/rules`;
-    return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    const url = `${this.apiEndpoint}/${domainType}/${id}/rules`;
+    return this.simpleGet(url, query, options);
   }
 
+  /**
+   * `HTTP GET` - Requests a rule for a catalogue item.
+   *
+   * @param domainType The domain type of the parent catalogue item.
+   * @param itemId The unique identifier of the parent catalogue item.
+   * @param ruleId The unique identifier of the rule to get.
+   * @param query Optional query string parameters, if required.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return a {@link RuleResponse} containing a {@link Rule} item.
+   */
+  getRule(
+    domainType: RuleDomainType,
+    itemId: Uuid,
+    ruleId: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
+    const url = `${this.apiEndpoint}/${domainType}/${itemId}/rules/${ruleId}`;
+    return this.simpleGet(url, query, options);
+  }
+
+  /**
+   * `HTTP POST` - Creates a rule on a catalogue item.
+   *
+   * @param domainType The domain type of the parent catalogue item.
+   * @param id The unique identifier of the parent catalogue item.
+   * @param data The payload of the request containing all the details for the rule to create.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `POST` request.
+   *
+   * `200 OK` - will return a {@link RuleResponse} containing a {@link Rule} object.
+   */
   saveRule(
-    catalogueItemDomainType: string | ModelDomainType,
-    catalogueItemId: string,
-    data: any,
-    restHandlerOptions?: RequestSettings
+    domainType: RuleDomainType,
+    id: Uuid,
+    data: RulePayload,
+    otpions?: RequestSettings
   ) {
-    const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/rules`;
-    return this.simplePost(url, data, restHandlerOptions);
+    const url = `${this.apiEndpoint}/${domainType}/${id}/rules`;
+    return this.simplePost(url, data, otpions);
   }
 
+  /**
+   * `HTTP PUT` - Updates an rule on a catalogue item.
+   *
+   * @param domainType The domain type of the parent catalogue item.
+   * @param itemId The unique identifier of the parent catalogue item.
+   * @param ruleId The unique identifier of the rule to update.
+   * @param data The payload of the request containing all the details for the rule to update.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `POST` request.
+   *
+   * `200 OK` - will return a {@link RuleResponse} containing a {@link Rule} object.
+   */
   updateRule(
-    catalogueItemDomainType: string | ModelDomainType,
-    catalogueItemId: string,
-    ruleId: string,
-    data: any,
-    restHandlerOptions?: RequestSettings
+    domainType: RuleDomainType,
+    itemId: Uuid,
+    ruleId: Uuid,
+    data: RulePayload,
+    options?: RequestSettings
   ) {
-    const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/rules/${ruleId}`;
-    return this.simplePut(url, data, restHandlerOptions);
+    const url = `${this.apiEndpoint}/${domainType}/${itemId}/rules/${ruleId}`;
+    return this.simplePut(url, data, options);
   }
 
-  listRuleRepresentations(
-    catalogueItemDomainType: string | ModelDomainType,
-    catalogueItemId: string,
-    ruleId: string,
-    queryStringParams?: QueryParameters,
-    restHandlerOptions?: RequestSettings
-  ) {
-    const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/rules/${ruleId}/representations`;
-    return this.simpleGet(url, queryStringParams, restHandlerOptions);
-  }
-
-  saveRulesRepresentation(
-    catalogueItemDomainType: string | ModelDomainType,
-    catalogueItemId: string,
-    data: any,
-    ruleId: string,
-    restHandlerOptions?: RequestSettings
-  ) {
-    const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/rules/${ruleId}/representations`;
-    return this.simplePost(url, data, restHandlerOptions);
-  }
-
-  updateRulesRepresentation(
-    catalogueItemDomainType: string | ModelDomainType,
-    catalogueItemId: string,
-    data: any,
-    ruleId: string,
-    representationId: string,
-    restHandlerOptions?: RequestSettings
-  ) {
-    const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/rules/${ruleId}/representations/${representationId}`;
-    return this.simplePut(url, data, restHandlerOptions);
-  }
-
+  /**
+   * `HTTP DELETE` - Removes an existing rule from a catalogue item.
+   *
+   * @param domainType The domain type of the parent catalogue item.
+   * @param itemId The unique identifier of the parent catalogue item.
+   * @param ruleId The unique identifier of the rule to delete.
+   * @param query Query parameters, if required.
+   * @param options Optional REST handler options, if required.
+   * @returns The result of the `DELETE` request.
+   *
+   * On success, the response will be a `204 No Content` and the response body will be empty.
+   */
   removeRule(
-    catalogueItemDomainType: string | ModelDomainType,
-    catalogueItemId: string,
-    ruleId: string,
-    queryStringParams?: QueryParameters,
-    restHandlerOptions?: RequestSettings
+    domainType: RuleDomainType,
+    itemId: Uuid,
+    ruleId: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
   ) {
-    const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/rules/${ruleId}`;
-    return this.simpleDelete(url, queryStringParams, restHandlerOptions);
+    const url = `${this.apiEndpoint}/${domainType}/${itemId}/rules/${ruleId}`;
+    return this.simpleDelete(url, query, options);
   }
 
-  removeRulesRepresentation(
-    catalogueItemDomainType: string | ModelDomainType,
-    catalogueItemId: string,
-    ruleId: string,
-    representationId: string,
-    queryStringParams?: QueryParameters,
-    restHandlerOptions?: RequestSettings
+  /**
+   * `HTTP GET` - Request the list of rule representations for a rule.
+   *
+   * @param domainType The domain type of the parent catalogue item.
+   * @param itemId The unique identifier of the parent catalogue item.
+   * @param ruleId The unique identifier of the parent rule.
+   * @param query Optional query string parameters to filter the returned list, if required.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return a {@link RuleRepresentationIndexResponse} containing a list of {@link RuleRepresentation} items.
+   */
+  listRuleRepresentations(
+    domainType: RuleDomainType,
+    itemId: Uuid,
+    ruleId: Uuid,
+    query?: FilterQueryParameters,
+    options?: RequestSettings
   ) {
-    const url = `${this.apiEndpoint}/${catalogueItemDomainType}/${catalogueItemId}/rules/${ruleId}/representations/${representationId}`;
-    return this.simpleDelete(url, queryStringParams, restHandlerOptions);
+    const url = `${this.apiEndpoint}/${domainType}/${itemId}/rules/${ruleId}/representations`;
+    return this.simpleGet(url, query, options);
+  }
+
+  /**
+   * `HTTP GET` - Requests a rule representation for a rule on a catalogue item.
+   *
+   * @param domainType The domain type of the parent catalogue item.
+   * @param itemId The unique identifier of the parent catalogue item.
+   * @param ruleId The unique identifier of the parent rule.
+   * @param representationId The unique identifier of the representation to get.
+   * @param query Optional query string parameters, if required.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return a {@link RuleRepresentationResponse} containing a {@link RuleRepresentation} item.
+   */
+  getRuleRepresentation(
+    domainType: RuleDomainType,
+    itemId: Uuid,
+    ruleId: Uuid,
+    representationId: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
+    const url = `${this.apiEndpoint}/${domainType}/${itemId}/rules/${ruleId}/representations/${representationId}`;
+    return this.simpleGet(url, query, options);
+  }
+
+  /**
+   * `HTTP POST` - Creates a rule representation on a rule.
+   *
+   * @param domainType The domain type of the parent catalogue item.
+   * @param itemId The unique identifier of the parent catalogue item.
+   * @param ruleId The unique identifier of the parent rule.
+   * @param data The payload of the request containing all the details for the rule representation to create.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `POST` request.
+   *
+   * `200 OK` - will return a {@link RuleRepresentationResponse} containing a {@link RuleRepresentation} object.
+   */
+  saveRuleRepresentation(
+    domainType: RuleDomainType,
+    itemId: Uuid,
+    ruleId: Uuid,
+    data: RuleRepresentationPayload,
+    options?: RequestSettings
+  ) {
+    const url = `${this.apiEndpoint}/${domainType}/${itemId}/rules/${ruleId}/representations`;
+    return this.simplePost(url, data, options);
+  }
+
+  /**
+   * `HTTP POST` - Updates a rule representation on a rule.
+   *
+   * @param domainType The domain type of the parent catalogue item.
+   * @param itemId The unique identifier of the parent catalogue item.
+   * @param ruleId The unique identifier of the parent rule.
+   * @param representationId The unique identifier of the rule representation to update.
+   * @param data The payload of the request containing all the details for the rule representation to update.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `POST` request.
+   *
+   * `200 OK` - will return a {@link RuleRepresentationResponse} containing a {@link RuleRepresentation} object.
+   */
+  updateRuleRepresentation(
+    domainType: RuleDomainType,
+    itemId: Uuid,
+    ruleId: Uuid,
+    representationId: Uuid,
+    data: RuleRepresentationPayload,
+    options?: RequestSettings
+  ) {
+    const url = `${this.apiEndpoint}/${domainType}/${itemId}/rules/${ruleId}/representations/${representationId}`;
+    return this.simplePut(url, data, options);
+  }
+
+  /**
+   * `HTTP DELETE` - Removes an existing rule representation from a rule.
+   *
+   * @param domainType The domain type of the parent catalogue item.
+   * @param itemId The unique identifier of the parent catalogue item.
+   * @param ruleId The unique identifier of the rule.
+   * @param representationId The unique identifier of rule representation to delete.
+   * @param query Query parameters, if required.
+   * @param options Optional REST handler options, if required.
+   * @returns The result of the `DELETE` request.
+   *
+   * On success, the response will be a `204 No Content` and the response body will be empty.
+   */
+  removeRuleRepresentation(
+    domainType: RuleDomainType,
+    itemId: Uuid,
+    ruleId: Uuid,
+    representationId: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
+    const url = `${this.apiEndpoint}/${domainType}/${itemId}/rules/${ruleId}/representations/${representationId}`;
+    return this.simpleDelete(url, query, options);
   }
 
   // Paths

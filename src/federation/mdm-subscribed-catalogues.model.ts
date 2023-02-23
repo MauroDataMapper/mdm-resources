@@ -1,6 +1,5 @@
 /*
-Copyright 2020-2021 University of Oxford
-and Health and Social Care Information Centre, also known as NHS Digital
+Copyright 2020-2023 University of Oxford and NHS England
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -27,14 +26,22 @@ import {
 
 export type SubscribedCatalogueTypeResponse = MdmResponse<string[]>;
 
+export type SubscribedCatalogueAuthenticationTypeResponse = MdmResponse<
+  string[]
+>;
+
 export interface SubscribedCatalogue {
   id?: Uuid;
+  subscribedCatalogueType: string;
   url: string;
-  apiKey?: Uuid;
   label: string;
   description?: string;
   refreshPeriod?: number;
-  subscribedCatalogueType: string;
+  subscribedCatalogueAuthenticationType: string;
+  apiKey?: string;
+  tokenUrl?: string;
+  clientId?: string;
+  clientSecret?: string;
 }
 
 export type SubscribedCatalogueResponse = MdmResponse<SubscribedCatalogue>;
@@ -53,6 +60,7 @@ export interface PublishedDataModel {
   description?: string;
   modelType?: CatalogueItemDomainType;
   version?: string;
+  modelVersionTag?: string;
   dateCreated?: string;
   datePublished?: string;
   lastUpdated?: string;

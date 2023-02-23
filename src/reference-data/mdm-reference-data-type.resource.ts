@@ -1,6 +1,5 @@
 /*
-Copyright 2020-2021 University of Oxford
-and Health and Social Care Information Centre, also known as NHS Digital
+Copyright 2020-2023 University of Oxford and NHS England
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -16,63 +15,44 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { RequestSettings, QueryParameters } from '../mdm-common.model';
-import { MdmResource } from '../mdm-resource';
+import { MdmModelChildDomainResource } from '../mdm-model-child.resource';
+import { RequestSettings, Uuid } from '../mdm-common.model';
+import { MdmResourcesConfiguration, MdmRestHandler } from '../mdm-resource';
 
 /**
- * Controller: referenceDataModel
- |   GET    | /api/referenceDataModels/${referenceDataModelId}/referenceDataTypes                                                                        | Action: index
- |   GET    | /api/referenceDataModels/${referenceDataModelId}/referenceDataTypes/${referenceDataTypeId}                                                 | Action: get
- |   POST   | /api/referenceDataModels/${referenceDataModelId}/referenceDataTypes                                                                        | Action: save
- |   PUT    | /api/referenceDataModels/${referenceDataModelId}/referenceDataTypes/${referenceDataTypeId}                                                 | Action: update
- |   DELETE | /api/referenceDataModels/${referenceDataModelId}/referenceDataTypes/${referenceDataTypeId}                                                 | Action: delete
+ * Resource for managing Reference Data Types.
+ *
+ * All responses will return either {@link ReferenceDataType} (for lists) or
+ * {@link ReferenceDataTypeDetail} (for individual operations).
  */
-export class MdmReferenceDataTypeResource extends MdmResource {
-  list(
-    referenceDataModelId: string,
-    queryStringParams?: QueryParameters,
-    restHandlerOptions?: RequestSettings
+export class MdmReferenceDataTypeResource extends MdmModelChildDomainResource {
+  constructor(
+    config?: MdmResourcesConfiguration,
+    restHandler?: MdmRestHandler
   ) {
-    const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/referenceDataTypes`;
-    return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    super('referenceDataModels', 'referenceDataTypes', config, restHandler);
   }
 
-  get(
-    referenceDataModelId: string,
-    referenceDataTypeId: string,
-    queryStringParams?: QueryParameters,
-    restHandlerOptions?: RequestSettings
+  /**
+   * `HTTP POST` - Copies an existing Reference Data Type from one Reference Data Model to another target
+   * Reference Data Model.
+   *
+   * @param targetModelId The unique indentifier of the target model to copy to.
+   * @param sourceModelId The unique identifier of the source model.
+   * @param sourceTypeId The unique identifier of the data type to copy.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `POST` request.
+   *
+   * `200 OK` - will return a {@link ReferenceDataTypeDetailResponse} containing the new copy of a
+   * {@link ReferenceDataTypeDetail} object.
+   */
+  copy(
+    targetModelId: Uuid,
+    sourceModelId: Uuid,
+    sourceTypeId: Uuid,
+    options?: RequestSettings
   ) {
-    const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/referenceDataTypes/${referenceDataTypeId}`;
-    return this.simpleGet(url, queryStringParams, restHandlerOptions);
-  }
-
-  save(
-    referenceDataModelId: string,
-    data: any,
-    restHandlerOptions?: RequestSettings
-  ) {
-    const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/referenceDataTypes`;
-    return this.simplePost(url, data, restHandlerOptions);
-  }
-
-  update(
-    referenceDataModelId: string,
-    referenceDataTypeId: string,
-    data: any,
-    restHandlerOptions?: RequestSettings
-  ) {
-    const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/referenceDataTypes/${referenceDataTypeId}`;
-    return this.simplePut(url, data, restHandlerOptions);
-  }
-
-  remove(
-    referenceDataModelId: string,
-    referenceDataTypeId: string,
-    queryStringParams?: QueryParameters,
-    restHandlerOptions?: RequestSettings
-  ) {
-    const url = `${this.apiEndpoint}/referenceDataModels/${referenceDataModelId}/referenceDataTypes/${referenceDataTypeId}`;
-    return this.simpleDelete(url, queryStringParams, restHandlerOptions);
+    const url = `${this.apiEndpoint}/${this.modelDomain}/${targetModelId}/${this.domain}/${sourceModelId}/${sourceTypeId}`;
+    return this.simplePost(url, {}, options);
   }
 }

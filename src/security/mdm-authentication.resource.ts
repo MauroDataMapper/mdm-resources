@@ -1,6 +1,5 @@
 /*
-Copyright 2020-2021 University of Oxford
-and Health and Social Care Information Centre, also known as NHS Digital
+Copyright 2020-2023 University of Oxford and NHS England
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -26,6 +25,7 @@ import {
 } from '../mdm-resource';
 import { MdmSecurityResource } from './mdm-security.resource';
 import { MdmSessionResource } from '../core/mdm-session.resource';
+import { LoginPayload } from './mdm-security.model';
 
 /**
  * @deprecated Use [[MdmSecurityResource]] and [[MdmSessionResource]] instead.
@@ -49,7 +49,7 @@ export class MdmAuthenticationResource extends MdmResource {
   /**
    * @deprecated Use [[MdmSecurityResource.login]] instead.
    */
-  login(data: any, restHandlerOptions?: RequestSettings) {
+  login(data: LoginPayload, restHandlerOptions?: RequestSettings) {
     return this.securityResource.login(data, restHandlerOptions);
   }
 

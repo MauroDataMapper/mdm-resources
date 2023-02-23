@@ -1,6 +1,5 @@
 /*
-Copyright 2020-2021 University of Oxford
-and Health and Social Care Information Centre, also known as NHS Digital
+Copyright 2020-2023 University of Oxford and NHS England
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -19,7 +18,9 @@ SPDX-License-Identifier: Apache-2.0
 import {
   BranchModelPayload,
   ForkModelPayload,
+  ModelCreatePayload,
   ModelDomain,
+  ModelUpdatePayload,
   VersionModelPayload
 } from './mdm-model-types.model';
 import {
@@ -260,6 +261,51 @@ export class MdmModelDomainResource
     restHandler?: MdmRestHandler
   ) {
     super(domain, config, restHandler);
+  }
+
+  /**
+   * `HTTP POST` - Creates a new model under a chosen folder.
+   *
+   * @param folderId The unique identifier of the folder to create the model under.
+   * @param data The payload of the request containing all the details for the model to create.
+   * @param query Optional query parameters to control the creation of the model, if required.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `POST` request.
+   *
+   * `200 OK` - will return a {@link MdmResponse} containing an item in the body. The item will be representative
+   * of the type of {@link domain} it is for.
+   */
+  create<P extends ModelCreatePayload, Q extends QueryParameters>(
+    folderId: Uuid,
+    data: P,
+    query?: Q,
+    options?: RequestSettings
+  ) {
+    const queryString = this.generateQueryString(query);
+    const url = `${this.apiEndpoint}/folders/${folderId}/${this.domain}${
+      queryString && queryString.length > 0 ? queryString : ''
+    }`;
+    return this.simplePost(url, data, options);
+  }
+
+  /**
+   * `HTTP PUT` - Updates an existing model.
+   *
+   * @param id The unique identifier of the model to update.
+   * @param data The payload of the request containing all the details for the model to update.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `POST` request.
+   *
+   * `200 OK` - will return a {@link MdmResponse} containing an item in the body. The item will be representative
+   * of the type of {@link domain} it is for.
+   */
+  update<P extends ModelUpdatePayload>(
+    id: Uuid,
+    data: P,
+    options?: RequestSettings
+  ) {
+    const url = `${this.apiEndpoint}/${this.domain}/${id}`;
+    return this.simplePut(url, data, options);
   }
 
   newBranchModelVersion(

@@ -1,6 +1,5 @@
 /*
-Copyright 2020-2021 University of Oxford
-and Health and Social Care Information Centre, also known as NHS Digital
+Copyright 2020-2023 University of Oxford and NHS England
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -179,6 +178,13 @@ export type ModelDomainDetail = Modelable &
 
 export type ModelDomainDetailResponse = MdmResponse<ModelDomainDetail>;
 
+export interface ModelChildItem {
+  /**
+   * The unique identifier of the parent/owner model.
+   */
+  model?: Uuid;
+}
+
 /**
  * Payload for endpoints that finalise a model type.
  */
@@ -210,6 +216,11 @@ export interface ModelCreatePayload extends Payload {
   classifiers?: CatalogueItemReference[];
 }
 
+export interface ModelChildCreatePayload extends Payload {
+  label: string;
+  description?: string;
+}
+
 export interface ModelUpdatePayload extends Payload {
   id: Uuid;
   domainType: CatalogueItemDomainType;
@@ -219,6 +230,12 @@ export interface ModelUpdatePayload extends Payload {
   description?: string;
   aliases?: string[];
   classifiers?: Classifier[];
+}
+
+export interface ModelChildUpdatePayload extends Payload {
+  id: Uuid;
+  label: string;
+  description?: string;
 }
 
 /**
@@ -298,3 +315,9 @@ export interface ModelVersionItem {
 }
 
 export type ModelVersionTreeResponse = MdmResponse<ModelVersionItem[]>;
+
+export interface ModelVersion {
+  modelVersion: Version;
+}
+
+export type ModelVersionResponse = MdmResponse<ModelVersion>;
