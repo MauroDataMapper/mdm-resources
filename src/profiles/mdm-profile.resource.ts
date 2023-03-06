@@ -262,6 +262,25 @@ export class MdmProfileResource extends MdmResource {
     return this.simplePost(url, data);
   }
 
+  /**
+   * `HTTP GET` - Gets a list of all profile providers available.
+   *
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return a {@link ProfileSummaryIndexResponse} containing a list of {@link ProfileSummary} objects.
+   */
+  providers(query?: QueryParameters, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/profiles/providers`;
+    return this.simpleGet(url, query, options);
+  }
+
+  /**
+   * `HTTP GET` - Gets a list of dynamic profile providers available.
+   *
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return a {@link ProfileSummaryIndexResponse} containing a list of {@link ProfileSummary} objects.
+   */
   providerDynamic() {
     const url = `${this.apiEndpoint}/profiles/providers/dynamic`;
     return this.simpleGet(url);
