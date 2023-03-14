@@ -23,6 +23,7 @@ import {
   MdmIndexResponse,
   MdmResponse,
   Payload,
+  QueryParameters,
   Uuid,
   Version
 } from '../mdm-common.model';
@@ -143,6 +144,14 @@ export interface ProfileSummary {
   editableAfterFinalisation?: boolean;
 }
 
+export interface ProfileProviderQueryParameters extends QueryParameters {
+  /**
+   * Only return the latest versions of profile providers.
+   */
+  latestVersionByMetadataNamespace?: boolean;
+}
+
+export type ProfileSummaryResponse = MdmResponse<ProfileSummary>;
 export type ProfileSummaryIndexResponse = MdmResponse<ProfileSummary[]>;
 
 export interface Metadata {
