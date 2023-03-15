@@ -149,6 +149,7 @@ export type PathableDomainType =
   | 'termRelationshipTypes'
   | 'userGroups'
   | 'userImageFiles'
+  | 'themeImageFiles'
   | 'versionedFolders'
   | 'versionLinks';
 

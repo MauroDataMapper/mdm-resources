@@ -35,6 +35,7 @@ export * from './mdm-domain-exports.model';
 export * from './mdm-domain-exports.resource';
 export * from './mdm-importer.resource';
 export * from './mdm-user-image-file.resource';
+export * from './mdm-theme-image-file.resource';
 export * from './mdm-version-link.resource';
 export * from './mdm-versioned-folder.model';
 export * from './mdm-versioned-folder.resource';
