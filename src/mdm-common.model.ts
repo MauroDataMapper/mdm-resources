@@ -527,7 +527,21 @@ export interface SearchQueryParameters
   domainTypes?: string[];
   dataModelTypes?: string[];
   classifiers?: string[];
+
+  /**
+   * The profile filter query data to use for filtering the search results.
+   */
+  profileFields?: ProfileFieldQueryData[];
 }
+
+export interface ProfileFieldQueryData {
+  metadataNamespace: string;
+  metadataPropertyName: string;
+  filterTerm: string;
+  type: PhraseOrKeyword;
+}
+
+export type PhraseOrKeyword = 'phrase' | 'keyword';
 
 /**
  * Represents the result of a catalogue search.
