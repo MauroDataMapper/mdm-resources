@@ -15,60 +15,116 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { RequestSettings, QueryParameters } from '../mdm-common.model';
+import { RequestSettings, QueryParameters, Uuid } from '../mdm-common.model';
 import { MdmResource } from '../mdm-resource';
+import { ImageFilePayload } from './mdm-image-file.model';
 
 /**
- * Controller: themeImageFile
- |  DELETE  | /api/admin/properties/${apiPropertiesId}/image                                                                                                                                     | Action: delete
- |   PUT    | /api/admin/properties/${apiPropertiesId}/image                                                                                                                                     | Action: update
- |   GET    | /api/admin/properties/${apiPropertiesId}/image                                                                                                                                     | Action: show
- |   POST   | /api/admin/properties/${apiPropertiesId}/image                                                                                                                                     | Action: save
- |   GET    | /api/themeImageFiles/${id}
+ * Resources to manage theme image files stored in Mauro.
+ *
+ * @description With the exception of the {@link MdmThemeImageFileResource.getThemeImageFile} endpoint, all these endpoints
+ * require an authenticated administrator to use them.
  */
 export class MdmThemeImageFileResource extends MdmResource {
+  /**
+   * `HTTP DELETE` - Removes a theme image.
+   *
+   * @param apiPropertiesId The ID of the API property that is the parent of this image.
+   * @param query Optional query parameters, if required.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `DELETE` request.
+   *
+   * On success, the response will be a `204 No Content` and the response body will be empty.
+   */
   remove(
-    apiPropertiesId: string,
-    queryStringParams?: QueryParameters,
-    restHandlerOptions?: RequestSettings
+    apiPropertiesId: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
   ) {
     const url = `${this.apiEndpoint}/admin/properties/${apiPropertiesId}/image`;
-    return this.simpleDelete(url, queryStringParams, restHandlerOptions);
+    return this.simpleDelete(url, query, options);
   }
 
+  /**
+   * `HTTP PUT` - Updates a theme image.
+   *
+   * @param apiPropertiesId The ID of the API property that is the parent of this image.
+   * @param data The payload of the request containing the image to update.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `PUT` request.
+   *
+   * `200 OK` - will return an {@link ImageFileResponse} containing an {@link ImageFile} object.
+   */
   update(
-    apiPropertiesId: string,
-    data?: any,
-    restHandlerOptions?: RequestSettings
+    apiPropertiesId: Uuid,
+    data: ImageFilePayload,
+    options?: RequestSettings
   ) {
     const url = `${this.apiEndpoint}/admin/properties/${apiPropertiesId}/image`;
-    return this.simplePut(url, data, restHandlerOptions);
+    return this.simplePut(url, data, options);
   }
 
+  /**
+   * `HTTP GET` - Gets a theme image.
+   *
+   * @param apiPropertiesId The ID of the API property that is the parent of this image.
+   * @param query Optional query parameters, if required.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return the actual image in the HTTP response to render to a page.
+   *
+   * @description This endpoint is only accessible to authenticated administrators. Use
+   * {@link MdmThemeImageFileResource.getThemeImageFile} instead for public access.
+   */
   get(
-    apiPropertiesId: string,
-    queryStringParams?: QueryParameters,
-    restHandlerOptions?: RequestSettings
+    apiPropertiesId: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
   ) {
     const url = `${this.apiEndpoint}/admin/properties/${apiPropertiesId}/image`;
-    return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    return this.simpleGet(url, query, options);
   }
 
+  /**
+   * `HTTP POST` - Creates a theme image.
+   *
+   * @param apiPropertiesId The ID of the API property that is the parent of this image.
+   * @param data The payload of the request containing the image to create.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `POST` request.
+   *
+   * `200 OK` - will return an {@link ImageFileResponse} containing an {@link ImageFile} object.
+   */
   save(
-    apiPropertiesId: string,
-    data?: any,
-    restHandlerOptions?: RequestSettings
+    apiPropertiesId: Uuid,
+    data: ImageFilePayload,
+    options?: RequestSettings
   ) {
     const url = `${this.apiEndpoint}/admin/properties/${apiPropertiesId}/image`;
-    return this.simplePost(url, data, restHandlerOptions);
+    return this.simplePost(url, data, options);
   }
 
+  /**
+   * `HTTP GET` - Gets a theme image.
+   *
+   * @param id The ID of the image to get.
+   * @param query Optional query parameters, if required.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return the actual image in the HTTP response to render to a page.
+   *
+   * @description This endpoint is accessible to any user, whether authenticated or not.
+   *
+   * @see {@link MdmThemeImageFileResource.get}
+   */
   getThemeImageFile(
-    id: string,
-    queryStringParams?: QueryParameters,
-    restHandlerOptions?: RequestSettings
+    id: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
   ) {
     const url = `${this.apiEndpoint}/themeImageFiles/${id}`;
-    return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    return this.simpleGet(url, query, options);
   }
 }

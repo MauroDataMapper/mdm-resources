@@ -15,60 +15,99 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { RequestSettings, QueryParameters } from '../mdm-common.model';
+import { RequestSettings, QueryParameters, Uuid } from '../mdm-common.model';
 import { MdmResource } from '../mdm-resource';
+import { ImageFilePayload } from './mdm-image-file.model';
 
 /**
- * Controller: userImageFile
- |  DELETE  | /api/catalogueUsers/${catalogueUserId}/image                                                                                                                                     | Action: delete
- |   PUT    | /api/catalogueUsers/${catalogueUserId}/image                                                                                                                                     | Action: update
- |   GET    | /api/catalogueUsers/${catalogueUserId}/image                                                                                                                                     | Action: show
- |   POST   | /api/catalogueUsers/${catalogueUserId}/image                                                                                                                                     | Action: save
- |   GET    | /api/userImageFiles/${id}
+ * Resources to manage user image files stored in Mauro.
+ *
+ * All of these endpoints are accessible to any authenticated user.
  */
 export class MdmUserImageFileResource extends MdmResource {
-  remove(
-    catalogueUserId: string,
-    queryStringParams?: QueryParameters,
-    restHandlerOptions?: RequestSettings
-  ) {
-    const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}/image`;
-    return this.simpleDelete(url, queryStringParams, restHandlerOptions);
+  /**
+   * `HTTP DELETE` - Removes a user image.
+   *
+   * @param userId The ID of the user that is the parent of this image.
+   * @param query Optional query parameters, if required.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `DELETE` request.
+   *
+   * On success, the response will be a `204 No Content` and the response body will be empty.
+   */
+  remove(userId: Uuid, query?: QueryParameters, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/catalogueUsers/${userId}/image`;
+    return this.simpleDelete(url, query, options);
   }
 
-  update(
-    catalogueUserId: string,
-    data?: any,
-    restHandlerOptions?: RequestSettings
-  ) {
-    const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}/image`;
-    return this.simplePut(url, data, restHandlerOptions);
+  /**
+   * `HTTP PUT` - Updates a user image.
+   *
+   * @param userId The ID of the user that is the parent of this image.
+   * @param data The payload of the request containing the image to update.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `PUT` request.
+   *
+   * `200 OK` - will return an {@link ImageFileResponse} containing an {@link ImageFile} object.
+   */
+  update(userId: Uuid, data: ImageFilePayload, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/catalogueUsers/${userId}/image`;
+    return this.simplePut(url, data, options);
   }
 
-  get(
-    catalogueUserId: string,
-    queryStringParams?: QueryParameters,
-    restHandlerOptions?: RequestSettings
-  ) {
-    const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}/image`;
-    return this.simpleGet(url, queryStringParams, restHandlerOptions);
+  /**
+   * `HTTP GET` - Gets a user image.
+   *
+   * @param userId The ID of the user that is the parent of this image.
+   * @param query Optional query parameters, if required.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return the actual image in the HTTP response to render to a page.
+   *
+   * @description This endpoint is only accessible to authenticated users. Use
+   * {@link MdmUserImageFileResource.getUserImageFile} instead for public access.
+   */
+  get(userId: Uuid, query?: QueryParameters, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/catalogueUsers/${userId}/image`;
+    return this.simpleGet(url, query, options);
   }
 
-  save(
-    catalogueUserId: string,
-    data?: any,
-    restHandlerOptions?: RequestSettings
-  ) {
-    const url = `${this.apiEndpoint}/catalogueUsers/${catalogueUserId}/image`;
-    return this.simplePost(url, data, restHandlerOptions);
+  /**
+   * `HTTP POST` - Creates a user image.
+   *
+   * @param userId The ID of the user that is the parent of this image.
+   * @param data The payload of the request containing the image to create.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `POST` request.
+   *
+   * `200 OK` - will return an {@link ImageFileResponse} containing an {@link ImageFile} object.
+   */
+  save(userId: Uuid, data: ImageFilePayload, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/catalogueUsers/${userId}/image`;
+    return this.simplePost(url, data, options);
   }
 
+  /**
+   * `HTTP GET` - Gets a theme image.
+   *
+   * @param id The ID of the image to get.
+   * @param query Optional query parameters, if required.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return the actual image in the HTTP response to render to a page.
+   *
+   * @description This endpoint is accessible to any user, whether authenticated or not.
+   *
+   * @see {@link MdmUserImageFileResource.get}
+   */
   getUserImageFile(
-    userId: string,
-    queryStringParams?: QueryParameters,
-    restHandlerOptions?: RequestSettings
+    userId: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
   ) {
     const url = `${this.apiEndpoint}/userImageFiles/${userId}`;
-    return this.simpleGet(url, queryStringParams, restHandlerOptions);
+    return this.simpleGet(url, query, options);
   }
 }

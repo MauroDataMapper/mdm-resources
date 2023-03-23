@@ -34,6 +34,7 @@ export * from './mdm-async-jobs.resource';
 export * from './mdm-domain-exports.model';
 export * from './mdm-domain-exports.resource';
 export * from './mdm-importer.resource';
+export * from './mdm-image-file.model';
 export * from './mdm-user-image-file.resource';
 export * from './mdm-theme-image-file.resource';
 export * from './mdm-version-link.resource';
