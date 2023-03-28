@@ -63,7 +63,6 @@ export interface DataTypeReference {
 }
 
 export interface BaseDataType {
-  [key: string]: any;
   id?: Uuid;
   domainType: CatalogueItemDomainType;
   label: string;
