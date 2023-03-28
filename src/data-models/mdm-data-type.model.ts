@@ -59,11 +59,10 @@ export interface DataTypeProvider {
 }
 
 export interface DataTypeReference {
-  [key: string]: any;
   id: Uuid;
 }
 
-export interface DataType {
+export interface BaseDataType {
   [key: string]: any;
   id?: Uuid;
   domainType: CatalogueItemDomainType;
@@ -71,10 +70,23 @@ export interface DataType {
   description?: string;
   model?: Uuid;
   breadcrumbs?: Breadcrumb[];
-  enumerationValues?: EnumerationValue[];
-  referenceClass?: ReferenceClass;
   classifiers?: CatalogueItemReference[];
 }
+
+export interface ModelType {
+  modelResourceId?: Uuid;
+  modelResourceDomainType?: CatalogueItemDomainType;
+}
+
+export interface EnumerationType {
+  enumerationValues?: EnumerationValue[];
+}
+
+export interface ReferenceType {
+  referenceClass?: ReferenceClass;
+}
+
+export type DataType = BaseDataType & ModelType & EnumerationType & ReferenceType;
 
 export type DataTypeDetail = DataType & Securable & Historical;
 
