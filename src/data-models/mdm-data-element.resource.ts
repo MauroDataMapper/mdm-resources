@@ -128,7 +128,7 @@ export class MdmDataElementResource extends MdmResource {
   }
 
   /**
-   * `HTTP PUT` - Updates an existing data element under a chosen data class. It can create new 
+   * `HTTP PUT` - Updates an existing data element under a chosen data class. It can create new
    * {@link DataType} if the {@link DataElement} contains a complete {@link DataType} instead
    * of using a {@link DataTypeReference}.
    *
