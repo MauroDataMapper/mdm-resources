@@ -27,7 +27,7 @@ import {
   SortParameters,
   Uuid
 } from '../mdm-common.model';
-import { DataTypeReference } from './mdm-data-type.model';
+import { DataType, DataTypeReference } from './mdm-data-type.model';
 
 export type DataElementIndexParameters = SortParameters &
   PageParameters &
@@ -41,7 +41,7 @@ export interface DataElement {
   description?: string;
   model?: Uuid;
   dataClass?: Uuid;
-  dataType?: DataTypeReference;
+  dataType?: DataType | DataTypeReference;
   breadcrumbs?: Breadcrumb[];
   minMultiplicity?: number;
   maxMultipicity?: number;
