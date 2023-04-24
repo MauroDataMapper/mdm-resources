@@ -23,6 +23,7 @@ import {
   MdmIndexResponse,
   MdmResponse,
   Payload,
+  QueryParameters,
   Uuid
 } from '../mdm-common.model';
 
@@ -153,6 +154,17 @@ export type PathableDomainType =
   | 'versionedFolders'
   | 'versionLinks';
 
+/**
+ * Query parameters for the Path endpoints.
+ */
+export interface PathQueryParameters extends QueryParameters {
+  /**
+   * If true, only locate the latest finalised version of models, unless a specific version identitifer is
+   * used in the path.
+   */
+  finalised?: boolean;
+}
+
 export type RuleDomainType =
   | 'codeSets'
   | 'dataClasses'
@@ -200,6 +212,5 @@ export interface RuleRepresentation
 export type RuleResponse = MdmResponse<Rule>;
 export type RuleIndexResponse = MdmIndexResponse<Rule>;
 export type RuleRepresentationResponse = MdmResponse<RuleRepresentation>;
-export type RuleRepresentationIndexResponse = MdmIndexResponse<
-  RuleRepresentation
->;
+export type RuleRepresentationIndexResponse =
+  MdmIndexResponse<RuleRepresentation>;
