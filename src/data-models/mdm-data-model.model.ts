@@ -106,9 +106,8 @@ export interface SourceTargetIntersection {
   intersects: Uuid[];
 }
 
-export type SourceTargetIntersectionResponse = MdmIndexResponse<
-  SourceTargetIntersection
->;
+export type SourceTargetIntersectionResponse =
+  MdmIndexResponse<SourceTargetIntersection>;
 
 /**
  * Represents the payload of the request to determine intersections between a source and many target data models.
@@ -145,3 +144,11 @@ export interface DataModelNode {
 export type DataModelFull = DataModelDetail & DataModelNode;
 
 export type DataModelFullResponse = MdmResponse<DataModelFull>;
+
+export interface SimpleModelVersionTree {
+  branch?: string;
+  displayName: string;
+  documentationVersion: string;
+  id: Uuid;
+  modelVersion?: string;
+}
