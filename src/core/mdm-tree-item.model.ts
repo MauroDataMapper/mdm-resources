@@ -37,6 +37,7 @@ export interface MdmTreeItem extends Required<CatalogueItem>, Securable {
   documentationVersion?: Version;
   branchName?: string;
   modelVersion?: Version;
+  modelVersionTag?: string;
   modelId?: Uuid;
   parentId?: Uuid;
 }
