@@ -284,7 +284,7 @@ export interface BasicModelVersionItem {
   id: Uuid;
   branch?: string;
   modelVersion?: Version;
-  modelVersionTag?: string
+  modelVersionTag?: string;
   documentationVersion?: Version;
   displayName: string;
 }
