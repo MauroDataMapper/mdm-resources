@@ -133,7 +133,7 @@ export class MdmDataTypeResource extends MdmResource {
    */
   get(
     dataModelId: Uuid,
-    dataTypeId: Uuid | string,
+    dataTypeId: Uuid,
     query?: QueryParameters,
     options?: RequestSettings
   ) {

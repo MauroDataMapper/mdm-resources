@@ -176,7 +176,7 @@ export class MdmTermResource extends MdmResource {
    */
   get(
     terminologyId: Uuid,
-    termId: Uuid | string,
+    termId: Uuid,
     query?: QueryParameters,
     options?: RequestSettings
   ) {
