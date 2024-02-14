@@ -14,7 +14,7 @@ pipeline {
     stage('Tool Versions') {
       steps {
         nvm('') {
-          sh 'npm i -g npm@8.3.0'
+          sh 'npm i -g npm@10.2.3'
           sh 'node --version'
           sh 'npm --version'
         }
@@ -110,7 +110,7 @@ pipeline {
   post {
     always {
       outputTestResults()
-      //zulipNotification(topic: 'mdm-resources')
+      zulipNotification(topic: 'mdm-resources')
     }
   }
 }
