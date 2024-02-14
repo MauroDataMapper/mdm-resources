@@ -110,7 +110,7 @@ pipeline {
   post {
     always {
       outputTestResults()
-      //zulipNotification(topic: 'mdm-resources')
+      zulipNotification(topic: 'mdm-resources')
     }
   }
 }
