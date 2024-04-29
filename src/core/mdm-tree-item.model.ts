@@ -40,6 +40,7 @@ export interface MdmTreeItem extends Required<CatalogueItem>, Securable {
   modelVersionTag?: string;
   modelId?: Uuid;
   parentId?: Uuid;
+  path?: string;
 }
 
 export interface TreeItemListParameters {

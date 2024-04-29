@@ -167,6 +167,21 @@ export const isDataType = (domainType: CatalogueItemDomainType) => {
   );
 };
 
+export const catalogueItemDomainTypeToContainerDomainType = (
+  value: CatalogueItemDomainType
+) => {
+  switch (value) {
+    case CatalogueItemDomainType.Classifier:
+      return ContainerDomainType.Classifiers;
+    case CatalogueItemDomainType.Folder:
+      return ContainerDomainType.Folders;
+    case CatalogueItemDomainType.VersionedFolder:
+      return ContainerDomainType.VersionedFolders;
+    default:
+      throw new Error(`Domain type ${value} is not a container type`);
+  }
+};
+
 /**
  * Maps a {@link CatalogueItemDomainType} to an equivalent {@link MultiFacetAwareDomainType}.
  *
