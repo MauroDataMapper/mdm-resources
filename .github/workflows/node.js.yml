@@ -49,12 +49,14 @@ jobs:
           # All available variables are described in documentation
           # https://megalinter.io/configuration/
           VALIDATE_ALL_CODEBASE: true
-          
           ENABLE_LINTERS: JAVASCRIPT_ES
           LINTER_RULES_PATH: '.eslintrc.json' # This is the default anyway
           DISABLE_ERRORS: true #Flag to have the linter complete with exit code 0 even if errors were detected.
           SARIF_REPORTER: true
             
+      - name: Show sarif results  
+        run: cat megalinter-reports/megalinter-report.sarif
+        
       - name: Upload MegaLinter scan results to GitHub Security tab
         if: ${{ success() }} || ${{ failure() }}
         uses: github/codeql-action/upload-sarif@v3
