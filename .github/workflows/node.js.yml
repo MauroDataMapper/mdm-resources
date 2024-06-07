@@ -28,7 +28,6 @@ jobs:
         
         
       - name: Install tools
-        
         run: |
           npm i -g npm@10.2.3
           npm i -g npm-check
