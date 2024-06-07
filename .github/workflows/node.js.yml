@@ -44,19 +44,16 @@ jobs:
         run: npm run license-check check
 
       - name: MegaLinter
-        uses: oxsecurity/megalinter/flavors/ci_light@v7
+        uses:  oxsecurity/megalinter/flavors/javascript@v7.12.0
         env:
           # All available variables are described in documentation
           # https://megalinter.io/configuration/
           VALIDATE_ALL_CODEBASE: true
-          ENABLE_LINTERS: JAVASCRIPT_ES
+          ENABLE_LINTERS: TYPESCRIPT_ES
           LINTER_RULES_PATH: '.eslintrc.json' # This is the default anyway
           DISABLE_ERRORS: true #Flag to have the linter complete with exit code 0 even if errors were detected.
           SARIF_REPORTER: true
-            
-      - name: Show sarif results  
-        run: cat megalinter-reports/megalinter-report.sarif
-        
+                    
       - name: Upload MegaLinter scan results to GitHub Security tab
         if: ${{ success() }} || ${{ failure() }}
         uses: github/codeql-action/upload-sarif@v3
@@ -64,14 +61,14 @@ jobs:
           sarif_file: 'megalinter-reports/megalinter-report.sarif'
             
             
-      - name: Archive lint reports
-        if: ${{ success() }} || ${{ failure() }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: MegaLinter reports
-          path: |
-            megalinter-reports
-            mega-linter.log
+      #- name: Archive lint reports
+      #  if: ${{ success() }} || ${{ failure() }}
+      #  uses: actions/upload-artifact@v4
+      #  with:
+      #    name: MegaLinter reports
+      #    path: |
+      #      megalinter-reports
+      #      mega-linter.log
                       
       - name: Build
         run: npm run build
