@@ -58,6 +58,10 @@ jobs:
           MARKDOWN_SUMMARY_REPORTER: true
 
 
+            
+      - name: Show sarif results  
+        run: cat megalinter-reports/megalinter-report.sarif
+        
       - name: Upload MegaLinter scan results to GitHub Security tab
         if: ${{ success() }} || ${{ failure() }}
         uses: github/codeql-action/upload-sarif@v3
