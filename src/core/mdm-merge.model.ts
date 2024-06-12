@@ -27,6 +27,8 @@ import {
   Payload,
   Uuid
 } from '../mdm-common.model';
+import { CodeSetDetail } from '../terminologies/mdm-code-set.model';
+
 
 /**
  * Represents all {@link MultiFacetAwareDomainType} values that can be used for merge operations.
@@ -35,6 +37,7 @@ export type MergableMultiFacetAwareDomainType =
   | MultiFacetAwareDomainType.DataModels
   | MultiFacetAwareDomainType.ReferenceDataModels
   | MultiFacetAwareDomainType.Terminologies
+  | MultiFacetAwareDomainType.CodeSets
   | MultiFacetAwareDomainType.VersionedFolders;
 
 /**
@@ -44,6 +47,7 @@ export type MergableCatalogueItem =
   | DataModelDetail
   | ReferenceDataModelDetail
   | TerminologyDetail
+  | CodeSetDetail
   | VersionedFolderDetail;
 
 /**
