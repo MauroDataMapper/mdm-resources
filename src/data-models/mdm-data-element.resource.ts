@@ -209,4 +209,27 @@ export class MdmDataElementResource extends MdmResource {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/${otherDataModelId}/${otherDataClassId}/${dataElementId}`;
     return this.simplePost(url, {}, options);
   }
+
+  /**
+   * `HTTP PUT` - Moves an existing data element from one data class to another target data class within the same model.
+   *
+   * @param dataModelId The unique identifier of the source data model.
+   * @param dataClassId The unique identifier of the source data class.
+   * @param dataElementId The unique identifier of the data element to copy.
+   * @param otherDataClassId The unique identifier of the target data class to move to.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `PUT` request.
+   *
+   * `200 OK` - will return a {@link DataElementDetailResponse} containing the moved {@link DataElementDetail} object.
+   */
+  moveDataElement(
+    dataModelId: Uuid,
+    dataClassId: Uuid,
+    dataElementId: Uuid,
+    otherDataClassId: Uuid,
+    options?: RequestSettings
+  ) {
+    const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/${dataElementId}/move/${otherDataClassId}`;
+    return this.simplePut(url, {}, options);
+  }
 }
