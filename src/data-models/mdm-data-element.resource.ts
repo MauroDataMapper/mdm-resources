@@ -17,6 +17,7 @@ SPDX-License-Identifier: Apache-2.0
 */
 import { RequestSettings, QueryParameters, Uuid } from '../mdm-common.model';
 import {
+  CopyDataElementPayload,
   DataElement,
   DataElementIndexParameters
 } from './mdm-data-element.model';
@@ -208,5 +209,18 @@ export class MdmDataElementResource extends MdmResource {
   ) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/${otherDataModelId}/${otherDataClassId}/${dataElementId}`;
     return this.simplePost(url, {}, options);
+  }
+
+  /**
+   * `HTTP POST` - Same as above but takes a payload object instead of individual parameters.
+   *
+   * @param dataElementId The unique identifier of the data element to copy.
+   * @param copyDataElementPayload The payload object containing the source and target data model and data class identifiers.
+   *
+   * `200 OK` - will return a {@link DataElementDetailResponse} containing the new copy of a {@link DataElementDetail} object.
+   */
+  copy(dataElementId: Uuid, copyDataElementPayload: CopyDataElementPayload) {
+    const url = `${this.apiEndpoint}/dataModels/${copyDataElementPayload.targetDataModelId}/dataClasses/${copyDataElementPayload.targetDataClassId}/dataElements/${copyDataElementPayload.otherDataModelId}/${copyDataElementPayload.sourceDataClassId}/${dataElementId}`;
+    return this.simplePost(url, {}, {});
   }
 }

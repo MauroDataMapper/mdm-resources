@@ -19,6 +19,7 @@ import { RequestSettings, QueryParameters, Uuid } from '../mdm-common.model';
 import { FinalisePayload, ModelCreatePayload } from '../mdm-model-types.model';
 import { MdmModelDomainResource } from '../mdm-model-types.resource';
 import { MdmResourcesConfiguration, MdmRestHandler } from '../mdm-resource';
+import { CopyContainerPayload } from '../mdm-container-types.model';
 
 /**
  * MDM resource for the management of terminologies.
@@ -242,5 +243,22 @@ export class MdmTerminologyResource extends MdmModelDomainResource {
   undoSoftDelete(terminologyId: Uuid, options?: RequestSettings) {
     const url = `${this.apiEndpoint}/admin/terminologies/${terminologyId}/undoSoftDelete`;
     return this.simplePut(url, {}, options);
+  }
+
+  /**
+   * `HTTP PUT` - Copies a terminology to a new folder.
+   *
+   * @param terminologyId The unique identifier of the terminology to copy.
+   * @param CopyContainerPayload The payload to pass to the request when copying the terminology.
+   * @returns The result of the `PUT` request.
+   *
+   * `200 OK` - will return a {@link TerminologyDetailResponse} containing a {@link TerminologyDetail} object.
+   */
+  copy(
+    terminologyId: Uuid,
+    copyContainerPayload: CopyContainerPayload
+  ) {
+    const url = `${this.apiEndpoint}/terminologies/${terminologyId}/copy`;
+    return this.simplePut(url, copyContainerPayload);
   }
 }

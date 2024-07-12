@@ -21,6 +21,7 @@ import { RequestSettings, QueryParameters, Uuid } from '../mdm-common.model';
 import { CodeSetCreatePayload } from './mdm-code-set.model';
 import { MdmModelDomainResource } from '../mdm-model-types.resource';
 import { MdmResourcesConfiguration, MdmRestHandler } from '../mdm-resource';
+import { CopyContainerPayload } from '../mdm-container-types.model';
 
 /**
  * MDM resources for the management of code sets.
@@ -249,5 +250,21 @@ export class MdmCodeSetResource extends MdmModelDomainResource {
   undoSoftDelete(codeSetId: Uuid, options?: RequestSettings) {
     const url = `${this.apiEndpoint}/admin/codeSets/${codeSetId}/undoSoftDelete`;
     return this.simplePut(url, {}, options);
+  }
+
+  /**
+   * `HTTP PUT` - Copy a code set.
+   *
+   * @param codeSetId The unique identifier of the code set to copy.
+   * @param CopyContainerPayload The payload to pass to the request when copying the code set.
+   * @returns The result of the `PUT` request.
+   *
+   * `200 OK` - will return a {@link CodeSetDetailResponse} containing a {@link CodeSetDetail} object.
+   */
+  copy(codeSetId: Uuid,
+    copyContainerPayload: CopyContainerPayload
+  ){
+    const url = `${this.apiEndpoint}/codeSets/${codeSetId}/copy`;
+    return this.simplePut(url, copyContainerPayload);
   }
 }

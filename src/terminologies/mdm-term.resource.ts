@@ -24,6 +24,7 @@ import {
   SearchQueryParameters
 } from '../mdm-common.model';
 import { MdmResource } from '../mdm-resource';
+import { CopyTermPayload } from './mdm-terminology.model';
 
 /**
  * Controller: term
@@ -252,4 +253,24 @@ export class MdmTermResource extends MdmResource {
     const url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms/${termId}/codeSets`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
   }
+
+  /*
+    * `HTTP POST` - Copy a term.
+    *
+    * @param terminologyId The unique identifier of the terminology to copy the term to.
+    * @param termId The unique identifier of the term to copy.
+    * @param copyTermPayload The payload of the request containing all the details for the term to copy.
+    * @returns The result of the `POST` request.
+    *
+    * `200 OK` - will return a {@link TermDetailResponse} containing a {@link TermDetail} object.
+  */
+  copy(
+    terminologyId: Uuid,
+    termId: Uuid,
+    copyTermPayload: CopyTermPayload
+  ) {
+    const url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms/copy/${termId}`;
+    return this.simplePut(url, copyTermPayload);
+  }
+
 }
