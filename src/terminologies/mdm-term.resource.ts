@@ -38,6 +38,8 @@ import { CopyTermPayload } from './mdm-terminology.model';
  |   PUT    | /api/terminologies/${terminologyId}/terms/${id}                                                            | Action: update                                  |
  |   GET    | /api/terminologies/${terminologyId}/terms/${id}                                                            | Action: show
  |   GET    | /api/terminologies/${terminologyId}/terms/${id}/codeSets                                                   | Action: show
+ |   POST   | /api/terminologies/${terminologyId}/terms/${id}/copy                                                       | Action: copy
+                |
  *
  * Controller: termRelationship
  |   GET    | /api/terminologies/${terminologyId}/termRelationshipTypes/${termRelationshipTypeId}/termRelationships            | Action: index                                   |
