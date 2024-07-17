@@ -511,7 +511,7 @@ export class MdmDataClassResource extends MdmResource {
 
   copy(dataClassId: Uuid, copyDataClassPayload: CopyDataClassPayload){
     const url = `${this.apiEndpoint}/dataModels/${copyDataClassPayload.targetDataModelId}/dataClasses/${copyDataClassPayload.sourceDataModelId}/${dataClassId}`;
-    return this.simplePost(url, {}, {});
+    return this.simplePost(url, copyDataClassPayload);
   }
 
 }

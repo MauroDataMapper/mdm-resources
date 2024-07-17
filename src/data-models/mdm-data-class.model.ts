@@ -70,6 +70,8 @@ export interface DataClassNode {
 export interface CopyDataClassPayload extends Payload{
   targetDataModelId: Uuid;
   sourceDataModelId: Uuid;
+  copyLabel : string;
+  copyPermissions: boolean;
 }
 
 export type DataClassFull = DataClassDetail & DataClassNode;
