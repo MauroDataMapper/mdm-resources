@@ -219,8 +219,8 @@ export class MdmDataElementResource extends MdmResource {
    * @param targetDataClassId The unique identifier of the target data class
    * @param sourceDataModelId The unique identifier of the source data model
    * @param sourceDataClassId The unique identifier of the source data class
-   * @param dataElementId The unique identifier of the data element to copy
-   * @param copyDataElementPayload The payload of the request containing the new label and permissions
+   * @param sourceDataElementId The unique identifier of the data element to copy
+   * @param payload The payload of the request containing the new label and permissions
    * @param options Optional REST handler parameters, if required
    * @returns The result of the `POST` request
    *
@@ -231,11 +231,11 @@ export class MdmDataElementResource extends MdmResource {
     targetDataClassId: Uuid,
     sourceDataModelId: Uuid,
     sourceDataClassId: Uuid,
-    dataElementId: Uuid,
-    copyDataElementPayload: CopyDataElementPayload,
+    sourceDataElementId: Uuid,
+    payload: CopyDataElementPayload,
     options?: RequestSettings
   ) {
-    const url = `${this.apiEndpoint}/dataModels/${sourceDataModelId}/dataClasses/${sourceDataClassId}/dataElements/${targetDataModelId}/${targetDataClassId}/${dataElementId}`;
-    return this.simplePost(url, copyDataElementPayload, options);
+    const url = `${this.apiEndpoint}/dataModels/${targetDataModelId}/dataClasses/${targetDataClassId}/dataElements/${sourceDataModelId}/${sourceDataClassId}/${sourceDataElementId}`;
+    return this.simplePost(url, payload, options);
   }
 }
