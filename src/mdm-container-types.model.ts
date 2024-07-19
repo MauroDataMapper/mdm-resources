@@ -43,3 +43,22 @@ export interface ContainerUpdatePayload extends Payload {
   label?: string;
   description?: string;
 }
+
+/**
+ * Represents the payload to copy a data model.
+ */
+export interface CopyModelPayload extends Payload {
+  /**
+   * The target folder to copy the data model to.
+   */
+  folderId: Uuid;
+  /**
+   * The name of the target data model.
+   */
+  label: string;
+  /**
+   * Flag to indicate if permissions should be copied.
+   */
+  copyPermissions: boolean;
+
+}

@@ -23,6 +23,7 @@ import {
   MdmIndexResponse,
   MdmResponse,
   PageParameters,
+  Payload,
   QueryParameters,
   SortParameters,
   Uuid
@@ -45,6 +46,13 @@ export interface DataElement {
   breadcrumbs?: Breadcrumb[];
   minMultiplicity?: number;
   maxMultipicity?: number;
+}
+
+
+
+export interface CopyDataElementPayload extends Payload {
+  copyLabel : string;
+  copyPermissions: boolean;
 }
 
 export type DataElementDetail = DataElement & Securable & Historical;

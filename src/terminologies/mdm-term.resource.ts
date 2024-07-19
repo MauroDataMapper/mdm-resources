@@ -24,6 +24,7 @@ import {
   SearchQueryParameters
 } from '../mdm-common.model';
 import { MdmResource } from '../mdm-resource';
+import { CopyTermPayload } from './mdm-terminology.model';
 
 /**
  * Controller: term
@@ -37,6 +38,8 @@ import { MdmResource } from '../mdm-resource';
  |   PUT    | /api/terminologies/${terminologyId}/terms/${id}                                                            | Action: update                                  |
  |   GET    | /api/terminologies/${terminologyId}/terms/${id}                                                            | Action: show
  |   GET    | /api/terminologies/${terminologyId}/terms/${id}/codeSets                                                   | Action: show
+ |   POST   | /api/terminologies/${terminologyId}/terms/${id}/copy                                                       | Action: copy
+                |
  *
  * Controller: termRelationship
  |   GET    | /api/terminologies/${terminologyId}/termRelationshipTypes/${termRelationshipTypeId}/termRelationships            | Action: index                                   |
@@ -251,5 +254,24 @@ export class MdmTermResource extends MdmResource {
   ) {
     const url = `${this.apiEndpoint}/terminologies/${terminologyId}/terms/${termId}/codeSets`;
     return this.simpleGet(url, queryStringParams, restHandlerOptions);
+  }
+
+  /**
+   * `HTTP POST` - Copy a term.
+   *
+   * @param sourceTerminologyId The unique identifier of the terminology to copy the term to.
+   * @param termId The unique identifier of the term to copy.
+   * @param copyTermPayload The payload of the request containing all the details for the term to copy.
+   * @returns The result of the `POST` request.
+   *
+   * `200 OK` - will return a {@link TermDetailResponse} containing a {@link TermDetail} object.
+   **/
+  copy(
+    sourceTerminologyId: Uuid,
+    sourceTermId: Uuid,
+    copyTermPayload: CopyTermPayload
+  ) {
+    const url = `${this.apiEndpoint}/terminologies/${sourceTerminologyId}/terms/copy/${sourceTermId}`;
+    return this.simplePut(url, copyTermPayload);
   }
 }

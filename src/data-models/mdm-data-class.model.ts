@@ -23,6 +23,7 @@ import {
   MdmIndexResponse,
   MdmResponse,
   PageParameters,
+  Payload,
   QueryParameters,
   SortParameters,
   Uuid
@@ -64,6 +65,11 @@ export interface DataClassNode {
    * The Data Elements under this Data Class.
    */
   dataElements?: DataElementDetail[];
+}
+
+export interface CopyDataClassPayload extends Payload{
+  copyLabel : string;
+  copyPermissions: boolean;
 }
 
 export type DataClassFull = DataClassDetail & DataClassNode;

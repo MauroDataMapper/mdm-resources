@@ -31,6 +31,7 @@ import {
 } from './mdm-data-model.model';
 import { MdmModelDomainResource } from '../mdm-model-types.resource';
 import { MdmResourcesConfiguration, MdmRestHandler } from '../mdm-resource';
+import { CopyModelPayload } from '../mdm-container-types.model';
 
 /**
  * MDM resource for managing data models.
@@ -535,4 +536,23 @@ export class MdmDataModelResource extends MdmModelDomainResource {
     const url = `${this.apiEndpoint}/dataModels/${sourceId}/intersectsMany`;
     return this.simplePost(url, data, options);
   }
+
+  /**
+   * `HTTP PUT` - Copy a Data Model to another Data Model. Define the target folder and the name of the new Data Model.
+   *
+   * @param sourceDataModelId The unique identifier of the Data Model to copy.
+   * @param copyModelPayload The payload containing details on where to copy the Data Model to.
+   * @returns The result of the `PUT` request.
+   *
+   * `200 OK` - will return a {@link DataModelDetailResponse} containing a {@link DataModelDetail
+   */
+  copy(
+    sourceDataModelId: Uuid,
+    copyModelPayload: CopyModelPayload,
+    options?: RequestSettings
+  ) {
+    const url = `${this.apiEndpoint}/dataModels/${sourceDataModelId}/copy`;
+    return this.simplePut(url, copyModelPayload, options);
+  }
 }
+
