@@ -21,7 +21,11 @@ import {
   Uuid,
   SearchQueryParameters
 } from '../mdm-common.model';
-import { CopyDataClassPayload, DataClass, DataClassIndexParameters } from './mdm-data-class.model';
+import {
+  CopyDataClassPayload,
+  DataClass,
+  DataClassIndexParameters
+} from './mdm-data-class.model';
 import { MdmResource } from '../mdm-resource';
 
 /**
@@ -500,18 +504,26 @@ export class MdmDataClassResource extends MdmResource {
     return this.simpleDelete(url, {}, options);
   }
 
-  /*
-    * `HTTP POST` - Copy a data class from a source data model to a target data model.
-    *
-    * @param CopyDataClassPyaload The payload of the request containing the source and target data model and data class IDs.
-    * @returns The result of the `POST` request.
-    *
-    * `200 OK` - will return a {@link DataClassDetailResponse} containing a {@link DataClassDetail} object.
-  */
-
-  copy(dataClassId: Uuid, copyDataClassPayload: CopyDataClassPayload){
-    const url = `${this.apiEndpoint}/dataModels/${copyDataClassPayload.targetDataModelId}/dataClasses/${copyDataClassPayload.sourceDataModelId}/${dataClassId}`;
-    return this.simplePost(url, copyDataClassPayload);
+  /**
+   * `HTTP POST` - Copy a data class from one data model to another.
+   *
+   * @param targetDataModelId The unique identifier of the target data model.
+   * @param sourceDataModelId The unique identifier of the source data model.
+   * @param dataClassId The unique identifier of the data class to copy.
+   * @param copyDataClassPayload The payload of the request containing the details of the data class to copy.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `POST` request.
+   *
+   * `200 OK` - will return a {@link DataClassDetailResponse} containing a {@link DataClassDetail} object
+   **/
+  copy(
+    targetDataModelId: Uuid,
+    sourceDataModelId: Uuid,
+    dataClassId: Uuid,
+    copyDataClassPayload: CopyDataClassPayload,
+    options?: RequestSettings
+  ) {
+    const url = `${this.apiEndpoint}/dataModels/${targetDataModelId}/dataClasses/${sourceDataModelId}/${dataClassId}`;
+    return this.simplePost(url, copyDataClassPayload, options);
   }
-
 }

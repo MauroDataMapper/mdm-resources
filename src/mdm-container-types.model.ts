@@ -47,7 +47,7 @@ export interface ContainerUpdatePayload extends Payload {
 /**
  * Represents the payload to copy a data model.
  */
-export interface CopyContainerPayload extends Payload {
+export interface CopyModelPayload extends Payload {
   /**
    * The target folder to copy the data model to.
    */
@@ -59,6 +59,6 @@ export interface CopyContainerPayload extends Payload {
   /**
    * Flag to indicate if permissions should be copied.
    */
-  copyPermissions: Boolean;
+  copyPermissions: boolean;
 
 }

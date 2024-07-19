@@ -21,7 +21,7 @@ import { RequestSettings, QueryParameters, Uuid } from '../mdm-common.model';
 import { CodeSetCreatePayload } from './mdm-code-set.model';
 import { MdmModelDomainResource } from '../mdm-model-types.resource';
 import { MdmResourcesConfiguration, MdmRestHandler } from '../mdm-resource';
-import { CopyContainerPayload } from '../mdm-container-types.model';
+import { CopyModelPayload } from '../mdm-container-types.model';
 
 /**
  * MDM resources for the management of code sets.
@@ -255,16 +255,16 @@ export class MdmCodeSetResource extends MdmModelDomainResource {
   /**
    * `HTTP PUT` - Copy a code set.
    *
-   * @param codeSetId The unique identifier of the code set to copy.
+   * @param sourceCodeSetId The unique identifier of the code set to copy.
    * @param CopyContainerPayload The payload to pass to the request when copying the code set.
    * @returns The result of the `PUT` request.
    *
    * `200 OK` - will return a {@link CodeSetDetailResponse} containing a {@link CodeSetDetail} object.
    */
-  copy(codeSetId: Uuid,
-    copyContainerPayload: CopyContainerPayload
+  copy(sourceCodeSetId: Uuid,
+    copyModelPayload: CopyModelPayload
   ){
-    const url = `${this.apiEndpoint}/codeSets/${codeSetId}/copy`;
-    return this.simplePut(url, copyContainerPayload);
+    const url = `${this.apiEndpoint}/codeSets/${sourceCodeSetId}/copy`;
+    return this.simplePut(url, copyModelPayload);
   }
 }

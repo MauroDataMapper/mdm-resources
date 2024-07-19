@@ -205,26 +205,37 @@ export class MdmDataElementResource extends MdmResource {
     otherDataModelId: Uuid,
     otherDataClassId: Uuid,
     dataElementId: Uuid,
-    options?: RequestSettings,
+    options?: RequestSettings
   ) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/${otherDataModelId}/${otherDataClassId}/${dataElementId}`;
     return this.simplePost(url, {}, options);
   }
 
   /**
-   * `HTTP POST` - Same as above but takes a payload object instead of individual parameters, allows renaming of copy.
+   * `HTTP POST` - Copies an existing data element from one data class to another target data class.
+   * This method allows for the copying of a data element with a new label and permissions.
    *
-   * @param dataElementId The unique identifier of the data element to copy.
-   * @param copyDataElementPayload The payload object containing the source and target data model and data class identifiers.
+   * @param targetDataModelId The unique identifier of the target data model
+   * @param targetDataClassId The unique identifier of the target data class
+   * @param sourceDataModelId The unique identifier of the source data model
+   * @param sourceDataClassId The unique identifier of the source data class
+   * @param dataElementId The unique identifier of the data element to copy
+   * @param copyDataElementPayload The payload of the request containing the new label and permissions
+   * @param options Optional REST handler parameters, if required
+   * @returns The result of the `POST` request
    *
    * `200 OK` - will return a {@link DataElementDetailResponse} containing the new copy of a {@link DataElementDetail} object.
-   */
+   **/
   copy(
+    targetDataModelId: Uuid,
+    targetDataClassId: Uuid,
+    sourceDataModelId: Uuid,
+    sourceDataClassId: Uuid,
     dataElementId: Uuid,
     copyDataElementPayload: CopyDataElementPayload,
     options?: RequestSettings
   ) {
-    const url = `${this.apiEndpoint}/dataModels/${copyDataElementPayload.sourceDataModelId}/dataClasses/${copyDataElementPayload.sourceDataClassId}/dataElements/${copyDataElementPayload.targetDataModelId}/${copyDataElementPayload.targetDataClassId}/${dataElementId}`;
+    const url = `${this.apiEndpoint}/dataModels/${sourceDataModelId}/dataClasses/${sourceDataClassId}/dataElements/${targetDataModelId}/${targetDataClassId}/${dataElementId}`;
     return this.simplePost(url, copyDataElementPayload, options);
   }
 }

@@ -51,11 +51,6 @@ export interface DataElement {
 
 
 export interface CopyDataElementPayload extends Payload {
-
-  targetDataModelId: Uuid;
-  targetDataClassId: Uuid;
-  sourceDataModelId: Uuid;
-  sourceDataClassId: Uuid;
   copyLabel : string;
   copyPermissions: boolean;
 }
