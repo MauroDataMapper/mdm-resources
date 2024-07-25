@@ -526,4 +526,29 @@ export class MdmDataClassResource extends MdmResource {
     const url = `${this.apiEndpoint}/dataModels/${targetDataModelId}/dataClasses/${sourceDataModelId}/${dataClassId}`;
     return this.simplePost(url, copyDataClassPayload, options);
   }
+
+  /**
+   * `HTTP POST` - Copy a child data class from one data model to another.
+   *
+   * @param targetDataModelId The unique identifier of the target data model.
+   * @param targetDataClassId The unique identifier of the target parent data class.
+   * @param sourceDataModelId The unique identifier of the source data model.
+   * @param dataClassId The unique identifier of the data class to copy.
+   * @param copyDataClassPayload The payload of the request containing the details of the data class to copy.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `POST` request.
+   *
+   * `200 OK` - will return a {@link DataClassDetailResponse} containing a {@link DataClassDetail} object
+   **/
+  copyChildClass(
+    targetDataModelId: Uuid,
+    targetDataClassId: Uuid,
+    sourceDataModelId: Uuid,
+    dataClassId: Uuid,
+    copyDataClassPayload: CopyDataClassPayload,
+    options?: RequestSettings
+  ) {
+    const url = `${this.apiEndpoint}/dataModels/${targetDataModelId}/dataClasses/${targetDataClassId}/dataClasses/${sourceDataModelId}/${dataClassId}`;
+    return this.simplePost(url, copyDataClassPayload, options);
+  }
 }
