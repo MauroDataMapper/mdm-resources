@@ -1,0 +1,111 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [ "**" ]
+  pull_request:
+    branches: [ "**" ]
+
+permissions:
+  # required for all workflows
+  security-events: write
+
+  # only required for workflows in private repositories
+  actions: read
+  contents: read
+  
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install and configure
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.19.0'
+        
+        
+      - name: Install tools
+        run: |
+          npm i -g npm@10.2.3
+          npm i -g npm-check
+      
+      - name: Check tool versions
+        run: |
+          node --version
+          npm --version
+      
+      - name: Clean install dependencies
+        run: npm ci
+
+      - name: License header check
+        run: npm run license-check check
+
+      - name: MegaLinter
+        uses:  oxsecurity/megalinter/flavors/javascript@v7.12.0
+        env:
+          # All available variables are described in documentation
+          # https://megalinter.io/configuration/
+          VALIDATE_ALL_CODEBASE: true
+          ENABLE_LINTERS: TYPESCRIPT_ES
+          LINTER_RULES_PATH: '.eslintrc.json' # This is the default anyway
+          DISABLE_ERRORS: true #Flag to have the linter complete with exit code 0 even if errors were detected.
+          SARIF_REPORTER: true
+          GITHUB_STATUS_REPORTER: true
+          GITHUB_COMMENT_REPORTER: true
+          MARKDOWN_SUMMARY_REPORTER: true
+          
+                    
+      - name: Upload MegaLinter scan results to GitHub Security tab
+        if: ${{ success() }} || ${{ failure() }}
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: 'megalinter-reports/megalinter-report.sarif'
+            
+            
+      #- name: Archive lint reports
+      #  if: ${{ success() }} || ${{ failure() }}
+      #  uses: actions/upload-artifact@v4
+      #  with:
+      #    name: MegaLinter reports
+      #    path: |
+      #      megalinter-reports
+      #      mega-linter.log
+                      
+      - name: Build
+        run: npm run build
+        
+      # Don't link any more - we'll do that from the repo that uses this
+        
+        
+      # publish
+        
+      - name: Setup Publish
+        if: success() && github.ref == 'refs/heads/master'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.19.0'
+          registry-url: 'https://registry.npmjs.org'
+        
+        
+      - name: Publish
+        if: success() && github.ref == 'refs/heads/master'
+        run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+                            
+                            
+                            
+      - name: Send a stream message
+        if: ${{ success() }} || ${{ failure() }}
+        uses: zulip/github-actions-zulip/send-message@v1
+        with:
+          api-key: ${{ secrets.ZULIP_API_KEY }}
+          email: "githubactionsbot-bot@maurodatamapper.zulipchat.com"
+          organization-url: "https://maurodatamapper.zulipchat.com"
+          to: "build/github-actions"
+          type: "stream"
+          topic: "${{github.repository}}"
+          content: "${{ job.status == 'success' && ':check_mark:' || ':cross_mark:' }} ${{github.repository}} : **${{github.ref}}**\nGitHub Actions build result: **${{ job.status }}**\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"    
