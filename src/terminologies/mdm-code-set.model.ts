@@ -42,6 +42,7 @@ export type CodeSetDetailResponse = MdmResponse<CodeSetDetail>;
 
 export interface CodeSetCreatePayload extends ModelCreatePayload {
   terms?: CatalogueItemReference[];
+  terminologies?: CatalogueItemReference[];
 }
 
 export interface CodeSetUpdatePayload extends ModelUpdatePayload {
