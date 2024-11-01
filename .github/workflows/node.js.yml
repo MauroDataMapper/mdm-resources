@@ -13,7 +13,7 @@ permissions:
   # only required for workflows in private repositories
   actions: read
   contents: read
-  
+
 jobs:
   build:
 
@@ -25,8 +25,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18.19.0'
-        
-        
+
       - name: Install tools
         run: |
           npm i -g npm@10.2.3
@@ -56,19 +55,9 @@ jobs:
           GITHUB_STATUS_REPORTER: true
           GITHUB_COMMENT_REPORTER: true
           MARKDOWN_SUMMARY_REPORTER: true
-          
-                    
-          GITHUB_STATUS_REPORTER: true
-          GITHUB_COMMENT_REPORTER: true
-          MARKDOWN_SUMMARY_REPORTER: true
 
-
-            
-      - name: Show sarif results  
-        run: cat megalinter-reports/megalinter-report.sarif
-        
       - name: Upload MegaLinter scan results to GitHub Security tab
-        if: ${{ success() }} || ${{ failure() }}
+        if: success() || failure()
         uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: 'megalinter-reports/megalinter-report.sarif'
