@@ -45,6 +45,9 @@ jobs:
       - name: Run ESLint
         run: npm run eslint-junit || true # Always succeed, even with linting errors
 
+      - name: Ls
+        run: ls
+
       - name: Report ESLint results
         uses: dorny/test-reporter@v1
         if: success() || failure()
