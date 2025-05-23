@@ -146,7 +146,7 @@ export class MdmTreeItemResource extends MdmResource {
     query?: SearchQueryParameters,
     options?: RequestSettings
   ) {
-    const url = `${this.apiEndpoint}/tree/${containerDomainType}/search/${searchTerm}`;
+    const url = `${this.apiEndpoint}/tree/${containerDomainType}/search/${encodeURIComponent(searchTerm)}`;
     return this.simpleGet(url, query, options);
   }
 
