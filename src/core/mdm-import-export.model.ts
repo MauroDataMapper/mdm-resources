@@ -80,7 +80,7 @@ export interface ImporterDetail {
   parameterGroups: ImporterParameterGroup[];
 }
 
-export type ImportResult = CatalogueItem & { [key: string]: any };
+export type ImportResult = CatalogueItem & Record<string, any>;
 
 export type ImporterIndexResponse = MdmResponse<Importer[]>;
 export type ImporterDetailResponse = MdmResponse<ImporterDetail>;

@@ -43,13 +43,13 @@ jobs:
         run: npm run license-check check
 
       - name: MegaLinter
-        uses:  oxsecurity/megalinter/flavors/javascript@v7.12.0
+        uses:  oxsecurity/megalinter/flavors/javascript@v8
         env:
           # All available variables are described in documentation
           # https://megalinter.io/configuration/
           VALIDATE_ALL_CODEBASE: true
           ENABLE_LINTERS: TYPESCRIPT_ES
-          LINTER_RULES_PATH: '.eslintrc.json' # This is the default anyway
+          LINTER_RULES_PATH: 'eslint.config.mjs' # This is the default anyway
           DISABLE_ERRORS: true #Flag to have the linter complete with exit code 0 even if errors were detected.
           SARIF_REPORTER: true
           GITHUB_STATUS_REPORTER: true

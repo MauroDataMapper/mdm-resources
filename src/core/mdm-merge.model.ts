@@ -56,7 +56,7 @@ export type MergableCatalogueItem =
  * This type represents the minimal set of properties required to understand what type of catalogue item this is. The
  * {@link Branchable.branchName} should always be "main".
  */
-export type MainBranchItem = Modelable & Branchable & { [key: string]: any };
+export type MainBranchItem = Modelable & Branchable & Record<string, any>;
 
 export type MainBranchResponse = MdmResponse<MainBranchItem>;
 
