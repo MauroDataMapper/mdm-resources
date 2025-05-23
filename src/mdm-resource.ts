@@ -15,7 +15,7 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { RequestSettings, QueryParameters } from './mdm-common.model';
+import {QueryParameters, RequestSettings} from './mdm-common.model';
 
 /**
  * Type to store common configuration options for the `mdm-resources` library.
@@ -73,8 +73,7 @@ export class DefaultMdmRestHandler implements MdmRestHandler {
           : 'same-origin',
       body: JSON.stringify(options.body)
     });
-    const json = await response.json();
-    return json;
+    return await response.json();
   }
 }
 

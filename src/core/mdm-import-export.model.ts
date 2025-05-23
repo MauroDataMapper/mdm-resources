@@ -16,10 +16,10 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { CodeSetDetail } from '../terminologies/mdm-code-set.model';
-import { DataModelDetail } from '../data-models/mdm-data-model.model';
-import { ReferenceDataModelDetail } from '../reference-data/mdm-reference-data-model.model';
-import { TerminologyDetail } from '../terminologies/mdm-terminology.model';
+import { CodeSetDetail } from '../terminologies';
+import { DataModelDetail } from '../data-models';
+import { ReferenceDataModelDetail } from '../reference-data';
+import { TerminologyDetail } from '../terminologies';
 import {
   AsyncParameters,
   CatalogueItem,
