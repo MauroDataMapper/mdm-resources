@@ -24,7 +24,7 @@ jobs:
       - name: Install and configure
         uses: actions/setup-node@v4
         with:
-          node-version: '18.19.0'
+          node-version: '18.20.8'
 
       - name: Install tools
         run: |
@@ -84,7 +84,7 @@ jobs:
         if: success() && github.ref == 'refs/heads/master'
         uses: actions/setup-node@v4
         with:
-          node-version: '18.19.0'
+          node-version: '18.20.8'
           registry-url: 'https://registry.npmjs.org'
 
 
