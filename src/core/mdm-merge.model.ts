@@ -16,18 +16,18 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { DataModelDetail } from '../data-models/mdm-data-model.model';
+import { DataModelDetail } from '../data-models';
 import { Branchable, Modelable } from '../mdm-model-types.model';
-import { ReferenceDataModelDetail } from '../reference-data/mdm-reference-data-model.model';
-import { TerminologyDetail } from '../terminologies/mdm-terminology.model';
-import { VersionedFolderDetail } from '../core/mdm-versioned-folder.model';
+import { ReferenceDataModelDetail } from '../reference-data';
+import { TerminologyDetail } from '../terminologies';
+import { VersionedFolderDetail } from './mdm-versioned-folder.model';
 import {
   MdmResponse,
   MultiFacetAwareDomainType,
   Payload,
   Uuid
 } from '../mdm-common.model';
-import { CodeSetDetail } from '../terminologies/mdm-code-set.model';
+import { CodeSetDetail } from '../terminologies';
 
 
 /**
@@ -56,7 +56,7 @@ export type MergableCatalogueItem =
  * This type represents the minimal set of properties required to understand what type of catalogue item this is. The
  * {@link Branchable.branchName} should always be "main".
  */
-export type MainBranchItem = Modelable & Branchable & { [key: string]: any };
+export type MainBranchItem = Modelable & Branchable & Record<string, any>;
 
 export type MainBranchResponse = MdmResponse<MainBranchItem>;
 

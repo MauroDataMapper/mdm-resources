@@ -23,9 +23,7 @@ import { MdmResponse } from '../../mdm-common.model';
  *
  * Indexed property names are used as the names may be simple strings.
  */
-export interface MauroStatus {
-  [key: string]: any;
-}
+export type MauroStatus = Record<string, any>;
 
 /**
  * Type alias for an endpoint response to request current status of the Mauro instance.

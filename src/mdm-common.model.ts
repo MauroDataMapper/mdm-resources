@@ -350,9 +350,7 @@ export type MdmIndexResponse<T> = MdmResponse<MdmIndexBody<T>>;
  * };
  * ```
  */
-export interface QueryParameters {
-  [key: string]: any;
-}
+export type QueryParameters = Record<string, any>;
 
 /**
  * Type to define sorting parameters for a query request.
@@ -438,9 +436,7 @@ export type RemoveQueryParameters = RemoveParameters & QueryParameters;
  *
  * @see [[MdmRestHandler]]
  */
-export interface RequestSettings {
-  [key: string]: any;
-}
+export type RequestSettings = Record<string, any>;
 
 /**
  * Represents a generic payload for a `POST` or `PUT` request.
@@ -448,9 +444,7 @@ export interface RequestSettings {
  * Use this only when the contents of the payload are not known in advance, otherwise choose to use
  * a more descriptive payload type.
  */
-export interface Payload {
-  [key: string]: any;
-}
+export type Payload = Record<string, any>;
 
 export interface Breadcrumb {
   id: Uuid;

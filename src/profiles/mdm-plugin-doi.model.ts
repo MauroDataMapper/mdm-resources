@@ -55,10 +55,10 @@ export interface DoiSubmissionQueryParameters extends QueryParameters {
   submissionType?: DoiSubmissionState;
 }
 
-export type DoiSubmissionStatus = CatalogueItem & { [key: string]: any };
+export type DoiSubmissionStatus = CatalogueItem & Record<string, any>;
 
 export type DoiSubmissionResponse = MdmResponse<DoiSubmissionStatus>;
 
-export type DoiResolvedItem = CatalogueItem & { [key: string]: any };
+export type DoiResolvedItem = CatalogueItem & Record<string, any>;
 
 export type DoiResolvedItemResponse = MdmResponse<DoiResolvedItem>;

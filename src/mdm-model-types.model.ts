@@ -16,7 +16,7 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { Classifier } from './core/mdm-classifier.model';
+import { Classifier } from './core';
 import {
   AsyncParameters,
   CatalogueItem,
@@ -41,42 +41,39 @@ export interface Authority {
   url?: string;
 }
 
-declare const securableActions: readonly [
-  'show',
-  'update',
-  'changeFolder',
-  'delete',
-  'disable',
-  'index',
-  'save',
-  'comment',
-  'editDescription',
-  'softDelete',
-  'newDocumentationVersion',
-  'newBranchModelVersion',
-  'finalise',
-  'createNewVersions',
-  'newForkModel',
-  'newModelVersion',
-  'mergeInto',
-  'readByEveryone',
-  'readByAuthenticated',
-  'createFolder',
-  'createVersionedFolder',
-  'createContainer',
-  'createModel',
-  'createModelItem',
-  'moveToFolder',
-  'moveToVersionedFolder',
-  'moveToContainer',
-  'finalisedReadActions',
-  'finalisedEditActions'
-];
-
 /**
  * Type alias to define available securable actions a catalogue item can perform.
  */
-export type SecurableAction = typeof securableActions[number];
+export type SecurableAction =
+  'show'
+  | 'update'
+  | 'changeFolder'
+  | 'delete'
+  | 'disable'
+  | 'index'
+  | 'save'
+  | 'comment'
+  | 'editDescription'
+  | 'softDelete'
+  | 'newDocumentationVersion'
+  | 'newBranchModelVersion'
+  | 'finalise'
+  | 'createNewVersions'
+  | 'newForkModel'
+  | 'newModelVersion'
+  | 'mergeInto'
+  | 'readByEveryone'
+  | 'readByAuthenticated'
+  | 'createFolder'
+  | 'createVersionedFolder'
+  | 'createContainer'
+  | 'createModel'
+  | 'createModelItem'
+  | 'moveToFolder'
+  | 'moveToVersionedFolder'
+  | 'moveToContainer'
+  | 'finalisedReadActions'
+  | 'finalisedEditActions';
 
 /**
  * Represents a Mauro entity that is securable and has a set of actions defined by the permissions of a user/session.
