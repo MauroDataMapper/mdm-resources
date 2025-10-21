@@ -77,6 +77,7 @@ export interface ProfileSection {
   name: string;
   description?: string;
   fields: ProfileField[];
+  sections?: ProfileSection[];
 }
 
 export interface Profile {
