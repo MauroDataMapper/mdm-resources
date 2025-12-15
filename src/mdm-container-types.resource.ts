@@ -21,7 +21,9 @@ import {
   SearchableItemResource
 } from './mdm-common.resource';
 import { ContainerDomain } from './mdm-container-types.model';
-import { SearchQueryParameters, RequestSettings } from './mdm-common.model';
+import { SearchQueryParameters, RequestSettings, Payload, QueryParameters, Version, Uuid } from './mdm-common.model';
+import { ExportableResource, ImportableResource } from './mdm-model-types.resource';
+import { ExportModelsPayload, ExportQueryParameters } from './core';
 
 /**
  * Base class representing all the operations that a typical container can perform.
@@ -30,7 +32,7 @@ import { SearchQueryParameters, RequestSettings } from './mdm-common.model';
  */
 export class MdmContainerDomainResource
   extends MdmCommonDomainResource
-  implements SearchableItemResource {
+  implements SearchableItemResource, ImportableResource, ExportableResource {
   /**
    * Constructs a new `MdmContainerDomainResource`.
    *
@@ -44,6 +46,52 @@ export class MdmContainerDomainResource
     restHandler?: MdmRestHandler
   ) {
     super(domain, config, restHandler);
+  }
+
+  exporters(query?: QueryParameters, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/${this.domain}/providers/exporters`;
+    return this.simpleGet(url, query, options);
+  }
+
+  exportModel(
+    id: Uuid,
+    namespace: string,
+    name: string,
+    version: Version,
+    query?: ExportQueryParameters,
+    options?: RequestSettings
+  ) {
+    const url = `${this.apiEndpoint}/${this.domain}/${id}/export/${namespace}/${name}/${version}`;
+    return this.simpleGet(url, query, options);
+  }
+
+  exportModels(
+    namespace: string,
+    name: string,
+    version: Version,
+    payload: ExportModelsPayload,
+    query?: ExportQueryParameters,
+    options?: RequestSettings
+  ) {
+    const queryString = this.generateQueryString(query);
+    const url = `${this.apiEndpoint}/${this.domain}/export/${namespace}/${name}/${version}${queryString}`;
+    return this.simplePost(url, payload, options);
+  }
+
+  importers(query?: QueryParameters, options?: RequestSettings) {
+    const url = `${this.apiEndpoint}/${this.domain}/providers/importers`;
+    return this.simpleGet(url, query, options);
+  }
+
+  importModels(
+    namespace: string,
+    name: string,
+    version: Version,
+    data: Payload,
+    options?: RequestSettings
+  ) {
+    const url = `${this.apiEndpoint}/${this.domain}/import/${namespace}/${name}/${version}`;
+    return this.simplePost(url, data, options);
   }
 
   search(id: string, query?: SearchQueryParameters, options?: RequestSettings) {

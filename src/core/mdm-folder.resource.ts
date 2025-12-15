@@ -202,7 +202,7 @@ export class MdmFolderResource extends MdmContainerDomainResource {
   /**
    * @deprecated Use {@link MdmCodeSetResource.addToFolder} instead.
    */
-  addCondeSets(
+  addCodeSets(
     folderId: string,
     data: any,
     restHandlerOptions?: RequestSettings
