@@ -22,6 +22,7 @@ import {
   CatalogueItem,
   CatalogueItemDomainType,
   CatalogueItemReference,
+  Identifiable,
   MdmResponse,
   Payload,
   Uuid,
@@ -125,6 +126,8 @@ export interface Versionable {
    * The documentation of this entity, if applicable.
    */
   documentationVersion?: Version;
+  
+  owningModel?: Identifiable & CatalogueItem & Versionable & Branchable;
 }
 
 /**
@@ -279,7 +282,7 @@ export interface BranchModelPayload extends Payload, AsyncParameters {
  */
 export interface BasicModelVersionItem {
   id: Uuid;
-  branch?: string;
+  branchName?: string;
   modelVersion?: Version;
   modelVersionTag?: string;
   documentationVersion?: Version;
@@ -303,8 +306,9 @@ export interface ModelVersionItemTarget {
 export interface ModelVersionItem {
   id: Uuid;
   label: string;
-  branch?: string;
+  branchName?: string;
   modelVersion?: Version;
+  modelVersionTag?: string;
   documentationVersion?: Version;
   isNewBranchModelVersion?: boolean;
   isNewDocumentationVersion?: boolean;
