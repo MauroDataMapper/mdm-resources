@@ -74,7 +74,7 @@ export interface ProfileValidationErrorList {
 export type ProfileValidationResponse = MdmResponse<ProfileValidationErrorList>;
 
 export interface ProfileSection {
-  name: string;
+  label: string;
   description?: string;
   fields: ProfileField[];
   sections?: ProfileSection[];
