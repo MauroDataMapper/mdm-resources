@@ -1,5 +1,5 @@
 /*
-Copyright 2020-2023 University of Oxford and NHS England
+Copyright 2020-2024 University of Oxford and NHS England
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -16,10 +16,10 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
-import { CodeSetDetail } from '../terminologies/mdm-code-set.model';
-import { DataModelDetail } from '../data-models/mdm-data-model.model';
-import { ReferenceDataModelDetail } from '../reference-data/mdm-reference-data-model.model';
-import { TerminologyDetail } from '../terminologies/mdm-terminology.model';
+import { CodeSetDetail } from '../terminologies';
+import { DataModelDetail } from '../data-models';
+import { ReferenceDataModelDetail } from '../reference-data';
+import { TerminologyDetail } from '../terminologies';
 import {
   AsyncParameters,
   CatalogueItem,
@@ -80,7 +80,7 @@ export interface ImporterDetail {
   parameterGroups: ImporterParameterGroup[];
 }
 
-export type ImportResult = CatalogueItem & { [key: string]: any };
+export type ImportResult = CatalogueItem & Record<string, any>;
 
 export type ImporterIndexResponse = MdmResponse<Importer[]>;
 export type ImporterDetailResponse = MdmResponse<ImporterDetail>;

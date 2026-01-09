@@ -1,5 +1,5 @@
 /*
-Copyright 2020-2023 University of Oxford and NHS England
+Copyright 2020-2024 University of Oxford and NHS England
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -23,6 +23,7 @@ import {
   MdmIndexResponse,
   MdmResponse,
   Payload,
+  QueryParameters,
   Uuid
 } from '../mdm-common.model';
 
@@ -149,8 +150,20 @@ export type PathableDomainType =
   | 'termRelationshipTypes'
   | 'userGroups'
   | 'userImageFiles'
+  | 'themeImageFiles'
   | 'versionedFolders'
   | 'versionLinks';
+
+/**
+ * Query parameters for the Path endpoints.
+ */
+export interface PathQueryParameters extends QueryParameters {
+  /**
+   * If true, only locate the latest finalised version of models, unless a specific version identitifer is
+   * used in the path.
+   */
+  finalised?: boolean;
+}
 
 export type RuleDomainType =
   | 'codeSets'
@@ -199,6 +212,5 @@ export interface RuleRepresentation
 export type RuleResponse = MdmResponse<Rule>;
 export type RuleIndexResponse = MdmIndexResponse<Rule>;
 export type RuleRepresentationResponse = MdmResponse<RuleRepresentation>;
-export type RuleRepresentationIndexResponse = MdmIndexResponse<
-  RuleRepresentation
->;
+export type RuleRepresentationIndexResponse =
+  MdmIndexResponse<RuleRepresentation>;

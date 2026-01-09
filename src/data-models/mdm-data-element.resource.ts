@@ -1,5 +1,5 @@
 /*
-Copyright 2020-2023 University of Oxford and NHS England
+Copyright 2020-2024 University of Oxford and NHS England
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@ SPDX-License-Identifier: Apache-2.0
 */
 import { RequestSettings, QueryParameters, Uuid } from '../mdm-common.model';
 import {
+  CopyDataElementPayload,
   DataElement,
   DataElementIndexParameters
 } from './mdm-data-element.model';
@@ -128,7 +129,9 @@ export class MdmDataElementResource extends MdmResource {
   }
 
   /**
-   * `HTTP PUT` - Updates an existing data element under a chosen data class.
+   * `HTTP PUT` - Updates an existing data element under a chosen data class. It can create new
+   * {@link DataType} if the {@link DataElement} contains a complete {@link DataType} instead
+   * of using a {@link DataTypeReference}.
    *
    * @param dataModelId The unique identifier of the data model the data element exists under.
    * @param dataClassId The unique identifier of the data class the data element exists under.
@@ -169,7 +172,7 @@ export class MdmDataElementResource extends MdmResource {
   get(
     dataModelId: Uuid,
     dataClassId: Uuid,
-    dataElementId: Uuid | string,
+    dataElementId: Uuid,
     query?: QueryParameters,
     options?: RequestSettings
   ) {
@@ -206,5 +209,33 @@ export class MdmDataElementResource extends MdmResource {
   ) {
     const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/dataElements/${otherDataModelId}/${otherDataClassId}/${dataElementId}`;
     return this.simplePost(url, {}, options);
+  }
+
+  /**
+   * `HTTP POST` - Copies an existing data element from one data class to another target data class.
+   * This method allows for the copying of a data element with a new label and permissions.
+   *
+   * @param targetDataModelId The unique identifier of the target data model
+   * @param targetDataClassId The unique identifier of the target data class
+   * @param sourceDataModelId The unique identifier of the source data model
+   * @param sourceDataClassId The unique identifier of the source data class
+   * @param sourceDataElementId The unique identifier of the data element to copy
+   * @param payload The payload of the request containing the new label and permissions
+   * @param options Optional REST handler parameters, if required
+   * @returns The result of the `POST` request
+   *
+   * `200 OK` - will return a {@link DataElementDetailResponse} containing the new copy of a {@link DataElementDetail} object.
+   **/
+  copy(
+    targetDataModelId: Uuid,
+    targetDataClassId: Uuid,
+    sourceDataModelId: Uuid,
+    sourceDataClassId: Uuid,
+    sourceDataElementId: Uuid,
+    payload: CopyDataElementPayload,
+    options?: RequestSettings
+  ) {
+    const url = `${this.apiEndpoint}/dataModels/${targetDataModelId}/dataClasses/${targetDataClassId}/dataElements/${sourceDataModelId}/${sourceDataClassId}/${sourceDataElementId}`;
+    return this.simplePost(url, payload, options);
   }
 }

@@ -1,5 +1,5 @@
 /*
-Copyright 2020-2023 University of Oxford and NHS England
+Copyright 2020-2024 University of Oxford and NHS England
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -23,11 +23,12 @@ import {
   MdmIndexResponse,
   MdmResponse,
   PageParameters,
+  Payload,
   QueryParameters,
   SortParameters,
   Uuid
 } from '../mdm-common.model';
-import { DataTypeReference } from './mdm-data-type.model';
+import { DataType, DataTypeReference } from './mdm-data-type.model';
 
 export type DataElementIndexParameters = SortParameters &
   PageParameters &
@@ -41,10 +42,17 @@ export interface DataElement {
   description?: string;
   model?: Uuid;
   dataClass?: Uuid;
-  dataType?: DataTypeReference;
+  dataType?: DataType | DataTypeReference;
   breadcrumbs?: Breadcrumb[];
   minMultiplicity?: number;
   maxMultipicity?: number;
+}
+
+
+
+export interface CopyDataElementPayload extends Payload {
+  copyLabel : string;
+  copyPermissions: boolean;
 }
 
 export type DataElementDetail = DataElement & Securable & Historical;

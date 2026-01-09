@@ -1,5 +1,5 @@
 /*
-Copyright 2020-2023 University of Oxford and NHS England
+Copyright 2020-2024 University of Oxford and NHS England
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -23,6 +23,7 @@ import {
   MdmIndexResponse,
   MdmResponse,
   PageParameters,
+  Payload,
   QueryParameters,
   SortParameters,
   Uuid
@@ -64,6 +65,11 @@ export interface DataClassNode {
    * The Data Elements under this Data Class.
    */
   dataElements?: DataElementDetail[];
+}
+
+export interface CopyDataClassPayload extends Payload{
+  copyLabel : string;
+  copyPermissions: boolean;
 }
 
 export type DataClassFull = DataClassDetail & DataClassNode;

@@ -1,5 +1,5 @@
 /*
-Copyright 2020-2023 University of Oxford and NHS England
+Copyright 2020-2024 University of Oxford and NHS England
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -16,13 +16,18 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 import { Modelable, ModelDomainDetail } from '../mdm-model-types.model';
-import { MdmIndexResponse, MdmResponse } from '../mdm-common.model';
+import { MdmIndexResponse, MdmResponse, Payload, Uuid } from '../mdm-common.model';
 
 export type TerminologyDataType = 'Terminology';
 
 export interface Terminology extends Modelable {
   [key: string]: any;
   type?: TerminologyDataType;
+}
+
+export interface CopyTermPayload extends Payload{
+  targetTerminologyId: Uuid;
+  code: string;
 }
 
 export type TerminologyDetail = Terminology & ModelDomainDetail;

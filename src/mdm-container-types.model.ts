@@ -1,5 +1,5 @@
 /*
-Copyright 2020-2023 University of Oxford and NHS England
+Copyright 2020-2024 University of Oxford and NHS England
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -42,4 +42,23 @@ export interface ContainerUpdatePayload extends Payload {
   id: Uuid;
   label?: string;
   description?: string;
+}
+
+/**
+ * Represents the payload to copy a data model.
+ */
+export interface CopyModelPayload extends Payload {
+  /**
+   * The target folder to copy the data model to.
+   */
+  folderId: Uuid;
+  /**
+   * The name of the target data model.
+   */
+  label: string;
+  /**
+   * Flag to indicate if permissions should be copied.
+   */
+  copyPermissions: boolean;
+
 }

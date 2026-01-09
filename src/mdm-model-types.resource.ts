@@ -1,5 +1,5 @@
 /*
-Copyright 2020-2023 University of Oxford and NHS England
+Copyright 2020-2024 University of Oxford and NHS England
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -34,7 +34,7 @@ import {
 import {
   ExportModelsPayload,
   ExportQueryParameters
-} from './core/mdm-import-export.model';
+} from './core';
 import { MdmResourcesConfiguration, MdmRestHandler } from './mdm-resource';
 import {
   MdmCommonDomainResource,

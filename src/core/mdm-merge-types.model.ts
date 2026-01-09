@@ -1,5 +1,5 @@
 /*
-Copyright 2020-2023 University of Oxford and NHS England
+Copyright 2020-2024 University of Oxford and NHS England
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -97,9 +97,7 @@ export type DiffType = Creation | Deletion | PrimitiveChange | Modification;
  * Each diff is a name-value pair. The `name` is the property of the model that has changed, and the `value` is
  * the {@link DiffType} that has occurred.
  */
-export interface Diff {
-  [key: string]: DiffType;
-}
+export type Diff = Record<string, DiffType>;
 
 /**
  * Represents a collection of differences between two model catalogue items.

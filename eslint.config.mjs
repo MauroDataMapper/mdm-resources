@@ -15,25 +15,21 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { RequestSettings } from '../mdm-common.model';
-import { MdmResource } from '../mdm-resource';
+// @ts-check
 
-export class MdmFacetsResource extends MdmResource {
-  attachReferenceFile(id, formData, restHandlerOptions?: RequestSettings) {
-    const url = `${this.apiEndpoint}'/facets/${id}/referenceFiles`;
+import eslint from '@eslint/js';
+import tseslint from 'typescript-eslint';
 
-    return this.simplePost(
-      url,
-      {
-        method: 'POST',
-        withCredentials: true,
-        data: formData
-      },
-      restHandlerOptions
-    );
+export default tseslint.config(
+  {
+    ignores: ['lib/*', 'node_modules/*', 'jest.config.js']
+  },
+  eslint.configs.recommended,
+  tseslint.configs.recommended,
+  tseslint.configs.stylistic,
+  {
+    rules: {
+      '@typescript-eslint/no-explicit-any': 'off'
+    }
   }
-
-  downloadLinkReferenceFile(elementId: string, fileId) {
-    return `${this.apiEndpoint}/facets/${elementId}/referenceFiles/${fileId}`;
-  }
-}
+);

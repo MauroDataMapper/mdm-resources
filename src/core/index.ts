@@ -1,5 +1,5 @@
 /*
-Copyright 2020-2023 University of Oxford and NHS England
+Copyright 2020-2024 University of Oxford and NHS England
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -34,7 +34,9 @@ export * from './mdm-async-jobs.resource';
 export * from './mdm-domain-exports.model';
 export * from './mdm-domain-exports.resource';
 export * from './mdm-importer.resource';
+export * from './mdm-image-file.model';
 export * from './mdm-user-image-file.resource';
+export * from './mdm-theme-image-file.resource';
 export * from './mdm-version-link.resource';
 export * from './mdm-versioned-folder.model';
 export * from './mdm-versioned-folder.resource';

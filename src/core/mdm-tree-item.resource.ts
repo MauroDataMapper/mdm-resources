@@ -1,5 +1,5 @@
 /*
-Copyright 2020-2023 University of Oxford and NHS England
+Copyright 2020-2024 University of Oxford and NHS England
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -146,7 +146,7 @@ export class MdmTreeItemResource extends MdmResource {
     query?: SearchQueryParameters,
     options?: RequestSettings
   ) {
-    const url = `${this.apiEndpoint}/tree/${containerDomainType}/search/${searchTerm}`;
+    const url = `${this.apiEndpoint}/tree/${containerDomainType}/search/${encodeURIComponent(searchTerm)}`;
     return this.simpleGet(url, query, options);
   }
 
@@ -264,6 +264,28 @@ export class MdmTreeItemResource extends MdmResource {
     options?: RequestSettings
   ) {
     const url = `${this.apiEndpoint}/tree/${containerDomainType}/${multiFacetAwareDomainType}/${id}/ancestors`;
+    return this.simpleGet(url, query, options);
+  }
+
+  /**
+   * `HTTP GET` - get all the ancestor items from the tree for a given container.
+   *
+   * @param containerDomainType State the container domain type to inspect.
+   * @param id The unique identifier of the container to fetch ancestors for.
+   * @param query Optional query string parameters to filter the returned list, if required.
+   * @param options Optional REST handler parameters, if required.
+   * @returns The result of the `GET` request.
+   *
+   * `200 OK` - will return a {@link MdmTreeItemResponse} containing a {@link MdmTreeItem} with children down to
+   * the original tree item.
+   */
+  containerAncestors(
+    containerDomainType: ContainerDomainType,
+    id: Uuid,
+    query?: QueryParameters,
+    options?: RequestSettings
+  ) {
+    const url = `${this.apiEndpoint}/tree/${containerDomainType}/${id}/ancestors`;
     return this.simpleGet(url, query, options);
   }
 }

@@ -1,5 +1,5 @@
 /*
-Copyright 2020-2023 University of Oxford and NHS England
+Copyright 2020-2024 University of Oxford and NHS England
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@ import {
   AnnotationChildCreatePayload,
   AnnotationCreatePayload,
   PathableDomainType,
+  PathQueryParameters,
   ReferenceFile,
   ReferenceFileCreatePayload,
   RuleDomainType,
@@ -819,11 +820,17 @@ export class MdmCatalogueItemResource extends MdmResource {
    * getPath('codeSets', 'cs:My Code Set')
    * getPath('folders', 'fo:My Folder')
    * ```
+   *
+   * You can also request only latest finalised models are located too by passing the parameter:
+   *
+   * ```ts
+   * getPath('dataModels', `dm:My Data Model', { finalised: true })
+   * ```
    */
   getPath(
     domainType: PathableDomainType,
     path: string,
-    query?: QueryParameters,
+    query?: PathQueryParameters,
     options?: RequestSettings
   ) {
     const encodedPath = encodeURIComponent(path);
@@ -855,7 +862,7 @@ export class MdmCatalogueItemResource extends MdmResource {
     domainType: PathableDomainType,
     id: Uuid,
     path: string,
-    query?: QueryParameters,
+    query?: PathQueryParameters,
     options?: RequestSettings
   ) {
     const encodedPath = encodeURIComponent(path);

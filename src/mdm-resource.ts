@@ -1,5 +1,5 @@
 /*
-Copyright 2020-2023 University of Oxford and NHS England
+Copyright 2020-2024 University of Oxford and NHS England
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@ limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 */
-import { RequestSettings, QueryParameters } from './mdm-common.model';
+import {QueryParameters, RequestSettings} from './mdm-common.model';
 
 /**
  * Type to store common configuration options for the `mdm-resources` library.
@@ -73,8 +73,7 @@ export class DefaultMdmRestHandler implements MdmRestHandler {
           : 'same-origin',
       body: JSON.stringify(options.body)
     });
-    const json = await response.json();
-    return json;
+    return await response.json();
   }
 }
 
@@ -223,7 +222,7 @@ export class MdmResource {
     if (value[0] === '{') {
       value = value.substring(1, value.length - 1);
     }
-    const regexGuid = /^(\{){0,1}[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}(\}){0,1}$/gi;
+    const regexGuid = /^(\{){0,1}[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}(}){0,1}$/gi;
     return regexGuid.test(value);
   }
 
