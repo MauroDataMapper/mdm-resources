@@ -16,6 +16,9 @@ permissions:
 
   checks: write
   
+  # For publishing provenance to npm  
+  id-token: write
+  
 jobs:
   build:
 
@@ -84,7 +87,7 @@ jobs:
         # publish
 
       - name: Setup Publish
-        if: success() && github.ref == 'refs/heads/master'
+        if: success() && github.ref == 'refs/heads/main'
         uses: actions/setup-node@v6
         with:
           node-version: '22.21.1'
@@ -92,7 +95,7 @@ jobs:
 
 
       - name: Publish
-        if: success() && github.ref == 'refs/heads/master'
+        if: success() && github.ref == 'refs/heads/main'
         run: npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
