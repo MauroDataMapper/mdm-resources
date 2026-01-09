@@ -24,7 +24,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "github:MauroDataMapper/mdm-resources"
+    "url": "git+https://github.com/MauroDataMapper/mdm-resources.git"
   },
   "devDependencies": {
     "@eslint/js": "^9.27.0",
