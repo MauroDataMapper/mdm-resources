@@ -16,6 +16,9 @@ permissions:
 
   checks: write
   
+  # For publishing provenance to npm  
+  id-token: write
+  
 jobs:
   build:
 
