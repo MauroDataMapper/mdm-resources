@@ -25,12 +25,9 @@ import {
 } from '../mdm-common.model';
 import { UserGroup } from './mdm-user-groups.model';
 
-export interface GroupRole extends Identifiable, Securable {
+export interface GroupRole  {
   name: string;
   displayName: string;
-  createdBy?: string;
-  parent?: Uuid;
-  applicationLevelRole: boolean;
 }
 
 export type GroupRoleIndexResponse = MdmIndexResponse<GroupRole>;
