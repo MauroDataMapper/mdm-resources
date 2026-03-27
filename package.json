@@ -31,7 +31,7 @@
     "@microsoft/eslint-formatter-sarif": "3.1.0",
     "eslint": "^9.27.0",
     "eslint-junit": "1.0.1",
-    "jest": "30.2.0",
+    "jest": "30.3.0",
     "license-check-and-add": "4.0.5",
     "shx": "0.4.0",
     "ts-jest": "29.4.5",
