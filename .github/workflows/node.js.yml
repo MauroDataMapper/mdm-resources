@@ -51,7 +51,7 @@ jobs:
         run: npm run eslint-junit || true # Always succeed, even with linting errors
 
       - name: Report ESLint results
-        uses: dorny/test-reporter@v1
+        uses: dorny/test-reporter@v3
         if: success() || failure()
         with:
           name: ESLint Results
