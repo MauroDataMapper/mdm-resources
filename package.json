@@ -27,9 +27,9 @@
     "url": "git+https://github.com/MauroDataMapper/mdm-resources.git"
   },
   "devDependencies": {
-    "@eslint/js": "^9.27.0",
+    "@eslint/js": "^10.0.0",
     "@microsoft/eslint-formatter-sarif": "3.1.0",
-    "eslint": "^9.39.4",
+    "eslint": "^10.0.0",
     "eslint-junit": "1.0.1",
     "jest": "30.3.0",
     "license-check-and-add": "4.0.5",
