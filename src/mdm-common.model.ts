@@ -533,6 +533,11 @@ export interface SearchQueryParameters
   searchTerm?: string;
 
   /**
+   * Whether the search is to be run as a keyword / term search, or as a prefix search
+   */
+  prefixSearch?: boolean;
+  
+  /**
    * State whether to only search for terms within labels of catalogue items.
    */
   labelOnly?: boolean;
