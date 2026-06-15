@@ -98,7 +98,7 @@ jobs:
 
       - name: Publish
         if: success() && github.ref == 'refs/heads/main'
-        run: npm publish --verbose --provenance --access public
+        run: NODE_AUTH_TOKEN="" npm publish --verbose --provenance --access public
 
 
       - name: Send a stream message
