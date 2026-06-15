@@ -122,6 +122,7 @@ jobs:
             echo "::warning::NODE_AUTH_TOKEN is set for this job. npm trusted publishing with OIDC should not rely on a long-lived token. Remove the repository, organization, or environment secret/variable named NODE_AUTH_TOKEN if you want pure OIDC publishing."
           fi
           npm ping --registry https://registry.npmjs.org || true
+          curl https://registry.npmjs.org || true
           npm view "${PACKAGE_NAME}" version --registry https://registry.npmjs.org || true
 
       - name: Publish
