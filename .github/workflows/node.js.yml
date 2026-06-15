@@ -26,14 +26,18 @@ jobs:
 
     steps:
       - uses: actions/checkout@v6
+      
       - name: Install and configure
         uses: actions/setup-node@v6
         with:
-          node-version: '22.21.1'
+          node-version: '24.16.0'
+          registry-url: 'https://registry.npmjs.org'
+          package-manager-cache: false  # never use caching in release builds
+
 
       - name: Install tools
         run: |
-          npm i -g npm@10.9.2
+          npm i -g npm@11.13.0
           npm i -g npm-check
 
       - name: Check tool versions
@@ -86,19 +90,15 @@ jobs:
         
         # publish
 
-      - name: Setup Publish
-        if: success() && github.ref == 'refs/heads/main'
-        uses: actions/setup-node@v6
-        with:
-          node-version: '22.21.1'
-          registry-url: 'https://registry.npmjs.org'
 
 
       - name: Publish
         if: success() && github.ref == 'refs/heads/main'
-        run: npm publish --provenance --access public
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ""
+        run: |
+          unset NODE_AUTH_TOKEN
+          npm publish --verbose --provenance --access public
 
 
 
