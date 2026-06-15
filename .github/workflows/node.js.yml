@@ -92,14 +92,11 @@ jobs:
         with:
           node-version: '22.21.1'
           registry-url: 'https://registry.npmjs.org'
-
+          package-manager-cache: false  # never use caching in release builds
 
       - name: Publish
         if: success() && github.ref == 'refs/heads/main'
         run: npm publish --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
 
 
       - name: Send a stream message
