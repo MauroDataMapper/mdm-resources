@@ -118,13 +118,20 @@ jobs:
           echo "id_token_url_present=$([ -n \"${ACTIONS_ID_TOKEN_REQUEST_URL:-}\" ] && echo yes || echo no)"
           echo "id_token_request_token_present=$([ -n \"${ACTIONS_ID_TOKEN_REQUEST_TOKEN:-}\" ] && echo yes || echo no)"
           echo "node_auth_token_present=$([ -n \"${NODE_AUTH_TOKEN:-}\" ] && echo yes || echo no)"
+          if [ -n "${NODE_AUTH_TOKEN:-}" ]; then
+            echo "::warning::NODE_AUTH_TOKEN is set for this job. npm trusted publishing with OIDC should not rely on a long-lived token. Remove the repository, organization, or environment secret/variable named NODE_AUTH_TOKEN if you want pure OIDC publishing."
+          fi
           npm ping --registry https://registry.npmjs.org || true
-          npm whoami --registry https://registry.npmjs.org || true
           npm view "${PACKAGE_NAME}" version --registry https://registry.npmjs.org || true
 
       - name: Publish
         if: success() && github.ref == 'refs/heads/main'
-        run: npm publish --verbose --provenance --access public
+        shell: bash
+        env:
+          NODE_AUTH_TOKEN: ""
+        run: |
+          unset NODE_AUTH_TOKEN
+          npm publish --verbose --provenance --access public
 
 
       - name: Send a stream message
