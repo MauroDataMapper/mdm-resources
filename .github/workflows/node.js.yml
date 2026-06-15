@@ -12,7 +12,7 @@ permissions:
 
   # only required for workflows in private repositories
   actions: read
-  contents: read
+  contents: write
 
   checks: write
   
@@ -95,6 +95,26 @@ jobs:
 #          node-version: '22.21.1'
 #          registry-url: 'https://registry.npmjs.org'
 #          package-manager-cache: false  # never use caching in release builds
+
+      - name: Publish diagnostics
+        if: success() && github.ref == 'refs/heads/main'
+        shell: bash
+        run: |
+          echo "event_name=${GITHUB_EVENT_NAME}"
+          echo "ref=${GITHUB_REF}"
+          echo "actor=${GITHUB_ACTOR}"
+          echo "repository=${GITHUB_REPOSITORY}"
+          echo "package_name=$(node -p \"require('./package.json').name\")"
+          echo "package_version=$(node -p \"require('./package.json').version\")"
+          echo "npm_registry=$(npm config get registry)"
+          echo "node_version=$(node --version)"
+          echo "npm_version=$(npm --version)"
+          echo "id_token_url_present=$([ -n \"${ACTIONS_ID_TOKEN_REQUEST_URL:-}\" ] && echo yes || echo no)"
+          echo "id_token_request_token_present=$([ -n \"${ACTIONS_ID_TOKEN_REQUEST_TOKEN:-}\" ] && echo yes || echo no)"
+          echo "node_auth_token_present=$([ -n \"${NODE_AUTH_TOKEN:-}\" ] && echo yes || echo no)"
+          npm ping --registry https://registry.npmjs.org || true
+          npm whoami --registry https://registry.npmjs.org || true
+          npm view "$(node -p \"require('./package.json').name\")" version --registry https://registry.npmjs.org || true
 
       - name: Publish
         if: success() && github.ref == 'refs/heads/main'
