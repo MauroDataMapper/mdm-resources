@@ -96,7 +96,7 @@ jobs:
 
       - name: Publish
         if: success() && github.ref == 'refs/heads/main'
-        run: npm publish --verbose
+        run: npm publish --verbose --provenance --access public
 
 
       - name: Send a stream message
