@@ -451,6 +451,9 @@ export interface Breadcrumb {
   label: string;
   domainType: CatalogueItemDomainType;
   finalised?: boolean;
+  branchName?: string;
+  modelVersion?: string;
+  modelVersionTag?: string;
 }
 
 /**
