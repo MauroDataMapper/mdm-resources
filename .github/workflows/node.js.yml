@@ -30,6 +30,8 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: '22.21.1'
+          registry-url: 'https://registry.npmjs.org'
+          package-manager-cache: false  # never use caching in release builds
 
       - name: Install tools
         run: |
@@ -86,13 +88,13 @@ jobs:
         
         # publish
 
-      - name: Setup Publish
-        if: success() && github.ref == 'refs/heads/main'
-        uses: actions/setup-node@v6
-        with:
-          node-version: '22.21.1'
-          registry-url: 'https://registry.npmjs.org'
-          package-manager-cache: false  # never use caching in release builds
+#      - name: Setup Publish
+#        if: success() && github.ref == 'refs/heads/main'
+#        uses: actions/setup-node@v6
+#        with:
+#          node-version: '22.21.1'
+#          registry-url: 'https://registry.npmjs.org'
+#          package-manager-cache: false  # never use caching in release builds
 
       - name: Publish
         if: success() && github.ref == 'refs/heads/main'
