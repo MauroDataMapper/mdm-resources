@@ -1,5 +1,5 @@
 /*
-Copyright 2020-2024 University of Oxford and NHS England
+Copyright 2020-2026 University of Oxford and NHS England
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -551,4 +551,26 @@ export class MdmDataClassResource extends MdmResource {
     const url = `${this.apiEndpoint}/dataModels/${targetDataModelId}/dataClasses/${targetDataClassId}/dataClasses/${sourceDataModelId}/${dataClassId}`;
     return this.simplePost(url, copyDataClassPayload, options);
   }
+
+  /**
+   * `HTTP PUT` - Moves an existing data element from one data class to another target data class.
+   *
+   * @param dataModelId The unique identifier of the source data model
+   * @param dataClassId The unique identifier of the source data class
+   * @param newParentDataClassId The id of teh data class to be moved to
+   * @param options Optional REST handler parameters, if required
+   * @returns The result of the `POST` request
+   *
+   * `200 OK` - will return a {@link DataElementDetailResponse} containing the new copy of a {@link DataElementDetail} object.
+   **/
+  move(
+    dataModelId: Uuid,
+    dataClassId: Uuid,
+    newParentDataClassId?: Uuid,
+    options?: RequestSettings
+  ) {
+    const url = `${this.apiEndpoint}/dataModels/${dataModelId}/dataClasses/${dataClassId}/move`;
+    return this.simplePut(url, {parentDataClass: newParentDataClassId}, options);
+  }
+
 }

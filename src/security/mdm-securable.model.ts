@@ -1,5 +1,5 @@
 /*
-Copyright 2020-2024 University of Oxford and NHS England
+Copyright 2020-2026 University of Oxford and NHS England
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -25,12 +25,9 @@ import {
 } from '../mdm-common.model';
 import { UserGroup } from './mdm-user-groups.model';
 
-export interface GroupRole extends Identifiable, Securable {
+export interface GroupRole  {
   name: string;
   displayName: string;
-  createdBy?: string;
-  parent?: Uuid;
-  applicationLevelRole: boolean;
 }
 
 export type GroupRoleIndexResponse = MdmIndexResponse<GroupRole>;

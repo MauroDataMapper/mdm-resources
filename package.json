@@ -1,6 +1,6 @@
 {
   "name": "@maurodatamapper/mdm-resources",
-  "version": "5.4.0",
+  "version": "5.5.0",
   "main": "lib/es2015/index.js",
   "module": "lib/es2015/index.js",
   "license": "Apache-2.0",
@@ -24,19 +24,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "github:MauroDataMapper/mdm-resources"
+    "url": "git+https://github.com/MauroDataMapper/mdm-resources.git"
   },
   "devDependencies": {
-    "@eslint/js": "^9.27.0",
+    "@eslint/js": "^10.0.1",
     "@microsoft/eslint-formatter-sarif": "3.1.0",
-    "eslint": "^9.27.0",
+    "eslint": "^10.4.1",
     "eslint-junit": "1.0.1",
-    "jest": "30.2.0",
+    "jest": "30.3.0",
     "license-check-and-add": "4.0.5",
     "shx": "0.4.0",
-    "ts-jest": "29.4.5",
-    "typedoc": "0.28.14",
+    "ts-jest": "29.4.6",
+    "typedoc": "0.28.18",
     "typescript": "5.9.3",
-    "typescript-eslint": "^8.32.1"
+    "typescript-eslint": "^8.57.2"
   }
 }
