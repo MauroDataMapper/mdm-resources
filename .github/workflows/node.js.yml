@@ -106,23 +106,85 @@ jobs:
           NODE_VERSION=$(node --version)
           NPM_VERSION=$(npm --version)
 
+          echo "== GitHub context =="
           echo "event_name=${GITHUB_EVENT_NAME}"
           echo "ref=${GITHUB_REF}"
+          echo "ref_name=${GITHUB_REF_NAME}"
+          echo "ref_type=${GITHUB_REF_TYPE}"
           echo "actor=${GITHUB_ACTOR}"
+          echo "triggering_actor=${GITHUB_TRIGGERING_ACTOR:-}"
           echo "repository=${GITHUB_REPOSITORY}"
+          echo "repository_owner=${GITHUB_REPOSITORY_OWNER}"
+          echo "workflow=${GITHUB_WORKFLOW}"
+          echo "workflow_ref=${GITHUB_WORKFLOW_REF:-}"
+          echo "workflow_sha=${GITHUB_WORKFLOW_SHA:-}"
+          echo "job=${GITHUB_JOB}"
+          echo "run_id=${GITHUB_RUN_ID}"
+          echo "run_number=${GITHUB_RUN_NUMBER}"
+          echo "run_attempt=${GITHUB_RUN_ATTEMPT}"
+          echo "sha=${GITHUB_SHA}"
+          echo "workspace=${GITHUB_WORKSPACE}"
+          echo "event_path=${GITHUB_EVENT_PATH}"
+
+          echo "== Runner context =="
+          echo "runner_os=${RUNNER_OS}"
+          echo "runner_arch=${RUNNER_ARCH}"
+          echo "runner_name=${RUNNER_NAME}"
+          echo "runner_environment=${RUNNER_ENVIRONMENT:-}"
+          echo "ci=${CI:-}"
+
+          echo "== Package / npm context =="
           echo "package_name=${PACKAGE_NAME}"
           echo "package_version=${PACKAGE_VERSION}"
           echo "npm_registry=${NPM_REGISTRY}"
           echo "node_version=${NODE_VERSION}"
           echo "npm_version=${NPM_VERSION}"
+          echo "npm_userconfig=${NPM_CONFIG_USERCONFIG:-}"
           echo "id_token_url_present=$([ -n \"${ACTIONS_ID_TOKEN_REQUEST_URL:-}\" ] && echo yes || echo no)"
           echo "id_token_request_token_present=$([ -n \"${ACTIONS_ID_TOKEN_REQUEST_TOKEN:-}\" ] && echo yes || echo no)"
           echo "node_auth_token_present=$([ -n \"${NODE_AUTH_TOKEN:-}\" ] && echo yes || echo no)"
           if [ -n "${NODE_AUTH_TOKEN:-}" ]; then
             echo "::warning::NODE_AUTH_TOKEN is set for this job. npm trusted publishing with OIDC should not rely on a long-lived token. Remove the repository, organization, or environment secret/variable named NODE_AUTH_TOKEN if you want pure OIDC publishing."
           fi
+
+          echo "== Event payload highlights =="
+          node <<'EOF'
+          const fs = require('fs');
+          const path = process.env.GITHUB_EVENT_PATH;
+          if (!path || !fs.existsSync(path)) {
+            console.log('event_payload_present=no');
+            process.exit(0);
+          }
+          const event = JSON.parse(fs.readFileSync(path, 'utf8'));
+          const summary = {
+            event_action: event.action || null,
+            sender_login: event.sender?.login || null,
+            repository_full_name: event.repository?.full_name || null,
+            head_commit_id: event.head_commit?.id || null,
+            head_commit_url: event.head_commit?.url || null,
+            pull_request_number: event.pull_request?.number || null,
+            pull_request_head_ref: event.pull_request?.head?.ref || null,
+            pull_request_base_ref: event.pull_request?.base?.ref || null,
+            pull_request_html_url: event.pull_request?.html_url || null,
+          };
+          for (const [key, value] of Object.entries(summary)) {
+            console.log(`${key}=${value ?? ''}`);
+          }
+          EOF
+
+          echo "== Redacted npm user config =="
+          if [ -n "${NPM_CONFIG_USERCONFIG:-}" ] && [ -f "${NPM_CONFIG_USERCONFIG}" ]; then
+            sed -E \
+              -e 's#(//registry\.npmjs\.org/:_authToken=).*#\1***REDACTED***#' \
+              -e 's#(_authToken=).*#\1***REDACTED***#' \
+              -e 's#(authToken":").*(")#\1***REDACTED***\2#' \
+              "${NPM_CONFIG_USERCONFIG}"
+          else
+            echo "npm_userconfig_file_present=no"
+          fi
+
+          echo "== npm registry probes =="
           npm ping --registry https://registry.npmjs.org || true
-          curl https://registry.npmjs.org || true
           npm view "${PACKAGE_NAME}" version --registry https://registry.npmjs.org || true
 
       - name: Publish
