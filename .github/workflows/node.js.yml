@@ -30,7 +30,6 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: '22.21.1'
-          registry-url: 'https://registry.npmjs.org'
           package-manager-cache: false  # never use caching in release builds
 
       - name: Install tools
@@ -192,8 +191,14 @@ jobs:
         shell: bash
         env:
           NODE_AUTH_TOKEN: ""
+          NPM_CONFIG_USERCONFIG: /home/runner/work/_temp/.npmrc-publish
         run: |
           unset NODE_AUTH_TOKEN
+          cat > "${NPM_CONFIG_USERCONFIG}" <<'EOF'
+          registry=https://registry.npmjs.org/
+          EOF
+          echo "Using publish npm userconfig at ${NPM_CONFIG_USERCONFIG}"
+          cat "${NPM_CONFIG_USERCONFIG}"
           npm publish --verbose --provenance --access public
 
 
