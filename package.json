@@ -35,7 +35,7 @@
     "license-check-and-add": "4.0.5",
     "shx": "0.4.0",
     "ts-jest": "29.4.6",
-    "typedoc": "0.28.18",
+    "typedoc": "0.28.19",
     "typescript": "5.9.3",
     "typescript-eslint": "^8.57.2"
   }
