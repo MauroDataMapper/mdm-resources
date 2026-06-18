@@ -34,7 +34,7 @@
     "jest": "30.3.0",
     "license-check-and-add": "4.0.5",
     "shx": "0.4.0",
-    "ts-jest": "29.4.6",
+    "ts-jest": "29.4.11",
     "typedoc": "0.28.18",
     "typescript": "5.9.3",
     "typescript-eslint": "^8.57.2"
